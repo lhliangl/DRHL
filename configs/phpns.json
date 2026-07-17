@@ -1,0 +1,612 @@
+{
+  "run_dir": "../runs/phpns",
+  "target": {
+    "base_url": "http://localhost/phpns/",
+    "source_root": "D:/phpStudy/PHPTutorial/WWW/phpns",
+    "language": "php",
+    "public_extensions": [
+      ".php"
+    ]
+  },
+  "database": {
+    "driver": "mysql",
+    "host": "127.0.0.1",
+    "port": 3306,
+    "database": "phpns",
+    "user": "root",
+    "password": "root",
+    "mysqldump": "D:/phpStudy/PHPTutorial/MySQL/bin/mysqldump.exe",
+    "mysql": "D:/phpStudy/PHPTutorial/MySQL/bin/mysql.exe",
+    "single_transaction": false
+  },
+  "crawl": {
+    "mode": "selenium",
+    "driver_path": "../chromedriver.exe",
+    "root_url": "index.php",
+    "scope_path": "/phpns/",
+    "strategy": "dfs",
+    "headless": true,
+    "max_pages": 300,
+    "delay": 0.2,
+    "page_timeout": 20,
+    "exclude_url_markers": [
+      "logout",
+      "logoff",
+      "login.php?do=logout",
+      "m=out",
+      "about.php"
+    ],
+    "secret_parameters": [
+      "password",
+      "pw",
+      "passwd",
+      "pwd",
+      "token",
+      "csrf",
+      "_token"
+    ],
+    "skip_source_dirs": [
+      "themes",
+      "wysiwyg"
+    ],
+    "preserve_query_parameters": [
+      "do",
+      "action",
+      "v",
+      "sort",
+      "tid",
+      "m"
+    ],
+    "redact_secret_parameters": false,
+    "execute_forms": true,
+    "execute_forms_limit_per_page": 20,
+    "execute_forms_wait_after": 0.2,
+    "roles": [
+      {
+        "name": "admin",
+        "kind": "admin",
+        "role_group": "admin",
+        "crawl_login": {
+          "steps": [
+            {
+              "name": "admin_login",
+              "url": "login.php",
+              "post_url": "login.php?do=p",
+              "method": "POST",
+              "data": {
+                "username": "admin",
+                "password": "123456",
+                "remember": "on"
+              },
+              "wait_after": 1,
+              "expect_cookies": [
+                "PHPSESSID"
+              ],
+              "forbid_text": [
+                "Login failed",
+                "disallowing logging"
+              ],
+              "seed_urls": [
+                "manage.php",
+                "manage.php?v=unapproved",
+                "manage.php?do=deleteitems",
+                "user.php",
+                "user.php?do=new",
+                "user.php?do=ranks",
+                "user.php?do=newrank",
+                "preferences.php",
+                "preferences.php?do=categories",
+                "preferences.php?do=templates",
+                "preferences.php?do=backup",
+                "preferences.php?do=syslog",
+                "index.php",
+                "article.php",
+                "article.php?do=edit&id=2",
+                "article.php?do=edit&id=4",
+                "article.php?do=edit&id=6",
+                "article.php?do=comments&id=2",
+                "article.php?do=comments&id=4",
+                "article.php?do=comments&id=6"
+              ]
+            }
+          ]
+        },
+        "http_login": {
+          "steps": [
+            {
+              "name": "admin_login",
+              "url": "login.php",
+              "post_url": "login.php?do=p",
+              "method": "POST",
+              "data": {
+                "username": "admin",
+                "password": "123456",
+                "remember": "on"
+              },
+              "expect_cookies": [
+                "PHPSESSID"
+              ],
+              "forbid_text": [
+                "Login failed",
+                "disallowing logging"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "name": "user1",
+        "kind": "user",
+        "role_group": "users",
+        "crawl_login": {
+          "steps": [
+            {
+              "name": "user1_login",
+              "url": "login.php",
+              "post_url": "login.php?do=p",
+              "method": "POST",
+              "data": {
+                "username": "user1",
+                "password": "123456",
+                "remember": "on"
+              },
+              "wait_after": 1,
+              "expect_cookies": [
+                "PHPSESSID"
+              ],
+              "forbid_text": [
+                "Login failed",
+                "disallowing logging"
+              ],
+              "seed_urls": [
+                "manage.php",
+                "index.php",
+                "article.php",
+                "article.php?do=edit&id=4",
+                "article.php?do=edit&id=6",
+                "article.php?do=comments&id=4",
+                "article.php?do=comments&id=6"
+              ]
+            }
+          ]
+        },
+        "http_login": {
+          "steps": [
+            {
+              "name": "user1_login",
+              "url": "login.php",
+              "post_url": "login.php?do=p",
+              "method": "POST",
+              "data": {
+                "username": "user1",
+                "password": "123456",
+                "remember": "on"
+              },
+              "expect_cookies": [
+                "PHPSESSID"
+              ],
+              "forbid_text": [
+                "Login failed",
+                "disallowing logging"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "name": "user2",
+        "kind": "user",
+        "role_group": "users",
+        "crawl_login": {
+          "steps": [
+            {
+              "name": "user2_login",
+              "url": "login.php",
+              "post_url": "login.php?do=p",
+              "method": "POST",
+              "data": {
+                "username": "user2",
+                "password": "123456",
+                "remember": "on"
+              },
+              "wait_after": 1,
+              "expect_cookies": [
+                "PHPSESSID"
+              ],
+              "forbid_text": [
+                "Login failed",
+                "disallowing logging"
+              ],
+              "seed_urls": [
+                "manage.php",
+                "index.php",
+                "article.php",
+                "article.php?do=edit&id=6",
+                "article.php?do=edit&id=4",
+                "article.php?do=comments&id=6",
+                "article.php?do=comments&id=4"
+              ]
+            }
+          ]
+        },
+        "http_login": {
+          "steps": [
+            {
+              "name": "user2_login",
+              "url": "login.php",
+              "post_url": "login.php?do=p",
+              "method": "POST",
+              "data": {
+                "username": "user2",
+                "password": "123456",
+                "remember": "on"
+              },
+              "expect_cookies": [
+                "PHPSESSID"
+              ],
+              "forbid_text": [
+                "Login failed",
+                "disallowing logging"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "name": "register",
+        "kind": "user",
+        "role_group": "register",
+        "crawl_login": {
+          "steps": [
+            {
+              "name": "register_login",
+              "url": "login.php",
+              "post_url": "login.php?do=p",
+              "method": "POST",
+              "data": {
+                "username": "register",
+                "password": "123456",
+                "remember": "on"
+              },
+              "wait_after": 1,
+              "expect_cookies": [
+                "PHPSESSID"
+              ],
+              "forbid_text": [
+                "Login failed",
+                "disallowing logging"
+              ],
+              "seed_urls": [
+                "index.php"
+              ]
+            }
+          ]
+        },
+        "http_login": {
+          "steps": [
+            {
+              "name": "register_login",
+              "url": "login.php",
+              "post_url": "login.php?do=p",
+              "method": "POST",
+              "data": {
+                "username": "register",
+                "password": "123456",
+                "remember": "on"
+              },
+              "expect_cookies": [
+                "PHPSESSID"
+              ],
+              "forbid_text": [
+                "Login failed",
+                "disallowing logging"
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "drop_query_parameters": [
+      "PHPSESSID",
+      "cookie_auth"
+    ]
+  },
+  "analysis": {
+    "source_analysis": {
+      "save_cst": false,
+      "identity_parameters": [
+        "user_id",
+        "userid",
+        "rank_id",
+        "username"
+      ],
+      "access_control_database_fields": [
+        "phpns_users.id",
+        "phpns_users.rank_id",
+        "phpns_users.user_name",
+        "phpns_ranks.id",
+        "phpns_ranks.permissions",
+        "phpns_cookielog.user_id",
+        "phpns_cookielog.rank_id",
+        "phpns_userlogin.username",
+        "phpns_userlogin.rank_id",
+        "phpns_articles.article_author",
+        "phpns_categories.cat_author",
+        "phpns_comments.comment_author",
+        "phpns_images.user_id"
+      ],
+      "validated_function_name_patterns": [
+        "auth",
+        "login",
+        "permission",
+        "rank"
+      ],
+      "validated_function_code_patterns": [
+        "\\$_SESSION|\\$_COOKIE|cookie_auth|permissiondenied",
+        "\\$globalvars\\['rank'\\]|permissions|rank_id|header\\s*\\(\\s*['\\\"]Location:"
+      ],
+      "termination_patterns": [
+        "login_form"
+      ]
+    },
+    "active_detection": true,
+    "identity_parameters": [
+      "id",
+      "user_id",
+      "userid",
+      "rank_id",
+      "article_id",
+      "tid",
+      "username"
+    ],
+    "horizontal_overrides": {
+      "id": "6",
+      "article_id": "6",
+      "user_id": "11",
+      "userid": "11",
+      "rank_id": "3"
+    },
+    "oracle": {
+      "timeout": 10,
+      "denied_statuses": [
+        401,
+        403
+      ],
+      "login_url_markers": [
+        "login.php",
+        "m=nologin"
+      ],
+      "deny_markers": [
+        "login failed",
+        "permission denied",
+        "permissiondenied",
+        "disallowing logging",
+        "user login",
+        "cookies must be enabled"
+      ],
+      "extract_source_deny_markers": true,
+      "confirm_get_read": true,
+      "static_only_confirm_patterns": [
+        "^install/(?:index|upgrade)\\.php$"
+      ],
+      "public_page_patterns": [
+        "^login\\.php(?:\\?|$)",
+        "^help\\.php(?:\\?|$)",
+        "^index\\.php(?:\\?|$)",
+        "^shownews\\.php(?:\\?|$)",
+        "^showtitle\\.php(?:\\?|$)",
+        "^etc\\.php(?:\\?|$)"
+      ],
+      "authenticated_public_page_patterns": [
+        "^\\./?$",
+        "^manage\\.php(?:$|\\?(?:sort|v)=)",
+        "^user\\.php$"
+      ]
+    },
+    "force_static_pages": [
+      "install/index.php",
+      "install/upgrade.php"
+    ],
+    "static_exclude_patterns": [
+      "(^|/)about\\.php(?:\\?|$)"
+    ],
+    "role_groups": {
+      "admin": [
+        "admin"
+      ],
+      "users": [
+        "user1",
+        "user2"
+      ],
+      "register": [
+        "register"
+      ]
+    },
+    "horizontal_role_group": "users",
+    "horizontal_actor_roles": [
+      "user1",
+      "user2"
+    ],
+    "attacker_roles": {
+      "authenticated_only": [
+        "register"
+      ],
+      "admin_only": [
+        "register"
+      ],
+      "vertical": [
+        "register"
+      ]
+    },
+    "horizontal_exclude_patterns": [
+      "(?:^|/)article\\.php\\?(?:[^#]*&)?do=comments(?:&|$)"
+    ],
+    "force_vertical_pages": [
+      "article.php?do=comments&id=p1",
+      "article.php?action=delete&do=comments&id=p1"
+    ],
+    "vertical_overrides": {
+      "id": "6"
+    },
+    "vertical_only_patterns": [
+      "(?:^|/)article\\.php\\?(?:[^#]*&)?do=comments(?:&|$)"
+    ]
+  },
+  "repair": {
+    "enabled": true,
+    "output_dir": "repair/files",
+    "llm": {
+      "enabled": true,
+      "provider": "openai_compatible",
+      "base_url": "https://api.deepseek.com/v1",
+      "model": "deepseek-v4-flash",
+      "api_key": "your-api-key",
+      "temperature": 0.1,
+      "timeout": 120,
+      "response_format_json": true,
+      "input_cost_per_million_tokens": 0,
+      "output_cost_per_million_tokens": 0
+    },
+    "validation": {
+      "max_attempts": 3,
+      "syntax_check": true,
+      "php_binary": "D:/phpStudy/PHPTutorial/php/php-5.2.17/php.exe",
+      "syntax_timeout": 30,
+      "temporary_apply_to_source": true
+    },
+    "user_table_context": {
+      "enabled": true,
+      "table": "phpns_users",
+      "columns": [
+        "id",
+        "user_name",
+        "rank_id"
+      ],
+      "order_by": "id",
+      "limit": 20,
+      "role_column": "rank_id",
+      "sample_by_role_when_rows_gte": 5,
+      "max_rows_per_role": 2,
+      "scan_limit": 1000
+    },
+    "identity_context": {
+      "enabled": true,
+      "current_user": [
+        {
+          "name": "current_username",
+          "expression": "$_SESSION['username']",
+          "source": "inc/auth.php",
+          "description": "Current logged-in username set after cookie/session authentication."
+        },
+        {
+          "name": "current_user_id",
+          "expression": "$_SESSION['userID']",
+          "source": "inc/auth.php",
+          "description": "Current logged-in user id set after cookie/session authentication."
+        },
+        {
+          "name": "current_permissions",
+          "expression": "$globalvars['rank']",
+          "source": "inc/auth.php",
+          "description": "Permission string copied from $_SESSION[permissions]; individual offsets are used as guards."
+        }
+      ],
+      "bindings": [
+        {
+          "source_path": "article.php",
+          "parameter": "id",
+          "table": "phpns_articles",
+          "lookup_column": "id",
+          "owner_column": "article_author",
+          "current_user_expression": "$_SESSION['username']",
+          "privileged_bypass": "admin user: $_SESSION['username'] == 'admin' or current phpns_users.rank_id == 1",
+          "deny_action": "header(\"Location: index.php?do=permissiondenied\"); die();",
+          "sample_columns": [
+            "id",
+            "article_author",
+            "article_title"
+          ],
+          "description": "Article edit pages must compare requested article id to phpns_articles.article_author; allow the owner or the administrator only.",
+          "page_pattern": "(?:^|/)article\\.php\\?do=edit(?:&|$)"
+        },
+        {
+          "source_path": "user.php",
+          "parameter": "id",
+          "table": "phpns_users",
+          "lookup_column": "id",
+          "owner_column": "id",
+          "current_user_expression": "$_SESSION['userID']",
+          "privileged_bypass": "admin user: $_SESSION['username'] == 'admin' or current phpns_users.rank_id == 1",
+          "deny_action": "header(\"Location: index.php?do=permissiondenied\"); die();",
+          "sample_columns": [
+            "id",
+            "user_name",
+            "rank_id"
+          ],
+          "description": "User edit pages must compare requested user id with the current session user id; allow the same user or the administrator only.",
+          "page_pattern": "(?:^|/)user\\.php\\?do=edit(?:&|$)"
+        }
+      ]
+    },
+    "page_repair_guidance": [
+      {
+        "page_pattern": "(?:^|/)install/index\\.php$",
+        "category": "static_only",
+        "intended_fix": "Require an authenticated phpns user before allowing the installer entry page to continue.",
+        "allowed_condition": "user is logged in according to phpns existing auth/session semantics",
+        "deny_action": "Use the existing phpns redirect/denial style and exit immediately.",
+        "notes": [
+          "Do not disable the installer by returning a blank page.",
+          "Do not invent new session keys; reuse the session/auth variables initialized by the included project files."
+        ]
+      },
+      {
+        "page_pattern": "(?:^|/)article\\.php\\?action=delete&do=comments(?:&|$)",
+        "category": "vertical",
+        "intended_fix": "Deleting comments is a vertical privilege check, not an ownership check.",
+        "allowed_condition": "allow only if the current user has the existing edit-article permission OR the current user's phpns_users.rank_id is the users rank_id (rank_id=3); block register rank_id=2.",
+        "deny_action": "header(\"Location: index.php?do=permissiondenied\"); die();",
+        "notes": [
+          "The attacking role is register, which can log in but must not delete comments.",
+          "Prefer existing $globalvars['rank'] permission semantics for edit-article permission when available.",
+          "If checking rank_id, query phpns_users using $_SESSION['userID']; users rank_id is 3 and register rank_id is 2 in database_user_table_context."
+        ]
+      },
+      {
+        "page_pattern": "(?:^|/)article\\.php\\?do=comments(?:&|$)",
+        "category": "vertical",
+        "intended_fix": "Viewing/managing article comments is a vertical privilege check, not a horizontal owner check.",
+        "allowed_condition": "allow only if the current user has the existing edit-article permission OR the current user's phpns_users.rank_id is the users rank_id (rank_id=3); block register rank_id=2.",
+        "deny_action": "header(\"Location: index.php?do=permissiondenied\"); die();",
+        "notes": [
+          "Do not compare article_author for this repair item.",
+          "The vulnerability is that register can access the comments management page despite only having login privilege.",
+          "If checking rank_id, query phpns_users using $_SESSION['userID']; users rank_id is 3 and register rank_id is 2 in database_user_table_context."
+        ]
+      },
+      {
+        "page_pattern": "(?:^|/)article\\.php\\?do=edit(?:&|$)",
+        "category": "horizontal",
+        "intended_fix": "Article edit is a horizontal owner check with an admin bypass.",
+        "allowed_condition": "allow if phpns_articles.article_author equals $_SESSION['username'] OR the current user is administrator (admin username or rank_id=1).",
+        "deny_action": "header(\"Location: index.php?do=permissiondenied\"); die();",
+        "notes": [
+          "Do not use $globalvars['rank'][14] as a broad bypass here because users may have edit permission; the required bypass is administrator only.",
+          "Use the identity_binding_context owner column phpns_articles.article_author."
+        ]
+      },
+      {
+        "page_pattern": "(?:^|/)user\\.php\\?do=edit(?:&|$)",
+        "category": "horizontal",
+        "intended_fix": "User edit is a horizontal self-check with an admin bypass.",
+        "allowed_condition": "allow if requested phpns_users.id equals $_SESSION['userID'] OR the current user is administrator (admin username or rank_id=1).",
+        "deny_action": "header(\"Location: index.php?do=permissiondenied\"); die();",
+        "notes": [
+          "Do not use $globalvars['rank'][2] as a broad bypass here; the required bypass is administrator only.",
+          "Use the identity_binding_context owner column phpns_users.id and current_user_expression $_SESSION['userID']."
+        ]
+      }
+    ]
+  }
+}
+

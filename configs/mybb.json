@@ -1,0 +1,458 @@
+{
+  "run_dir": "../runs/mybb",
+  "target": {
+    "base_url": "http://localhost/mybb/",
+    "source_root": "D:/phpStudy/PHPTutorial/WWW/mybb",
+    "language": "php",
+    "public_extensions": [
+      ".php"
+    ]
+  },
+  "database": {
+    "driver": "mysql",
+    "host": "127.0.0.1",
+    "port": 3306,
+    "database": "mybb",
+    "user": "root",
+    "password": "root",
+    "mysqldump": "D:/phpStudy/PHPTutorial/MySQL/bin/mysqldump.exe",
+    "mysql": "D:/phpStudy/PHPTutorial/MySQL/bin/mysql.exe",
+    "single_transaction": false
+  },
+  "crawl": {
+    "mode": "selenium",
+    "driver_path": "../chromedriver.exe",
+    "root_url": "http://localhost/mybb/index.php",
+    "scope_path": "/mybb/",
+    "strategy": "bfs",
+    "headless": true,
+    "max_pages": 500,
+    "delay": 0.2,
+    "page_timeout": 25,
+    "exclude_url_markers": [
+      "logout",
+      "action=logout",
+      "clearcookies",
+      "install/",
+      "admin/"
+    ],
+    "secret_parameters": [
+      "password",
+      "passwd",
+      "pwd",
+      "token",
+      "csrf",
+      "_token",
+      "my_post_key",
+      "posthash"
+    ],
+    "skip_source_dirs": [
+      "cache",
+      "uploads",
+      "jscripts",
+      "images",
+      "3rdparty"
+    ],
+    "preserve_query_parameters": [
+      "action",
+      "module",
+      "manage",
+      "type",
+      "do"
+    ],
+    "redact_secret_parameters": false,
+    "execute_forms": true,
+    "execute_forms_limit_per_page": 6,
+    "execute_forms_wait_after": 0.2,
+    "roles": [
+      {
+        "name": "admin",
+        "kind": "admin",
+        "crawl_login": {
+          "steps": [
+            {
+              "name": "frontend_quick_login",
+              "url": "index.php",
+              "method": "POST",
+              "post_url": "member.php",
+              "data": {
+                "action": "do_login",
+                "quick_login": "1",
+                "quick_username": "admin",
+                "quick_password": "123456",
+                "url": "index.php",
+                "submit": "Login"
+              },
+              "wait_after": 1,
+              "expect_cookies": [
+                "mybbuser"
+              ],
+              "forbid_text": [
+                "The username and password combination you entered is invalid."
+              ],
+              "seed_urls": [
+                "usercp.php",
+                "private.php",
+                "forumdisplay.php?fid=2",
+                "showthread.php?tid=1"
+              ]
+            }
+          ]
+        },
+        "http_login": {
+          "steps": [
+            {
+              "name": "frontend_quick_login",
+              "method": "POST",
+              "post_url": "member.php",
+              "data": {
+                "action": "do_login",
+                "quick_login": "1",
+                "quick_username": "admin",
+                "quick_password": "123456",
+                "url": "index.php",
+                "submit": "Login"
+              },
+              "url": "index.php"
+            }
+          ]
+        }
+      },
+      {
+        "name": "user1",
+        "kind": "user",
+        "crawl_login": {
+          "steps": [
+            {
+              "name": "frontend_quick_login",
+              "url": "index.php",
+              "method": "POST",
+              "post_url": "member.php",
+              "data": {
+                "action": "do_login",
+                "quick_login": "1",
+                "quick_username": "user1",
+                "quick_password": "123456",
+                "url": "index.php",
+                "submit": "Login"
+              },
+              "wait_after": 1,
+              "expect_cookies": [
+                "mybbuser"
+              ],
+              "forbid_text": [
+                "The username and password combination you entered is invalid."
+              ],
+              "seed_urls": [
+                "usercp.php",
+                "private.php",
+                "forumdisplay.php?fid=2",
+                "showthread.php?tid=1"
+              ]
+            }
+          ]
+        },
+        "http_login": {
+          "steps": [
+            {
+              "name": "frontend_quick_login",
+              "method": "POST",
+              "post_url": "member.php",
+              "data": {
+                "action": "do_login",
+                "quick_login": "1",
+                "quick_username": "user1",
+                "quick_password": "123456",
+                "url": "index.php",
+                "submit": "Login"
+              },
+              "url": "index.php"
+            }
+          ]
+        }
+      },
+      {
+        "name": "user2",
+        "kind": "user",
+        "crawl_login": {
+          "steps": [
+            {
+              "name": "frontend_quick_login",
+              "url": "index.php",
+              "method": "POST",
+              "post_url": "member.php",
+              "data": {
+                "action": "do_login",
+                "quick_login": "1",
+                "quick_username": "user2",
+                "quick_password": "123456",
+                "url": "index.php",
+                "submit": "Login"
+              },
+              "wait_after": 1,
+              "expect_cookies": [
+                "mybbuser"
+              ],
+              "forbid_text": [
+                "The username and password combination you entered is invalid."
+              ],
+              "seed_urls": [
+                "usercp.php",
+                "private.php",
+                "forumdisplay.php?fid=2",
+                "showthread.php?tid=1"
+              ]
+            }
+          ]
+        },
+        "http_login": {
+          "steps": [
+            {
+              "name": "frontend_quick_login",
+              "method": "POST",
+              "post_url": "member.php",
+              "data": {
+                "action": "do_login",
+                "quick_login": "1",
+                "quick_username": "user2",
+                "quick_password": "123456",
+                "url": "index.php",
+                "submit": "Login"
+              },
+              "url": "index.php"
+            }
+          ]
+        }
+      },
+      {
+        "name": "visitor",
+        "kind": "visitor"
+      }
+    ],
+    "checkpoint_interval": 10,
+    "drop_query_parameters": [
+      "my_post_key",
+      "posthash",
+      "sid",
+      "search_id",
+      "page",
+      "perpage",
+      "sortby",
+      "order",
+      "datecut",
+      "daysprune",
+      "highlight",
+      "debug",
+      "language"
+    ],
+    "exclude_form_markers": [
+      "module=config-settings",
+      "module=style-themes",
+      "module=style-templates",
+      "module=tools-backupdb",
+      "module=tools-optimizedb",
+      "module=tools-recount_rebuild"
+    ],
+    "forum_password_database_roles": [
+      "admin"
+    ],
+    "form_values_by_role": {
+      "admin": {},
+      "user1": {
+        "pwverify": "DRHL_WRONG_FORUM_PASSWORD"
+      },
+      "user2": {
+        "pwverify": "DRHL_WRONG_FORUM_PASSWORD"
+      },
+      "visitor": {
+        "pwverify": "DRHL_WRONG_FORUM_PASSWORD"
+      }
+    }
+  },
+  "analysis": {
+    "source_analysis": {
+      "save_cst": false,
+      "identity_parameters": [
+        "uid",
+        "fid",
+        "tid",
+        "pid",
+        "pmid",
+        "eid",
+        "aid",
+        "cid",
+        "sid",
+        "gid",
+        "lid",
+        "mid"
+      ],
+      "access_control_database_fields": [
+        "mybb_users.uid",
+        "mybb_users.usergroup",
+        "mybb_users.additionalgroups",
+        "mybb_adminoptions.uid",
+        "mybb_adminsessions.uid",
+        "mybb_forums.fid",
+        "mybb_threads.uid",
+        "mybb_threads.fid",
+        "mybb_posts.uid",
+        "mybb_posts.tid",
+        "mybb_privatemessages.uid",
+        "mybb_privatemessages.fromid",
+        "mybb_privatemessages.toid",
+        "mybb_events.uid",
+        "mybb_moderators.uid",
+        "mybb_moderators.fid",
+        "mybb_usergroups.gid"
+      ],
+      "validated_function_name_patterns": [
+        "^check_(?:admin_)?permissions$",
+        "^check_forum_password(?:_archive)?$",
+        "^verify_post_check$",
+        "^generate_post_check$",
+        "^validate_password_from_(?:uid|username)$",
+        "^login_attempt_check(?:_acp)?$",
+        "^get_password_protected_forums$"
+      ],
+      "validated_function_code_patterns": [
+        "\\b(?:permission|permissions|access_denied|no_permission|forumpass|forum_cache|password|pwverify|my_post_key|post_check|loginkey|usergroup|adminoptions|IN_ADMINCP|uid)\\b",
+        "\\$mybb->(?:user|admin|cookies|input|settings)"
+      ],
+      "normalize_curly_string_offsets": true,
+      "termination_patterns": [
+        "error_no_permission",
+        "archive_error_no_permission"
+      ]
+    },
+    "active_detection": true,
+    "identity_parameters": [
+      "uid",
+      "fid",
+      "tid",
+      "pid",
+      "pmid",
+      "eid",
+      "aid",
+      "cid",
+      "sid",
+      "gid",
+      "lid",
+      "mid"
+    ],
+    "horizontal_overrides": {
+      "uid": "2",
+      "fid": "2",
+      "tid": "1",
+      "pid": "1",
+      "pmid": "1",
+      "eid": "1",
+      "cid": "1",
+      "sid": "1",
+      "gid": "2"
+    },
+    "oracle": {
+      "timeout": 10,
+      "denied_statuses": [
+        401,
+        403
+      ],
+      "login_url_markers": [
+        "member.php?action=login",
+        "action=login"
+      ],
+      "deny_markers": [
+        "Password Required",
+        "The administrator has required it so that a password is required for access to this forum",
+        "Authorization code mismatch",
+        "Are you accessing this function correctly?",
+        "You may not post in this forum because either the forum is closed, it is a redirect to another webpage, or it is a category.",
+        "The specified draft does not exist or you don't have permission to view it.",
+        "does not exist or you don't have permission",
+        "Invalid forum",
+        "Invalid PM",
+        "The selected private messages have been deleted"
+      ],
+      "extract_source_deny_markers": true,
+      "confirm_get_read": false,
+      "static_only_confirm_patterns": [
+        "(^|/)install(/|\\.php|$)",
+        "(^|/)setup\\.php$",
+        "(^|/)upgrade(/|\\.php|$)"
+      ],
+      "public_page_patterns": [
+        "^archive(?:/|$)",
+        "^calendar\\.php(?:$|\\?(?!(?:.*action=(?:addevent|do_addevent|editevent|do_editevent|move|do_move|approve|unapprove))))",
+        "^index\\.php(?:\\?|$)",
+        "^portal\\.php(?:\\?|$)",
+        "^forumdisplay\\.php(?:\\?|$)",
+        "^showthread\\.php(?:\\?|$)",
+        "^printthread\\.php(?:\\?|$)",
+        "^member\\.php\\?action=(?:profile|lostpw|register|resendactivation|login)(?:&|$)",
+        "^memberlist\\.php(?:\\?|$)",
+        "^misc\\.php\\?action=(?:help|syndication|rules|smilies|markread|clearpass)(?:&|$)",
+        "^search\\.php(?:\\?|$)",
+        "^online\\.php(?:\\?|$)",
+        "^stats\\.php(?:\\?|$)",
+        "^showteam\\.php(?:\\?|$)"
+      ],
+      "authenticated_public_page_patterns": [
+        "^usercp\\.php(?:\\?|$)",
+        "^private\\.php(?:\\?|$)",
+        "^member\\.php\\?action=emailuser(?:&|$)",
+        "^usercp2\\.php\\?action=addsubscription&tid=(?:[^&]+)(?:&|$)",
+        "^usercp2\\.php\\?action=removesubscription(?:&|$)",
+        "^usercp2\\.php\\?action=removesubscriptions(?:&|$)",
+        "^newthread\\.php(?:\\?|$)",
+        "^usercp2\\.php(?:$|\\?action=do_addsubscription(?:&|$))"
+      ],
+      "invalid_resource_markers": [
+        "invalid address",
+        "Invalid forum",
+        "Invalid PM",
+        "specified private message does not exist"
+      ]
+    },
+    "force_static_pages": [
+      "admin/index.php"
+    ],
+    "horizontal_exclude_patterns": [
+      "^private\\.php(?:\\?|$)"
+    ],
+    "pre_detection_sql": [
+      "INSERT IGNORE INTO mybb_forums (fid, name, description, linkto, type, pid, parentlist, disporder, active, open, threads, posts, lastpost, lastposter, lastposteruid, lastposttid, lastpostsubject, allowhtml, allowmycode, allowsmilies, allowimgcode, allowvideocode, allowpicons, allowtratings, status, usepostcounts, password, showinjump, modposts, modthreads, mod_edit_posts, modattachments, style, overridestyle, rulestype, rulestitle, rules, unapprovedthreads, unapprovedposts, defaultdatecut, defaultsortby, defaultsortorder) VALUES (2, 'DRHL Protected Forum', 'DRHL seeded protected forum', '', 'f', 0, '2', 2, 1, 1, 1, 1, UNIX_TIMESTAMP(), 'user1', 2, 1, 'DRHL seeded thread', 0, 1, 1, 1, 1, 1, 1, 1, 1, 'drhlpass', 1, 0, 0, 0, 0, 0, 0, 0, '', '', 0, 0, 0, '', '')",
+      "UPDATE mybb_forums SET type = 'f', active = 1, open = 1, status = 1, password = 'drhlpass' WHERE fid = 2",
+      "INSERT IGNORE INTO mybb_threads (tid, fid, subject, prefix, icon, poll, uid, username, dateline, firstpost, lastpost, lastposter, lastposteruid, views, replies, closed, sticky, numratings, totalratings, notes, visible, unapprovedposts, attachmentcount, deletetime) VALUES (1, 2, 'DRHL seeded thread', 0, 0, 0, 2, 'user1', UNIX_TIMESTAMP(), 1, UNIX_TIMESTAMP(), 'user1', 2, 0, 0, '', 0, 0, 0, '', 1, 0, 0, 0)",
+      "UPDATE mybb_threads SET fid = 2, uid = 2, username = 'user1', visible = 1 WHERE tid = 1",
+      "INSERT IGNORE INTO mybb_posts (pid, tid, replyto, fid, subject, icon, uid, username, dateline, message, ipaddress, longipaddress, includesig, smilieoff, edituid, edittime, visible, posthash) VALUES (1, 1, 0, 2, 'DRHL seeded post', 0, 2, 'user1', UNIX_TIMESTAMP(), 'DRHL seeded post body', '127.0.0.1', 0, 1, 0, 0, 0, 1, '')",
+      "UPDATE mybb_posts SET tid = 1, fid = 2, uid = 2, username = 'user1', visible = 1 WHERE pid = 1",
+      "INSERT IGNORE INTO mybb_privatemessages (pmid, uid, toid, fromid, recipients, folder, subject, icon, message, dateline, deletetime, status, statustime, includesig, smilieoff, receipt, readtime) VALUES (1, 2, 2, 3, 'a:1:{i:2;s:5:\"user1\";}', 1, 'DRHL seeded PM', 0, 'DRHL seeded PM body', UNIX_TIMESTAMP(), 0, 0, 0, 1, 0, 0, 0)",
+      "UPDATE mybb_privatemessages SET uid = 2, toid = 2, fromid = 3, subject = 'DRHL seeded PM', message = 'DRHL seeded PM body' WHERE pmid = 1",
+      "INSERT IGNORE INTO mybb_events (eid, cid, uid, name, description, visible, private, dateline, starttime, endtime, timezone, ignoretimezone, usingtime, repeats) VALUES (1, 1, 2, 'DRHL seeded event', 'DRHL seeded event body', 1, 0, UNIX_TIMESTAMP(), UNIX_TIMESTAMP(), 0, '0', 1, 0, '')",
+      "UPDATE mybb_events SET cid = 1, uid = 2, visible = 1, private = 0 WHERE eid = 1"
+    ]
+  },
+  "repair": {
+    "enabled": true,
+    "output_dir": "repair/files",
+    "llm": {
+      "enabled": true,
+      "provider": "openai_compatible",
+      "base_url": "https://api.deepseek.com/v1",
+      "model": "deepseek-v4-flash",
+      "api_key": "your-api-key",
+      "temperature": 0.1,
+      "timeout": 120,
+      "response_format_json": true,
+      "input_cost_per_million_tokens": 0,
+      "output_cost_per_million_tokens": 0
+    },
+    "validation": {
+      "max_attempts": 3,
+      "syntax_check": true,
+      "php_binary": "D:/phpStudy/PHPTutorial/php/php-5.2.17/php.exe",
+      "syntax_timeout": 30,
+      "temporary_apply_to_source": true
+    }
+  }
+}
+

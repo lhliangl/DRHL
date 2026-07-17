@@ -1,0 +1,196 @@
+{
+  "run_dir": "../runs/scarf",
+  "target": {
+    "base_url": "http://localhost/scarf/",
+    "source_root": "D:/phpStudy/PHPTutorial/WWW/scarf",
+    "language": "php",
+    "public_extensions": [
+      ".php"
+    ]
+  },
+  "database": {
+    "driver": "mysql",
+    "host": "127.0.0.1",
+    "port": 3306,
+    "database": "scarf",
+    "user": "root",
+    "password": "root",
+    "mysqldump": "D:/phpStudy/PHPTutorial/MySQL/bin/mysqldump.exe",
+    "mysql": "D:/phpStudy/PHPTutorial/MySQL/bin/mysql.exe",
+    "single_transaction": false
+  },
+  "crawl": {
+    "mode": "selenium",
+    "driver_path": "../chromedriver.exe",
+    "root_url": "http://localhost/scarf/index.php",
+    "scope_path": "/scarf/",
+    "strategy": "dfs",
+    "headless": true,
+    "max_pages": 300,
+    "delay": 0.2,
+    "page_timeout": 20,
+    "exclude_url_markers": [
+      "logout",
+      "logoff"
+    ],
+    "secret_parameters": [
+      "password",
+      "password2",
+      "passwd",
+      "pwd",
+      "token",
+      "csrf",
+      "_token"
+    ],
+    "skip_source_dirs": [
+      "vendor",
+      "node_modules"
+    ],
+    "roles": [
+      {
+        "name": "admin",
+        "kind": "admin",
+        "crawl_login": {
+          "url": "login.php",
+          "fields": {
+            "input[name='email']": "admin1@qq.com",
+            "input[name='password']": "ukTrxaksPI"
+          },
+          "submit": "form input[type='submit']",
+          "wait_after": 1
+        },
+        "http_login": {
+          "url": "login.php",
+          "method": "POST",
+          "data": {
+            "email": "admin1@qq.com",
+            "password": "ukTrxaksPI"
+          }
+        }
+      },
+      {
+        "name": "user1",
+        "kind": "user",
+        "crawl_login": {
+          "url": "login.php",
+          "fields": {
+            "input[name='email']": "user1@qq.com",
+            "input[name='password']": "gPVtuackGD"
+          },
+          "submit": "form input[type='submit']",
+          "wait_after": 1
+        },
+        "http_login": {
+          "url": "login.php",
+          "method": "POST",
+          "data": {
+            "email": "user1@qq.com",
+            "password": "gPVtuackGD"
+          }
+        }
+      },
+      {
+        "name": "user2",
+        "kind": "user",
+        "crawl_login": {
+          "url": "login.php",
+          "fields": {
+            "input[name='email']": "user2@qq.com",
+            "input[name='password']": "wYsugvAtlL"
+          },
+          "submit": "form input[type='submit']",
+          "wait_after": 1
+        },
+        "http_login": {
+          "url": "login.php",
+          "method": "POST",
+          "data": {
+            "email": "user2@qq.com",
+            "password": "wYsugvAtlL"
+          }
+        }
+      },
+      {
+        "name": "visitor",
+        "kind": "visitor"
+      }
+    ],
+    "preserve_query_parameters": [
+      "action"
+    ],
+    "redact_secret_parameters": false,
+    "execute_forms": true,
+    "execute_forms_limit_per_page": 20,
+    "execute_forms_wait_after": 0.2
+  },
+  "analysis": {
+    "source_analysis": {
+      "save_cst": false,
+      "identity_parameters": [
+        "user_id"
+      ],
+      "access_control_database_fields": [
+        "users.privilege",
+        "users.user_id",
+        "sessions.user_id",
+        "comments.user_id",
+        "authors.user_id"
+      ]
+    },
+    "active_detection": true,
+    "identity_parameters": [
+      "user_id",
+      "paper_id",
+      "session_id",
+      "comment_id"
+    ],
+    "horizontal_overrides": {
+      "user_id": "2",
+      "paper_id": "118",
+      "session_id": "89",
+      "comment_id": "188"
+    },
+    "oracle": {
+      "timeout": 10,
+      "denied_statuses": [
+        401,
+        403
+      ],
+      "login_url_markers": [
+        "login.php"
+      ],
+      "deny_markers": [
+        "access denied",
+        "permission denied",
+        "unauthorized",
+        "forbidden",
+        "you don't have access to view this page",
+        "you must be logged in to access this feature"
+      ]
+    }
+  },
+  "repair": {
+    "enabled": true,
+    "output_dir": "repair/files",
+    "llm": {
+      "enabled": true,
+      "provider": "openai_compatible",
+      "base_url": "https://api.deepseek.com/v1",
+      "model": "deepseek-v4-flash",
+      "api_key": "your-api-key",
+      "temperature": 0.1,
+      "timeout": 120,
+      "response_format_json": true,
+      "input_cost_per_million_tokens": 0,
+      "output_cost_per_million_tokens": 0
+    },
+    "validation": {
+      "max_attempts": 3,
+      "syntax_check": true,
+      "php_binary": "D:/phpStudy/PHPTutorial/php/php-5.2.17/php.exe",
+      "syntax_timeout": 30,
+      "temporary_apply_to_source": true
+    }
+  }
+}
+

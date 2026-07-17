@@ -1,0 +1,667 @@
+{
+  "run_dir": "../runs/django_lms",
+  "target": {
+    "base_url": "http://localhost:8000/",
+    "source_root": "D:/project/python/django_lms",
+    "language": "python",
+    "public_extensions": []
+  },
+  "database": {
+    "driver": "postgresql",
+    "host": "localhost",
+    "port": 5432,
+    "database": "lms",
+    "user": "postgres",
+    "password": "root",
+    "pg_dump": "D:/PostgreSQL/14/bin/pg_dump.exe",
+    "psql": "D:/PostgreSQL/14/bin/psql.exe",
+    "timeout": 180,
+    "dump_extra_args": [
+      "--exclude-table-data=django_session"
+    ],
+    "restore_extra_args": []
+  },
+  "crawl": {
+    "mode": "selenium",
+    "driver_path": "../chromedriver.exe",
+    "root_url": "",
+    "scope_path": "/",
+    "strategy": "dfs",
+    "headless": true,
+    "max_pages": 350,
+    "delay": 0.2,
+    "page_timeout": 20,
+    "exclude_url_markers": [
+      "logout",
+      "/static/",
+      "/media/",
+      "favicon.ico",
+      "__debug__"
+    ],
+    "exclude_form_markers": [
+      "logout",
+      "admin/",
+      "accounts/change_password/",
+      "accounts/password_reset/"
+    ],
+    "secret_parameters": [
+      "password",
+      "password1",
+      "password2",
+      "old_password",
+      "new_password1",
+      "new_password2",
+      "csrfmiddlewaretoken",
+      "csrf",
+      "token"
+    ],
+    "skip_source_dirs": [
+      ".git",
+      ".idea",
+      "__pycache__",
+      ".pytest_cache",
+      "venv",
+      ".venv",
+      "env",
+      "migrations",
+      "staticfiles",
+      "media"
+    ],
+    "preserve_query_parameters": [
+      "next"
+    ],
+    "drop_query_parameters": [
+      "o",
+      "p",
+      "q",
+      "all",
+      "e",
+      "is_popup",
+      "_to_field",
+      "_popup",
+      "_changelist_filters",
+      "is_staff__exact",
+      "is_superuser__exact",
+      "is_active__exact",
+      "groups__id__exact",
+      "groups__isnull"
+    ],
+    "redact_secret_parameters": false,
+    "execute_forms": true,
+    "execute_forms_limit_per_page": 20,
+    "execute_forms_wait_after": 0.2,
+    "form_values": {
+      "username": "drhl_user",
+      "password": "wojiaoliu456",
+      "password1": "wojiaoliu456",
+      "password2": "wojiaoliu456",
+      "old_password": "wojiaoliu456",
+      "new_password1": "wojiaoliu456",
+      "new_password2": "wojiaoliu456",
+      "first_name": "DRHL",
+      "last_name": "Tester",
+      "email": "drhl@example.test",
+      "phone": "13800000000",
+      "address": "DRHL test address",
+      "title": "DRHL Test Title",
+      "summary": "DRHL generated summary for access-control testing.",
+      "content": "DRHL generated content for access-control testing.",
+      "description": "DRHL generated description for access-control testing.",
+      "session": "2025/2026",
+      "semester": "First",
+      "level": "Bachloar",
+      "department": "1",
+      "program": "1",
+      "course": "1",
+      "credit": "3",
+      "code": "DRHL101",
+      "name": "DRHL Test Name",
+      "score": "80",
+      "student": "2",
+      "lecturer": "4",
+      "query": "DRHL",
+      "q": "DRHL"
+    },
+    "roles": [
+      {
+        "name": "admin",
+        "kind": "admin",
+        "crawl_login": {
+          "steps": [
+            {
+              "name": "django_lms_login",
+              "url": "accounts/login/?next=/",
+              "method": "FORM",
+              "fields": {
+                "input[name='username']": "admin",
+                "input[name='password']": "admin"
+              },
+              "submit": "#login-btn",
+              "wait_after": 2,
+              "expect_cookies": [
+                "sessionid"
+              ],
+              "forbid_text": [
+                "Invalid ID & Password"
+              ],
+              "seed_urls": [
+                "",
+                "accounts/admin_panel/",
+                "accounts/profile/",
+                "accounts/lecturers/",
+                "accounts/students/",
+                "programs/",
+                "programs/course/allocated/",
+                "programs/course/assign/",
+                "quiz/marking_list/",
+                "quiz/progress/",
+                "result/grade/",
+                "result/assessment/",
+                "dashboard/",
+                "admin/"
+              ],
+              "timeout": 20,
+              "require_text": [
+                "DjangoSMS"
+              ]
+            }
+          ]
+        },
+        "http_login": {
+          "steps": [
+            {
+              "name": "django_lms_login",
+              "url": "accounts/login/?next=/",
+              "post_url": "accounts/login/?next=/",
+              "method": "POST",
+              "include_form_fields": true,
+              "allow_redirects": true,
+              "expect_cookies": [
+                "sessionid"
+              ],
+              "forbid_text": [
+                "Invalid ID & Password"
+              ],
+              "data": {
+                "username": "admin",
+                "password": "admin",
+                "next": "/"
+              },
+              "timeout": 20
+            }
+          ]
+        }
+      },
+      {
+        "name": "user1",
+        "kind": "user",
+        "crawl_login": {
+          "steps": [
+            {
+              "name": "django_lms_login",
+              "url": "accounts/login/?next=/",
+              "method": "FORM",
+              "fields": {
+                "input[name='username']": "user1",
+                "input[name='password']": "wojiaoliu456"
+              },
+              "submit": "#login-btn",
+              "wait_after": 2,
+              "expect_cookies": [
+                "sessionid"
+              ],
+              "forbid_text": [
+                "Invalid ID & Password"
+              ],
+              "seed_urls": [
+                "",
+                "accounts/profile/",
+                "accounts/setting/",
+                "programs/",
+                "programs/my_courses/",
+                "programs/course/registration/",
+                "quiz/progress/",
+                "result/grade/",
+                "result/assessment/"
+              ],
+              "timeout": 20,
+              "require_text": [
+                "DjangoSMS"
+              ]
+            }
+          ]
+        },
+        "http_login": {
+          "steps": [
+            {
+              "name": "django_lms_login",
+              "url": "accounts/login/?next=/",
+              "post_url": "accounts/login/?next=/",
+              "method": "POST",
+              "include_form_fields": true,
+              "allow_redirects": true,
+              "expect_cookies": [
+                "sessionid"
+              ],
+              "forbid_text": [
+                "Invalid ID & Password"
+              ],
+              "data": {
+                "username": "user1",
+                "password": "wojiaoliu456",
+                "next": "/"
+              },
+              "timeout": 20
+            }
+          ]
+        }
+      },
+      {
+        "name": "user2",
+        "kind": "user",
+        "crawl_login": {
+          "steps": [
+            {
+              "name": "django_lms_login",
+              "url": "accounts/login/?next=/",
+              "method": "FORM",
+              "fields": {
+                "input[name='username']": "user2",
+                "input[name='password']": "wojiaoliu456"
+              },
+              "submit": "#login-btn",
+              "wait_after": 2,
+              "expect_cookies": [
+                "sessionid"
+              ],
+              "forbid_text": [
+                "Invalid ID & Password"
+              ],
+              "seed_urls": [
+                "",
+                "accounts/profile/",
+                "accounts/setting/",
+                "programs/",
+                "programs/my_courses/",
+                "programs/course/registration/",
+                "quiz/progress/",
+                "result/grade/",
+                "result/assessment/"
+              ],
+              "timeout": 20,
+              "require_text": [
+                "DjangoSMS"
+              ]
+            }
+          ]
+        },
+        "http_login": {
+          "steps": [
+            {
+              "name": "django_lms_login",
+              "url": "accounts/login/?next=/",
+              "post_url": "accounts/login/?next=/",
+              "method": "POST",
+              "include_form_fields": true,
+              "allow_redirects": true,
+              "expect_cookies": [
+                "sessionid"
+              ],
+              "forbid_text": [
+                "Invalid ID & Password"
+              ],
+              "data": {
+                "username": "user2",
+                "password": "wojiaoliu456",
+                "next": "/"
+              },
+              "timeout": 20
+            }
+          ]
+        }
+      },
+      {
+        "name": "visitor",
+        "kind": "visitor"
+      }
+    ],
+    "deduplicate_url_patterns": [
+      {
+        "pattern": "^admin/.+/[0-9]+/(?:change|delete|history)/?(?:\\?|$)",
+        "key": "admin/{model}/{id}/{action}/"
+      },
+      {
+        "pattern": "^accounts/profile/[0-9]+/detail/?(?:\\?|$)",
+        "key": "accounts/profile/{id}/detail/"
+      },
+      {
+        "pattern": "^accounts/(?:student|staff)/[0-9]+/edit/?(?:\\?|$)",
+        "key": "accounts/{role}/{id}/edit/"
+      },
+      {
+        "pattern": "^accounts/(?:students|lecturers)/[0-9]+/delete/?(?:\\?|$)",
+        "key": "accounts/{role}/{id}/delete/"
+      },
+      {
+        "pattern": "^item/[0-9]+/(?:edit|delete)/?(?:\\?|$)",
+        "key": "item/{id}/{action}/"
+      },
+      {
+        "pattern": "^(?:session|semester)/[0-9]+/(?:edit|delete)/?(?:\\?|$)",
+        "key": "{calendar}/{id}/{action}/"
+      },
+      {
+        "pattern": "^programs/[0-9]+/(?:detail|edit|delete)/?(?:\\?|$)",
+        "key": "programs/{id}/{action}/"
+      },
+      {
+        "pattern": "^programs/course/[^/]+/(?:detail|edit|documentations/upload|video_tutorials/upload)/?(?:\\?|$)",
+        "key": "programs/course/{slug}/{action}/"
+      },
+      {
+        "pattern": "^programs/course/(?:delete/)?[^/]+/?(?:\\?|$)",
+        "key": "programs/course/{slug}/"
+      },
+      {
+        "pattern": "^quiz/[^/]+/(?:quizzes|quiz_add)/?(?:\\?|$)",
+        "key": "quiz/{slug}/{action}/"
+      },
+      {
+        "pattern": "^quiz/[0-9]+/[^/]+/take/?(?:\\?|$)",
+        "key": "quiz/{id}/{slug}/take/"
+      },
+      {
+        "pattern": "^result/result/print/[0-9]+/?(?:\\?|$)",
+        "key": "result/result/print/{id}/"
+      },
+      {
+        "pattern": "(^|/)\\d+(?=/|$)",
+        "key": "path/{id}/"
+      },
+      {
+        "pattern": "^programs/course/[^/]+/",
+        "key": "programs/course/{slug}/"
+      },
+      {
+        "pattern": "^quiz/[^/]+/",
+        "key": "quiz/{slug}/"
+      }
+    ],
+    "path_parameter_patterns": [
+      {
+        "pattern": "^programs/course/[^/]+/documentations/\\d+/(edit|delete)/?$",
+        "replacement": "programs/course/p1/documentations/p1/\\1/"
+      },
+      {
+        "pattern": "^programs/course/[^/]+/documentations/upload/?$",
+        "replacement": "programs/course/p1/documentations/upload/"
+      },
+      {
+        "pattern": "^programs/course/[^/]+/video_tutorials/[^/]+/(detail|edit|delete)/?$",
+        "replacement": "programs/course/p1/video_tutorials/p1/\\1/"
+      },
+      {
+        "pattern": "^programs/course/[^/]+/video_tutorials/upload/?$",
+        "replacement": "programs/course/p1/video_tutorials/upload/"
+      },
+      {
+        "pattern": "^programs/course/[^/]+/(detail|edit)/?$",
+        "replacement": "programs/course/p1/\\1/"
+      },
+      {
+        "pattern": "^programs/course/delete/[^/]+/?$",
+        "replacement": "programs/course/delete/p1/"
+      },
+      {
+        "pattern": "^quiz/\\d+/[^/]+/take/?$",
+        "replacement": "quiz/p1/p1/take/"
+      },
+      {
+        "pattern": "^quiz/[^/]+/\\d+/(add|delete)/?$",
+        "replacement": "quiz/p1/p1/\\1/"
+      },
+      {
+        "pattern": "^quiz/[^/]+/(quizzes|quiz_add)/?$",
+        "replacement": "quiz/p1/\\1/"
+      },
+      {
+        "pattern": "^quiz/mc-question/add/[^/]+/\\d+/?$",
+        "replacement": "quiz/mc-question/add/p1/p1/"
+      },
+      {
+        "pattern": "(^|/)\\d+(?=/|$)",
+        "replacement": "\\1p1"
+      }
+    ]
+  },
+  "analysis": {
+    "active_detection": true,
+    "identity_parameters": [
+      "id",
+      "pk",
+      "user_id",
+      "student_id",
+      "lecturer_id",
+      "parent_id",
+      "author_id",
+      "username",
+      "student",
+      "lecturer",
+      "slug",
+      "file_id",
+      "quiz_id"
+    ],
+    "horizontal_overrides": {
+      "id": "2",
+      "pk": "2",
+      "user_id": "2",
+      "student_id": "2",
+      "lecturer_id": "4",
+      "parent_id": "1",
+      "author_id": "2",
+      "username": "user2",
+      "student": "2",
+      "lecturer": "4",
+      "slug": "computer-science",
+      "file_id": "1",
+      "quiz_id": "1"
+    },
+    "horizontal_exclude_patterns": [
+      "^$",
+      "^\\./$",
+      "^accounts/login/",
+      "^accounts/password_reset/",
+      "^admin/login/"
+    ],
+    "source_analysis": {
+      "save_cst": false,
+      "identity_parameters": [
+        "user_id",
+        "student_id",
+        "lecturer_id",
+        "parent_id",
+        "author_id",
+        "username"
+      ],
+      "access_control_database_fields": [
+        "is_staff",
+        "is_superuser",
+        "is_active",
+        "is_student",
+        "is_lecturer",
+        "is_parent",
+        "is_dep_head",
+        "groups",
+        "user_id",
+        "student_id",
+        "lecturer_id",
+        "parent_id"
+      ],
+      "validated_function_name_patterns": [
+        "login_required",
+        "permission_required",
+        "user_passes_test",
+        "staff_member_required",
+        "student_required",
+        "lecturer_required",
+        "admin_required",
+        "get_object",
+        "dispatch",
+        "has_perm",
+        "is_staff",
+        "is_superuser",
+        "is_authenticated"
+      ],
+      "validated_function_code_patterns": [
+        "request\\.user",
+        "is_staff",
+        "is_superuser",
+        "is_authenticated",
+        "is_student",
+        "is_lecturer",
+        "is_parent",
+        "has_perm",
+        "PermissionDenied",
+        "Http404",
+        "HttpResponseForbidden",
+        "login_required",
+        "admin_required",
+        "lecturer_required",
+        "student_required"
+      ]
+    },
+    "oracle": {
+      "timeout": 10,
+      "denied_statuses": [
+        401,
+        403,
+        404
+      ],
+      "login_url_markers": [
+        "/accounts/login",
+        "/admin/login",
+        "login"
+      ],
+      "deny_markers": [
+        "Invalid ID & Password",
+        "Sign in",
+        "Log in",
+        "Authentication and Authorization",
+        "You don't have permission",
+        "Page not found",
+        "Not Found"
+      ],
+      "extract_source_deny_markers": true,
+      "invalid_resource_markers": [
+        "Page not found",
+        "Not Found",
+        "matching query does not exist"
+      ],
+      "public_page_patterns": [
+        "^accounts/login/",
+        "^admin/login/",
+        "^accounts/password_reset/",
+        "^accounts/password_reset/done/",
+        "^accounts/reset/",
+        "^accounts/reset/done/",
+        "^accounts/register/",
+        "^accounts/ajax/validate-username/",
+        "^search/$"
+      ],
+      "authenticated_public_page_patterns": [
+        "^accounts/profile/$",
+        "^accounts/setting/$",
+        "^accounts/change_password/$",
+        "^programs/$",
+        "^programs/[0-9]+/detail/$",
+        "^programs/my_courses/$",
+        "^quiz/progress/$",
+        "^result/grade/$",
+        "^result/assessment/$"
+      ],
+      "static_only_confirm_patterns": [
+        "^admin/",
+        "^accounts/admin_panel/",
+        "^accounts/(?:students|lecturers|student|lecturer)/",
+        "^programs/.+/(?:add|edit|delete|assign|allocated)/",
+        "^dashboard/"
+      ],
+      "confirm_get_read_patterns": [],
+      "write_success_redirect_is_vulnerable": true,
+      "authorized_success_redirect_patterns": [
+        "^$",
+        "^\\./$",
+        "^accounts/",
+        "^programs/",
+        "^admin/"
+      ],
+      "write_success_redirect_patterns": [
+        "^$",
+        "^\\./$",
+        "^accounts/",
+        "^programs/",
+        "^admin/"
+      ],
+      "protected_content_markers": [
+        {
+          "pattern": "^accounts/profile/(?P<id>[0-9]+)/detail/",
+          "marker_group": "id"
+        },
+        {
+          "pattern": "^programs/(?P<id>[0-9]+)/detail/",
+          "marker_group": "id"
+        }
+      ]
+    },
+    "static_exclude_patterns": [
+      "^manage\\.py$",
+      "^SMS/settings\\.py$",
+      "^.*?/migrations/.*$",
+      "^static/.*$",
+      "^media/.*$"
+    ],
+    "post_page_open_get_patterns": [
+      "^add_item/?$"
+    ]
+  },
+  "repair": {
+    "enabled": true,
+    "output_dir": "repair/files",
+    "llm": {
+      "enabled": true,
+      "provider": "openai_compatible",
+      "base_url": "https://api.deepseek.com/v1",
+      "model": "deepseek-v4-flash",
+      "api_key": "your-api-key",
+      "temperature": 0.1,
+      "timeout": 120,
+      "response_format_json": true,
+      "input_cost_per_million_tokens": 0,
+      "output_cost_per_million_tokens": 0
+    },
+    "validation": {
+      "max_attempts": 3,
+      "syntax_check": true,
+      "syntax_timeout": 30,
+      "temporary_apply_to_source": true,
+      "python_binary": "D:/Anaconda3/envs/django_lms/python.exe",
+      "reload_command": [
+        "D:/Anaconda3/envs/drhl/python.exe",
+        "D:/project/python/DRHL/database_recovery/djangoblog_server_control.py",
+        "restart",
+        "--app-root",
+        "D:/project/python/django_lms",
+        "--python",
+        "D:/Anaconda3/envs/django_lms/python.exe",
+        "--host",
+        "localhost",
+        "--port",
+        "8000",
+        "--wait",
+        "30",
+        "--log-dir",
+        "D:/project/python/DRHL/database_recovery/django_lms"
+      ]
+    }
+  }
+}

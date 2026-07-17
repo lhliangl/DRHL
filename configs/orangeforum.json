@@ -1,0 +1,687 @@
+{
+  "run_dir": "../runs/orangeforum",
+  "target": {
+    "base_url": "http://localhost:9123/forums/localhost/",
+    "source_root": "D:/Go_project/orangeforum",
+    "language": "go",
+    "public_extensions": []
+  },
+  "database": {
+    "driver": "postgresql",
+    "host": "localhost",
+    "port": 5432,
+    "database": "orangeforum",
+    "user": "postgres",
+    "password": "root",
+    "pg_dump": "D:/PostgreSQL/14/bin/pg_dump.exe",
+    "psql": "D:/PostgreSQL/14/bin/psql.exe",
+    "timeout": 180,
+    "dump_extra_args": [],
+    "restore_extra_args": []
+  },
+  "crawl": {
+    "mode": "selenium",
+    "driver_path": "../chromedriver.exe",
+    "root_url": "",
+    "scope_path": "/forums/localhost/",
+    "strategy": "dfs",
+    "headless": true,
+    "max_pages": 300,
+    "delay": 0.2,
+    "page_timeout": 20,
+    "exclude_url_markers": [
+      "/static/",
+      "favicon",
+      "logo.png",
+      "orangeforum.css",
+      "orangeforum.js",
+      "auth/logout",
+      "auth/otsignin/",
+      "mailto:",
+      "javascript:"
+    ],
+    "exclude_form_markers": [
+      "auth/signin",
+      "auth/signup",
+      "auth/otsignin",
+      "auth/changepass",
+      "auth/logout"
+    ],
+    "secret_parameters": [
+      "password",
+      "password2",
+      "old_password",
+      "gorilla.csrf.Token",
+      "csrf",
+      "token"
+    ],
+    "skip_source_dirs": [
+      ".git",
+      ".idea",
+      "vendor",
+      "node_modules",
+      "coverage",
+      "tmp"
+    ],
+    "preserve_query_parameters": [],
+    "drop_query_parameters": [
+      "next",
+      "before",
+      "quote",
+      "utm_source",
+      "utm_medium",
+      "utm_campaign"
+    ],
+    "redact_secret_parameters": false,
+    "execute_forms": true,
+    "execute_forms_limit_per_page": 10,
+    "execute_forms_wait_after": 0.2,
+    "form_values": {
+      "email": "drhl@example.test",
+      "password": "12345678",
+      "password2": "12345678",
+      "old_password": "12345678",
+      "display_name": "DRHL Tester",
+      "title": "DRHL Test Topic",
+      "content": "DRHL generated content for access-control testing.",
+      "body": "DRHL generated body for access-control testing.",
+      "comment": "DRHL generated comment for access-control testing.",
+      "description": "DRHL generated description for access-control testing.",
+      "name": "DRHL Test Name",
+      "category_name": "DRHL Category",
+      "category_description": "DRHL generated category description.",
+      "mod_user_email": "user1@qq.com",
+      "submit": "Submit"
+    },
+    "roles": [
+      {
+        "name": "admin",
+        "kind": "admin",
+        "crawl_login": {
+          "steps": [
+            {
+              "name": "orangeforum_signin",
+              "url": "auth/signin",
+              "method": "FORM",
+              "fields": {
+                "input[name='email']": "admin@qq.com",
+                "input[name='password']": "12345678"
+              },
+              "submit": "input[type='submit']",
+              "wait_after": 1,
+              "seed_urls": [
+                "",
+                "admin",
+                "auth/changepass",
+                "categories/1",
+                "categories/2",
+                "categories/3",
+                "categories/4",
+                "categories/1/topics/new",
+                "categories/1/topics/1",
+                "categories/1/topics/1/edit",
+                "categories/1/topics/1/comments/new",
+                "users/1",
+                "users/2",
+                "users/3"
+              ],
+              "timeout": 20
+            }
+          ]
+        },
+        "http_login": {
+          "steps": [
+            {
+              "name": "orangeforum_signin",
+              "url": "auth/signin",
+              "post_url": "auth/signin",
+              "method": "POST",
+              "include_form_fields": true,
+              "allow_redirects": true,
+              "data": {
+                "email": "admin@qq.com",
+                "password": "12345678",
+                "next": "/forums/localhost/",
+                "submit": "Signin"
+              },
+              "timeout": 20
+            }
+          ]
+        }
+      },
+      {
+        "name": "user1",
+        "kind": "user",
+        "crawl_login": {
+          "steps": [
+            {
+              "name": "orangeforum_signin",
+              "url": "auth/signin",
+              "method": "FORM",
+              "fields": {
+                "input[name='email']": "user1@qq.com",
+                "input[name='password']": "12345678"
+              },
+              "submit": "input[type='submit']",
+              "wait_after": 1,
+              "seed_urls": [
+                "",
+                "auth/changepass",
+                "categories/1",
+                "categories/2",
+                "categories/3",
+                "categories/4",
+                "categories/1/topics/new",
+                "categories/1/topics/1",
+                "categories/1/topics/1/comments/new",
+                "users/2",
+                "users/1",
+                "users/3"
+              ],
+              "timeout": 20
+            }
+          ]
+        },
+        "http_login": {
+          "steps": [
+            {
+              "name": "orangeforum_signin",
+              "url": "auth/signin",
+              "post_url": "auth/signin",
+              "method": "POST",
+              "include_form_fields": true,
+              "allow_redirects": true,
+              "data": {
+                "email": "user1@qq.com",
+                "password": "12345678",
+                "next": "/forums/localhost/",
+                "submit": "Signin"
+              },
+              "timeout": 20
+            }
+          ]
+        }
+      },
+      {
+        "name": "user2",
+        "kind": "user",
+        "crawl_login": {
+          "steps": [
+            {
+              "name": "orangeforum_signin",
+              "url": "auth/signin",
+              "method": "FORM",
+              "fields": {
+                "input[name='email']": "user2@qq.com",
+                "input[name='password']": "12345678"
+              },
+              "submit": "input[type='submit']",
+              "wait_after": 1,
+              "seed_urls": [
+                "",
+                "auth/changepass",
+                "categories/1",
+                "categories/2",
+                "categories/3",
+                "categories/4",
+                "categories/1/topics/new",
+                "categories/1/topics/1",
+                "categories/1/topics/1/comments/new",
+                "users/3",
+                "users/1",
+                "users/2"
+              ],
+              "timeout": 20
+            }
+          ]
+        },
+        "http_login": {
+          "steps": [
+            {
+              "name": "orangeforum_signin",
+              "url": "auth/signin",
+              "post_url": "auth/signin",
+              "method": "POST",
+              "include_form_fields": true,
+              "allow_redirects": true,
+              "data": {
+                "email": "user2@qq.com",
+                "password": "12345678",
+                "next": "/forums/localhost/",
+                "submit": "Signin"
+              },
+              "timeout": 20
+            }
+          ]
+        }
+      },
+      {
+        "name": "visitor",
+        "kind": "visitor",
+        "crawl_login": {
+          "seed_urls": [
+            "",
+            "auth/signin",
+            "auth/signup",
+            "categories/1",
+            "categories/2",
+            "categories/3",
+            "categories/4",
+            "categories/1/topics/1",
+            "users/1",
+            "users/2",
+            "users/3"
+          ]
+        },
+        "http_login": {}
+      }
+    ],
+    "deduplicate_url_patterns": [
+      {
+        "pattern": "^admin/categories/(?:\\d+|p1)/?$",
+        "key": "orangeforum_admin_category"
+      },
+      {
+        "pattern": "^categories/(?:\\d+|p1)/?$",
+        "key": "orangeforum_category"
+      },
+      {
+        "pattern": "^categories/(?:\\d+|p1)/topics/(?:\\d+|p1)/?$",
+        "key": "orangeforum_topic"
+      },
+      {
+        "pattern": "^categories/(?:\\d+|p1)/topics/(?:\\d+|p1)/edit/?$",
+        "key": "orangeforum_topic_edit"
+      },
+      {
+        "pattern": "^categories/(?:\\d+|p1)/topics/(?:\\d+|p1)/comments/new/?$",
+        "key": "orangeforum_comment_new"
+      },
+      {
+        "pattern": "^categories/(?:\\d+|p1)/topics/(?:\\d+|p1)/comments/(?:\\d+|p1)/edit/?$",
+        "key": "orangeforum_comment_edit"
+      },
+      {
+        "pattern": "^users/(?:\\d+|p1)/?$",
+        "key": "orangeforum_user_profile"
+      }
+    ],
+    "path_parameter_patterns": [
+      {
+        "pattern": "^admin/categories/\\d+/?$",
+        "replacement": "admin/categories/p1"
+      },
+      {
+        "pattern": "^categories/\\d+/?$",
+        "replacement": "categories/p1/"
+      },
+      {
+        "pattern": "^categories/\\d+/topics/\\d+/?$",
+        "replacement": "categories/p1/topics/p1/"
+      },
+      {
+        "pattern": "^categories/\\d+/topics/\\d+/edit/?$",
+        "replacement": "categories/p1/topics/p1/edit/"
+      },
+      {
+        "pattern": "^categories/\\d+/topics/\\d+/comments/new/?$",
+        "replacement": "categories/p1/topics/p1/comments/new/"
+      },
+      {
+        "pattern": "^categories/\\d+/topics/\\d+/comments/\\d+/edit/?$",
+        "replacement": "categories/p1/topics/p1/comments/p1/edit/"
+      },
+      {
+        "pattern": "^categories/\\d+/topics/new/?$",
+        "replacement": "categories/p1/topics/new/"
+      },
+      {
+        "pattern": "^users/\\d+/?$",
+        "replacement": "users/p1/"
+      }
+    ]
+  },
+  "analysis": {
+    "active_detection": true,
+    "identity_parameters": [
+      "id",
+      "user_id",
+      "profile_user_id",
+      "author_id",
+      "owner_id",
+      "category_id",
+      "topic_id",
+      "comment_id",
+      "domain_id",
+      "email",
+      "display_name"
+    ],
+    "horizontal_overrides": {
+      "id": "3",
+      "user_id": "3",
+      "profile_user_id": "3",
+      "author_id": "3",
+      "owner_id": "3",
+      "category_id": "2",
+      "topic_id": "2",
+      "comment_id": "2",
+      "domain_id": "1",
+      "email": "user2@qq.com",
+      "display_name": "User2"
+    },
+    "horizontal_exclude_patterns": [
+      "^$",
+      "^\\./$",
+      "^auth/signin",
+      "^auth/signup",
+      "^auth/otsignin"
+    ],
+    "source_analysis": {
+      "save_cst": false,
+      "identity_parameters": [
+        "user_id",
+        "profile_user_id",
+        "author_id",
+        "owner_id"
+      ],
+      "access_control_database_fields": [
+        "user_id",
+        "domain_id",
+        "is_superadmin",
+        "is_supermod",
+        "is_banned",
+        "banned_at",
+        "author_id",
+        "created_by",
+        "owner_id"
+      ],
+      "validated_function_name_patterns": [
+        "mustAuth",
+        "canAuth",
+        "authenticate",
+        "adminHandler",
+        "profileHandler",
+        "editTopic",
+        "editComment",
+        "GetUserByPasswd",
+        "GetUserByEmail",
+        "GetCurrentUser",
+        "IsSuperAdmin",
+        "IsSuperMod",
+        "Forbidden",
+        "Unauthorized"
+      ],
+      "validated_function_code_patterns": [
+        "jwtauth",
+        "mustAuth",
+        "canAuth",
+        "csrf",
+        "session",
+        "CurrentUser",
+        "ctxUser",
+        "IsSuperAdmin",
+        "IsSuperMod",
+        "is_superadmin",
+        "is_supermod",
+        "http\\.Error",
+        "http\\.Redirect",
+        "StatusForbidden",
+        "StatusUnauthorized"
+      ]
+    },
+    "oracle": {
+      "timeout": 10,
+      "denied_statuses": [
+        401,
+        403,
+        404
+      ],
+      "login_url_markers": [
+        "auth/signin",
+        "signin",
+        "login"
+      ],
+      "deny_markers": [
+        "Invalid email / password",
+        "Signin",
+        "Sign in",
+        "Forbidden",
+        "Unauthorized",
+        "not authorized",
+        "permission",
+        "CSRF token",
+        "Forbidden - CSRF token invalid"
+      ],
+      "extract_source_deny_markers": true,
+      "invalid_resource_markers": [
+        "404 page not found",
+        "Not Found",
+        "invalid category",
+        "invalid topic",
+        "invalid comment"
+      ],
+      "public_page_patterns": [
+        "^$",
+        "^\\./$",
+        "^auth/signin(?:\\?|$)",
+        "^auth/signup(?:\\?|$)",
+        "^auth/otsignin(?:\\?|$)",
+        "^categories/p1/?$",
+        "^categories/p1/topics/p1/?$",
+        "^users/p1/?$"
+      ],
+      "authenticated_public_page_patterns": [
+        "^auth/changepass(?:\\?|$)",
+        "^users/p1/?$"
+      ],
+      "static_only_confirm_patterns": [
+        "^admin/?$",
+        "^categories/p1/topics/new/?$",
+        "^categories/p1/topics/p1/edit/?$",
+        "^categories/p1/topics/p1/comments/new/?$",
+        "^categories/p1/topics/p1/comments/p1/edit/?$"
+      ],
+      "confirm_get_read_patterns": [
+        "^admin/?$",
+        "^auth/changepass(?:\\?|$)",
+        "^categories/p1/topics/new/?$",
+        "^categories/p1/topics/p1/edit/?$",
+        "^categories/p1/topics/p1/comments/new/?$",
+        "^categories/p1/topics/p1/comments/p1/edit/?$"
+      ],
+      "write_success_redirect_is_vulnerable": true,
+      "authorized_success_redirect_patterns": [
+        "^$",
+        "^\\./$",
+        "^admin/?$",
+        "^categories/p1/?$",
+        "^categories/p1/topics/p1/?$",
+        "^users/p1/?$"
+      ],
+      "write_success_redirect_patterns": [
+        "^$",
+        "^\\./$",
+        "^admin/?$",
+        "^categories/p1/?$",
+        "^categories/p1/topics/p1/?$",
+        "^users/p1/?$"
+      ],
+      "protected_content_markers": [
+        {
+          "pattern": "^users/(?P<id>[0-9]+)/?$",
+          "marker_group": "id"
+        },
+        {
+          "pattern": "^categories/(?P<id>[0-9]+)/topics/(?P<topic>[0-9]+)/?$",
+          "marker_group": "topic"
+        }
+      ],
+      "csrf_token_parameters": [
+        "gorilla.csrf.Token"
+      ]
+    },
+    "attacker_roles": {
+      "admin_only": [
+        "user1",
+        "user2",
+        "visitor"
+      ],
+      "only_admin": [
+        "user1",
+        "user2",
+        "visitor"
+      ],
+      "static_only": [
+        "visitor"
+      ],
+      "authenticated_only": [
+        "visitor"
+      ],
+      "horizontal": [
+        "user1",
+        "user2"
+      ]
+    },
+    "static_exclude_patterns": [
+      "(^|/)\\.git/",
+      "(^|/)vendor/",
+      "(^|/)templates/",
+      "(^|/)models/migration",
+      "\\.exe$",
+      "\\.test$",
+      "_test\\.go$",
+      "^README",
+      "^LICENSE",
+      "^AUTHORS"
+    ],
+    "horizontal_page_overrides": [
+      {
+        "pattern": "^categories/p1/topics/p1/comments/p1/edit/?$",
+        "pages": [
+          "categories/1/topics/9/comments/34/edit"
+        ],
+        "identity_parameters": [],
+        "request_variants": [
+          {
+            "params": {
+              "action": "Update",
+              "content": "DRHL horizontal edit marker"
+            }
+          },
+          {
+            "params": {
+              "action": "Delete"
+            }
+          }
+        ]
+      }
+    ],
+    "admin_only_exclude_patterns": [
+      "^admin(?:/|$)"
+    ],
+    "authenticated_only_exclude_patterns": [
+      "^admin(?:/|$)",
+      "^auth/changepass(?:\\?|$)",
+      "^categories/p1/topics/new/?$",
+      "^categories/p1/topics/p1/comments/new/?$",
+      "^categories/p1/topics/p1/comments/p1/edit/?$",
+      "^categories/p1/topics/p1/edit/?$"
+    ]
+  },
+  "repair": {
+    "enabled": true,
+    "output_dir": "repair/files",
+    "llm": {
+      "enabled": true,
+      "provider": "openai_compatible",
+      "base_url": "https://api.deepseek.com/v1",
+      "model": "deepseek-v4-flash",
+      "api_key": "your-api-key",
+      "temperature": 0.1,
+      "timeout": 120,
+      "response_format_json": true,
+      "input_cost_per_million_tokens": 0,
+      "output_cost_per_million_tokens": 0
+    },
+    "validation": {
+      "max_attempts": 3,
+      "syntax_check": true,
+      "syntax_timeout": 120,
+      "temporary_apply_to_source": true,
+      "go_binary": "go",
+      "gofmt_binary": "gofmt",
+      "hook_timeout": 120,
+      "reload_timeout": 120,
+      "after_apply_command": [
+        "powershell",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "D:/project/python/DRHL/scripts/orangeforum_restart.ps1",
+        "-SourceRoot",
+        "D:/Go_project/orangeforum",
+        "-Port",
+        "9123",
+        "-Dsn",
+        "postgres://postgres:root@localhost:5432/orangeforum"
+      ],
+      "after_restore_command": [
+        "powershell",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "D:/project/python/DRHL/scripts/orangeforum_restart.ps1",
+        "-SourceRoot",
+        "D:/Go_project/orangeforum",
+        "-Port",
+        "9123",
+        "-Dsn",
+        "postgres://postgres:root@localhost:5432/orangeforum"
+      ],
+      "regression_roles": [
+        {
+          "pattern": "^categories/1/topics/9/comments/34/edit/?$",
+          "role": "user2"
+        }
+      ]
+    },
+    "source_map_overrides": [
+      {
+        "pattern": "^admin/?$",
+        "source": "views/admin.go"
+      },
+      {
+        "pattern": "^auth/(?:signin|signup|otsignin|changepass)(?:\\?|$)",
+        "source": "views/auth.go"
+      },
+      {
+        "pattern": "^users/p1/?$",
+        "source": "views/users.go"
+      },
+      {
+        "pattern": "^categories/p1/?$",
+        "source": "views/topics.go"
+      },
+      {
+        "pattern": "^categories/p1/topics/new/?$",
+        "source": "views/topics.go"
+      },
+      {
+        "pattern": "^categories/p1/topics/p1/?$",
+        "source": "views/topics.go"
+      },
+      {
+        "pattern": "^categories/p1/topics/p1/edit/?$",
+        "source": "views/topics.go"
+      },
+      {
+        "pattern": "^categories/p1/topics/p1/comments/new/?$",
+        "source": "views/comments.go"
+      },
+      {
+        "pattern": "^categories/p1/topics/p1/comments/p1/edit/?$",
+        "source": "views/comments.go"
+      }
+    ]
+  }
+}

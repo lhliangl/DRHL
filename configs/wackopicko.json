@@ -1,0 +1,380 @@
+{
+  "run_dir": "../runs/wackopicko",
+  "target": {
+    "base_url": "http://localhost/",
+    "source_root": "D:/phpStudy/PHPTutorial/WWW/wackopicko",
+    "language": "php",
+    "public_extensions": [
+      ".php"
+    ]
+  },
+  "database": {
+    "driver": "mysql",
+    "host": "127.0.0.1",
+    "port": 3306,
+    "database": "wackopicko",
+    "user": "root",
+    "password": "root",
+    "mysqldump": "D:/phpStudy/PHPTutorial/MySQL/bin/mysqldump.exe",
+    "mysql": "D:/phpStudy/PHPTutorial/MySQL/bin/mysql.exe",
+    "single_transaction": false
+  },
+  "crawl": {
+    "mode": "selenium",
+    "driver_path": "../chromedriver.exe",
+    "root_url": "index.php",
+    "scope_path": "/",
+    "strategy": "dfs",
+    "headless": true,
+    "max_pages": 300,
+    "delay": 0.2,
+    "page_timeout": 20,
+    "exclude_url_markers": [
+      "logout",
+      "logoff",
+      "calendar.php",
+      "admin"
+    ],
+    "exclude_form_markers": [
+      "logout.php"
+    ],
+    "secret_parameters": [
+      "password",
+      "pw",
+      "passwd",
+      "pwd",
+      "token",
+      "csrf",
+      "_token"
+    ],
+    "skip_source_dirs": [
+      "css",
+      "images",
+      "upload",
+      "spikephpcoverage",
+      "admin"
+    ],
+    "preserve_query_parameters": [
+      "page",
+      "action",
+      "picid",
+      "date",
+      "key",
+      "query",
+      "conflictid"
+    ],
+    "redact_secret_parameters": false,
+    "execute_forms": true,
+    "execute_forms_limit_per_page": 20,
+    "execute_forms_wait_after": 0.2,
+    "form_values": {
+      "query": "nature",
+      "comment": "DRHL coverage comment",
+      "name": "DRHL Tester",
+      "username": "drhl_user",
+      "firstname": "DRHL",
+      "lastname": "Tester",
+      "againpass": "12345678",
+      "title": "DRHL Picture",
+      "tag": "nature",
+      "price": "1",
+      "coupon": "DISCOUNT",
+      "coupon_code": "DISCOUNT"
+    },
+    "roles": [
+      {
+        "name": "user1",
+        "kind": "user",
+        "crawl_login": {
+          "steps": [
+            {
+              "name": "frontend_login",
+              "url": "users/login.php",
+              "post_url": "users/login.php",
+              "method": "POST",
+              "data": {
+                "username": "scanner1",
+                "password": "scanner1"
+              },
+              "wait_after": 1,
+              "expect_cookies": [
+                "PHPSESSID"
+              ],
+              "forbid_text": [
+                "The username/password combination you have entered is invalid"
+              ],
+              "seed_urls": [
+                "users/home.php",
+                "pictures/recent.php",
+                "pictures/upload.php",
+                "pictures/purchased.php",
+                "cart/review.php",
+                "cart/confirm.php",
+                "guestbook.php",
+                "users/similar.php",
+                "users/view.php?userid=4",
+                "users/view.php?userid=5",
+                "users/sample.php?userid=1",
+                "pictures/view.php?picid=20",
+                "pictures/view.php?picid=21",
+                "cart/action.php?action=add&picid=20",
+                "cart/action.php?action=add&picid=21",
+                "pictures/high_quality.php?picid=20&key=MTE0MTkyMQ%3D%3D",
+                "pictures/high_quality.php?picid=23&key=MzI0ODk4OA%3D%3D",
+                "comments/preview_comment.php",
+                "comments/add_comment.php",
+                "comments/delete_preview_comment.php"
+              ]
+            }
+          ]
+        },
+        "http_login": {
+          "steps": [
+            {
+              "name": "frontend_login",
+              "url": "users/login.php",
+              "post_url": "users/login.php",
+              "method": "POST",
+              "data": {
+                "username": "scanner1",
+                "password": "scanner1"
+              },
+              "expect_cookies": [
+                "PHPSESSID"
+              ],
+              "forbid_text": [
+                "The username/password combination you have entered is invalid"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "name": "user2",
+        "kind": "user",
+        "crawl_login": {
+          "steps": [
+            {
+              "name": "frontend_login",
+              "url": "users/login.php",
+              "post_url": "users/login.php",
+              "method": "POST",
+              "data": {
+                "username": "scanner2",
+                "password": "scanner2"
+              },
+              "wait_after": 1,
+              "expect_cookies": [
+                "PHPSESSID"
+              ],
+              "forbid_text": [
+                "The username/password combination you have entered is invalid"
+              ],
+              "seed_urls": [
+                "users/home.php",
+                "pictures/recent.php",
+                "pictures/upload.php",
+                "pictures/purchased.php",
+                "cart/review.php",
+                "cart/confirm.php",
+                "guestbook.php",
+                "users/similar.php",
+                "users/view.php?userid=4",
+                "users/view.php?userid=5",
+                "users/sample.php?userid=1",
+                "pictures/view.php?picid=20",
+                "pictures/view.php?picid=21",
+                "cart/action.php?action=add&picid=20",
+                "cart/action.php?action=add&picid=21",
+                "pictures/high_quality.php?picid=20&key=MTE0MTkyMQ%3D%3D",
+                "pictures/high_quality.php?picid=23&key=MzI0ODk4OA%3D%3D",
+                "comments/preview_comment.php",
+                "comments/add_comment.php",
+                "comments/delete_preview_comment.php"
+              ]
+            }
+          ]
+        },
+        "http_login": {
+          "steps": [
+            {
+              "name": "frontend_login",
+              "url": "users/login.php",
+              "post_url": "users/login.php",
+              "method": "POST",
+              "data": {
+                "username": "scanner2",
+                "password": "scanner2"
+              },
+              "expect_cookies": [
+                "PHPSESSID"
+              ],
+              "forbid_text": [
+                "The username/password combination you have entered is invalid"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "name": "visitor",
+        "kind": "visitor"
+      }
+    ],
+    "drop_query_parameters": [
+      "PHPSESSID"
+    ]
+  },
+  "analysis": {
+    "source_analysis": {
+      "save_cst": false,
+      "identity_parameters": [
+        "userid",
+        "user_id",
+        "uid"
+      ],
+      "access_control_database_fields": [
+        "users.id",
+        "users.login",
+        "admin.id",
+        "admin.login",
+        "admin_session.admin_id",
+        "cart.user_id",
+        "pictures.user_id",
+        "comments.user_id",
+        "comments_preview.user_id",
+        "own.user_id",
+        "conflict_pictures.user_id"
+      ],
+      "validated_function_name_patterns": [
+        "^require_login$",
+        "^require_admin_login$",
+        "^http_redirect$",
+        "^(?:current_user|is_logged_in|login_user|check_login|get_user)$",
+        "^(?:current_admin|login_admin|get_admin_session)$"
+      ],
+      "validated_function_code_patterns": [
+        "Users::is_logged_in|Users::current_user|Admins::is_logged_in|Admins::current_admin",
+        "\\$_SESSION\\[\\s*[\\'\\\"]userid[\\'\\\"]\\s*\\]",
+        "\\$_COOKIE\\[\\s*[\\'\\\"]session[\\'\\\"]\\s*\\]",
+        "http_redirect\\s*\\(\\s*(?:Users::\\$LOGIN_URL|Admins::\\$LOGIN_URL)"
+      ]
+    },
+    "active_detection": true,
+    "identity_parameters": [
+      "userid",
+      "user_id",
+      "uid"
+    ],
+    "horizontal_overrides": {
+      "userid": "11",
+      "user_id": "11",
+      "uid": "11"
+    },
+    "oracle": {
+      "timeout": 10,
+      "denied_statuses": [
+        401,
+        403
+      ],
+      "login_url_markers": [
+        "users/login.php"
+      ],
+      "deny_markers": [
+        "The username/password combination you have entered is invalid"
+      ],
+      "extract_source_deny_markers": true,
+      "confirm_get_read": true,
+      "static_only_confirm_patterns": [
+        "^secrect\\.php$",
+        "^test\\.php$",
+        "^cart/add_coupon\\.php$"
+      ],
+      "public_page_patterns": [
+        "^index\\.php(?:\\?|$)",
+        "^about\\.php(?:\\?|$)",
+        "^tos\\.php(?:\\?|$)",
+        "^error\\.php(?:\\?|$)",
+        "^calendar\\.php(?:\\?|$)",
+        "^guestbook\\.php(?:\\?|$)",
+        "^passcheck\\.php(?:\\?|$)",
+        "^piccheck\\.php(?:\\?|$)",
+        "^users/login\\.php(?:\\?|$)",
+        "^users/register\\.php(?:\\?|$)",
+        "^users/check_pass\\.php(?:\\?|$)",
+        "^users/sample\\.php(?:\\?|$)",
+        "^pictures/recent\\.php(?:\\?|$)",
+        "^pictures/search\\.php(?:\\?|$)"
+      ],
+      "authenticated_public_page_patterns": [
+        "^users/home\\.php(?:\\?|$)",
+        "^users/similar\\.php(?:\\?|$)",
+        "^pictures/view(?:_flymake)?\\.php(?:\\?|$)",
+        "^pictures/upload\\.php(?:\\?|$)",
+        "^pictures/purchased\\.php(?:\\?|$)",
+        "^cart/review\\.php(?:\\?|$)",
+        "^cart/confirm\\.php(?:\\?|$)"
+      ]
+    },
+    "static_exclude_patterns": [
+      "^include/",
+      "^spikephpcoverage/",
+      "^css/",
+      "^images/",
+      "^upload/",
+      "(^|/)(?:database|ourdb|html_functions|functions|test)\\.php$",
+      "^admin/login\\.php$",
+      "^admin/"
+    ],
+    "force_static_pages": [
+      "secrect.php",
+      "test.php",
+      "cart/add_coupon.php"
+    ],
+    "role_groups": {
+      "user": [
+        "user1",
+        "user2"
+      ],
+      "visitor": [
+        "visitor"
+      ]
+    },
+    "attacker_roles": {
+      "authenticated_only": [
+        "visitor"
+      ],
+      "vertical": [
+        "visitor"
+      ],
+      "horizontal": [
+        "user1"
+      ]
+    }
+  },
+  "repair": {
+    "enabled": true,
+    "output_dir": "repair/files",
+    "llm": {
+      "enabled": true,
+      "provider": "openai_compatible",
+      "base_url": "https://api.deepseek.com/v1",
+      "model": "deepseek-v4-flash",
+      "api_key": "your-api-key",
+      "temperature": 0.1,
+      "timeout": 120,
+      "response_format_json": true,
+      "input_cost_per_million_tokens": 0,
+      "output_cost_per_million_tokens": 0
+    },
+    "validation": {
+      "max_attempts": 3,
+      "syntax_check": true,
+      "php_binary": "D:/phpStudy/PHPTutorial/php/php-5.2.17/php.exe",
+      "syntax_timeout": 30,
+      "temporary_apply_to_source": true
+    },
+    "page_repair_guidance": []
+  }
+}
+

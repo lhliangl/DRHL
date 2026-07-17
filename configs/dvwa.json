@@ -1,0 +1,293 @@
+{
+  "run_dir": "../runs/dvwa",
+  "target": {
+    "base_url": "http://localhost/DVWA/",
+    "source_root": "D:/phpStudy/PHPTutorial/WWW/DVWA",
+    "language": "php",
+    "public_extensions": [
+      ".php"
+    ]
+  },
+  "database": {
+    "driver": "mysql",
+    "host": "127.0.0.1",
+    "port": 3306,
+    "database": "dvwa",
+    "user": "root",
+    "password": "root",
+    "mysqldump": "D:/phpStudy/PHPTutorial/MySQL/bin/mysqldump.exe",
+    "mysql": "D:/phpStudy/PHPTutorial/MySQL/bin/mysql.exe",
+    "single_transaction": false
+  },
+  "crawl": {
+    "mode": "selenium",
+    "driver_path": "../chromedriver.exe",
+    "root_url": "index.php",
+    "scope_path": "/DVWA/",
+    "strategy": "dfs",
+    "headless": true,
+    "max_pages": 300,
+    "delay": 0.2,
+    "page_timeout": 20,
+    "exclude_url_markers": [
+      "logout",
+      "logoff",
+      "phpinfo",
+      ".md",
+      ".yaml",
+      ".yml"
+    ],
+    "exclude_form_markers": [
+      "setup.php",
+      "logout.php"
+    ],
+    "secret_parameters": [
+      "password",
+      "passwd",
+      "pwd",
+      "token",
+      "csrf",
+      "_token",
+      "user_token"
+    ],
+    "skip_source_dirs": [
+      ".github",
+      "database",
+      "docs",
+      "external",
+      "hackable",
+      "tests",
+      "css",
+      "images",
+      "js",
+      "help",
+      "source",
+      "DBMS"
+    ],
+    "preserve_query_parameters": [
+      "page",
+      "redirect",
+      "id",
+      "security",
+      "locale"
+    ],
+    "redact_secret_parameters": false,
+    "execute_forms": true,
+    "execute_forms_limit_per_page": 20,
+    "execute_forms_wait_after": 0.2,
+    "roles": [
+      {
+        "name": "admin",
+        "kind": "admin",
+        "cookies": {
+          "security": "low"
+        },
+        "crawl_login": {
+          "steps": [
+            {
+              "name": "admin_login",
+              "url": "login.php",
+              "method": "POST",
+              "fields": {
+                "input[name='username']": "admin",
+                "input[name='password']": "123456"
+              },
+              "submit": "input[name='Login']",
+              "wait_after": 1,
+              "expect_cookies": [
+                "PHPSESSID"
+              ],
+              "forbid_text": [
+                "Login failed"
+              ],
+              "seed_urls": [
+                "index.php",
+                "instructions.php",
+                "security.php",
+                "setup.php",
+                "vulnerabilities/brute/",
+                "vulnerabilities/exec/",
+                "vulnerabilities/csrf/",
+                "vulnerabilities/fi/?page=include.php",
+                "vulnerabilities/upload/",
+                "vulnerabilities/captcha/",
+                "vulnerabilities/sqli/",
+                "vulnerabilities/sqli_blind/",
+                "vulnerabilities/weak_id/",
+                "vulnerabilities/xss_d/",
+                "vulnerabilities/xss_r/",
+                "vulnerabilities/xss_s/",
+                "vulnerabilities/csp/",
+                "vulnerabilities/javascript/",
+                "vulnerabilities/authbypass/",
+                "vulnerabilities/open_redirect/",
+                "vulnerabilities/cryptography/",
+                "vulnerabilities/api/"
+              ]
+            }
+          ]
+        },
+        "http_login": {
+          "steps": [
+            {
+              "name": "admin_login",
+              "url": "login.php",
+              "post_url": "login.php",
+              "method": "POST",
+              "include_form_fields": true,
+              "data": {
+                "username": "admin",
+                "password": "123456",
+                "Login": "Login"
+              },
+              "expect_cookies": [
+                "PHPSESSID"
+              ],
+              "forbid_text": [
+                "Login failed"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "name": "visitor",
+        "kind": "visitor"
+      }
+    ],
+    "drop_query_parameters": [
+      "PHPSESSID"
+    ]
+  },
+  "analysis": {
+    "source_analysis": {
+      "save_cst": false,
+      "identity_parameters": [
+        "user_id",
+        "user",
+        "username"
+      ],
+      "access_control_database_fields": [
+        "users.user_id",
+        "users.user",
+        "users.failed_login"
+      ],
+      "validated_function_name_patterns": [
+        "dvwaPageStartup",
+        "dvwaIsLoggedIn",
+        "dvwaLogin",
+        "dvwaLogout",
+        "checkToken",
+        "dvwaCurrentUser"
+      ],
+      "validated_function_code_patterns": [
+        "dvwaPageStartup\\s*\\(\\s*array\\s*\\([^)]*authenticated",
+        "dvwaIsLoggedIn|dvwaLogin|dvwaLogout|checkToken",
+        "\\$_SESSION|session_start|dvwaRedirect\\s*\\(.*login\\.php"
+      ]
+    },
+    "active_detection": true,
+    "identity_parameters": [
+      "id",
+      "user_id",
+      "userid",
+      "user",
+      "username",
+      "page",
+      "redirect"
+    ],
+    "horizontal_overrides": {
+      "id": "2",
+      "user_id": "2",
+      "userid": "2",
+      "user": "gordonb",
+      "username": "gordonb"
+    },
+    "oracle": {
+      "timeout": 10,
+      "denied_statuses": [
+        401,
+        403
+      ],
+      "login_url_markers": [
+        "login.php"
+      ],
+      "deny_markers": [
+        "Login :: Damn Vulnerable Web Application",
+        "Login failed",
+        "You have logged out"
+      ],
+      "extract_source_deny_markers": true,
+      "confirm_get_read": true,
+      "static_only_confirm_patterns": [
+        "^setup\\.php$"
+      ],
+      "public_page_patterns": [
+        "^login\\.php(?:\\?|$)"
+      ],
+      "authenticated_public_page_patterns": []
+    },
+    "static_exclude_patterns": [
+      "phpinfo",
+      "^config/",
+      "^database/",
+      "^docs/",
+      "^dvwa/includes/",
+      "^external/",
+      "^hackable/",
+      "^tests/",
+      "(^|/)help/",
+      "(^|/)source/",
+      "^vulnerabilities/(?:view_help|view_source|view_source_all)\\.php$",
+      "^vulnerabilities/api/(?:bootstrap|gen_openapi|composer|openapi|README)",
+      "^vulnerabilities/.*/(?:file[0-9]|include|test|session-input|cookie-input)\\.php$",
+      "(^|/)logout\\.php$"
+    ],
+    "force_static_pages": [
+      "setup.php"
+    ],
+    "role_groups": {
+      "admin": [
+        "admin"
+      ],
+      "visitor": [
+        "visitor"
+      ]
+    },
+    "attacker_roles": {
+      "authenticated_only": [
+        "visitor"
+      ],
+      "admin_only": [
+        "visitor"
+      ],
+      "vertical": [
+        "visitor"
+      ]
+    }
+  },
+  "repair": {
+    "enabled": true,
+    "output_dir": "repair/files",
+    "llm": {
+      "enabled": true,
+      "provider": "openai_compatible",
+      "base_url": "https://api.deepseek.com/v1",
+      "model": "deepseek-v4-flash",
+      "api_key": "your-api-key",
+      "temperature": 0.1,
+      "timeout": 120,
+      "response_format_json": true,
+      "input_cost_per_million_tokens": 0,
+      "output_cost_per_million_tokens": 0
+    },
+    "validation": {
+      "max_attempts": 3,
+      "syntax_check": true,
+      "php_binary": "D:/phpStudy/PHPTutorial/php/php-7.2.1-nts/php.exe",
+      "syntax_timeout": 30,
+      "temporary_apply_to_source": true
+    }
+  }
+}
+

@@ -1,0 +1,393 @@
+{
+  "run_dir": "../runs/jsforum",
+  "target": {
+    "base_url": "http://localhost:8080/JsForum/",
+    "source_root": "D:/tomcat9/webapps/JsForum",
+    "language": "jsp",
+    "public_extensions": [
+      ".jsp"
+    ]
+  },
+  "database": {
+    "driver": "mysql",
+    "host": "127.0.0.1",
+    "port": 3306,
+    "database": "forum",
+    "user": "root",
+    "password": "root",
+    "mysqldump": "D:/phpStudy/PHPTutorial/MySQL/bin/mysqldump.exe",
+    "mysql": "D:/phpStudy/PHPTutorial/MySQL/bin/mysql.exe",
+    "single_transaction": false
+  },
+  "crawl": {
+    "mode": "selenium",
+    "driver_path": "../chromedriver.exe",
+    "root_url": "forum/index.jsp",
+    "scope_path": "/JsForum/",
+    "strategy": "dfs",
+    "headless": true,
+    "max_pages": 180,
+    "delay": 0.2,
+    "page_timeout": 20,
+    "exclude_url_markers": [
+      "logout",
+      "logoff",
+      "WEB-INF",
+      "META-INF",
+      ".clover",
+      "coverage-report"
+    ],
+    "secret_parameters": [
+      "password",
+      "pw",
+      "passwd",
+      "pwd",
+      "token",
+      "csrf",
+      "_token"
+    ],
+    "skip_source_dirs": [
+      ".clover",
+      "coverage-report",
+      "WEB-INF/classes/forum/instrumented"
+    ],
+    "preserve_query_parameters": [
+      "page"
+    ],
+    "redact_secret_parameters": false,
+    "execute_forms": true,
+    "execute_forms_limit_per_page": 20,
+    "execute_forms_wait_after": 0.2,
+    "form_values": {
+      "username": "admin",
+      "password": "123456",
+      "password2": "123456",
+      "email": "drhl@example.test",
+      "avatar_list": "./avatars/avatar_1.jpg",
+      "link_avatar": "./avatars/avatar_1.jpg",
+      "member_title": "DRHL Tester",
+      "signature": "DRHL generated signature for access-control testing.",
+      "title": "DRHL Test Topic",
+      "forum_info": "DRHL generated forum description.",
+      "message": "DRHL generated forum message for access-control testing."
+    },
+    "roles": [
+      {
+        "name": "admin",
+        "kind": "admin",
+        "crawl_login": {
+          "steps": [
+            {
+              "name": "forum_login",
+              "url": "forum/index.jsp",
+              "post_url": "servlet/forum.Login",
+              "method": "POST",
+              "data": {
+                "username": "admin",
+                "password": "123456"
+              },
+              "wait_after": 1,
+              "expect_cookies": [
+                "JSESSIONID"
+              ],
+              "forbid_text": [
+                "wrongpass",
+                "The password doesn't match"
+              ],
+              "seed_urls": [
+                "forum/index.jsp",
+                "forum/index.jsp?page=profile",
+                "forum/index.jsp?page=thread&forum_id=0"
+              ]
+            }
+          ]
+        },
+        "http_login": {
+          "steps": [
+            {
+              "name": "forum_login",
+              "url": "forum/index.jsp",
+              "post_url": "servlet/forum.Login",
+              "method": "POST",
+              "data": {
+                "username": "admin",
+                "password": "123456"
+              },
+              "expect_cookies": [
+                "JSESSIONID"
+              ],
+              "forbid_text": [
+                "wrongpass",
+                "The password doesn't match"
+              ],
+              "allow_redirects": false
+            }
+          ]
+        }
+      },
+      {
+        "name": "user1",
+        "kind": "user",
+        "crawl_login": {
+          "steps": [
+            {
+              "name": "forum_login",
+              "url": "forum/index.jsp",
+              "post_url": "servlet/forum.Login",
+              "method": "POST",
+              "data": {
+                "username": "user1",
+                "password": "123456"
+              },
+              "wait_after": 1,
+              "expect_cookies": [
+                "JSESSIONID"
+              ],
+              "forbid_text": [
+                "wrongpass",
+                "The password doesn't match"
+              ],
+              "seed_urls": [
+                "forum/index.jsp",
+                "forum/index.jsp?page=profile",
+                "forum/index.jsp?page=thread&forum_id=0"
+              ]
+            }
+          ]
+        },
+        "http_login": {
+          "steps": [
+            {
+              "name": "forum_login",
+              "url": "forum/index.jsp",
+              "post_url": "servlet/forum.Login",
+              "method": "POST",
+              "data": {
+                "username": "user1",
+                "password": "123456"
+              },
+              "expect_cookies": [
+                "JSESSIONID"
+              ],
+              "forbid_text": [
+                "wrongpass",
+                "The password doesn't match"
+              ],
+              "allow_redirects": false
+            }
+          ]
+        }
+      },
+      {
+        "name": "user2",
+        "kind": "user",
+        "crawl_login": {
+          "steps": [
+            {
+              "name": "forum_login",
+              "url": "forum/index.jsp",
+              "post_url": "servlet/forum.Login",
+              "method": "POST",
+              "data": {
+                "username": "user2",
+                "password": "123456"
+              },
+              "wait_after": 1,
+              "expect_cookies": [
+                "JSESSIONID"
+              ],
+              "forbid_text": [
+                "wrongpass",
+                "The password doesn't match"
+              ],
+              "seed_urls": [
+                "forum/index.jsp",
+                "forum/index.jsp?page=profile",
+                "forum/index.jsp?page=thread&forum_id=0"
+              ]
+            }
+          ]
+        },
+        "http_login": {
+          "steps": [
+            {
+              "name": "forum_login",
+              "url": "forum/index.jsp",
+              "post_url": "servlet/forum.Login",
+              "method": "POST",
+              "data": {
+                "username": "user2",
+                "password": "123456"
+              },
+              "expect_cookies": [
+                "JSESSIONID"
+              ],
+              "forbid_text": [
+                "wrongpass",
+                "The password doesn't match"
+              ],
+              "allow_redirects": false
+            }
+          ]
+        }
+      },
+      {
+        "name": "visitor",
+        "kind": "visitor"
+      }
+    ],
+    "drop_query_parameters": [
+      "start"
+    ],
+    "exclude_form_markers": [
+      "servlet/forum.Login",
+      "forum.Login"
+    ]
+  },
+  "analysis": {
+    "source_analysis": {
+      "save_cst": false,
+      "identity_parameters": [
+        "user",
+        "username",
+        "user_name"
+      ],
+      "access_control_database_fields": [
+        "forum_users.user_name",
+        "forum_users.TYPE",
+        "forum_users.type",
+        "forum_message.user"
+      ],
+      "validated_function_name_patterns": [],
+      "access_control_keywords": [
+        "sessionUsername",
+        "sessionType",
+        "session.getAttribute",
+        "getAttribute",
+        "Admin",
+        "username",
+        "type",
+        "password",
+        "forum_users"
+      ]
+    },
+    "active_detection": true,
+    "identity_parameters": [
+      "user",
+      "username",
+      "user_name"
+    ],
+    "horizontal_exclude_patterns": [
+      "^forum/index\\.jsp(?:\\?|$)"
+    ],
+    "oracle": {
+      "timeout": 10,
+      "denied_statuses": [
+        401,
+        403
+      ],
+      "login_url_markers": [
+        "forum/index.jsp"
+      ],
+      "deny_markers": [
+        "You have to login first",
+        "The password doesn't match",
+        "wrongpass"
+      ],
+      "extract_source_deny_markers": true,
+      "public_page_patterns": [
+        "^forum/index\\.jsp(?:\\?|$)",
+        "^forum/register\\.jsp(?:\\?|$)",
+        "^forum/info\\.jsp(?:\\?|$)",
+        "^servlet/forum\\.Login(?:\\?|$)",
+        "^servlet/forum\\.AddUser(?:\\?|$)"
+      ],
+      "authenticated_public_page_patterns": [
+        "^forum/index\\.jsp\\?page=profile(?:&|$)",
+        "^servlet/forum\\.ChangeProfile(?:\\?|$)",
+        "^forum/index\\.jsp\\?page=thread(?:&|$)",
+        "^forum/index\\.jsp\\?page=message(?:&|$)",
+        "^servlet/forum\\.AddThread(?:\\?|$)",
+        "^servlet/forum\\.AddReply(?:\\?|$)"
+      ],
+      "confirm_get_read_patterns": [
+        "^forum/index\\.jsp\\?page=(?:profile|thread|message|editmessage)(?:&|$)"
+      ],
+      "write_success_redirect_is_vulnerable": true,
+      "authorized_success_redirect_patterns": [
+        "^forum/index\\.jsp(?:\\?|$)"
+      ],
+      "write_success_redirect_patterns": [
+        "^forum/index\\.jsp(?:\\?|$)",
+        "^forum/index\\.jsp\\?page=thread(?:&|$)",
+        "^forum/index\\.jsp\\?page=message(?:&|$)"
+      ]
+    },
+    "attacker_roles": {
+      "admin_only": [
+        "user1",
+        "user2",
+        "visitor"
+      ],
+      "only_admin": [
+        "user1",
+        "user2",
+        "visitor"
+      ],
+      "static_only": [
+        "visitor"
+      ],
+      "authenticated_only": [
+        "visitor"
+      ],
+      "horizontal": [
+        "user1",
+        "user2"
+      ]
+    },
+    "static_exclude_patterns": [
+      "(^|/)WEB-INF/",
+      "(^|/)META-INF/",
+      "(^|/)CVS/",
+      "(^|/)\\.clover/",
+      "(^|/)forum/include/",
+      "\\.drhlbak$",
+      "\\.class$",
+      "\\.java$",
+      "^forum/index\\.jsp$",
+      "^forum/info\\.jsp$",
+      "^forum/register\\.jsp$"
+    ],
+    "horizontal_overrides": {
+      "user": "user2"
+    }
+  },
+  "repair": {
+    "enabled": true,
+    "output_dir": "repair/files",
+    "llm": {
+      "enabled": true,
+      "provider": "openai_compatible",
+      "base_url": "https://api.deepseek.com/v1",
+      "model": "deepseek-v4-flash",
+      "api_key": "your-api-key",
+      "temperature": 0.1,
+      "timeout": 120,
+      "response_format_json": true,
+      "input_cost_per_million_tokens": 0,
+      "output_cost_per_million_tokens": 0
+    },
+    "validation": {
+      "max_attempts": 3,
+      "syntax_check": true,
+      "syntax_timeout": 30,
+      "temporary_apply_to_source": true,
+      "javac": "javac",
+      "classes_dir": "WEB-INF/classes",
+      "tomcat_home": "D:/tomcat9",
+      "reload_strategy": "touch_web_xml",
+      "reload_wait": 8.0
+    }
+  }
+}
+

@@ -1,0 +1,27 @@
+﻿[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "drhl"
+version = "1.0.0"
+description = "End-to-end access-control vulnerability detection and repair pipeline"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+  "requests>=2.28",
+  "selenium>=4.10",
+  "tree-sitter>=0.25,<0.26",
+  "tree-sitter-php>=0.24,<0.25",
+  "tree-sitter-java>=0.23,<0.24",
+  "tree-sitter-go>=0.23,<0.24"
+]
+
+[project.scripts]
+drhl = "drhl.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["drhl*"]
+exclude = ["DRHL_backup*"]
+
+

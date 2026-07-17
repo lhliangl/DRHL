@@ -1,0 +1,236 @@
+{
+  "run_dir": "../runs/jspblog",
+  "target": {
+    "base_url": "http://localhost:8080/blog/",
+    "source_root": "D:/tomcat9/webapps/blog",
+    "language": "jsp",
+    "public_extensions": [
+      ".jsp"
+    ]
+  },
+  "database": {
+    "driver": "mysql",
+    "host": "127.0.0.1",
+    "port": 3306,
+    "database": "portal",
+    "user": "root",
+    "password": "root",
+    "mysqldump": "D:/phpStudy/PHPTutorial/MySQL/bin/mysqldump.exe",
+    "mysql": "D:/phpStudy/PHPTutorial/MySQL/bin/mysql.exe",
+    "single_transaction": false
+  },
+  "crawl": {
+    "mode": "selenium",
+    "driver_path": "../chromedriver.exe",
+    "root_url": "index.jsp",
+    "scope_path": "/blog/",
+    "strategy": "dfs",
+    "headless": true,
+    "max_pages": 120,
+    "delay": 0.2,
+    "page_timeout": 20,
+    "exclude_url_markers": [
+      "logout",
+      "logoff",
+      "WEB-INF",
+      "META-INF",
+      "CVS"
+    ],
+    "secret_parameters": [
+      "password",
+      "pw",
+      "passwd",
+      "pwd",
+      "token",
+      "csrf",
+      "_token"
+    ],
+    "skip_source_dirs": [
+      "WEB-INF",
+      "META-INF",
+      "CVS"
+    ],
+    "preserve_query_parameters": [
+      "headline",
+      "author",
+      "name"
+    ],
+    "redact_secret_parameters": false,
+    "execute_forms": true,
+    "execute_forms_limit_per_page": 20,
+    "execute_forms_wait_after": 0.2,
+    "form_values": {
+      "username": "admin",
+      "password": "admin",
+      "author": "drhl@example.test",
+      "name": "DRHL Tester",
+      "headline": "DRHL Test News",
+      "body": "DRHL generated body for access-control testing."
+    },
+    "roles": [
+      {
+        "name": "admin",
+        "kind": "admin",
+        "crawl_login": {
+          "steps": [
+            {
+              "name": "admin_login",
+              "url": "admin/index.jsp",
+              "post_url": "admin/index2.jsp",
+              "method": "POST",
+              "data": {
+                "username": "admin",
+                "password": "admin",
+                "Submit": "Submit",
+                "submit": "Submit"
+              },
+              "wait_after": 1,
+              "expect_cookies": [
+                "JSESSIONID"
+              ],
+              "forbid_text": [
+                "Sorry, wrong password"
+              ],
+              "seed_urls": [
+                "admin/admin.jsp",
+                "admin/addnews.jsp",
+                "admin/addnews2.jsp",
+                "admin/adduser.jsp",
+                "admin/adduser2.jsp",
+                "admin/editnews.jsp",
+                "admin/editnews2.jsp?headline=DRHL%20Test%20News&body=DRHL%20Edited%20Body",
+                "admin/index.jsp",
+                "index.jsp"
+              ]
+            }
+          ]
+        },
+        "http_login": {
+          "steps": [
+            {
+              "name": "admin_login",
+              "url": "admin/index.jsp",
+              "post_url": "admin/index2.jsp",
+              "method": "POST",
+              "data": {
+                "username": "admin",
+                "password": "admin",
+                "Submit": "Submit",
+                "submit": "Submit"
+              },
+              "expect_cookies": [
+                "JSESSIONID"
+              ],
+              "forbid_text": [
+                "Sorry, wrong password"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "name": "visitor",
+        "kind": "visitor"
+      }
+    ]
+  },
+  "analysis": {
+    "source_analysis": {
+      "save_cst": false,
+      "identity_parameters": [
+        "author",
+        "username"
+      ],
+      "access_control_database_fields": [
+        "user.author",
+        "user.name"
+      ],
+      "validated_function_name_patterns": []
+    },
+    "active_detection": true,
+    "identity_parameters": [
+      "author",
+      "name",
+      "username"
+    ],
+    "horizontal_exclude_patterns": [
+      "^admin/"
+    ],
+    "oracle": {
+      "timeout": 10,
+      "denied_statuses": [
+        401,
+        403
+      ],
+      "login_url_markers": [
+        "admin/index.jsp"
+      ],
+      "deny_markers": [
+        "Sorry, wrong password"
+      ],
+      "extract_source_deny_markers": true,
+      "public_page_patterns": [
+        "^index\\.jsp(?:\\?|$)",
+        "^admin/index\\.jsp(?:\\?|$)",
+        "^admin/index2\\.jsp(?:\\?|$)",
+        "admin/index2",
+        "admin/index"
+      ],
+      "static_only_confirm_patterns": [
+        "^admin/(?:admin|addnews|addnews2|adduser|adduser2|editnews|editnews2)\\.jsp(?:\\?|$)"
+      ],
+      "confirm_get_read_patterns": [
+        "^admin/(?:admin|addnews|adduser|editnews)\\.jsp(?:\\?|$)"
+      ]
+    },
+    "attacker_roles": {
+      "admin_only": [
+        "visitor"
+      ],
+      "only_admin": [
+        "visitor"
+      ],
+      "static_only": [
+        "visitor"
+      ],
+      "authenticated_only": [
+        "visitor"
+      ],
+      "horizontal": []
+    },
+    "static_exclude_patterns": [
+      "(^|/)WEB-INF/",
+      "(^|/)META-INF/",
+      "(^|/)CVS/",
+      "\\.drhlbak$",
+      "^admin/auth\\.jsp$",
+      "\\.drhlbak_auth$",
+      "^admin/index2\\.jsp(?:\\?|$)",
+      "admin/index2",
+      "admin/index"
+    ]
+  },
+  "repair": {
+    "enabled": true,
+    "output_dir": "repair/files",
+    "llm": {
+      "enabled": true,
+      "provider": "openai_compatible",
+      "base_url": "https://api.deepseek.com/v1",
+      "model": "deepseek-v4-flash",
+      "api_key": "your-api-key",
+      "temperature": 0.1,
+      "timeout": 120,
+      "response_format_json": true,
+      "input_cost_per_million_tokens": 0,
+      "output_cost_per_million_tokens": 0
+    },
+    "validation": {
+      "max_attempts": 3,
+      "syntax_check": false,
+      "syntax_timeout": 30,
+      "temporary_apply_to_source": true
+    }
+  }
+}
+

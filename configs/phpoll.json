@@ -1,0 +1,212 @@
+{
+  "run_dir": "../runs/phpoll",
+  "target": {
+    "base_url": "http://localhost/phpoll/polls/test/",
+    "source_root": "D:/phpStudy/PHPTutorial/WWW/phpoll/polls/test",
+    "language": "php",
+    "public_extensions": [
+      ".php"
+    ]
+  },
+  "database": {
+    "driver": "mysql",
+    "host": "127.0.0.1",
+    "port": 3306,
+    "database": "phpoll",
+    "user": "root",
+    "password": "root",
+    "mysqldump": "D:/phpStudy/PHPTutorial/MySQL/bin/mysqldump.exe",
+    "mysql": "D:/phpStudy/PHPTutorial/MySQL/bin/mysql.exe",
+    "single_transaction": false
+  },
+  "crawl": {
+    "mode": "selenium",
+    "driver_path": "../chromedriver.exe",
+    "root_url": "phpoll.php",
+    "scope_path": "/phpoll/polls/test/",
+    "strategy": "dfs",
+    "headless": true,
+    "max_pages": 200,
+    "delay": 0.2,
+    "page_timeout": 20,
+    "exclude_url_markers": [
+      "logout",
+      "logoff"
+    ],
+    "secret_parameters": [
+      "password",
+      "pw",
+      "passwd",
+      "pwd",
+      "token",
+      "csrf",
+      "_token"
+    ],
+    "skip_source_dirs": [
+      "img",
+      "js",
+      "css",
+      "main_img",
+      "voto",
+      "images",
+      "templates",
+      "votanti",
+      "cookies",
+      "include",
+      "install",
+      "lang"
+    ],
+    "preserve_query_parameters": [],
+    "redact_secret_parameters": false,
+    "execute_forms": true,
+    "execute_forms_limit_per_page": 20,
+    "execute_forms_wait_after": 0.2,
+    "roles": [
+      {
+        "name": "admin",
+        "kind": "admin",
+        "crawl_login": {
+          "steps": [
+            {
+              "name": "admin_cookie_login",
+              "url": "admin/config_editor.php",
+              "post_url": "admin/elabora_cookie.php",
+              "method": "POST",
+              "data": {
+                "log": "admin3",
+                "pw": "123456"
+              },
+              "wait_after": 1,
+              "expect_cookies": [
+                "phpoll_test_login",
+                "phpoll_test_password"
+              ],
+              "seed_urls": [
+                "admin/index.php",
+                "admin/config_editor.php?language=2",
+                "admin/band_editor.php?language=2",
+                "admin/votanti.php?language=2",
+                "admin/risultati_config.php?language=2"
+              ]
+            }
+          ]
+        },
+        "http_login": {
+          "steps": [
+            {
+              "name": "admin_cookie_login",
+              "url": "admin/config_editor.php",
+              "post_url": "admin/elabora_cookie.php",
+              "method": "POST",
+              "data": {
+                "log": "admin3",
+                "pw": "123456"
+              },
+              "expect_cookies": [
+                "phpoll_test_login",
+                "phpoll_test_password"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "name": "visitor",
+        "kind": "visitor"
+      }
+    ],
+    "drop_query_parameters": [
+      "language",
+      "nuova_band"
+    ]
+  },
+  "analysis": {
+    "source_analysis": {
+      "save_cst": false,
+      "identity_parameters": [],
+      "access_control_database_fields": [
+        "phpoll_test_configurazione.login",
+        "phpoll_test_configurazione.password"
+      ],
+      "validated_function_name_patterns": [],
+      "validated_function_code_patterns": [
+        "\\b(?:login|password|cookie|setcookie|phpoll_.*_(?:login|password)|test_log|REMOTE_ADDR)\\b",
+        "\\$_COOKIE|\\$_SERVER\\[\\'REMOTE_ADDR\\'\\]"
+      ],
+      "termination_patterns": [
+        "\\s*=\\s*true"
+      ]
+    },
+    "active_detection": true,
+    "identity_parameters": [
+      "id",
+      "language",
+      "nuova_band"
+    ],
+    "horizontal_overrides": {
+      "id": "1"
+    },
+    "oracle": {
+      "timeout": 10,
+      "denied_statuses": [
+        401,
+        403
+      ],
+      "login_url_markers": [
+        "elabora_cookie.php"
+      ],
+      "deny_markers": [
+        "login",
+        "password",
+        "try a different way",
+        "errore"
+      ],
+      "extract_source_deny_markers": true,
+      "confirm_get_read": true,
+      "static_only_confirm_patterns": [
+        "^admin/index\\.php$",
+        "^admin/config_editor\\.php$",
+        "^admin/band_editor\\.php$",
+        "^admin/votanti\\.php$",
+        "^admin/risultati_config\\.php$"
+      ],
+      "public_page_patterns": [
+        "^admin/risultati_config\\.php(?:\\?|$)",
+        "^phpoll\\.php$",
+        "^risultati\\.php$",
+        "^cookies/(?:elabora_voto|elabora_voto_mail|elabora_voto_new|setta_cookie|risultati_perc)\\.php",
+        "^admin/index\\.php(?:\\?|$)"
+      ]
+    },
+    "force_static_pages": [
+      "admin/config_editor.php",
+      "admin/band_editor.php",
+      "admin/votanti.php",
+      "admin/risultati_config.php"
+    ]
+  },
+  "repair": {
+    "enabled": true,
+    "output_dir": "repair/files",
+    "llm": {
+      "enabled": true,
+      "provider": "openai_compatible",
+      "base_url": "https://api.deepseek.com/v1",
+      "model": "deepseek-v4-flash",
+      "api_key": "your-api-key",
+      "temperature": 0.1,
+      "timeout": 120,
+      "response_format_json": true,
+      "input_cost_per_million_tokens": 0,
+      "output_cost_per_million_tokens": 0
+    },
+    "validation": {
+      "max_attempts": 3,
+      "syntax_check": true,
+      "php_binary": "D:/phpStudy/PHPTutorial/php/php-5.2.17/php.exe",
+      "syntax_timeout": 30,
+      "temporary_apply_to_source": true
+    }
+  }
+}
+

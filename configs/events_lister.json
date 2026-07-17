@@ -1,0 +1,147 @@
+{
+  "run_dir": "../runs/events_lister",
+  "target": {
+    "base_url": "http://localhost/events_lister/",
+    "source_root": "D:/phpStudy/PHPTutorial/WWW/events_lister",
+    "language": "php",
+    "public_extensions": [
+      ".php"
+    ]
+  },
+  "database": {
+    "driver": "mysql",
+    "host": "127.0.0.1",
+    "port": 3306,
+    "database": "events_lister",
+    "user": "root",
+    "password": "root",
+    "mysqldump": "D:/phpStudy/PHPTutorial/MySQL/bin/mysqldump.exe",
+    "mysql": "D:/phpStudy/PHPTutorial/MySQL/bin/mysql.exe",
+    "single_transaction": false
+  },
+  "crawl": {
+    "mode": "selenium",
+    "driver_path": "../chromedriver.exe",
+    "root_url": "http://localhost/events_lister/index.php",
+    "scope_path": "/events_lister/",
+    "strategy": "dfs",
+    "headless": true,
+    "max_pages": 300,
+    "delay": 0.2,
+    "page_timeout": 20,
+    "exclude_url_markers": [
+      "logout",
+      "logoff",
+      "setup.php"
+    ],
+    "secret_parameters": [
+      "password",
+      "pword",
+      "passwd",
+      "pwd",
+      "token",
+      "csrf",
+      "_token"
+    ],
+    "skip_source_dirs": [
+      "vendor",
+      "node_modules"
+    ],
+    "preserve_query_parameters": [
+      "status"
+    ],
+    "redact_secret_parameters": false,
+    "execute_forms": true,
+    "execute_forms_limit_per_page": 20,
+    "execute_forms_wait_after": 0.2,
+    "roles": [
+      {
+        "name": "admin",
+        "kind": "admin",
+        "crawl_login": {
+          "url": "admin/login.php",
+          "fields": {
+            "input[name='username']": "admin@qq.com",
+            "input[name='password']": "123456"
+          },
+          "submit": "input[name='submitBtn']",
+          "wait_after": 1,
+          "seed_urls": [
+            "admin/index.php"
+          ]
+        },
+        "http_login": {
+          "url": "admin/login.php",
+          "method": "POST",
+          "data": {
+            "username": "admin@qq.com",
+            "password": "123456",
+            "submitBtn": "Login"
+          }
+        }
+      },
+      {
+        "name": "visitor",
+        "kind": "visitor"
+      }
+    ]
+  },
+  "analysis": {
+    "source_analysis": {
+      "save_cst": false,
+      "identity_parameters": [
+        "ud_id"
+      ],
+      "access_control_database_fields": [
+        "admin.id",
+        "admin.uname"
+      ]
+    },
+    "active_detection": true,
+    "identity_parameters": [
+      "id",
+      "ud_id"
+    ],
+    "horizontal_overrides": {
+      "id": "48",
+      "ud_id": "48"
+    },
+    "oracle": {
+      "timeout": 10,
+      "denied_statuses": [
+        401,
+        403
+      ],
+      "login_url_markers": [
+        "admin/login.php",
+        "login.php"
+      ],
+      "deny_markers": [],
+      "extract_source_deny_markers": true
+    }
+  },
+  "repair": {
+    "enabled": true,
+    "output_dir": "repair/files",
+    "llm": {
+      "enabled": true,
+      "provider": "openai_compatible",
+      "base_url": "https://api.deepseek.com/v1",
+      "model": "deepseek-v4-flash",
+      "api_key": "your-api-key",
+      "temperature": 0.1,
+      "timeout": 120,
+      "response_format_json": true,
+      "input_cost_per_million_tokens": 0,
+      "output_cost_per_million_tokens": 0
+    },
+    "validation": {
+      "max_attempts": 3,
+      "syntax_check": true,
+      "php_binary": "D:/phpStudy/PHPTutorial/php/php-5.2.17/php.exe",
+      "syntax_timeout": 30,
+      "temporary_apply_to_source": true
+    }
+  }
+}
+

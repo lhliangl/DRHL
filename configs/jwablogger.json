@@ -1,0 +1,496 @@
+{
+  "run_dir": "../runs/jwablogger",
+  "target": {
+    "base_url": "http://localhost:8080/jwablogger/",
+    "source_root": "D:/tomcat9/webapps/jwablogger",
+    "language": "jsp",
+    "public_extensions": [
+      ".jsp"
+    ]
+  },
+  "database": {
+    "driver": "mysql",
+    "host": "127.0.0.1",
+    "port": 3306,
+    "database": "jwablogger",
+    "user": "root",
+    "password": "root",
+    "mysqldump": "D:/phpStudy/PHPTutorial/MySQL/bin/mysqldump.exe",
+    "mysql": "D:/phpStudy/PHPTutorial/MySQL/bin/mysql.exe",
+    "single_transaction": false
+  },
+  "crawl": {
+    "mode": "selenium",
+    "driver_path": "../chromedriver.exe",
+    "root_url": "blogger",
+    "scope_path": "/jwablogger/",
+    "strategy": "dfs",
+    "headless": true,
+    "max_pages": 300,
+    "delay": 0.2,
+    "page_timeout": 20,
+    "exclude_url_markers": [
+      "logout",
+      "logoff",
+      "WEB-INF",
+      "META-INF",
+      ".clover",
+      "coverage-report",
+      "/java/",
+      "/src/"
+    ],
+    "exclude_form_markers": [
+      "blogger/login",
+      "blogger/logout",
+      "blogger/setAutoLogin"
+    ],
+    "secret_parameters": [
+      "password",
+      "password2",
+      "pw",
+      "passwd",
+      "pwd",
+      "token",
+      "csrf",
+      "_token"
+    ],
+    "skip_source_dirs": [
+      ".clover",
+      "java/jwaBlogger/src/jwaBlogger/instrumented",
+      "WEB-INF/classes/jwaBlogger/instrumented",
+      "WEB-INF/lib",
+      "images",
+      "css",
+      "javascript",
+      "META-INF"
+    ],
+    "preserve_query_parameters": [
+      "c",
+      "entryId",
+      "commentId",
+      "blogEntryId"
+    ],
+    "drop_query_parameters": [
+      "page",
+      "pageSize",
+      "ajax"
+    ],
+    "redact_secret_parameters": false,
+    "execute_forms": true,
+    "execute_forms_limit_per_page": 20,
+    "execute_forms_wait_after": 0.2,
+    "form_values": {
+      "username": "admin",
+      "password": "admin",
+      "password2": "admin",
+      "firstName": "DRHL",
+      "lastName": "Tester",
+      "email": "drhl@example.test",
+      "title": "DRHL Test Entry",
+      "tags": "drhl security",
+      "description": "DRHL generated entry for access-control testing.",
+      "externalUrl": "http://example.test/drhl",
+      "blogText": "DRHL generated blog body for access-control testing.",
+      "commentText": "DRHL generated comment for access-control testing.",
+      "author": "DRHL Tester",
+      "captchaAnswer": "test"
+    },
+    "roles": [
+      {
+        "name": "admin",
+        "kind": "admin",
+        "crawl_login": {
+          "steps": [
+            {
+              "name": "blogger_login",
+              "url": "blogger",
+              "post_url": "blogger/login",
+              "method": "POST",
+              "data": {
+                "username": "admin",
+                "password": "admin"
+              },
+              "wait_after": 1,
+              "expect_cookies": [
+                "JSESSIONID"
+              ],
+              "forbid_text": [
+                "Username/password is not a valid login combination",
+                "Password can not be empty"
+              ],
+              "seed_urls": [
+                "blogger",
+                "blogger?c=entry",
+                "blogger?c=register",
+                "blogger/entries?c=fresh",
+                "blogger/entries?c=popular",
+                "blogger/entries?c=voting",
+                "blogger/entries?c=activity",
+                "blogger/search?searchString='admin'&author=y"
+              ]
+            }
+          ]
+        },
+        "http_login": {
+          "steps": [
+            {
+              "name": "blogger_login",
+              "url": "blogger",
+              "post_url": "blogger/login",
+              "method": "POST",
+              "data": {
+                "username": "admin",
+                "password": "admin"
+              },
+              "expect_cookies": [
+                "JSESSIONID"
+              ],
+              "forbid_text": [
+                "Username/password is not a valid login combination",
+                "Password can not be empty"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "name": "user1",
+        "kind": "user",
+        "crawl_login": {
+          "steps": [
+            {
+              "name": "blogger_login",
+              "url": "blogger",
+              "post_url": "blogger/login",
+              "method": "POST",
+              "data": {
+                "username": "user1",
+                "password": "123456"
+              },
+              "wait_after": 1,
+              "expect_cookies": [
+                "JSESSIONID"
+              ],
+              "forbid_text": [
+                "Username/password is not a valid login combination",
+                "Password can not be empty"
+              ],
+              "seed_urls": [
+                "blogger",
+                "blogger?c=entry",
+                "blogger?c=register",
+                "blogger/entries?c=fresh",
+                "blogger/search?searchString='user1'&author=y"
+              ]
+            }
+          ]
+        },
+        "http_login": {
+          "steps": [
+            {
+              "name": "blogger_login",
+              "url": "blogger",
+              "post_url": "blogger/login",
+              "method": "POST",
+              "data": {
+                "username": "user1",
+                "password": "123456"
+              },
+              "expect_cookies": [
+                "JSESSIONID"
+              ],
+              "forbid_text": [
+                "Username/password is not a valid login combination",
+                "Password can not be empty"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "name": "user2",
+        "kind": "user",
+        "crawl_login": {
+          "steps": [
+            {
+              "name": "blogger_login",
+              "url": "blogger",
+              "post_url": "blogger/login",
+              "method": "POST",
+              "data": {
+                "username": "user2",
+                "password": "123456"
+              },
+              "wait_after": 1,
+              "expect_cookies": [
+                "JSESSIONID"
+              ],
+              "forbid_text": [
+                "Username/password is not a valid login combination",
+                "Password can not be empty"
+              ],
+              "seed_urls": [
+                "blogger",
+                "blogger?c=entry",
+                "blogger?c=register",
+                "blogger/entries?c=fresh",
+                "blogger/search?searchString='user2'&author=y"
+              ]
+            }
+          ]
+        },
+        "http_login": {
+          "steps": [
+            {
+              "name": "blogger_login",
+              "url": "blogger",
+              "post_url": "blogger/login",
+              "method": "POST",
+              "data": {
+                "username": "user2",
+                "password": "123456"
+              },
+              "expect_cookies": [
+                "JSESSIONID"
+              ],
+              "forbid_text": [
+                "Username/password is not a valid login combination",
+                "Password can not be empty"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "name": "visitor",
+        "kind": "visitor"
+      }
+    ],
+    "exclude_url_patterns": [
+      "(^|/)blogger/feed/"
+    ],
+    "deduplicate_url_patterns": [
+      {
+        "pattern": "(^|/)blogger/viewEntry/[0-9]+/[^/?#]+\\.html$",
+        "key": "blogger/viewEntry/{entry}"
+      },
+      {
+        "pattern": "(^|/)blogger/viewEntry/[0-9]+/[^/?#]+\\.html\\?c=entry$",
+        "key": "blogger/viewEntry/{entry}?c=entry"
+      }
+    ],
+    "ignore_form_parameters": [
+      "wysiwyg",
+      "textarea"
+    ],
+    "exclude_submit_names": [
+      "wysiwyg",
+      "textarea"
+    ],
+    "exclude_submit_value_markers": [
+      "Switch to WYSIWYG",
+      "Switch to Textarea"
+    ],
+    "exclude_url_patterns_by_role": {
+      "visitor": [
+        "(^|/)blogger/viewEntry/"
+      ]
+    }
+  },
+  "analysis": {
+    "source_analysis": {
+      "save_cst": false,
+      "identity_parameters": [
+        "username",
+        "author"
+      ],
+      "access_control_database_fields": [
+        "users.username",
+        "users.role",
+        "users.verified",
+        "users.trusted",
+        "blog_entry.author",
+        "blog_entry_comment.author"
+      ],
+      "validated_function_name_patterns": [
+        "getRemoteUser",
+        "isUserInRole",
+        "validateEntry",
+        "validateLogin",
+        "login",
+        "autoLogin",
+        "validateRegister"
+      ],
+      "access_control_keywords": [
+        "getRemoteUser",
+        "isUserInRole",
+        "jwaRemoteUser",
+        "roleMap",
+        "administrator",
+        "verified",
+        "trusted",
+        "remoteUser",
+        "username",
+        "author"
+      ]
+    },
+    "active_detection": true,
+    "identity_parameters": [
+      "username",
+      "author",
+      "entryId",
+      "blogEntryId",
+      "commentId"
+    ],
+    "horizontal_overrides": {
+      "username": "user2",
+      "author": "user2"
+    },
+    "horizontal_exclude_patterns": [
+      "^blogger(?:\\?|$)",
+      "^blogger/entries(?:\\?|$)",
+      "^blogger/search(?:\\?|$)",
+      "^blogger/feed/",
+      "^blogger/saveComment(?:\\?|$)",
+      "^index\\.jsp$"
+    ],
+    "oracle": {
+      "timeout": 10,
+      "denied_statuses": [
+        401,
+        403
+      ],
+      "login_url_markers": [
+        "blogger/login"
+      ],
+      "deny_markers": [
+        "Must be logged in",
+        "Username/password is not a valid login combination",
+        "Password can not be empty",
+        "Login to post a comment"
+      ],
+      "extract_source_deny_markers": true,
+      "invalid_resource_markers": [
+        "Searching for something?"
+      ],
+      "public_page_patterns": [
+        "^index\\.jsp(?:\\?|$)",
+        "^blogger(?:\\?|$)",
+        "^blogger/entries(?:\\?|$)",
+        "^blogger/search(?:\\?|$)",
+        "^blogger/feed/",
+        "^blogger/register(?:\\?|$)",
+        "^blogger/login(?:\\?|$)",
+        "^blogger/saveComment(?:\\?|$)",
+        "^blogger/voteEntry(?:\\?|$)",
+        "^blogger/voteComment(?:\\?|$)"
+      ],
+      "authenticated_public_page_patterns": [
+        "^blogger\\?c=register(?:&|$)",
+        "^blogger/setAutoLogin(?:\\?|$)",
+        "^blogger/logout(?:\\?|$)"
+      ],
+      "confirm_get_read_patterns": [
+        "^blogger(?:\\?|$)",
+        "^blogger/entries(?:\\?|$)",
+        "^blogger/search(?:\\?|$)",
+        "^blogger/feed/"
+      ],
+      "write_success_redirect_is_vulnerable": true,
+      "authorized_success_redirect_patterns": [
+        "^blogger(?:\\?|$)",
+        "^blogger/entries(?:\\?|$)",
+        "^blogger/viewEntry/"
+      ],
+      "write_success_redirect_patterns": [
+        "^blogger(?:\\?|$)",
+        "^blogger/entries(?:\\?|$)",
+        "^blogger/viewEntry/"
+      ],
+      "login_form_denial": false,
+      "protected_content_markers": [
+        {
+          "pattern": "^blogger/viewEntry/[0-9]+/([^/?#]+)\\.html$",
+          "marker_group": 1
+        }
+      ]
+    },
+    "attacker_roles": {
+      "admin_only": [
+        "user1",
+        "user2",
+        "visitor"
+      ],
+      "only_admin": [
+        "user1",
+        "user2",
+        "visitor"
+      ],
+      "static_only": [
+        "visitor"
+      ],
+      "authenticated_only": [
+        "visitor"
+      ],
+      "horizontal": [
+        "user1",
+        "user2"
+      ]
+    },
+    "static_exclude_patterns": [
+      "(^|/)WEB-INF/",
+      "(^|/)META-INF/",
+      "(^|/)\\.clover/",
+      "(^|/)java/",
+      "(^|/)images/",
+      "(^|/)css/",
+      "(^|/)javascript/",
+      "\\.drhlbak$",
+      "\\.class$",
+      "\\.java$",
+      "^index\\.jsp$",
+      "^blogger/viewEntry/.+\\.html\\?c=entry$"
+    ]
+  },
+  "repair": {
+    "enabled": true,
+    "output_dir": "repair/files",
+    "llm": {
+      "enabled": true,
+      "provider": "openai_compatible",
+      "base_url": "https://api.deepseek.com/v1",
+      "model": "deepseek-v4-flash",
+      "api_key": "your-api-key",
+      "temperature": 0.1,
+      "timeout": 120,
+      "response_format_json": true,
+      "input_cost_per_million_tokens": 0,
+      "output_cost_per_million_tokens": 0
+    },
+    "validation": {
+      "max_attempts": 3,
+      "syntax_check": true,
+      "syntax_timeout": 30,
+      "temporary_apply_to_source": true,
+      "javac": "javac",
+      "classes_dir": "WEB-INF/classes",
+      "tomcat_home": "D:/tomcat9",
+      "reload_strategy": "touch_web_xml",
+      "reload_wait": 12.0,
+      "deployment_strategy": "bulk_compile",
+      "compile_workdir": "java/jwaBlogger/src/jwaBlogger",
+      "compile_sources": [
+        "*.java",
+        "webApp/*.java"
+      ],
+      "compile_timeout": 120
+    },
+    "source_map_overrides": [
+      {
+        "pattern": "^blogger/viewEntry/",
+        "source": "java/jwaBlogger/src/jwaBlogger/webApp/Blogger.java"
+      }
+    ]
+  }
+}
+

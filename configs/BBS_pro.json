@@ -1,0 +1,428 @@
+{
+  "run_dir": "../runs/BBS_pro",
+  "target": {
+    "base_url": "http://127.0.0.1:8000/",
+    "source_root": "D:/project/python/BBS_Pro",
+    "language": "python",
+    "public_extensions": []
+  },
+  "database": {
+    "driver": "sqlite",
+    "path": "D:/project/python/BBS_Pro/db.sqlite3",
+    "before_restore_command": [
+      "D:/Anaconda3/envs/drhl/python.exe",
+      "D:/project/python/DRHL/database_recovery/djangoblog_server_control.py",
+      "stop",
+      "--port",
+      "8000",
+      "--wait",
+      "20"
+    ],
+    "after_restore_command": [
+      "D:/Anaconda3/envs/drhl/python.exe",
+      "D:/project/python/DRHL/database_recovery/djangoblog_server_control.py",
+      "start",
+      "--app-root",
+      "D:/project/python/BBS_Pro",
+      "--python",
+      "D:/Anaconda3/envs/py27/python.exe",
+      "--host",
+      "127.0.0.1",
+      "--port",
+      "8000",
+      "--wait",
+      "25",
+      "--log-dir",
+      "D:/project/python/DRHL/database_recovery/BBS_pro"
+    ]
+  },
+  "crawl": {
+    "mode": "selenium",
+    "driver_path": "../chromedriver.exe",
+    "root_url": "",
+    "scope_path": "/",
+    "strategy": "dfs",
+    "headless": true,
+    "max_pages": 60,
+    "delay": 0.2,
+    "page_timeout": 20,
+    "exclude_url_markers": [
+      "logout",
+      "/statics/",
+      "/static/",
+      "favicon.ico",
+      "tinymce/",
+      "upload_imgs/",
+      "/admin/",
+      "admin/",
+      "#",
+      "javascript:",
+      "v3.bootcss.com",
+      "bootcss.com"
+    ],
+    "exclude_form_markers": [
+      "logout",
+      "admin/auth/",
+      "admin/password_change/",
+      "login/",
+      "register/",
+      "acc_login/",
+      "acc_register/",
+      "admin/"
+    ],
+    "secret_parameters": [
+      "password",
+      "csrfmiddlewaretoken",
+      "csrf",
+      "token"
+    ],
+    "skip_source_dirs": [
+      ".git",
+      ".idea",
+      "__pycache__",
+      ".pytest_cache",
+      "venv",
+      ".venv",
+      "env",
+      "migrations",
+      "statics",
+      "static",
+      "media",
+      "upload_imgs"
+    ],
+    "preserve_query_parameters": [],
+    "drop_query_parameters": [
+      "next",
+      "page",
+      "p",
+      "q",
+      "o",
+      "debug",
+      "language"
+    ],
+    "redact_secret_parameters": false,
+    "execute_forms": true,
+    "execute_forms_limit_per_page": 8,
+    "execute_forms_wait_after": 0.3,
+    "form_values": {
+      "username": "zhangsan",
+      "password": "123456",
+      "title": "DRHL BBS test title",
+      "summary": "DRHL generated summary for access-control testing.",
+      "content": "DRHL generated BBS content for access-control testing.",
+      "comment_content": "DRHL generated comment for access-control testing.",
+      "bbs_id": "14",
+      "category_select": "0"
+    },
+    "roles": [
+      {
+        "name": "admin",
+        "kind": "admin",
+        "crawl_login": {
+          "steps": [
+            {
+              "name": "bbs_admin_login",
+              "url": "login/",
+              "method": "FORM",
+              "fields": {
+                "input[name='username']": "admin",
+                "input[name='password']": "admin"
+              },
+              "submit": "input[type='submit']",
+              "wait_after": 1,
+              "expect_cookies": [
+                "sessionid"
+              ],
+              "forbid_text": [
+                "Wrong username or password"
+              ]
+            }
+          ],
+          "seed_urls": [
+            "",
+            "bbs_pub/",
+            "category/1/",
+            "detail/14/",
+            "login/",
+            "register/"
+          ]
+        },
+        "http_login": {
+          "steps": [
+            {
+              "name": "bbs_admin_login",
+              "url": "login/",
+              "method": "POST",
+              "post_url": "acc_login/",
+              "include_form_fields": false,
+              "allow_redirects": true,
+              "expect_cookies": [
+                "sessionid"
+              ],
+              "forbid_text": [
+                "Wrong username or password"
+              ],
+              "data": {
+                "username": "admin",
+                "password": "admin"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "visitor",
+        "kind": "visitor",
+        "crawl_login": {
+          "seed_urls": [
+            "",
+            "login/",
+            "register/",
+            "category/1/",
+            "detail/14/"
+          ]
+        },
+        "http_login": {}
+      }
+    ],
+    "path_parameter_patterns": [
+      {
+        "pattern": "^detail/\\d+/?$",
+        "replacement": "detail/p1/"
+      },
+      {
+        "pattern": "^category/\\d+/?$",
+        "replacement": "category/p1/"
+      }
+    ],
+    "deduplicate_url_patterns": [
+      {
+        "pattern": "^detail/(?:\\d+|p1)/?$",
+        "key": "bbs_detail"
+      },
+      {
+        "pattern": "^category/(?:\\d+|p1)/?$",
+        "key": "bbs_category"
+      }
+    ]
+  },
+  "analysis": {
+    "active_detection": true,
+    "identity_parameters": [
+      "id",
+      "user",
+      "user_id",
+      "author",
+      "author_id",
+      "bbs_id",
+      "cate_id",
+      "category",
+      "category_id",
+      "category_select"
+    ],
+    "attacker_roles": {
+      "admin_only": [
+        "visitor"
+      ],
+      "authenticated_only": [
+        "visitor"
+      ],
+      "vertical": [
+        "visitor"
+      ],
+      "horizontal": []
+    },
+    "horizontal_exclude_patterns": [
+      ".*"
+    ],
+    "static_exclude_patterns": [
+      "^manage\\.py$",
+      "^BBS_Pro/settings\\.py$",
+      "^.*?/migrations/.*$",
+      "^statics/",
+      "^templates/"
+    ],
+    "post_page_open_get_patterns": [
+      "^bbs_sub/$",
+      "^sub_comment/$"
+    ],
+    "source_analysis": {
+      "save_cst": false,
+      "identity_parameters": [
+        "user",
+        "user_id",
+        "author",
+        "author_id"
+      ],
+      "access_control_database_fields": [
+        "is_staff",
+        "is_superuser",
+        "is_active",
+        "user_id",
+        "author_id"
+      ],
+      "validated_function_name_patterns": [
+        "login_required",
+        "authenticate",
+        "login",
+        "logout",
+        "has_perm",
+        "is_staff",
+        "is_superuser",
+        "is_authenticated"
+      ],
+      "validated_function_code_patterns": [
+        "request\\.user",
+        "login_required",
+        "authenticate",
+        "auth\\.login",
+        "is_staff",
+        "is_superuser",
+        "is_authenticated",
+        "has_perm",
+        "HttpResponseRedirect\\('/login",
+        "Wrong username or password"
+      ]
+    },
+    "oracle": {
+      "timeout": 10,
+      "denied_statuses": [
+        401,
+        403,
+        404
+      ],
+      "login_url_markers": [
+        "/login/",
+        "login"
+      ],
+      "deny_markers": [
+        "Wrong username or password",
+        "Please <a href='/login/'>Login</a>",
+        "Please Login",
+        "Login</a>",
+        "Forbidden",
+        "Page not found",
+        "Not Found"
+      ],
+      "extract_source_deny_markers": true,
+      "invalid_resource_markers": [
+        "DoesNotExist",
+        "matching query does not exist",
+        "Page not found",
+        "Not Found"
+      ],
+      "public_page_patterns": [
+        "^$",
+        "^\\./$",
+        "^login/$",
+        "^register/$",
+        "^acc_login/$",
+        "^acc_register/$",
+        "^logout/$",
+        "^detail/[^/]+/$",
+        "^category/[^/]+/$"
+      ],
+      "authenticated_public_page_patterns": [],
+      "confirm_get_read_patterns": [
+        "^$",
+        "^\\./$",
+        "^detail/",
+        "^category/"
+      ],
+      "write_success_redirect_is_vulnerable": true,
+      "authorized_success_redirect_patterns": [
+        "^$",
+        "^\\./$",
+        "^detail/[^/]+/$"
+      ],
+      "write_success_redirect_patterns": [
+        "^$",
+        "^\\./$",
+        "^detail/[^/]+/$"
+      ]
+    }
+  },
+  "repair": {
+    "enabled": true,
+    "output_dir": "repair/files",
+    "llm": {
+      "enabled": true,
+      "provider": "openai_compatible",
+      "base_url": "https://api.deepseek.com/v1",
+      "model": "deepseek-v4-flash",
+      "api_key": "your-api-key",
+      "temperature": 0.1,
+      "timeout": 120,
+      "response_format_json": true,
+      "input_cost_per_million_tokens": 0,
+      "output_cost_per_million_tokens": 0
+    },
+    "validation": {
+      "max_attempts": 3,
+      "syntax_check": true,
+      "syntax_timeout": 30,
+      "temporary_apply_to_source": true,
+      "python_binary": "D:/Anaconda3/envs/py27/python.exe",
+      "reload_command": [
+        "D:/Anaconda3/envs/drhl/python.exe",
+        "D:/project/python/DRHL/database_recovery/djangoblog_server_control.py",
+        "restart",
+        "--app-root",
+        "D:/project/python/BBS_Pro",
+        "--python",
+        "D:/Anaconda3/envs/py27/python.exe",
+        "--host",
+        "127.0.0.1",
+        "--port",
+        "8000",
+        "--wait",
+        "25",
+        "--log-dir",
+        "D:/project/python/DRHL/database_recovery/BBS_pro"
+      ]
+    },
+    "source_map_overrides": [
+      {
+        "pattern": "^login/$",
+        "source": "app01/views.py"
+      },
+      {
+        "pattern": "^logout/$",
+        "source": "app01/views.py"
+      },
+      {
+        "pattern": "^register/$",
+        "source": "app01/views.py"
+      },
+      {
+        "pattern": "^acc_login/$",
+        "source": "app01/views.py"
+      },
+      {
+        "pattern": "^acc_register/$",
+        "source": "app01/views.py"
+      },
+      {
+        "pattern": "^detail/[^/]+/$",
+        "source": "app01/views.py"
+      },
+      {
+        "pattern": "^category/[^/]+/$",
+        "source": "app01/views.py"
+      },
+      {
+        "pattern": "^sub_comment/$",
+        "source": "app01/views.py"
+      },
+      {
+        "pattern": "^bbs_pub/$",
+        "source": "app01/views.py"
+      },
+      {
+        "pattern": "^bbs_sub/$",
+        "source": "app01/views.py"
+      }
+    ],
+    "page_repair_guidance": []
+  }
+}
