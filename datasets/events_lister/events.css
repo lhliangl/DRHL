@@ -1,0 +1,8 @@
+body, p, th, td {font-family: Verdana, Arial, Helvetica, sans-serif; font-size:10pt;  }
+h1 {font-family: Verdana, Arial, Helvetica, sans-serif; font-size:16pt; }
+h2 {font-family: Verdana, Arial, Helvetica, sans-serif; font-size:12pt; line-height:14pt; margin-top:1px; margin-bottom:1px; }
+h3 {font-family: Verdana, Arial, Helvetica, sans-serif; font-size:10pt; }
+.event_name {font-family: Verdana, Arial, Helvetica, sans-serif; font-size:10pt; font-weight:bold; }
+.small {font-size:8pt; }
+.main_area {width:400px;  margin-left:auto; margin-right:auto;}
+.separator {width:400px; margin-top:10px; margin-bottom:15px; margin-left:1px; border-bottom-width:1px; border-bottom-color:#000000;  border-bottom-style:solid; }

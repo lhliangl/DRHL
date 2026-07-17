@@ -1,0 +1,12 @@
+body, p, th, td {font-family: Verdana, Arial, Helvetica, sans-serif; font-size:10pt;  }
+h1 {font-family: Verdana, Arial, Helvetica, sans-serif; font-size:16pt; }
+.small {font-size:8pt; }
+.optional {font-size:8pt; margin-left:10px; }
+.row_head {background-color:#99B9D6; text-align:left;}
+.row {background-color:#CCDCEB; text-align:left;}
+.input_table {background-color:#CCDCEB; text-align:left;}
+.error { color:#FF3300;}
+
+.text_field { width:400px;}
+.text_area { width:580px; padding:5px;}
+.separator {width:600px; margin-top:10px; margin-bottom:5px; border-bottom-width:1px; border-bottom-color:#CCDCEB;  border-bottom-style:solid; }

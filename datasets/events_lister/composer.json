@@ -1,0 +1,6 @@
+{
+  "require": {
+      "monolog/monolog": "1.2.*",
+      "nikic/php-parser": "^4.10"
+  }
+}
