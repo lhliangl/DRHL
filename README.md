@@ -46,7 +46,6 @@ drhl/
 configs/                 example application configurations
 database_recovery/       optional database baseline capture/restore helpers
 docs/                    additional notes and placeholder figures
-examples/                minimal configuration templates
 tests/                   unit and offline integration tests
 requirements.txt         pinned Python dependencies used in our environment
 pyproject.toml           package metadata and console entry point
