@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import hashlib
 import re
 from pathlib import Path
 from typing import Any, Iterable
@@ -7,286 +8,308 @@ from typing import Any, Iterable
 try:
     from tree_sitter import Language, Parser
     import tree_sitter_go
-except ImportError as exc:  # pragma: no cover - optional dependency fallback
+except ImportError as exc:  # pragma: no cover
     Language = Parser = None  # type: ignore[assignment]
     tree_sitter_go = None
     _IMPORT_ERROR = exc
 else:
     _IMPORT_ERROR = None
 
-
-AUTH_TOKEN_RE = re.compile(
-    r"\b(?:jwtauth|mustAuth|canAuth|authenticate|authorization|permission|privilege|"
-    r"role|admin|superadmin|supermod|moderator|owner|current_?user|ctxUser|ctxDomain|"
-    r"user_?id|domain_?id|is_superadmin|is_supermod|is_banned|banned_at|"
-    r"StatusForbidden|StatusUnauthorized|StatusSeeOther|http\.Error|http\.Redirect|"
-    r"forbidden|unauthori[sz]ed|denied|csrf|session)\b",
-    re.I,
+from .cst_semantic_analysis import (
+    ConditionRecord,
+    FileRecord,
+    FunctionCallRecord,
+    FunctionRecord,
+    end_line,
+    finalize_analysis,
+    line,
+    serialize_cst,
+    text,
+    walk,
+    walk_direct_control_region,
 )
-FUNCTION_NAME_SIGNAL = re.compile(
-    r"\b(?:must|can|check|is|has|require|ensure|verify|validate|auth|admin|mod).*(?:auth|role|admin|mod|permission|owner|user)?\b",
-    re.I,
-)
-# Collect ALL identifiers from code (not just known patterns)
-_IDENTIFIER_RE = re.compile(r"\b([A-Za-z_]\w{2,})\b")
-_COMMON_GO_KEYWORDS = {
-    "func", "return", "if", "else", "for", "range", "switch", "case", "default",
-    "break", "continue", "goto", "defer", "go", "select", "chan", "map",
-    "var", "const", "type", "struct", "interface", "package", "import",
-    "int", "string", "bool", "error", "byte", "rune", "float64", "float32",
-    "nil", "true", "false", "len", "cap", "make", "new", "append", "copy",
-    "delete", "close", "panic", "recover", "print", "println", "iota",
-    "this", "self", "the", "and", "not", "or", "is", "in", "to", "of",
-}
-# Method/field access: obj.Method() or obj.Field
-_METHOD_CALL_RE = re.compile(r"(?:(\w+)\s*\.\s*)?(\w+)\s*\(")
-_FIELD_ACCESS_RE = re.compile(r"(\w+)\s*\.\s*(\w+)(?!\s*\()")
-STRICT_ACCESS_FIELD_SIGNAL = re.compile(
-    r"\b(?:user_?id|userid|uid|owner_?id|author_?id|created_?by|creator_?id|"
-    r"member_?id|admin_?id|role|rank_?id|group_?id|usergroup|privilege|"
-    r"permission|is_?admin|staff|superuser)\b",
-    re.I,
-)
-DENY_OR_REDIRECT_RE = re.compile(
-    r"\b(?:StatusForbidden|StatusUnauthorized|StatusSeeOther|http\.Error|http\.Redirect|"
-    r"forbidden|unauthori[sz]ed|denied|panic)\b",
-    re.I,
-)
-PARAM_TOKEN_RE = STRICT_ACCESS_FIELD_SIGNAL
-FUNC_DECL_RE = re.compile(
-    r"(?m)^func\s+(?:\([^)]*\)\s*)?(?P<name>[A-Za-z_]\w*)\s*\([^)]*\)(?:\s*\([^)]*\)|\s+[A-Za-z_][\w\.\*\[\]]*)?\s*\{"
-)
-IF_OR_SWITCH_RE = re.compile(r"(?m)^\s*(?:if|switch)\s+(?P<condition>.*?)\s*\{")
-CALL_RE = re.compile(r"\b(?:[A-Za-z_]\w*\.)?[A-Za-z_]\w*\s*\(")
 
 
-def _parser() -> Any | None:
+FUNCTION_NODES = {"function_declaration", "method_declaration"}
+ACCESS_NODES = {"identifier", "selector_expression", "index_expression"}
+ASSIGNMENT_NODES = {"short_var_declaration", "assignment_statement", "var_spec"}
+STATEMENT_NODES = {"expression_statement", "return_statement"}
+SQL_START = re.compile(r"\b(?:SELECT|UPDATE|DELETE|INSERT)\b", re.I)
+SQL_TABLE = re.compile(r"\b(?:FROM|UPDATE|INTO|JOIN)\s+[`\"]?([A-Za-z_]\w*)", re.I)
+SQL_FIELD = re.compile(
+    r"(?:\bWHERE\b|\bAND\b|\bOR\b|,)\s*[`\"]?(?:[A-Za-z_]\w*[.`\"]+)?"
+    r"([A-Za-z_]\w*)[`\"]?\s*(?:=|!=|<>|<|>|LIKE|IN)\s*",
+    re.I,
+)
+DENIAL_CALL = re.compile(
+    r"(?:^|\.)(?:Error|Redirect|Abort|AbortWithStatus|AbortWithStatusJSON|Forbidden|"
+    r"Unauthorized|Panic|Fatal|Fatalf)$",
+    re.I,
+)
+ACCESS_DENIAL_TEXT = re.compile(
+    r"\b(?:access|permission|authentication|authorization)\s+(?:denied|required|failed)\b|"
+    r"\b(?:forbidden|unauthori[sz]ed|login|log[_ ]?in|sign[_ ]?in)\b",
+    re.I,
+)
+NON_PARAMETER_CALLS = {"append", "cap", "close", "copy", "delete", "len", "make", "new"}
+
+
+def _parser() -> Any:
     if _IMPORT_ERROR is not None or Language is None or Parser is None or tree_sitter_go is None:
-        return None
+        raise RuntimeError(
+            "Go source analysis requires tree-sitter and tree-sitter-go; run `pip install -e .`"
+        ) from _IMPORT_ERROR
     return Parser(Language(tree_sitter_go.language()))
-
-
-def _walk(node: Any) -> Iterable[Any]:
-    yield node
-    for child in getattr(node, "children", []):
-        yield from _walk(child)
-
-
-def _text(source: bytes, node: Any | None) -> str:
-    if node is None:
-        return ""
-    return source[node.start_byte:node.end_byte].decode("utf-8", errors="replace")
-
-
-def _line(node: Any) -> int:
-    return int(node.start_point[0]) + 1
-
-
-def _end_line(node: Any) -> int:
-    return int(node.end_point[0]) + 1
-
-
-def _serialize_cst(source: bytes, node: Any, depth: int = 0, max_depth: int = 80) -> dict[str, Any]:
-    item: dict[str, Any] = {
-        "type": node.type,
-        "start_line": _line(node),
-        "end_line": _end_line(node),
-        "start_byte": node.start_byte,
-        "end_byte": node.end_byte,
-        "named": bool(getattr(node, "is_named", False)),
-    }
-    if node.child_count == 0:
-        value = _text(source, node).strip()
-        if value:
-            item["text"] = value[:240]
-    elif depth < max_depth:
-        item["children"] = [_serialize_cst(source, child, depth + 1, max_depth) for child in node.children]
-    else:
-        item["children_truncated"] = node.child_count
-    return item
-
-
-def _tree_sitter_parse_errors(relative: str, source: bytes, tree: Any) -> list[dict[str, Any]]:
-    errors: list[dict[str, Any]] = []
-    for node in _walk(tree.root_node):
-        if node.type == "ERROR" or bool(getattr(node, "is_error", False)):
-            errors.append({
-                "path": relative,
-                "line": _line(node),
-                "message": f"tree-sitter-go parse error near: {_text(source, node)[:120]}",
-            })
-    return errors
 
 
 def _files(root: Path, skip_dirs: Iterable[str] | None = None) -> list[Path]:
     skipped = {str(item).casefold() for item in (skip_dirs or [])}
     result: list[Path] = []
     for path in root.rglob("*.go"):
-        if not path.is_file():
+        if not path.is_file() or path.name.endswith("_test.go"):
             continue
-        relative_parts = {part.casefold() for part in path.relative_to(root).parts[:-1]}
-        if relative_parts & skipped:
-            continue
-        if path.name.endswith("_test.go"):
+        if {part.casefold() for part in path.relative_to(root).parts[:-1]} & skipped:
             continue
         result.append(path.resolve())
     return sorted(result)
 
 
-def _relative(path: Path, root: Path) -> str:
-    return path.resolve().relative_to(root.resolve()).as_posix()
-
-
-def _is_orangeforum_source(root: Path) -> bool:
-    return (root / "views" / "auth.go").is_file() and (root / "models").is_dir()
-
-
-def _orangeforum_param_relevant(expression: str, name: str) -> bool:
-    folded_expr = str(expression or "").casefold()
-    folded_name = str(name or "").casefold()
-    allowed = {"ctxuserkey", "user_id", "issuperadmin", "issupermod"}
-    if folded_name in allowed or folded_expr in allowed:
+def _outer_access(node: Any) -> bool:
+    parent = node.parent
+    if parent is None:
         return True
-    return any(token in folded_expr for token in {"ctxuserkey", "claims[\"user_id\"]", "user.issuperadmin", "user.issupermod"})
+    if parent.type in {"selector_expression", "index_expression"}:
+        return False
+    if parent.type == "call_expression" and parent.child_by_field_name("function") == node:
+        return False
+    return True
 
 
+def _condition_parameters(source: bytes, node: Any | None) -> list[str]:
+    if node is None:
+        return []
+    result: list[str] = []
+    for child in walk(node):
+        if child.type in {"selector_expression", "index_expression"} and _outer_access(child):
+            result.append(text(source, child).strip())
+        elif child.type == "call_expression":
+            function = text(source, child.child_by_field_name("function")).strip()
+            if function and function.rsplit(".", 1)[-1].casefold() not in NON_PARAMETER_CALLS:
+                result.append(function)
+        elif child.type == "identifier" and _outer_access(child):
+            result.append(text(source, child).strip())
+    return list(dict.fromkeys(item for item in result if item))
 
-def _line_for_offset(source: str, offset: int) -> int:
-    return source.count("\n", 0, max(0, offset)) + 1
+
+def _direct_reference(source: bytes, node: Any | None) -> str | None:
+    if node is None:
+        return None
+    current = node
+    while current.type in {"expression_list", "parenthesized_expression"} and len(current.named_children) == 1:
+        current = current.named_children[0]
+    if current.type in ACCESS_NODES:
+        return text(source, current).strip()
+    return None
 
 
-def _end_line_for_span(source: str, start: int, end: int) -> int:
-    return _line_for_offset(source, max(start, end - 1))
-
-
-def _matching_brace(source: str, open_index: int) -> int:
-    depth = 0
-    in_string: str | None = None
-    escaped = False
-    i = open_index
-    while i < len(source):
-        ch = source[i]
-        if in_string:
-            if escaped:
-                escaped = False
-            elif ch == "\\" and in_string != "`":
-                escaped = True
-            elif ch == in_string:
-                in_string = None
-            i += 1
+def _assignment_pairs(source: bytes, root: Any) -> list[tuple[str, str]]:
+    pairs: list[tuple[str, str]] = []
+    for node in walk(root):
+        if node.type not in ASSIGNMENT_NODES:
             continue
-        if ch in {'"', "'", "`"}:
-            in_string = ch
-            i += 1
+        left = node.child_by_field_name("left") or node.child_by_field_name("name")
+        right = node.child_by_field_name("right") or node.child_by_field_name("value")
+        left_value = _direct_reference(source, left)
+        right_value = _direct_reference(source, right)
+        if left_value and right_value:
+            pairs.append((left_value, right_value))
+    return pairs
+
+
+def _database_relations(source: bytes, root: Any) -> dict[str, list[dict[str, Any]]]:
+    relations: dict[str, list[dict[str, Any]]] = {}
+    for node in walk(root):
+        if node.type != "call_expression":
             continue
-        if source.startswith("//", i):
-            newline = source.find("\n", i)
-            i = len(source) if newline == -1 else newline + 1
+        function = text(source, node.child_by_field_name("function")).strip()
+        arguments = node.child_by_field_name("arguments")
+        if arguments is None:
             continue
-        if source.startswith("/*", i):
-            end_comment = source.find("*/", i + 2)
-            i = len(source) if end_comment == -1 else end_comment + 2
+        named_args = list(arguments.named_children)
+        if not named_args:
             continue
-        if ch == "{":
-            depth += 1
-        elif ch == "}":
-            depth -= 1
-            if depth == 0:
-                return i + 1
-        i += 1
-    return len(source)
-
-
-def _block_from_match(source: str, match: re.Match[str]) -> tuple[int, int, str]:
-    open_index = source.find("{", match.start(), match.end() + 1)
-    if open_index < 0:
-        return match.start(), match.end(), match.group(0)
-    end = _matching_brace(source, open_index)
-    return match.start(), end, source[match.start():end]
-
-
-def _parameter_accesses(source: str) -> list[dict[str, Any]]:
-    """Collect ALL meaningful identifiers and expressions from source (full collection)."""
-    accesses: list[dict[str, Any]] = []
-    seen: set[str] = set()
-    # Method calls: obj.Method() or Method()
-    for match in _METHOD_CALL_RE.finditer(source):
-        obj, method = match.group(1), match.group(2)
-        if method.lower() in _COMMON_GO_KEYWORDS:
+        method = function.rsplit(".", 1)[-1].casefold()
+        if method == "where":
+            sql = text(source, named_args[0]).strip().strip('`"')
+            fields = [match.group(1) for match in SQL_FIELD.finditer("WHERE " + sql)]
+            values = [expr for arg in named_args[1:] for expr in _condition_parameters(source, arg)]
+            for field_name, expression in zip(fields, values):
+                relations.setdefault(expression, []).append(
+                    {
+                        "table": "",
+                        "field": field_name,
+                        "line": line(node),
+                        "start_line": line(node),
+                        "end_line": end_line(node),
+                        "code": text(source, node).strip(),
+                    }
+                )
             continue
-        full = f"{obj}.{method}" if obj else method
-        if full.lower() not in seen and len(method) >= 2:
-            seen.add(full.lower())
-            accesses.append({"name": method, "expression": full, "line": _line_for_offset(source, match.start())})
-    # Field accesses: obj.Field (not followed by parens)
-    for match in _FIELD_ACCESS_RE.finditer(source):
-        obj, field = match.group(1), match.group(2)
-        if field.lower() in _COMMON_GO_KEYWORDS or len(field) < 2:
+        if method not in {"query", "queryrow", "exec", "select", "get"}:
             continue
-        full = f"{obj}.{field}"
-        if full.lower() not in seen:
-            seen.add(full.lower())
-            accesses.append({"name": field, "expression": full, "line": _line_for_offset(source, match.start())})
-    # All identifiers (variables, struct fields, constants)
-    for match in _IDENTIFIER_RE.finditer(source):
-        ident = match.group(1)
-        if ident.lower() in _COMMON_GO_KEYWORDS or len(ident) < 3:
+        sql = text(source, named_args[0]).strip().strip('`"')
+        if not SQL_START.search(sql):
             continue
-        if ident.lower() not in seen:
-            seen.add(ident.lower())
-            accesses.append({"name": ident, "expression": ident, "line": _line_for_offset(source, match.start())})
-    return accesses
+        table_match = SQL_TABLE.search(sql)
+        table = table_match.group(1) if table_match else ""
+        fields = [match.group(1) for match in SQL_FIELD.finditer(sql)]
+        values = [expr for arg in named_args[1:] for expr in _condition_parameters(source, arg)]
+        for field_name, expression in zip(fields, values):
+            relations.setdefault(expression, []).append(
+                {
+                    "table": table,
+                    "field": field_name,
+                    "line": line(node),
+                    "start_line": line(node),
+                    "end_line": end_line(node),
+                    "code": text(source, node).strip(),
+                }
+            )
+    return relations
 
 
-def _parameter_relevant(name: str, identity_parameters: set[str], access_fields: set[str]) -> bool:
-    """Check if parameter name/expression is access-control relevant."""
-    folded = name.casefold()
-    if folded in identity_parameters or folded in access_fields:
-        return True
-    if STRICT_ACCESS_FIELD_SIGNAL.search(folded):
-        return True
-    # Go-specific identity patterns
-    if folded in {"ctxuserkey", "ctxdomain", "is_superadmin", "is_supermod", "is_banned",
-                   "banned_at", "userid", "domainid", "logout_at", "mustauth", "canauth",
-                   "getremoteuser", "isuserinrole", "context", "user", "domain",
-                   "issuperadmin", "issupermod", "comment.userid", "topic.userid"}:
-        return True
-    return False
+def _configured_match(patterns: list[str] | None, value: str) -> bool:
+    return any(re.search(pattern, value, re.I | re.S) for pattern in patterns or [])
 
 
+def _termination_kind(
+    code: str,
+    extra_patterns: list[str] | None,
+    context: str = "",
+) -> str | None:
+    if re.search(r"\b(?:StatusForbidden|StatusUnauthorized|StatusProxyAuthRequired)\b", code):
+        return "http_denial"
+    call_match = re.search(r"\b([A-Za-z_]\w*(?:\.[A-Za-z_]\w*)*)\s*\(", code)
+    if call_match and DENIAL_CALL.search(call_match.group(1)):
+        is_redirect = call_match.group(1).casefold().endswith("redirect")
+        explicit_denial_call = bool(
+            re.search(r"(?:^|\.)(?:Forbidden|Unauthorized|AbortWithStatus(?:JSON)?)$", call_match.group(1), re.I)
+        )
+        if explicit_denial_call or ACCESS_DENIAL_TEXT.search(code):
+            return "redirect" if is_redirect else "denial"
+    if _configured_match(extra_patterns, code):
+        return "configured_denial"
+    if _configured_match(extra_patterns, context) and (
+        re.match(r"\s*return\b", code, re.I)
+        or bool(call_match and DENIAL_CALL.search(call_match.group(1)))
+    ):
+        return "configured_denial"
+    return None
 
-def _field_evidence(text: str, names: Iterable[str], access_fields: set[str]) -> bool:
-    folded = text.casefold()
-    return bool(
-        STRICT_ACCESS_FIELD_SIGNAL.search(text)
-        or any(STRICT_ACCESS_FIELD_SIGNAL.search(name) for name in names)
-        or any(field and field in folded for field in access_fields)
+
+def _terminations(
+    source: bytes,
+    branch: Any | None,
+    extra_patterns: list[str] | None,
+    context: str = "",
+) -> list[dict[str, Any]]:
+    if branch is None:
+        return []
+    result: list[dict[str, Any]] = []
+    seen: set[tuple[int, int]] = set()
+    for node in walk_direct_control_region(
+        branch,
+        {"if_statement", "expression_switch_statement", "type_switch_statement"},
+    ):
+        if node.type not in STATEMENT_NODES:
+            continue
+        code = text(source, node).strip()
+        kind = _termination_kind(code, extra_patterns, context)
+        if not kind:
+            continue
+        key = (node.start_byte, node.end_byte)
+        if key in seen:
+            continue
+        seen.add(key)
+        result.append({"kind": kind, "line": line(node), "code": code})
+    return result
+
+
+def _function_parameters(source: bytes, node: Any) -> list[str]:
+    parameters = node.child_by_field_name("parameters")
+    if parameters is None:
+        return []
+    return [text(source, child).strip() for child in parameters.named_children if text(source, child).strip()]
+
+
+def _if_record(
+    source: bytes, relative: str, node: Any, termination_patterns: list[str] | None
+) -> ConditionRecord | None:
+    condition = node.child_by_field_name("condition")
+    consequence = node.child_by_field_name("consequence")
+    alternative = node.child_by_field_name("alternative")
+    branches = [branch for branch in (consequence, alternative) if branch is not None and branch.type != "if_statement"]
+    condition_code = text(source, condition).strip()
+    if not condition_code:
+        return None
+    return ConditionRecord(
+        path=relative,
+        condition=condition_code,
+        parameters=_condition_parameters(source, condition),
+        body="\n".join(text(source, branch).strip() for branch in branches),
+        terminations=[
+            term
+            for branch in branches
+            for term in _terminations(
+                source,
+                branch,
+                termination_patterns,
+                f"{condition_code}\n{text(source, branch)}",
+            )
+        ],
+        start_line=line(node),
+        end_line=end_line(node),
+        start_byte=node.start_byte,
+        end_byte=node.end_byte,
+        code=text(source, node).strip(),
     )
 
 
-def _deny_or_redirect_evidence(text: str, names: Iterable[str] = ()) -> bool:
-    joined = text + "\n" + "\n".join(names)
-    return bool(DENY_OR_REDIRECT_RE.search(joined))
-def _call_names(code: str) -> list[str]:
-    names = []
-    for match in CALL_RE.finditer(code):
-        name = match.group(0).strip()[:-1].strip()
-        if name in {"if", "switch", "for", "return"}:
+def _switch_records(
+    source: bytes, relative: str, node: Any, termination_patterns: list[str] | None
+) -> list[ConditionRecord]:
+    value = node.child_by_field_name("value")
+    value_code = text(source, value).strip()
+    result: list[ConditionRecord] = []
+    for case in node.named_children:
+        if case.type not in {"expression_case", "default_case"}:
             continue
-        names.append(name)
-    return sorted(set(names))
-
-
-def _serialize_line_tree(relative: str, lines: list[str]) -> dict[str, Any]:
-    return {
-        "type": "source_file",
-        "path": relative,
-        "children": [
-            {"type": "line", "start_line": index, "end_line": index, "text": line[:240]}
-            for index, line in enumerate(lines, 1)
-            if line.strip()
-        ],
-    }
+        case_values = case.named_children[0] if case.type == "expression_case" and case.named_children else None
+        case_code = text(source, case_values).strip() if case_values is not None else "default"
+        condition = f"{value_code} == {case_code}" if value_code else case_code
+        parameters = _condition_parameters(source, value)
+        if case_values is not None:
+            parameters.extend(_condition_parameters(source, case_values))
+        result.append(
+            ConditionRecord(
+                path=relative,
+                condition=condition,
+                parameters=list(dict.fromkeys(parameters)),
+                body=text(source, case).strip(),
+                terminations=_terminations(
+                    source,
+                    case,
+                    termination_patterns,
+                    f"{condition}\n{text(source, case)}",
+                ),
+                start_line=line(case),
+                end_line=end_line(case),
+                start_byte=case.start_byte,
+                end_byte=case.end_byte,
+                code=text(source, case).strip(),
+            )
+        )
+    return result
 
 
 def analyze_go_source(
@@ -299,196 +322,83 @@ def analyze_go_source(
     include_cst: bool = False,
     validated_function_name_patterns: list[str] | None = None,
     validated_function_code_patterns: list[str] | None = None,
+    termination_patterns: list[str] | None = None,
 ) -> dict[str, Any]:
-    del database_schema
-    source_root = Path(root).resolve()
-    orangeforum_strict = _is_orangeforum_source(source_root)
-    identities = {str(item).casefold() for item in (identity_parameters or [])}
-    access_fields = {str(item).split(".")[-1].strip().strip("`\"").casefold() for item in (access_control_database_fields or [])}
-    name_patterns = [re.compile(str(item), re.I) for item in (validated_function_name_patterns or [])]
-    code_patterns = [re.compile(str(item), re.I) for item in (validated_function_code_patterns or [])]
+    del identity_parameters, database_schema, validated_function_name_patterns, validated_function_code_patterns
     parser = _parser()
-
-    parse_errors: list[dict[str, Any]] = []
+    source_root = Path(root).resolve()
+    parsed_files: list[FileRecord] = []
     cst_files: list[dict[str, Any]] = []
-    candidate_parameters: list[dict[str, Any]] = []
-    parameters: list[dict[str, Any]] = []
-    candidate_functions: list[dict[str, Any]] = []
-    functions: list[dict[str, Any]] = []
-    snippets: list[dict[str, Any]] = []
+    parse_errors: list[dict[str, Any]] = []
 
-    # First pass: collect all data per file
-    file_data: list[dict[str, Any]] = []
     for path in _files(source_root, skip_dirs):
-        relative = _relative(path, source_root)
-        if orangeforum_strict and not relative.startswith("views/"):
-            continue
-        source_text = path.read_text(encoding="utf-8", errors="ignore")
-        source_bytes = source_text.encode("utf-8", errors="replace")
+        relative = path.relative_to(source_root).as_posix()
+        source = path.read_bytes()
+        tree = parser.parse(source)
+        if include_cst:
+            cst_files.append(
+                {
+                    "path": relative,
+                    "encoding": "utf-8",
+                    "size_bytes": len(source),
+                    "sha256": hashlib.sha256(source).hexdigest(),
+                    "has_error": bool(tree.root_node.has_error),
+                    "root": serialize_cst(source, tree.root_node),
+                }
+            )
+        for node in walk(tree.root_node):
+            if node.type == "ERROR" or bool(getattr(node, "is_error", False)):
+                parse_errors.append(
+                    {"path": relative, "line": line(node), "message": f"parse error near: {text(source, node)[:120]}"}
+                )
 
-        if parser is not None:
-            tree = parser.parse(source_bytes)
-            parse_errors.extend(_tree_sitter_parse_errors(relative, source_bytes, tree))
-            if include_cst:
-                cst_files.append({"path": relative, "parser": "tree-sitter-go", "root": _serialize_cst(source_bytes, tree.root_node)})
-
-        # Collect all parameter accesses (full collection)
-        file_params: list[dict[str, Any]] = []
-        for access in _parameter_accesses(source_text):
-            item = {"path": relative, "kind": "parameter", **access}
-            file_params.append(item)
-            candidate_parameters.append(item)
-
-        # Collect functions
-        file_funcs: list[dict[str, Any]] = []
-        for match in FUNC_DECL_RE.finditer(source_text):
-            start, end, code = _block_from_match(source_text, match)
-            name = match.group("name")
-            names = _call_names(code) + [name]
-            field_hit = _field_evidence(code, names, access_fields)
-            deny_hit = _deny_or_redirect_evidence(code, names)
-            configured_hit = any(pattern.search(name) for pattern in name_patterns) or any(pattern.search(code) for pattern in code_patterns)
-            item = {
-                "path": relative, "kind": "function", "name": name,
-                "start_line": _line_for_offset(source_text, start),
-                "end_line": _end_line_for_span(source_text, start, end),
-                "code": code, "names": names,
-                "field_hit": field_hit, "deny_hit": deny_hit,
-                "configured_hit": configured_hit,
-            }
-            file_funcs.append(item)
-            candidate_functions.append({k: v for k, v in item.items() if k not in ("names", "field_hit", "deny_hit", "configured_hit")})
-
-        # Collect conditions
-        file_conditions: list[dict[str, Any]] = []
-        for match in IF_OR_SWITCH_RE.finditer(source_text):
-            start, end, code = _block_from_match(source_text, match)
-            condition = match.group("condition").strip()
-            names = _call_names(code)
-            cond_params = [
-                access["expression"]
-                for access in _parameter_accesses(code)
-                if _parameter_relevant(str(access["name"]), identities, access_fields)
-            ]
-            field_hit = bool(cond_params) or _field_evidence(condition + "\n" + code, names, access_fields)
-            deny_hit = _deny_or_redirect_evidence(code, names)
-            file_conditions.append({
-                "path": relative, "condition": condition, "code": code,
-                "start_line": _line_for_offset(source_text, start),
-                "end_line": _end_line_for_span(source_text, start, end),
-                "names": names, "cond_params": cond_params,
-                "field_hit": field_hit, "deny_hit": deny_hit,
-            })
-
-        file_data.append({
-            "relative": relative, "params": file_params,
-            "funcs": file_funcs, "conditions": file_conditions,
-        })
-
-    # Second pass: validate parameters (DB field OR condition with termination)
-    validated_param_exprs: set[str] = set()
-    for fd in file_data:
-        for p in fd["params"]:
-            relevant = _orangeforum_param_relevant(str(p.get("expression")), str(p.get("name"))) if orangeforum_strict else _parameter_relevant(str(p["name"]), identities, access_fields)
-            if relevant:
-                validated_param_exprs.add(p["expression"])
-                parameters.append(p)
-        # Also validate params that appear in conditions with denial
-        for cond in fd["conditions"]:
-            if cond["deny_hit"]:
-                for access in _parameter_accesses(cond["code"]):
-                    relevant = _orangeforum_param_relevant(str(access.get("expression")), str(access.get("name"))) if orangeforum_strict else _parameter_relevant(str(access["name"]), identities, access_fields)
-                    if relevant:
-                        p_item = {"path": fd["relative"], "kind": "parameter", **access}
-                        if access["expression"] not in validated_param_exprs:
-                            validated_param_exprs.add(access["expression"])
-                            parameters.append(p_item)
-
-    # Third pass: validate functions (field+deny OR calls validated func) + recursive
-    validated_func_names: set[str] = set()
-    for fd in file_data:
-        for f in fd["funcs"]:
-            if orangeforum_strict:
-                if fd["relative"] == "views/auth.go" and f["name"] in {"mustAuth", "canAuth"}:
-                    validated_func_names.add(f["name"].casefold())
-                    functions.append({k: v for k, v in f.items() if k not in ("names", "field_hit", "deny_hit", "configured_hit")})
-                    snippets.append({"path": fd["relative"], "kind": "validation_function", "function": f["name"],
-                                     "start_line": f["start_line"], "end_line": f["end_line"], "code": f["code"]})
-                continue
-            if f["field_hit"] and f["deny_hit"]:
-                validated_func_names.add(f["name"].casefold())
-                functions.append({k: v for k, v in f.items() if k not in ("names", "field_hit", "deny_hit", "configured_hit")})
-                snippets.append({"path": fd["relative"], "kind": "validation_function", "function": f["name"],
-                                 "start_line": f["start_line"], "end_line": f["end_line"], "code": f["code"]})
-            elif f["deny_hit"]:
-                cond_snippets = [c for c in fd["conditions"] if c["field_hit"] or c["deny_hit"]]
-                for cs in cond_snippets:
-                    reduced = f"if {cs['condition']} {{\n"
-                    for line in cs["code"].splitlines():
-                        if DENY_OR_REDIRECT_RE.search(line) or re.search(r"\breturn\b", line):
-                            reduced += "    " + line.strip() + "\n"
-                    reduced += "}"
-                    snippets.append({"path": fd["relative"], "kind": "conditional",
-                                     "start_line": cs["start_line"], "end_line": cs["end_line"],
-                                     "condition": cs["condition"], "code": reduced})
-
-    # Recursive: functions calling validated functions + deny
-    if not orangeforum_strict:
-        changed = True
-        while changed:
-            changed = False
-            for fd in file_data:
-                for f in fd["funcs"]:
-                    if f["name"].casefold() in validated_func_names:
-                        continue
-                    if not f["deny_hit"]:
-                        continue
-                    calls_validated = any(
-                        name.casefold() in validated_func_names
-                        for name in f["names"]
+        record = FileRecord(path=relative)
+        record.alias_pairs = _assignment_pairs(source, tree.root_node)
+        record.database_relations = _database_relations(source, tree.root_node)
+        for node in walk(tree.root_node):
+            if node.type == "if_statement":
+                condition = _if_record(source, relative, node, termination_patterns)
+                if condition is not None:
+                    record.conditions.append(condition)
+            elif node.type == "expression_switch_statement":
+                record.conditions.extend(_switch_records(source, relative, node, termination_patterns))
+            elif node.type in FUNCTION_NODES:
+                name = text(source, node.child_by_field_name("name")).strip() or "<anonymous>"
+                body = node.child_by_field_name("body")
+                record.functions.append(
+                    FunctionRecord(
+                        path=relative,
+                        name=name,
+                        parameters=_function_parameters(source, node),
+                        body=text(source, body).strip(),
+                        code=text(source, node).strip(),
+                        start_line=line(node),
+                        end_line=end_line(node),
+                        start_byte=node.start_byte,
+                        end_byte=node.end_byte,
                     )
-                    if calls_validated:
-                        validated_func_names.add(f["name"].casefold())
-                        functions.append({k: v for k, v in f.items() if k not in ("names", "field_hit", "deny_hit", "configured_hit")})
-                        snippets.append({"path": fd["relative"], "kind": "validation_function", "function": f["name"],
-                                         "start_line": f["start_line"], "end_line": f["end_line"], "code": f["code"]})
-                        changed = True
+                )
+            elif node.type == "call_expression":
+                function = text(source, node.child_by_field_name("function")).strip()
+                if function:
+                    record.function_calls.append(
+                        FunctionCallRecord(
+                            path=relative,
+                            name=function,
+                            code=text(source, node).strip(),
+                            start_line=line(node),
+                            end_line=end_line(node),
+                            start_byte=node.start_byte,
+                            end_byte=node.end_byte,
+                        )
+                    )
+        parsed_files.append(record)
 
-    def _dedupe(items: list[dict[str, Any]]) -> list[dict[str, Any]]:
-        seen = set()
-        result = []
-        for item in items:
-            key = (item.get("path"), item.get("kind"), item.get("name"), item.get("expression"), item.get("start_line"), item.get("line"), item.get("condition"))
-            if key in seen:
-                continue
-            seen.add(key)
-            result.append(item)
-        return result
-
-    candidate_parameters = _dedupe(candidate_parameters)
-    parameters = _dedupe(parameters)
-    candidate_functions = _dedupe(candidate_functions)
-    functions = _dedupe(functions)
-    snippets = [item for item in _dedupe(snippets) if "function" in item.get("kind", "") or item.get("condition")]
-    snippets.sort(key=lambda item: (str(item.get("path")), int(item.get("start_line") or item.get("line") or 0), str(item.get("kind"))))
-
-    return {
-        "schema_version": 2,
-        "language": "go",
-        "parser": "tree-sitter-go" if parser is not None else "regex.go",
-        "parse_errors": parse_errors,
-        "summary": {
-            "cst_files": len(cst_files),
-            "candidate_parameters": len(candidate_parameters),
-            "candidate_functions": len(candidate_functions),
-            "parameters": len(parameters),
-            "functions": len(functions),
-            "snippets": len(snippets),
-        },
-        "cst": cst_files,
-        "candidate_parameters": candidate_parameters,
-        "candidate_functions": candidate_functions,
-        "parameters": parameters,
-        "functions": functions,
-        "snippets": snippets,
-    }
+    return finalize_analysis(
+        language="go",
+        parser_name="tree-sitter-go",
+        files=parsed_files,
+        access_control_database_fields=access_control_database_fields,
+        parse_errors=parse_errors,
+        cst_files=cst_files,
+    )

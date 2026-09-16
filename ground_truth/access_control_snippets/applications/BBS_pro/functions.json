@@ -1,0 +1,17 @@
+{
+  "app": "BBS_pro",
+  "language": "python",
+  "reviewed_at": "2026-07-05",
+  "method": "manual source review",
+  "principle": "better_to_miss_than_wrong",
+  "functions": [
+    {
+      "name": "acc_login",
+      "file": "app01/views.py",
+      "start_line": 15,
+      "end_line": 27,
+      "kind": "authentication_check",
+      "rationale": "Authenticates the submitted credentials, establishes the authenticated session on success, and returns a login-error response on failure."
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "app": "scarf",
+  "language": "php",
+  "reviewed_at": "2026-07-05",
+  "method": "manual source review",
+  "principle": "better_to_miss_than_wrong",
+  "functions": [
+    {
+      "name": "is_admin",
+      "file": "D:/phpStudy/PHPTutorial/WWW/scarf/functions.php",
+      "start_line": 15,
+      "end_line": 18,
+      "kind": "role_check",
+      "rationale": "Checks if $_SESSION['privilege'] == 'admin'. Core role-based authorization function used throughout the app. Called by require_admin(), header.php for conditional menu display, and comments.php for moderation UI."
+    },
+    {
+      "name": "require_admin",
+      "file": "D:/phpStudy/PHPTutorial/WWW/scarf/functions.php",
+      "start_line": 65,
+      "end_line": 69,
+      "kind": "authorization_check",
+      "rationale": "Authorization gate: terminates with error if is_admin() returns false. Called in comments.php:46 to protect comment moderation (delete/approve). Hard enforcement of admin-only operations."
+    },
+    {
+      "name": "require_loggedin",
+      "file": "D:/phpStudy/PHPTutorial/WWW/scarf/functions.php",
+      "start_line": 70,
+      "end_line": 74,
+      "kind": "authentication_check",
+      "rationale": "Authentication gate: terminates with error if getEmail() returns FALSE (user not logged in). Called in comments.php:77 before comment submission. Ensures only authenticated users can post."
+    }
+  ]
+}

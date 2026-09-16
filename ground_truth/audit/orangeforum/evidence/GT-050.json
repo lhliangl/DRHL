@@ -1,0 +1,95 @@
+{
+  "gt_id": "GT-050",
+  "app": "orangeforum",
+  "verified_at": "2026-09-06T14:11:45.924684+00:00",
+  "verdict": "vulnerable",
+  "summary": "user1 GET categories/1/topics/9/comments/34/edit returned 200 with the edit form of user2's comment (token exposed=True); the Delete POST returned 303 and removed comment 34 (exists_after=0), with the topic comment counter decremented 5 -> 4.",
+  "sql_statements": [
+    {
+      "kind": "psql",
+      "sql": "SELECT content FROM comments WHERE comment_id=34"
+    },
+    {
+      "kind": "psql",
+      "sql": "SELECT is_sticky FROM comments WHERE comment_id=34"
+    },
+    {
+      "kind": "psql",
+      "sql": "SELECT user_id FROM comments WHERE comment_id=34"
+    },
+    {
+      "kind": "psql",
+      "sql": "SELECT content FROM comments WHERE comment_id=34"
+    },
+    {
+      "kind": "psql",
+      "sql": "SELECT num_comments FROM topics WHERE topic_id=9"
+    },
+    {
+      "kind": "psql",
+      "sql": "SELECT num_comments FROM users WHERE user_id=3"
+    },
+    {
+      "kind": "psql",
+      "sql": "UPDATE comments SET content='DRHLGT_c34_delete_8703905223' WHERE comment_id=34"
+    },
+    {
+      "kind": "psql",
+      "sql": "SELECT COUNT(*) FROM comments WHERE comment_id=34"
+    },
+    {
+      "kind": "psql",
+      "sql": "SELECT num_comments FROM topics WHERE topic_id=9"
+    }
+  ],
+  "steps": [
+    {
+      "kind": "instrument",
+      "table": "comments",
+      "row": "comment_id=34",
+      "column": "content",
+      "token": "DRHLGT_c34_delete_8703905223",
+      "owner_user_id": "3",
+      "topic_num_comments_before": "5"
+    },
+    {
+      "kind": "_restore_probes",
+      "probes": [
+        {
+          "sql": "SELECT COUNT(*) FROM comments WHERE comment_id=34",
+          "expected": "1"
+        },
+        {
+          "sql": "SELECT content FROM comments WHERE comment_id=34",
+          "expected": "> t4krXAMuCHzRg8EoPxvkDqSAcE6uNM"
+        },
+        {
+          "sql": "SELECT num_comments FROM topics WHERE topic_id=9",
+          "expected": "5"
+        },
+        {
+          "sql": "SELECT num_comments FROM users WHERE user_id=3",
+          "expected": "27"
+        }
+      ]
+    },
+    {
+      "kind": "replay",
+      "role": "user1 (not the comment owner)",
+      "request": "GET categories/1/topics/9/comments/34/edit",
+      "status_code": 200,
+      "edit_form_exposed_other_users_comment": true,
+      "csrf_token_obtained": true,
+      "body_saved": "GT-050_gt050_user1_edit_form.html"
+    },
+    {
+      "kind": "replay",
+      "role": "user1 (not the comment owner)",
+      "request": "POST categories/1/topics/9/comments/34/edit action=Delete",
+      "status_code": 303,
+      "comment_exists_after": "0",
+      "deleted": true,
+      "topic_num_comments_after": "4"
+    }
+  ]
+}

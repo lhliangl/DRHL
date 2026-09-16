@@ -51,7 +51,8 @@
       "uploads",
       "jscripts",
       "images",
-      "3rdparty"
+      "3rdparty",
+      "install"
     ],
     "preserve_query_parameters": [
       "action",
@@ -292,11 +293,9 @@
         "mybb_users.additionalgroups",
         "mybb_adminoptions.uid",
         "mybb_adminsessions.uid",
-        "mybb_forums.fid",
+        "mybb_adminsessions.sid",
         "mybb_threads.uid",
-        "mybb_threads.fid",
         "mybb_posts.uid",
-        "mybb_posts.tid",
         "mybb_privatemessages.uid",
         "mybb_privatemessages.fromid",
         "mybb_privatemessages.toid",
@@ -352,6 +351,9 @@
     },
     "oracle": {
       "timeout": 10,
+      "csrf_token_parameters": [
+        "my_post_key"
+      ],
       "denied_statuses": [
         401,
         403
@@ -439,7 +441,7 @@
       "provider": "openai_compatible",
       "base_url": "https://api.deepseek.com/v1",
       "model": "deepseek-v4-flash",
-      "api_key": "your-api-key",
+      "api_key": "env:DRHL_DEEPSEEK_API_KEY",
       "temperature": 0.1,
       "timeout": 120,
       "response_format_json": true,
@@ -451,7 +453,103 @@
       "syntax_check": true,
       "php_binary": "D:/phpStudy/PHPTutorial/php/php-5.2.17/php.exe",
       "syntax_timeout": 30,
-      "temporary_apply_to_source": true
+      "temporary_apply_to_source": true,
+      "database_oracles": [
+        {
+          "name": "mybb-protected-forum-subscription-user1-create",
+          "page_pattern": "^usercp2\\.php\\?action=addsubscription&fid=[^&]+&type=forum(?:&|$)",
+          "category": "admin_only",
+          "operation": "create",
+          "setup_sql": [
+            "DELETE FROM mybb_forumsubscriptions WHERE fid=2 AND uid IN (1,2,3)"
+          ],
+          "attack": {
+            "role": "user1",
+            "request": {
+              "page": "usercp2.php",
+              "method": "GET",
+              "replace_params": true,
+              "params": {
+                "action": "addsubscription",
+                "type": "forum",
+                "fid": "2",
+                "my_post_key": "runtime"
+              },
+              "referer": "forumdisplay.php?fid=2"
+            },
+            "assert": {
+              "query": "SELECT COUNT(*) FROM mybb_forumsubscriptions WHERE fid=2 AND uid=2",
+              "scalar_zero": true
+            }
+          },
+          "authorized": {
+            "role": "admin",
+            "request": {
+              "page": "usercp2.php",
+              "method": "GET",
+              "replace_params": true,
+              "params": {
+                "action": "addsubscription",
+                "type": "forum",
+                "fid": "2",
+                "my_post_key": "runtime"
+              },
+              "referer": "forumdisplay.php?fid=2"
+            },
+            "assert": {
+              "query": "SELECT COUNT(*) FROM mybb_forumsubscriptions WHERE fid=2 AND uid=1",
+              "scalar_nonzero": true
+            }
+          }
+        },
+        {
+          "name": "mybb-protected-forum-subscription-user2-create",
+          "page_pattern": "^usercp2\\.php\\?action=addsubscription&fid=[^&]+&type=forum(?:&|$)",
+          "category": "admin_only",
+          "operation": "create",
+          "setup_sql": [
+            "DELETE FROM mybb_forumsubscriptions WHERE fid=2 AND uid IN (1,2,3)"
+          ],
+          "attack": {
+            "role": "user2",
+            "request": {
+              "page": "usercp2.php",
+              "method": "GET",
+              "replace_params": true,
+              "params": {
+                "action": "addsubscription",
+                "type": "forum",
+                "fid": "2",
+                "my_post_key": "runtime"
+              },
+              "referer": "forumdisplay.php?fid=2"
+            },
+            "assert": {
+              "query": "SELECT COUNT(*) FROM mybb_forumsubscriptions WHERE fid=2 AND uid=3",
+              "scalar_zero": true
+            }
+          },
+          "authorized": {
+            "role": "admin",
+            "request": {
+              "page": "usercp2.php",
+              "method": "GET",
+              "replace_params": true,
+              "params": {
+                "action": "addsubscription",
+                "type": "forum",
+                "fid": "2",
+                "my_post_key": "runtime"
+              },
+              "referer": "forumdisplay.php?fid=2"
+            },
+            "assert": {
+              "query": "SELECT COUNT(*) FROM mybb_forumsubscriptions WHERE fid=2 AND uid=1",
+              "scalar_nonzero": true
+            }
+          }
+        }
+      ]
     }
   }
 }

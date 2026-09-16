@@ -1,0 +1,18 @@
+{
+  "gt_id": "GT-022",
+  "app": "dvwa",
+  "verified_at": "2026-09-06T06:48:23.016315+00:00",
+  "verdict": "vulnerable",
+  "summary": "visitor GET instructions.php?doc=readme returned 200 and serves the protected instruction document (document_content_exposed=True).",
+  "sql_statements": [],
+  "steps": [
+    {
+      "kind": "replay",
+      "role": "visitor (no DVWA session)",
+      "request": "GET instructions.php?doc=readme",
+      "status_code": 200,
+      "document_content_exposed": true,
+      "body_saved": "GT-022_gt022_visitor_instructions.html"
+    }
+  ]
+}

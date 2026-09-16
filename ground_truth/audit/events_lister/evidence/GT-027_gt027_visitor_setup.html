@@ -1,0 +1,44 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="admin.css" rel="stylesheet" type="text/css">
+<title>Database setup</title>
+</head>
+<body>
+<center>
+
+
+<script Language="JavaScript">
+			<!--			
+function form_val(form1)
+{
+   var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+   var address = form1.uname.value;
+   if(reg.test(address) == false) {   //test() æ¹æ³ç¨äºæ£æµä¸ä¸ªå­ç¬¦ä¸²æ¯å¦å¹éæä¸ªæ¨¡å¼.
+      alert('Please enter a valid email address');
+	  form1.uname.focus();
+      return false;
+   }
+	
+	if ((form1.pword.value.length < 6) || (form1.pword.value.length > 10))
+	{
+		alert("Your password must be between 6 and 10 characters");
+		form1.pword.focus();
+		return (false);
+	}
+
+	return (true);
+}
+//--></script>
+
+
+
+
+username and password inserted successfuly!<br><br><b>Database setup successful!</b> <p> <a href=login.php>Login Now!</a>   
+</center>
+<p>&nbsp;</p>
+</body>
+</html>

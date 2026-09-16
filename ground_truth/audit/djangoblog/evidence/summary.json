@@ -1,0 +1,56 @@
+{
+  "app": "djangoblog",
+  "restore_verified_per_record": [
+    true
+  ],
+  "restore_note": "targeted revert: the inserted post was deleted and verified by re-querying (no full baseline restore was needed)",
+  "results": [
+    {
+      "gt_id": "GT-046",
+      "app": "djangoblog",
+      "verified_at": "2026-09-06T15:19:28.393668+00:00",
+      "verdict": "vulnerable",
+      "summary": "a fresh unpublished post (status=0) with marker tokens was inserted; visitor GET /drhlgt_unpublished_8707965774/ returned 200 and served the unpublished post content (token exposed=True); the inserted post was deleted afterwards.",
+      "sql_statements": [
+        {
+          "kind": "sqlite",
+          "sql": "INSERT INTO blog_post (title, slug, author_id, content, created_on, updated_on, status) VALUES ('DRHLGT_unpublished_8707965774', 'drhlgt_unpublished_8707965774', 1, 'DRHLGT_unpublished_8707965774 content', datetime('now'), datetime('now'), 0)"
+        },
+        {
+          "kind": "sqlite",
+          "sql": "DELETE FROM blog_post WHERE slug='drhlgt_unpublished_8707965774'"
+        },
+        {
+          "kind": "sqlite",
+          "sql": "SELECT COUNT(*) FROM blog_post WHERE slug='drhlgt_unpublished_8707965774'"
+        }
+      ],
+      "steps": [
+        {
+          "kind": "instrument",
+          "table": "blog_post",
+          "inserted_unpublished_post": {
+            "title": "DRHLGT_unpublished_8707965774",
+            "slug": "drhlgt_unpublished_8707965774",
+            "status": 0,
+            "content_token": "DRHLGT_unpublished_8707965774 content"
+          }
+        },
+        {
+          "kind": "replay",
+          "role": "visitor (no login)",
+          "request": "GET /drhlgt_unpublished_8707965774/ (unpublished post, status=0)",
+          "status_code": 200,
+          "unpublished_post_token_exposed": true,
+          "body_saved": "GT-046_gt046_visitor_unpublished.html"
+        },
+        {
+          "kind": "restore",
+          "inserted_post_deleted": true
+        }
+      ],
+      "restore_method": "targeted_revert",
+      "restore_verified": true
+    }
+  ]
+}

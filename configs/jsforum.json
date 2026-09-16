@@ -259,16 +259,17 @@
         "forum_message.user"
       ],
       "validated_function_name_patterns": [],
-      "access_control_keywords": [
-        "sessionUsername",
-        "sessionType",
-        "session.getAttribute",
-        "getAttribute",
-        "Admin",
-        "username",
-        "type",
-        "password",
-        "forum_users"
+      "llm_snippet_prefix_rules": [
+        {
+          "path_pattern": "^WEB-INF/classes/forum/.*\\.java$",
+          "code_pattern": "\\bsession(?:Type|Username)\\b",
+          "prefix": "HttpSession session = request.getSession(true);\nString sessionUsername = (String)session.getAttribute(\"username\");\nString sessionType = (String)session.getAttribute(\"type\");"
+        },
+        {
+          "path_pattern": "^forum/.*\\.jsp$",
+          "code_pattern": "\\bsession(?:Type|Username)\\b",
+          "prefix": "<% String sessionUsername = (String)session.getAttribute(\"username\"); %>\n<% String sessionType = (String)session.getAttribute(\"type\"); %>"
+        }
       ]
     },
     "active_detection": true,
@@ -277,18 +278,26 @@
       "username",
       "user_name"
     ],
-    "horizontal_exclude_patterns": [
-      "^forum/index\\.jsp(?:\\?|$)"
+    "horizontal_page_overrides": [
+      {
+        "pattern": "^forum/index\\.jsp\\?forum_id=p1&page=editmessage&reply_id=p1&thread_id=p1$",
+        "pages": [
+          "forum/index.jsp?page=editmessage&forum_id=0&thread_id=0&reply_id=2&start=0"
+        ],
+        "identity_parameters": [
+          "reply_id"
+        ]
+      }
     ],
     "oracle": {
       "timeout": 10,
+      "csrf_token_parameters": [],
       "denied_statuses": [
         401,
         403
       ],
-      "login_url_markers": [
-        "forum/index.jsp"
-      ],
+      "login_url_markers": [],
+      "login_form_denial": true,
       "deny_markers": [
         "You have to login first",
         "The password doesn't match",
@@ -296,7 +305,7 @@
       ],
       "extract_source_deny_markers": true,
       "public_page_patterns": [
-        "^forum/index\\.jsp(?:\\?|$)",
+        "^forum/index\\.jsp$",
         "^forum/register\\.jsp(?:\\?|$)",
         "^forum/info\\.jsp(?:\\?|$)",
         "^servlet/forum\\.Login(?:\\?|$)",
@@ -354,23 +363,29 @@
       "\\.drhlbak$",
       "\\.class$",
       "\\.java$",
-      "^forum/index\\.jsp$",
       "^forum/info\\.jsp$",
       "^forum/register\\.jsp$"
     ],
     "horizontal_overrides": {
-      "user": "user2"
+      "user": "user2",
+      "reply_id": "2"
     }
   },
   "repair": {
     "enabled": true,
     "output_dir": "repair/files",
+    "source_map_overrides": [
+      {
+        "pattern": "^forum/index\\.jsp\\?(?:[^&]+&)*page=editmessage(?:&.*)?$",
+        "source": "forum/editmessage.jsp"
+      }
+    ],
     "llm": {
       "enabled": true,
       "provider": "openai_compatible",
       "base_url": "https://api.deepseek.com/v1",
       "model": "deepseek-v4-flash",
-      "api_key": "your-api-key",
+      "api_key": "env:DRHL_DEEPSEEK_API_KEY",
       "temperature": 0.1,
       "timeout": 120,
       "response_format_json": true,
@@ -382,6 +397,277 @@
       "syntax_check": true,
       "syntax_timeout": 30,
       "temporary_apply_to_source": true,
+      "regression_roles": [
+        {
+          "pattern": "^forum/index\\.jsp\\?(?:[^&]+&)*page=editmessage(?:&.*)?$",
+          "role": "user2"
+        }
+      ],
+      "database_oracles": {
+        "response_only_patterns": [
+          "^forum/index\\.jsp\\?page=editmessage&forum_id=0&thread_id=0&reply_id=2&start=0$"
+        ],
+        "database_primary_patterns": [
+          "^servlet/forum\\.(?:AddForum|AddReply|AddThread)(?:\\?|$)"
+        ],
+        "rules": [
+        {
+          "name": "jsforum-add-forum-admin-create",
+          "page_pattern": "^servlet/forum\\.AddForum(?:\\?|$)",
+          "category": "admin_only",
+          "operation": "create",
+          "variables": {
+            "last_forum_id": {
+              "query": "SELECT COALESCE(MAX(forum_id), -1) FROM forum_forums"
+            }
+          },
+          "attack": {
+            "role": "user1",
+            "request": {
+              "page": "servlet/forum.AddForum",
+              "method": "POST",
+              "replace_params": true,
+              "params": {
+                "lastforum_id": "{last_forum_id}",
+                "title": "{token}",
+                "forum_info": "DRHL repair oracle unauthorized forum"
+              },
+              "referer": "forum/index.jsp"
+            },
+            "assert": {
+              "query": "SELECT COUNT(*) FROM forum_forums WHERE title='{token}'",
+              "scalar_zero": true
+            }
+          },
+          "authorized": {
+            "role": "admin",
+            "request": {
+              "page": "servlet/forum.AddForum",
+              "method": "POST",
+              "replace_params": true,
+              "params": {
+                "lastforum_id": "{last_forum_id}",
+                "title": "{token}",
+                "forum_info": "DRHL repair oracle authorized forum"
+              },
+              "referer": "forum/index.jsp"
+            },
+            "assert": {
+              "query": "SELECT COUNT(*) FROM forum_forums WHERE title='{token}'",
+              "scalar_nonzero": true
+            }
+          }
+        },
+        {
+          "name": "jsforum-add-reply-authenticated-create",
+          "page_pattern": "^servlet/forum\\.AddReply(?:\\?|$)",
+          "category": "authenticated_only",
+          "operation": "create",
+          "variables": {
+            "last_reply_id": {
+              "query": "SELECT COALESCE(MAX(reply_id), -1) FROM forum_message WHERE forum_id=0 AND thread_id=0"
+            }
+          },
+          "attack": {
+            "role": "visitor",
+            "request": {
+              "page": "servlet/forum.AddReply",
+              "method": "POST",
+              "replace_params": true,
+              "params": {
+                "forum_id": "0",
+                "thread_id": "0",
+                "lastReply_id": "{last_reply_id}",
+                "message": "{token}",
+                "user": "user1",
+                "start": "0"
+              },
+              "referer": "forum/index.jsp?page=message&forum_id=0&thread_id=0&start=0"
+            },
+            "assert": {
+              "query": "SELECT COUNT(*) FROM forum_message WHERE forum_id=0 AND thread_id=0 AND message='{token}'",
+              "scalar_zero": true
+            }
+          },
+          "authorized": {
+            "role": "user1",
+            "request": {
+              "page": "servlet/forum.AddReply",
+              "method": "POST",
+              "replace_params": true,
+              "params": {
+                "forum_id": "0",
+                "thread_id": "0",
+                "lastReply_id": "{last_reply_id}",
+                "message": "{token}",
+                "user": "user1",
+                "start": "0"
+              },
+              "referer": "forum/index.jsp?page=message&forum_id=0&thread_id=0&start=0"
+            },
+            "assert": {
+              "query": "SELECT COUNT(*) FROM forum_message WHERE forum_id=0 AND thread_id=0 AND message='{token}' AND user='user1'",
+              "scalar_nonzero": true
+            }
+          }
+        },
+        {
+          "name": "jsforum-add-reply-horizontal-owner",
+          "page_pattern": "^servlet/forum\\.AddReply(?:\\?|$)",
+          "category": "horizontal",
+          "operation": "create",
+          "variables": {
+            "last_reply_id": {
+              "query": "SELECT COALESCE(MAX(reply_id), -1) FROM forum_message WHERE forum_id=0 AND thread_id=0"
+            }
+          },
+          "attack": {
+            "role": "user1",
+            "request": {
+              "page": "servlet/forum.AddReply",
+              "method": "POST",
+              "replace_params": true,
+              "params": {
+                "forum_id": "0",
+                "thread_id": "0",
+                "lastReply_id": "{last_reply_id}",
+                "message": "{token}",
+                "user": "user2",
+                "start": "0"
+              },
+              "referer": "forum/index.jsp?page=message&forum_id=0&thread_id=0&start=0"
+            },
+            "assert": {
+              "query": "SELECT COUNT(*) FROM forum_message WHERE forum_id=0 AND thread_id=0 AND message='{token}' AND user='user2'",
+              "scalar_zero": true
+            }
+          },
+          "authorized": {
+            "role": "user2",
+            "request": {
+              "page": "servlet/forum.AddReply",
+              "method": "POST",
+              "replace_params": true,
+              "params": {
+                "forum_id": "0",
+                "thread_id": "0",
+                "lastReply_id": "{last_reply_id}",
+                "message": "{token}",
+                "user": "user2",
+                "start": "0"
+              },
+              "referer": "forum/index.jsp?page=message&forum_id=0&thread_id=0&start=0"
+            },
+            "assert": {
+              "query": "SELECT COUNT(*) FROM forum_message WHERE forum_id=0 AND thread_id=0 AND message='{token}' AND user='user2'",
+              "scalar_nonzero": true
+            }
+          }
+        },
+        {
+          "name": "jsforum-add-thread-authenticated-create",
+          "page_pattern": "^servlet/forum\\.AddThread(?:\\?|$)",
+          "category": "authenticated_only",
+          "operation": "create",
+          "variables": {
+            "last_thread_id": {
+              "query": "SELECT COALESCE(MAX(thread_id), -1) FROM forum_threads"
+            }
+          },
+          "attack": {
+            "role": "visitor",
+            "request": {
+              "page": "servlet/forum.AddThread",
+              "method": "POST",
+              "replace_params": true,
+              "params": {
+                "forum_id": "0",
+                "lastThread_id": "{last_thread_id}",
+                "title": "{token}",
+                "message": "{token}",
+                "user": "user1"
+              },
+              "referer": "forum/index.jsp?page=thread&forum_id=0"
+            },
+            "assert": {
+              "query": "SELECT (SELECT COUNT(*) FROM forum_threads WHERE forum_id=0 AND title='{token}') + (SELECT COUNT(*) FROM forum_message WHERE forum_id=0 AND message='{token}')",
+              "scalar_zero": true
+            }
+          },
+          "authorized": {
+            "role": "user1",
+            "request": {
+              "page": "servlet/forum.AddThread",
+              "method": "POST",
+              "replace_params": true,
+              "params": {
+                "forum_id": "0",
+                "lastThread_id": "{last_thread_id}",
+                "title": "{token}",
+                "message": "{token}",
+                "user": "user1"
+              },
+              "referer": "forum/index.jsp?page=thread&forum_id=0"
+            },
+            "assert": {
+              "query": "SELECT (SELECT COUNT(*) FROM forum_threads WHERE forum_id=0 AND title='{token}') + (SELECT COUNT(*) FROM forum_message WHERE forum_id=0 AND message='{token}' AND user='user1')",
+              "scalar_equals": "2"
+            }
+          }
+        },
+        {
+          "name": "jsforum-add-thread-horizontal-owner",
+          "page_pattern": "^servlet/forum\\.AddThread(?:\\?|$)",
+          "category": "horizontal",
+          "operation": "create",
+          "variables": {
+            "last_thread_id": {
+              "query": "SELECT COALESCE(MAX(thread_id), -1) FROM forum_threads"
+            }
+          },
+          "attack": {
+            "role": "user1",
+            "request": {
+              "page": "servlet/forum.AddThread",
+              "method": "POST",
+              "replace_params": true,
+              "params": {
+                "forum_id": "0",
+                "lastThread_id": "{last_thread_id}",
+                "title": "{token}",
+                "message": "{token}",
+                "user": "user2"
+              },
+              "referer": "forum/index.jsp?page=thread&forum_id=0"
+            },
+            "assert": {
+              "query": "SELECT COUNT(*) FROM forum_message WHERE forum_id=0 AND reply_id=0 AND message='{token}' AND user='user2'",
+              "scalar_zero": true
+            }
+          },
+          "authorized": {
+            "role": "user2",
+            "request": {
+              "page": "servlet/forum.AddThread",
+              "method": "POST",
+              "replace_params": true,
+              "params": {
+                "forum_id": "0",
+                "lastThread_id": "{last_thread_id}",
+                "title": "{token}",
+                "message": "{token}",
+                "user": "user2"
+              },
+              "referer": "forum/index.jsp?page=thread&forum_id=0"
+            },
+            "assert": {
+              "query": "SELECT COUNT(*) FROM forum_message WHERE forum_id=0 AND reply_id=0 AND message='{token}' AND user='user2'",
+              "scalar_nonzero": true
+            }
+          }
+        }
+        ]
+      },
       "javac": "javac",
       "classes_dir": "WEB-INF/classes",
       "tomcat_home": "D:/tomcat9",

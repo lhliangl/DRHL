@@ -1,0 +1,33 @@
+{
+  "gt_id": "GT-040",
+  "app": "jsforum",
+  "verified_at": "2026-09-06T09:13:36.126599+00:00",
+  "verdict": "vulnerable",
+  "summary": "visitor POST servlet/forum.AddReply returned 302; a reply row with the token message was created in forum_message (created=True).",
+  "sql_statements": [
+    {
+      "kind": "scalar",
+      "sql": "SELECT COALESCE(MAX(reply_id), 0) FROM forum_message WHERE forum_id=7 AND thread_id=21"
+    },
+    {
+      "kind": "scalar",
+      "sql": "SELECT COUNT(*) FROM forum_message WHERE message='DRHLGT_reply_8686015941'"
+    }
+  ],
+  "steps": [
+    {
+      "kind": "instrument",
+      "table": "forum_message",
+      "token_message": "DRHLGT_reply_8686015941",
+      "forum_id": "7",
+      "thread_id": "21"
+    },
+    {
+      "kind": "replay",
+      "role": "visitor (no login)",
+      "request": "POST servlet/forum.AddReply message=DRHLGT_reply_8686015941",
+      "status_code": 302,
+      "reply_row_created": true
+    }
+  ]
+}

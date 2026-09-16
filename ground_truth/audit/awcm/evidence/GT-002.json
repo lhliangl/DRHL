@@ -1,0 +1,35 @@
+{
+  "gt_id": "GT-002",
+  "app": "awcm",
+  "verified_at": "2026-09-06T04:57:19.278210+00:00",
+  "verdict": "vulnerable",
+  "summary": "vertical: user1 reads admin profile: logged in as user1, requested member.php?id=1; response status 200, token DRHLGT_profile_8670638955 from member id=1 title exposed=True.",
+  "sql_statements": [
+    {
+      "kind": "execute",
+      "sql": "UPDATE awcm_members SET title='DRHLGT_profile_8670638955' WHERE id=1"
+    },
+    {
+      "kind": "scalar",
+      "sql": "SELECT title FROM awcm_members WHERE id=1"
+    }
+  ],
+  "steps": [
+    {
+      "kind": "instrument",
+      "table": "awcm_members",
+      "row": "id=1",
+      "column": "title",
+      "token": "DRHLGT_profile_8670638955",
+      "before": "DRHLGT_profile_8670638955"
+    },
+    {
+      "kind": "replay",
+      "role": "user1",
+      "request": "GET member.php?id=1",
+      "status_code": 200,
+      "token_exposed_in_response": true,
+      "body_saved": "GT-002_GT-002_user1.html"
+    }
+  ]
+}

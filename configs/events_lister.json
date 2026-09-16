@@ -108,6 +108,7 @@
     },
     "oracle": {
       "timeout": 10,
+      "csrf_token_parameters": [],
       "denied_statuses": [
         401,
         403
@@ -123,12 +124,19 @@
   "repair": {
     "enabled": true,
     "output_dir": "repair/files",
+    "skip_findings": [
+      {
+        "page_pattern": "^admin/recover\\.php(?:\\?|$)",
+        "category": "admin_only",
+        "reason": "known false positive; excluded from repair"
+      }
+    ],
     "llm": {
       "enabled": true,
       "provider": "openai_compatible",
       "base_url": "https://api.deepseek.com/v1",
       "model": "deepseek-v4-flash",
-      "api_key": "your-api-key",
+      "api_key": "env:DRHL_DEEPSEEK_API_KEY",
       "temperature": 0.1,
       "timeout": 120,
       "response_format_json": true,
@@ -140,7 +148,51 @@
       "syntax_check": true,
       "php_binary": "D:/phpStudy/PHPTutorial/php/php-5.2.17/php.exe",
       "syntax_timeout": 30,
-      "temporary_apply_to_source": true
+      "temporary_apply_to_source": true,
+      "database_oracles": [
+        {
+          "name": "events-lister-user-add-admin-create",
+          "page_pattern": "^admin/user_add\\.php(?:\\?|$)",
+          "category": "admin_only",
+          "operation": "create",
+          "attack": {
+            "role": "visitor",
+            "request": {
+              "page": "admin/user_add.php",
+              "method": "POST",
+              "replace_params": true,
+              "params": {
+                "uname": "{token}",
+                "pword": "abc123",
+                "submit": "Add user"
+              },
+              "referer": "admin/user_add.php"
+            },
+            "assert": {
+              "query": "SELECT COUNT(*) FROM admin WHERE uname='{token}'",
+              "scalar_zero": true
+            }
+          },
+          "authorized": {
+            "role": "admin",
+            "request": {
+              "page": "admin/user_add.php",
+              "method": "POST",
+              "replace_params": true,
+              "params": {
+                "uname": "{token}",
+                "pword": "abc123",
+                "submit": "Add user"
+              },
+              "referer": "admin/user_add.php"
+            },
+            "assert": {
+              "query": "SELECT COUNT(*) FROM admin WHERE uname='{token}'",
+              "scalar_nonzero": true
+            }
+          }
+        }
+      ]
     }
   }
 }

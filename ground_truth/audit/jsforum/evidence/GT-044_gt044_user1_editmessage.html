@@ -1,0 +1,132 @@
+
+
+
+
+
+
+
+
+
+
+
+
+	
+		
+
+
+
+
+
+
+<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0 Transitional//EN\">
+
+<Html>
+<Head>
+<Title>My Forum - Edit Message</Title>
+<link rel="stylesheet" href="./css/forum.css" type="text/css">
+</Head>	
+
+
+<Body>
+
+<center><img src="./images/logo.jpg"></center>
+<TABLE cellSpacing="0" cellPadding="0" width="100%" bgColor="#336699" border="0" align="center">
+<TR>
+<TD>
+<TABLE cellSpacing="1" cellPadding="4" width="100%" border="0">
+<TR bgColor="#ccccff"> 
+<TD align=left colspan=1>
+<FONT face=Verdana,Arial,Helvetica color=#003366 size=1>
+<B>Control Bar</B>
+</FONT>
+</TD>						
+<TR bgColor=#ffffff>
+<TD align="left" valign="top" width=0>
+<FONT face=Verdana,Arial,Helvetica color=#003366 size=1>
+	<table width="100%" height="0" border="0" cellpadding="0" cellspacing="0" class="infobar">
+		<tr> 
+			<td width="50%" height="0" align="left" valign="top">
+				
+					<a href="./index.jsp?page=profile">Change Forum Profile</a>
+				
+			</td>
+			<td width="50%" height="0" align="right" valign="top">
+				
+					Logged in as: user1 Type: user
+					&nbsp;&nbsp;[<a href="../servlet/forum.Logout">Logout</a>]		
+				
+			</td>
+		</tr>
+	</table>
+</FONT>
+</TD>
+</TR>				 
+</TABLE>
+</TD>
+</TR>
+</TABLE>
+
+
+
+	<table width="100%" height="20" border="0" cellpadding="1" cellspacing="1">
+		<tr> 
+			<td height="20" valign="top" class="pathBar">
+				<a href="index.jsp" class="pathBarLink">My Forum</a><span class="pathBarSeperator"> > </span>
+				<a href="./index.jsp?page=thread&forum_id=7" class="pathBarLink">QEz0vyYV</a><span class="pathBarSeperator"> > </span>
+				<a href="./index.jsp?page=thread&forum_id=7&thread_id=21&start=0" class="pathBarLink">mMCEuKfq</a><span class="pathBarSeperator"> > </span><a href="./index.jsp?page=editmessage&forum_id=7&thread_id=21&reply_id=2&start=0" class="pathBarLink">Edit Message</a>
+			</td>
+		</tr>
+	</table>
+
+	<TABLE cellSpacing="0" cellPadding="0" width="100%" bgColor="#336699" border="0" align="center">
+<TR>
+<TD>
+<TABLE cellSpacing="1" cellPadding="4" width="100%" border="0">
+<TR bgColor="#ccccff">      
+	<TD align=left colspan=3>
+<FONT face=Verdana,Arial,Helvetica color=#003366 size=1>
+<B>Edit Message</B>
+</FONT>
+</TD>	    
+	<TR bgColor=#ffffff>
+	<TD align="left" valign="top" width=0>
+<FONT face=Verdana,Arial,Helvetica color=#003366 size=1>			
+	<b>Message:</b>
+	<form action="../servlet/forum.ChangeMessage" method="POST" name="formmessage">
+	<input type="hidden" name="start" value="0">
+	<input type="hidden" name="forum_id" value="7">
+	<input type="hidden" name="thread_id" value="21">
+	<input type="hidden" name="reply_id" value="2">
+	<textarea name="message" cols="45" rows="10" maxlength="3000">DRHLGT_usermsg_8686019777</textarea>
+	<br>
+	<input type="submit" value="change">
+	</form>
+	<TD align="left" valign="top" width=200>
+<FONT face=Verdana,Arial,Helvetica color=#003366 size=1>
+	
+<table cellpadding="0" cellspacing="5" border="0">
+	<tr>
+		<td>
+        	<table id="tb37" bgcolor="#304C77" cellpadding="1" cellspacing="0" border="0" >
+				<tr>
+					<td>
+						<table bgcolor="#ffffff" cellpadding="6" cellspacing="0" border="0" width="100%">
+							<tr>
+								<td nowrap align="center"onmouseover="this.style.cursor='hand';this.style.backgroundColor='#FFFFFF';document.all.tb37.style.backgroundColor='#7E9FD0';"onmouseout="this.style.backgroundColor='#ffffff';document.all.tb37.style.backgroundColor='#304C77';" onclick="javascript:window.document.formmessage.message.value+='[B][/B]';window.document.formmessage.message.focus();">
+									<a href="#">
+										<b>B</b>
+									</a>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+            </td>
+            <td>
+				<table id="tb38" bgcolor="#304C77" cellpadding="1" cellspacing="0" border="0" >
+					<tr>
+						<td>
+							<table bgcolor="#ffffff" cellpadding="6" cellspacing="0" border="0" width="100%">
+								<tr>
+						

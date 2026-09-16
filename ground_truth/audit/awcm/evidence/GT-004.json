@@ -1,0 +1,21 @@
+{
+  "gt_id": "GT-004",
+  "app": "awcm",
+  "verified_at": "2026-09-06T04:57:26.043285+00:00",
+  "verdict": "vulnerable",
+  "summary": "visitor GET install/index.php returned 200 with the language-selection installer form (installer_form_present=True); the flow advances to step1.php (status 200).",
+  "sql_statements": [],
+  "steps": [
+    {
+      "kind": "replay",
+      "role": "visitor (no login)",
+      "request": "GET install/index.php",
+      "status_code": 200,
+      "installer_form_present": true,
+      "body_saved": "GT-004_gt004_visitor_install.html",
+      "step1_request": "GET install/step1.php?lang=en.php",
+      "step1_status_code": 200,
+      "step1_body_saved": "GT-004_gt004_visitor_step1.html"
+    }
+  ]
+}

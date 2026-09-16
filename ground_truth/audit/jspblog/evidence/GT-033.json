@@ -1,0 +1,28 @@
+{
+  "gt_id": "GT-033",
+  "app": "jspblog",
+  "verified_at": "2026-09-06T08:42:46.526813+00:00",
+  "verdict": "vulnerable",
+  "summary": "visitor POST admin/addnews2.jsp returned 200; a news row with the token headline was created in the portal database (created=True).",
+  "sql_statements": [
+    {
+      "kind": "scalar",
+      "sql": "SELECT COUNT(*) FROM news WHERE headline='DRHLGT_news_8684166432'"
+    }
+  ],
+  "steps": [
+    {
+      "kind": "instrument",
+      "table": "news",
+      "token_headline": "DRHLGT_news_8684166432"
+    },
+    {
+      "kind": "replay",
+      "role": "visitor (no login)",
+      "request": "POST admin/addnews2.jsp headline=DRHLGT_news_8684166432",
+      "status_code": 200,
+      "news_row_created": true,
+      "body_saved": "GT-033_gt033_visitor.html"
+    }
+  ]
+}

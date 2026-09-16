@@ -1,0 +1,58 @@
+{
+  "gt_id": "GT-045",
+  "app": "jwablogger",
+  "verified_at": "2026-09-06T08:52:52.847894+00:00",
+  "verdict": "vulnerable",
+  "summary": "visitor GET blogger/viewEntry/5445 returned 200 and served the full content of the fresh entry with is_visible='false' (token exposed=True); a naturally non-visible entry (1927) is likewise served (exposed=True), while entry creation requires login (denied=True).",
+  "sql_statements": [
+    {
+      "kind": "scalar",
+      "sql": "SELECT COALESCE(MAX(blog_entry_id), 0) + 1 FROM blog_entry"
+    },
+    {
+      "kind": "execute",
+      "sql": "INSERT INTO blog_entry (author, title, tags, description, internal_name, external_url, is_visible, has_comments, has_anonymous_comments) VALUES ('admin', 'DRHLGT_hidden_entry_8684767207', 'drhlgt', 'DRHLGT_hidden_entry_8684767207 description', 'DRHLGT_hidden_entry_8684767207_internal', '', 'false', 'false', 'false')"
+    },
+    {
+      "kind": "execute",
+      "sql": "INSERT INTO blog_entry_text (blog_entry_id, blog_text) VALUES (5445, 'DRHLGT_hidden_entry_8684767207 body text')"
+    },
+    {
+      "kind": "query",
+      "sql": "SELECT blog_entry_id, title, internal_name FROM blog_entry WHERE is_visible='false' AND blog_entry_id=1927 LIMIT 1"
+    }
+  ],
+  "steps": [
+    {
+      "kind": "instrument",
+      "table": "blog_entry / blog_entry_text",
+      "inserted_entry_id": "5445",
+      "title_token": "DRHLGT_hidden_entry_8684767207",
+      "is_visible": "false",
+      "note": "documented precondition: a fresh entry with is_visible='false' was inserted for the test (the released endpoint text names entry 5444/drhl_test_entry from the original deployment; in the current deployment that entry is a cached seeded row, so the fresh entry avoids the response cache); the database baseline was restored after the record"
+    },
+    {
+      "kind": "replay",
+      "role": "visitor (no login)",
+      "request": "GET blogger/viewEntry/5445/DRHLGT_hidden_entry_8684767207_internal.html (is_visible='false')",
+      "status_code": 200,
+      "non_visible_entry_token_exposed": true,
+      "body_saved": "GT-045_gt045_visitor_new_entry.html"
+    },
+    {
+      "kind": "replay",
+      "role": "visitor (no login)",
+      "request": "GET blogger/viewEntry/1927/software_sensation_has_released_version_25_of_jwebapp.html (naturally non-visible entry, no precondition)",
+      "status_code": 200,
+      "natural_non_visible_entry_content_exposed": true,
+      "body_saved": "GT-045_gt045_visitor_1927.html"
+    },
+    {
+      "kind": "replay",
+      "role": "visitor (no login)",
+      "request": "POST blogger/saveEntry (entry creation)",
+      "status_code": 200,
+      "entry_creation_denied": true
+    }
+  ]
+}

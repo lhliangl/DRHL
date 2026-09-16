@@ -1,0 +1,63 @@
+{
+  "gt_id": "GT-023",
+  "app": "dvwa",
+  "verified_at": "2026-09-06T06:48:23.683394+00:00",
+  "verdict": "vulnerable",
+  "summary": "visitor GET setup.php returned 200 with the Create/Reset Database form (exposed=True); the visitor-triggered reset rebuilt the database: marker row 1->0, users 5->5; baseline restored afterwards.",
+  "sql_statements": [
+    {
+      "kind": "execute",
+      "sql": "INSERT INTO guestbook (comment, name) VALUES ('DRHLGT_guestbook_8677303291', 'drhlgt')"
+    },
+    {
+      "kind": "scalar",
+      "sql": "SELECT COUNT(*) FROM guestbook WHERE comment='DRHLGT_guestbook_8677303291'"
+    },
+    {
+      "kind": "scalar",
+      "sql": "SELECT COUNT(*) FROM users"
+    },
+    {
+      "kind": "scalar",
+      "sql": "SELECT COUNT(*) FROM guestbook WHERE comment='DRHLGT_guestbook_8677303291'"
+    },
+    {
+      "kind": "scalar",
+      "sql": "SELECT COUNT(*) FROM users"
+    },
+    {
+      "kind": "scalar",
+      "sql": "SELECT password FROM users WHERE user='admin' LIMIT 1"
+    }
+  ],
+  "steps": [
+    {
+      "kind": "instrument",
+      "table": "guestbook",
+      "marker_comment": "DRHLGT_guestbook_8677303291",
+      "marker_before": "1",
+      "users_before": "5"
+    },
+    {
+      "kind": "replay",
+      "role": "visitor (no DVWA session)",
+      "request": "GET setup.php",
+      "status_code": 200,
+      "create_reset_form_exposed": true,
+      "anti_csrf_user_token_extracted": true,
+      "body_saved": "GT-023_gt023_visitor_setup.html"
+    },
+    {
+      "kind": "replay",
+      "role": "visitor (no DVWA session)",
+      "request": "POST setup.php create_db=Create / Reset Database (with anti-CSRF user_token)",
+      "status_code": 302,
+      "redirect_location": "/DVWA/setup.php",
+      "reset_completed": true,
+      "marker_row_after": "0",
+      "users_after": "5",
+      "admin_credential_reset_hash": "5f4dcc3b5aa765d61d8327deb882cf99",
+      "body_saved": "GT-023_gt023_visitor_setup_action.html"
+    }
+  ]
+}

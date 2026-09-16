@@ -2,6 +2,8 @@
 
 DRHL is a research prototype for cross-language detection and repair of server-side broken access-control vulnerabilities in web applications. It combines multi-role dynamic execution, static source analysis, Hybrid Site Navigation Graph (HSNG) construction, active exploit validation, access-control snippet extraction, and LLM-guided patch generation.
 
+The implemented candidate-extraction, semantic-validation, and snippet-generation contract is documented in [docs/source-semantic-analysis.md](docs/source-semantic-analysis.md).
+
 The implementation accompanies the paper:
 
 > DRHL: Cross-Language Detection and Repair of Access Control Vulnerabilities via Hybrid Analysis and LLMs.
@@ -137,16 +139,29 @@ Important fields:
 }
 ```
 
-DRHL supports environment-variable secrets with the `env:NAME` syntax. For open-source use, avoid committing real API keys, passwords, or private credentials.
+DRHL supports environment-variable secrets with the `env:NAME` syntax. The
+main-experiment configurations read the DeepSeek API key from
+`DRHL_DEEPSEEK_API_KEY`; no API key needs to be written into a configuration
+file. Set the variables in the same terminal session before running
+`validate`, `run`, or `repair`.
 
-Example:
+Windows Command Prompt:
 
-```powershell
-$env:DRHL_SCARF_DB_PASSWORD = "root"
-$env:DRHL_DEEPSEEK_API_KEY = "your-api-key"
+```bat
+set DRHL_DEEPSEEK_API_KEY=your-api-key
+set DRHL_SCARF_DB_PASSWORD=root
 ```
 
-The repair LLM configuration can use any OpenAI-compatible endpoint:
+PowerShell:
+
+```powershell
+$env:DRHL_DEEPSEEK_API_KEY = "your-api-key"
+$env:DRHL_SCARF_DB_PASSWORD = "root"
+```
+
+For open-source use, avoid committing real API keys, passwords, or private
+credentials. The main-experiment repair configuration uses DeepSeek through
+an OpenAI-compatible endpoint:
 
 ```json
 "repair": {
@@ -192,6 +207,37 @@ For a repair-only rerun after detection has already completed:
 python -m drhl repair --config configs/scarf.json
 ```
 
+A repair-only rerun updates the existing metrics JSON and CSV by replacing
+`llm_inference_seconds`, `tokens_in`, `tokens_out`, and `tokens_total` with the
+current repair run's LLM measurements, then recalculates `total_seconds` by the
+LLM-time delta. Other persisted metrics remain unchanged.
+
+To test the normal repair and validation workflow for exactly one vulnerable
+finding without changing the formal repair artifacts or metrics:
+
+```powershell
+python -m drhl repair-test --config configs/phpns.json --category horizontal --page "user.php?do=edit&id=p1"
+```
+
+This command uses the existing database baseline, stores prompts and generated
+patches in a temporary directory, and restores both the application source file
+and database before deleting the temporary artifacts. The category and page
+must exactly match a vulnerable entry in `analysis/findings.json` and an attack
+vector in `analysis/vectors.json`.
+
+To rerun crawling, graph/HSNG construction, attack-vector generation, and
+active detection while skipping access-control code extraction and repair:
+
+```powershell
+python -m drhl detect --config configs/phpns.json
+```
+
+Detection reruns overwrite crawl artifacts, `graphs/dynamic.json`,
+`graphs/static.json`, `graphs/fused.json`, graph summaries,
+`analysis/vectors.json`, `analysis/findings.json`, and
+`analysis/vulnerability_report.md`. They do not extract access-control code,
+generate repairs, or read/write files under `metrics/`.
+
 For source-analysis debugging, optionally save the CST representation:
 
 ```powershell
@@ -217,6 +263,7 @@ runs/<application>/
   source/parameters.json
   source/functions.json
   source/snippets.json
+  source/llm_snippets.json
   source/cst.json                 # only when CST saving is enabled
   analysis/vectors.json
   analysis/findings.json
@@ -235,8 +282,11 @@ The most useful files for inspection are:
 - `graphs/fused.json`: the final HSNG.
 - `analysis/vectors.json`: generated attack vectors.
 - `analysis/vulnerability_report.md`: confirmed vulnerable and non-vulnerable pages.
-- `source/snippets.json`: validated access-control snippets used by the repair module.
+- `source/snippets.json`: complete validated access-control snippets retained for inspection.
+- `source/llm_snippets.json`: deduplicated repair-LLM input; each item contains only `path`
+  and `if_framework`, or `path` and `code` when no parameter-specific if framework is available.
 - `repair/repair_report.md`: patch-generation attempts and validation outcomes.
+- `repair/validation/...`: per-attempt response checks and any configured CRUD database/content oracle evidence. See `docs/repair-database-validation.md`.
 - `metrics/summary.csv`: construction, detection, extraction, LLM, and total runtime metrics.
 
 ## Configuration Overview
@@ -289,9 +339,21 @@ During crawling, DRHL normalizes dynamic URL fragments to reduce redundant explo
 
 DRHL can execute forms to trigger server-side logic. Field values are generated from type-aware rules and application-specific secret parameters are redacted from artifacts unless explicitly disabled.
 
+Applications whose crawl must execute destructive forms can opt into immediate database recovery with
+`crawl.restore_database_after_form_markers`. After a submitted form's current page, action URL, or canonical
+target contains one of the configured markers, DRHL records the request and response transition, restores the
+existing crawl baseline, and does not expand links from the transient post-deletion page. Phpns enables this
+for deletion forms; configurations without this option retain the default per-role restoration behavior.
+
 ## Reproducing the Paper-Style Evaluation
 
 The paper evaluates DRHL on 16 source-available applications written in PHP, Java/JSP, Python, and Go. The repository includes configuration templates for these applications under `configs/`.
+
+Before validating or running a main-experiment configuration, set
+`DRHL_DEEPSEEK_API_KEY` in the current terminal as shown in the Quick Start
+section. Application-specific database credentials must also be available
+through the environment variables referenced by that application's
+configuration.
 
 | Application | Version in paper | Language | Upstream link |
 | --- | --- | --- | --- |

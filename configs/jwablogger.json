@@ -356,6 +356,7 @@
     ],
     "oracle": {
       "timeout": 10,
+      "csrf_token_parameters": [],
       "denied_statuses": [
         401,
         403
@@ -460,7 +461,7 @@
       "provider": "openai_compatible",
       "base_url": "https://api.deepseek.com/v1",
       "model": "deepseek-v4-flash",
-      "api_key": "your-api-key",
+      "api_key": "env:DRHL_DEEPSEEK_API_KEY",
       "temperature": 0.1,
       "timeout": 120,
       "response_format_json": true,
@@ -483,7 +484,43 @@
         "*.java",
         "webApp/*.java"
       ],
-      "compile_timeout": 120
+      "compile_timeout": 120,
+      "database_oracles": [
+        {
+          "name": "jwablogger-view-entry-authenticated-read",
+          "page_pattern": "^blogger/viewEntry/[0-9]+/[^/?#]+\\.html(?:\\?|$)",
+          "category": "authenticated_only",
+          "operation": "read",
+          "setup_sql": [
+            "INSERT INTO blog_entry (blog_entry_id, author, title, tags, description, internal_name, external_url, is_visible, has_comments, has_anonymous_comments) VALUES (990001, 'user1', '{token}', 'drhl-oracle', '{token}', 'drhl_oracle_private_entry', 'http://', 'true', 'false', 'false')",
+            "INSERT INTO blog_entry_text (blog_entry_id, blog_text) VALUES (990001, '{token}')"
+          ],
+          "attack": {
+            "role": "visitor",
+            "request": {
+              "page": "blogger/viewEntry/990001/drhl_oracle_private_entry.html",
+              "method": "GET",
+              "replace_params": true,
+              "params": {}
+            },
+            "assert": {
+              "response_not_contains": "{token}"
+            }
+          },
+          "authorized": {
+            "role": "user1",
+            "request": {
+              "page": "blogger/viewEntry/990001/drhl_oracle_private_entry.html",
+              "method": "GET",
+              "replace_params": true,
+              "params": {}
+            },
+            "assert": {
+              "response_contains": "{token}"
+            }
+          }
+        }
+      ]
     },
     "source_map_overrides": [
       {

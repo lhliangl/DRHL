@@ -7,16 +7,32 @@ import sys
 from .config import load_config, validate_config
 from .errors import DRHLError
 from .io import write_json
-from .pipeline import run_pipeline, run_repair_stage
+from .pipeline import (
+    run_detection_stage,
+    run_pipeline,
+    run_repair_stage,
+    run_single_repair_test,
+)
+from .snippet_compaction import compact_snippet_document
 from .source_analysis import analyze_access_control_source
 
 
 def parser() -> argparse.ArgumentParser:
     root = argparse.ArgumentParser(prog="drhl", description="Access-control detection and repair pipeline")
     commands = root.add_subparsers(dest="command", required=True)
-    for name in ("validate", "run", "repair", "analyze-source"):
+    for name in ("validate", "run", "detect", "repair", "repair-test", "analyze-source"):
         command = commands.add_parser(name)
         command.add_argument("--config", required=True, help="JSON configuration file")
+    commands.choices["repair"].description = (
+        "Refresh access-control source artifacts, generate and validate repairs, "
+        "then update run metrics and recompute total time."
+    )
+    commands.choices["repair-test"].add_argument(
+        "--category", required=True, help="exact vulnerability category to test"
+    )
+    commands.choices["repair-test"].add_argument(
+        "--page", required=True, help="exact vulnerable page from analysis/findings.json"
+    )
     commands.choices["analyze-source"].add_argument(
         "--save-cst", action="store_true", default=None, help="save all source CSTs in one JSON file"
     )
@@ -48,6 +64,21 @@ def _analyze_source(config, save_cst_override: bool | None = None) -> dict:
             str(item) for item in source_options.get("validated_function_code_patterns", [])
         ],
         normalize_curly_string_offsets=bool(source_options.get("normalize_curly_string_offsets", False)),
+        termination_patterns=[
+            str(item) for item in source_options.get("termination_patterns", [])
+        ],
+        termination_exclude_patterns=[
+            str(item) for item in source_options.get("termination_exclude_patterns", [])
+        ],
+        framework=(
+            str(source_options["framework"])
+            if source_options.get("framework")
+            else None
+        ),
+        declarative_access_control_fields=[
+            str(item)
+            for item in source_options.get("declarative_access_control_fields", [])
+        ],
     )
     output = config.run_dir / "source"
     paths = {
@@ -56,12 +87,25 @@ def _analyze_source(config, save_cst_override: bool | None = None) -> dict:
         "parameters": output / "parameters.json",
         "functions": output / "functions.json",
         "snippets": output / "snippets.json",
+        "llm_snippets": output / "llm_snippets.json",
     }
     write_json(paths["candidate_parameters"], {"parameters": context["candidate_parameters"]})
     write_json(paths["candidate_functions"], {"functions": context["candidate_functions"]})
     write_json(paths["parameters"], {"parameters": context["parameters"]})
     write_json(paths["functions"], {"functions": context["functions"]})
     write_json(paths["snippets"], {"snippets": context["snippets"]})
+    write_json(
+        paths["llm_snippets"],
+        compact_snippet_document(
+            context["snippets"],
+            exclude_kinds=source_options.get("llm_snippet_exclude_kinds", []),
+            exclude_code_patterns=source_options.get("llm_snippet_exclude_code_patterns", []),
+            require_if_framework=bool(
+                source_options.get("llm_snippet_require_if_framework", False)
+            ),
+            prefix_rules=source_options.get("llm_snippet_prefix_rules", []),
+        ),
+    )
     if save_cst:
         paths["cst"] = output / "cst.json"
         write_json(
@@ -88,6 +132,14 @@ def main(argv: list[str] | None = None) -> int:
             return 0
         if args.command == "repair":
             result = run_repair_stage(config)
+            print(json.dumps(result, ensure_ascii=False, indent=2))
+            return 0
+        if args.command == "repair-test":
+            result = run_single_repair_test(config, args.category, args.page)
+            print(json.dumps(result, ensure_ascii=False, indent=2))
+            return 0
+        if args.command == "detect":
+            result = run_detection_stage(config)
             print(json.dumps(result, ensure_ascii=False, indent=2))
             return 0
         result = run_pipeline(config)

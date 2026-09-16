@@ -1,36 +1,84 @@
 from __future__ import annotations
 
-import ast
+import hashlib
 import re
 from pathlib import Path
 from typing import Any, Iterable
 
+try:
+    from tree_sitter import Language, Parser
+    import tree_sitter_python
+except ImportError as exc:  # pragma: no cover
+    Language = Parser = None  # type: ignore[assignment]
+    tree_sitter_python = None
+    _IMPORT_ERROR = exc
+else:
+    _IMPORT_ERROR = None
 
-AUTH_TOKEN_RE = re.compile(
-    r"\b(?:request\.user|current_user|session|login_required|permission_required|"
-    r"user_passes_test|staff_member_required|is_authenticated|is_staff|is_superuser|"
-    r"has_perm|has_perms|groups?|permissions?|PermissionDenied|Http404|HttpResponseForbidden|"
-    r"redirect|forbidden|unauthori[sz]ed|denied|is_admin|administrator|staff|superuser)\b",
+from .cst_semantic_analysis import (
+    ConditionRecord,
+    FileRecord,
+    FunctionCallRecord,
+    FunctionRecord,
+    end_line,
+    finalize_analysis,
+    line,
+    serialize_cst,
+    text,
+    walk,
+    walk_direct_control_region,
+)
+
+
+CONTROL_NODES = {"if_statement", "elif_clause", "conditional_expression", "assert_statement"}
+FUNCTION_NODES = {"function_definition"}
+ASSIGNMENT_NODES = {"assignment", "named_expression"}
+ACCESS_NODES = {"identifier", "attribute", "subscript"}
+STATEMENT_NODES = {"return_statement", "raise_statement", "expression_statement"}
+SQL_START = re.compile(r"\b(?:SELECT|UPDATE|DELETE|INSERT)\b", re.I)
+SQL_TABLE = re.compile(r"\b(?:FROM|UPDATE|INTO|JOIN)\s+[`\"]?([A-Za-z_]\w*)", re.I)
+SQL_FIELD = re.compile(
+    r"(?:\bWHERE\b|\bAND\b|\bOR\b|,)\s*[`\"]?(?:[A-Za-z_]\w*[.`\"]+)?"
+    r"([A-Za-z_]\w*)[`\"]?\s*(?:=|!=|<>|<|>|LIKE|IN)\s*",
     re.I,
 )
-CALL_GUARD_RE = re.compile(
-    r"\b(?:login_required|permission_required|user_passes_test|staff_member_required|"
-    r"is_authenticated|is_staff|is_superuser|has_perm|has_perms|PermissionDenied|Http404|"
-    r"HttpResponseForbidden|redirect|forbidden|unauthori[sz]ed|denied)\b",
+DENIAL_CALL = re.compile(
+    r"(?:^|\.)(?:abort|redirect|permissiondenied|http404|httpresponseforbidden|"
+    r"forbidden|unauthorized|deny|exit|quit)$",
     re.I,
 )
-STRICT_ACCESS_FIELD_SIGNAL = re.compile(
-    r"\b(?:user_?id|userid|uid|owner_?id|author_?id|created_?by|creator_?id|"
-    r"member_?id|admin_?id|role|rank_?id|group_?id|usergroup|privilege|"
-    r"permission|is_?admin|staff|superuser)\b",
+ACCESS_DENIAL_TEXT = re.compile(
+    r"\b(?:access|permission|authentication|authorization)\s+(?:denied|required|failed)\b|"
+    r"\b(?:forbidden|unauthori[sz]ed|not[_ ]authenticated|not[_ ]authorized)\b|"
+    r"\b(?:login|log[_ ]?in|sign[_ ]?in)\b",
     re.I,
 )
-DENY_OR_REDIRECT_RE = re.compile(
-    r"\b(?:PermissionDenied|Http404|HttpResponseForbidden|redirect|forbidden|"
-    r"unauthori[sz]ed|denied|raise|abort)\b",
+NON_PARAMETER_CALLS = {
+    "all",
+    "any",
+    "bool",
+    "dict",
+    "hasattr",
+    "isinstance",
+    "len",
+    "list",
+    "set",
+    "str",
+    "tuple",
+}
+DJANGO_ACCESS_PARAMETER = re.compile(
+    r"(?:^|\.)(?:user(?:\.id)?|is_staff|is_superuser|is_active|is_student|"
+    r"is_lecturer|is_parent|is_dep_head|is_authenticated|has_perm)$",
     re.I,
 )
-PARAM_TOKEN_RE = STRICT_ACCESS_FIELD_SIGNAL
+
+
+def _parser() -> Any:
+    if _IMPORT_ERROR is not None or Language is None or Parser is None or tree_sitter_python is None:
+        raise RuntimeError(
+            "Python source analysis requires tree-sitter and tree-sitter-python; run `pip install -e .`"
+        ) from _IMPORT_ERROR
+    return Parser(Language(tree_sitter_python.language()))
 
 
 def _files(root: Path, skip_dirs: Iterable[str] | None = None) -> list[Path]:
@@ -39,215 +87,337 @@ def _files(root: Path, skip_dirs: Iterable[str] | None = None) -> list[Path]:
     for path in root.rglob("*.py"):
         if not path.is_file():
             continue
-        relative_parts = {part.casefold() for part in path.relative_to(root).parts[:-1]}
-        if relative_parts & skipped:
+        if {part.casefold() for part in path.relative_to(root).parts[:-1]} & skipped:
             continue
         result.append(path.resolve())
     return sorted(result)
 
 
-def _relative(path: Path, root: Path) -> str:
-    return path.resolve().relative_to(root.resolve()).as_posix()
+def _outer_access(node: Any) -> bool:
+    parent = node.parent
+    if parent is None:
+        return True
+    if parent.type in {"attribute", "subscript"}:
+        return False
+    if parent.type == "call" and parent.child_by_field_name("function") == node:
+        return False
+    return True
 
 
-def _source_segment(source: str, node: ast.AST) -> str:
-    try:
-        return ast.get_source_segment(source, node) or ""
-    except Exception:
-        return ""
-
-
-def _node_lines(lines: list[str], node: ast.AST, context: int = 0) -> str:
-    start = max(1, int(getattr(node, "lineno", 1)) - context)
-    end = min(len(lines), int(getattr(node, "end_lineno", start)) + context)
-    return "\n".join(lines[start - 1:end])
-
-
-def _dotted_name(node: ast.AST | None) -> str:
+def _condition_parameters(source: bytes, node: Any | None) -> list[str]:
     if node is None:
-        return ""
-    if isinstance(node, ast.Name):
-        return node.id
-    if isinstance(node, ast.Attribute):
-        base = _dotted_name(node.value)
-        return f"{base}.{node.attr}" if base else node.attr
-    if isinstance(node, ast.Call):
-        return _dotted_name(node.func)
-    if isinstance(node, ast.Subscript):
-        return _dotted_name(node.value)
-    if isinstance(node, ast.Constant):
-        return repr(node.value)
-    return ""
+        return []
+    result: list[str] = []
+    for child in walk(node):
+        if child.type in {"attribute", "subscript"} and _outer_access(child):
+            result.append(text(source, child).strip())
+        elif child.type == "call":
+            function = child.child_by_field_name("function")
+            value = text(source, function).strip()
+            if value and value.rsplit(".", 1)[-1].casefold() not in NON_PARAMETER_CALLS:
+                result.append(value)
+        elif child.type == "identifier" and _outer_access(child):
+            result.append(text(source, child).strip())
+    return list(dict.fromkeys(item for item in result if item))
 
 
-def _constant_string(node: ast.AST | None) -> str | None:
-    if isinstance(node, ast.Constant) and isinstance(node.value, str):
-        return node.value
-    if isinstance(node, ast.Str):
-        return node.s
+def _direct_reference(source: bytes, node: Any | None) -> str | None:
+    current = node
+    while current is not None and current.type == "parenthesized_expression":
+        named = list(current.named_children)
+        current = named[-1] if named else None
+    if current is None:
+        return None
+    if current.type in ACCESS_NODES:
+        return text(source, current).strip()
+    if current.type == "call":
+        function = text(source, current.child_by_field_name("function")).strip()
+        arguments = current.child_by_field_name("arguments")
+        string_arg = None
+        if arguments is not None:
+            string_arg = next(
+                (
+                    text(source, child).strip("'\"")
+                    for child in arguments.named_children
+                    if child.type in {"string", "concatenated_string"}
+                ),
+                None,
+            )
+        if string_arg and re.search(
+            r"(?:session|request|cookie|context).*\.(?:get|pop|value)$", function, re.I
+        ):
+            return f"{function.rsplit('.', 1)[0]}.{string_arg}"
     return None
 
 
-def _subscript_key(node: ast.Subscript) -> str | None:
-    slice_node = node.slice
-    if isinstance(slice_node, ast.Index):  # pragma: no cover - py<3.9 compatibility
-        slice_node = slice_node.value
-    return _constant_string(slice_node)
-
-
-def _call_name(node: ast.Call) -> str:
-    return _dotted_name(node.func)
-
-
-def _decorator_name(node: ast.AST) -> str:
-    return _dotted_name(node)
-
-def _is_django_project(root: Path) -> bool:
-    return (root / "manage.py").exists()
-
-
-def _is_user_passes_test_call(node: ast.AST) -> bool:
-    return isinstance(node, ast.Call) and _call_name(node).split(".")[-1] == "user_passes_test"
-
-
-def _lambda_permission_attributes(node: ast.Call) -> list[dict[str, Any]]:
-    """Extract permission attributes from user_passes_test(lambda u: u.is_staff, ...)."""
-    result: list[dict[str, Any]] = []
-    seen: set[tuple[str, str]] = set()
-    lambdas = [arg for arg in node.args if isinstance(arg, ast.Lambda)]
-    for keyword in node.keywords:
-        if isinstance(keyword.value, ast.Lambda):
-            lambdas.append(keyword.value)
-    for lambda_node in lambdas:
-        arg_names = {arg.arg for arg in lambda_node.args.args}
-        if not arg_names:
+def _assignment_pairs(source: bytes, root: Any) -> list[tuple[str, str]]:
+    pairs: list[tuple[str, str]] = []
+    for node in walk(root):
+        if node.type not in ASSIGNMENT_NODES:
             continue
-        identity_key = ("request.user", "request.user")
-        if identity_key not in seen:
-            seen.add(identity_key)
-            result.append({
-                "name": "request.user",
-                "expression": "request.user",
-                "decorator_expression": next(iter(arg_names)),
-                "line": int(getattr(lambda_node, "lineno", getattr(node, "lineno", 0)) or 0),
-            })
-        for child in ast.walk(lambda_node.body):
-            if not isinstance(child, ast.Attribute):
-                continue
-            if not isinstance(child.value, ast.Name) or child.value.id not in arg_names:
-                continue
-            key = (child.attr, f"{child.value.id}.{child.attr}")
-            if key in seen:
-                continue
-            seen.add(key)
-            result.append({
-                "name": child.attr,
-                "expression": child.attr,
-                "decorator_expression": key[1],
-                "line": int(getattr(child, "lineno", getattr(node, "lineno", 0)) or 0),
-            })
-    return result
+        left = node.child_by_field_name("left") or node.child_by_field_name("name")
+        right = node.child_by_field_name("right") or node.child_by_field_name("value")
+        left_value = _direct_reference(source, left)
+        right_value = _direct_reference(source, right)
+        if left_value and right_value:
+            pairs.append((left_value, right_value))
+    return pairs
 
 
+def _call_name(source: bytes, call: Any) -> str:
+    return text(source, call.child_by_field_name("function")).strip()
 
 
-def _parameter_accesses(source: str, node: ast.AST) -> list[dict[str, Any]]:
-    """Collect ALL identifiers from AST (full collection, not just request params)."""
-    accesses: list[dict[str, Any]] = []
-    seen: set[str] = set()
-    for child in ast.walk(node):
-        name = None
-        expression = ""
-        if isinstance(child, ast.Name):
-            name = child.id
-            expression = name
-        elif isinstance(child, ast.Attribute):
-            name = _dotted_name(child)
-            expression = name
-        elif isinstance(child, ast.Call):
-            call = _call_name(child)
-            # Also collect string arguments as access keys
-            for arg in child.args:
-                val = _constant_string(arg)
-                if val:
-                    key = f"{call}({val})"
-                    if key not in seen:
-                        seen.add(key)
-                        accesses.append({"name": val, "expression": key, "line": int(getattr(child, "lineno", 0) or 0)})
-            name = call
-            expression = call
-        if name and len(name) >= 2 and name.lower() not in {"if", "for", "and", "not", "is", "in", "or", "none", "true", "false", "self", "cls"}:
-            if name not in seen:
-                seen.add(name)
-                accesses.append({"name": name, "expression": expression, "line": int(getattr(child, "lineno", 0) or 0)})
-    return accesses
+def _django_access_parameters(parameters: list[str]) -> list[str]:
+    selected = [item for item in parameters if DJANGO_ACCESS_PARAMETER.search(item)]
+    return list(dict.fromkeys(selected))
 
 
-def _call_keyword_names(node: ast.Call) -> list[str]:
-    names: list[str] = []
-    for keyword in node.keywords:
-        if keyword.arg:
-            names.append(keyword.arg)
-    return names
-
-
-def _call_names(node: ast.AST) -> list[str]:
-    names = []
-    for child in ast.walk(node):
-        if isinstance(child, ast.Call):
-            name = _call_name(child)
-            if name:
-                names.append(name)
-        elif isinstance(child, ast.Attribute):
-            name = _dotted_name(child)
-            if name and AUTH_TOKEN_RE.search(name):
-                names.append(name)
-    return sorted(set(names))
-
-
-def _looks_access_control(text: str, names: Iterable[str] = ()) -> bool:
-    joined = text + "\n" + "\n".join(names)
-    return bool(AUTH_TOKEN_RE.search(joined))
-
-
-def _parameter_relevant(name: str, identity_parameters: set[str], access_fields: set[str]) -> bool:
-    folded = name.casefold()
-    if folded in identity_parameters or folded in access_fields:
-        return True
-    if STRICT_ACCESS_FIELD_SIGNAL.search(folded):
-        return True
-    if AUTH_TOKEN_RE.search(folded):
-        return True
-    return False
-
-
-
-def _field_evidence(text: str, names: Iterable[str], access_fields: set[str]) -> bool:
-    folded = text.casefold()
-    return bool(
-        STRICT_ACCESS_FIELD_SIGNAL.search(text)
-        or any(STRICT_ACCESS_FIELD_SIGNAL.search(name) for name in names)
-        or any(field and field in folded for field in access_fields)
+def _django_user_passes_test_record(
+    source: bytes, relative: str, node: Any
+) -> ConditionRecord | None:
+    if _call_name(source, node).rsplit(".", 1)[-1].casefold() != "user_passes_test":
+        return None
+    arguments = node.child_by_field_name("arguments")
+    if arguments is None:
+        return None
+    predicate = next(
+        (
+            child
+            for child in arguments.named_children
+            if child.type == "lambda" and child.child_by_field_name("body") is not None
+        ),
+        None,
+    )
+    if predicate is None:
+        return None
+    body = predicate.child_by_field_name("body")
+    condition = text(source, body).strip()
+    parameters = _django_access_parameters(_condition_parameters(source, body))
+    if not condition or not parameters:
+        return None
+    # The lambda argument is the current Django principal.  Preserve that
+    # framework-level identity alongside the concrete role/permission fields.
+    parameters.insert(0, "request.user")
+    code = text(source, node).strip()
+    return ConditionRecord(
+        path=relative,
+        condition=condition,
+        parameters=list(dict.fromkeys(parameters)),
+        body=code,
+        terminations=[
+            {
+                "kind": "django_user_passes_test",
+                "line": line(node),
+                "code": code,
+                "is_statement": False,
+            }
+        ],
+        start_line=line(node),
+        end_line=end_line(node),
+        start_byte=node.start_byte,
+        end_byte=node.end_byte,
+        code=code,
     )
 
 
-def _deny_or_redirect_evidence(text: str, names: Iterable[str] = ()) -> bool:
-    joined = text + "\n" + "\n".join(names)
-    return bool(DENY_OR_REDIRECT_RE.search(joined) or CALL_GUARD_RE.search(joined))
-def _serialize_ast(source: str, node: ast.AST, depth: int = 0, max_depth: int = 80) -> dict[str, Any]:
-    item: dict[str, Any] = {
-        "type": type(node).__name__,
-        "start_line": getattr(node, "lineno", None),
-        "end_line": getattr(node, "end_lineno", None),
-    }
-    text = _source_segment(source, node)
-    if text and len(text) <= 240:
-        item["text"] = text
-    if depth < max_depth:
-        children = [_serialize_ast(source, child, depth + 1, max_depth) for child in ast.iter_child_nodes(node)]
-        if children:
-            item["children"] = children
-    return item
+def _django_declarative_filter_record(
+    source: bytes,
+    relative: str,
+    node: Any,
+    configured_fields: set[str],
+) -> tuple[ConditionRecord, list[tuple[str, dict[str, Any]]]] | None:
+    match = re.fullmatch(
+        r"([A-Za-z_]\w*)\.objects\.(?:filter|exclude|get)",
+        _call_name(source, node),
+        re.I,
+    )
+    arguments = node.child_by_field_name("arguments")
+    if match is None or arguments is None:
+        return None
+    model = match.group(1)
+    relations: list[tuple[str, dict[str, Any]]] = []
+    for argument in arguments.named_children:
+        if argument.type != "keyword_argument":
+            continue
+        name_node = argument.child_by_field_name("name")
+        field_name = text(source, name_node).strip().split("__", 1)[0]
+        expression = f"{model}.{field_name}"
+        if expression.casefold() not in configured_fields:
+            continue
+        relations.append(
+            (
+                expression,
+                {
+                    "table": model,
+                    "field": field_name,
+                    "line": line(node),
+                    "start_line": line(node),
+                    "end_line": end_line(node),
+                    "code": text(source, node).strip(),
+                },
+            )
+        )
+    if not relations:
+        return None
+    code = text(source, node).strip()
+    return (
+        ConditionRecord(
+            path=relative,
+            condition=code,
+            parameters=list(dict.fromkeys(item[0] for item in relations)),
+            body="",
+            terminations=[],
+            start_line=line(node),
+            end_line=end_line(node),
+            start_byte=node.start_byte,
+            end_byte=node.end_byte,
+            code=code,
+            is_control=False,
+        ),
+        relations,
+    )
+def _database_relations(source: bytes, root: Any) -> dict[str, list[dict[str, Any]]]:
+    relations: dict[str, list[dict[str, Any]]] = {}
+    for node in walk(root):
+        if node.type != "call":
+            continue
+        name = _call_name(source, node)
+        arguments = node.child_by_field_name("arguments")
+        if arguments is None:
+            continue
+        if re.search(r"\.(?:filter|exclude|get|update)$", name, re.I):
+            table_match = re.match(r"([A-Za-z_]\w*)\.objects\.", name)
+            table = table_match.group(1) if table_match else name.split(".", 1)[0]
+            for argument in arguments.named_children:
+                if argument.type != "keyword_argument":
+                    continue
+                field_node = argument.child_by_field_name("name")
+                value_node = argument.child_by_field_name("value")
+                field_name = text(source, field_node).strip().split("__", 1)[0]
+                for expression in _condition_parameters(source, value_node):
+                    relations.setdefault(expression, []).append(
+                        {
+                            "table": table,
+                            "field": field_name,
+                            "line": line(node),
+                            "start_line": line(node),
+                            "end_line": end_line(node),
+                            "code": text(source, node).strip(),
+                        }
+                    )
+        if name.rsplit(".", 1)[-1].casefold() not in {"execute", "executemany"}:
+            continue
+        named_args = list(arguments.named_children)
+        if not named_args:
+            continue
+        sql = text(source, named_args[0]).strip().strip("'\"")
+        if not SQL_START.search(sql):
+            continue
+        table_match = SQL_TABLE.search(sql)
+        table = table_match.group(1) if table_match else ""
+        fields = [match.group(1) for match in SQL_FIELD.finditer(sql)]
+        values: list[str] = []
+        for argument in named_args[1:]:
+            values.extend(_condition_parameters(source, argument))
+        for field_name, expression in zip(fields, values):
+            relations.setdefault(expression, []).append(
+                {
+                    "table": table,
+                    "field": field_name,
+                    "line": line(node),
+                    "start_line": line(node),
+                    "end_line": end_line(node),
+                    "code": text(source, node).strip(),
+                }
+            )
+    return relations
+
+
+def _configured_match(patterns: list[str] | None, value: str) -> bool:
+    return any(re.search(pattern, value, re.I | re.S) for pattern in patterns or [])
+
+
+def _termination_kind(
+    code: str,
+    extra_patterns: list[str] | None,
+    context: str = "",
+) -> str | None:
+    lowered = code.casefold()
+    if re.search(
+        r"\b(?:status(?:_code)?\s*=\s*40[13]|HTTPStatus\.(?:UNAUTHORIZED|FORBIDDEN))\b",
+        code,
+        re.I,
+    ):
+        return "http_denial"
+    if re.match(r"\s*raise\b", code) and ACCESS_DENIAL_TEXT.search(code):
+        return "exception"
+    call_match = re.search(r"\b([A-Za-z_]\w*(?:\.[A-Za-z_]\w*)*)\s*\(", code)
+    if call_match and DENIAL_CALL.search(call_match.group(1)):
+        if re.search(r"\babort\s*\(\s*40[13]", code, re.I):
+            return "http_denial"
+        explicit_denial_call = bool(
+            re.search(
+                r"(?:^|\.)(?:PermissionDenied|HttpResponseForbidden|Forbidden|Unauthorized|Deny)$",
+                call_match.group(1),
+                re.I,
+            )
+        )
+        if explicit_denial_call or ACCESS_DENIAL_TEXT.search(code):
+            return "redirect" if "redirect" in lowered else "denial"
+    if re.search(r"\b(?:sys\.)?(?:exit|quit)\s*\(", code, re.I) and ACCESS_DENIAL_TEXT.search(code):
+        return "execution_termination"
+    if _configured_match(extra_patterns, code):
+        return "configured_denial"
+    if _configured_match(extra_patterns, context) and re.match(
+        r"\s*(?:return|raise)\b|.*\b(?:redirect|abort|exit|quit)\s*\(", code, re.I | re.S
+    ):
+        return "configured_denial"
+    return None
+
+
+def _terminations(
+    source: bytes,
+    branch: Any | None,
+    extra_patterns: list[str] | None,
+    context: str = "",
+) -> list[dict[str, Any]]:
+    if branch is None:
+        return []
+    result: list[dict[str, Any]] = []
+    seen: set[tuple[int, int]] = set()
+    for node in walk_direct_control_region(branch, CONTROL_NODES):
+        if node.type not in STATEMENT_NODES:
+            continue
+        code = text(source, node).strip()
+        kind = _termination_kind(code, extra_patterns, context)
+        if not kind:
+            continue
+        key = (node.start_byte, node.end_byte)
+        if key in seen:
+            continue
+        seen.add(key)
+        result.append({"kind": kind, "line": line(node), "code": code})
+    return result
+
+
+def _condition_parts(node: Any) -> tuple[Any | None, list[Any]]:
+    if node.type == "assert_statement":
+        return (node.named_children[0] if node.named_children else None), []
+    condition = node.child_by_field_name("condition")
+    consequence = node.child_by_field_name("consequence") or node.child_by_field_name("body")
+    branches = [consequence] if consequence is not None else []
+    alternative = node.child_by_field_name("alternative")
+    if alternative is not None and alternative.type == "else_clause":
+        branches.append(alternative)
+    return condition, branches
+
+
+def _function_parameters(source: bytes, node: Any) -> list[str]:
+    parameters = node.child_by_field_name("parameters")
+    if parameters is None:
+        return []
+    return [text(source, child).strip() for child in parameters.named_children if text(source, child).strip()]
 
 
 def analyze_python_source(
@@ -260,313 +430,136 @@ def analyze_python_source(
     include_cst: bool = False,
     validated_function_name_patterns: list[str] | None = None,
     validated_function_code_patterns: list[str] | None = None,
+    termination_patterns: list[str] | None = None,
+    framework: str | None = None,
+    declarative_access_control_fields: list[str] | None = None,
 ) -> dict[str, Any]:
-    del database_schema
+    del identity_parameters, database_schema, validated_function_name_patterns, validated_function_code_patterns
+    django_mode = str(framework or "").casefold() == "django"
+    declarative_fields = {
+        str(item).strip().casefold()
+        for item in (declarative_access_control_fields or [])
+        if str(item).strip()
+    }
+    effective_termination_patterns = list(termination_patterns or [])
+    if django_mode:
+        effective_termination_patterns.append(
+            r"^\s*raise\s+(?:PermissionDenied|Http404)\b"
+        )
+    parser = _parser()
     source_root = Path(root).resolve()
-    is_django_project = _is_django_project(source_root)
-    identities = {str(item).casefold() for item in (identity_parameters or [])}
-    access_fields = {str(item).split(".")[-1].strip().strip("`\"").casefold() for item in (access_control_database_fields or [])}
-    name_patterns = [re.compile(str(item), re.I) for item in (validated_function_name_patterns or [])]
-    code_patterns = [re.compile(str(item), re.I) for item in (validated_function_code_patterns or [])]
-
-    parse_errors: list[dict[str, Any]] = []
+    parsed_files: list[FileRecord] = []
     cst_files: list[dict[str, Any]] = []
-    candidate_parameters: list[dict[str, Any]] = []
-    parameters: list[dict[str, Any]] = []
-    candidate_functions: list[dict[str, Any]] = []
-    functions: list[dict[str, Any]] = []
-    snippets: list[dict[str, Any]] = []
+    parse_errors: list[dict[str, Any]] = []
 
     for path in _files(source_root, skip_dirs):
-        relative = _relative(path, source_root)
-        source = path.read_text(encoding="utf-8", errors="ignore")
-        lines = source.splitlines()
-        try:
-            tree = ast.parse(source, filename=str(path))
-        except SyntaxError as exc:
-            parse_errors.append({"path": relative, "line": exc.lineno, "message": exc.msg})
-            if is_django_project:
-                # Narrow fallback for legacy Python2 Django login views that stdlib ast
-                # cannot parse under Python3, e.g. `if user is not None: auth.login(...)`.
-                for match in re.finditer(r"\bif\s+([A-Za-z_]\w*)\s+is\s+not\s+None\s*:", source):
-                    name = match.group(1)
-                    if name.casefold() not in identities:
-                        continue
-                    body_window = source[match.end():match.end() + 500]
-                    if not re.search(r"\bauth\.login\s*\(|\blogin\s*\(", body_window):
-                        continue
-                    line = source.count("\n", 0, match.start()) + 1
-                    item = {
-                        "path": relative,
-                        "name": name,
-                        "expression": name,
-                        "line": line,
-                        "source": "legacy_django_authenticate_condition",
-                    }
-                    candidate_parameters.append(item)
-                    parameters.append(item)
-                    snippets.append({
-                        "path": relative,
-                        "kind": "condition",
-                        "start_line": line,
-                        "end_line": line,
-                        "condition": match.group(0).rstrip(":"),
-                        "functions": ["auth.login"],
-                        "variables": [name],
-                        "code": "\n".join(lines[max(0, line - 2): min(len(lines), line + 4)]),
-                        "access_control_score": 4,
-                    })
-            continue
-
+        relative = path.relative_to(source_root).as_posix()
+        source = path.read_bytes()
+        tree = parser.parse(source)
         if include_cst:
             cst_files.append(
                 {
                     "path": relative,
-                    "parser": "python.ast",
-                    "note": "Python stdlib ast is used as the normalized syntax tree when tree-sitter-python is unavailable.",
-                    "root": _serialize_ast(source, tree),
+                    "encoding": "utf-8",
+                    "size_bytes": len(source),
+                    "sha256": hashlib.sha256(source).hexdigest(),
+                    "has_error": bool(tree.root_node.has_error),
+                    "root": serialize_cst(source, tree.root_node),
                 }
             )
-
-        for access in _parameter_accesses(source, tree):
-            item = {
-                "path": relative,
-                "name": access["name"],
-                "expression": access["expression"],
-                "line": access["line"],
-                "source": "request_parameter",
-            }
-            candidate_parameters.append(item)
-            if (not is_django_project) and _parameter_relevant(access["name"], identities, access_fields):
-                parameters.append(item)
-
-        for node in ast.walk(tree):
-            if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef)):
-                code = _node_lines(lines, node)
-                decorators = [_decorator_name(item) for item in node.decorator_list]
-                item = {
-                    "path": relative,
-                    "kind": "function",
-                    "name": node.name,
-                    "start_line": int(getattr(node, "lineno", 0) or 0),
-                    "end_line": int(getattr(node, "end_lineno", getattr(node, "lineno", 0)) or 0),
-                    "decorators": [item for item in decorators if item],
-                    "code": code,
-                }
-                candidate_functions.append(item)
-                field_hit = _field_evidence(code, decorators + [node.name], access_fields)
-                deny_hit = _deny_or_redirect_evidence(code, decorators)
-                configured_hit = (not is_django_project) and any(pattern.search(node.name) for pattern in name_patterns)
-                # Django: only functions with AC decorators are validated
-                has_ac_decorator = any(
-                    re.search(r"\b(?:login_required|staff_member_required|permission_required|user_passes_test|student_required|lecturer_required|admin_required)\b", d, re.I)
-                    for d in decorators
-                )
-                validated = bool((has_ac_decorator and not is_django_project) or configured_hit)
-                django_decorator_params: list[dict[str, Any]] = []
-                if is_django_project:
-                    for child in ast.walk(node):
-                        if _is_user_passes_test_call(child):
-                            django_decorator_params.extend(_lambda_permission_attributes(child))
-                if django_decorator_params:
-                    validated_item = dict(item)
-                    validated_item["validation_evidence"] = ["django_decorator_user_passes_test"]
-                    functions.append(validated_item)
-                    snippets.append({
-                        **validated_item,
-                        "kind": "validation_function",
-                        "function": node.name,
-                        "condition": "user_passes_test decorator predicate",
-                        "variables": sorted({param["expression"] for param in django_decorator_params}),
-                        "access_control_score": 4,
-                    })
-                    for param in django_decorator_params:
-                        parameters.append({
-                            "path": relative,
-                            "name": param["name"],
-                            "expression": param["expression"],
-                            "decorator_expression": param["decorator_expression"],
-                            "line": param["line"],
-                            "source": "django_decorator_user_passes_test",
-                        })
-                elif validated:
-                    functions.append(item)
-                    snippets.append({**item, "access_control_score": 3})
-
-            if isinstance(node, ast.Call):
-                name = _call_name(node)
-                if not name:
-                    continue
-                text = _source_segment(source, node)
-                item = {
-                    "path": relative,
-                    "kind": "call",
-                    "name": name,
-                    "start_line": int(getattr(node, "lineno", 0) or 0),
-                    "end_line": int(getattr(node, "end_lineno", getattr(node, "lineno", 0)) or 0),
-                    "code": text,
-                }
-                candidate_functions.append(item)
-                keyword_names = _call_keyword_names(node)
-                relevant_keywords = [
-                    key for key in keyword_names
-                    if _parameter_relevant(key, identities, access_fields) or key.casefold() in access_fields
-                ]
-                orm_visibility_call = (
-                    (".objects.filter" in name or name.endswith(".filter") or name.endswith(".exclude") or name.endswith(".get"))
-                    and relevant_keywords
-                )
-                if orm_visibility_call:
-                    full_code = _node_lines(lines, node)
-                    reduced = _source_segment(source, node.test if hasattr(node, 'test') else node).strip() + " {\n"
-                    for line in full_code.splitlines():
-                        if DENY_OR_REDIRECT_RE.search(line) or re.search(r"\braise\b|\breturn\b", line):
-                            reduced += "    " + line.strip() + "\n"
-                    reduced += "}"
-                    snippets.append(
-                        {
-                            "path": relative,
-                            "kind": "condition",
-                            "start_line": int(getattr(node, "lineno", 0) or 0),
-                            "end_line": int(getattr(node, "end_lineno", getattr(node, "lineno", 0)) or 0),
-                            "condition": text,
-                            "code": reduced,
-                        }
-                    )
-                    for key in sorted(set(relevant_keywords)):
-                        parameters.append({
-                            "path": relative,
-                            "name": key,
-                            "expression": key,
-                            "line": int(getattr(node, "lineno", 0) or 0),
-                            "source": "database_field",
-                        })
-                    if not is_django_project:
-                        functions.append(item)
-
-            if isinstance(node, (ast.If, ast.IfExp, ast.Assert)):
-                test = node.test if hasattr(node, "test") else node
-                condition = _source_segment(source, test)
-                code = _node_lines(lines, node, context=0)
-                names = _call_names(node)
-                condition_params = _parameter_accesses(source, test if is_django_project else node)
-                relevant_params = [
-                    item["expression"]
-                    for item in condition_params
-                    if _parameter_relevant(str(item["name"]), identities, access_fields)
-                ]
-                field_hit = bool(relevant_params) or _field_evidence(condition + "\n" + code, names, access_fields)
-                deny_hit = _deny_or_redirect_evidence(code, names)
-                django_deny_hit = bool(re.search(r"\b(?:PermissionDenied|Http404|HttpResponseForbidden|raise|abort)\b", code + "\n" + "\n".join(names), re.I))
-                include_condition = (field_hit and django_deny_hit) if is_django_project else (field_hit or deny_hit)
-                if include_condition:
-                    reduced_code = condition + " {\n"
-                    for line in code.splitlines():
-                        if DENY_OR_REDIRECT_RE.search(line) or re.search(r"\braise\b|\breturn\b", line):
-                            reduced_code += "    " + line.strip() + "\n"
-                    reduced_code += "}"
-                    snippets.append(
-                        {
-                            "path": relative,
-                            "kind": "condition",
-                            "start_line": int(getattr(node, "lineno", 0) or 0),
-                            "end_line": int(getattr(node, "end_lineno", getattr(node, "lineno", 0)) or 0),
-                            "condition": condition,
-                            "code": reduced_code,
-                        }
-                    )
-                    if is_django_project:
-                        for expr in sorted(set(relevant_params)):
-                            parameters.append({
-                                "path": relative,
-                                "name": expr.split(".")[-1],
-                                "expression": expr,
-                                "line": int(getattr(node, "lineno", 0) or 0),
-                                "source": "terminating_condition",
-                            })
-
-        # Decorator-only guards are important in non-Django Python apps.
-        # For Django projects, user_passes_test(...) is handled above as the
-        # validation function; the decorated view itself is not promoted.
-        if not is_django_project:
-            for node in ast.walk(tree):
-                if not isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef, ast.ClassDef)):
-                    continue
-                dec_list = getattr(node, "decorator_list", [])
-                decorators = [_decorator_name(item) for item in dec_list]
-                guard_decorators = [item for item in decorators if AUTH_TOKEN_RE.search(item)]
-                if not guard_decorators:
-                    continue
-                dec_attrs = set()
-                for dec_node in dec_list:
-                    for child in ast.walk(dec_node):
-                        if isinstance(child, ast.Attribute):
-                            dec_attrs.add(child.attr)
-                snippets.append(
+        for node in walk(tree.root_node):
+            if node.type == "ERROR" or bool(getattr(node, "is_error", False)):
+                parse_errors.append(
                     {
                         "path": relative,
-                        "kind": "condition",
-                        "start_line": int(getattr(node, "lineno", 0) or 0),
-                        "end_line": int(getattr(node, "lineno", 0) or 0),
-                        "condition": "decorators: " + ", ".join(guard_decorators),
-                        "functions": guard_decorators,
-                        "variables": sorted(dec_attrs),
-                        "code": "\n".join(_source_segment(source, item) for item in dec_list),
-                        "access_control_score": 4,
+                        "line": line(node),
+                        "message": f"parse error near: {text(source, node)[:120]}",
                     }
                 )
-                for attr in dec_attrs:
-                    parameters.append({
-                        "path": relative,
-                        "name": attr,
-                        "expression": attr,
-                        "line": int(getattr(node, "lineno", 0) or 0),
-                        "source": "decorator",
-                    })
 
-    def _dedupe(items: list[dict[str, Any]]) -> list[dict[str, Any]]:
-        seen = set()
-        result = []
-        for item in items:
-            key = (
-                item.get("path"),
-                item.get("kind"),
-                item.get("name"),
-                item.get("expression"),
-                item.get("start_line"),
-                item.get("line"),
-                item.get("condition"),
-            )
-            if key in seen:
-                continue
-            seen.add(key)
-            result.append(item)
-        return result
+        record = FileRecord(path=relative)
+        record.alias_pairs = _assignment_pairs(source, tree.root_node)
+        record.database_relations = _database_relations(source, tree.root_node)
+        for node in walk(tree.root_node):
+            if node.type in CONTROL_NODES:
+                condition_node, branches = _condition_parts(node)
+                condition = text(source, condition_node).strip()
+                if not condition:
+                    continue
+                terminations = [
+                    termination
+                    for branch in branches
+                    for termination in _terminations(
+                        source,
+                        branch,
+                        effective_termination_patterns,
+                        f"{condition}\n{text(source, branch)}",
+                    )
+                ]
+                parameters = _condition_parameters(source, condition_node)
+                record.conditions.append(
+                    ConditionRecord(
+                        path=relative,
+                        condition=condition,
+                        parameters=parameters,
+                        body="\n".join(text(source, branch).strip() for branch in branches),
+                        terminations=terminations,
+                        start_line=line(node),
+                        end_line=end_line(node),
+                        start_byte=node.start_byte,
+                        end_byte=node.end_byte,
+                        code=text(source, node).strip(),
+                    )
+                )
+            elif node.type == "call":
+                name = _call_name(source, node)
+                if name:
+                    record.function_calls.append(
+                        FunctionCallRecord(
+                            path=relative,
+                            name=name,
+                            code=text(source, node).strip(),
+                            start_line=line(node),
+                            end_line=end_line(node),
+                            start_byte=node.start_byte,
+                            end_byte=node.end_byte,
+                        )
+                    )
+                if django_mode:
+                    condition = _django_user_passes_test_record(source, relative, node)
+                    if condition is not None:
+                        record.conditions.append(condition)
+                    declarative = _django_declarative_filter_record(
+                        source, relative, node, declarative_fields
+                    )
+                    if declarative is not None:
+                        condition, relations = declarative
+                        record.conditions.append(condition)
+                        for expression, relation in relations:
+                            record.database_relations.setdefault(expression, []).append(relation)
+            elif node.type in FUNCTION_NODES:
+                name = text(source, node.child_by_field_name("name")).strip() or "<anonymous>"
+                body = node.child_by_field_name("body")
+                record.functions.append(
+                    FunctionRecord(
+                        path=relative,
+                        name=name,
+                        parameters=_function_parameters(source, node),
+                        body=text(source, body).strip(),
+                        code=text(source, node).strip(),
+                        start_line=line(node),
+                        end_line=end_line(node),
+                        start_byte=node.start_byte,
+                        end_byte=node.end_byte,
+                    )
+                )
+        parsed_files.append(record)
 
-    candidate_parameters = _dedupe(candidate_parameters)
-    parameters = _dedupe(parameters)
-    candidate_functions = _dedupe(candidate_functions)
-    functions = _dedupe(functions)
-    snippets = [item for item in _dedupe(snippets) if "function" in item.get("kind", "") or item.get("condition")]
-    snippets.sort(key=lambda item: (str(item.get("path")), int(item.get("start_line") or item.get("line") or 0), str(item.get("kind"))))
-
-    return {
-        "schema_version": 2,
-        "language": "python",
-        "parser": "python.ast",
-        "parse_errors": parse_errors,
-        "summary": {
-            "cst_files": len(cst_files),
-            "candidate_parameters": len(candidate_parameters),
-            "candidate_functions": len(candidate_functions),
-            "parameters": len(parameters),
-            "functions": len(functions),
-            "snippets": len(snippets),
-        },
-        "cst": cst_files,
-        "candidate_parameters": candidate_parameters,
-        "candidate_functions": candidate_functions,
-        "parameters": parameters,
-        "functions": functions,
-        "snippets": snippets,
-    }
+    return finalize_analysis(
+        language="python",
+        parser_name="tree-sitter-python",
+        files=parsed_files,
+        access_control_database_fields=access_control_database_fields,
+        parse_errors=parse_errors,
+        cst_files=cst_files,
+    )

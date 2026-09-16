@@ -1,0 +1,17 @@
+{
+  "app": "wackopicko",
+  "language": "php",
+  "reviewed_at": "2026-09-12",
+  "method": "manual source review",
+  "principle": "better_to_miss_than_wrong",
+  "functions": [
+    {
+      "name": "require_login",
+      "file": "include/functions.php",
+      "start_line": 17,
+      "end_line": 24,
+      "kind": "authorization_check",
+      "rationale": "Authorization gate: redirects to users login page if not authenticated. Called from protected pages like users/home.php, pictures/view.php."
+    }
+  ]
+}

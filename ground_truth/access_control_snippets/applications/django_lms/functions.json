@@ -1,0 +1,33 @@
+{
+  "app": "django_lms",
+  "language": "python",
+  "reviewed_at": "2026-07-05",
+  "method": "manual source review",
+  "principle": "better_to_miss_than_wrong",
+  "functions": [
+    {
+      "name": "student_required",
+      "file": "accounts/decorators.py",
+      "start_line": 6,
+      "end_line": 18,
+      "kind": "role_check",
+      "rationale": "Decorator that checks the user is active AND has is_student=True or is_superuser=True. Raises Http404 if not."
+    },
+    {
+      "name": "lecturer_required",
+      "file": "accounts/decorators.py",
+      "start_line": 21,
+      "end_line": 33,
+      "kind": "role_check",
+      "rationale": "Decorator that checks the user is active AND has is_lecturer=True or is_superuser=True. Raises Http404 if not."
+    },
+    {
+      "name": "admin_required",
+      "file": "accounts/decorators.py",
+      "start_line": 36,
+      "end_line": 48,
+      "kind": "role_check",
+      "rationale": "Decorator that checks the user is active AND is_superuser. Raises Http404 if not."
+    }
+  ]
+}

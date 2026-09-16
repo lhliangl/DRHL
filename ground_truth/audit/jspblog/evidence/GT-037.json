@@ -1,0 +1,30 @@
+{
+  "gt_id": "GT-037",
+  "app": "jspblog",
+  "verified_at": "2026-09-06T08:42:47.748076+00:00",
+  "verdict": "vulnerable",
+  "summary": "visitor GET admin/editnews.jsp returned 200; the news-management page lists the news rows and exposed the token injected into a news body (exposed=True).",
+  "sql_statements": [
+    {
+      "kind": "execute",
+      "sql": "UPDATE news SET body='DRHLGT_editlist_8684167679' WHERE headline='Java'"
+    }
+  ],
+  "steps": [
+    {
+      "kind": "instrument",
+      "table": "news",
+      "row": "headline='Java'",
+      "column": "body",
+      "token": "DRHLGT_editlist_8684167679"
+    },
+    {
+      "kind": "replay",
+      "role": "visitor (no login)",
+      "request": "GET admin/editnews.jsp",
+      "status_code": 200,
+      "news_content_token_exposed": true,
+      "body_saved": "GT-037_gt037_visitor.html"
+    }
+  ]
+}

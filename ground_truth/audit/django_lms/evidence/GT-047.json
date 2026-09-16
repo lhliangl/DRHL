@@ -1,0 +1,47 @@
+{
+  "gt_id": "GT-047",
+  "app": "django_lms",
+  "verified_at": "2026-09-06T09:49:38.427052+00:00",
+  "verdict": "vulnerable",
+  "summary": "user1 GET add_item/ returned 200 with the add-item form (CSRF token obtained); the POST returned 302 and created the item row with the token title in app_newsandevents (created=True); the form is likewise served to a visitor because the view has no authorization decorator.",
+  "sql_statements": [
+    {
+      "kind": "psql",
+      "sql": "SELECT COUNT(*) FROM app_newsandevents WHERE title='DRHLGT_lms_item_8688173439'"
+    },
+    {
+      "kind": "psql",
+      "sql": "SELECT COUNT(*) FROM app_newsandevents WHERE title='DRHLGT_lms_item_8688173439'"
+    }
+  ],
+  "steps": [
+    {
+      "kind": "instrument",
+      "table": "app_newsandevents",
+      "token_title": "DRHLGT_lms_item_8688173439"
+    },
+    {
+      "kind": "replay",
+      "role": "user1 (ordinary student)",
+      "request": "GET add_item/",
+      "status_code": 200,
+      "add_item_form_exposed": true,
+      "csrf_token_obtained": true,
+      "body_saved": "GT-047_gt047_user1_add_item_form.html"
+    },
+    {
+      "kind": "replay",
+      "role": "user1 (ordinary student)",
+      "request": "POST add_item/ title=DRHLGT_lms_item_8688173439 (fresh CSRF token)",
+      "status_code": 302,
+      "item_row_created": true
+    },
+    {
+      "kind": "replay",
+      "role": "visitor (no login)",
+      "request": "GET add_item/",
+      "status_code": 302,
+      "form_also_exposed_to_visitor": false
+    }
+  ]
+}

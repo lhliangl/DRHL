@@ -135,6 +135,9 @@
         "sessions.user_id",
         "comments.user_id",
         "authors.user_id"
+      ],
+      "termination_patterns": [
+        "(?s)\\$_SESSION\\[['\"]privilege['\"]\\].*return\\s+(?:TRUE|FALSE)"
       ]
     },
     "active_detection": true,
@@ -152,6 +155,7 @@
     },
     "oracle": {
       "timeout": 10,
+      "csrf_token_parameters": [],
       "denied_statuses": [
         401,
         403
@@ -177,7 +181,7 @@
       "provider": "openai_compatible",
       "base_url": "https://api.deepseek.com/v1",
       "model": "deepseek-v4-flash",
-      "api_key": "your-api-key",
+      "api_key": "env:DRHL_DEEPSEEK_API_KEY",
       "temperature": 0.1,
       "timeout": 120,
       "response_format_json": true,
@@ -189,7 +193,134 @@
       "syntax_check": true,
       "php_binary": "D:/phpStudy/PHPTutorial/php/php-5.2.17/php.exe",
       "syntax_timeout": 30,
-      "temporary_apply_to_source": true
+      "temporary_apply_to_source": true,
+      "database_oracles": [
+        {
+          "name": "SCARF-comment-moderation-read",
+          "page_pattern": "^comments\\.php(?:\\?|$)",
+          "category": "admin_only",
+          "operation": "read",
+          "variables": {
+            "comment_id": {
+              "query": "SELECT comment_id FROM comments WHERE approved=0 ORDER BY comment_id LIMIT 1"
+            }
+          },
+          "setup_sql": [
+            "UPDATE comments SET comment='{token}' WHERE comment_id={comment_id}"
+          ],
+          "attack": {
+            "role": "visitor",
+            "request": {
+              "page": "comments.php",
+              "method": "GET",
+              "replace_params": true
+            },
+            "assert": {
+              "response_not_contains": "{token}"
+            }
+          },
+          "authorized": {
+            "role": "admin",
+            "request": {
+              "page": "comments.php",
+              "method": "GET",
+              "replace_params": true
+            },
+            "assert": {
+              "response_contains": "{token}"
+            }
+          }
+        },
+        {
+          "name": "SCARF-general-options-update",
+          "page_pattern": "^generaloptions\\.php(?:\\?|$)",
+          "category": "admin_only",
+          "operation": "update",
+          "setup_sql": [
+            "UPDATE options SET value='{token1}' WHERE name='Conference Name'"
+          ],
+          "attack": {
+            "role": "visitor",
+            "request": {
+              "page": "generaloptions.php",
+              "method": "POST",
+              "replace_params": true,
+              "params": {
+                "Conference_Name": "{token2}",
+                "submit": "Save Options"
+              },
+              "referer": "generaloptions.php"
+            },
+            "assert": {
+              "query": "SELECT value FROM options WHERE name='Conference Name'",
+              "scalar_equals": "{token1}"
+            }
+          },
+          "authorized": {
+            "role": "admin",
+            "request": {
+              "page": "generaloptions.php",
+              "method": "POST",
+              "replace_params": true,
+              "params": {
+                "Conference_Name": "{token2}",
+                "submit": "Save Options"
+              },
+              "referer": "generaloptions.php"
+            },
+            "assert": {
+              "query": "SELECT value FROM options WHERE name='Conference Name'",
+              "scalar_equals": "{token2}"
+            }
+          }
+        },
+        {
+          "name": "SCARF-general-user-delete",
+          "page_pattern": "^generaloptions\\.php(?:\\?|$)",
+          "category": "admin_only",
+          "operation": "delete",
+          "variables": {
+            "user_id": {
+              "query": "SELECT COALESCE(MAX(user_id), 0) + 1 FROM users"
+            }
+          },
+          "setup_sql": [
+            "INSERT INTO users (user_id, email, password, firstname, lastname, affiliation, showemail, privilege) VALUES ({user_id}, '{token}@example.test', 'drhl', 'DRHL', 'Oracle', 'repair', 0, 'user')"
+          ],
+          "attack": {
+            "role": "visitor",
+            "request": {
+              "page": "generaloptions.php",
+              "method": "GET",
+              "replace_params": true,
+              "params": {
+                "delete_email": "{token}@example.test"
+              },
+              "referer": "generaloptions.php"
+            },
+            "assert": {
+              "query": "SELECT COUNT(*) FROM users WHERE user_id={user_id} AND email='{token}@example.test'",
+              "scalar_nonzero": true
+            }
+          },
+          "authorized": {
+            "role": "admin",
+            "request": {
+              "page": "generaloptions.php",
+              "method": "GET",
+              "replace_params": true,
+              "params": {
+                "delete_email": "{token}@example.test"
+              },
+              "referer": "generaloptions.php"
+            },
+            "assert": {
+              "query": "SELECT COUNT(*) FROM users WHERE user_id={user_id} AND email='{token}@example.test'",
+              "scalar_zero": true
+            }
+          }
+        }
+      ]
     }
   }
 }

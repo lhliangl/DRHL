@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>
+SCARF1 - Stanford Conference And Research Forum</title>
+<link rel='stylesheet' type="text/css" href="style.css" media='screen' />
+
+</head>
+<body>
+<div id="container">
+<a href="index.php" title="Back to the Front Page" style='display:block'>
+<div id="header"></div>
+</a>
+
+<div id="menu">
+<table>
+<tr>
+
+<td><a href='showsessions.php'>Show Sessions</a></td><td><a href='register.php'>Register</a></td><td><a href='login.php?referer=%2Fscarf%2Finstall.php'>Login</a></td></tr>
+
+</table>
+
+</div>
+
+<div id="content">
+
+<h1>One Click Installation</h1>
+
+<p>You can run these commands on your own <a href='?instructions=1'>(click here for instructions)</a>, or I can run them for you if you type in your administrator's mysql username and password:</p>
+
+
+<form action='install.php' method='POST'>
+<table>
+<tr><td>Administrator username </td><td><input name='adminname' value='root'></td></tr>
+<tr><td>Administrator password </td><td><input type='password' name='adminpass'></td></tr>
+<tr><td>Database hostname </td><td><input name='hostname' value='localhost'></td></tr>
+<tr><td colspan='2'><b>You can change these defaults if you are going to run more than one copy of this software</b></td></tr>
+<tr><td>Database name </td><td><input name='dbname' value='scarf'></td></tr>
+<tr><td>New Username </td><td><input name='user' value='scarf'></td></tr>
+<tr><td>New User's Password </td><td><input type='password' name='pass' value='L3uielnu5XNciFTa'></td></tr>
+<tr><td>&nbsp;</td><td><input type='submit' value='Create database'></td></tr>
+</table>
+
+<br>
+<div id='footer'>
+As this website is still in development, please report any issues you have with the software to <a href='mailto:scarf@paulisageek.com'>Paul Tarjan</a> so they may be addressed.<br>
+Powered by <a href='http://scarf.sourceforge.net'>SCARF - Stanford Conference And Research Forum</a>
+</div>
+</div>
+</div>
+</body>
+</html>

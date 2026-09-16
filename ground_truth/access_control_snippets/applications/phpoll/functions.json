@@ -1,0 +1,8 @@
+{
+  "app": "phpoll",
+  "language": "php",
+  "reviewed_at": "2026-07-05",
+  "method": "manual source review",
+  "principle": "better_to_miss_than_wrong",
+  "functions": []
+}

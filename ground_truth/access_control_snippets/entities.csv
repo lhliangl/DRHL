@@ -1,0 +1,164 @@
+Application,Language,Entity Type,Name,Kind,Source,Files,Start Line,End Line,Rationale,Annotation Occurrences
+awcm,php,parameter,$_COOKIE['awcm_member'],identity,request,header.php,,,Cookie storing member ID for 'remember me'; validated against database in header.php lines 52-57.,1
+awcm,php,parameter,$_SESSION['awcm_cp'],role,session,control/common.php,,,Control panel authorization session variable; checked in control/common.php line 16 to grant admin panel access.,1
+awcm,php,parameter,$_SESSION['awcm_member'],identity,session,header.php,,,Session variable storing authenticated member ID; used as authoritative identity source in header.php line 51.,1
+awcm,php,parameter,$member,identity,session,header.php | member.php,,,Represents the current authenticated user ID; sourced from $_SESSION['awcm_member'] or $_COOKIE['awcm_member'] in header.php lines 49-62. | Member identity object. Retrieved by f_find_member(). Used as identity source in authorization conditions.,2
+awcm,php,parameter,$member_level,role,session,common.php | header.php | member.php | m_cp_avatar.php,,,"Member role/level determined by f_find_member($member,level) call; used for admin checks in header.php lines 66-73. | Member level/rank. Checked in conditional access gates throughout the member CP.",2
+BBS_pro,python,function,acc_login,authentication_check,,app01/views.py,15,27,"Authenticates the submitted credentials, establishes the authenticated session on success, and returns a login-error response on failure.",1
+BBS_pro,python,parameter,user,identity,request,app01/views.py,,,Authenticated user object from auth.authenticate(). Checked with if user is not None before granting access (auth.login) or denying (render login page). Core identity parameter.,1
+bwapp,php,parameter,$_COOKIE['security_level'],role,cookie,security.php | security_level_check.php | security_level_set.php | admin/index.php | login.php,,,Security level cookie set after login (login.php:103-111) and on security_level_set.php (line 63). Controls which security level (low/medium/high/666) applies to vulnerability pages. The '666' value bypasses all security levels. An authorization-related parameter.,1
+bwapp,php,parameter,$_SESSION['admin'],role,session,login.php | security.php,,,Stores the admin flag (0 or 1) set during login from the database 'admin' column. Used in security.php line 40 for AIM mode and represents the user's admin role.,1
+bwapp,php,parameter,$_SESSION['login'],identity,session,login.php | security.php | security_level_set.php | portal.php | admin/index.php,,,Stores the authenticated username after successful login. Checked in security.php (line 45: isset($_SESSION['login']) && $_SESSION['login']) to enforce authentication. Displayed in UI headers. Core identity parameter.,1
+django_lms,python,function,admin_required,role_check,,accounts/decorators.py,36,48,Decorator that checks the user is active AND is_superuser. Raises Http404 if not.,1
+django_lms,python,function,lecturer_required,role_check,,accounts/decorators.py,21,33,Decorator that checks the user is active AND has is_lecturer=True or is_superuser=True. Raises Http404 if not.,1
+django_lms,python,function,student_required,role_check,,accounts/decorators.py,6,18,Decorator that checks the user is active AND has is_student=True or is_superuser=True. Raises Http404 if not.,1
+django_lms,python,parameter,request.user,identity,session,app/views.py | accounts/decorators.py,,,Django request.user object central to all authentication and role checks in the LMS app.,1
+django_lms,python,parameter,request.user.has_perm,permission,method,quiz/views.py,,,Django permission-check method used in a terminating authorization condition.,1
+django_lms,python,parameter,request.user.is_active,status,database,accounts/decorators.py,,,"Active-user flag checked inside student_required, lecturer_required, and admin_required decorators before granting role-based access.",1
+django_lms,python,parameter,request.user.is_lecturer,role,database,accounts/decorators.py,,,Custom flag checked in lecturer_required decorator to verify user has lecturer role.,1
+django_lms,python,parameter,request.user.is_student,role,database,accounts/decorators.py,,,Custom flag checked in student_required decorator to verify user has student role.,1
+django_lms,python,parameter,request.user.is_superuser,role,database,accounts/decorators.py,,,Flag checked in admin_required and lecturer_required/student_required decorators as override for full access.,1
+djangoblog,python,parameter,Post.status,role,database,blog/views.py,,,"Post status field (0=draft, 1=published). Used as access control: PostList filters to status=1 (published), and PostDetail should restrict draft access to staff users.",1
+dvwa,php,function,dvwaPageStartup,authentication_gate,,D:/phpStudy/PHPTutorial/WWW/DVWA/dvwa/includes/dvwaPage.inc.php,132,138,"If called with 'authenticated' action, redirects to login.php if dvwaIsLoggedIn() is false. Used by security.php, about.php, instructions.php, setup.php to protect pages that require authentication.",1
+dvwa,php,parameter,dvwaisloggedin,authentication_state,function_call,dvwa/includes/dvwaPage.inc.php | logout.php,,,Represents the authentication-state predicate used by terminating redirect guards such as dvwaPageStartup().,1
+events_lister,php,function,checkUser,authorization_check,,admin/common.php,71,75,Authorization guard: redirects to login.php if $_SESSION['validUser'] is not set or is not true. Called from admin pages to protect them.,1
+events_lister,php,parameter,$_SESSION['userName'],identity,session,admin/common.php | admin/user_delete.php,,,Authenticated administrator identity stored in the session after login and reused in administrator-sensitive database operations.,1
+events_lister,php,parameter,$_SESSION['validUser'],role,session,admin/common.php,,,"Session boolean flag indicating whether the user has authenticated successfully. Set to true after login, checked by checkUser() for protected page access.",1
+jsforum,jsp,parameter,type,role,session,.clover/Login.java | .clover/ChangeMessage.java | .clover/DeleteForum.java | .clover/DeleteReply.java | .clover/DeleteThread.java | .clover/ChangeProfile.java,,,"Session attribute set at login (Login.java:67). Used for admin authorization checks: sessionType.equals(""Admin"") in ChangeMessage:41, DeleteForum:27, DeleteReply:29, DeleteThread:27.",1
+jsforum,jsp,parameter,user,ownership,database,forum/message.jsp,,,Message author loaded from forum_message.user and compared with sessionUsername to decide whether the current user may edit the message.,1
+jsforum,jsp,parameter,username,identity,session,.clover/Login.java | .clover/ChangeMessage.java | .clover/ChangeProfile.java,,,"Session attribute set at login (Login.java:57), used as identity for authorization in ChangeMessage.java:41-53 and ChangeProfile.java:44-52. Core identity parameter throughout the application.",1
+jspblog,jsp,parameter,isLoggedIn,identity,session,D:/tomcat9/webapps/blog/admin/auth.jsp | D:/tomcat9/webapps/blog/admin/index2.jsp,,,Session attribute set to 'true' on successful login; checked by auth.jsp to gate admin access.,1
+jwablogger,java,parameter,administrator,role,session,D:/tomcat9/webapps/jwablogger/java/jwaBlogger/src/jwaBlogger/webApp/Blogger.java | D:/tomcat9/webapps/jwablogger/java/jwaBlogger/src/jwaBlogger/WebAppInterface.java,,,"Role checked via serverInterface.isUserInRole('administrator') in processViewEntry, processVoteEntry, processSpamEntry, processVoteComment, processSpamComment. Determines elevated privileges for admin operations.",1
+jwablogger,java,parameter,trusted,role,session,D:/tomcat9/webapps/jwablogger/java/jwaBlogger/src/jwaBlogger/webApp/Blogger.java | D:/tomcat9/webapps/jwablogger/java/jwaBlogger/src/jwaBlogger/WebAppInterface.java | D:/tomcat9/webapps/jwablogger/java/jwaBlogger/src/jwaBlogger/BlogManager.java,,,"Role obtained through serverInterface.isUserInRole('trusted') and propagated to saveEntry/saveBlogEntry, where it controls trusted-user HTML handling.",1
+mybb,php,function,check_forum_password,authorization_gate,,inc/functions.php,1312,1393,Validates the forum-password cookie and propagates the failed decision through $showform to a terminating branch.,1
+mybb,php,function,check_forum_password_archive,authorization_gate,,inc/functions_archive.php,225,265,Checks the forum-password cookie and directly invokes the archive denial routine in the rejecting branch.,1
+mybb,php,parameter,$admin_session['sid'],authentication_session,,,,,,1
+mybb,php,parameter,$allowable_actions,action_policy,,,,,,1
+mybb,php,parameter,$announcement['fid'],protected_resource,,,,,,1
+mybb,php,parameter,$ban['admin'],role,,,,,,1
+mybb,php,parameter,$ban['uid'],identity,,,,,,1
+mybb,php,parameter,$calendar_permissions[$calendar['cid']]['canmoderateevents'],permission,,,,,,1
+mybb,php,parameter,$calendar_permissions[$calendar['cid']]['canviewcalendar'],permission,,,,,,1
+mybb,php,parameter,$calendar_permissions[$mybb->input['new_calendar']]['canviewcalendar'],permission,,,,,,1
+mybb,php,parameter,$calendar_permissions['canaddevents'],permission,,,,,,1
+mybb,php,parameter,$calendar_permissions['canmoderateevents'],permission,,,,,,1
+mybb,php,parameter,$calendar_permissions['canviewcalendar'],permission,,,,,,1
+mybb,php,parameter,$destination_user['uid'],identity,,,,,,1
+mybb,php,parameter,$event['uid'],owner_identity,,,,,,1
+mybb,php,parameter,$event['visible'],resource_visibility,,,,,,1
+mybb,php,parameter,$existing_reputation['adduid'],owner_identity,,,,,,1
+mybb,php,parameter,$fid,protected_resource,,,,,,1
+mybb,php,parameter,$forum['open'],resource_policy,,,,,,1
+mybb,php,parameter,$forum_permissions['canview'],permission,,,,,,1
+mybb,php,parameter,$forum_permissions['canviewthreads'],permission,,,,,,1
+mybb,php,parameter,$forumpermissions['candeleteposts'],permission,,,,,,1
+mybb,php,parameter,$forumpermissions['candeletethreads'],permission,,,,,,1
+mybb,php,parameter,$forumpermissions['candlattachments'],permission,,,,,,1
+mybb,php,parameter,$forumpermissions['caneditposts'],permission,,,,,,1
+mybb,php,parameter,$forumpermissions['canonlyviewownthreads'],permission,,,,,,1
+mybb,php,parameter,$forumpermissions['canpostpolls'],permission,,,,,,1
+mybb,php,parameter,$forumpermissions['canpostreplys'],permission,,,,,,1
+mybb,php,parameter,$forumpermissions['canpostthreads'],permission,,,,,,1
+mybb,php,parameter,$forumpermissions['canratethreads'],permission,,,,,,1
+mybb,php,parameter,$forumpermissions['canview'],permission,,,,,,1
+mybb,php,parameter,$forumpermissions['canviewthreads'],permission,,,,,,1
+mybb,php,parameter,$forumpermissions['canvotepolls'],permission,,,,,,1
+mybb,php,parameter,$fpermissions['canview'],permission,,,,,,1
+mybb,php,parameter,$groupleader['canmanagemembers'],permission,,,,,,1
+mybb,php,parameter,$groupleader['canmanagerequests'],permission,,,,,,1
+mybb,php,parameter,$login_user['uid'],identity,,,,,,1
+mybb,php,parameter,$mergethread['fid'],protected_resource,,,,,,1
+mybb,php,parameter,$mybb->admin['permissions'][$action['module']][$action['action']],permission,,,,,,1
+mybb,php,parameter,$mybb->cookies['adminsid'],authentication_session,,,,,,1
+mybb,php,parameter,$mybb->cookies['forumpass'][$fid],resource_authentication,,,,,,1
+mybb,php,parameter,$mybb->input['action'],protected_action,,,,,,1
+mybb,php,parameter,$mybb->input['pwverify'],resource_authentication,,,,,,1
+mybb,php,parameter,$mybb->input['uid'],identity,,,,,,1
+mybb,php,parameter,$mybb->user['suspendposting'],account_restriction,,,,,,1
+mybb,php,parameter,$mybb->user['suspendsignature'],account_restriction,,,,,,1
+mybb,php,parameter,$mybb->user['suspendsigtime'],account_restriction,,,,,,1
+mybb,php,parameter,$mybb->user['uid'],identity,,,,,,1
+mybb,php,parameter,$mybb->user['usergroup'],role_identity,,,,,,1
+mybb,php,parameter,$mybb->usergroup['canchangename'],permission,,,,,,1
+mybb,php,parameter,$mybb->usergroup['cancp'],permission,,,,,,1
+mybb,php,parameter,$mybb->usergroup['canmodcp'],permission,,,,,,1
+mybb,php,parameter,$mybb->usergroup['canratethreads'],permission,,,,,,1
+mybb,php,parameter,$mybb->usergroup['cansearch'],permission,,,,,,1
+mybb,php,parameter,$mybb->usergroup['cansendemail'],permission,,,,,,1
+mybb,php,parameter,$mybb->usergroup['cansendemailoverride'],permission,,,,,,1
+mybb,php,parameter,$mybb->usergroup['cansendpms'],permission,,,,,,1
+mybb,php,parameter,$mybb->usergroup['canundovotes'],permission,,,,,,1
+mybb,php,parameter,$mybb->usergroup['canuploadavatars'],permission,,,,,,1
+mybb,php,parameter,$mybb->usergroup['canusepms'],permission,,,,,,1
+mybb,php,parameter,$mybb->usergroup['canusercp'],permission,,,,,,1
+mybb,php,parameter,$mybb->usergroup['canusesig'],permission,,,,,,1
+mybb,php,parameter,$mybb->usergroup['canview'],permission,,,,,,1
+mybb,php,parameter,$mybb->usergroup['canviewcalendar'],permission,,,,,,1
+mybb,php,parameter,$mybb->usergroup['canviewmemberlist'],permission,,,,,,1
+mybb,php,parameter,$mybb->usergroup['canviewonline'],permission,,,,,,1
+mybb,php,parameter,$mybb->usergroup['canviewprofiles'],permission,,,,,,1
+mybb,php,parameter,$mybb->usergroup['canwarnusers'],permission,,,,,,1
+mybb,php,parameter,$mybb->usergroup['issupermod'],role,,,,,,1
+mybb,php,parameter,$newperms['canview'],permission,,,,,,1
+mybb,php,parameter,$password,resource_authentication,,,,,,1
+mybb,php,parameter,$permissions['candeletethreads'],permission,,,,,,1
+mybb,php,parameter,$permissions['permissions'][$action['action']],permission,,,,,,1
+mybb,php,parameter,$pids,protected_resource_set,,,,,,1
+mybb,php,parameter,$plist,protected_resource_set,,,,,,1
+mybb,php,parameter,$pm['fromid'],owner_identity,,,,,,1
+mybb,php,parameter,$post2['uid'],owner_identity,,,,,,1
+mybb,php,parameter,$post['uid'],owner_identity,,,,,,1
+mybb,php,parameter,$postlist,protected_resource_set,,,,,,1
+mybb,php,parameter,$posts,protected_resource_set,,,,,,1
+mybb,php,parameter,$showform,enforcement_state,,,,,,1
+mybb,php,parameter,$source_user['uid'],identity,,,,,,1
+mybb,php,parameter,$thread['uid'],owner_identity,,,,,,1
+mybb,php,parameter,$threadlist,protected_resource_set,,,,,,1
+mybb,php,parameter,$threads,protected_resource_set,,,,,,1
+mybb,php,parameter,$tid,protected_resource,,,,,,1
+mybb,php,parameter,$to_user['ignorelist'],relationship_policy,,,,,,1
+mybb,php,parameter,$uid,identity,,,,,,1
+mybb,php,parameter,$user['admin'],role,,,,,,1
+mybb,php,parameter,$user['uid'],identity,,,,,,1
+orangeforum,go,function,adminHandler,authorization_handler,,views/admin.go,17,92,Rejects requests unless the current user is a super administrator.,1
+orangeforum,go,function,canAuth,optional_authentication_middleware,,views/auth.go,117,140,"Like mustAuth but optional — injects user into context if authenticated, but allows unauthenticated requests through. Used for public pages that show different content based on auth state.",1
+orangeforum,go,function,editComment,authorization_handler,,views/comments.go,18,137,Enforces the topic read-only policy and rejects disallowed comment operations.,1
+orangeforum,go,function,getAuthSignUp,authentication_handler,,views/auth.go,265,288,Validates the domain signup policy and signup capability token before showing registration.,1
+orangeforum,go,function,mustAuth,authentication_middleware,,views/auth.go,81,115,"HTTP middleware that validates JWT token, extracts user_id claim, verifies user exists and isn't banned/logged-out, then injects *models.User into request context via CtxUserKey. Core authentication gate.",1
+orangeforum,go,function,postAuthSignIn,authentication_handler,,views/auth.go,170,197,Enforces the domain policy controlling whether password-based sign-in is permitted.,1
+orangeforum,go,function,postAuthSignUp,authentication_handler,,views/auth.go,308,375,Validates the domain signup policy and signup capability token before creating an account.,1
+orangeforum,go,function,postCategory,authorization_handler,,views/admin.go,156,192,Rejects category updates outside the current administrator's domain or role.,1
+orangeforum,go,function,postCreateMod,authorization_handler,,views/admin.go,94,121,Enforces the super-administrator requirement before creating a moderator.,1
+orangeforum,go,function,postDeleteMod,authorization_handler,,views/admin.go,123,154,Enforces super-administrator and same-domain checks before deleting a moderator.,1
+orangeforum,go,function,profileHandler,authorization_handler,,views/users.go,20,98,"Enforces authentication, ownership, same-domain, and moderator-role checks for profile changes.",1
+orangeforum,go,parameter,domain.IsRegularSigninEnabled,authentication_policy,domain_field,views/auth.go,,,Controls whether password-based sign-in is permitted for the domain; disabled sign-in is rejected with HTTP 403.,1
+orangeforum,go,parameter,IsSuperAdmin,role,user_field,views/comments.go | views/topics.go,,,User struct boolean field. Checked in comments.go:89 and topics.go:103 for sticky/readonly override. Also used in admin.go for admin page access.,1
+orangeforum,go,parameter,IsSuperMod,role,user_field,views/comments.go | views/topics.go,,,User struct boolean field. Same authorization role as IsSuperAdmin for sticky/readonly privileges.,1
+orangeforum,go,parameter,modUser.DomainID,domain_scope,user_field,views/admin.go,,,Compared with the active domain before moderator deletion; a mismatch is rejected with HTTP 403.,1
+orangeforum,go,parameter,signupToken,capability_token,url_parameter,views/auth.go,,,Acts as a registration capability token and is checked in terminating HTTP 403 signup guards.,1
+orangeforum,go,parameter,topic.IsReadOnly,resource_policy,resource_field,views/comments.go,,,Prevents comment submission to a read-only topic and enforces the decision with HTTP 403.,1
+orangeforum,go,parameter,user,authentication_state,request_context,views/users.go,,,Represents the current authenticated principal; a nil value blocks profile modification with HTTP 403.,1
+phpns,php,parameter,_SESSION['auth'],identity,session,D:/phpStudy/PHPTutorial/WWW/phpns/inc/auth.php | D:/phpStudy/PHPTutorial/WWW/phpns/login.php,,,Primary authentication flag set to 'yes' on successful login in login.php (line 91). Checked in auth.php (line 32) as the main gate for all admin pages.,1
+phpns,php,parameter,_SESSION['path'],identity,session,D:/phpStudy/PHPTutorial/WWW/phpns/inc/auth.php | D:/phpStudy/PHPTutorial/WWW/phpns/login.php,,,Path verification token set during login (login.php line 92). Checked in auth.php (line 37) to prevent session fixation/hijacking by comparing against current directory path.,1
+phpns,php,parameter,_SESSION['permissions'],role,session,D:/phpStudy/PHPTutorial/WWW/phpns/inc/auth.php | D:/phpStudy/PHPTutorial/WWW/phpns/login.php | D:/phpStudy/PHPTutorial/WWW/phpns/article.php | D:/phpStudy/PHPTutorial/WWW/phpns/user.php | D:/phpStudy/PHPTutorial/WWW/phpns/manage.php,,,"Comma-separated permission string (12 positions: createranks,manageranks,loginrecords,preferences,loggingin,createarticles,approve,editarticles,deletearticles,createusers,editusers,deleteusers). Assigned to $globalvars['rank'] array in auth.php (line 42). Checked throughout admin pages to authorize specific operations.",1
+phpns,php,parameter,_SESSION['userID'],identity,session,D:/phpStudy/PHPTutorial/WWW/phpns/inc/auth.php | D:/phpStudy/PHPTutorial/WWW/phpns/login.php,,,"Stores the database user ID from the users table, set during login (login.php line 89). Used for logging operations.",1
+phpns,php,parameter,_SESSION['username'],identity,session,D:/phpStudy/PHPTutorial/WWW/phpns/inc/auth.php | D:/phpStudy/PHPTutorial/WWW/phpns/login.php,,,Stores authenticated username set during login (login.php line 88). Used for identity tracking in logging and as author for new content.,1
+phpns,php,parameter,$globalvars['rank'][10],permission,session_alias,article.php,,,Controls article creation and redirects denied requests to permissiondenied.,1
+phpns,php,parameter,$globalvars['rank'][14],permission,session_alias,article.php,,,Controls article editing and redirects denied requests to permissiondenied.,1
+phpns,php,parameter,$globalvars['rank'][16],permission,session_alias,manage.php,,,Controls article deletion and redirects denied requests to permissiondenied.,1
+phpns,php,parameter,$globalvars['rank'][18],permission,session_alias,user.php,,,Controls user creation and redirects denied requests to permissiondenied.,1
+phpns,php,parameter,$globalvars['rank'][20],permission,session_alias,user.php,,,Controls user editing and redirects denied requests to permissiondenied.,1
+phpns,php,parameter,$globalvars['rank'][22],permission,session_alias,user.php,,,Controls user deletion and redirects denied requests to permissiondenied.,1
+phpns,php,parameter,$globalvars['rank'][2],permission,session_alias,user.php,,,Controls rank-management operations and redirects denied requests to permissiondenied.,1
+phpns,php,parameter,$globalvars['rank'][4],permission,session_alias,user.php,,,Controls access to login records and redirects denied requests to permissiondenied.,1
+phpns,php,parameter,$globalvars['rank'][6],permission,session_alias,preferences.php,,,Controls preference management and redirects denied requests to permissiondenied.,1
+phpns,php,parameter,rank,role,session,D:/phpStudy/PHPTutorial/WWW/phpns/article.php | D:/phpStudy/PHPTutorial/WWW/phpns/user.php | D:/phpStudy/PHPTutorial/WWW/phpns/manage.php | D:/phpStudy/PHPTutorial/WWW/phpns/inc/auth.php,,,"Aliased from $_SESSION['permissions'] to $globalvars['rank'] array. Each index maps to a specific permission: [0]=create_ranks, [2]=manage_ranks, [4]=login_records, [6]=preferences, [8]=logging_in, [10]=create_articles, [12]=approve, [14]=edit_articles, [16]=delete_articles, [18]=create_users, [20]=edit_users, [22]=delete_users.",1
+phpoll,php,parameter,$_COOKIE[$string_cook_login],identity,cookie,config_editor.php,,,Cookie-based admin auth: stores login name. Checked at top of admin pages to verify admin session.,1
+phpoll,php,parameter,$_COOKIE[$string_cook_password],identity,cookie,config_editor.php,,,Cookie-based admin auth: stores password. Checked alongside login cookie for admin access.,1
+scarf,php,function,is_admin,role_check,,D:/phpStudy/PHPTutorial/WWW/scarf/functions.php,15,18,"Checks if $_SESSION['privilege'] == 'admin'. Core role-based authorization function used throughout the app. Called by require_admin(), header.php for conditional menu display, and comments.php for moderation UI.",1
+scarf,php,function,require_admin,authorization_check,,D:/phpStudy/PHPTutorial/WWW/scarf/functions.php,65,69,Authorization gate: terminates with error if is_admin() returns false. Called in comments.php:46 to protect comment moderation (delete/approve). Hard enforcement of admin-only operations.,1
+scarf,php,function,require_loggedin,authentication_check,,D:/phpStudy/PHPTutorial/WWW/scarf/functions.php,70,74,Authentication gate: terminates with error if getEmail() returns FALSE (user not logged in). Called in comments.php:77 before comment submission. Ensures only authenticated users can post.,1
+scarf,php,parameter,$_SESSION['privilege'],role,session,functions.php | header.php | login.php | generaloptions.php | comments.php | register.php,,,"Stores the user's privilege level ('admin' or 'user') set during login. Checked by is_admin() (functions.php:16) to authorize admin-only actions including comment moderation, user management, and options editing. Core authorization parameter.",1
+scarf,php,parameter,$_SESSION['user_id'],identity,session,functions.php | login.php | comments.php,,,"Stores the authenticated user's database ID set during login. Retrieved by getUserID() (functions.php:53) for resource ownership queries (e.g., associating comments with a user). Core identity parameter.",1
+wackopicko,php,function,require_login,authorization_check,,include/functions.php,17,24,"Authorization gate: redirects to users login page if not authenticated. Called from protected pages like users/home.php, pictures/view.php.",1
+wackopicko,php,parameter,$_SESSION['userid'],identity,session,include/users.php | users/view.php | users/login.php | users/home.php | pictures/view.php,,,"Session variable storing authenticated frontend user ID. Set by Users::login_user(), used by Users::current_user() to determine identity.",1

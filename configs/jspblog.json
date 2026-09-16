@@ -145,7 +145,10 @@
         "user.author",
         "user.name"
       ],
-      "validated_function_name_patterns": []
+      "validated_function_name_patterns": [],
+      "termination_patterns": [
+        "(?s)(?:drhlLoggedIn|isLoggedIn).*(?:sendRedirect|forward).*index\\.jsp"
+      ]
     },
     "active_detection": true,
     "identity_parameters": [
@@ -156,8 +159,17 @@
     "horizontal_exclude_patterns": [
       "^admin/"
     ],
+    "admin_only_exclude_patterns": [
+      "^admin/editnews2\\.jsp$",
+      "^admin/editnews2\\.jsp\\?(?!body=p1&headline=AokwZT$)"
+    ],
+    "authenticated_only_exclude_patterns": [
+      "^admin/editnews2\\.jsp$",
+      "^admin/editnews2\\.jsp\\?(?!body=p1&headline=AokwZT$)"
+    ],
     "oracle": {
       "timeout": 10,
+      "csrf_token_parameters": [],
       "denied_statuses": [
         401,
         403
@@ -218,7 +230,7 @@
       "provider": "openai_compatible",
       "base_url": "https://api.deepseek.com/v1",
       "model": "deepseek-v4-flash",
-      "api_key": "your-api-key",
+      "api_key": "env:DRHL_DEEPSEEK_API_KEY",
       "temperature": 0.1,
       "timeout": 120,
       "response_format_json": true,
@@ -229,7 +241,142 @@
       "max_attempts": 3,
       "syntax_check": false,
       "syntax_timeout": 30,
-      "temporary_apply_to_source": true
+      "temporary_apply_to_source": true,
+      "database_oracles": {
+        "response_only_patterns": [
+          "^admin/(?:addnews|adduser|admin|editnews)\\.jsp(?:\\?|$)"
+        ],
+        "rules": [
+          {
+            "name": "jspblog-add-news-admin-create",
+            "page_pattern": "^admin/addnews2\\.jsp(?:\\?|$)",
+            "category": "admin_only",
+            "operation": "create",
+            "attack": {
+              "role": "visitor",
+              "request": {
+                "page": "admin/addnews2.jsp",
+                "method": "POST",
+                "replace_params": true,
+                "params": {
+                  "author": "drhl-oracle@example.test",
+                  "headline": "{token}",
+                  "date": "Thu Jan 01 00:00:00 CST 2026",
+                  "body": "{token}",
+                  "submit": "Add"
+                },
+                "referer": "admin/addnews.jsp"
+              },
+              "assert": {
+                "query": "SELECT COUNT(*) FROM news WHERE headline='{token}'",
+                "scalar_zero": true
+              }
+            },
+            "authorized": {
+              "role": "admin",
+              "request": {
+                "page": "admin/addnews2.jsp",
+                "method": "POST",
+                "replace_params": true,
+                "params": {
+                  "author": "drhl-oracle@example.test",
+                  "headline": "{token}",
+                  "date": "Thu Jan 01 00:00:00 CST 2026",
+                  "body": "{token}",
+                  "submit": "Add"
+                },
+                "referer": "admin/addnews.jsp"
+              },
+              "assert": {
+                "query": "SELECT COUNT(*) FROM news WHERE headline='{token}'",
+                "scalar_nonzero": true
+              }
+            }
+          },
+          {
+            "name": "jspblog-add-user-admin-create",
+            "page_pattern": "^admin/adduser2\\.jsp(?:\\?|$)",
+            "category": "admin_only",
+            "operation": "create",
+            "attack": {
+              "role": "visitor",
+              "request": {
+                "page": "admin/adduser2.jsp",
+                "method": "POST",
+                "replace_params": true,
+                "params": {
+                  "author": "{token}",
+                  "name": "{token}",
+                  "submit": "Add"
+                },
+                "referer": "admin/adduser.jsp"
+              },
+              "assert": {
+                "query": "SELECT COUNT(*) FROM user WHERE author='{token}'",
+                "scalar_zero": true
+              }
+            },
+            "authorized": {
+              "role": "admin",
+              "request": {
+                "page": "admin/adduser2.jsp",
+                "method": "POST",
+                "replace_params": true,
+                "params": {
+                  "author": "{token}",
+                  "name": "{token}",
+                  "submit": "Add"
+                },
+                "referer": "admin/adduser.jsp"
+              },
+              "assert": {
+                "query": "SELECT COUNT(*) FROM user WHERE author='{token}'",
+                "scalar_nonzero": true
+              }
+            }
+          },
+          {
+            "name": "jspblog-edit-news-admin-update",
+            "page_pattern": "^admin/editnews2\\.jsp(?:\\?|$)",
+            "category": "admin_only",
+            "operation": "update",
+            "attack": {
+              "role": "visitor",
+              "request": {
+                "page": "admin/editnews2.jsp",
+                "method": "GET",
+                "replace_params": true,
+                "params": {
+                  "headline": "DRHL Oracle News",
+                  "body": "{token}"
+                },
+                "referer": "admin/editnews.jsp"
+              },
+              "assert": {
+                "query": "SELECT COUNT(*) FROM news WHERE body='{token}'",
+                "scalar_zero": true
+              }
+            },
+            "authorized": {
+              "role": "admin",
+              "request": {
+                "page": "admin/editnews2.jsp",
+                "method": "GET",
+                "replace_params": true,
+                "params": {
+                  "headline": "DRHL Oracle News",
+                  "body": "{token}"
+                },
+                "referer": "admin/editnews.jsp"
+              },
+              "assert": {
+                "query": "SELECT COUNT(*) FROM news WHERE body='{token}'",
+                "scalar_nonzero": true
+              }
+            }
+          }
+        ]
+      }
     }
   }
 }

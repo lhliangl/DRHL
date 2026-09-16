@@ -1,0 +1,75 @@
+{
+  "app": "orangeforum",
+  "language": "go",
+  "source_root": "D:/Go_project/orangeforum",
+  "reviewed_at": "2026-09-12",
+  "method": "manual source review of views/*.go",
+  "principle": "better_to_miss_than_wrong",
+  "parameters": [
+    {
+      "name": "IsSuperAdmin",
+      "source": "user_field",
+      "kind": "role",
+      "files": [
+        "views/comments.go",
+        "views/topics.go"
+      ],
+      "rationale": "User struct boolean field. Checked in comments.go:89 and topics.go:103 for sticky/readonly override. Also used in admin.go for admin page access."
+    },
+    {
+      "name": "IsSuperMod",
+      "source": "user_field",
+      "kind": "role",
+      "files": [
+        "views/comments.go",
+        "views/topics.go"
+      ],
+      "rationale": "User struct boolean field. Same authorization role as IsSuperAdmin for sticky/readonly privileges."
+    },
+    {
+      "name": "modUser.DomainID",
+      "source": "user_field",
+      "kind": "domain_scope",
+      "files": [
+        "views/admin.go"
+      ],
+      "rationale": "Compared with the active domain before moderator deletion; a mismatch is rejected with HTTP 403."
+    },
+    {
+      "name": "topic.IsReadOnly",
+      "source": "resource_field",
+      "kind": "resource_policy",
+      "files": [
+        "views/comments.go"
+      ],
+      "rationale": "Prevents comment submission to a read-only topic and enforces the decision with HTTP 403."
+    },
+    {
+      "name": "domain.IsRegularSigninEnabled",
+      "source": "domain_field",
+      "kind": "authentication_policy",
+      "files": [
+        "views/auth.go"
+      ],
+      "rationale": "Controls whether password-based sign-in is permitted for the domain; disabled sign-in is rejected with HTTP 403."
+    },
+    {
+      "name": "signupToken",
+      "source": "url_parameter",
+      "kind": "capability_token",
+      "files": [
+        "views/auth.go"
+      ],
+      "rationale": "Acts as a registration capability token and is checked in terminating HTTP 403 signup guards."
+    },
+    {
+      "name": "user",
+      "source": "request_context",
+      "kind": "authentication_state",
+      "files": [
+        "views/users.go"
+      ],
+      "rationale": "Represents the current authenticated principal; a nil value blocks profile modification with HTTP 403."
+    }
+  ]
+}

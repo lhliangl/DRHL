@@ -1,0 +1,25 @@
+{
+  "gt_id": "GT-016",
+  "app": "bwapp",
+  "verified_at": "2026-09-06T04:57:57.100831+00:00",
+  "verdict": "vulnerable",
+  "summary": "visitor GET backdoor.php returned 200 and exposes the NSA file uploader form (exposed=True); the upload action itself redirects a sessionless visitor to login.",
+  "sql_statements": [],
+  "steps": [
+    {
+      "kind": "replay",
+      "role": "visitor (no login)",
+      "request": "GET backdoor.php",
+      "status_code": 200,
+      "backdoor_uploader_form_exposed": true,
+      "body_saved": "GT-016_gt016_visitor_backdoor.html"
+    },
+    {
+      "kind": "replay",
+      "role": "visitor (no login)",
+      "request": "POST backdoor.php upload=1",
+      "status_code": 302,
+      "upload_action_redirected_to_login": true
+    }
+  ]
+}

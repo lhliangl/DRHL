@@ -248,6 +248,7 @@
     ],
     "source_analysis": {
       "save_cst": false,
+      "framework": "django",
       "identity_parameters": [
         "user",
         "user_id",
@@ -282,10 +283,14 @@
         "has_perm",
         "HttpResponseRedirect\\('/login",
         "Wrong username or password"
+      ],
+      "termination_patterns": [
+        "(?s)user\\s+is\\s+not\\s+None.*(?:login\\.html|Wrong username or password)"
       ]
     },
     "oracle": {
       "timeout": 10,
+      "csrf_token_parameters": [],
       "denied_statuses": [
         401,
         403,
@@ -350,7 +355,7 @@
       "provider": "openai_compatible",
       "base_url": "https://api.deepseek.com/v1",
       "model": "deepseek-v4-flash",
-      "api_key": "your-api-key",
+      "api_key": "env:DRHL_DEEPSEEK_API_KEY",
       "temperature": 0.1,
       "timeout": 120,
       "response_format_json": true,
@@ -379,7 +384,13 @@
         "25",
         "--log-dir",
         "D:/project/python/DRHL/database_recovery/BBS_pro"
-      ]
+      ],
+      "database_oracles": {
+        "response_only_patterns": [
+          "^bbs_pub/(?:\\?|$)"
+        ],
+        "rules": []
+      }
     },
     "source_map_overrides": [
       {
@@ -422,7 +433,6 @@
         "pattern": "^bbs_sub/$",
         "source": "app01/views.py"
       }
-    ],
-    "page_repair_guidance": []
+    ]
   }
 }

@@ -1,0 +1,30 @@
+{
+  "gt_id": "GT-010",
+  "app": "phpns",
+  "verified_at": "2026-09-06T04:57:44.184100+00:00",
+  "verdict": "vulnerable",
+  "summary": "register GET article.php?do=comments&id=6 returned 200; comment moderation list exposes instrumented comment token=True.",
+  "sql_statements": [
+    {
+      "kind": "execute",
+      "sql": "UPDATE phpns_comments SET comment_text='DRHLGT_comment_8670663863' WHERE id=5 AND article_id='6'"
+    }
+  ],
+  "steps": [
+    {
+      "kind": "instrument",
+      "table": "phpns_comments",
+      "row": "id=5 (comment of article 6)",
+      "column": "comment_text",
+      "token": "DRHLGT_comment_8670663863"
+    },
+    {
+      "kind": "replay",
+      "role": "register (low-privilege user)",
+      "request": "GET article.php?do=comments&id=6",
+      "status_code": 200,
+      "token_exposed_in_response": true,
+      "body_saved": "GT-010_gt010_register_comments.html"
+    }
+  ]
+}

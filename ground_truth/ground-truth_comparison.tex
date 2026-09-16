@@ -1,0 +1,93 @@
+% Required packages (add these in the preamble):
+% \usepackage{booktabs,longtable,array,pdflscape,xurl}
+% \newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+
+\begin{landscape}
+\begingroup
+\scriptsize
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.12}
+\begin{longtable}{@{}L{1.0cm}L{2.0cm}L{0.8cm}L{8.8cm}L{10.0cm}@{}}
+\caption{Per-vulnerability comparison of normalized ground truth and concrete DRHL detections.}\label{tab:ground-truth-comparison}\\
+\toprule
+ID & Application & BAC & Ground Truth (normalized) & DRHL Detection (concrete request) \\
+\midrule
+\endfirsthead
+\multicolumn{5}{c}{\tablename\ \thetable\ (continued)}\\
+\toprule
+ID & Application & BAC & Ground Truth (normalized) & DRHL Detection (concrete request) \\
+\midrule
+\endhead
+\midrule
+\multicolumn{5}{r}{Continued on next page}\\
+\endfoot
+\bottomrule
+\endlastfoot
+\texttt{GT-001} & AWCMs & VPE & \path{m_cp_avatar.php?KeepThis=true&TB_iframe=true&height=p1&width=p1} & \textsc{get} \path{m_cp_avatar.php?KeepThis=true&TB_iframe=true&height=400&width=500}; actor=\texttt{visitor} \\
+\texttt{GT-002} & AWCMs & VPE & \path{member.php?id=p1} & \textsc{get} \path{member.php?id=1}; actor=\texttt{user1} \\
+\texttt{GT-003} & AWCMs & HPE & \path{member.php?id=p1} & \textsc{get} \path{member.php?id=3}; actor=\texttt{user1} \\
+\texttt{GT-004} & AWCMs & VPE & \path{install/index.php} & \textsc{get} \path{install/index.php}; actor=\texttt{visitor} \\
+\texttt{GT-005} & AWCMs & VPE & \path{control/db_backup.php} & \textsc{get} \path{control/db_backup.php}; actor=\texttt{visitor} \\
+\addlinespace[2pt]
+\texttt{GT-006} & Phpoll & VPE & \path{admin/modifica_band.php} & \textsc{post} \path{admin/modifica_band.php}; actor=\texttt{visitor} \\
+\texttt{GT-007} & Phpoll & VPE & \path{admin/modifica_configurazione.php} & \textsc{post} \path{admin/modifica_configurazione.php}; actor=\texttt{visitor} \\
+\texttt{GT-008} & Phpoll & VPE & \path{admin/modifica_votanti.php} & \textsc{post} \path{admin/modifica_votanti.php}; actor=\texttt{visitor} \\
+\addlinespace[2pt]
+\texttt{GT-009} & Phpns & VPE & \path{install/index.php} & \textsc{get} \path{install/index.php}; actor=\texttt{visitor} \\
+\texttt{GT-010} & Phpns & VPE & \path{article.php?do=comments&id=p1} & \textsc{get} \path{article.php?do=comments&id=6}; actor=\texttt{register} \\
+\texttt{GT-011} & Phpns & VPE & \path{article.php?action=delete&do=comments&id=p1} & \textsc{post} \path{article.php?action=delete&do=comments&id=6}; actor=\texttt{register} \\
+\texttt{GT-012} & Phpns & HPE & \path{article.php?do=edit&id=p1} & \textsc{get} \path{article.php?do=edit&id=6}; actor=\texttt{user1} \\
+\texttt{GT-013} & Phpns & HPE & \path{article.php?do=editp&id=p1} & \textsc{post} \path{article.php?do=editp&id=6}; actor=\texttt{user1} \\
+\texttt{GT-014} & Phpns & HPE & \path{user.php?do=edit&id=p1} & \textsc{get} \path{user.php?do=edit&id=6}; actor=\texttt{user1} \\
+\texttt{GT-015} & Phpns & HPE & \path{user.php?do=editp (POST: id=p1)} & \textsc{post} \path{user.php?do=editp (POST: id=6)}; actor=\texttt{user1} \\
+\addlinespace[2pt]
+\texttt{GT-016} & Bwapp & VPE & \path{backdoor.php} & \textsc{get} \path{backdoor.php}; actor=\texttt{visitor} \\
+\texttt{GT-017} & Bwapp & VPE & \path{install.php} & \textsc{get} \path{install.php}; actor=\texttt{visitor} \\
+\texttt{GT-018} & Bwapp & VPE & \path{secret-cors-1.php} & \textsc{get} \path{secret-cors-1.php}; actor=\texttt{visitor} \\
+\texttt{GT-019} & Bwapp & VPE & \path{secret-cors-2.php} & \textsc{get} \path{secret-cors-2.php}; actor=\texttt{visitor} \\
+\texttt{GT-020} & Bwapp & VPE & \path{secret-cors-3.php} & \textsc{get} \path{secret-cors-3.php}; actor=\texttt{visitor} \\
+\addlinespace[2pt]
+\texttt{GT-021} & DVWA & VPE & \path{about.php} & \textsc{get} \path{about.php}; actor=\texttt{visitor} \\
+\texttt{GT-022} & DVWA & VPE & \path{instructions.php?doc=p1} & \textsc{get} \path{instructions.php?doc=copying}; actor=\texttt{visitor} \\
+\texttt{GT-023} & DVWA & VPE & \path{setup.php} & \textsc{get} \path{setup.php}; actor=\texttt{visitor} \\
+\addlinespace[2pt]
+\texttt{GT-024} & SCARF & VPE & \path{install.php} & \textsc{get} \path{install.php}; actor=\texttt{visitor} \\
+\texttt{GT-025} & SCARF & VPE & \path{comments.php} & \textsc{get} \path{comments.php}; actor=\texttt{visitor} \\
+\texttt{GT-026} & SCARF & VPE & \path{generaloptions.php} & \textsc{post} \path{generaloptions.php}; actor=\texttt{visitor} \\
+\addlinespace[2pt]
+\texttt{GT-027} & EventsLister & VPE & \path{admin/setup.php} & \textsc{get} \path{admin/setup.php}; actor=\texttt{visitor} \\
+\texttt{GT-028} & EventsLister & VPE & \path{admin/user_add.php} & \textsc{post} \path{admin/user_add.php}; actor=\texttt{visitor} \\
+\addlinespace[2pt]
+\texttt{GT-029} & Mybb & VPE & \path{usercp2.php?action=addsubscription&fid=p1&type=forum} & \textsc{get} \path{usercp2.php?action=addsubscription&fid=2&type=forum}; actor=\texttt{user1} \\
+\addlinespace[2pt]
+\texttt{GT-030} & Wackopicko & HPE & \path{users/view.php?userid=p1} & \textsc{get} \path{users/view.php?userid=11}; actor=\texttt{user1} \\
+\texttt{GT-031} & Wackopicko & VPE & \path{users/sample.php?userid=p1} & \textsc{get} \path{users/sample.php?userid=4}; actor=\texttt{visitor} \\
+\addlinespace[2pt]
+\texttt{GT-032} & Jspblog & VPE & \path{admin/addnews.jsp} & \textsc{get} \path{admin/addnews.jsp}; actor=\texttt{visitor} \\
+\texttt{GT-033} & Jspblog & VPE & \path{admin/addnews2.jsp} & \textsc{post} \path{admin/addnews2.jsp}; actor=\texttt{visitor} \\
+\texttt{GT-034} & Jspblog & VPE & \path{admin/adduser.jsp} & \textsc{get} \path{admin/adduser.jsp}; actor=\texttt{visitor} \\
+\texttt{GT-035} & Jspblog & VPE & \path{admin/adduser2.jsp} & \textsc{post} \path{admin/adduser2.jsp}; actor=\texttt{visitor} \\
+\texttt{GT-036} & Jspblog & VPE & \path{admin/admin.jsp} & \textsc{get} \path{admin/admin.jsp}; actor=\texttt{visitor} \\
+\texttt{GT-037} & Jspblog & VPE & \path{admin/editnews.jsp} & \textsc{get} \path{admin/editnews.jsp}; actor=\texttt{visitor} \\
+\texttt{GT-038} & Jspblog & VPE & \path{admin/editnews2.jsp?body=p1&headline=p1} & \textsc{get} \path{admin/editnews2.jsp?body=DRHL generated body for access-control testing.&headline=AokwZT}; actor=\texttt{visitor} \\
+\addlinespace[2pt]
+\texttt{GT-039} & JsForum & VPE & \path{servlet/forum.AddForum} & \textsc{post} \path{servlet/forum.AddForum}; actor=\texttt{visitor} \\
+\texttt{GT-040} & JsForum & VPE & \path{servlet/forum.AddReply} & \textsc{post} \path{servlet/forum.AddReply}; actor=\texttt{visitor} \\
+\texttt{GT-041} & JsForum & VPE & \path{servlet/forum.AddThread} & \textsc{post} \path{servlet/forum.AddThread}; actor=\texttt{visitor} \\
+\texttt{GT-042} & JsForum & HPE & \path{servlet/forum.AddReply (POST: user=p1)} & \textsc{post} \path{servlet/forum.AddReply (POST: user=user2)}; actor=\texttt{user1} \\
+\texttt{GT-043} & JsForum & HPE & \path{servlet/forum.AddThread (POST: user=p1)} & \textsc{post} \path{servlet/forum.AddThread (POST: user=user2)}; actor=\texttt{user1} \\
+\texttt{GT-044} & JsForum & HPE & \path{forum/index.jsp?page=editmessage&forum_id=p1&thread_id=p1&reply_id=p1&start=p1} & \textsc{get} \path{forum/index.jsp?page=editmessage&forum_id=0&thread_id=0&reply_id=2&start=0}; actor=\texttt{user1} \\
+\addlinespace[2pt]
+\texttt{GT-045} & jwablogger & VPE & \path{blogger/viewEntry/p1/p1.html} & \textsc{get} \path{blogger/viewEntry/5444/drhl_test_entry.html}; actor=\texttt{visitor} \\
+\addlinespace[2pt]
+\texttt{GT-046} & DjangoBlog & VPE & \path{p1/} & \textsc{get} \path{eee/}; actor=\texttt{visitor} \\
+\addlinespace[2pt]
+\texttt{GT-047} & django\_lms & VPE & \path{add_item/} & \textsc{post} \path{add_item/}; actor=\texttt{user1} \\
+\addlinespace[2pt]
+\texttt{GT-048} & BBS\_Pro & VPE & \path{bbs_pub/} & \textsc{get} \path{bbs_pub/}; actor=\texttt{visitor} \\
+\addlinespace[2pt]
+\texttt{GT-049} & orangeforum & HPE & \path{categories/p1/topics/p1/comments/p1/edit (POST: action=Update)} & \textsc{post} \path{categories/1/topics/9/comments/34/edit (POST: action=Update)}; actor=\texttt{user1} \\
+\texttt{GT-050} & orangeforum & HPE & \path{categories/p1/topics/p1/comments/p1/edit (POST: action=Delete)} & \textsc{post} \path{categories/1/topics/9/comments/34/edit (POST: action=Delete)}; actor=\texttt{user1} \\
+\end{longtable}
+\endgroup
+\end{landscape}

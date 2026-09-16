@@ -1,0 +1,17 @@
+{
+  "app": "events_lister",
+  "language": "php",
+  "reviewed_at": "2026-07-05",
+  "method": "manual source review",
+  "principle": "better_to_miss_than_wrong",
+  "functions": [
+    {
+      "name": "checkUser",
+      "file": "admin/common.php",
+      "start_line": 71,
+      "end_line": 75,
+      "kind": "authorization_check",
+      "rationale": "Authorization guard: redirects to login.php if $_SESSION['validUser'] is not set or is not true. Called from admin pages to protect them."
+    }
+  ]
+}

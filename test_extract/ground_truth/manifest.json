@@ -1,0 +1,123 @@
+{
+  "created_at": "2026-07-05",
+  "description": "Ground Truth benchmark for evaluating access-control extraction module performance. Parameters and functions are manually reviewed with strict 'better to miss than wrong' principle.",
+  "methodology": "Manual source code review. Only authentication state, authorization decisions, identity/role retrieval included. Excludes: login credentials, CSRF tokens, redirect params, content data, UI prefs, validators, CRUD wrappers.",
+  "quality": {
+    "principle": "better_to_miss_than_wrong",
+    "audited": "2026-09-12 — Counts synchronized with all reviewed ground-truth files; MyBB parameters independently re-audited with incidental CRUD, routing, and alias-flow values removed."
+  },
+  "totals": {
+    "apps": 16,
+    "parameters": 142,
+    "functions": 23
+  },
+  "by_language": {
+    "python": {
+      "apps": 3,
+      "parameters": 8,
+      "functions": 4
+    },
+    "php": {
+      "apps": 9,
+      "parameters": 121,
+      "functions": 8
+    },
+    "jsp": {
+      "apps": 2,
+      "parameters": 4,
+      "functions": 0
+    },
+    "java": {
+      "apps": 1,
+      "parameters": 2,
+      "functions": 0
+    },
+    "go": {
+      "apps": 1,
+      "parameters": 7,
+      "functions": 11
+    }
+  },
+  "apps": {
+    "BBS_pro": {
+      "language": "python",
+      "parameters": 1,
+      "functions": 1
+    },
+    "awcm": {
+      "language": "php",
+      "parameters": 7,
+      "functions": 0
+    },
+    "bwapp": {
+      "language": "php",
+      "parameters": 3,
+      "functions": 0
+    },
+    "django_lms": {
+      "language": "python",
+      "parameters": 6,
+      "functions": 3
+    },
+    "djangoblog": {
+      "language": "python",
+      "parameters": 1,
+      "functions": 0
+    },
+    "dvwa": {
+      "language": "php",
+      "parameters": 1,
+      "functions": 1
+    },
+    "events_lister": {
+      "language": "php",
+      "parameters": 2,
+      "functions": 1
+    },
+    "jsforum": {
+      "language": "jsp",
+      "parameters": 3,
+      "functions": 0
+    },
+    "jspblog": {
+      "language": "jsp",
+      "parameters": 1,
+      "functions": 0
+    },
+    "jwablogger": {
+      "language": "java",
+      "parameters": 2,
+      "functions": 0
+    },
+    "mybb": {
+      "language": "php",
+      "parameters": 88,
+      "functions": 2
+    },
+    "orangeforum": {
+      "language": "go",
+      "parameters": 7,
+      "functions": 11
+    },
+    "phpns": {
+      "language": "php",
+      "parameters": 15,
+      "functions": 0
+    },
+    "phpoll": {
+      "language": "php",
+      "parameters": 2,
+      "functions": 0
+    },
+    "scarf": {
+      "language": "php",
+      "parameters": 2,
+      "functions": 3
+    },
+    "wackopicko": {
+      "language": "php",
+      "parameters": 1,
+      "functions": 1
+    }
+  }
+}

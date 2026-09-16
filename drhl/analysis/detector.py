@@ -870,7 +870,8 @@ class ActiveDetector:
                 vector.identity_parameters,
                 vector.page_overrides,
             )
-        progress("verification oracle: response-cascade")
+        actor_name = getattr(actor, "name", "visitor") if actor is not None else "visitor"
+        progress(f"response oracle: response-cascade (actor={actor_name})")
         return self._verify_response(vector, actor, authorized)
 
     def run(self, vectors: list[AttackVector]) -> list[Finding]:

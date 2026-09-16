@@ -1,0 +1,104 @@
+{
+  "app": "wackopicko",
+  "baseline": "D:\\project\\python\\DRHL\\ground_truth\\audit\\wackopicko\\evidence\\baseline.sql",
+  "database_restored_after_each_record": true,
+  "restore_verified_per_record": [
+    true,
+    true
+  ],
+  "final_database_matches_baseline": true,
+  "results": [
+    {
+      "gt_id": "GT-030",
+      "app": "wackopicko",
+      "verified_at": "2026-09-07T08:47:47.433831+00:00",
+      "verdict": "vulnerable",
+      "summary": "user1 GET users/view.php?userid=11 returned 200; the profile page of user id=11 was served and the token placed in that user's login field was exposed (exposed=True).",
+      "sql_statements": [
+        {
+          "kind": "scalar",
+          "sql": "SELECT login FROM users WHERE id=11"
+        },
+        {
+          "kind": "execute",
+          "sql": "UPDATE users SET login='DRHLGT_profile_login_8770866814' WHERE id=11"
+        }
+      ],
+      "steps": [
+        {
+          "kind": "instrument",
+          "table": "users",
+          "row": "id=11",
+          "column": "login",
+          "token": "DRHLGT_profile_login_8770866814",
+          "original_login": "bryce",
+          "note": "in the current deployment user id 11 is the seeded user 'bryce' (owner of pictures 22/23); the endpoint parameter follows the released table"
+        },
+        {
+          "kind": "replay",
+          "role": "user1 (scanner1, not the profile owner)",
+          "request": "GET users/view.php?userid=11",
+          "status_code": 200,
+          "token_exposed_in_response": true,
+          "body_saved": "GT-030_gt030_user1_view_user11.html"
+        }
+      ],
+      "restore_verified": true
+    },
+    {
+      "gt_id": "GT-031",
+      "app": "wackopicko",
+      "verified_at": "2026-09-07T08:47:47.878428+00:00",
+      "verdict": "vulnerable",
+      "summary": "visitor GET users/sample.php?userid=11 returned 200 and served the profile page of user id=11 with the token placed in the login field exposed (exposed=True); the regular entry users/view.php requires login and redirects the visitor (redirected=True); the instrumented login field was reverted afterwards.",
+      "sql_statements": [
+        {
+          "kind": "scalar",
+          "sql": "SELECT login FROM users WHERE id=11"
+        },
+        {
+          "kind": "execute",
+          "sql": "UPDATE users SET login='DRHLGT_sample_login_8770867712' WHERE id=11"
+        },
+        {
+          "kind": "execute",
+          "sql": "UPDATE users SET login='bryce' WHERE id=11"
+        },
+        {
+          "kind": "scalar",
+          "sql": "SELECT login FROM users WHERE id=11"
+        }
+      ],
+      "steps": [
+        {
+          "kind": "instrument",
+          "table": "users",
+          "row": "id=11",
+          "column": "login",
+          "token": "DRHLGT_sample_login_8770867712",
+          "original_login": "bryce"
+        },
+        {
+          "kind": "replay",
+          "role": "visitor (no login)",
+          "request": "GET users/sample.php?userid=11 (login gate bypassed)",
+          "status_code": 200,
+          "token_exposed_in_response": true,
+          "body_saved": "GT-031_gt031_visitor_sample.html"
+        },
+        {
+          "kind": "replay",
+          "role": "visitor (no login)",
+          "request": "GET users/view.php?userid=11 (regular entry, login required)",
+          "status_code": 303,
+          "regular_entry_redirects_to_login": true
+        },
+        {
+          "kind": "restore",
+          "login_field_reverted": true
+        }
+      ],
+      "restore_verified": true
+    }
+  ]
+}

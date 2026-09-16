@@ -596,7 +596,7 @@
       "provider": "openai_compatible",
       "base_url": "https://api.deepseek.com/v1",
       "model": "deepseek-v4-flash",
-      "api_key": "your-api-key",
+      "api_key": "env:DRHL_DEEPSEEK_API_KEY",
       "temperature": 0.1,
       "timeout": 120,
       "response_format_json": true,
@@ -608,6 +608,7 @@
       "syntax_check": true,
       "syntax_timeout": 120,
       "temporary_apply_to_source": true,
+      "aggregate_vectors_by_repair_item": true,
       "go_binary": "go",
       "gofmt_binary": "gofmt",
       "hook_timeout": 120,
@@ -641,9 +642,99 @@
       "regression_roles": [
         {
           "pattern": "^categories/1/topics/9/comments/34/edit/?$",
-          "role": "user2"
+          "role": "admin"
         }
-      ]
+      ],
+      "database_oracles": {
+        "rules": [
+          {
+            "name": "orangeforum-comment-owner-update",
+            "page_pattern": "^categories/(?:p1|1)/topics/(?:p1|9)/comments/(?:p1|34)/edit/?$",
+            "category": "horizontal",
+            "operation": "update",
+            "setup_sql": [
+              "UPDATE users SET banned_at=NULL WHERE user_id=3",
+              "INSERT INTO comments (comment_id, topic_id, user_id, content, is_sticky) VALUES (34, 9, 3, '{token1}', TRUE) ON CONFLICT (comment_id) DO UPDATE SET topic_id=EXCLUDED.topic_id, user_id=EXCLUDED.user_id, content=EXCLUDED.content, is_sticky=EXCLUDED.is_sticky, archived_at=NULL"
+            ],
+            "attack": {
+              "role": "user1",
+              "request": {
+                "page": "categories/1/topics/9/comments/34/edit",
+                "method": "POST",
+                "replace_params": true,
+                "params": {
+                  "action": "Update",
+                  "content": "{token2}"
+                },
+                "referer": "categories/1/topics/9/comments/34/edit"
+              },
+              "assert": {
+                "query": "SELECT content FROM comments WHERE comment_id=34",
+                "scalar_equals": "{token1}"
+              }
+            },
+            "authorized": {
+              "role": "user2",
+              "request": {
+                "page": "categories/1/topics/9/comments/34/edit",
+                "method": "POST",
+                "replace_params": true,
+                "params": {
+                  "action": "Update",
+                  "content": "{token2}"
+                },
+                "referer": "categories/1/topics/9/comments/34/edit"
+              },
+              "assert": {
+                "query": "SELECT content FROM comments WHERE comment_id=34",
+                "scalar_equals": "{token2}"
+              }
+            }
+          },
+          {
+            "name": "orangeforum-comment-owner-delete",
+            "page_pattern": "^categories/(?:p1|1)/topics/(?:p1|9)/comments/(?:p1|34)/edit/?$",
+            "category": "horizontal",
+            "operation": "delete",
+            "setup_sql": [
+              "UPDATE users SET banned_at=NULL WHERE user_id=3",
+              "INSERT INTO comments (comment_id, topic_id, user_id, content, is_sticky) VALUES (34, 9, 3, '{token}', TRUE) ON CONFLICT (comment_id) DO UPDATE SET topic_id=EXCLUDED.topic_id, user_id=EXCLUDED.user_id, content=EXCLUDED.content, is_sticky=EXCLUDED.is_sticky, archived_at=NULL"
+            ],
+            "attack": {
+              "role": "user1",
+              "request": {
+                "page": "categories/1/topics/9/comments/34/edit",
+                "method": "POST",
+                "replace_params": true,
+                "params": {
+                  "action": "Delete"
+                },
+                "referer": "categories/1/topics/9/comments/34/edit"
+              },
+              "assert": {
+                "query": "SELECT COUNT(*) FROM comments WHERE comment_id=34",
+                "scalar_nonzero": true
+              }
+            },
+            "authorized": {
+              "role": "user2",
+              "request": {
+                "page": "categories/1/topics/9/comments/34/edit",
+                "method": "POST",
+                "replace_params": true,
+                "params": {
+                  "action": "Delete"
+                },
+                "referer": "categories/1/topics/9/comments/34/edit"
+              },
+              "assert": {
+                "query": "SELECT COUNT(*) FROM comments WHERE comment_id=34",
+                "scalar_zero": true
+              }
+            }
+          }
+        ]
+      }
     },
     "source_map_overrides": [
       {

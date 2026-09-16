@@ -20,7 +20,13 @@ else:
 SUPERGLOBALS = {"$_COOKIE", "$_SESSION", "$_POST", "$_GET", "$_REQUEST", "$GLOBALS"}
 CONTROL_NODES = {"if_statement", "else_if_clause", "switch_statement"}
 FUNCTION_NODES = {"function_definition", "method_declaration"}
-STATEMENT_NODES = {"expression_statement", "return_statement", "throw_expression"}
+STATEMENT_NODES = {
+    "echo_statement",
+    "exit_statement",
+    "expression_statement",
+    "return_statement",
+    "throw_expression",
+}
 
 POLICY_SIGNAL = re.compile(
     r"\b(?:is_admin|getUserID|getEmail|current_user|owner\w*|permission|privilege|role|"
@@ -59,7 +65,7 @@ STRICT_ACCESS_FIELD_SIGNAL = re.compile(
 )
 DENIAL_TEXT = re.compile(
     r"access\s+denied|permission\s+denied|unauthori[sz]ed|forbidden|don't\s+have\s+access|"
-    r"must\s+be\s+logged|not\s+allowed|<form[^>]+login|login</td>|name=['\"]pw['\"]|type=['\"]password['\"]",
+    r"must\s+be\s+logged|not\s+allowed|login\s+required|authentication\s+required",
     re.I,
 )
 SQL_START = re.compile(r"\b(?:SELECT|INSERT|UPDATE|DELETE)\b", re.I)
@@ -67,7 +73,37 @@ SQL_TABLE = re.compile(
     r"\b(?:FROM|UPDATE|INTO)\s+[`\"]?([A-Za-z_]\w*)[`\"]?",
     re.I,
 )
-SQL_FIELD = re.compile(r"[`\"]?([A-Za-z_]\w*)[`\"]?\s*(?:=|<>|!=|LIKE)\s*", re.I)
+SQL_FIELD = re.compile(
+    r"[`\"]?([A-Za-z_]\w*)[`\"]?\s*(?:<=|>=|<>|!=|=|<|>|LIKE)\s*",
+    re.I,
+)
+DATABASE_WRAPPER_METHODS = {
+    "simple_select",
+    "select_query",
+    "update_query",
+    "delete_query",
+    "insert_query",
+    "replace_query",
+    "query",
+    "write_query",
+}
+TRANSPARENT_ALIAS_CALLS = {
+    "abs",
+    "boolval",
+    "escape_string",
+    "floatval",
+    "htmlspecialchars",
+    "htmlspecialchars_uni",
+    "intval",
+    "md5",
+    "mysql_real_escape_string",
+    "mysqli_real_escape_string",
+    "sha1",
+    "strtolower",
+    "strtoupper",
+    "strval",
+    "trim",
+}
 
 
 @dataclass
@@ -213,7 +249,7 @@ def _variables(source: bytes, node: Any | None) -> list[str]:
 
 
 def _direct_alias_variables(source: bytes, node: Any | None) -> list[str]:
-    """Return RHS aliases only for direct assignments, never for calls or computations."""
+    """Return the single data dependency of an assignment as an alias."""
     current = node
     while current is not None and current.type in {"parenthesized_expression", "cast_expression"}:
         child = current.child_by_field_name("value")
@@ -221,11 +257,20 @@ def _direct_alias_variables(source: bytes, node: Any | None) -> list[str]:
             named = [item for item in current.named_children if item.type != "cast_type"]
             child = named[-1] if len(named) == 1 else None
         current = child
-    if current is None or current.type not in {
-        "variable_name", "subscript_expression", "member_access_expression"
-    }:
+    if current is None:
         return []
-    return _variables(source, current)
+    if current.type in {
+        "function_call_expression",
+        "member_call_expression",
+        "scoped_call_expression",
+    }:
+        call_name = _call_name(source, current).rsplit("\\", 1)[-1]
+        if call_name in DATABASE_WRAPPER_METHODS:
+            return []
+        if call_name not in TRANSPARENT_ALIAS_CALLS:
+            return []
+    dependencies = _variables(source, current)
+    return dependencies if len(dependencies) == 1 else []
 
 
 def _values(source: bytes, node: Any | None) -> list[str]:
@@ -287,42 +332,77 @@ def _call_name(source: bytes, node: Any) -> str:
     return _text(source, function).strip().casefold()
 
 
-def _termination_kind(source: bytes, statement: Any, extra_patterns: list[str] | None = None) -> str | None:
+def _configured_termination_match(patterns: list[str] | None, value: str) -> bool:
+    return any(re.search(pattern, value, re.I | re.S) for pattern in patterns or [])
+
+
+def _termination_kind(
+    source: bytes,
+    statement: Any,
+    extra_patterns: list[str] | None = None,
+    context: str = "",
+) -> str | None:
     code = _text(source, statement)
     lowered = code.casefold()
-    if re.search(r"\b(?:die|exit)\s*(?:\(|;)", lowered):
-        return "execution_termination"
-    if re.search(r"\bheader\s*\([^)]*location\s*:", lowered, re.S):
+    # Database/query failure handling stops execution but does not deny an
+    # unauthorized principal, so it is outside the normalized access-denial set.
+    if re.search(r"\b(?:mysql|mysqli|pg|sqlite)[A-Za-z_]*_?error\s*\(", lowered):
+        return None
+    if re.search(r"\bheader\s*\([^)]*location\s*:[^)]*(?:login|log[_-]?in|signin|auth|denied|forbidden|unauthor)", lowered, re.S):
         return "redirect"
-    if re.search(r"<meta[^>]+http-equiv\s*=\s*['\"]?refresh|window\.location|location\.href", lowered, re.S):
+    if re.search(
+        r"(?:<meta[^>]+http-equiv\s*=\s*['\"]?refresh|window\.location|location\.href)"
+        r".*(?:login|log[_-]?in|signin|auth|denied|forbidden|unauthor)",
+        lowered,
+        re.S,
+    ):
         return "redirect"
     if re.search(r"\bhttp_response_code\s*\(\s*40[13]\s*\)", lowered):
         return "http_denial"
-    if re.search(r"\b(?:http_redirect|wp_redirect|dvwaredirect)\s*\(", lowered):
+    if re.search(r"\b(?:http_redirect|wp_redirect|dvwaredirect)\s*\([^;]*(?:login|auth|denied|forbidden|unauthor)", lowered, re.S):
         return "redirect"
     if DENIAL_TEXT.search(code):
         return "denial_output"
-    if statement.type == "throw_expression":
+    if statement.type == "throw_expression" and re.search(
+        r"permission|forbidden|unauthori[sz]ed|access|security|auth", code, re.I
+    ):
         return "exception"
-    if re.search(r"\breturn\s+(?:false|FALSE|NULL|null|None|0)\s*;", lowered):
+    if re.search(r"\b(?:die|exit)\s*(?:\(|;)", lowered) and DENIAL_TEXT.search(code):
         return "execution_termination"
-    if re.search(r"\$test_log\s*=\s*true", lowered):
-        return "execution_termination"
-    for pattern in (extra_patterns or []):
-        if re.search(pattern, code):
-            return "execution_termination"
+    if _configured_termination_match(extra_patterns, code):
+        return "configured_denial"
+    if _configured_termination_match(extra_patterns, context) and (
+        re.search(r"\b(?:die|exit)\s*(?:\(|;)", lowered)
+        or re.search(r"\breturn\s+[^;]+;", lowered)
+        or re.search(r"\b(?:header|http_redirect|wp_redirect|dvwaredirect)\s*\(", lowered)
+        or re.search(r"<meta[^>]+http-equiv\s*=\s*['\"]?refresh|window\.location|location\.href", lowered, re.S)
+        or statement.type == "throw_expression"
+    ):
+        return "configured_denial"
     return None
 
 
-def _terminations(source: bytes, branch: Any | None, extra_patterns: list[str] | None = None) -> list[dict[str, Any]]:
+def _terminations(
+    source: bytes,
+    branch: Any | None,
+    extra_patterns: list[str] | None = None,
+    context: str = "",
+) -> list[dict[str, Any]]:
     if branch is None:
         return []
     records: list[dict[str, Any]] = []
     seen: set[tuple[int, int]] = set()
-    for node in _walk(branch):
+    def direct_region(node: Any):
+        yield node
+        for child in node.children:
+            if child.type in CONTROL_NODES:
+                continue
+            yield from direct_region(child)
+
+    for node in direct_region(branch):
         if node.type not in STATEMENT_NODES:
             continue
-        kind = _termination_kind(source, node, extra_patterns)
+        kind = _termination_kind(source, node, extra_patterns, context)
         if not kind:
             continue
         key = (node.start_byte, node.end_byte)
@@ -338,13 +418,31 @@ def _terminations(source: bytes, branch: Any | None, extra_patterns: list[str] |
     return records
 
 
-def _condition_record(path: str, source: bytes, node: Any, extra_patterns: list[str] | None = None) -> ConditionRecord | None:
+def _condition_record(
+    path: str,
+    source: bytes,
+    node: Any,
+    extra_patterns: list[str] | None = None,
+    exclude_patterns: list[str] | None = None,
+) -> ConditionRecord | None:
     condition = node.child_by_field_name("condition")
     if condition is None:
         return None
     body = node.child_by_field_name("body")
     alternative = node.child_by_field_name("alternative")
-    terminations = _terminations(source, body, extra_patterns) + _terminations(source, alternative, extra_patterns)
+    context = "\n".join(
+        part for part in (
+            _text(source, condition),
+            _text(source, body),
+            _text(source, alternative),
+        ) if part
+    )
+    if _configured_termination_match(exclude_patterns, context):
+        terminations = []
+    else:
+        terminations = _terminations(source, body, extra_patterns, context) + _terminations(
+            source, alternative, extra_patterns, context
+        )
     return ConditionRecord(
         path=path,
         node=node,
@@ -475,8 +573,58 @@ def _matches_access_control_field(
         or field_name in patterns["unqualified"]
     )
 
-def _sql_relations(source: bytes, root: Any) -> dict[str, list[dict[str, str]]]:
-    relations: dict[str, list[dict[str, str]]] = {}
+def _sql_relations(source: bytes, root: Any) -> dict[str, list[dict[str, Any]]]:
+    relations: dict[str, list[dict[str, Any]]] = {}
+
+    def add_relation(variable: str, table: str, field: str, node: Any) -> None:
+        relation = {
+            "table": table,
+            "field": field,
+            "line": _line(node),
+            "start_line": _line(node),
+            "end_line": _end_line(node),
+            "code": _text(source, node).strip(),
+        }
+        if relation not in relations.setdefault(variable, []):
+            relations[variable].append(relation)
+
+    # MyBB and similar PHP applications build queries through a database
+    # abstraction instead of embedding a complete SQL statement.  Recover the
+    # table and predicate fields from the well-known wrapper signatures.
+    wrapper_predicate_index = {
+        "simple_select": 2,
+        "select_query": 2,
+        "update_query": 2,
+        "delete_query": 1,
+    }
+    for node in _walk(root):
+        if node.type != "member_call_expression":
+            continue
+        name_node = node.child_by_field_name("name")
+        name = _text(source, name_node).strip().casefold()
+        predicate_index = wrapper_predicate_index.get(name)
+        if predicate_index is None:
+            continue
+        arguments = node.child_by_field_name("arguments")
+        argument_nodes = list(arguments.named_children) if arguments is not None else []
+        if len(argument_nodes) <= predicate_index:
+            continue
+        table_text = _text(source, argument_nodes[0]).strip()
+        table_match = re.fullmatch(r"['\"]([A-Za-z_]\w*)['\"]", table_text)
+        if not table_match:
+            continue
+        table = table_match.group(1)
+        predicate_node = argument_nodes[predicate_index]
+        predicate = _text(source, predicate_node)
+        for variable in _variables(source, predicate_node):
+            if variable.casefold() in {"$db", "$database"}:
+                continue
+            position = predicate.find(variable)
+            prefix = predicate[:position] if position >= 0 else predicate
+            matches = list(SQL_FIELD.finditer(prefix))
+            field = matches[-1].group(1) if matches else ""
+            add_relation(variable, table, field, node)
+
     for node in _walk(root):
         if node.type != "expression_statement":
             continue
@@ -487,6 +635,8 @@ def _sql_relations(source: bytes, root: Any) -> dict[str, list[dict[str, str]]]:
         table = table_match.group(1) if table_match else ""
         variables = _variables(source, node)
         for variable in variables:
+            if variable.casefold() in {"$db", "$database"}:
+                continue
             position = code.find(variable)
             prefix = code[max(0, position - 180):position] if position >= 0 else code
             field_matches = list(SQL_FIELD.finditer(prefix))
@@ -497,13 +647,93 @@ def _sql_relations(source: bytes, root: Any) -> dict[str, list[dict[str, str]]]:
                 gap = re.sub(r"\b(?:mysql_real_escape_string|intval)\s*\(", "", gap, flags=re.I)
                 if not re.search(r"[A-Za-z0-9_$\[\]]", gap):
                     field = nearest.group(1)
-            relation = {"table": table, "field": field, "line": str(_line(node))}
-            if relation not in relations.setdefault(variable, []):
-                relations[variable].append(relation)
+            add_relation(variable, table, field, node)
+
+    # Recover fields read through a database result object.  PHP applications
+    # commonly execute a previously assembled SELECT, fetch a row, and only
+    # then copy an authorization field into session state.  Preserve that
+    # structural data flow so DBMatch can follow, for example:
+    #   $result = $db->query($sql); $row = $result->fetch_object();
+    #   $_SESSION['admin'] = $row->admin;
+    query_contexts: dict[str, list[tuple[str, Any]]] = {}
+    result_contexts: dict[str, list[tuple[str, Any]]] = {}
+    row_contexts: dict[str, list[tuple[str, Any]]] = {}
+
+    assignments = sorted(
+        (
+            node
+            for node in _walk(root)
+            if node.type in {"assignment_expression", "reference_assignment_expression"}
+        ),
+        key=lambda item: item.start_byte,
+    )
+    for assignment in assignments:
+        left_node = assignment.child_by_field_name("left")
+        right_node = assignment.child_by_field_name("right")
+        left_values = _variables(source, left_node)
+        if len(left_values) != 1 or right_node is None:
+            continue
+        left = left_values[0]
+        right_code = _text(source, right_node)
+        table_match = SQL_TABLE.search(right_code)
+        if SQL_START.search(right_code) and table_match:
+            query_contexts[left] = [(table_match.group(1), _statement(assignment))]
+            continue
+
+        if right_node.type in {
+            "function_call_expression",
+            "member_call_expression",
+            "scoped_call_expression",
+        }:
+            call_name = _call_name(source, right_node).rsplit("\\", 1)[-1]
+            if call_name in {"query", "write_query", "select_query"}:
+                contexts: list[tuple[str, Any]] = []
+                direct_table = SQL_TABLE.search(right_code)
+                if direct_table:
+                    contexts.append((direct_table.group(1), _statement(assignment)))
+                arguments = right_node.child_by_field_name("arguments")
+                for variable in _variables(source, arguments):
+                    contexts.extend(query_contexts.get(variable, []))
+                if contexts:
+                    result_contexts[left] = list(dict.fromkeys(contexts))
+                continue
+            if call_name in {
+                "fetch_array",
+                "fetch_assoc",
+                "fetch_object",
+                "mysql_fetch_array",
+                "mysql_fetch_assoc",
+                "mysql_fetch_object",
+                "mysqli_fetch_array",
+                "mysqli_fetch_assoc",
+                "mysqli_fetch_object",
+            }:
+                contexts: list[tuple[str, Any]] = []
+                object_node = right_node.child_by_field_name("object")
+                arguments = right_node.child_by_field_name("arguments")
+                for variable in [
+                    *_variables(source, object_node),
+                    *_variables(source, arguments),
+                ]:
+                    contexts.extend(result_contexts.get(variable, []))
+                if contexts:
+                    row_contexts[left] = list(dict.fromkeys(contexts))
+                continue
+
+        if right_node.type != "member_access_expression":
+            continue
+        object_node = right_node.child_by_field_name("object")
+        name_node = right_node.child_by_field_name("name")
+        object_values = _variables(source, object_node)
+        field = _text(source, name_node).strip()
+        if len(object_values) != 1 or not field:
+            continue
+        for table, query_node in row_contexts.get(object_values[0], []):
+            add_relation(_normalized(_text(source, right_node)), table, field, query_node)
     return relations
 
 
-def _reduced_condition(record: ConditionRecord) -> str:
+def _if_framework(record: ConditionRecord) -> str:
     lines = [f"if {record.condition} {{"]
     for termination in record.terminations:
         code = termination["code"].strip()
@@ -814,7 +1044,8 @@ def analyze_php_source(
                     "end_line": condition.end_line,
                     "condition": condition.condition,
                     "terminations": condition.terminations,
-                    "code": _reduced_condition(condition),
+                    "code": _text(source, condition.node).strip(),
+                    "if_framework": _if_framework(condition),
                 }
                 if phpoll_snippet_profile:
                     access_score = _condition_access_score(condition)

@@ -1,0 +1,31 @@
+{
+  "gt_id": "GT-014",
+  "app": "phpns",
+  "verified_at": "2026-09-06T04:57:49.530592+00:00",
+  "verdict": "vulnerable",
+  "summary": "user1 GET user.php?do=edit&id=11 returned 200; user2's account data token exposed in the edit form=True.",
+  "sql_statements": [
+    {
+      "kind": "execute",
+      "sql": "UPDATE phpns_users SET full_name='DRHLGT_user_edit_8670669266' WHERE id=11"
+    }
+  ],
+  "steps": [
+    {
+      "kind": "instrument",
+      "table": "phpns_users",
+      "row": "id=11 (user2)",
+      "column": "full_name",
+      "token": "DRHLGT_user_edit_8670669266",
+      "note": "CSV endpoint text says id=6; user2's current database id is 11"
+    },
+    {
+      "kind": "replay",
+      "role": "user1 (editing another account)",
+      "request": "GET user.php?do=edit&id=11",
+      "status_code": 200,
+      "token_exposed_in_edit_form": true,
+      "body_saved": "GT-014_gt014_user1_edit_user11.html"
+    }
+  ]
+}

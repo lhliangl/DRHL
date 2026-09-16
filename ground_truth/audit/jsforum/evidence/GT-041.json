@@ -1,0 +1,32 @@
+{
+  "gt_id": "GT-041",
+  "app": "jsforum",
+  "verified_at": "2026-09-06T09:13:36.638365+00:00",
+  "verdict": "vulnerable",
+  "summary": "visitor POST servlet/forum.AddThread returned 302; a thread row with the token title was created in forum_threads (created=True).",
+  "sql_statements": [
+    {
+      "kind": "scalar",
+      "sql": "SELECT COALESCE(MAX(thread_id), 0) FROM forum_threads WHERE forum_id=7"
+    },
+    {
+      "kind": "scalar",
+      "sql": "SELECT COUNT(*) FROM forum_threads WHERE title='DRHLGT_thread_8686016559'"
+    }
+  ],
+  "steps": [
+    {
+      "kind": "instrument",
+      "table": "forum_threads",
+      "token_title": "DRHLGT_thread_8686016559",
+      "forum_id": "7"
+    },
+    {
+      "kind": "replay",
+      "role": "visitor (no login)",
+      "request": "POST servlet/forum.AddThread title=DRHLGT_thread_8686016559",
+      "status_code": 302,
+      "thread_row_created": true
+    }
+  ]
+}

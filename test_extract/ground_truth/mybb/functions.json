@@ -1,0 +1,25 @@
+{
+  "app": "mybb",
+  "language": "php",
+  "reviewed_at": "2026-09-11",
+  "method": "manual review against the Section 4.3.2 ValidFunc rule",
+  "principle": "a validation function must reference validated access-control state and enforce denial in the controlled branch",
+  "functions": [
+    {
+      "name": "check_forum_password",
+      "file": "inc/functions.php",
+      "start_line": 1312,
+      "end_line": 1393,
+      "kind": "authorization_gate",
+      "rationale": "Validates the forum-password cookie and propagates the failed decision through $showform to a terminating branch."
+    },
+    {
+      "name": "check_forum_password_archive",
+      "file": "inc/functions_archive.php",
+      "start_line": 225,
+      "end_line": 265,
+      "kind": "authorization_gate",
+      "rationale": "Checks the forum-password cookie and directly invokes the archive denial routine in the rejecting branch."
+    }
+  ]
+}

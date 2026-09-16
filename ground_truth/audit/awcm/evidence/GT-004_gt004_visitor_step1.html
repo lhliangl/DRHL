@@ -1,0 +1,87 @@
+<html dir="">
+<style>
+body {
+	margin:0;
+}
+a:link {
+	color: #666;
+	text-decoration: none;
+}
+a:visited {
+	text-decoration: none;
+	color: #000;
+}
+a:hover {
+	text-decoration: none;
+	color: #999;
+}
+a:active {
+	text-decoration: none;
+	color: #666;
+}
+</style>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<table cellspacing="0" cellpadding="0" width="100%">
+<tr><td background="images/header.gif" height="100" align="center">
+<h2></h2>
+</td></tr>
+<tr><td height="25" background="images/g1.gif" align="center" style="color:white;">
+</td></tr>
+<tr><td align="center">
+
+<br /><br />
+<textarea cols="70" rows="9" READONLY>
+1 - Ø¹Ø¯Ù ÙØ´Ø± Ø£Ù ÙØ­ØªÙÙ ÙØ³ÙØ¦ ÙØ£Ù Ø¯ÙÙ ÙÙ Ø§ÙØ£Ø¯ÙØ§Ù Ø£Ù ÙØ·Ø§Ø¦ÙØ© ÙØ¹ÙÙØ© Ø£Ù ÙØ­ØªÙÙ ÙØ­Ø±Ø¶ Ø¹ÙÙ Ø§ÙÙØªÙØ©.
+2 - Ø¹Ø¯Ù Ø¥Ø²Ø§ÙØ© Ø§ÙØ­ÙÙÙ Ø£Ù Ø§ÙÙØ¹Ø¨ Ø¨ÙØ§ Ø§Ù ØªØºÙÙØ± ÙÙØ§ÙÙØ§ ÙÙØ¬Ø¨ Ø£Ù ØªØ¨ÙÙ ÙÙØ§ ÙÙ.
+3 - Ø§ÙØ¨Ø±ÙØ§ÙØ¬ ÙØ¬Ø§ÙÙ ÙÙØ¬ÙÙØ¹ ÙÙØ§ ÙØ­Ù ÙØ£Ù Ø´Ø®Øµ Ø§ÙÙØªØ§Ø¬Ø±Ø© Ø¨Ù.
+
+1 - Do not publish any content that abuse any religion.
+2 - Do not remove the Rights or change there place, they should remain as they are.
+3 - This script is free for everybody and no body is allowed to trade with it.
+</textarea>
+<br />
+<script>
+
+//"Accept terms" form submission- By Dynamic Drive
+//For full source code and more DHTML scripts, visit http://www.dynamicdrive.com
+//This credit MUST stay intact for use
+
+var checkobj
+
+function agreesubmit(el){
+checkobj=el
+if (document.all||document.getElementById){
+for (i=0;i<checkobj.form.length;i++){  //hunt down submit button
+var tempobj=checkobj.form.elements[i]
+if(tempobj.type.toLowerCase()=="submit")
+tempobj.disabled=!checkobj.checked
+}
+}
+}
+
+function defaultagree(el){
+if (!document.all&&!document.getElementById){
+if (window.checkobj&&checkobj.checked)
+return true
+else{
+alert("Please read/accept terms to submit form")
+return false
+}
+}
+}
+
+</script>
+<form name="agreeform" action="step2.php" method="post">
+<input type="checkbox" onClick="agreesubmit(this)" name="agreecheck"/>
+<br />
+
+<input type="submit" value="" DISABLED/>
+</form>
+<script>
+document.forms.agreeform.agreecheck.checked=false
+</script>
+<br /><br /></td></tr>
+<tr><td background="images/g2.gif" height="25" align="center">
+<a href="http://www.the-ghost.com/awcm/">www.the-ghost.com/awcm/</a>
+</td></tr>
+</table>

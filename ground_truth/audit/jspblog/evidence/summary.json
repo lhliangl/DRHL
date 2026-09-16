@@ -1,0 +1,201 @@
+{
+  "app": "jspblog",
+  "baseline": "D:\\project\\python\\DRHL\\ground_truth\\audit\\jspblog\\evidence\\baseline.sql",
+  "database_restored_after_each_record": true,
+  "restore_verified_per_record": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+  ],
+  "final_database_matches_baseline": true,
+  "results": [
+    {
+      "gt_id": "GT-032",
+      "app": "jspblog",
+      "verified_at": "2026-09-06T08:42:46.171032+00:00",
+      "verdict": "vulnerable",
+      "summary": "visitor GET admin/addnews.jsp returned 200 and serves the protected admin form without any session (form_content_exposed=True).",
+      "sql_statements": [],
+      "steps": [
+        {
+          "kind": "replay",
+          "role": "visitor (no login)",
+          "request": "GET admin/addnews.jsp",
+          "status_code": 200,
+          "form_content_exposed": true,
+          "body_saved": "GT-032_GT-032_visitor.html"
+        }
+      ],
+      "restore_verified": true
+    },
+    {
+      "gt_id": "GT-033",
+      "app": "jspblog",
+      "verified_at": "2026-09-06T08:42:46.526813+00:00",
+      "verdict": "vulnerable",
+      "summary": "visitor POST admin/addnews2.jsp returned 200; a news row with the token headline was created in the portal database (created=True).",
+      "sql_statements": [
+        {
+          "kind": "scalar",
+          "sql": "SELECT COUNT(*) FROM news WHERE headline='DRHLGT_news_8684166432'"
+        }
+      ],
+      "steps": [
+        {
+          "kind": "instrument",
+          "table": "news",
+          "token_headline": "DRHLGT_news_8684166432"
+        },
+        {
+          "kind": "replay",
+          "role": "visitor (no login)",
+          "request": "POST admin/addnews2.jsp headline=DRHLGT_news_8684166432",
+          "status_code": 200,
+          "news_row_created": true,
+          "body_saved": "GT-033_gt033_visitor.html"
+        }
+      ],
+      "restore_verified": true
+    },
+    {
+      "gt_id": "GT-034",
+      "app": "jspblog",
+      "verified_at": "2026-09-06T08:42:46.776088+00:00",
+      "verdict": "vulnerable",
+      "summary": "visitor GET admin/adduser.jsp returned 200 and serves the protected admin form without any session (form_content_exposed=True).",
+      "sql_statements": [],
+      "steps": [
+        {
+          "kind": "replay",
+          "role": "visitor (no login)",
+          "request": "GET admin/adduser.jsp",
+          "status_code": 200,
+          "form_content_exposed": true,
+          "body_saved": "GT-034_GT-034_visitor.html"
+        }
+      ],
+      "restore_verified": true
+    },
+    {
+      "gt_id": "GT-035",
+      "app": "jspblog",
+      "verified_at": "2026-09-06T08:42:47.160064+00:00",
+      "verdict": "vulnerable",
+      "summary": "visitor POST admin/adduser2.jsp returned 200; a user row with the token name was created in the portal database (created=True).",
+      "sql_statements": [
+        {
+          "kind": "scalar",
+          "sql": "SELECT COUNT(*) FROM user WHERE name='DRHLGT_user_8684167034'"
+        }
+      ],
+      "steps": [
+        {
+          "kind": "instrument",
+          "table": "user",
+          "token_name": "DRHLGT_user_8684167034"
+        },
+        {
+          "kind": "replay",
+          "role": "visitor (no login)",
+          "request": "POST admin/adduser2.jsp name=DRHLGT_user_8684167034",
+          "status_code": 200,
+          "user_row_created": true,
+          "body_saved": "GT-035_gt035_visitor.html"
+        }
+      ],
+      "restore_verified": true
+    },
+    {
+      "gt_id": "GT-036",
+      "app": "jspblog",
+      "verified_at": "2026-09-06T08:42:47.404018+00:00",
+      "verdict": "vulnerable",
+      "summary": "visitor GET admin/admin.jsp returned 200 and serves the protected admin form without any session (form_content_exposed=True).",
+      "sql_statements": [],
+      "steps": [
+        {
+          "kind": "replay",
+          "role": "visitor (no login)",
+          "request": "GET admin/admin.jsp",
+          "status_code": 200,
+          "form_content_exposed": true,
+          "body_saved": "GT-036_GT-036_visitor.html"
+        }
+      ],
+      "restore_verified": true
+    },
+    {
+      "gt_id": "GT-037",
+      "app": "jspblog",
+      "verified_at": "2026-09-06T08:42:47.748076+00:00",
+      "verdict": "vulnerable",
+      "summary": "visitor GET admin/editnews.jsp returned 200; the news-management page lists the news rows and exposed the token injected into a news body (exposed=True).",
+      "sql_statements": [
+        {
+          "kind": "execute",
+          "sql": "UPDATE news SET body='DRHLGT_editlist_8684167679' WHERE headline='Java'"
+        }
+      ],
+      "steps": [
+        {
+          "kind": "instrument",
+          "table": "news",
+          "row": "headline='Java'",
+          "column": "body",
+          "token": "DRHLGT_editlist_8684167679"
+        },
+        {
+          "kind": "replay",
+          "role": "visitor (no login)",
+          "request": "GET admin/editnews.jsp",
+          "status_code": 200,
+          "news_content_token_exposed": true,
+          "body_saved": "GT-037_gt037_visitor.html"
+        }
+      ],
+      "restore_verified": true
+    },
+    {
+      "gt_id": "GT-038",
+      "app": "jspblog",
+      "verified_at": "2026-09-06T08:42:48.178813+00:00",
+      "verdict": "vulnerable",
+      "summary": "visitor POST admin/editnews2.jsp returned 200; the news body changed DRHLGT_news_before_8684168024 -> DRHLGT_news_after_8684168024 in the portal database (updated=True; the query carries no WHERE clause, so it applies to every row).",
+      "sql_statements": [
+        {
+          "kind": "execute",
+          "sql": "UPDATE news SET body='DRHLGT_news_before_8684168024' WHERE headline='Java'"
+        },
+        {
+          "kind": "scalar",
+          "sql": "SELECT body FROM news WHERE headline='Java' LIMIT 1"
+        }
+      ],
+      "steps": [
+        {
+          "kind": "instrument",
+          "table": "news",
+          "row": "headline='Java'",
+          "column": "body",
+          "token1": "DRHLGT_news_before_8684168024",
+          "token2": "DRHLGT_news_after_8684168024"
+        },
+        {
+          "kind": "replay",
+          "role": "visitor (no login)",
+          "request": "POST admin/editnews2.jsp body=DRHLGT_news_after_8684168024",
+          "status_code": 200,
+          "db_body_before": "DRHLGT_news_before_8684168024",
+          "db_body_after": "DRHLGT_news_after_8684168024",
+          "updated": true,
+          "body_saved": "GT-038_gt038_visitor.html"
+        }
+      ],
+      "restore_verified": true
+    }
+  ]
+}

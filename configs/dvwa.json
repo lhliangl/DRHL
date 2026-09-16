@@ -56,6 +56,8 @@
       "docs",
       "external",
       "hackable",
+      "api",
+      "authbypass",
       "tests",
       "css",
       "images",
@@ -205,6 +207,9 @@
     },
     "oracle": {
       "timeout": 10,
+      "csrf_token_parameters": [
+        "user_token"
+      ],
       "denied_statuses": [
         401,
         403
@@ -274,7 +279,7 @@
       "provider": "openai_compatible",
       "base_url": "https://api.deepseek.com/v1",
       "model": "deepseek-v4-flash",
-      "api_key": "your-api-key",
+      "api_key": "env:DRHL_DEEPSEEK_API_KEY",
       "temperature": 0.1,
       "timeout": 120,
       "response_format_json": true,
@@ -286,7 +291,13 @@
       "syntax_check": true,
       "php_binary": "D:/phpStudy/PHPTutorial/php/php-7.2.1-nts/php.exe",
       "syntax_timeout": 30,
-      "temporary_apply_to_source": true
+      "temporary_apply_to_source": true,
+      "database_oracles": {
+        "response_only_patterns": [
+          ".*"
+        ],
+        "rules": []
+      }
     }
   }
 }

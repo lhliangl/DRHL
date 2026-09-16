@@ -1,0 +1,19 @@
+{
+  "app": "BBS_pro",
+  "language": "python",
+  "source_root": "D:/project/python/BBS_Pro",
+  "reviewed_at": "2026-07-05",
+  "method": "manual source review",
+  "principle": "better_to_miss_than_wrong",
+  "parameters": [
+    {
+      "name": "user",
+      "source": "request",
+      "kind": "identity",
+      "files": [
+        "app01/views.py"
+      ],
+      "rationale": "Authenticated user object from auth.authenticate(). Checked with if user is not None before granting access (auth.login) or denying (render login page). Core identity parameter."
+    }
+  ]
+}

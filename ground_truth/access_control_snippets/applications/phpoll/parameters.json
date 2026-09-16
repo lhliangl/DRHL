@@ -1,0 +1,28 @@
+{
+  "app": "phpoll",
+  "language": "php",
+  "source_root": "D:/phpStudy/PHPTutorial/WWW/phpoll",
+  "reviewed_at": "2026-07-05",
+  "method": "manual source review",
+  "principle": "better_to_miss_than_wrong",
+  "parameters": [
+    {
+      "name": "$_COOKIE[$string_cook_login]",
+      "source": "cookie",
+      "kind": "identity",
+      "files": [
+        "config_editor.php"
+      ],
+      "rationale": "Cookie-based admin auth: stores login name. Checked at top of admin pages to verify admin session."
+    },
+    {
+      "name": "$_COOKIE[$string_cook_password]",
+      "source": "cookie",
+      "kind": "identity",
+      "files": [
+        "config_editor.php"
+      ],
+      "rationale": "Cookie-based admin auth: stores password. Checked alongside login cookie for admin access."
+    }
+  ]
+}

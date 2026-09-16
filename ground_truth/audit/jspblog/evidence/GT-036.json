@@ -1,0 +1,18 @@
+{
+  "gt_id": "GT-036",
+  "app": "jspblog",
+  "verified_at": "2026-09-06T08:42:47.404018+00:00",
+  "verdict": "vulnerable",
+  "summary": "visitor GET admin/admin.jsp returned 200 and serves the protected admin form without any session (form_content_exposed=True).",
+  "sql_statements": [],
+  "steps": [
+    {
+      "kind": "replay",
+      "role": "visitor (no login)",
+      "request": "GET admin/admin.jsp",
+      "status_code": 200,
+      "form_content_exposed": true,
+      "body_saved": "GT-036_GT-036_visitor.html"
+    }
+  ]
+}

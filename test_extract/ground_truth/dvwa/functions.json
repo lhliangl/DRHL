@@ -1,0 +1,17 @@
+{
+  "app": "dvwa",
+  "language": "php",
+  "reviewed_at": "2026-07-05",
+  "method": "manual source review",
+  "principle": "better_to_miss_than_wrong",
+  "functions": [
+    {
+      "name": "dvwaPageStartup",
+      "file": "D:/phpStudy/PHPTutorial/WWW/DVWA/dvwa/includes/dvwaPage.inc.php",
+      "start_line": 132,
+      "end_line": 138,
+      "kind": "authentication_gate",
+      "rationale": "If called with 'authenticated' action, redirects to login.php if dvwaIsLoggedIn() is false. Used by security.php, about.php, instructions.php, setup.php to protect pages that require authentication."
+    }
+  ]
+}

@@ -114,10 +114,85 @@ class SQLiteProbe(DatabaseProbe):
             return "" if not row else str(row[0])
 
 
+class PostgreSQLProbe(DatabaseProbe):
+    def __init__(self, config: dict[str, Any]):
+        self.config = config
+
+    def _env(self) -> dict[str, str]:
+        env = os.environ.copy()
+        if self.config.get("password"):
+            env["PGPASSWORD"] = str(self.config["password"])
+        return env
+
+    def _connection(self) -> list[str]:
+        args = [
+            "--host", str(self.config.get("host", "127.0.0.1")),
+            "--port", str(self.config.get("port", 5432)),
+            "--username", str(self.config["user"]),
+            "--dbname", str(self.config["database"]),
+        ]
+        args.extend(str(item) for item in self.config.get("extra_args", []))
+        return args
+
+    def _run(self, command: list[str]) -> bytes:
+        try:
+            completed = subprocess.run(
+                command,
+                check=True,
+                env=self._env(),
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE,
+                timeout=float(self.config.get("timeout", 120)),
+            )
+            return completed.stdout
+        except FileNotFoundError as exc:
+            raise DatabaseError(f"database probe executable was not found: {command[0]}") from exc
+        except subprocess.TimeoutExpired as exc:
+            raise DatabaseError(f"database probe timed out: {command[0]}") from exc
+        except subprocess.CalledProcessError as exc:
+            message = (exc.stderr or b"").decode("utf-8", errors="replace").strip()
+            raise DatabaseError(f"database probe failed: {message}") from exc
+
+    def capture(self) -> str:
+        command = [
+            str(self.config.get("pg_dump", "pg_dump")),
+            *self._connection(),
+            "--data-only",
+            "--column-inserts",
+            "--no-owner",
+            "--no-privileges",
+        ]
+        return self._run(command).decode("utf-8", errors="replace")
+
+    def execute(self, sql: str) -> None:
+        command = [
+            str(self.config.get("psql", "psql")),
+            *self._connection(),
+            "--set", "ON_ERROR_STOP=on",
+            "--quiet",
+            "--command", sql,
+        ]
+        self._run(command)
+
+    def scalar(self, sql: str) -> str:
+        command = [
+            str(self.config.get("psql", "psql")),
+            *self._connection(),
+            "--set", "ON_ERROR_STOP=on",
+            "--tuples-only",
+            "--no-align",
+            "--quiet",
+            "--command", sql,
+        ]
+        return self._run(command).decode("utf-8", errors="replace").strip()
+
+
 def create_database_probe(config: dict[str, Any]) -> DatabaseProbe:
     driver = str(config.get("driver", "none")).lower()
     if driver == "mysql":
         return MySQLProbe(config)
     if driver == "sqlite":
         return SQLiteProbe(config)
+    if driver in {"postgres", "postgresql"}:
+        return PostgreSQLProbe(config)
     raise DatabaseError(f"database mutation oracle is not supported for driver: {driver}")

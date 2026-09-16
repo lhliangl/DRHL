@@ -1,0 +1,31 @@
+{
+  "app": "jwablogger",
+  "language": "java",
+  "source_root": "D:/project/python/DRHL/test_repair/runs/jwablogger/scenario/source_files/",
+  "reviewed_at": "2026-07-05",
+  "method": "manual source review",
+  "principle": "better_to_miss_than_wrong",
+  "parameters": [
+    {
+      "name": "administrator",
+      "source": "session",
+      "kind": "role",
+      "files": [
+        "D:/tomcat9/webapps/jwablogger/java/jwaBlogger/src/jwaBlogger/webApp/Blogger.java",
+        "D:/tomcat9/webapps/jwablogger/java/jwaBlogger/src/jwaBlogger/WebAppInterface.java"
+      ],
+      "rationale": "Role checked via serverInterface.isUserInRole('administrator') in processViewEntry, processVoteEntry, processSpamEntry, processVoteComment, processSpamComment. Determines elevated privileges for admin operations."
+    },
+    {
+      "name": "trusted",
+      "source": "session",
+      "kind": "role",
+      "files": [
+        "D:/tomcat9/webapps/jwablogger/java/jwaBlogger/src/jwaBlogger/webApp/Blogger.java",
+        "D:/tomcat9/webapps/jwablogger/java/jwaBlogger/src/jwaBlogger/WebAppInterface.java",
+        "D:/tomcat9/webapps/jwablogger/java/jwaBlogger/src/jwaBlogger/BlogManager.java"
+      ],
+      "rationale": "Role obtained through serverInterface.isUserInRole('trusted') and propagated to saveEntry/saveBlogEntry, where it controls trusted-user HTML handling."
+    }
+  ]
+}

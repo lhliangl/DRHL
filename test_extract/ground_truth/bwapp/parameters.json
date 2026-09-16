@@ -1,0 +1,46 @@
+{
+  "app": "bwapp",
+  "language": "php",
+  "source_root": "D:/phpStudy/PHPTutorial/WWW/bWAPP",
+  "reviewed_at": "2026-07-05",
+  "method": "manual source review",
+  "principle": "better_to_miss_than_wrong",
+  "parameters": [
+    {
+      "name": "$_SESSION['login']",
+      "source": "session",
+      "kind": "identity",
+      "files": [
+        "login.php",
+        "security.php",
+        "security_level_set.php",
+        "portal.php",
+        "admin/index.php"
+      ],
+      "rationale": "Stores the authenticated username after successful login. Checked in security.php (line 45: isset($_SESSION['login']) && $_SESSION['login']) to enforce authentication. Displayed in UI headers. Core identity parameter."
+    },
+    {
+      "name": "$_SESSION['admin']",
+      "source": "session",
+      "kind": "role",
+      "files": [
+        "login.php",
+        "security.php"
+      ],
+      "rationale": "Stores the admin flag (0 or 1) set during login from the database 'admin' column. Used in security.php line 40 for AIM mode and represents the user's admin role."
+    },
+    {
+      "name": "$_COOKIE['security_level']",
+      "source": "cookie",
+      "kind": "role",
+      "files": [
+        "security.php",
+        "security_level_check.php",
+        "security_level_set.php",
+        "admin/index.php",
+        "login.php"
+      ],
+      "rationale": "Security level cookie set after login (login.php:103-111) and on security_level_set.php (line 63). Controls which security level (low/medium/high/666) applies to vulnerability pages. The '666' value bypasses all security levels. An authorization-related parameter."
+    }
+  ]
+}

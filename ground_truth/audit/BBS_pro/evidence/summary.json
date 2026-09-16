@@ -1,0 +1,108 @@
+{
+  "app": "BBS_pro",
+  "database_reverted_after_record": true,
+  "results": [
+    {
+      "gt_id": "GT-048",
+      "app": "BBS_pro",
+      "verified_at": "2026-09-06T14:34:16.263399+00:00",
+      "verdict": "vulnerable",
+      "summary": "visitor GET /bbs_pub/ returned 200 and served the bulletin-publication form (category token exposed=True); the anonymous submission attempt crashed with HTTP 500 and created no post (posts 16 -> 16); a logged-in ordinary user opens the page by design (200). The category name was reverted afterwards.",
+      "sql_statements": [
+        {
+          "kind": "sqlite",
+          "sql": "SELECT name FROM app01_category WHERE id=1"
+        },
+        {
+          "kind": "sqlite",
+          "sql": "SELECT password FROM auth_user WHERE username='user1'"
+        },
+        {
+          "kind": "sqlite",
+          "sql": "SELECT COUNT(*) FROM app01_bbs"
+        },
+        {
+          "kind": "sqlite",
+          "sql": "UPDATE app01_category SET name='DRHLGT_bbs_category_8705254506' WHERE id=1"
+        },
+        {
+          "kind": "sqlite",
+          "sql": "SELECT COUNT(*) FROM app01_bbs"
+        },
+        {
+          "kind": "sqlite",
+          "sql": "SELECT COUNT(*) FROM app01_bbs WHERE title LIKE '%DRHLGT_bbs_category_8705254506%'"
+        },
+        {
+          "kind": "sqlite",
+          "sql": "UPDATE app01_category SET name='校园学术' WHERE id=1"
+        },
+        {
+          "kind": "sqlite",
+          "sql": "UPDATE auth_user SET password='pbkdf2_sha256$12000$jnTEO0SkZfOr$TuAfPx36TqS/NBrMhLbWEsBjQntC55HcdUex6LsLU9Y=' WHERE username='user1'"
+        },
+        {
+          "kind": "sqlite",
+          "sql": "SELECT name FROM app01_category WHERE id=1"
+        },
+        {
+          "kind": "sqlite",
+          "sql": "SELECT password FROM auth_user WHERE username='user1'"
+        }
+      ],
+      "steps": [
+        {
+          "kind": "instrument",
+          "table": "app01_category",
+          "row": "id=1",
+          "column": "name",
+          "token": "DRHLGT_bbs_category_8705254506",
+          "original_name_recorded": true
+        },
+        {
+          "kind": "replay",
+          "role": "visitor (no login)",
+          "request": "GET /bbs_pub/ (bulletin-publication form)",
+          "status_code": 200,
+          "publication_form_exposed": true,
+          "category_token_exposed": true,
+          "body_saved": "GT-048_gt048_visitor_bbs_pub.html"
+        },
+        {
+          "kind": "replay",
+          "role": "visitor (no login)",
+          "request": "POST /bbs_sub/ (anonymous publication attempt)",
+          "status_code": 500,
+          "anonymous_submission_crashed": true,
+          "posts_before": "16",
+          "posts_after": "16",
+          "token_post_rows_created": "0",
+          "no_post_created_by_anonymous_submission": true
+        },
+        {
+          "kind": "instrument",
+          "user1_password_reset_via_set_password": true,
+          "original_password_hash_recorded": true
+        },
+        {
+          "kind": "replay",
+          "role": "user1 (logged-in ordinary user)",
+          "request": "GET /bbs_pub/ (by-design access reference)",
+          "login_succeeded": true,
+          "status_code": 200,
+          "logged_in_user_access_is_by_design": true
+        },
+        {
+          "kind": "restore",
+          "category_name_reverted": true,
+          "user1_password_hash_reverted": true
+        }
+      ],
+      "database_reverted": true
+    }
+  ],
+  "restore_verified_per_record": [
+    true
+  ],
+  "restore_note": "targeted revert: the instrumented values were reverted and verified by re-querying the touched rows (no full baseline restore was needed)"
+}

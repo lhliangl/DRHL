@@ -1,0 +1,138 @@
+{
+  "app": "phpns",
+  "language": "php",
+  "source_root": "D:/project/python/DRHL/test_repair/runs/phpns/scenario/source_files/",
+  "reviewed_at": "2026-09-12",
+  "method": "manual source review",
+  "principle": "better_to_miss_than_wrong",
+  "parameters": [
+    {
+      "name": "_SESSION['auth']",
+      "source": "session",
+      "kind": "identity",
+      "files": [
+        "D:/phpStudy/PHPTutorial/WWW/phpns/inc/auth.php",
+        "D:/phpStudy/PHPTutorial/WWW/phpns/login.php"
+      ],
+      "rationale": "Primary authentication flag set to 'yes' on successful login in login.php (line 91). Checked in auth.php (line 32) as the main gate for all admin pages."
+    },
+    {
+      "name": "_SESSION['username']",
+      "source": "session",
+      "kind": "identity",
+      "files": [
+        "D:/phpStudy/PHPTutorial/WWW/phpns/inc/auth.php",
+        "D:/phpStudy/PHPTutorial/WWW/phpns/login.php"
+      ],
+      "rationale": "Stores authenticated username set during login (login.php line 88). Used for identity tracking in logging and as author for new content."
+    },
+    {
+      "name": "_SESSION['userID']",
+      "source": "session",
+      "kind": "identity",
+      "files": [
+        "D:/phpStudy/PHPTutorial/WWW/phpns/inc/auth.php",
+        "D:/phpStudy/PHPTutorial/WWW/phpns/login.php"
+      ],
+      "rationale": "Stores the database user ID from the users table, set during login (login.php line 89). Used for logging operations."
+    },
+    {
+      "name": "_SESSION['permissions']",
+      "source": "session",
+      "kind": "role",
+      "files": [
+        "D:/phpStudy/PHPTutorial/WWW/phpns/inc/auth.php",
+        "D:/phpStudy/PHPTutorial/WWW/phpns/login.php",
+        "D:/phpStudy/PHPTutorial/WWW/phpns/article.php",
+        "D:/phpStudy/PHPTutorial/WWW/phpns/user.php",
+        "D:/phpStudy/PHPTutorial/WWW/phpns/manage.php"
+      ],
+      "rationale": "Comma-separated permission string (12 positions: createranks,manageranks,loginrecords,preferences,loggingin,createarticles,approve,editarticles,deletearticles,createusers,editusers,deleteusers). Assigned to $globalvars['rank'] array in auth.php (line 42). Checked throughout admin pages to authorize specific operations."
+    },
+    {
+      "name": "_SESSION['path']",
+      "source": "session",
+      "kind": "identity",
+      "files": [
+        "D:/phpStudy/PHPTutorial/WWW/phpns/inc/auth.php",
+        "D:/phpStudy/PHPTutorial/WWW/phpns/login.php"
+      ],
+      "rationale": "Path verification token set during login (login.php line 92). Checked in auth.php (line 37) to prevent session fixation/hijacking by comparing against current directory path."
+    },
+    {
+      "name": "rank",
+      "source": "session",
+      "kind": "role",
+      "files": [
+        "D:/phpStudy/PHPTutorial/WWW/phpns/article.php",
+        "D:/phpStudy/PHPTutorial/WWW/phpns/user.php",
+        "D:/phpStudy/PHPTutorial/WWW/phpns/manage.php",
+        "D:/phpStudy/PHPTutorial/WWW/phpns/inc/auth.php"
+      ],
+      "rationale": "Aliased from $_SESSION['permissions'] to $globalvars['rank'] array. Each index maps to a specific permission: [0]=create_ranks, [2]=manage_ranks, [4]=login_records, [6]=preferences, [8]=logging_in, [10]=create_articles, [12]=approve, [14]=edit_articles, [16]=delete_articles, [18]=create_users, [20]=edit_users, [22]=delete_users."
+    },
+    {
+      "name": "$globalvars['rank'][2]",
+      "source": "session_alias",
+      "kind": "permission",
+      "files": ["user.php"],
+      "rationale": "Controls rank-management operations and redirects denied requests to permissiondenied."
+    },
+    {
+      "name": "$globalvars['rank'][4]",
+      "source": "session_alias",
+      "kind": "permission",
+      "files": ["user.php"],
+      "rationale": "Controls access to login records and redirects denied requests to permissiondenied."
+    },
+    {
+      "name": "$globalvars['rank'][6]",
+      "source": "session_alias",
+      "kind": "permission",
+      "files": ["preferences.php"],
+      "rationale": "Controls preference management and redirects denied requests to permissiondenied."
+    },
+    {
+      "name": "$globalvars['rank'][10]",
+      "source": "session_alias",
+      "kind": "permission",
+      "files": ["article.php"],
+      "rationale": "Controls article creation and redirects denied requests to permissiondenied."
+    },
+    {
+      "name": "$globalvars['rank'][14]",
+      "source": "session_alias",
+      "kind": "permission",
+      "files": ["article.php"],
+      "rationale": "Controls article editing and redirects denied requests to permissiondenied."
+    },
+    {
+      "name": "$globalvars['rank'][16]",
+      "source": "session_alias",
+      "kind": "permission",
+      "files": ["manage.php"],
+      "rationale": "Controls article deletion and redirects denied requests to permissiondenied."
+    },
+    {
+      "name": "$globalvars['rank'][18]",
+      "source": "session_alias",
+      "kind": "permission",
+      "files": ["user.php"],
+      "rationale": "Controls user creation and redirects denied requests to permissiondenied."
+    },
+    {
+      "name": "$globalvars['rank'][20]",
+      "source": "session_alias",
+      "kind": "permission",
+      "files": ["user.php"],
+      "rationale": "Controls user editing and redirects denied requests to permissiondenied."
+    },
+    {
+      "name": "$globalvars['rank'][22]",
+      "source": "session_alias",
+      "kind": "permission",
+      "files": ["user.php"],
+      "rationale": "Controls user deletion and redirects denied requests to permissiondenied."
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "gt_id": "GT-018",
+  "app": "bwapp",
+  "verified_at": "2026-09-06T04:57:58.312824+00:00",
+  "verdict": "vulnerable",
+  "summary": "visitor GET secret-cors-1.php returned 200; protected secret obtained without authorization=True.",
+  "sql_statements": [],
+  "steps": [
+    {
+      "kind": "replay",
+      "role": "visitor (no login)",
+      "request": "GET secret-cors-1.php",
+      "status_code": 200,
+      "secret_exposed": true,
+      "body_saved": "GT-018_GT-018_visitor.html"
+    }
+  ]
+}

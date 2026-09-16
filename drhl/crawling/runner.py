@@ -42,6 +42,15 @@ def crawl_all_roles(
         crawl_error: BaseException | None = None
         crawl_result: RoleCrawl | None = None
         try:
+            restore_after_form_markers = config.crawl.get("restore_database_after_form_markers", [])
+            if restore_after_form_markers:
+                configure_restore = getattr(crawler, "set_database_restore_callback", None)
+                if not callable(configure_restore):
+                    raise CrawlError(
+                        "crawl.restore_database_after_form_markers requires a crawler that supports "
+                        "database restore callbacks"
+                    )
+                configure_restore(snapshot.restore)
             crawl_result = crawler.crawl(role)
             output = output_dir / f"{role.name}.json"
             write_json(output, crawl_result.to_dict())

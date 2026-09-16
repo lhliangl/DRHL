@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<!-- saved from url=(0048)http://v3.bootcss.com/examples/navbar-fixed-top/ -->
+<html lang="en">
+  <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- <link rel="icon" href="http://v3.bootcss.com/favicon.ico"> -->
+
+    <title>友答Django学习模板</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/statics/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap styles for this template -->
+    <link href="/statics/css/navbar-fixed-top.css" rel="stylesheet">
+
+    <!-- Customer styles for this template -->
+    <link href="/statics/css/customize.css" rel="stylesheet">
+
+  </style></head>
+
+  <body id="">
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">友答模板</a>
+        </div>
+
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            
+            
+            
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            
+
+            <li class="dropdown">
+<!--               <a href="#" class="dropdown-toggle" 
+              data-toggle="dropdown" id="" aria-expanded="false"> -->
+            
+
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+      
+
+<div>
+<script type="text/javascript" src="/statics/tinymce/js/tinymce/tinymce.min.js"></script>
+
+<script type="text/javascript">
+tinymce.init({
+    selector: "textarea",
+    theme: "modern",
+    plugins: [
+        "advlist autolink lists link image charmap print preview hr anchor pagebreak",
+        "searchreplace wordcount visualblocks visualchars code fullscreen",
+        "insertdatetime media nonbreaking save table contextmenu directionality",
+        "emoticons template paste textcolor colorpicker textpattern"
+    ],
+    toolbar1: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
+    toolbar2: "print preview media | forecolor backcolor emoticons",
+    image_advtab: true,
+    templates: [
+        {title: 'Test template 1', content: 'Test 1'},
+        {title: 'Test template 2', content: 'Test 2'}
+    ]
+});
+</script>
+
+<!-- 
+  
+    <li class=""><a href="/category/1">DRHLGT_bbs_category_8701041571
+    </a></li>
+  
+
+  
+    <li class=""><a href="/category/2">职场疑云
+    </a></li>
+  
+
+  
+    <li class=""><a href="/category/3">应聘深造
+    </a></li>
+  
+ -->
+
+<!-- Fix Me -->
+<form method="post" action="/bbs_sub/">
+<ul>
+    <select name="category_select">
+        
+          <!-- <option value=DRHLGT_bbs_category_8701041571>DRHLGT_bbs_category_8701041571</option> -->
+          <option value=0>DRHLGT_bbs_category_8701041571</option>
+        
+          <!-- <option value=职场疑云>职场疑云</option> -->
+          <option value=1>职场疑云</option>
+        
+          <!-- <option value=应聘深造>应聘深造</option> -->
+          <option value=2>应聘深造</option>
+        
+    </select>
+
+    <hr>
+
+    标题：<input type="text" name="title" /> </br>
+
+    <hr>
+
+    大意:
+    </br>
+    </br>
+    <input type="text" style="width:100%" name="summary" /> </br>
+
+    <hr>
+
+
+    <textarea name="content" style="width:100%"></textarea>
+
+    <input type='submit' value='Save'/>
+</form>
+</div>
+
+</ul>
+
+    </div> <!-- /container -->
+
+
+    <!-- Boots

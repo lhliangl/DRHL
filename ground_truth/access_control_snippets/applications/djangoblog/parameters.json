@@ -1,0 +1,19 @@
+{
+  "app": "djangoblog",
+  "language": "python",
+  "source_root": "D:/project/python/DjangoBlog",
+  "reviewed_at": "2026-07-05",
+  "method": "manual source review",
+  "principle": "better_to_miss_than_wrong",
+  "parameters": [
+    {
+      "name": "Post.status",
+      "source": "database",
+      "kind": "role",
+      "files": [
+        "blog/views.py"
+      ],
+      "rationale": "Post status field (0=draft, 1=published). Used as access control: PostList filters to status=1 (published), and PostDetail should restrict draft access to staff users."
+    }
+  ]
+}

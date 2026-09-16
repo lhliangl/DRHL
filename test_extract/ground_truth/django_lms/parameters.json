@@ -1,0 +1,65 @@
+{
+  "app": "django_lms",
+  "language": "python",
+  "source_root": "D:/project/python/django_lms",
+  "reviewed_at": "2026-07-05",
+  "method": "manual source review",
+  "principle": "better_to_miss_than_wrong",
+  "parameters": [
+    {
+      "name": "request.user",
+      "source": "session",
+      "kind": "identity",
+      "files": [
+        "app/views.py",
+        "accounts/decorators.py"
+      ],
+      "rationale": "Django request.user object central to all authentication and role checks in the LMS app."
+    },
+    {
+      "name": "request.user.is_superuser",
+      "source": "database",
+      "kind": "role",
+      "files": [
+        "accounts/decorators.py"
+      ],
+      "rationale": "Flag checked in admin_required and lecturer_required/student_required decorators as override for full access."
+    },
+    {
+      "name": "request.user.is_lecturer",
+      "source": "database",
+      "kind": "role",
+      "files": [
+        "accounts/decorators.py"
+      ],
+      "rationale": "Custom flag checked in lecturer_required decorator to verify user has lecturer role."
+    },
+    {
+      "name": "request.user.is_student",
+      "source": "database",
+      "kind": "role",
+      "files": [
+        "accounts/decorators.py"
+      ],
+      "rationale": "Custom flag checked in student_required decorator to verify user has student role."
+    },
+    {
+      "name": "request.user.is_active",
+      "source": "database",
+      "kind": "status",
+      "files": [
+        "accounts/decorators.py"
+      ],
+      "rationale": "Active-user flag checked inside student_required, lecturer_required, and admin_required decorators before granting role-based access."
+    },
+    {
+      "name": "request.user.has_perm",
+      "source": "method",
+      "kind": "permission",
+      "files": [
+        "quiz/views.py"
+      ],
+      "rationale": "Django permission-check method used in a terminating authorization condition."
+    }
+  ]
+}

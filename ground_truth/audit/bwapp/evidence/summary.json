@@ -1,0 +1,147 @@
+{
+  "app": "bwapp",
+  "baseline": "D:\\project\\python\\DRHL\\ground_truth\\verification\\evidence\\bwapp\\baseline.sql",
+  "database_restored_after_each_record": true,
+  "restore_verified_per_record": [
+    true,
+    true,
+    true,
+    true,
+    true
+  ],
+  "final_database_matches_baseline": true,
+  "results": [
+    {
+      "gt_id": "GT-016",
+      "app": "bwapp",
+      "verified_at": "2026-09-06T04:57:57.100831+00:00",
+      "verdict": "vulnerable",
+      "summary": "visitor GET backdoor.php returned 200 and exposes the NSA file uploader form (exposed=True); the upload action itself redirects a sessionless visitor to login.",
+      "sql_statements": [],
+      "steps": [
+        {
+          "kind": "replay",
+          "role": "visitor (no login)",
+          "request": "GET backdoor.php",
+          "status_code": 200,
+          "backdoor_uploader_form_exposed": true,
+          "body_saved": "GT-016_gt016_visitor_backdoor.html"
+        },
+        {
+          "kind": "replay",
+          "role": "visitor (no login)",
+          "request": "POST backdoor.php upload=1",
+          "status_code": 302,
+          "upload_action_redirected_to_login": true
+        }
+      ],
+      "restore_verified": true
+    },
+    {
+      "gt_id": "GT-017",
+      "app": "bwapp",
+      "verified_at": "2026-09-06T04:57:57.836819+00:00",
+      "verdict": "vulnerable",
+      "summary": "visitor GET install.php returned 200 with the installer link (installer_link_exposed=True); the install action was invoked as visitor and completed (installed=True); database restored afterwards.",
+      "sql_statements": [
+        {
+          "kind": "execute",
+          "sql": "DROP DATABASE bwapp"
+        },
+        {
+          "kind": "scalar",
+          "sql": "SELECT COUNT(*) FROM bwapp.users"
+        }
+      ],
+      "steps": [
+        {
+          "kind": "replay",
+          "role": "visitor (no login)",
+          "request": "GET install.php",
+          "status_code": 200,
+          "installer_link_exposed": true,
+          "body_saved": "GT-017_gt017_visitor_install_page.html"
+        },
+        {
+          "kind": "instrument",
+          "precondition": "DROP DATABASE bwapp (fresh-install simulation)"
+        },
+        {
+          "kind": "replay",
+          "role": "visitor (no login)",
+          "request": "GET install.php?install=yes",
+          "status_code": 200,
+          "installer_action_completed": true,
+          "recreated_users_table_rows": "2",
+          "body_saved": "GT-017_gt017_visitor_install_action.html"
+        }
+      ],
+      "restore_verified": true
+    },
+    {
+      "gt_id": "GT-018",
+      "app": "bwapp",
+      "verified_at": "2026-09-06T04:57:58.312824+00:00",
+      "verdict": "vulnerable",
+      "summary": "visitor GET secret-cors-1.php returned 200; protected secret obtained without authorization=True.",
+      "sql_statements": [],
+      "steps": [
+        {
+          "kind": "replay",
+          "role": "visitor (no login)",
+          "request": "GET secret-cors-1.php",
+          "status_code": 200,
+          "secret_exposed": true,
+          "body_saved": "GT-018_GT-018_visitor.html"
+        }
+      ],
+      "restore_verified": true
+    },
+    {
+      "gt_id": "GT-019",
+      "app": "bwapp",
+      "verified_at": "2026-09-06T04:57:58.700822+00:00",
+      "verdict": "vulnerable",
+      "summary": "visitor GET secret-cors-2.php returned 200; protected secret obtained without authorization=True.",
+      "sql_statements": [],
+      "steps": [
+        {
+          "kind": "replay",
+          "role": "visitor (no login)",
+          "request": "GET secret-cors-2.php",
+          "status_code": 200,
+          "secret_exposed": false,
+          "body_saved": "GT-019_GT-019_visitor.html"
+        },
+        {
+          "kind": "replay",
+          "role": "visitor (no login)",
+          "request": "GET secret-cors-2.php with headers {'Origin': 'http://intranet.itsecgames.com'}",
+          "status_code": 200,
+          "secret_exposed_with_headers": true,
+          "body_saved": "GT-019_GT-019_visitor_headers.html"
+        }
+      ],
+      "restore_verified": true
+    },
+    {
+      "gt_id": "GT-020",
+      "app": "bwapp",
+      "verified_at": "2026-09-06T04:57:59.215824+00:00",
+      "verdict": "vulnerable",
+      "summary": "visitor GET secret-cors-3.php returned 200; protected secret obtained without authorization=True.",
+      "sql_statements": [],
+      "steps": [
+        {
+          "kind": "replay",
+          "role": "visitor (no login)",
+          "request": "GET secret-cors-3.php",
+          "status_code": 200,
+          "secret_exposed": true,
+          "body_saved": "GT-020_GT-020_visitor.html"
+        }
+      ],
+      "restore_verified": true
+    }
+  ]
+}

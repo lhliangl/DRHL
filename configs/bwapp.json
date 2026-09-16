@@ -157,6 +157,10 @@
         "users.activated",
         "blog.owner"
       ],
+      "llm_snippet_exclude_kinds": [
+        "database_operation"
+      ],
+      "llm_snippet_require_if_framework": true,
       "validated_function_name_patterns": [
         "security",
         "login",
@@ -168,6 +172,13 @@
         "\\$_SESSION\\[\\s*['\\\"]admin['\\\"]\\s*\\]",
         "header\\s*\\(\\s*['\\\"]Location:\\s*login\\.php",
         "\\$_COOKIE\\[\\s*['\\\"]security_level['\\\"]\\s*\\]"
+      ],
+      "termination_exclude_patterns": [
+        "\\$db_reset\\s*==\\s*true",
+        "!?in_array\\s*\\(\\s*\\$file_extension\\s*,\\s*\\$file_extensions\\s*\\)"
+      ],
+      "termination_patterns": [
+        "header\\s*\\(\\s*['\\\"]Location:\\s*sqli_13(?:-ps)?\\.php"
       ]
     },
     "active_detection": true,
@@ -189,6 +200,9 @@
     },
     "oracle": {
       "timeout": 10,
+      "csrf_token_parameters": [
+        "token"
+      ],
       "denied_statuses": [
         401,
         403
@@ -276,7 +290,7 @@
       "provider": "openai_compatible",
       "base_url": "https://api.deepseek.com/v1",
       "model": "deepseek-v4-flash",
-      "api_key": "your-api-key",
+      "api_key": "env:DRHL_DEEPSEEK_API_KEY",
       "temperature": 0.1,
       "timeout": 120,
       "response_format_json": true,
@@ -288,7 +302,15 @@
       "syntax_check": true,
       "php_binary": "D:/phpStudy/PHPTutorial/php/php-5.2.17/php.exe",
       "syntax_timeout": 30,
-      "temporary_apply_to_source": true
+      "temporary_apply_to_source": true,
+      "database_oracles": {
+        "response_only_patterns": [
+          "^backdoor\\.php(?:\\?|$)",
+          "^install\\.php(?:\\?|$)",
+          "^secret-cors-[123]\\.php(?:\\?|$)"
+        ],
+        "rules": []
+      }
     }
   }
 }

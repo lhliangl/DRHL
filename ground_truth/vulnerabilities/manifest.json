@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "dataset": "bac_vulnerability_ground_truth",
+  "description": "Independently audited broken-access-control vulnerabilities for the 16 DRHL benchmark applications.",
+  "canonical_table": "../ground_truth.csv",
+  "human_readable_report": "../ground-truth_report.md",
+  "latex_comparison": "../ground-truth_comparison.tex",
+  "audit_evidence": "../audit",
+  "records": 50,
+  "applications": 16,
+  "by_bac_type": {
+    "VPE": 39,
+    "HPE": 11
+  },
+  "by_application": {
+    "AWCMs": 5,
+    "Phpoll": 3,
+    "Phpns": 7,
+    "Bwapp": 5,
+    "DVWA": 3,
+    "SCARF": 3,
+    "EventsLister": 2,
+    "Mybb": 1,
+    "Wackopicko": 2,
+    "Jspblog": 7,
+    "JsForum": 6,
+    "jwablogger": 1,
+    "DjangoBlog": 1,
+    "django_lms": 1,
+    "BBS_Pro": 1,
+    "orangeforum": 2
+  },
+  "runtime_usage": "offline_evaluation_only"
+}

@@ -129,12 +129,22 @@
         "phpoll_test_configurazione.password"
       ],
       "validated_function_name_patterns": [],
+      "termination_patterns": [
+        "\\$test_log\\s*=\\s*true\\s*;"
+      ],
+      "llm_snippet_exclude_code_patterns": [
+        "^if\\s*\\(\\$log\\s*!=\\s*\"admin\"\\s*&&\\s*\\$pw\\s*!=\\s*\"admin\"\\s*\\)\\s*\\{\\s*\\$test_log\\s*=\\s*true\\s*;\\s*\\}$"
+      ],
+      "llm_snippet_prefix_rules": [
+        {
+          "path_pattern": "^admin/(?:band_editor|config_editor|votanti)\\.php$",
+          "code_pattern": "\\$_COOKIE\\[\\$string_cook_login\\]",
+          "prefix": "$query_login = \"SELECT login, password FROM phpoll_\".$prepoll.\"_configurazione;\";\n$estrai_login = mysql_query($query_login, $phpoll_db)\n  or die (\"Errore nella connessione per estrazione login configurazione dal database \".$phpoll_database);\n$dati_login = mysql_fetch_assoc($estrai_login);\n$string_cook_login = \"phpoll_\".$prepoll.\"_login\";\n$string_cook_password = \"phpoll_\".$prepoll.\"_password\";\n$log=$dati_login['login'];\n$pw=$dati_login['password'];\n$test_log = false;"
+        }
+      ],
       "validated_function_code_patterns": [
         "\\b(?:login|password|cookie|setcookie|phpoll_.*_(?:login|password)|test_log|REMOTE_ADDR)\\b",
         "\\$_COOKIE|\\$_SERVER\\[\\'REMOTE_ADDR\\'\\]"
-      ],
-      "termination_patterns": [
-        "\\s*=\\s*true"
       ]
     },
     "active_detection": true,
@@ -148,6 +158,7 @@
     },
     "oracle": {
       "timeout": 10,
+      "csrf_token_parameters": [],
       "denied_statuses": [
         401,
         403
@@ -193,7 +204,7 @@
       "provider": "openai_compatible",
       "base_url": "https://api.deepseek.com/v1",
       "model": "deepseek-v4-flash",
-      "api_key": "your-api-key",
+      "api_key": "env:DRHL_DEEPSEEK_API_KEY",
       "temperature": 0.1,
       "timeout": 120,
       "response_format_json": true,
@@ -205,7 +216,207 @@
       "syntax_check": true,
       "php_binary": "D:/phpStudy/PHPTutorial/php/php-5.2.17/php.exe",
       "syntax_timeout": 30,
-      "temporary_apply_to_source": true
+      "temporary_apply_to_source": true,
+      "database_oracles": {
+        "database_primary_patterns": [
+          "^admin/modifica_(?:band|configurazione|votanti)\\.php(?:\\?|$)"
+        ],
+        "rules": [
+          {
+            "name": "PHPOLL-band-update",
+            "page_pattern": "^admin/modifica_band\\.php(?:\\?|$)",
+            "category": "admin_only",
+            "operation": "update",
+            "variables": {
+              "band_id": {
+                "query": "SELECT COALESCE(MAX(id), 0) + 1 FROM phpoll_test_band"
+              }
+            },
+            "setup_sql": [
+              "INSERT INTO phpoll_test_band (id, nome_band, voti) VALUES ({band_id}, '{token1}', 0)"
+            ],
+            "attack": {
+              "role": "visitor",
+              "request": {
+                "page": "admin/modifica_band.php?language=1&nuova_band=2",
+                "method": "POST",
+                "replace_params": true,
+                "params": {
+                  "nome_band_0": "{token2}",
+                  "voti_0": "0",
+                  "check_0": "off",
+                  "id_0": "{band_id}"
+                },
+                "referer": "admin/band_editor.php?language=1"
+              },
+              "assert": {
+                "query": "SELECT nome_band FROM phpoll_test_band WHERE id={band_id}",
+                "scalar_equals": "{token1}"
+              }
+            },
+            "authorized": {
+              "role": "admin",
+              "request": {
+                "page": "admin/modifica_band.php?language=1&nuova_band=2",
+                "method": "POST",
+                "replace_params": true,
+                "params": {
+                  "nome_band_0": "{token2}",
+                  "voti_0": "0",
+                  "check_0": "off",
+                  "id_0": "{band_id}"
+                },
+                "referer": "admin/band_editor.php?language=1"
+              },
+              "assert": {
+                "query": "SELECT nome_band FROM phpoll_test_band WHERE id={band_id}",
+                "scalar_equals": "{token2}"
+              }
+            }
+          },
+          {
+            "name": "PHPOLL-configuration-update",
+            "page_pattern": "^admin/modifica_configurazione\\.php(?:\\?|$)",
+            "category": "admin_only",
+            "operation": "update",
+            "setup_sql": [
+              "UPDATE phpoll_test_configurazione SET titolo_posizione='{token1}' WHERE id=1"
+            ],
+            "attack": {
+              "role": "visitor",
+              "request": {
+                "page": "admin/modifica_configurazione.php?language=1",
+                "method": "POST",
+                "replace_params": true,
+                "params": {
+                  "titolo_posizione": "{token2}",
+                  "titolo_tipologia": "Type",
+                  "titolo_punteggio": "Score",
+                  "max_voti": "1",
+                  "risultati_pixel": "1",
+                  "barra1": "#000A1A",
+                  "barra2": "#0EFC0C",
+                  "barra3": "#040C00",
+                  "barra4": "#55010E",
+                  "intervallo_tempo": "0",
+                  "percorso_link": "phpoll.php",
+                  "oggetto_email": "Subject",
+                  "testo_email": "Message",
+                  "domini": "example.test",
+                  "testo_submit": "Vote",
+                  "valid_email": "Valid",
+                  "messaggio_conferma_mail": "Confirmed",
+                  "messaggio_domini": "Domain",
+                  "messaggio_ip": "IP",
+                  "messaggio_giavotato": "Voted",
+                  "messaggio_sgamo": "Denied",
+                  "login": "admin3",
+                  "password": "123456",
+                  "old_login": "admin3",
+                  "old_password": "123456"
+                },
+                "referer": "admin/config_editor.php?language=1"
+              },
+              "assert": {
+                "query": "SELECT titolo_posizione FROM phpoll_test_configurazione WHERE id=1",
+                "scalar_equals": "{token1}"
+              }
+            },
+            "authorized": {
+              "role": "admin",
+              "request": {
+                "page": "admin/modifica_configurazione.php?language=1",
+                "method": "POST",
+                "replace_params": true,
+                "params": {
+                  "titolo_posizione": "{token2}",
+                  "titolo_tipologia": "Type",
+                  "titolo_punteggio": "Score",
+                  "max_voti": "1",
+                  "risultati_pixel": "1",
+                  "barra1": "#000A1A",
+                  "barra2": "#0EFC0C",
+                  "barra3": "#040C00",
+                  "barra4": "#55010E",
+                  "intervallo_tempo": "0",
+                  "percorso_link": "phpoll.php",
+                  "oggetto_email": "Subject",
+                  "testo_email": "Message",
+                  "domini": "example.test",
+                  "testo_submit": "Vote",
+                  "valid_email": "Valid",
+                  "messaggio_conferma_mail": "Confirmed",
+                  "messaggio_domini": "Domain",
+                  "messaggio_ip": "IP",
+                  "messaggio_giavotato": "Voted",
+                  "messaggio_sgamo": "Denied",
+                  "login": "admin3",
+                  "password": "123456",
+                  "old_login": "admin3",
+                  "old_password": "123456"
+                },
+                "referer": "admin/config_editor.php?language=1"
+              },
+              "assert": {
+                "query": "SELECT titolo_posizione FROM phpoll_test_configurazione WHERE id=1",
+                "scalar_equals": "{token2}"
+              }
+            }
+          },
+          {
+            "name": "PHPOLL-vote-delete",
+            "page_pattern": "^admin/modifica_votanti\\.php(?:\\?|$)",
+            "category": "admin_only",
+            "operation": "delete",
+            "variables": {
+              "band_id": {
+                "query": "SELECT COALESCE(MAX(id), 0) + 1 FROM phpoll_test_band"
+              },
+              "vote_id": {
+                "query": "SELECT COALESCE(MAX(id), 0) + 1 FROM phpoll_test_voti"
+              }
+            },
+            "setup_sql": [
+              "INSERT INTO phpoll_test_band (id, nome_band, voti) VALUES ({band_id}, '{token}', 1)",
+              "INSERT INTO phpoll_test_voti (id, ip, band_votate, timestamp, votato, email, browser) VALUES ({vote_id}, '127.0.0.1', '{token}', 0, '1', '{token}@example.test', 'DRHL')"
+            ],
+            "attack": {
+              "role": "visitor",
+              "request": {
+                "page": "admin/modifica_votanti.php?language=1",
+                "method": "POST",
+                "replace_params": true,
+                "params": {
+                  "{vote_id}": "on",
+                  "checkall": "on"
+                },
+                "referer": "admin/votanti.php?language=1"
+              },
+              "assert": {
+                "query": "SELECT COUNT(*) FROM phpoll_test_voti WHERE id={vote_id}",
+                "scalar_nonzero": true
+              }
+            },
+            "authorized": {
+              "role": "admin",
+              "request": {
+                "page": "admin/modifica_votanti.php?language=1",
+                "method": "POST",
+                "replace_params": true,
+                "params": {
+                  "{vote_id}": "on",
+                  "checkall": "on"
+                },
+                "referer": "admin/votanti.php?language=1"
+              },
+              "assert": {
+                "query": "SELECT COUNT(*) FROM phpoll_test_voti WHERE id={vote_id}",
+                "scalar_zero": true
+              }
+            }
+          }
+        ]
+      }
     }
   }
 }

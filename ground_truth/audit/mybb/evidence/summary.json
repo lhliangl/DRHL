@@ -1,0 +1,87 @@
+{
+  "app": "mybb",
+  "baseline": "D:\\project\\python\\DRHL\\ground_truth\\verification\\evidence\\mybb\\baseline.sql",
+  "database_restored_after_each_record": true,
+  "restore_verified_per_record": [
+    true
+  ],
+  "final_database_matches_baseline": true,
+  "results": [
+    {
+      "gt_id": "GT-029",
+      "app": "mybb",
+      "verified_at": "2026-09-06T04:58:11.233963+00:00",
+      "verdict": "vulnerable",
+      "summary": "forum 2 is password-protected (forumdisplay shows password gate=True); user1 GET addsubscription returned 200 and created the subscription row [['2', '2']] without ever supplying the forum password (created=True).",
+      "sql_statements": [
+        {
+          "kind": "query",
+          "sql": "SELECT fid, name, password FROM mybb_forums WHERE fid=2"
+        },
+        {
+          "kind": "query",
+          "sql": "SELECT uid, username FROM mybb_users WHERE username='user1'"
+        },
+        {
+          "kind": "scalar",
+          "sql": "SELECT COUNT(*) FROM mybb_forumsubscriptions WHERE fid=2 AND uid=2"
+        },
+        {
+          "kind": "runtime_token_query",
+          "sql": "SELECT MD5(CONCAT(loginkey,salt,regdate)) FROM mybb_users WHERE username='user1' LIMIT 1  (my_post_key computed by DRHL runtime-token logic during the replay)"
+        },
+        {
+          "kind": "scalar",
+          "sql": "SELECT COUNT(*) FROM mybb_forumsubscriptions WHERE fid=2 AND uid=2"
+        },
+        {
+          "kind": "query",
+          "sql": "SELECT fid, uid FROM mybb_forumsubscriptions WHERE fid=2 AND uid=2"
+        }
+      ],
+      "steps": [
+        {
+          "kind": "instrument",
+          "forum": [
+            [
+              "2",
+              "My Forum",
+              "12345678"
+            ]
+          ],
+          "user1": [
+            [
+              "2",
+              "user1"
+            ]
+          ],
+          "subscriptions_before": "0"
+        },
+        {
+          "kind": "replay",
+          "role": "user1 (has not supplied the forum password)",
+          "request": "GET forumdisplay.php?fid=2",
+          "status_code": 200,
+          "forum_password_gate_shown": true,
+          "body_saved": "GT-029_gt029_user1_forumdisplay.html"
+        },
+        {
+          "kind": "replay",
+          "role": "user1 (has not supplied the forum password)",
+          "request": "GET usercp2.php?action=addsubscription&fid=2&type=forum (my_post_key computed at runtime)",
+          "status_code": 200,
+          "subscriptions_before": "0",
+          "subscriptions_after": "1",
+          "subscription_row_created": [
+            [
+              "2",
+              "2"
+            ]
+          ],
+          "created": true
+        }
+      ],
+      "restore_verified": true
+    }
+  ]
+}

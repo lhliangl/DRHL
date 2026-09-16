@@ -1,0 +1,42 @@
+{
+  "gt_id": "GT-044",
+  "app": "jsforum",
+  "verified_at": "2026-09-06T09:13:40.153866+00:00",
+  "verdict": "vulnerable",
+  "summary": "user1 GET forum/editmessage.jsp for user2's reply returned 200; the edit form rendered user2's message content (token exposed=True); the submitted ChangeMessage left the row unchanged (write owner-gated=True), bounding the impact to the unauthorized edit-interface access.",
+  "sql_statements": [
+    {
+      "kind": "scalar",
+      "sql": "SELECT COALESCE(MAX(reply_id), 0) FROM forum_message WHERE forum_id=7 AND thread_id=21"
+    },
+    {
+      "kind": "execute",
+      "sql": "INSERT INTO forum_message (forum_id, thread_id, reply_id, message, user, date_time) VALUES (7, 21, 2, 'DRHLGT_usermsg_8686019777', 'user2', NOW())"
+    },
+    {
+      "kind": "scalar",
+      "sql": "SELECT message FROM forum_message WHERE forum_id=7 AND thread_id=21 AND reply_id=2 LIMIT 1"
+    }
+  ],
+  "steps": [
+    {
+      "kind": "instrument",
+      "table": "forum_message",
+      "row": "forum_id=7, thread_id=21, reply_id=2",
+      "message_token": "DRHLGT_usermsg_8686019777",
+      "author": "user2",
+      "note": "documented precondition: a reply authored by user2 was inserted for the test (the database baseline was restored after the record)"
+    },
+    {
+      "kind": "replay",
+      "role": "user1 (logged-in session, not the reply author)",
+      "request": "GET forum/editmessage.jsp?forum_id=7&thread_id=21&reply_id=2",
+      "status_code": 200,
+      "other_users_message_token_exposed_in_edit_form": true,
+      "body_saved": "GT-044_gt044_user1_editmessage.html",
+      "change_submit_status": 302,
+      "db_message_after_submit": "DRHLGT_usermsg_8686019777",
+      "write_remained_owner_gated": true
+    }
+  ]
+}

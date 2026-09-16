@@ -1,0 +1,59 @@
+{
+  "gt_id": "GT-024",
+  "app": "scarf",
+  "verified_at": "2026-09-06T04:58:01.100067+00:00",
+  "verdict": "vulnerable",
+  "summary": "visitor GET install.php returned 200 with the installer form (form_exposed=True); visitor-triggered install dropped and recreated the scarf database: marker 1->0, fresh default options=1; config.php and database were restored afterwards.",
+  "sql_statements": [
+    {
+      "kind": "execute",
+      "sql": "INSERT INTO options (name, type, value) VALUES ('DRHLGT_MARKER', 'text', 'present')"
+    },
+    {
+      "kind": "scalar",
+      "sql": "SELECT COUNT(*) FROM options WHERE name='DRHLGT_MARKER'"
+    },
+    {
+      "kind": "scalar",
+      "sql": "SELECT COUNT(*) FROM options WHERE name='DRHLGT_MARKER'"
+    },
+    {
+      "kind": "scalar",
+      "sql": "SELECT COUNT(*) FROM options WHERE name='Conference Name'"
+    }
+  ],
+  "steps": [
+    {
+      "kind": "instrument",
+      "table": "options",
+      "marker_row": "DRHLGT_MARKER",
+      "marker_before": "1"
+    },
+    {
+      "kind": "replay",
+      "role": "visitor (no login)",
+      "request": "GET install.php",
+      "status_code": 200,
+      "installer_form_exposed": true,
+      "body_saved": "GT-024_gt024_visitor_install.html"
+    },
+    {
+      "kind": "replay",
+      "role": "visitor (no login)",
+      "request": "POST install.php (dbname=scarf ...)",
+      "status_code": 200,
+      "confirmdrop_prompt_shown": true,
+      "body_saved": "GT-024_gt024_visitor_install_confirm.html"
+    },
+    {
+      "kind": "replay",
+      "role": "visitor (no login)",
+      "request": "POST install.php + confirmdrop",
+      "status_code": 200,
+      "installer_completed": true,
+      "marker_row_after_reinstall": "0",
+      "fresh_default_options_after_reinstall": "1",
+      "body_saved": "GT-024_gt024_visitor_install_done.html"
+    }
+  ]
+}

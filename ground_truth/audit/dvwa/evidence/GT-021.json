@@ -1,0 +1,18 @@
+{
+  "gt_id": "GT-021",
+  "app": "dvwa",
+  "verified_at": "2026-09-06T06:48:21.784560+00:00",
+  "verdict": "vulnerable",
+  "summary": "visitor GET about.php returned 200 and serves the DVWA About page content without any session (about_content_exposed=True).",
+  "sql_statements": [],
+  "steps": [
+    {
+      "kind": "replay",
+      "role": "visitor (no DVWA session)",
+      "request": "GET about.php",
+      "status_code": 200,
+      "about_content_exposed": true,
+      "body_saved": "GT-021_gt021_visitor_about.html"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "gt_id": "GT-019",
+  "app": "bwapp",
+  "verified_at": "2026-09-06T04:57:58.700822+00:00",
+  "verdict": "vulnerable",
+  "summary": "visitor GET secret-cors-2.php returned 200; protected secret obtained without authorization=True.",
+  "sql_statements": [],
+  "steps": [
+    {
+      "kind": "replay",
+      "role": "visitor (no login)",
+      "request": "GET secret-cors-2.php",
+      "status_code": 200,
+      "secret_exposed": false,
+      "body_saved": "GT-019_GT-019_visitor.html"
+    },
+    {
+      "kind": "replay",
+      "role": "visitor (no login)",
+      "request": "GET secret-cors-2.php with headers {'Origin': 'http://intranet.itsecgames.com'}",
+      "status_code": 200,
+      "secret_exposed_with_headers": true,
+      "body_saved": "GT-019_GT-019_visitor_headers.html"
+    }
+  ]
+}

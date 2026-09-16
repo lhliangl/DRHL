@@ -2,7 +2,7 @@
   "run_dir": "../runs/wackopicko",
   "target": {
     "base_url": "http://localhost/",
-    "source_root": "D:/phpStudy/PHPTutorial/WWW/wackopicko",
+    "source_root": "D:/phpStudy/PHPTutorial/WWW",
     "language": "php",
     "public_extensions": [
       ".php"
@@ -273,6 +273,7 @@
     },
     "oracle": {
       "timeout": 10,
+      "csrf_token_parameters": [],
       "denied_statuses": [
         401,
         403
@@ -302,7 +303,6 @@
         "^users/login\\.php(?:\\?|$)",
         "^users/register\\.php(?:\\?|$)",
         "^users/check_pass\\.php(?:\\?|$)",
-        "^users/sample\\.php(?:\\?|$)",
         "^pictures/recent\\.php(?:\\?|$)",
         "^pictures/search\\.php(?:\\?|$)"
       ],
@@ -355,12 +355,19 @@
   "repair": {
     "enabled": true,
     "output_dir": "repair/files",
+    "skip_findings": [
+      {
+        "category": "horizontal",
+        "page": "users/sample.php?userid=p1",
+        "reason": "users/sample.php includes users/view.php; the view.php horizontal repair is validated through both routes"
+      }
+    ],
     "llm": {
       "enabled": true,
       "provider": "openai_compatible",
       "base_url": "https://api.deepseek.com/v1",
       "model": "deepseek-v4-flash",
-      "api_key": "your-api-key",
+      "api_key": "env:DRHL_DEEPSEEK_API_KEY",
       "temperature": 0.1,
       "timeout": 120,
       "response_format_json": true,
@@ -372,9 +379,139 @@
       "syntax_check": true,
       "php_binary": "D:/phpStudy/PHPTutorial/php/php-5.2.17/php.exe",
       "syntax_timeout": 30,
-      "temporary_apply_to_source": true
-    },
-    "page_repair_guidance": []
+      "temporary_apply_to_source": true,
+      "database_oracles": [
+        {
+          "name": "GT-031-sample-authenticated-read",
+          "page_pattern": "^users/sample\\.php(?:\\?|$)",
+          "category": "authenticated_only",
+          "operation": "read",
+          "variables": {
+            "target_user_id": {
+              "query": "SELECT id FROM users WHERE login='scanner2' LIMIT 1"
+            }
+          },
+          "setup_sql": [
+            "UPDATE users SET login='{token}' WHERE id={target_user_id}"
+          ],
+          "attack": {
+            "role": "visitor",
+            "request": {
+              "page": "users/sample.php?userid={target_user_id}",
+              "method": "GET",
+              "replace_params": true,
+              "params": {
+                "userid": "{target_user_id}"
+              }
+            },
+            "assert": {
+              "response_not_contains": "{token}"
+            }
+          },
+          "authorized": {
+            "role": "user2",
+            "session_before_setup": true,
+            "request": {
+              "page": "users/sample.php?userid={target_user_id}",
+              "method": "GET",
+              "replace_params": true,
+              "params": {
+                "userid": "{target_user_id}"
+              }
+            },
+            "assert": {
+              "response_contains": "{token}"
+            }
+          }
+        },
+        {
+          "name": "GT-030-view-horizontal-read",
+          "page_pattern": "^users/view\\.php(?:\\?|$)",
+          "category": "horizontal",
+          "operation": "read",
+          "variables": {
+            "target_user_id": {
+              "query": "SELECT id FROM users WHERE login='scanner2' LIMIT 1"
+            }
+          },
+          "setup_sql": [
+            "UPDATE users SET login='{token}' WHERE id={target_user_id}"
+          ],
+          "attack": {
+            "role": "user1",
+            "request": {
+              "page": "users/view.php?userid={target_user_id}",
+              "method": "GET",
+              "replace_params": true,
+              "params": {
+                "userid": "{target_user_id}"
+              }
+            },
+            "assert": {
+              "response_not_contains": "{token}"
+            }
+          },
+          "authorized": {
+            "role": "user2",
+            "session_before_setup": true,
+            "request": {
+              "page": "users/view.php?userid={target_user_id}",
+              "method": "GET",
+              "replace_params": true,
+              "params": {
+                "userid": "{target_user_id}"
+              }
+            },
+            "assert": {
+              "response_contains": "{token}"
+            }
+          }
+        },
+        {
+          "name": "sample-horizontal-covered-by-view",
+          "page_pattern": "^users/view\\.php(?:\\?|$)",
+          "category": "horizontal",
+          "operation": "read",
+          "variables": {
+            "target_user_id": {
+              "query": "SELECT id FROM users WHERE login='scanner2' LIMIT 1"
+            }
+          },
+          "setup_sql": [
+            "UPDATE users SET login='{token}' WHERE id={target_user_id}"
+          ],
+          "attack": {
+            "role": "user1",
+            "request": {
+              "page": "users/sample.php?userid={target_user_id}",
+              "method": "GET",
+              "replace_params": true,
+              "params": {
+                "userid": "{target_user_id}"
+              }
+            },
+            "assert": {
+              "response_not_contains": "{token}"
+            }
+          },
+          "authorized": {
+            "role": "user2",
+            "session_before_setup": true,
+            "request": {
+              "page": "users/sample.php?userid={target_user_id}",
+              "method": "GET",
+              "replace_params": true,
+              "params": {
+                "userid": "{target_user_id}"
+              }
+            },
+            "assert": {
+              "response_contains": "{token}"
+            }
+          }
+        }
+      ]
+    }
   }
 }
 

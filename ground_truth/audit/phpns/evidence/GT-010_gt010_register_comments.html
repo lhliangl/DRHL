@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>phpns &raquo; Comment list (6)</title>
+	<link rel="stylesheet" href="http://localhost/phpns/themes/default/styles/main.css" type="text/css" media="screen" />
+	<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
+	
+<link rel="alternate" type="application/rss+xml" title="phpns rss feed" href="etc.php?do=rss"/>
+<script language="javascript" type="text/javascript" src="inc/wysiwyg/tiny_mce_gzip.js"></script>
+<script language="javascript" type="text/javascript">
+	tinyMCE_GZ.init({
+		theme : "advanced",
+		mode : "exact",
+		elements : "main, full",
+		apply_source_formatting : true,
+		content_css : "example_advanced.css",
+		extended_valid_elements : "a[href|target|name]",
+		plugins : "table",
+		theme_advanced_toolbar_location : "top",
+		theme_advanced_buttons1 : "forecolor,backcolor,separator,bold,italic,underline,separator,link,unlink,separator,bullist,numlist,separator,indent,outdent,separator,justifyleft,justifycenter,justifyright,separator,hr,separator,tablecontrols,separator,charmap,formatselect",
+		theme_advanced_buttons2 : "",
+		theme_advanced_buttons3 : "",
+		//theme_advanced_buttons2_add : "forecolor,backcolor,seperator",
+		//theme_advanced_buttons3_add_before : "tablecontrols,separator",
+		//invalid_elements : "a",
+		 theme_advanced_path_location : "bottom",
+    theme_advanced_resizing : true,
+    theme_advanced_resize_horizontal : false,
+		theme_advanced_styles : "Header 1=header1;Header 2=header2;Header 3=header3;Table Row=tableRow1", // Theme specific setting CSS classes
+		//execcommand_callback : "myCustomExecCommandHandler",
+		fix_list_elements : true,
+		debug : false
+	});
+</script>
+<script language="javascript" type="text/javascript">
+	tinyMCE.init({
+		theme : "advanced",
+		mode : "exact",
+		elements : "main",
+		apply_source_formatting : true,
+		content_css : "example_advanced.css",
+		extended_valid_elements : "a[href|target|name]",
+		plugins : "table",
+		theme_advanced_toolbar_location : "top",
+		theme_advanced_buttons1 : "forecolor,backcolor,separator,bold,italic,underline,separator,link,unlink,separator,bullist,numlist,separator,indent,outdent,separator,justifyleft,justifycenter,justifyright,separator,hr,separator,tablecontrols,separator,charmap,formatselect",
+		theme_advanced_buttons2 : "",
+		theme_advanced_buttons3 : "",
+		//theme_advanced_buttons1_add_before : "forecolor,backcolor,separator",
+		//theme_advanced_buttons3_add_before : "tablecontrols,separator",
+		//invalid_elements : "a",
+		 theme_advanced_path_location : "bottom",
+		 fix_list_elements : true,
+    theme_advanced_resizing : true,
+    theme_advanced_resize_horizontal : false,
+		//execcommand_callback : "myCustomExecCommandHandler",
+		debug : false
+	});
+</script>
+
+<script language="javascript" type="text/javascript">
+	function togglewysiwyg(id) {
+		var elm = document.getElementById(id);
+		if (tinyMCE.getInstanceById(id) == null)
+			tinyMCE.execCommand('mceAddControl', false, id);
+		else
+			tinyMCE.execCommand('mceRemoveControl', false, id);
+	}
+		
+	function expandwysiwyg(id) {
+		var expelm = document.getElementById(id);
+		var expstyle = expelm.style.height;
+		document.getElementById(id).style.height = "500px";
+		togglewysiwyg(id);
+		togglewysiwyg(id);
+	}
+		
+	function validate_required(field,alerttxt) {
+		with (field) {
+			if (value==null||value=="") {
+				alert(alerttxt);
+				return false
+			} else {
+				return true
+			}
+		}
+	}
+	
+	function validate_form(thisform) {
+		with (thisform) {
+			if (validate_required(title,"You must enter a title to continue.")==false) {
+				return false
+			}
+		}
+	}
+	
+	function Checkall(form) { 
+		for (var i = 1; i < form.elements.length; i++) {    
+			eval("form.elements[" + i + "].checked = form.elements[0].checked");  
+		} 
+	

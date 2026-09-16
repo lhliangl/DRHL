@@ -5,10 +5,12 @@ import json
 import re
 import time
 from collections import deque
+from collections.abc import Callable
 from urllib.parse import parse_qs, urljoin, urlsplit
 from typing import Any
 
 from ..config import PipelineConfig, RoleConfig
+from ..errors import DatabaseError
 from ..io import write_json
 from ..models import RequestSpec, RoleCrawl
 from ..progress import progress
@@ -23,6 +25,26 @@ class SeleniumRoleCrawler:
         self.driver = None
         self._current_role: RoleConfig | None = None
         self._runtime_token_cache: dict[tuple[str, str], str] = {}
+        self._database_restore_callback: Callable[[], None] | None = None
+
+    def set_database_restore_callback(self, callback: Callable[[], None]) -> None:
+        self._database_restore_callback = callback
+
+    def _restore_database_after_form_marker(self, form_context: str) -> str | None:
+        markers = [
+            str(value).casefold()
+            for value in self.config.crawl.get("restore_database_after_form_markers", [])
+        ]
+        return next((marker for marker in markers if marker and marker in form_context), None)
+
+    def _restore_database_after_form(self, marker: str, target: str) -> None:
+        if self._database_restore_callback is None:
+            raise DatabaseError(
+                "crawl.restore_database_after_form_markers requires a database restore callback"
+            )
+        progress(f"Restoring database after form {target}; marker={marker}")
+        self._database_restore_callback()
+        progress(f"Database restored after form {target}")
 
     def _secret_names(self) -> set[str]:
         return {
@@ -610,25 +632,39 @@ class SeleniumRoleCrawler:
                 if excluded_marker:
                     progress(f"[{result.role}] skipping form execution on {current_page}; marker={excluded_marker}")
                     continue
+                restore_marker = self._restore_database_after_form_marker(form_context)
                 params = self._collect_form_params(form, target, fill=True)
                 result.nodes.append(target)
                 result.edges.append({"from": current_page, "to": target})
                 result.requests[target] = RequestSpec(method=method, params=params, referer=current_page)
                 progress(f"[{result.role}] executing form {index + 1}/{count}: {current_page} -> {target}")
-                self._submit_form(form)
-                if wait_after:
-                    time.sleep(wait_after)
-                alert_text = self._dismiss_alert()
-                if alert_text:
-                    progress(f"[{result.role}] accepted alert after form submission: {self._short_text(alert_text)}")
-                self._network_requests(result, current_page)
-                actual_url = self.driver.current_url
-                if in_scope(actual_url, self.config.target.base_url, self.config.crawl.get("scope_path")):
-                    actual_page = canonical_page(actual_url, self.config.target.base_url, preserve, drop, path_patterns)
-                    if actual_page:
-                        result.nodes.append(actual_page)
-                        result.edges.append({"from": target, "to": actual_page})
-                        discovered_after_submit.extend(self._extract_links_and_forms(result, actual_url, actual_page))
+                submission_attempted = False
+                try:
+                    submission_attempted = True
+                    self._submit_form(form)
+                    if wait_after:
+                        time.sleep(wait_after)
+                    alert_text = self._dismiss_alert()
+                    if alert_text:
+                        progress(f"[{result.role}] accepted alert after form submission: {self._short_text(alert_text)}")
+                        if restore_marker and wait_after:
+                            time.sleep(wait_after)
+                    self._network_requests(result, current_page)
+                    actual_url = self.driver.current_url
+                    if in_scope(actual_url, self.config.target.base_url, self.config.crawl.get("scope_path")):
+                        actual_page = canonical_page(actual_url, self.config.target.base_url, preserve, drop, path_patterns)
+                        if actual_page:
+                            result.nodes.append(actual_page)
+                            result.edges.append({"from": target, "to": actual_page})
+                            if restore_marker is None:
+                                discovered_after_submit.extend(
+                                    self._extract_links_and_forms(result, actual_url, actual_page)
+                                )
+                finally:
+                    if restore_marker is not None and submission_attempted:
+                        self._restore_database_after_form(restore_marker, target)
+            except DatabaseError:
+                raise
             except Exception as exc:
                 alert_text = self._dismiss_alert()
                 if alert_text:

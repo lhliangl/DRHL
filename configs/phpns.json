@@ -61,6 +61,9 @@
     "execute_forms": true,
     "execute_forms_limit_per_page": 20,
     "execute_forms_wait_after": 0.2,
+    "restore_database_after_form_markers": [
+      "delete"
+    ],
     "roles": [
       {
         "name": "admin",
@@ -360,7 +363,7 @@
       "username"
     ],
     "horizontal_overrides": {
-      "id": "6",
+      "id": "9",
       "article_id": "6",
       "user_id": "11",
       "userid": "11",
@@ -368,6 +371,7 @@
     },
     "oracle": {
       "timeout": 10,
+      "csrf_token_parameters": [],
       "denied_statuses": [
         401,
         403
@@ -460,7 +464,7 @@
       "provider": "openai_compatible",
       "base_url": "https://api.deepseek.com/v1",
       "model": "deepseek-v4-flash",
-      "api_key": "your-api-key",
+      "api_key": "env:DRHL_DEEPSEEK_API_KEY",
       "temperature": 0.1,
       "timeout": 120,
       "response_format_json": true,
@@ -472,141 +476,356 @@
       "syntax_check": true,
       "php_binary": "D:/phpStudy/PHPTutorial/php/php-5.2.17/php.exe",
       "syntax_timeout": 30,
-      "temporary_apply_to_source": true
-    },
-    "user_table_context": {
-      "enabled": true,
-      "table": "phpns_users",
-      "columns": [
-        "id",
-        "user_name",
-        "rank_id"
-      ],
-      "order_by": "id",
-      "limit": 20,
-      "role_column": "rank_id",
-      "sample_by_role_when_rows_gte": 5,
-      "max_rows_per_role": 2,
-      "scan_limit": 1000
-    },
-    "identity_context": {
-      "enabled": true,
-      "current_user": [
+      "temporary_apply_to_source": true,
+      "regression_roles": [
         {
-          "name": "current_username",
-          "expression": "$_SESSION['username']",
-          "source": "inc/auth.php",
-          "description": "Current logged-in username set after cookie/session authentication."
+          "pattern": "^article\\.php\\?do=editp?(?:&|$)",
+          "role": "admin"
         },
         {
-          "name": "current_user_id",
-          "expression": "$_SESSION['userID']",
-          "source": "inc/auth.php",
-          "description": "Current logged-in user id set after cookie/session authentication."
-        },
-        {
-          "name": "current_permissions",
-          "expression": "$globalvars['rank']",
-          "source": "inc/auth.php",
-          "description": "Permission string copied from $_SESSION[permissions]; individual offsets are used as guards."
+          "pattern": "^user\\.php\\?do=editp?(?:&|$)",
+          "role": "admin"
         }
       ],
-      "bindings": [
+      "database_oracles": [
         {
-          "source_path": "article.php",
-          "parameter": "id",
-          "table": "phpns_articles",
-          "lookup_column": "id",
-          "owner_column": "article_author",
-          "current_user_expression": "$_SESSION['username']",
-          "privileged_bypass": "admin user: $_SESSION['username'] == 'admin' or current phpns_users.rank_id == 1",
-          "deny_action": "header(\"Location: index.php?do=permissiondenied\"); die();",
-          "sample_columns": [
-            "id",
-            "article_author",
-            "article_title"
+          "name": "GT-010-comment-management-read",
+          "page_pattern": "^article\\.php\\?do=comments(?:&|$)",
+          "category": "vertical",
+          "operation": "read",
+          "setup_sql": [
+            "UPDATE phpns_comments SET comment_text='{token}' WHERE id=5 AND article_id='6'"
           ],
-          "description": "Article edit pages must compare requested article id to phpns_articles.article_author; allow the owner or the administrator only.",
-          "page_pattern": "(?:^|/)article\\.php\\?do=edit(?:&|$)"
+          "attack": {
+            "role": "register",
+            "request": {
+              "page": "article.php?do=comments&id=6",
+              "method": "GET",
+              "replace_params": true,
+              "params": {
+                "do": "comments",
+                "id": "6"
+              }
+            },
+            "assert": {
+              "response_not_contains": "{token}"
+            }
+          },
+          "authorized": {
+            "role": "admin",
+            "request": {
+              "page": "article.php?do=comments&id=6",
+              "method": "GET",
+              "replace_params": true,
+              "params": {
+                "do": "comments",
+                "id": "6"
+              }
+            },
+            "assert": {
+              "response_contains": "{token}"
+            }
+          }
         },
         {
-          "source_path": "user.php",
-          "parameter": "id",
-          "table": "phpns_users",
-          "lookup_column": "id",
-          "owner_column": "id",
-          "current_user_expression": "$_SESSION['userID']",
-          "privileged_bypass": "admin user: $_SESSION['username'] == 'admin' or current phpns_users.rank_id == 1",
-          "deny_action": "header(\"Location: index.php?do=permissiondenied\"); die();",
-          "sample_columns": [
-            "id",
-            "user_name",
-            "rank_id"
+          "name": "GT-011-comment-delete",
+          "page_pattern": "^article\\.php\\?action=delete&do=comments(?:&|$)",
+          "category": "vertical",
+          "operation": "delete",
+          "variables": {
+            "row_id": {
+              "query": "SELECT COALESCE(MAX(id), 0) + 1 FROM phpns_comments"
+            }
+          },
+          "setup_sql": [
+            "INSERT INTO phpns_comments (id, article_id, comment_text, website, comment_author, timestamp, approved, ip) VALUES ({row_id}, '6', '{token}', '', 'drhl_repair', '0', '1', '127.0.0.1')"
           ],
-          "description": "User edit pages must compare requested user id with the current session user id; allow the same user or the administrator only.",
-          "page_pattern": "(?:^|/)user\\.php\\?do=edit(?:&|$)"
+          "attack": {
+            "role": "register",
+            "request": {
+              "page": "article.php?action=delete&do=comments&id=6",
+              "method": "POST",
+              "replace_params": true,
+              "params": {
+                "{row_id}": "{row_id}",
+                "id": "6"
+              },
+              "referer": "article.php?do=comments&id=6"
+            },
+            "assert": {
+              "query": "SELECT COUNT(*) FROM phpns_comments WHERE id={row_id} AND comment_text='{token}'",
+              "scalar_nonzero": true
+            }
+          },
+          "authorized": {
+            "role": "admin",
+            "request": {
+              "page": "article.php?action=delete&do=comments&id=6",
+              "method": "POST",
+              "replace_params": true,
+              "params": {
+                "{row_id}": "{row_id}",
+                "id": "6"
+              },
+              "referer": "article.php?do=comments&id=6"
+            },
+            "assert": {
+              "query": "SELECT COUNT(*) FROM phpns_comments WHERE id={row_id} AND comment_text='{token}'",
+              "scalar_zero": true
+            }
+          }
+        },
+        {
+          "name": "GT-012-article-edit-read",
+          "page_pattern": "^article\\.php\\?do=edit(?:&|$)",
+          "category": "horizontal",
+          "operation": "read",
+          "variables": {
+            "article_id": {
+              "query": "SELECT id FROM phpns_articles WHERE article_author='user2' ORDER BY id LIMIT 1"
+            }
+          },
+          "setup_sql": [
+            "UPDATE phpns_articles SET article_text='{token}', article_author='user2' WHERE id={article_id}"
+          ],
+          "attack": {
+            "role": "user1",
+            "request": {
+              "page": "article.php?do=edit&id={article_id}",
+              "method": "GET",
+              "replace_params": true,
+              "params": {
+                "do": "edit",
+                "id": "{article_id}"
+              },
+              "referer": "manage.php?v=user1"
+            },
+            "assert": {
+              "response_not_contains": "{token}"
+            }
+          },
+          "authorized": {
+            "role": "user2",
+            "request": {
+              "page": "article.php?do=edit&id={article_id}",
+              "method": "GET",
+              "replace_params": true,
+              "params": {
+                "do": "edit",
+                "id": "{article_id}"
+              },
+              "referer": "manage.php?v=user2"
+            },
+            "assert": {
+              "response_contains": "{token}"
+            }
+          }
+        },
+        {
+          "name": "GT-013-article-edit-update",
+          "page_pattern": "^article\\.php\\?do=editp(?:&|$)",
+          "category": "horizontal",
+          "operation": "update",
+          "variables": {
+            "article_id": {
+              "query": "SELECT id FROM phpns_articles WHERE article_author='user2' ORDER BY id LIMIT 1"
+            },
+            "article_title": {
+              "query": "SELECT article_title FROM phpns_articles WHERE id={article_id}"
+            },
+            "article_subtitle": {
+              "query": "SELECT article_subtitle FROM phpns_articles WHERE id={article_id}"
+            },
+            "article_cat": {
+              "query": "SELECT article_cat FROM phpns_articles WHERE id={article_id}"
+            },
+            "article_exptext": {
+              "query": "SELECT article_exptext FROM phpns_articles WHERE id={article_id}"
+            }
+          },
+          "setup_sql": [
+            "UPDATE phpns_articles SET article_text='{token1}', article_author='user2' WHERE id={article_id}"
+          ],
+          "attack": {
+            "role": "user1",
+            "request": {
+              "page": "article.php?do=editp",
+              "method": "POST",
+              "replace_params": true,
+              "params": {
+                "id": "{article_id}",
+                "article_title": "{article_title}",
+                "article_subtitle": "{article_subtitle}",
+                "article_cat": "{article_cat}",
+                "article_text": "{token2}",
+                "article_exptext": "{article_exptext}",
+                "acchecked": "1",
+                "achecked": "1"
+              },
+              "referer": "article.php?do=edit&id={article_id}"
+            },
+            "assert": {
+              "query": "SELECT article_text FROM phpns_articles WHERE id={article_id}",
+              "scalar_equals": "{token1}"
+            }
+          },
+          "authorized": {
+            "role": "user2",
+            "request": {
+              "page": "article.php?do=editp",
+              "method": "POST",
+              "replace_params": true,
+              "params": {
+                "id": "{article_id}",
+                "article_title": "{article_title}",
+                "article_subtitle": "{article_subtitle}",
+                "article_cat": "{article_cat}",
+                "article_text": "{token2}",
+                "article_exptext": "{article_exptext}",
+                "acchecked": "1",
+                "achecked": "1"
+              },
+              "referer": "article.php?do=edit&id={article_id}"
+            },
+            "assert": {
+              "query": "SELECT article_text FROM phpns_articles WHERE id={article_id}",
+              "scalar_equals": "{token2}"
+            }
+          }
+        },
+        {
+          "name": "GT-014-user-edit-read",
+          "page_pattern": "^user\\.php\\?do=edit(?:&|$)",
+          "category": "horizontal",
+          "operation": "read",
+          "variables": {
+            "target_user_id": {
+              "query": "SELECT id FROM phpns_users WHERE user_name='user2' LIMIT 1"
+            }
+          },
+          "setup_sql": [
+            "UPDATE phpns_users SET full_name='{token}' WHERE id={target_user_id}"
+          ],
+          "attack": {
+            "role": "user1",
+            "request": {
+              "page": "user.php?do=edit&id={target_user_id}",
+              "method": "GET",
+              "replace_params": true,
+              "params": {
+                "do": "edit",
+                "id": "{target_user_id}"
+              },
+              "referer": "user.php"
+            },
+            "assert": {
+              "response_not_contains": "{token}"
+            }
+          },
+          "authorized": {
+            "role": "user2",
+            "request": {
+              "page": "user.php?do=edit&id={target_user_id}",
+              "method": "GET",
+              "replace_params": true,
+              "params": {
+                "do": "edit",
+                "id": "{target_user_id}"
+              },
+              "referer": "user.php"
+            },
+            "assert": {
+              "response_contains": "{token}"
+            }
+          }
+        },
+        {
+          "name": "GT-015-user-edit-update",
+          "page_pattern": "^user\\.php\\?do=editp(?:&|$)",
+          "category": "horizontal",
+          "operation": "update",
+          "variables": {
+            "target_user_id": {
+              "query": "SELECT id FROM phpns_users WHERE user_name='user2' LIMIT 1"
+            },
+            "target_username": {
+              "query": "SELECT user_name FROM phpns_users WHERE id={target_user_id}"
+            },
+            "target_email": {
+              "query": "SELECT email FROM phpns_users WHERE id={target_user_id}"
+            },
+            "target_msn": {
+              "query": "SELECT msn FROM phpns_users WHERE id={target_user_id}"
+            },
+            "target_aim": {
+              "query": "SELECT aim FROM phpns_users WHERE id={target_user_id}"
+            },
+            "target_yahoo": {
+              "query": "SELECT yahoo FROM phpns_users WHERE id={target_user_id}"
+            },
+            "target_skype": {
+              "query": "SELECT skype FROM phpns_users WHERE id={target_user_id}"
+            },
+            "target_rank": {
+              "query": "SELECT rank_id FROM phpns_users WHERE id={target_user_id}"
+            }
+          },
+          "setup_sql": [
+            "UPDATE phpns_users SET full_name='{token1}' WHERE id={target_user_id}"
+          ],
+          "attack": {
+            "role": "user1",
+            "request": {
+              "page": "user.php?do=editp",
+              "method": "POST",
+              "replace_params": true,
+              "params": {
+                "id": "{target_user_id}",
+                "username_": "{target_username}",
+                "fullname": "{token2}",
+                "email": "{target_email}",
+                "msn": "{target_msn}",
+                "aim": "{target_aim}",
+                "yahoo": "{target_yahoo}",
+                "skype": "{target_skype}",
+                "rank": "{target_rank}",
+                "original_username": "{target_username}"
+              },
+              "referer": "user.php?do=edit&id={target_user_id}"
+            },
+            "assert": {
+              "query": "SELECT full_name FROM phpns_users WHERE id={target_user_id}",
+              "scalar_equals": "{token1}"
+            }
+          },
+          "authorized": {
+            "role": "user2",
+            "request": {
+              "page": "user.php?do=editp",
+              "method": "POST",
+              "replace_params": true,
+              "params": {
+                "id": "{target_user_id}",
+                "username_": "{target_username}",
+                "fullname": "{token2}",
+                "email": "{target_email}",
+                "msn": "{target_msn}",
+                "aim": "{target_aim}",
+                "yahoo": "{target_yahoo}",
+                "skype": "{target_skype}",
+                "rank": "{target_rank}",
+                "original_username": "{target_username}"
+              },
+              "referer": "user.php?do=edit&id={target_user_id}"
+            },
+            "assert": {
+              "query": "SELECT full_name FROM phpns_users WHERE id={target_user_id}",
+              "scalar_equals": "{token2}"
+            }
+          }
         }
       ]
-    },
-    "page_repair_guidance": [
-      {
-        "page_pattern": "(?:^|/)install/index\\.php$",
-        "category": "static_only",
-        "intended_fix": "Require an authenticated phpns user before allowing the installer entry page to continue.",
-        "allowed_condition": "user is logged in according to phpns existing auth/session semantics",
-        "deny_action": "Use the existing phpns redirect/denial style and exit immediately.",
-        "notes": [
-          "Do not disable the installer by returning a blank page.",
-          "Do not invent new session keys; reuse the session/auth variables initialized by the included project files."
-        ]
-      },
-      {
-        "page_pattern": "(?:^|/)article\\.php\\?action=delete&do=comments(?:&|$)",
-        "category": "vertical",
-        "intended_fix": "Deleting comments is a vertical privilege check, not an ownership check.",
-        "allowed_condition": "allow only if the current user has the existing edit-article permission OR the current user's phpns_users.rank_id is the users rank_id (rank_id=3); block register rank_id=2.",
-        "deny_action": "header(\"Location: index.php?do=permissiondenied\"); die();",
-        "notes": [
-          "The attacking role is register, which can log in but must not delete comments.",
-          "Prefer existing $globalvars['rank'] permission semantics for edit-article permission when available.",
-          "If checking rank_id, query phpns_users using $_SESSION['userID']; users rank_id is 3 and register rank_id is 2 in database_user_table_context."
-        ]
-      },
-      {
-        "page_pattern": "(?:^|/)article\\.php\\?do=comments(?:&|$)",
-        "category": "vertical",
-        "intended_fix": "Viewing/managing article comments is a vertical privilege check, not a horizontal owner check.",
-        "allowed_condition": "allow only if the current user has the existing edit-article permission OR the current user's phpns_users.rank_id is the users rank_id (rank_id=3); block register rank_id=2.",
-        "deny_action": "header(\"Location: index.php?do=permissiondenied\"); die();",
-        "notes": [
-          "Do not compare article_author for this repair item.",
-          "The vulnerability is that register can access the comments management page despite only having login privilege.",
-          "If checking rank_id, query phpns_users using $_SESSION['userID']; users rank_id is 3 and register rank_id is 2 in database_user_table_context."
-        ]
-      },
-      {
-        "page_pattern": "(?:^|/)article\\.php\\?do=edit(?:&|$)",
-        "category": "horizontal",
-        "intended_fix": "Article edit is a horizontal owner check with an admin bypass.",
-        "allowed_condition": "allow if phpns_articles.article_author equals $_SESSION['username'] OR the current user is administrator (admin username or rank_id=1).",
-        "deny_action": "header(\"Location: index.php?do=permissiondenied\"); die();",
-        "notes": [
-          "Do not use $globalvars['rank'][14] as a broad bypass here because users may have edit permission; the required bypass is administrator only.",
-          "Use the identity_binding_context owner column phpns_articles.article_author."
-        ]
-      },
-      {
-        "page_pattern": "(?:^|/)user\\.php\\?do=edit(?:&|$)",
-        "category": "horizontal",
-        "intended_fix": "User edit is a horizontal self-check with an admin bypass.",
-        "allowed_condition": "allow if requested phpns_users.id equals $_SESSION['userID'] OR the current user is administrator (admin username or rank_id=1).",
-        "deny_action": "header(\"Location: index.php?do=permissiondenied\"); die();",
-        "notes": [
-          "Do not use $globalvars['rank'][2] as a broad bypass here; the required bypass is administrator only.",
-          "Use the identity_binding_context owner column phpns_users.id and current_user_expression $_SESSION['userID']."
-        ]
-      }
-    ]
+    }
   }
 }
 

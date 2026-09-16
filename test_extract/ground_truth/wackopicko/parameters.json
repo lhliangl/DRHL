@@ -1,0 +1,23 @@
+{
+  "app": "wackopicko",
+  "language": "php",
+  "source_root": "D:/phpStudy/PHPTutorial/WWW/wackopicko",
+  "reviewed_at": "2026-09-12",
+  "method": "manual source review",
+  "principle": "better_to_miss_than_wrong",
+  "parameters": [
+    {
+      "name": "$_SESSION['userid']",
+      "source": "session",
+      "kind": "identity",
+      "files": [
+        "include/users.php",
+        "users/view.php",
+        "users/login.php",
+        "users/home.php",
+        "pictures/view.php"
+      ],
+      "rationale": "Session variable storing authenticated frontend user ID. Set by Users::login_user(), used by Users::current_user() to determine identity."
+    }
+  ]
+}

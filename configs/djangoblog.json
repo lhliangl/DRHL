@@ -368,6 +368,7 @@
     ],
     "source_analysis": {
       "save_cst": false,
+      "framework": "django",
       "identity_parameters": [
         "user_id",
         "author_id",
@@ -382,6 +383,9 @@
         "author_id",
         "user_id",
         "status"
+      ],
+      "declarative_access_control_fields": [
+        "Post.status"
       ],
       "validated_function_name_patterns": [
         "login_required",
@@ -409,6 +413,9 @@
     },
     "oracle": {
       "timeout": 10,
+      "csrf_token_parameters": [
+        "csrfmiddlewaretoken"
+      ],
       "denied_statuses": [
         401,
         403,
@@ -475,7 +482,7 @@
       "provider": "openai_compatible",
       "base_url": "https://api.deepseek.com/v1",
       "model": "deepseek-v4-flash",
-      "api_key": "your-api-key",
+      "api_key": "env:DRHL_DEEPSEEK_API_KEY",
       "temperature": 0.1,
       "timeout": 120,
       "response_format_json": true,
@@ -502,7 +509,13 @@
         "8000",
         "--wait",
         "25"
-      ]
+      ],
+      "database_oracles": {
+        "response_only_patterns": [
+          ".*"
+        ],
+        "rules": []
+      }
     },
     "source_map_overrides": [
       {
@@ -520,16 +533,6 @@
       {
         "pattern": "^eee/",
         "source": "blog/views.py"
-      }
-    ],
-    "page_repair_guidance": [
-      {
-        "page_pattern": "^p1/$",
-        "category": "authenticated_only",
-        "route_binding": "blog/urls.py maps '<slug:slug>/' to views.PostDetail.as_view(); the vulnerable page is a PostDetail object, not PostList.",
-        "required_fix": "In PostDetail, override get_object() or get_queryset() so non-staff users/visitors cannot read draft posts where Post.status == 0. Published posts with status == 1 must remain publicly readable.",
-        "preferred_guard": "obj = super().get_object(); if not self.request.user.is_staff and obj.status == 0: raise Http404(); return obj",
-        "regression_requirement": "Do not add LoginRequiredMixin to PostList or make the home page login-only. Keep public published posts accessible."
       }
     ]
   }

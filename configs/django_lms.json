@@ -475,6 +475,7 @@
     ],
     "source_analysis": {
       "save_cst": false,
+      "framework": "django",
       "identity_parameters": [
         "user_id",
         "student_id",
@@ -532,6 +533,9 @@
     },
     "oracle": {
       "timeout": 10,
+      "csrf_token_parameters": [
+        "csrfmiddlewaretoken"
+      ],
       "denied_statuses": [
         401,
         403,
@@ -632,7 +636,7 @@
       "provider": "openai_compatible",
       "base_url": "https://api.deepseek.com/v1",
       "model": "deepseek-v4-flash",
-      "api_key": "your-api-key",
+      "api_key": "env:DRHL_DEEPSEEK_API_KEY",
       "temperature": 0.1,
       "timeout": 120,
       "response_format_json": true,
@@ -661,7 +665,53 @@
         "30",
         "--log-dir",
         "D:/project/python/DRHL/database_recovery/django_lms"
-      ]
+      ],
+      "database_oracles": {
+        "rules": [
+          {
+            "name": "django-lms-add-item-admin-create",
+            "page_pattern": "^add_item/(?:\\?|$)",
+            "category": "admin_only",
+            "operation": "create",
+            "attack": {
+              "role": "user1",
+              "request": {
+                "page": "add_item/",
+                "method": "POST",
+                "replace_params": true,
+                "params": {
+                  "title": "{token}",
+                  "summary": "DRHL repair oracle unauthorized item",
+                  "posted_as": "News"
+                },
+                "referer": "add_item/"
+              },
+              "assert": {
+                "query": "SELECT COUNT(*) FROM app_newsandevents WHERE title='{token}'",
+                "scalar_zero": true
+              }
+            },
+            "authorized": {
+              "role": "admin",
+              "request": {
+                "page": "add_item/",
+                "method": "POST",
+                "replace_params": true,
+                "params": {
+                  "title": "{token}",
+                  "summary": "DRHL repair oracle authorized item",
+                  "posted_as": "News"
+                },
+                "referer": "add_item/"
+              },
+              "assert": {
+                "query": "SELECT COUNT(*) FROM app_newsandevents WHERE title='{token}'",
+                "scalar_nonzero": true
+              }
+            }
+          }
+        ]
+      }
     }
   }
 }

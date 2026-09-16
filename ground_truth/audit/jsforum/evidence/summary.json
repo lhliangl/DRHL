@@ -1,0 +1,233 @@
+{
+  "app": "jsforum",
+  "baseline": "D:\\project\\python\\DRHL\\ground_truth\\audit\\jsforum\\evidence\\baseline.sql",
+  "database_restored_after_each_record": true,
+  "restore_verified_per_record": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+  ],
+  "final_database_matches_baseline": true,
+  "results": [
+    {
+      "gt_id": "GT-039",
+      "app": "jsforum",
+      "verified_at": "2026-09-06T09:13:35.625236+00:00",
+      "verdict": "vulnerable",
+      "summary": "visitor POST servlet/forum.AddForum returned 302; a forum row with the token title was created in the forum database (created=True).",
+      "sql_statements": [
+        {
+          "kind": "scalar",
+          "sql": "SELECT COALESCE(MAX(forum_id), 0) FROM forum_forums"
+        },
+        {
+          "kind": "scalar",
+          "sql": "SELECT COUNT(*) FROM forum_forums WHERE title='DRHLGT_forum_8686015227'"
+        }
+      ],
+      "steps": [
+        {
+          "kind": "instrument",
+          "table": "forum_forums",
+          "token_title": "DRHLGT_forum_8686015227",
+          "lastforum_id": "36"
+        },
+        {
+          "kind": "replay",
+          "role": "visitor (no login)",
+          "request": "POST servlet/forum.AddForum title=DRHLGT_forum_8686015227",
+          "status_code": 302,
+          "forum_row_created": true
+        }
+      ],
+      "restore_verified": true
+    },
+    {
+      "gt_id": "GT-040",
+      "app": "jsforum",
+      "verified_at": "2026-09-06T09:13:36.126599+00:00",
+      "verdict": "vulnerable",
+      "summary": "visitor POST servlet/forum.AddReply returned 302; a reply row with the token message was created in forum_message (created=True).",
+      "sql_statements": [
+        {
+          "kind": "scalar",
+          "sql": "SELECT COALESCE(MAX(reply_id), 0) FROM forum_message WHERE forum_id=7 AND thread_id=21"
+        },
+        {
+          "kind": "scalar",
+          "sql": "SELECT COUNT(*) FROM forum_message WHERE message='DRHLGT_reply_8686015941'"
+        }
+      ],
+      "steps": [
+        {
+          "kind": "instrument",
+          "table": "forum_message",
+          "token_message": "DRHLGT_reply_8686015941",
+          "forum_id": "7",
+          "thread_id": "21"
+        },
+        {
+          "kind": "replay",
+          "role": "visitor (no login)",
+          "request": "POST servlet/forum.AddReply message=DRHLGT_reply_8686015941",
+          "status_code": 302,
+          "reply_row_created": true
+        }
+      ],
+      "restore_verified": true
+    },
+    {
+      "gt_id": "GT-041",
+      "app": "jsforum",
+      "verified_at": "2026-09-06T09:13:36.638365+00:00",
+      "verdict": "vulnerable",
+      "summary": "visitor POST servlet/forum.AddThread returned 302; a thread row with the token title was created in forum_threads (created=True).",
+      "sql_statements": [
+        {
+          "kind": "scalar",
+          "sql": "SELECT COALESCE(MAX(thread_id), 0) FROM forum_threads WHERE forum_id=7"
+        },
+        {
+          "kind": "scalar",
+          "sql": "SELECT COUNT(*) FROM forum_threads WHERE title='DRHLGT_thread_8686016559'"
+        }
+      ],
+      "steps": [
+        {
+          "kind": "instrument",
+          "table": "forum_threads",
+          "token_title": "DRHLGT_thread_8686016559",
+          "forum_id": "7"
+        },
+        {
+          "kind": "replay",
+          "role": "visitor (no login)",
+          "request": "POST servlet/forum.AddThread title=DRHLGT_thread_8686016559",
+          "status_code": 302,
+          "thread_row_created": true
+        }
+      ],
+      "restore_verified": true
+    },
+    {
+      "gt_id": "GT-042",
+      "app": "jsforum",
+      "verified_at": "2026-09-06T09:13:38.104867+00:00",
+      "verdict": "vulnerable",
+      "summary": "user1 POST servlet/forum.AddReply with the user parameter set to user2 returned 302; the created content carries user2 as its author although the session belongs to user1 (author_forged=True).",
+      "sql_statements": [
+        {
+          "kind": "scalar",
+          "sql": "SELECT COALESCE(MAX(reply_id), 0) FROM forum_message WHERE forum_id=7 AND thread_id=21"
+        },
+        {
+          "kind": "query",
+          "sql": "SELECT user FROM forum_message WHERE message='DRHLGT_reply_forge_8686017023' LIMIT 1"
+        }
+      ],
+      "steps": [
+        {
+          "kind": "instrument",
+          "token": "DRHLGT_reply_forge_8686017023",
+          "attacker_session_user": "user1",
+          "forged_author_param": "user2"
+        },
+        {
+          "kind": "replay",
+          "role": "user1 (logged-in session)",
+          "request": "POST servlet/forum.AddReply user=user2 message=DRHLGT_reply_forge_8686017023",
+          "status_code": 302,
+          "row_created": true,
+          "row_author": "user2",
+          "author_forged_to_user2": true
+        }
+      ],
+      "restore_verified": true
+    },
+    {
+      "gt_id": "GT-043",
+      "app": "jsforum",
+      "verified_at": "2026-09-06T09:13:39.526100+00:00",
+      "verdict": "vulnerable",
+      "summary": "user1 POST servlet/forum.AddThread with the user parameter set to user2 returned 302; the created content carries user2 as its author although the session belongs to user1 (author_forged=True).",
+      "sql_statements": [
+        {
+          "kind": "scalar",
+          "sql": "SELECT COALESCE(MAX(thread_id), 0) FROM forum_threads WHERE forum_id=7"
+        },
+        {
+          "kind": "query",
+          "sql": "SELECT thread_id FROM forum_threads WHERE title='DRHLGT_thread_forge_8686018444' LIMIT 1"
+        },
+        {
+          "kind": "query",
+          "sql": "SELECT user FROM forum_message WHERE forum_id=7 AND thread_id=59 AND reply_id='0' LIMIT 1"
+        }
+      ],
+      "steps": [
+        {
+          "kind": "instrument",
+          "token": "DRHLGT_thread_forge_8686018444",
+          "attacker_session_user": "user1",
+          "forged_author_param": "user2"
+        },
+        {
+          "kind": "replay",
+          "role": "user1 (logged-in session)",
+          "request": "POST servlet/forum.AddThread user=user2 message=DRHLGT_thread_forge_8686018444",
+          "status_code": 302,
+          "row_created": true,
+          "row_author": "user2",
+          "author_forged_to_user2": true
+        }
+      ],
+      "restore_verified": true
+    },
+    {
+      "gt_id": "GT-044",
+      "app": "jsforum",
+      "verified_at": "2026-09-06T09:13:40.153866+00:00",
+      "verdict": "vulnerable",
+      "summary": "user1 GET forum/editmessage.jsp for user2's reply returned 200; the edit form rendered user2's message content (token exposed=True); the submitted ChangeMessage left the row unchanged (write owner-gated=True), bounding the impact to the unauthorized edit-interface access.",
+      "sql_statements": [
+        {
+          "kind": "scalar",
+          "sql": "SELECT COALESCE(MAX(reply_id), 0) FROM forum_message WHERE forum_id=7 AND thread_id=21"
+        },
+        {
+          "kind": "execute",
+          "sql": "INSERT INTO forum_message (forum_id, thread_id, reply_id, message, user, date_time) VALUES (7, 21, 2, 'DRHLGT_usermsg_8686019777', 'user2', NOW())"
+        },
+        {
+          "kind": "scalar",
+          "sql": "SELECT message FROM forum_message WHERE forum_id=7 AND thread_id=21 AND reply_id=2 LIMIT 1"
+        }
+      ],
+      "steps": [
+        {
+          "kind": "instrument",
+          "table": "forum_message",
+          "row": "forum_id=7, thread_id=21, reply_id=2",
+          "message_token": "DRHLGT_usermsg_8686019777",
+          "author": "user2",
+          "note": "documented precondition: a reply authored by user2 was inserted for the test (the database baseline was restored after the record)"
+        },
+        {
+          "kind": "replay",
+          "role": "user1 (logged-in session, not the reply author)",
+          "request": "GET forum/editmessage.jsp?forum_id=7&thread_id=21&reply_id=2",
+          "status_code": 200,
+          "other_users_message_token_exposed_in_edit_form": true,
+          "body_saved": "GT-044_gt044_user1_editmessage.html",
+          "change_submit_status": 302,
+          "db_message_after_submit": "DRHLGT_usermsg_8686019777",
+          "write_remained_owner_gated": true
+        }
+      ],
+      "restore_verified": true
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="admin.css" rel="stylesheet" type="text/css">
+<title>Add a user</title>
+</head>
+<body>
+<center>
+
+<h1>Add User</h1>
+
+</center>
+<center>
+
+
+<script Language="JavaScript">
+			<!--			
+function form_val(form1)
+{
+   var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+   var address = form1.uname.value;
+   if(reg.test(address) == false) {
+      alert('Please enter a valid email address');
+	  form1.uname.focus();
+      return false;
+   }
+	
+	if ((form1.pword.value.length < 6) || (form1.pword.value.length > 10))
+	{
+		alert("Your password must be between 6 and 10 characters");
+		form1.pword.focus();
+		return (false);
+	}
+
+	return (true);
+}
+//--></script>
+
+
+
+
+username and password successfuly inserted!<br><br>  
+</center>
+<p>&nbsp;</p>
+
+<br><br>
+<center><div class="separator"></div>
+<a href="add.php"  title="Add a new event to the list.">add event</a>  |  
+<a href="list.php?status=active"  title="Show only the currently active events">active events</a>  |   
+<a href="list.php?status=all"  title="Show all the events, past and present.">all events</a>  |  
+<a href="message.php" title="Message that appears when there are no active events.">no events message</a>  |  
+<a href="../index.php" target="_blank"  title="View the live events page.">events page</a>  |
+<a href="users.php" title="Add a new user">users</a>  |  
+<a href=logout.php>logout</a>
+<br><br>
+Powered by: <a href="http://www.mevin.com/">mevin productions</a>
+<br><br>
+</body>
+</html>

@@ -1,0 +1,30 @@
+{
+  "gt_id": "GT-012",
+  "app": "phpns",
+  "verified_at": "2026-09-06T04:57:46.844201+00:00",
+  "verdict": "vulnerable",
+  "summary": "user1 GET article.php?do=edit&id=6 returned 200; user2's article text token exposed in the edit form=True.",
+  "sql_statements": [
+    {
+      "kind": "execute",
+      "sql": "UPDATE phpns_articles SET article_text='DRHLGT_article_edit_8670666617' WHERE id=6"
+    }
+  ],
+  "steps": [
+    {
+      "kind": "instrument",
+      "table": "phpns_articles",
+      "row": "id=6 (user2's article)",
+      "column": "article_text",
+      "token": "DRHLGT_article_edit_8670666617"
+    },
+    {
+      "kind": "replay",
+      "role": "user1 (not the article author)",
+      "request": "GET article.php?do=edit&id=6",
+      "status_code": 200,
+      "token_exposed_in_edit_form": true,
+      "body_saved": "GT-012_gt012_user1_edit_article6.html"
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "gt_id": "GT-005",
+  "app": "awcm",
+  "verified_at": "2026-09-06T04:57:30.330001+00:00",
+  "verdict": "vulnerable",
+  "summary": "visitor GET control/db_backup.php returned 200 SQL attachment ('attachment; filename=\"backup_06/09/2026.sql\"'); dump exposes the instrumented row token=True, contains 38 INSERT statements and includes awcm_control data=True.",
+  "sql_statements": [
+    {
+      "kind": "execute",
+      "sql": "INSERT INTO awcm_members (username,password,email,sex,country,avatar,signature,level,title,autoactivate,notes) VALUES ('DRHLGT_dbdump_8670649505','x','x','x','x','x','x','member','x','no','x')"
+    }
+  ],
+  "steps": [
+    {
+      "kind": "instrument",
+      "table": "awcm_members",
+      "inserted_row_username": "DRHLGT_dbdump_8670649505"
+    },
+    {
+      "kind": "replay",
+      "role": "visitor (no login)",
+      "request": "GET control/db_backup.php",
+      "status_code": 200,
+      "content_disposition": "attachment; filename=\"backup_06/09/2026.sql\"",
+      "token_exposed_in_dump": true,
+      "insert_statements_in_dump": 38,
+      "dump_contains_control_table_data": true,
+      "body_saved": "GT-005_gt005_visitor_dbdump.html"
+    }
+  ]
+}

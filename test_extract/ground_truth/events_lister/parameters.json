@@ -1,0 +1,29 @@
+{
+  "app": "events_lister",
+  "language": "php",
+  "source_root": "D:/phpStudy/PHPTutorial/WWW/events_lister",
+  "reviewed_at": "2026-09-12",
+  "method": "manual source review",
+  "principle": "better_to_miss_than_wrong",
+  "parameters": [
+    {
+      "name": "$_SESSION['validUser']",
+      "source": "session",
+      "kind": "role",
+      "files": [
+        "admin/common.php"
+      ],
+      "rationale": "Session boolean flag indicating whether the user has authenticated successfully. Set to true after login, checked by checkUser() for protected page access."
+    },
+    {
+      "name": "$_SESSION['userName']",
+      "source": "session",
+      "kind": "identity",
+      "files": [
+        "admin/common.php",
+        "admin/user_delete.php"
+      ],
+      "rationale": "Authenticated administrator identity stored in the session after login and reused in administrator-sensitive database operations."
+    }
+  ]
+}

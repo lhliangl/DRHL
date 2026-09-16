@@ -1,0 +1,37 @@
+{
+  "gt_id": "GT-038",
+  "app": "jspblog",
+  "verified_at": "2026-09-06T08:42:48.178813+00:00",
+  "verdict": "vulnerable",
+  "summary": "visitor POST admin/editnews2.jsp returned 200; the news body changed DRHLGT_news_before_8684168024 -> DRHLGT_news_after_8684168024 in the portal database (updated=True; the query carries no WHERE clause, so it applies to every row).",
+  "sql_statements": [
+    {
+      "kind": "execute",
+      "sql": "UPDATE news SET body='DRHLGT_news_before_8684168024' WHERE headline='Java'"
+    },
+    {
+      "kind": "scalar",
+      "sql": "SELECT body FROM news WHERE headline='Java' LIMIT 1"
+    }
+  ],
+  "steps": [
+    {
+      "kind": "instrument",
+      "table": "news",
+      "row": "headline='Java'",
+      "column": "body",
+      "token1": "DRHLGT_news_before_8684168024",
+      "token2": "DRHLGT_news_after_8684168024"
+    },
+    {
+      "kind": "replay",
+      "role": "visitor (no login)",
+      "request": "POST admin/editnews2.jsp body=DRHLGT_news_after_8684168024",
+      "status_code": 200,
+      "db_body_before": "DRHLGT_news_before_8684168024",
+      "db_body_after": "DRHLGT_news_after_8684168024",
+      "updated": true,
+      "body_saved": "GT-038_gt038_visitor.html"
+    }
+  ]
+}

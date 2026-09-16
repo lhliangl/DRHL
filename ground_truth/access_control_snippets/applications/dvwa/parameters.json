@@ -1,0 +1,20 @@
+{
+  "app": "dvwa",
+  "language": "php",
+  "source_root": "D:/phpStudy/PHPTutorial/WWW/DVWA",
+  "reviewed_at": "2026-07-05",
+  "method": "manual source review",
+  "principle": "better_to_miss_than_wrong",
+  "parameters": [
+    {
+      "name": "dvwaisloggedin",
+      "source": "function_call",
+      "kind": "authentication_state",
+      "files": [
+        "dvwa/includes/dvwaPage.inc.php",
+        "logout.php"
+      ],
+      "rationale": "Represents the authentication-state predicate used by terminating redirect guards such as dvwaPageStartup()."
+    }
+  ]
+}

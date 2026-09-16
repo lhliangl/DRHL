@@ -5,6 +5,7 @@ import hashlib
 import json
 import os
 import re
+import secrets
 import shutil
 import subprocess
 import sys
@@ -20,9 +21,10 @@ import requests
 from ..config import PipelineConfig
 from ..database import Snapshot
 from ..database_probe import create_database_probe
-from ..errors import DatabaseError
 from ..io import write_json
 from ..models import AttackVector, Finding, RequestSpec
+from ..progress import progress
+from ..snippet_compaction import compact_snippets
 
 
 @dataclass
@@ -36,6 +38,8 @@ class RepairAttempt:
     message: str
     prompt_artifact: str | None = None
     plan: str | None = None
+    database_validation_passed: bool = True
+    database_validation: dict[str, Any] = field(default_factory=dict)
 
 
 @dataclass
@@ -54,9 +58,12 @@ class RepairResult:
     syntax_compile_ok: int = 0
     exploit_blocked: int = 0
     regression_passed: int = 0
+    database_validation_applied: int = 0
+    database_validation_passed: int = 0
     successful: bool = False
     validation_artifact: str | None = None
     attempt_details: list[RepairAttempt] = field(default_factory=list)
+    coverage: dict[str, Any] | None = None
 
 
 def _safe_source(root: Path, relative: str) -> Path | None:
@@ -84,6 +91,33 @@ def _page_match_candidates(page: str) -> list[str]:
     return list(dict.fromkeys(candidate for candidate in candidates if candidate))
 
 
+def _vector_operation(vector: AttackVector) -> str:
+    for name in ("action", "operation", "do", "mode"):
+        value = vector.request.params.get(name)
+        if value is not None and str(value).strip():
+            return str(value).strip()
+    return vector.request.method.upper()
+
+
+def _vector_summary(vector: AttackVector) -> dict[str, Any]:
+    params = {
+        str(name): (
+            "<redacted>"
+            if re.search(r"pass(word)?|secret|csrf|token|api[_-]?key", str(name), re.I)
+            else value
+        )
+        for name, value in vector.request.params.items()
+    }
+    return {
+        "operation": _vector_operation(vector),
+        "method": vector.request.method,
+        "page": vector.page,
+        "page_overrides": list(vector.page_overrides),
+        "params": params,
+        "referer": vector.request.referer,
+    }
+
+
 def _configured_source_override(config: PipelineConfig, page: str) -> str | None:
     overrides = config.repair.get("source_map_overrides", [])
     for item in overrides:
@@ -103,11 +137,14 @@ def _configured_source_override(config: PipelineConfig, page: str) -> str | None
 
 
 def _repair_source_name(config: PipelineConfig, source_map: dict[str, Any], page: str) -> str | None:
+    configured = _configured_source_override(config, page)
+    if configured:
+        return configured
     for candidate in _page_match_candidates(page):
         mapped = source_map.get(candidate)
         if mapped:
             return str(mapped)
-    return _configured_source_override(config, page)
+    return None
 
 def _secret(value: Any) -> str:
     text = str(value or "")
@@ -218,321 +255,30 @@ def _vulnerability_type(category: str) -> str:
 
 
 
-_SQL_IDENTIFIER_RE = re.compile(r"^[A-Za-z_][A-Za-z0-9_]*$")
-
-
-def _safe_sql_identifier(value: Any) -> str | None:
-    text = str(value or "").strip()
-    return text if _SQL_IDENTIFIER_RE.match(text) else None
-
-
-def _sql_literal(value: str) -> str:
-    return "'" + value.replace("\\", "\\\\").replace("'", "''") + "'"
-
-
-def _parse_tabular_rows(raw: str, columns: list[str]) -> list[dict[str, str]]:
-    rows: list[dict[str, str]] = []
-    for line in raw.splitlines():
-        if not line.strip():
-            continue
-        values = line.rstrip("\r\n").split("\t")
-        rows.append({column: values[index] if index < len(values) else "" for index, column in enumerate(columns)})
-    return rows
-
-
-def _infer_role_column(columns: list[str], options: dict[str, Any]) -> str | None:
-    configured = _safe_sql_identifier(options.get("role_column"))
-    if configured and configured in columns:
-        return configured
-    candidates = options.get("role_column_candidates", [
-        "role",
-        "role_id",
-        "rank",
-        "rank_id",
-        "group",
-        "group_id",
-        "usergroup",
-        "user_group",
-        "user_group_id",
-        "level",
-        "privilege",
-        "permission",
-    ])
-    normalized_candidates = {str(item).lower() for item in candidates}
-    for column in columns:
-        lowered = column.lower()
-        if lowered in normalized_candidates:
-            return column
-    for column in columns:
-        lowered = column.lower()
-        if any(token in lowered for token in ("role", "rank", "group", "level", "priv", "permission")):
-            return column
-    return None
-
-
-def _sample_user_table_rows(rows: list[dict[str, str]], role_column: str | None, threshold: int, max_per_role: int) -> tuple[list[dict[str, str]], dict[str, Any]]:
-    strategy: dict[str, Any] = {
-        "input_rows": len(rows),
-        "threshold": threshold,
-        "role_column": role_column,
-        "max_rows_per_role": max_per_role,
-        "applied": False,
-    }
-    if len(rows) < threshold or not role_column:
-        strategy["reason"] = "row count below threshold or no role column was available"
-        return rows, strategy
-
-    counts: dict[str, int] = {}
-    sampled: list[dict[str, str]] = []
-    for row in rows:
-        role_value = str(row.get(role_column, ""))
-        count = counts.get(role_value, 0)
-        if count >= max_per_role:
-            continue
-        sampled.append(row)
-        counts[role_value] = count + 1
-    strategy.update({
-        "applied": True,
-        "output_rows": len(sampled),
-        "role_value_counts": counts,
-    })
-    return sampled, strategy
-
-
-def _repair_user_table_context(config: PipelineConfig) -> dict[str, Any]:
-    options = dict(config.repair.get("user_table_context", {}))
-    if not options:
-        llm_options = config.repair.get("llm", {})
-        if isinstance(llm_options, dict):
-            options = dict(llm_options.get("user_table_context", {}))
-    if not options or not bool(options.get("enabled", False)):
-        return {}
-
-    table = _safe_sql_identifier(options.get("table"))
-    configured_columns = options.get("columns", [])
-    columns = [_safe_sql_identifier(column) for column in configured_columns if _safe_sql_identifier(column)]
-    if not table or not columns:
-        return {
-            "enabled": False,
-            "reason": "repair.user_table_context requires a safe table name and explicit safe columns",
-        }
-
-    try:
-        limit = max(1, min(int(options.get("limit", 20)), 200))
-    except (TypeError, ValueError):
-        limit = 20
-    try:
-        sampling_threshold = max(1, int(options.get("sample_by_role_when_rows_gte", 5)))
-    except (TypeError, ValueError):
-        sampling_threshold = 5
-    try:
-        max_rows_per_role = max(1, min(int(options.get("max_rows_per_role", 2)), 20))
-    except (TypeError, ValueError):
-        max_rows_per_role = 2
-    try:
-        scan_limit = max(limit, min(int(options.get("scan_limit", 1000)), 5000))
-    except (TypeError, ValueError):
-        scan_limit = max(limit, 1000)
-
-    order_by = _safe_sql_identifier(options.get("order_by")) or columns[0]
-    if order_by not in columns:
-        order_by = columns[0]
-
-    try:
-        probe = create_database_probe(config.database)
-        database_name = str(config.database.get("database", ""))
-        column_list_raw = probe.scalar(
-            "SELECT COLUMN_NAME FROM information_schema.COLUMNS "
-            f"WHERE TABLE_SCHEMA={_sql_literal(database_name)} AND TABLE_NAME={_sql_literal(table)} "
-            "ORDER BY ORDINAL_POSITION"
-        )
-        actual_columns = {line.strip() for line in column_list_raw.splitlines() if line.strip()}
-        selected_columns = [column for column in columns if column in actual_columns]
-        if not selected_columns:
-            return {
-                "enabled": False,
-                "table": table,
-                "reason": "configured user table columns were not found in the database",
-            }
-        role_column = _infer_role_column(selected_columns, options)
-        select_sql = ", ".join(f"`{column}`" for column in selected_columns)
-        total_rows_raw = probe.scalar(f"SELECT COUNT(*) FROM `{table}`")
-        try:
-            total_rows = int((total_rows_raw.splitlines() or ["0"])[0] or 0)
-        except ValueError:
-            total_rows = 0
-
-        if total_rows >= sampling_threshold and role_column:
-            raw_rows = probe.scalar(
-                f"SELECT {select_sql} FROM `{table}` ORDER BY `{role_column}`, `{order_by}` LIMIT {scan_limit}"
-            )
-            rows, sampling = _sample_user_table_rows(
-                _parse_tabular_rows(raw_rows, selected_columns),
-                role_column,
-                sampling_threshold,
-                max_rows_per_role,
-            )
-        else:
-            raw_rows = probe.scalar(f"SELECT {select_sql} FROM `{table}` ORDER BY `{order_by}` LIMIT {limit}")
-            rows = _parse_tabular_rows(raw_rows, selected_columns)
-            sampling = {
-                "applied": False,
-                "input_rows": total_rows,
-                "threshold": sampling_threshold,
-                "role_column": role_column,
-                "max_rows_per_role": max_rows_per_role,
-                "reason": "row count below threshold or no role column was available",
-            }
-
-        return {
-            "enabled": True,
-            "table": table,
-            "columns": selected_columns,
-            "total_rows": total_rows,
-            "sampling": sampling,
-            "rows": rows,
-            "notes": [
-                "This is the only database table context provided to the repair model.",
-                "When the user table is large, rows are sampled by the configured/inferred role column with a small maximum per role value.",
-                "Use it only to identify real user ids, usernames, and role/rank fields; do not infer unrelated schema.",
-            ],
-        }
-    except DatabaseError as exc:
-        return {"enabled": False, "table": table, "reason": f"database probe failed: {exc}"}
-    except Exception as exc:
-        return {"enabled": False, "table": table, "reason": f"unexpected error: {type(exc).__name__}: {exc}"}
-
-
-def _binding_matches(binding: dict[str, Any], source_relative: str, vector: AttackVector | None) -> bool:
-    source_path = str(binding.get("source_path") or binding.get("path") or "").strip().replace("\\", "/")
-    if source_path and source_path != source_relative:
-        return False
-    if vector is None:
-        return True
-    page_pattern = str(binding.get("page_pattern") or "").strip()
-    if page_pattern and not re.search(page_pattern, vector.page):
-        return False
-    required_params = binding.get("where_params", {})
-    if isinstance(required_params, dict):
-        params = dict(vector.request.params)
-        for key, expected in required_params.items():
-            if str(params.get(str(key), "")) != str(expected):
-                return False
-    return True
-
-
-def _repair_identity_context(config: PipelineConfig, source_relative: str, vector: AttackVector | None) -> dict[str, Any]:
-    options = dict(config.repair.get("identity_context", {}))
-    if not options or not bool(options.get("enabled", False)):
-        return {}
-
-    current_user = options.get("current_user", [])
-    if isinstance(current_user, dict):
-        current_user_entries = [current_user]
-    elif isinstance(current_user, list):
-        current_user_entries = [entry for entry in current_user if isinstance(entry, dict)]
-    else:
-        current_user_entries = []
-
-    bindings: list[dict[str, Any]] = []
-    raw_bindings = options.get("bindings", [])
-    if isinstance(raw_bindings, list):
-        for raw in raw_bindings:
-            if not isinstance(raw, dict) or not _binding_matches(raw, source_relative, vector):
-                continue
-            table = _safe_sql_identifier(raw.get("table"))
-            lookup_column = _safe_sql_identifier(raw.get("lookup_column", "id"))
-            owner_column = _safe_sql_identifier(raw.get("owner_column"))
-            parameter = str(raw.get("parameter") or "").strip()
-            if not table or not lookup_column or not owner_column or not parameter:
-                continue
-            binding = dict(raw)
-            binding["table"] = table
-            binding["lookup_column"] = lookup_column
-            binding["owner_column"] = owner_column
-            binding["parameter"] = parameter
-            if vector is not None:
-                binding["request_parameter_value"] = str(vector.request.params.get(parameter, ""))
-            bindings.append(binding)
-
-    context: dict[str, Any] = {
-        "enabled": True,
-        "current_user": current_user_entries,
-        "bindings": [],
-        "notes": [
-            "For horizontal access-control repairs, prefer this identity binding context over guessing from names.",
-            "Compare the configured target owner column with the configured current-user expression, preserving the configured privileged bypass when present.",
-        ],
-    }
-    if not bindings:
-        context["reason"] = "no identity binding matched this source/vector"
-        return context
-
-    try:
-        probe = create_database_probe(config.database)
-    except Exception as exc:
-        context["reason"] = f"database probe unavailable for target samples: {type(exc).__name__}: {exc}"
-        context["bindings"] = bindings
-        return context
-
-    for binding in bindings:
-        sample_columns = [
-            _safe_sql_identifier(column) for column in binding.get("sample_columns", []) if _safe_sql_identifier(column)
-        ]
-        for required in (binding["lookup_column"], binding["owner_column"]):
-            if required not in sample_columns:
-                sample_columns.insert(0, required)
-        sample_columns = list(dict.fromkeys(sample_columns))[:12]
-        value = str(binding.get("request_parameter_value", ""))
-        sample_rows: list[dict[str, str]] = []
-        if value:
-            try:
-                select_sql = ", ".join(f"`{column}`" for column in sample_columns)
-                raw_rows = probe.scalar(
-                    f"SELECT {select_sql} FROM `{binding['table']}` "
-                    f"WHERE `{binding['lookup_column']}`={_sql_literal(value)} LIMIT 3"
-                )
-                sample_rows = _parse_tabular_rows(raw_rows, sample_columns)
-            except Exception as exc:
-                binding["sample_error"] = f"{type(exc).__name__}: {exc}"
-        item = dict(binding)
-        item["target_resource_sample"] = sample_rows
-        context["bindings"].append(item)
-    return context
-
-
-def _repair_page_guidance(config: PipelineConfig, finding: Finding, vector: AttackVector | None) -> dict[str, Any]:
-    entries = config.repair.get("page_repair_guidance", [])
-    if not isinstance(entries, list):
-        return {}
-    page = vector.page if vector is not None else finding.page
-    category = vector.category if vector is not None else finding.category
-    for raw in entries:
-        if not isinstance(raw, dict):
-            continue
-        pattern = str(raw.get("page_pattern") or "").strip()
-        if pattern and not re.search(pattern, page, re.I):
-            continue
-        wanted_category = str(raw.get("category") or "").strip()
-        if wanted_category and wanted_category != category:
-            continue
-        guidance = dict(raw)
-        guidance["matched_page"] = page
-        guidance["matched_category"] = category
-        return guidance
-    return {}
-
-
 def _snippet_context(source_relative: str, source_context: dict[str, Any] | None) -> list[dict[str, Any]]:
     if not source_context:
         return []
     snippets = list(source_context.get("snippets", []))
     related = [item for item in snippets if item.get("path") == source_relative]
-    reusable = [
-        item for item in snippets
-        if item.get("kind") in {"validation_function", "guard_call", "condition", "conditional"}
-        and item.get("path") != source_relative
-    ]
+    compact_format = bool(snippets) and all(
+        isinstance(item, dict)
+        and set(item).issubset({"path", "code", "if_framework"})
+        for item in snippets
+    )
+    if compact_format:
+        reusable = [item for item in snippets if item.get("path") != source_relative]
+    else:
+        reusable = [
+            item for item in snippets
+            if item.get("kind") in {
+                "validation_function",
+                "guard_call",
+                "condition",
+                "conditional",
+                "database_operation",
+            }
+            and item.get("path") != source_relative
+        ]
 
     has_scored_snippets = any("access_control_score" in item for item in related + reusable)
 
@@ -540,7 +286,7 @@ def _snippet_context(source_relative: str, source_context: dict[str, Any] | None
         def priority(item: dict[str, Any]) -> tuple[int, int]:
             text = " ".join(
                 str(item.get(key, ""))
-                for key in ("kind", "function", "condition", "code", "reduced_code")
+                for key in ("kind", "function", "condition", "code", "if_framework")
             ).lower()
             score = 0
             kind = str(item.get("kind") or "")
@@ -563,12 +309,12 @@ def _snippet_context(source_relative: str, source_context: dict[str, Any] | None
             return (score, int(item.get("start_line") or 0))
 
         result = sorted(related + reusable, key=priority)
-        return result[:80]
+        return compact_snippets(result[:80])
 
     def priority(item: dict[str, Any]) -> tuple[int, int]:
         text = " ".join(
             str(item.get(key, ""))
-            for key in ("kind", "function", "condition", "code", "reduced_code", "context_code")
+            for key in ("kind", "function", "condition", "code", "if_framework", "context_code")
         ).lower()
         condition_text = str(item.get("condition", "")).lower()
         score = 0
@@ -604,7 +350,7 @@ def _snippet_context(source_relative: str, source_context: dict[str, Any] | None
         return (score, int(item.get("start_line") or 0))
 
     result = sorted(related + reusable, key=priority)
-    return result[:60]
+    return compact_snippets(result[:60])
 
 
 def _stage1_messages(
@@ -612,11 +358,9 @@ def _stage1_messages(
     source_relative: str,
     source_code: str,
     snippets: list[dict[str, Any]],
-    user_table_context: dict[str, Any] | None = None,
-    identity_context: dict[str, Any] | None = None,
-    page_guidance: dict[str, Any] | None = None,
     feedback: list[str] | None = None,
     vector: AttackVector | None = None,
+    vectors: list[AttackVector] | None = None,
 ) -> list[dict[str, str]]:
     payload = {
         "target": {
@@ -637,16 +381,8 @@ def _stage1_messages(
         "validated_access_control_snippets": snippets,
         "previous_attempt_feedback": feedback or [],
     }
-    context_rules = ""
-    if identity_context:
-        payload["identity_binding_context"] = identity_context
-        context_rules += "4) Use identity_binding_context as the source of truth for current-user expressions, target lookup parameters, owner columns, and privileged bypasses. "
-    if user_table_context:
-        payload["database_user_table_context"] = user_table_context
-        context_rules += "5) Use database_user_table_context only to resolve real user ids, usernames, and role/rank fields; do not invent other database fields. "
-    if page_guidance:
-        payload["page_repair_guidance"] = page_guidance
-        context_rules += "6) Follow page_repair_guidance exactly when it is present; it is application-specific ground truth for this repair item. "
+    if vectors and len(vectors) > 1:
+        payload["attack_variants"] = [_vector_summary(item) for item in vectors]
     return [
         {
             "role": "system",
@@ -663,7 +399,6 @@ def _stage1_messages(
                 "1) Reuse the app's real auth/role/owner variables, sentinel values, and denial/redirect style from snippets. "
                 "2) Do not invent generic checks such as empty(), isset(), or new session keys unless snippets use them. "
                 "3) Do not use a guard variable/function unless the target source or its included context initializes it; otherwise include or reuse the correct project guard context. "
-                + context_rules +
                 "static_only is usually an admin/authorized standalone entry: block unauthorized direct access, but do not disable intended admin access. "
                 "vertical means role/privilege: block the attacking lower-privilege actor but keep authorized_roles working; do not make it owner-only. "
                 "horizontal means ownership: compare the requested identity with the current user, while preserving any existing privileged-role bypass. "
@@ -681,11 +416,9 @@ def _stage2_messages(
     source_code: str,
     snippets: list[dict[str, Any]],
     plan: dict[str, Any],
-    user_table_context: dict[str, Any] | None = None,
-    identity_context: dict[str, Any] | None = None,
-    page_guidance: dict[str, Any] | None = None,
     feedback: list[str] | None = None,
     vector: AttackVector | None = None,
+    vectors: list[AttackVector] | None = None,
 ) -> list[dict[str, str]]:
     payload = {
         "source_path": source_relative,
@@ -700,16 +433,8 @@ def _stage2_messages(
         "validated_access_control_snippets": snippets,
         "previous_attempt_feedback": feedback or [],
     }
-    context_rules = ""
-    if identity_context:
-        payload["identity_binding_context"] = identity_context
-        context_rules += "4) Use identity_binding_context as the source of truth for current-user expressions, target lookup parameters, owner columns, and privileged bypasses. "
-    if user_table_context:
-        payload["database_user_table_context"] = user_table_context
-        context_rules += "5) Use database_user_table_context only to choose real user ids, usernames, and role/rank fields; do not invent other database fields. "
-    if page_guidance:
-        payload["page_repair_guidance"] = page_guidance
-        context_rules += "6) Follow page_repair_guidance exactly when it is present; it is application-specific ground truth for this repair item. "
+    if vectors and len(vectors) > 1:
+        payload["attack_variants"] = [_vector_summary(item) for item in vectors]
     return [
         {
             "role": "system",
@@ -726,7 +451,8 @@ def _stage2_messages(
                 "1) Preserve business logic and existing includes. "
                 "2) Use the app's actual auth sentinel, role/owner variables, and redirect/deny style from snippets. "
                 "3) Only use guard variables/functions that are initialized in the target source or its included context; if needed, add the correct existing include before the guard. "
-                + context_rules +
+                "4) In PHP, if the patch reads $_SESSION, ensure session_start() has already run; otherwise reuse or add that initialization before the guard. "
+                "5) Prefer an existing denial redirect from the validated snippets followed by exit over a bare exit or die. "
                 "After denying access, exit immediately. "
                 "Place the denial guard before protected content is returned or before a protected state-changing operation is executed. "
                 "Use the target language's normal safe comparison style, and handle missing or unauthenticated users cleanly. "
@@ -752,16 +478,18 @@ def _repair_with_llm(
     attempt: int = 1,
     feedback: list[str] | None = None,
     vector: AttackVector | None = None,
+    vectors: list[AttackVector] | None = None,
 ) -> tuple[str, dict[str, Any], Path]:
     llm = dict(config.repair.get("llm", {}))
     snippets = _snippet_context(source_relative, source_context)
-    user_table_context = _repair_user_table_context(config)
-    identity_context = _repair_identity_context(config, source_relative, vector)
-    page_guidance = _repair_page_guidance(config, finding, vector)
-    stage1_messages = _stage1_messages(finding, source_relative, source_code, snippets, user_table_context, identity_context, page_guidance, feedback, vector)
+    stage1_messages = _stage1_messages(
+        finding, source_relative, source_code, snippets, feedback, vector, vectors
+    )
     stage1_raw = _chat_completion(llm, stage1_messages, metrics)
     plan = _json_from_model(stage1_raw)
-    stage2_messages = _stage2_messages(finding, source_relative, source_code, snippets, plan, user_table_context, identity_context, page_guidance, feedback, vector)
+    stage2_messages = _stage2_messages(
+        finding, source_relative, source_code, snippets, plan, feedback, vector, vectors
+    )
     stage2_raw = _chat_completion(llm, stage2_messages, metrics)
     patch = _json_from_model(stage2_raw)
     patched_source = str(patch.get("patched_source", ""))
@@ -780,9 +508,6 @@ def _repair_with_llm(
         "attempt": attempt,
         "feedback": feedback or [],
         "snippets": snippets,
-        "database_user_table_context": user_table_context,
-        "identity_binding_context": identity_context,
-        "page_repair_guidance": page_guidance,
         "stage1_messages": stage1_messages,
         "stage1_response": stage1_raw,
         "stage1_plan": plan,
@@ -1176,6 +901,8 @@ def _syntax_check(config: PipelineConfig, path: Path) -> tuple[bool, str]:
     options = _validation_options(config)
     if not bool(options.get("syntax_check", True)):
         return True, "syntax check disabled by configuration"
+    if _java_validation_enabled(config) and path.suffix.lower() == ".jsp":
+        return True, "JSP syntax/compile validation deferred to Tomcat/Jasper runtime request"
     if config.target.language == "php":
         php_binary = str(options.get("php_binary") or options.get("compiler") or "php")
         try:
@@ -1208,7 +935,7 @@ def _syntax_check(config: PipelineConfig, path: Path) -> tuple[bool, str]:
         return completed.returncode == 0, output or f"py_compile exited with {completed.returncode}"
     if config.target.language == "go":
         return _go_syntax_check(config, path)
-    if _java_validation_enabled(config):
+    if _java_validation_enabled(config) and path.suffix.lower() == ".java":
         with tempfile.TemporaryDirectory(prefix="drhl-javac-") as temporary:
             ok, output = _java_compile(config, path, Path(temporary))
             return ok, output
@@ -1255,11 +982,20 @@ def _authorized_regression_passed(
     roles = {role.name: role for role in config.roles}
     authorized = _configured_regression_role(config, roles, vector)
     if authorized is None:
+        oracle_role_names = {
+            str(rule.get("authorized", {}).get("role") or "").strip()
+            for rule in _database_oracle_rules(config, vector)
+            if isinstance(rule.get("authorized"), dict)
+        }
+        oracle_role_names.discard("")
+        if len(oracle_role_names) == 1:
+            authorized = roles.get(next(iter(oracle_role_names)))
+    if authorized is None:
         authorized = next((roles[name] for name in vector.authorized_roles if name in roles), None)
     if authorized is None:
         return False, "authorized role is unavailable for regression validation"
     regression_page = _regression_page(vector)
-    regression_request = _regression_request(vector, regression_page)
+    regression_request = _regression_request(config, vector, regression_page)
     detector = ActiveDetector(config, snapshot)
     try:
         session = detector._session(authorized)
@@ -1287,10 +1023,25 @@ def _regression_page(vector: AttackVector) -> str:
     return (vector.page_overrides[0] if getattr(vector, "page_overrides", []) else vector.page)
 
 
-def _regression_request(vector: AttackVector, page: str) -> RequestSpec:
+def _regression_request(
+    config: PipelineConfig, vector: AttackVector, page: str
+) -> RequestSpec:
     request = vector.request
     referer = page if request.referer == vector.page else request.referer
-    return RequestSpec(request.method, dict(request.params), referer)
+    params = dict(request.params)
+    if vector.category == "horizontal":
+        horizontal_overrides = config.analysis.get("horizontal_overrides", {})
+        if isinstance(horizontal_overrides, dict):
+            for name in vector.identity_parameters:
+                if name not in horizontal_overrides:
+                    continue
+                value = horizontal_overrides[name]
+                if isinstance(value, list):
+                    if not value:
+                        continue
+                    value = value[0]
+                params[name] = value
+    return RequestSpec(request.method, params, referer)
 
 
 def _configured_regression_role(
@@ -1316,6 +1067,447 @@ def _configured_regression_role(
         if pattern and any(re.search(pattern, candidate, re.I) for candidate in page_candidates):
             return roles[role_name]
     return None
+
+
+_ORACLE_PLACEHOLDER = re.compile(r"\{([A-Za-z_][A-Za-z0-9_]*)\}")
+
+
+def _database_oracle_rules(config: PipelineConfig, vector: AttackVector) -> list[dict[str, Any]]:
+    """Return repair-only database/content oracle rules matching *vector*."""
+    raw_rules = _validation_options(config).get("database_oracles", [])
+    if isinstance(raw_rules, dict):
+        raw_rules = raw_rules.get("rules", [])
+    if not isinstance(raw_rules, list):
+        return []
+    candidates: list[str] = []
+    for page in [vector.page, *getattr(vector, "page_overrides", [])]:
+        candidates.extend(_page_match_candidates(page))
+    result: list[dict[str, Any]] = []
+    for raw in raw_rules:
+        if not isinstance(raw, dict):
+            continue
+        category = str(raw.get("category") or "").strip()
+        if category and category != vector.category:
+            continue
+        exact = str(raw.get("page") or "").lstrip("/").replace("\\", "/")
+        pattern = str(raw.get("page_pattern") or raw.get("pattern") or "").strip()
+        if exact and exact not in candidates:
+            continue
+        if pattern and not any(re.search(pattern, candidate, re.I) for candidate in candidates):
+            continue
+        if not exact and not pattern:
+            continue
+        result.append(dict(raw))
+    return result
+
+
+def _database_oracle_is_response_only(config: PipelineConfig, vector: AttackVector) -> bool:
+    """Return whether *vector* intentionally skips database validation."""
+    raw = _validation_options(config).get("database_oracles", {})
+    if not isinstance(raw, dict):
+        return False
+    patterns = raw.get("response_only_patterns", [])
+    if not isinstance(patterns, list):
+        return False
+    candidates: list[str] = []
+    for page in [vector.page, *getattr(vector, "page_overrides", [])]:
+        candidates.extend(_page_match_candidates(page))
+    return any(
+        isinstance(pattern, str)
+        and pattern
+        and any(re.search(pattern, candidate, re.I) for candidate in candidates)
+        for pattern in patterns
+    )
+
+
+def _database_oracle_is_primary(config: PipelineConfig, vector: AttackVector) -> bool:
+    """Return whether a matched database oracle is authoritative for *vector*."""
+    raw = _validation_options(config).get("database_oracles", {})
+    if not isinstance(raw, dict):
+        return False
+    patterns = raw.get("database_primary_patterns", [])
+    if not isinstance(patterns, list):
+        return False
+    candidates: list[str] = []
+    for page in [vector.page, *getattr(vector, "page_overrides", [])]:
+        candidates.extend(_page_match_candidates(page))
+    return any(
+        isinstance(pattern, str)
+        and pattern
+        and any(re.search(pattern, candidate, re.I) for candidate in candidates)
+        for pattern in patterns
+    )
+
+
+def _repair_finding_is_skipped(config: PipelineConfig, finding: Finding) -> tuple[bool, str]:
+    """Match a repair-only exclusion without changing detection findings."""
+    raw_rules = config.repair.get("skip_findings", [])
+    if isinstance(raw_rules, dict):
+        raw_rules = [raw_rules]
+    if not isinstance(raw_rules, list):
+        return False, ""
+    candidates = _page_match_candidates(finding.page)
+    for raw in raw_rules:
+        if not isinstance(raw, dict):
+            continue
+        category = str(raw.get("category") or "").strip()
+        if category and category != finding.category:
+            continue
+        exact = str(raw.get("page") or "").lstrip("/").replace("\\", "/")
+        pattern = str(raw.get("page_pattern") or raw.get("pattern") or "").strip()
+        if exact and exact not in candidates:
+            continue
+        if pattern and not any(re.search(pattern, candidate, re.I) for candidate in candidates):
+            continue
+        if not exact and not pattern:
+            continue
+        reason = str(raw.get("reason") or "matched repair.skip_findings").strip()
+        return True, reason
+    return False, ""
+
+
+def _render_oracle_value(value: Any, context: dict[str, str]) -> Any:
+    if isinstance(value, str):
+        def replace(match: re.Match[str]) -> str:
+            name = match.group(1)
+            if name not in context:
+                raise ValueError(f"database oracle placeholder is undefined: {name}")
+            return context[name]
+
+        return _ORACLE_PLACEHOLDER.sub(replace, value)
+    if isinstance(value, list):
+        return [_render_oracle_value(item, context) for item in value]
+    if isinstance(value, dict):
+        return {
+            str(_render_oracle_value(str(key), context)): _render_oracle_value(item, context)
+            for key, item in value.items()
+        }
+    return value
+
+
+def _oracle_context(rule: dict[str, Any]) -> dict[str, str]:
+    marker = f"DRHLR_{secrets.token_hex(6)}"
+    return {
+        "token": marker,
+        "token1": marker + "_BEFORE",
+        "token2": marker + "_AFTER",
+        "oracle_name": str(rule.get("name") or rule.get("id") or "database_oracle"),
+    }
+
+
+def _resolve_oracle_variables(probe: Any, raw: Any, context: dict[str, str]) -> dict[str, str]:
+    if not isinstance(raw, dict):
+        return context
+    pending = dict(raw)
+    resolved = dict(context)
+    while pending:
+        progressed = False
+        for name, specification in list(pending.items()):
+            try:
+                if isinstance(specification, dict) and specification.get("query") is not None:
+                    query = str(_render_oracle_value(specification["query"], resolved))
+                    value = probe.scalar(query)
+                else:
+                    value = _render_oracle_value(specification, resolved)
+            except ValueError:
+                continue
+            resolved[str(name)] = str(value)
+            del pending[name]
+            progressed = True
+        if not progressed:
+            names = ", ".join(str(name) for name in pending)
+            raise ValueError(f"database oracle variables could not be resolved: {names}")
+    return resolved
+
+
+def _oracle_role(
+    roles: dict[str, Any], configured_name: Any, default_role: Any | None, default_name: str
+) -> tuple[Any | None, str]:
+    name = str(configured_name or default_name or "visitor").strip()
+    if name.casefold() == "visitor":
+        return roles.get(name), name
+    role = roles.get(name) if configured_name else default_role
+    if role is None:
+        raise ValueError(f"database oracle role is unavailable: {name}")
+    return role, name
+
+
+def _oracle_request(
+    vector: AttackVector, phase: dict[str, Any], context: dict[str, str]
+) -> tuple[str, RequestSpec, dict[str, Any]]:
+    raw_request = phase.get("request", {})
+    if not isinstance(raw_request, dict):
+        raise ValueError("database oracle phase.request must be an object")
+    rendered = _render_oracle_value(raw_request, context)
+    page = str(rendered.get("page") or vector.page).lstrip("/")
+    replace_params = bool(rendered.get("replace_params", False))
+    params = {} if replace_params else dict(vector.request.params)
+    request_params = rendered.get("params", {})
+    if not isinstance(request_params, dict):
+        raise ValueError("database oracle request.params must be an object")
+    params.update(request_params)
+    method = str(rendered.get("method") or vector.request.method).upper()
+    referer = rendered.get("referer", vector.request.referer)
+    request = RequestSpec(method, params, str(referer) if referer is not None else None)
+    logged_params = {
+        str(key): ("<redacted>" if re.search(r"pass(word)?|secret|api[_-]?key", str(key), re.I) else value)
+        for key, value in params.items()
+    }
+    cookies = rendered.get("cookies", {})
+    if not isinstance(cookies, dict):
+        raise ValueError("database oracle request.cookies must be an object")
+    cookie_names = sorted(str(key) for key in cookies)
+    return page, request, {
+        "method": method,
+        "page": page,
+        "params": logged_params,
+        "referer": request.referer,
+        "cookie_names": cookie_names,
+    }
+
+
+def _oracle_request_cookies(phase: dict[str, Any], context: dict[str, str]) -> dict[str, str]:
+    raw_request = phase.get("request", {})
+    if not isinstance(raw_request, dict):
+        raise ValueError("database oracle phase.request must be an object")
+    rendered = _render_oracle_value(raw_request, context)
+    cookies = rendered.get("cookies", {})
+    if not isinstance(cookies, dict):
+        raise ValueError("database oracle request.cookies must be an object")
+    return {str(key): str(value) for key, value in cookies.items()}
+
+
+def _oracle_values(value: Any) -> list[str]:
+    if value is None:
+        return []
+    if isinstance(value, list):
+        return [str(item) for item in value]
+    return [str(value)]
+
+
+def _evaluate_oracle_assertions(
+    probe: Any, response: Any, raw: Any, context: dict[str, str]
+) -> tuple[bool, list[dict[str, Any]], str | None, str | None]:
+    if not isinstance(raw, dict):
+        raise ValueError("database oracle phase.assert must be an object")
+    expected = _render_oracle_value(raw, context)
+    body = str(response.text or "")
+    checks: list[dict[str, Any]] = []
+
+    for marker in _oracle_values(expected.get("response_contains")):
+        checks.append({"type": "response_contains", "expected": marker, "passed": marker in body})
+    for marker in _oracle_values(expected.get("response_not_contains")):
+        checks.append({"type": "response_not_contains", "expected": marker, "passed": marker not in body})
+
+    query = str(expected.get("query") or "").strip()
+    observed: str | None = None
+    if query:
+        observed = probe.scalar(query)
+        if "scalar_equals" in expected:
+            wanted = str(expected["scalar_equals"])
+            checks.append({"type": "scalar_equals", "expected": wanted, "observed": observed, "passed": observed == wanted})
+        if "scalar_not_equals" in expected:
+            wanted = str(expected["scalar_not_equals"])
+            checks.append({"type": "scalar_not_equals", "expected": wanted, "observed": observed, "passed": observed != wanted})
+        if bool(expected.get("scalar_zero", False)):
+            checks.append({"type": "scalar_zero", "expected": "0", "observed": observed, "passed": observed.strip() in {"", "0"}})
+        if bool(expected.get("scalar_nonzero", False)):
+            checks.append({"type": "scalar_nonzero", "expected": "nonzero", "observed": observed, "passed": observed.strip() not in {"", "0"}})
+        for marker in _oracle_values(expected.get("scalar_contains")):
+            checks.append({"type": "scalar_contains", "expected": marker, "observed": observed, "passed": marker in observed})
+    if not checks:
+        raise ValueError("database oracle phase.assert contains no supported assertion")
+    return all(bool(item["passed"]) for item in checks), checks, query or None, observed
+
+
+def _run_database_oracle_phase(
+    config: PipelineConfig,
+    snapshot: Snapshot,
+    vector: AttackVector,
+    rule: dict[str, Any],
+    phase_name: str,
+    phase: dict[str, Any],
+    base_context: dict[str, str],
+    default_role: Any | None,
+    default_role_name: str,
+) -> dict[str, Any]:
+    from ..analysis.detector import ActiveDetector
+
+    snapshot.restore()
+    probe = create_database_probe(config.database)
+    context = _resolve_oracle_variables(probe, rule.get("variables", {}), dict(base_context))
+    context = _resolve_oracle_variables(probe, phase.get("variables", {}), context)
+
+    common_setup = rule.get("setup_sql", [])
+    phase_setup = phase.get("setup_sql", [])
+    if not isinstance(common_setup, list) or not isinstance(phase_setup, list):
+        raise ValueError("database oracle setup_sql must be a list")
+    setup_sql = [str(_render_oracle_value(sql, context)) for sql in [*common_setup, *phase_setup]]
+
+    roles = {role.name: role for role in config.roles}
+    role, role_name = _oracle_role(roles, phase.get("role"), default_role, default_role_name)
+    detector = ActiveDetector(config, snapshot)
+    session_before_setup = bool(phase.get("session_before_setup", False))
+    session = detector._session(role) if session_before_setup else None
+    session_request_logs: list[dict[str, Any]] = []
+    try:
+        for sql in setup_sql:
+            probe.execute(sql)
+        if session is None:
+            session = detector._session(role)
+        raw_session_requests = phase.get("session_requests", [])
+        if not isinstance(raw_session_requests, list):
+            raise ValueError("database oracle phase.session_requests must be a list")
+        for raw_session_request in raw_session_requests:
+            if not isinstance(raw_session_request, dict):
+                raise ValueError("database oracle session request must be an object")
+            bootstrap_phase = {"request": raw_session_request}
+            bootstrap_page, bootstrap_request, bootstrap_log = _oracle_request(
+                vector, bootstrap_phase, context
+            )
+            bootstrap_cookies = _oracle_request_cookies(bootstrap_phase, context)
+            if bootstrap_cookies:
+                session.cookies.update(bootstrap_cookies)
+            bootstrap_response = detector._send(
+                session, bootstrap_page, bootstrap_request, role=role
+            )
+            bootstrap_log["response"] = {
+                "status_code": int(bootstrap_response.status_code),
+                "url": str(bootstrap_response.url),
+                "body_length": len(str(bootstrap_response.text or "")),
+            }
+            session_request_logs.append(bootstrap_log)
+        page, request, request_log = _oracle_request(vector, phase, context)
+        request_cookies = _oracle_request_cookies(phase, context)
+        if request_cookies:
+            session.cookies.update(request_cookies)
+        response = detector._send(session, page, request, role=role)
+        passed, checks, query, observed = _evaluate_oracle_assertions(
+            probe, response, phase.get("assert", {}), context
+        )
+        return {
+            "phase": phase_name,
+            "role": role_name,
+            "session_before_setup": session_before_setup,
+            "setup_sql": setup_sql,
+            "session_requests": session_request_logs,
+            "request": request_log,
+            "response": {
+                "status_code": int(response.status_code),
+                "url": str(response.url),
+                "body_length": len(str(response.text or "")),
+            },
+            "query": query,
+            "observed": observed,
+            "assertions": checks,
+            "passed": passed,
+        }
+    finally:
+        if session is not None:
+            session.close()
+
+
+def _database_validation(
+    config: PipelineConfig,
+    snapshot: Snapshot,
+    finding: Finding,
+    vector: AttackVector,
+) -> tuple[bool, dict[str, Any]]:
+    rules = _database_oracle_rules(config, vector)
+    if not rules:
+        response_only = _database_oracle_is_response_only(config, vector)
+        return True, {
+            "oracle_version": 2,
+            "scope": "repair_only",
+            "applicable": False,
+            "passed": True,
+            "status": "response_only" if response_only else "not_configured",
+            "display_as_passed": response_only,
+            "message": (
+                "database validation intentionally skipped; response oracle retained"
+                if response_only
+                else "no repair database oracle matched; response oracle retained"
+            ),
+            "dimensions": {
+                "vulnerability_blocking": {"phase": "attack", "applicable": False, "passed": True},
+                "regression": {"phase": "authorized", "applicable": False, "passed": True},
+            },
+            "scenarios": [],
+        }
+
+    roles = {role.name: role for role in config.roles}
+    attack_default = roles.get(finding.actor) if finding.actor.casefold() != "visitor" else roles.get("visitor")
+    authorized_default = _configured_regression_role(config, roles, vector)
+    if authorized_default is None:
+        authorized_default = next((roles[name] for name in vector.authorized_roles if name in roles), None)
+    authorized_name = getattr(authorized_default, "name", "")
+    scenarios: list[dict[str, Any]] = []
+
+    for index, rule in enumerate(rules, start=1):
+        name = str(rule.get("name") or rule.get("id") or f"database_oracle_{index}")
+        operation = str(rule.get("operation") or "crud").lower()
+        scenario: dict[str, Any] = {"name": name, "operation": operation, "passed": False, "phases": []}
+        context = _oracle_context(rule)
+        try:
+            attack = rule.get("attack")
+            authorized = rule.get("authorized")
+            if not isinstance(attack, dict) or not isinstance(authorized, dict):
+                raise ValueError("database oracle requires attack and authorized phase objects")
+            scenario["phases"].append(_run_database_oracle_phase(
+                config, snapshot, vector, rule, "attack", attack, context,
+                attack_default, finding.actor,
+            ))
+            scenario["phases"].append(_run_database_oracle_phase(
+                config, snapshot, vector, rule, "authorized", authorized, context,
+                authorized_default, authorized_name,
+            ))
+            scenario["passed"] = all(bool(phase["passed"]) for phase in scenario["phases"])
+        except Exception as exc:
+            scenario["error"] = f"{type(exc).__name__}: {exc}"
+        finally:
+            try:
+                snapshot.restore()
+            except Exception as exc:
+                scenario["passed"] = False
+                scenario["restore_error"] = f"{type(exc).__name__}: {exc}"
+        scenarios.append(scenario)
+
+    def phase_passed(phase_name: str) -> bool:
+        for scenario in scenarios:
+            if scenario.get("error") or scenario.get("restore_error"):
+                return False
+            phases = [
+                phase for phase in scenario.get("phases", [])
+                if phase.get("phase") == phase_name
+            ]
+            if not phases or not all(bool(phase.get("passed")) for phase in phases):
+                return False
+        return True
+
+    attack_passed = phase_passed("attack")
+    authorized_passed = phase_passed("authorized")
+    passed = attack_passed and authorized_passed
+    return passed, {
+        "oracle_version": 2,
+        "scope": "repair_only",
+        "applicable": True,
+        "passed": passed,
+        "status": "passed" if passed else "failed",
+        "dimensions": {
+            "vulnerability_blocking": {
+                "phase": "attack",
+                "applicable": True,
+                "passed": attack_passed,
+            },
+            "regression": {
+                "phase": "authorized",
+                "applicable": True,
+                "passed": authorized_passed,
+            },
+        },
+        "scenarios": scenarios,
+    }
+
 
 def _run_validation_hook(options: dict[str, Any], *names: str) -> tuple[bool, str]:
     value: Any = None
@@ -1360,15 +1552,30 @@ def _runtime_validation(
     snapshot: Snapshot | None,
     source: Path,
     patched_source: str,
+    finding: Finding,
     vector: AttackVector | None,
-) -> tuple[bool, bool, str]:
+    validation_vectors: list[AttackVector] | None = None,
+) -> tuple[bool, bool, bool, str, dict[str, Any]]:
+    database_not_run = {
+        "oracle_version": 2,
+        "scope": "repair_only",
+        "applicable": False,
+        "passed": False,
+        "status": "not_run",
+        "dimensions": {
+            "vulnerability_blocking": {"phase": "attack", "applicable": False, "passed": False},
+            "regression": {"phase": "authorized", "applicable": False, "passed": False},
+        },
+        "scenarios": [],
+    }
     options = _validation_options(config)
+    active_vectors = list(validation_vectors or ([vector] if vector is not None else []))
     if not bool(options.get("temporary_apply_to_source", False)):
-        return False, False, "runtime validation disabled; set repair.validation.temporary_apply_to_source=true"
-    if vector is None:
-        return False, False, "attack vector is unavailable for runtime validation"
+        return False, False, False, "runtime validation disabled; set repair.validation.temporary_apply_to_source=true", database_not_run
+    if not active_vectors:
+        return False, False, False, "attack vector is unavailable for runtime validation", database_not_run
     if snapshot is None:
-        return False, False, "database snapshot is unavailable for runtime validation"
+        return False, False, False, "database snapshot is unavailable for runtime validation", database_not_run
     from ..analysis.detector import ActiveDetector
 
     original = source.read_bytes()
@@ -1381,25 +1588,105 @@ def _runtime_validation(
             java_reload_needed = True
             compile_ok, apply_message, class_backups = _compile_and_reload_java_patch(config, source)
             if not compile_ok:
-                return False, False, f"runtime Java deployment failed: {apply_message}"
+                return False, False, False, f"runtime Java deployment failed: {apply_message}", database_not_run
         elif options.get("reload_command") or options.get("after_apply_command"):
             hook_ok, hook_message = _run_validation_hook(options, "reload_command", "after_apply_command")
             apply_message = f"{apply_message}; reload=({hook_message})"
             if not hook_ok:
-                return False, False, f"runtime deployment hook failed: {hook_message}"
+                return False, False, False, f"runtime deployment hook failed: {hook_message}", database_not_run
         detector = ActiveDetector(config, snapshot)
-        exploit_findings = detector.run([vector])
-        exploit_blocked = bool(exploit_findings) and all(item.status != "vulnerable" for item in exploit_findings)
-        regression_passed, regression_message = _authorized_regression_passed(config, snapshot, vector)
-        exploit_message = "; ".join(
-            f"{item.actor}:{item.status}" for item in exploit_findings
-        ) or "no exploit findings"
-        return exploit_blocked, regression_passed, (
-            f"deployment=({apply_message}); exploit=({exploit_message}); "
-            f"regression=({regression_message})"
+        exploit_findings: list[Finding] = []
+        response_vector_details: list[dict[str, Any]] = []
+        response_exploit_checks: list[bool] = []
+        response_regression_checks: list[bool] = []
+        regression_messages: list[str] = []
+        for active_vector in active_vectors:
+            vector_findings = detector.run([active_vector])
+            vector_exploit_passed = bool(vector_findings) and all(
+                item.status != "vulnerable" for item in vector_findings
+            )
+            vector_regression_passed, vector_regression_message = _authorized_regression_passed(
+                config, snapshot, active_vector
+            )
+            operation = _vector_operation(active_vector)
+            exploit_findings.extend(vector_findings)
+            response_exploit_checks.append(vector_exploit_passed)
+            response_regression_checks.append(vector_regression_passed)
+            regression_messages.append(f"{operation}: {vector_regression_message}")
+            response_vector_details.append({
+                **_vector_summary(active_vector),
+                "vulnerability_blocking_passed": vector_exploit_passed,
+                "regression_passed": vector_regression_passed,
+                "findings": [item.to_dict() for item in vector_findings],
+                "regression_evidence": vector_regression_message,
+            })
+        response_exploit_passed = all(response_exploit_checks)
+        response_regression_passed = all(response_regression_checks)
+        regression_message = "; ".join(regression_messages)
+        primary_vector = vector or active_vectors[0]
+        database_passed, database_details = _database_validation(
+            config, snapshot, finding, primary_vector
         )
+        database_details["response_vectors"] = response_vector_details
+        database_dimensions = database_details.get("dimensions", {})
+        database_attack_passed = bool(
+            database_dimensions.get("vulnerability_blocking", {}).get("passed", database_passed)
+        )
+        database_regression_passed = bool(
+            database_dimensions.get("regression", {}).get("passed", database_passed)
+        )
+        database_applicable = bool(database_details.get("applicable"))
+        database_primary = database_applicable and all(
+            _database_oracle_is_primary(config, item) for item in active_vectors
+        )
+        response_oracle_applicable = not database_primary
+        exploit_blocked = database_attack_passed and (
+            response_exploit_passed or not response_oracle_applicable
+        )
+        regression_passed = database_regression_passed and (
+            response_regression_passed or not response_oracle_applicable
+        )
+        database_details["combined_dimensions"] = {
+            "vulnerability_blocking": {
+                "passed": exploit_blocked,
+                "response_oracle_applicable": response_oracle_applicable,
+                "response_oracle_passed": response_exploit_passed,
+                "database_oracle_applicable": database_applicable,
+                "database_oracle_passed": database_attack_passed,
+            },
+            "regression": {
+                "passed": regression_passed,
+                "response_oracle_applicable": response_oracle_applicable,
+                "response_oracle_passed": response_regression_passed,
+                "database_oracle_applicable": database_applicable,
+                "database_oracle_passed": database_regression_passed,
+            },
+        }
+        exploit_messages: list[str] = []
+        finding_offset = 0
+        for active_vector, detail in zip(active_vectors, response_vector_details):
+            count = len(detail["findings"])
+            vector_findings = exploit_findings[finding_offset:finding_offset + count]
+            finding_offset += count
+            evidence = ", ".join(
+                f"{item.actor}:{item.status}" for item in vector_findings
+            ) or "no exploit findings"
+            exploit_messages.append(f"{_vector_operation(active_vector)}: {evidence}")
+        exploit_message = "; ".join(exploit_messages)
+        database_attack_label = "passed" if database_attack_passed else "failed"
+        database_regression_label = "passed" if database_regression_passed else "failed"
+        if not database_details.get("applicable"):
+            neutral_label = "passed" if database_details.get("display_as_passed") else "not_applicable"
+            database_attack_label = database_regression_label = neutral_label
+        return exploit_blocked, regression_passed, database_passed, (
+            f"deployment=({apply_message}); "
+            f"vulnerability_blocking=(response={response_exploit_passed}; "
+            f"database={database_attack_label}; evidence={exploit_message}); "
+            f"regression=(response={response_regression_passed}; "
+            f"database={database_regression_label}; evidence={regression_message})"
+        ), database_details
     except Exception as exc:
-        return False, False, f"runtime validation error: {type(exc).__name__}: {exc}"
+        return False, False, False, f"runtime validation error: {type(exc).__name__}: {exc}", database_not_run
     finally:
         try:
             source.write_bytes(original)
@@ -1416,6 +1703,45 @@ def _runtime_validation(
                 pass
 
 
+def _progress_validation_dimensions(
+    syntax_ok: bool,
+    exploit_blocked: bool,
+    regression_passed: bool,
+    details: dict[str, Any],
+) -> None:
+    if not syntax_ok:
+        progress("repair validation: vulnerability blocking=skipped (syntax/compile failed)")
+        progress("repair validation: regression=skipped (syntax/compile failed)")
+        return
+
+    combined = details.get("combined_dimensions", {})
+    for name, passed in (
+        ("vulnerability_blocking", exploit_blocked),
+        ("regression", regression_passed),
+    ):
+        dimension = combined.get(name, {})
+        response_passed = bool(dimension.get("response_oracle_passed", passed))
+        response_applicable = bool(dimension.get("response_oracle_applicable", True))
+        database_applicable = bool(
+            dimension.get("database_oracle_applicable", details.get("applicable", False))
+        )
+        database_passed = bool(
+            dimension.get("database_oracle_passed", details.get("passed", passed))
+        )
+        response_label = (
+            "passed" if response_passed else "failed"
+        ) if response_applicable else "not_applicable"
+        if database_applicable or details.get("display_as_passed"):
+            database_label = "passed" if database_passed else "failed"
+        else:
+            database_label = "not_applicable"
+        display_name = name.replace("_", " ")
+        progress(
+            f"repair validation: {display_name}={'passed' if passed else 'failed'} "
+            f"(response oracle={response_label}; database oracle={database_label})"
+        )
+
+
 def _repair_summary(results: list[RepairResult]) -> dict[str, int]:
     successful_attempt_buckets = {1: 0, 2: 0, 3: 0}
     for item in results:
@@ -1429,7 +1755,7 @@ def _repair_summary(results: list[RepairResult]) -> dict[str, int]:
         for attempt in item.attempt_details
         if attempt.output and not attempt.successful
     )
-    return {
+    summary = {
         "Repair Items": len(results),
         "Total Repair Attempts": sum(item.attempts for item in results),
         "Patch Generation Attempts": sum(len(item.attempt_details) for item in results),
@@ -1438,12 +1764,60 @@ def _repair_summary(results: list[RepairResult]) -> dict[str, int]:
         "Syntax / Compile OK": sum(item.syntax_compile_ok for item in results),
         "Exploit Blocked": sum(item.exploit_blocked for item in results),
         "Regression Passed": sum(item.regression_passed for item in results),
+        "Database Validation Applied": sum(item.database_validation_applied for item in results),
+        "Database Validation Passed": sum(item.database_validation_passed for item in results),
         "Successful Repairs": sum(1 for item in results if item.successful),
         "Failed Repairs": sum(1 for item in results if not item.successful),
         "Successful on Attempt 1": successful_attempt_buckets.get(1, 0),
         "Successful on Attempt 2": successful_attempt_buckets.get(2, 0),
         "Successful on Attempt 3": successful_attempt_buckets.get(3, 0),
     }
+    covered = [item.coverage for item in results if item.coverage is not None]
+    if covered:
+        summary["Covered Vulnerable Findings"] = sum(
+            int(item.get("covered_vulnerable_findings", 0)) for item in covered
+        )
+        summary["Aggregated Attack Vectors"] = sum(
+            int(item.get("aggregated_attack_vectors", 0)) for item in covered
+        )
+    return summary
+
+
+def _llm_retry_feedback(
+    attempt_message: str,
+    *,
+    syntax_ok: bool | None = None,
+    exploit_blocked: bool | None = None,
+    regression_passed: bool | None = None,
+) -> str:
+    """Return only dimension-level failure reasons; never expose oracle evidence."""
+    lowered = attempt_message.lower()
+    if syntax_ok is None:
+        syntax_ok = not (
+            "syntax=(failed" in lowered
+            or "syntax/compile failed" in lowered
+            or lowered.startswith("attempt error:")
+        )
+    if exploit_blocked is None:
+        exploit_blocked = any(
+            marker in lowered
+            for marker in ("exploit=(blocked", "vulnerability_blocking=(response=true")
+        ) and "database=failed" not in lowered
+    if regression_passed is None:
+        regression_passed = any(
+            marker in lowered
+            for marker in ("regression=(passed", "regression=(response=true")
+        ) and "regression=(response=true; database=failed" not in lowered
+
+    failures: list[str] = []
+    if not syntax_ok:
+        failures.append("The syntax/compile check failed.")
+    else:
+        if not exploit_blocked:
+            failures.append("The vulnerability was not blocked.")
+        if not regression_passed:
+            failures.append("The regression test did not pass.")
+    return " ".join(failures) or "The previous patch failed validation."
 
 
 def write_repair_report(results: list[RepairResult], output: Path) -> None:
@@ -1452,6 +1826,13 @@ def write_repair_report(results: list[RepairResult], output: Path) -> None:
         "# DRHL Repair Report",
         "",
         f"- Repair Items: {summary['Repair Items']}",
+    ]
+    if "Covered Vulnerable Findings" in summary:
+        lines.extend([
+            f"- Covered Vulnerable Findings: {summary['Covered Vulnerable Findings']}",
+            f"- Aggregated Attack Vectors: {summary['Aggregated Attack Vectors']}",
+        ])
+    lines.extend([
         f"- Total Repair Attempts: {summary['Total Repair Attempts']}",
         f"- Patch Generation Attempts: {summary['Patch Generation Attempts']}",
         f"- Patches Generated: {summary['Patches Generated']}",
@@ -1459,6 +1840,8 @@ def write_repair_report(results: list[RepairResult], output: Path) -> None:
         f"- Syntax / Compile OK: {summary['Syntax / Compile OK']}",
         f"- Exploit Blocked: {summary['Exploit Blocked']}",
         f"- Regression Passed: {summary['Regression Passed']}",
+        f"- Database Validation Applied: {summary['Database Validation Applied']}",
+        f"- Database Validation Passed: {summary['Database Validation Passed']}",
         f"- Successful Repairs: {summary['Successful Repairs']}",
         f"- Failed Repairs: {summary['Failed Repairs']}",
         f"- Successful on Attempt 1: {summary['Successful on Attempt 1']}",
@@ -1467,19 +1850,30 @@ def write_repair_report(results: list[RepairResult], output: Path) -> None:
         "",
         "> Patches Generated counts every generated patch file, including patches that later failed syntax, exploit-blocking, or regression validation.",
         "> Total Repair Attempts counts how many LLM repair attempts were consumed across all repair items, including failed attempts and items that exhausted the retry budget.",
-        "> A repair is counted as successful only when syntax/compile, exploit-blocking, and regression validation all pass for the same generated patch.",
+        "> Validation has three dimensions: syntax/compile, vulnerability blocking, and authorized regression. For the latter two, both the response oracle and each matching database oracle phase must pass.",
         "> Runtime validation may temporarily apply a patch to the source tree, but the original web application files are restored before this report is written.",
         "",
         "## Details",
         "",
-    ]
+    ])
     if not results:
         lines.extend(["No repair candidates were generated.", ""])
     for item in results:
-        lines.extend([
+        detail_lines = [
             f"### `{item.page}`",
             "",
             f"- Category: {item.category}",
+        ]
+        if item.coverage is not None:
+            operations = ", ".join(
+                str(value) for value in item.coverage.get("validated_operations", [])
+            ) or "none"
+            detail_lines.extend([
+                f"- Covered Vulnerable Findings: {item.coverage.get('covered_vulnerable_findings', 0)}",
+                f"- Aggregated Attack Vectors: {item.coverage.get('aggregated_attack_vectors', 0)}",
+                f"- Validated Operations: {operations}",
+            ])
+        detail_lines.extend([
             f"- Status: {item.status}",
             f"- Attempts: {item.attempts}",
             f"- Patches Generated: {item.patches_generated}",
@@ -1487,15 +1881,18 @@ def write_repair_report(results: list[RepairResult], output: Path) -> None:
             f"- Syntax / Compile OK: {item.syntax_compile_ok}",
             f"- Exploit Blocked: {item.exploit_blocked}",
             f"- Regression Passed: {item.regression_passed}",
+            f"- Database Validation Applied: {item.database_validation_applied}",
+            f"- Database Validation Passed: {item.database_validation_passed}",
             f"- Successful: {str(item.successful).lower()}",
             f"- Message: {item.message}",
             "",
         ])
+        lines.extend(detail_lines)
         for attempt in item.attempt_details:
             lines.extend([
                 f"  - Attempt {attempt.attempt}: syntax={attempt.syntax_compile_ok}, "
                 f"exploit_blocked={attempt.exploit_blocked}, regression={attempt.regression_passed}, "
-                f"successful={attempt.successful}",
+                f"database_validation={attempt.database_validation_passed}, successful={attempt.successful}",
                 f"    - Message: {attempt.message}",
             ])
         lines.append("")
@@ -1514,18 +1911,25 @@ def create_repairs(
 ) -> list[RepairResult]:
     output_root = config.run_dir / str(config.repair.get("output_dir", "repair/files"))
     source_map = dict(graph.get("source_map", {}))
-    vector_lookup: dict[tuple[str, str], AttackVector] = {}
+    validation = _validation_options(config)
+    aggregate_vectors = bool(validation.get("aggregate_vectors_by_repair_item", False))
+    vector_lookup: dict[tuple[str, str], list[AttackVector]] = {}
     for vector in vectors or []:
         for page_candidate in [vector.page, *getattr(vector, "page_overrides", [])]:
             for match_candidate in _page_match_candidates(page_candidate):
-                vector_lookup[(vector.category, match_candidate)] = vector
+                bucket = vector_lookup.setdefault((vector.category, match_candidate), [])
+                if vector not in bucket:
+                    bucket.append(vector)
     results: list[RepairResult] = []
     processed: set[tuple[str, str]] = set()
-    validation = _validation_options(config)
     max_attempts = max(1, int(validation.get("max_attempts", 3)))
 
     for finding in findings:
         if finding.status != "vulnerable":
+            continue
+        skipped, skip_reason = _repair_finding_is_skipped(config, finding)
+        if skipped:
+            progress(f"Skipping repair for {finding.category}: {finding.page} ({skip_reason})")
             continue
         key = (finding.category, finding.page)
         if key in processed:
@@ -1550,11 +1954,30 @@ def create_repairs(
 
         relative = source.relative_to(config.target.source_root.resolve())
         source_relative = relative.as_posix()
-        vector = None
+        matched_vectors: list[AttackVector] = []
         for match_candidate in _page_match_candidates(finding.page):
-            vector = vector_lookup.get((finding.category, match_candidate))
-            if vector is not None:
-                break
+            for matched in vector_lookup.get((finding.category, match_candidate), []):
+                if matched not in matched_vectors:
+                    matched_vectors.append(matched)
+        vector = (
+            matched_vectors[0] if aggregate_vectors and matched_vectors
+            else matched_vectors[-1] if matched_vectors
+            else None
+        )
+        validation_vectors = matched_vectors if aggregate_vectors else None
+        coverage = None
+        if aggregate_vectors:
+            operations = list(dict.fromkeys(_vector_operation(item) for item in matched_vectors))
+            coverage = {
+                "covered_vulnerable_findings": sum(
+                    1 for item in findings
+                    if item.status == "vulnerable"
+                    and item.category == finding.category
+                    and item.page == finding.page
+                ),
+                "aggregated_attack_vectors": len(matched_vectors),
+                "validated_operations": operations,
+            }
         attempts: list[RepairAttempt] = []
         feedback: list[str] = []
         final_output: Path | None = None
@@ -1578,20 +2001,45 @@ def create_repairs(
                     attempt=attempt_number,
                     feedback=feedback,
                     vector=vector,
+                    vectors=validation_vectors,
                 )
                 output = output_root / f"attempt-{attempt_number}" / relative
                 output.parent.mkdir(parents=True, exist_ok=True)
                 output.write_text(patched, encoding="utf-8")
                 syntax_ok, syntax_message = _syntax_check(config, output)
+                progress(
+                    f"repair validation: syntax/compile={'passed' if syntax_ok else 'failed'}"
+                )
                 if syntax_ok:
-                    exploit_ok, regression_ok, runtime_message = _runtime_validation(
-                        config, snapshot, source, patched, vector
+                    exploit_ok, regression_ok, database_ok, runtime_message, database_details = _runtime_validation(
+                        config, snapshot, source, patched, finding, vector,
+                        validation_vectors=validation_vectors,
                     )
                 else:
-                    exploit_ok, regression_ok = False, False
+                    exploit_ok, regression_ok, database_ok = False, False, False
                     runtime_message = "runtime validation skipped because syntax/compile failed"
+                    database_details = {
+                        "oracle_version": 2,
+                        "scope": "repair_only",
+                        "applicable": False,
+                        "passed": False,
+                        "status": "skipped",
+                        "message": "syntax/compile failed",
+                        "dimensions": {
+                            "vulnerability_blocking": {
+                                "phase": "attack", "applicable": False, "passed": False,
+                            },
+                            "regression": {
+                                "phase": "authorized", "applicable": False, "passed": False,
+                            },
+                        },
+                        "scenarios": [],
+                    }
                 successful = syntax_ok and exploit_ok and regression_ok
                 attempt_message = f"syntax=({syntax_message}); {runtime_message}"
+                _progress_validation_dimensions(
+                    syntax_ok, exploit_ok, regression_ok, database_details
+                )
                 attempts.append(RepairAttempt(
                     attempt=attempt_number,
                     output=str(output),
@@ -1602,15 +2050,24 @@ def create_repairs(
                     message=attempt_message,
                     prompt_artifact=str(prompt_artifact),
                     plan=json.dumps(plan, ensure_ascii=False),
+                    database_validation_passed=database_ok,
+                    database_validation=database_details,
                 ))
                 final_output = output
                 final_plan = plan
                 final_prompt = prompt_artifact
                 if successful:
                     status = "successful_repair"
-                    message = "syntax/compile, exploit blocking, and regression validation all passed"
+                    message = (
+                        "syntax/compile, vulnerability blocking, and regression validation all passed"
+                    )
                     break
-                feedback.append(attempt_message)
+                feedback.append(_llm_retry_feedback(
+                    attempt_message,
+                    syntax_ok=syntax_ok,
+                    exploit_blocked=exploit_ok,
+                    regression_passed=regression_ok,
+                ))
             except Exception as exc:
                 attempt_message = f"attempt error: {type(exc).__name__}: {exc}"
                 attempts.append(RepairAttempt(
@@ -1622,7 +2079,12 @@ def create_repairs(
                     successful=False,
                     message=attempt_message,
                 ))
-                feedback.append(attempt_message)
+                feedback.append(_llm_retry_feedback(
+                    attempt_message,
+                    syntax_ok=False,
+                    exploit_blocked=False,
+                    regression_passed=False,
+                ))
 
         try:
             if source.read_bytes() != original_source_bytes:
@@ -1646,17 +2108,35 @@ def create_repairs(
             syntax_compile_ok=sum(1 for attempt in attempts if attempt.syntax_compile_ok),
             exploit_blocked=sum(1 for attempt in attempts if attempt.exploit_blocked),
             regression_passed=sum(1 for attempt in attempts if attempt.regression_passed),
+            database_validation_applied=sum(
+                1 for attempt in attempts if attempt.database_validation.get("applicable")
+            ),
+            database_validation_passed=sum(
+                1 for attempt in attempts
+                if attempt.database_validation.get("applicable") and attempt.database_validation_passed
+            ),
             successful=any(attempt.successful for attempt in attempts),
             validation_artifact=str(validation_artifact),
             attempt_details=attempts,
+            coverage=coverage,
         )
-        write_json(validation_artifact, asdict(result))
+        write_json(validation_artifact, _repair_result_dict(result))
         results.append(result)
     return results
 
 
+def _repair_result_dict(result: RepairResult) -> dict[str, Any]:
+    data = asdict(result)
+    if data.get("coverage") is None:
+        data.pop("coverage", None)
+    return data
+
+
 def serialize_repairs(results: list[RepairResult]) -> dict[str, Any]:
-    return {"summary": _repair_summary(results), "repairs": [asdict(result) for result in results]}
+    return {
+        "summary": _repair_summary(results),
+        "repairs": [_repair_result_dict(result) for result in results],
+    }
 
 
 

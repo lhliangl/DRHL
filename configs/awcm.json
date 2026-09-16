@@ -183,7 +183,9 @@
         "memid"
       ],
       "access_control_database_fields": [
+        "awcm_members.id",
         "awcm_members.level",
+        "awcm_online.memid",
         "awcm_member_pms.sender",
         "awcm_member_pms.reciever",
         "awcm_topics_topics.author",
@@ -191,13 +193,16 @@
         "awcm_lessons_lessons.author",
         "awcm_pro_pro.author",
         "awcm_images_images.author",
-        "awcm_videos_videos.author",
         "awcm_sounds_sounds.author",
         "awcm_flashs_flashs.author",
         "awcm_weblinks_sites.author"
       ],
       "validated_function_name_patterns": [
         "^f_find_member$"
+      ],
+      "termination_patterns": [
+        "(?s)\\$member_level\\s*!==?\\s*['\"]admin['\"].*\\bexit\\b",
+        "(?s)\\$_SESSION\\[['\"]awcm_cp['\"]\\].*(?:login\\.php|\\bexit\\b)"
       ]
     },
     "active_detection": true,
@@ -217,6 +222,7 @@
     },
     "oracle": {
       "timeout": 10,
+      "csrf_token_parameters": [],
       "denied_statuses": [
         401,
         403
@@ -243,6 +249,17 @@
       ],
       "authenticated_public_page_patterns": [
         "^send_[a-z_]+\\.php(?:\\?|$)"
+      ],
+      "redirect_markers": [
+        "login",
+        "signin",
+        "warning",
+        "warn",
+        "error",
+        "denied",
+        "forbidden",
+        "nopermission",
+        "index.php"
       ]
     },
     "static_exclude_patterns": [
@@ -276,7 +293,7 @@
       "provider": "openai_compatible",
       "base_url": "https://api.deepseek.com/v1",
       "model": "deepseek-v4-flash",
-      "api_key": "your-api-key",
+      "api_key": "env:DRHL_DEEPSEEK_API_KEY",
       "temperature": 0.1,
       "timeout": 120,
       "response_format_json": true,
@@ -288,8 +305,139 @@
       "syntax_check": true,
       "php_binary": "D:/phpStudy/PHPTutorial/php/php-5.2.17/php.exe",
       "syntax_timeout": 30,
-      "temporary_apply_to_source": true
+      "temporary_apply_to_source": true,
+      "database_oracles": [
+        {
+          "name": "AWCM-GT-001-avatar-form-read",
+          "page_pattern": "^m_cp_avatar\\.php\\?KeepThis(?:=|&|$)",
+          "category": "authenticated_only",
+          "operation": "read",
+          "attack": {
+            "role": "visitor",
+            "request": {
+              "page": "m_cp_avatar.php?KeepThis=true&TB_iframe=true&height=400&width=500",
+              "method": "GET",
+              "replace_params": true,
+              "params": {
+                "KeepThis": "true",
+                "TB_iframe": "true",
+                "height": "400",
+                "width": "500"
+              },
+              "referer": "member_cp.php"
+            },
+            "assert": {
+              "response_not_contains": "name=\"avatar\""
+            }
+          },
+          "authorized": {
+            "role": "user1",
+            "request": {
+              "page": "m_cp_avatar.php?KeepThis=true&TB_iframe=true&height=400&width=500",
+              "method": "GET",
+              "replace_params": true,
+              "params": {
+                "KeepThis": "true",
+                "TB_iframe": "true",
+                "height": "400",
+                "width": "500"
+              },
+              "referer": "member_cp.php"
+            },
+            "assert": {
+              "response_contains": "name=\"avatar\""
+            }
+          }
+        },
+        {
+          "name": "AWCM-GT-002-admin-profile-read",
+          "page_pattern": "^member\\.php\\?id(?:=|&|$)",
+          "category": "vertical",
+          "operation": "read",
+          "variables": {
+            "admin_id": {
+              "query": "SELECT id FROM awcm_members WHERE email='admin@qq.com' LIMIT 1"
+            }
+          },
+          "setup_sql": [
+            "UPDATE awcm_members SET title='{token}' WHERE id={admin_id}"
+          ],
+          "attack": {
+            "role": "user1",
+            "request": {
+              "page": "member.php?id={admin_id}",
+              "method": "GET",
+              "replace_params": true,
+              "params": {
+                "id": "{admin_id}"
+              },
+              "referer": "online.php"
+            },
+            "assert": {
+              "response_not_contains": "{token}"
+            }
+          },
+          "authorized": {
+            "role": "admin",
+            "request": {
+              "page": "member.php?id={admin_id}",
+              "method": "GET",
+              "replace_params": true,
+              "params": {
+                "id": "{admin_id}"
+              },
+              "referer": "online.php"
+            },
+            "assert": {
+              "response_contains": "{token}"
+            }
+          }
+        },
+        {
+          "name": "AWCM-GT-003-member-profile-read",
+          "page_pattern": "^member\\.php\\?id(?:=|&|$)",
+          "category": "horizontal",
+          "operation": "read",
+          "variables": {
+            "target_user_id": {
+              "query": "SELECT id FROM awcm_members WHERE email='user2@qq.com' LIMIT 1"
+            }
+          },
+          "setup_sql": [
+            "UPDATE awcm_members SET signature='{token}' WHERE id={target_user_id}"
+          ],
+          "attack": {
+            "role": "user1",
+            "request": {
+              "page": "member.php?id={target_user_id}",
+              "method": "GET",
+              "replace_params": true,
+              "params": {
+                "id": "{target_user_id}"
+              },
+              "referer": "online.php"
+            },
+            "assert": {
+              "response_not_contains": "{token}"
+            }
+          },
+          "authorized": {
+            "role": "user2",
+            "request": {
+              "page": "member.php?id={target_user_id}",
+              "method": "GET",
+              "replace_params": true,
+              "params": {
+                "id": "{target_user_id}"
+              },
+              "referer": "online.php"
+            },
+            "assert": {
+              "response_contains": "{token}"
+            }
+          }
+        }
+      ]
     }
   }
 }
-

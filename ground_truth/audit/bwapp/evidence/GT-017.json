@@ -1,0 +1,40 @@
+{
+  "gt_id": "GT-017",
+  "app": "bwapp",
+  "verified_at": "2026-09-06T04:57:57.836819+00:00",
+  "verdict": "vulnerable",
+  "summary": "visitor GET install.php returned 200 with the installer link (installer_link_exposed=True); the install action was invoked as visitor and completed (installed=True); database restored afterwards.",
+  "sql_statements": [
+    {
+      "kind": "execute",
+      "sql": "DROP DATABASE bwapp"
+    },
+    {
+      "kind": "scalar",
+      "sql": "SELECT COUNT(*) FROM bwapp.users"
+    }
+  ],
+  "steps": [
+    {
+      "kind": "replay",
+      "role": "visitor (no login)",
+      "request": "GET install.php",
+      "status_code": 200,
+      "installer_link_exposed": true,
+      "body_saved": "GT-017_gt017_visitor_install_page.html"
+    },
+    {
+      "kind": "instrument",
+      "precondition": "DROP DATABASE bwapp (fresh-install simulation)"
+    },
+    {
+      "kind": "replay",
+      "role": "visitor (no login)",
+      "request": "GET install.php?install=yes",
+      "status_code": 200,
+      "installer_action_completed": true,
+      "recreated_users_table_rows": "2",
+      "body_saved": "GT-017_gt017_visitor_install_action.html"
+    }
+  ]
+}

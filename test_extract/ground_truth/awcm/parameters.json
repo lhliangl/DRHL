@@ -1,0 +1,76 @@
+{
+  "app": "awcm",
+  "language": "php",
+  "source_root": "D:/phpStudy/PHPTutorial/WWW/awcm",
+  "reviewed_at": "2026-07-05",
+  "method": "manual source review",
+  "principle": "better_to_miss_than_wrong",
+  "parameters": [
+    {
+      "name": "$member",
+      "source": "session",
+      "kind": "identity",
+      "files": [
+        "header.php"
+      ],
+      "rationale": "Represents the current authenticated user ID; sourced from $_SESSION['awcm_member'] or $_COOKIE['awcm_member'] in header.php lines 49-62."
+    },
+    {
+      "name": "$_SESSION['awcm_member']",
+      "source": "session",
+      "kind": "identity",
+      "files": [
+        "header.php"
+      ],
+      "rationale": "Session variable storing authenticated member ID; used as authoritative identity source in header.php line 51."
+    },
+    {
+      "name": "$_COOKIE['awcm_member']",
+      "source": "request",
+      "kind": "identity",
+      "files": [
+        "header.php"
+      ],
+      "rationale": "Cookie storing member ID for 'remember me'; validated against database in header.php lines 52-57."
+    },
+    {
+      "name": "$member_level",
+      "source": "session",
+      "kind": "role",
+      "files": [
+        "common.php",
+        "header.php"
+      ],
+      "rationale": "Member role/level determined by f_find_member($member,level) call; used for admin checks in header.php lines 66-73."
+    },
+    {
+      "name": "$_SESSION['awcm_cp']",
+      "source": "session",
+      "kind": "role",
+      "files": [
+        "control/common.php"
+      ],
+      "rationale": "Control panel authorization session variable; checked in control/common.php line 16 to grant admin panel access."
+    },
+    {
+      "name": "$member_level",
+      "source": "session",
+      "kind": "role",
+      "files": [
+        "member.php",
+        "m_cp_avatar.php"
+      ],
+      "rationale": "Member level/rank. Checked in conditional access gates throughout the member CP."
+    },
+    {
+      "name": "$member",
+      "source": "session",
+      "kind": "identity",
+      "files": [
+        "header.php",
+        "member.php"
+      ],
+      "rationale": "Member identity object. Retrieved by f_find_member(). Used as identity source in authorization conditions."
+    }
+  ]
+}

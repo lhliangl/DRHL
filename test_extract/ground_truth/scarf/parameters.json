@@ -1,0 +1,35 @@
+{
+  "app": "scarf",
+  "language": "php",
+  "source_root": "D:/phpStudy/PHPTutorial/WWW/scarf",
+  "reviewed_at": "2026-09-12",
+  "method": "manual source review",
+  "principle": "better_to_miss_than_wrong",
+  "parameters": [
+    {
+      "name": "$_SESSION['privilege']",
+      "source": "session",
+      "kind": "role",
+      "files": [
+        "functions.php",
+        "header.php",
+        "login.php",
+        "generaloptions.php",
+        "comments.php",
+        "register.php"
+      ],
+      "rationale": "Stores the user's privilege level ('admin' or 'user') set during login. Checked by is_admin() (functions.php:16) to authorize admin-only actions including comment moderation, user management, and options editing. Core authorization parameter."
+    },
+    {
+      "name": "$_SESSION['user_id']",
+      "source": "session",
+      "kind": "identity",
+      "files": [
+        "functions.php",
+        "login.php",
+        "comments.php"
+      ],
+      "rationale": "Stores the authenticated user's database ID set during login. Retrieved by getUserID() (functions.php:53) for resource ownership queries (e.g., associating comments with a user). Core identity parameter."
+    }
+  ]
+}

@@ -6,13 +6,13 @@ from typing import Any
 from .config import TargetConfig
 from .java_jsp_source_analysis import analyze_java_jsp_source
 from .go_source_analysis import analyze_go_source
-from .php_source_analysis import analyze_php_source
+from .php_cst_source_analysis import analyze_php_cst_source
 from .python_source_analysis import analyze_python_source
 
 
 def _empty(language: str) -> dict[str, Any]:
     return {
-        "schema_version": 2,
+        "schema_version": 5,
         "language": language,
         "parser": None,
         "parse_errors": [],
@@ -45,10 +45,13 @@ def analyze_access_control_source(
     validated_function_code_patterns: list[str] | None = None,
     normalize_curly_string_offsets: bool = False,
     termination_patterns: list[str] | None = None,
+    termination_exclude_patterns: list[str] | None = None,
+    framework: str | None = None,
+    declarative_access_control_fields: list[str] | None = None,
 ) -> dict[str, Any]:
     """Extract candidates, validate authorization semantics, and build repair context."""
     if target.language == "php":
-        return analyze_php_source(
+        return analyze_php_cst_source(
             target.source_root,
             skip_dirs=skip_dirs,
             identity_parameters=identity_parameters,
@@ -59,6 +62,7 @@ def analyze_access_control_source(
             validated_function_code_patterns=validated_function_code_patterns,
             normalize_curly_string_offsets=normalize_curly_string_offsets,
             termination_patterns=termination_patterns,
+            termination_exclude_patterns=termination_exclude_patterns,
         )
     if target.language in {"java", "jsp"}:
         return analyze_java_jsp_source(
@@ -71,6 +75,7 @@ def analyze_access_control_source(
             include_cst=include_cst,
             validated_function_name_patterns=validated_function_name_patterns,
             validated_function_code_patterns=validated_function_code_patterns,
+            termination_patterns=termination_patterns,
         )
     if target.language == "python":
         return analyze_python_source(
@@ -82,6 +87,9 @@ def analyze_access_control_source(
             include_cst=include_cst,
             validated_function_name_patterns=validated_function_name_patterns,
             validated_function_code_patterns=validated_function_code_patterns,
+            termination_patterns=termination_patterns,
+            framework=framework,
+            declarative_access_control_fields=declarative_access_control_fields,
         )
     if target.language == "go":
         return analyze_go_source(
@@ -93,6 +101,7 @@ def analyze_access_control_source(
             include_cst=include_cst,
             validated_function_name_patterns=validated_function_name_patterns,
             validated_function_code_patterns=validated_function_code_patterns,
+            termination_patterns=termination_patterns,
         )
     return _empty(target.language)
 

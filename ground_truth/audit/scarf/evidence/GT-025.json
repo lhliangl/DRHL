@@ -1,0 +1,50 @@
+{
+  "gt_id": "GT-025",
+  "app": "scarf",
+  "verified_at": "2026-09-06T04:58:02.166948+00:00",
+  "verdict": "vulnerable",
+  "summary": "pending comment token exposed to visitor=True, user1=True, user2=True on GET comments.php.",
+  "sql_statements": [
+    {
+      "kind": "execute",
+      "sql": "INSERT INTO comments (user_id, paper_id, comment, date, approved) VALUES (1, 1, 'DRHLGT_pending_comment_8670681795', NOW(), 0)"
+    },
+    {
+      "kind": "scalar",
+      "sql": "SELECT comment_id FROM comments WHERE comment='DRHLGT_pending_comment_8670681795' ORDER BY comment_id DESC LIMIT 1"
+    }
+  ],
+  "steps": [
+    {
+      "kind": "instrument",
+      "table": "comments",
+      "inserted_row_id": "300",
+      "comment": "DRHLGT_pending_comment_8670681795",
+      "approved": 0
+    },
+    {
+      "kind": "replay",
+      "role": "visitor",
+      "request": "GET comments.php (moderation list of pending comments)",
+      "status_code": 200,
+      "pending_comment_token_exposed": true,
+      "body_saved": "GT-025_gt025_visitor_comments.html"
+    },
+    {
+      "kind": "replay",
+      "role": "user1",
+      "request": "GET comments.php (moderation list of pending comments)",
+      "status_code": 200,
+      "pending_comment_token_exposed": true,
+      "body_saved": "GT-025_gt025_user1_comments.html"
+    },
+    {
+      "kind": "replay",
+      "role": "user2",
+      "request": "GET comments.php (moderation list of pending comments)",
+      "status_code": 200,
+      "pending_comment_token_exposed": true,
+      "body_saved": "GT-025_gt025_user2_comments.html"
+    }
+  ]
+}

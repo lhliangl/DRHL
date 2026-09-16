@@ -1,0 +1,270 @@
+{
+  "app": "phpns",
+  "baseline": "D:\\project\\python\\DRHL\\ground_truth\\verification\\evidence\\phpns\\baseline.sql",
+  "database_restored_after_each_record": true,
+  "restore_verified_per_record": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+  ],
+  "final_database_matches_baseline": true,
+  "results": [
+    {
+      "gt_id": "GT-009",
+      "app": "phpns",
+      "verified_at": "2026-09-06T04:57:42.841323+00:00",
+      "verdict": "vulnerable",
+      "summary": "visitor GET install/index.php returned 200 with the installer database-configuration form (installer_db_form_present=True).",
+      "sql_statements": [],
+      "steps": [
+        {
+          "kind": "replay",
+          "role": "visitor (no login)",
+          "request": "GET install/index.php",
+          "status_code": 200,
+          "installer_db_form_present": true,
+          "body_saved": "GT-009_gt009_visitor_install.html"
+        }
+      ],
+      "restore_verified": true
+    },
+    {
+      "gt_id": "GT-010",
+      "app": "phpns",
+      "verified_at": "2026-09-06T04:57:44.184100+00:00",
+      "verdict": "vulnerable",
+      "summary": "register GET article.php?do=comments&id=6 returned 200; comment moderation list exposes instrumented comment token=True.",
+      "sql_statements": [
+        {
+          "kind": "execute",
+          "sql": "UPDATE phpns_comments SET comment_text='DRHLGT_comment_8670663863' WHERE id=5 AND article_id='6'"
+        }
+      ],
+      "steps": [
+        {
+          "kind": "instrument",
+          "table": "phpns_comments",
+          "row": "id=5 (comment of article 6)",
+          "column": "comment_text",
+          "token": "DRHLGT_comment_8670663863"
+        },
+        {
+          "kind": "replay",
+          "role": "register (low-privilege user)",
+          "request": "GET article.php?do=comments&id=6",
+          "status_code": 200,
+          "token_exposed_in_response": true,
+          "body_saved": "GT-010_gt010_register_comments.html"
+        }
+      ],
+      "restore_verified": true
+    },
+    {
+      "gt_id": "GT-011",
+      "app": "phpns",
+      "verified_at": "2026-09-06T04:57:45.649442+00:00",
+      "verdict": "vulnerable",
+      "summary": "register POST article.php?action=delete&do=comments&id=6 returned 200; instrumented comment id=24 of article 6 was deleted (exists_after=0).",
+      "sql_statements": [
+        {
+          "kind": "execute",
+          "sql": "INSERT INTO phpns_comments (article_id, comment_text, website, comment_author, timestamp, approved, ip) VALUES ('6', 'DRHLGT_delcomment_8670665146', '', 'drhlgt', '0', '1', '127.0.0.1')"
+        },
+        {
+          "kind": "scalar",
+          "sql": "SELECT id FROM phpns_comments WHERE comment_text='DRHLGT_delcomment_8670665146' ORDER BY id DESC LIMIT 1"
+        },
+        {
+          "kind": "scalar",
+          "sql": "SELECT COUNT(*) FROM phpns_comments WHERE id=24"
+        },
+        {
+          "kind": "scalar",
+          "sql": "SELECT COUNT(*) FROM phpns_comments WHERE id=24"
+        }
+      ],
+      "steps": [
+        {
+          "kind": "instrument",
+          "table": "phpns_comments",
+          "inserted_row_id": "24",
+          "article_id": 6,
+          "token": "DRHLGT_delcomment_8670665146",
+          "exists_before": "1"
+        },
+        {
+          "kind": "replay",
+          "role": "register (low-privilege user)",
+          "request": "POST article.php?action=delete&do=comments&id=6 {24: 24}",
+          "status_code": 200,
+          "row_exists_after": "0",
+          "deleted": true
+        }
+      ],
+      "restore_verified": true
+    },
+    {
+      "gt_id": "GT-012",
+      "app": "phpns",
+      "verified_at": "2026-09-06T04:57:46.844201+00:00",
+      "verdict": "vulnerable",
+      "summary": "user1 GET article.php?do=edit&id=6 returned 200; user2's article text token exposed in the edit form=True.",
+      "sql_statements": [
+        {
+          "kind": "execute",
+          "sql": "UPDATE phpns_articles SET article_text='DRHLGT_article_edit_8670666617' WHERE id=6"
+        }
+      ],
+      "steps": [
+        {
+          "kind": "instrument",
+          "table": "phpns_articles",
+          "row": "id=6 (user2's article)",
+          "column": "article_text",
+          "token": "DRHLGT_article_edit_8670666617"
+        },
+        {
+          "kind": "replay",
+          "role": "user1 (not the article author)",
+          "request": "GET article.php?do=edit&id=6",
+          "status_code": 200,
+          "token_exposed_in_edit_form": true,
+          "body_saved": "GT-012_gt012_user1_edit_article6.html"
+        }
+      ],
+      "restore_verified": true
+    },
+    {
+      "gt_id": "GT-013",
+      "app": "phpns",
+      "verified_at": "2026-09-06T04:57:48.315979+00:00",
+      "verdict": "vulnerable",
+      "summary": "user1 POST article.php?do=editp returned 200; article 6 article_text changed DRHLGT_art_before_8670667825 -> DRHLGT_art_after_8670667825 (updated=True) and article_author became 'user1'.",
+      "sql_statements": [
+        {
+          "kind": "execute",
+          "sql": "UPDATE phpns_articles SET article_text='DRHLGT_art_before_8670667825' WHERE id=6"
+        },
+        {
+          "kind": "query",
+          "sql": "SHOW COLUMNS FROM phpns_articles"
+        },
+        {
+          "kind": "query",
+          "sql": "SELECT * FROM phpns_articles WHERE id=6 LIMIT 1"
+        },
+        {
+          "kind": "scalar",
+          "sql": "SELECT article_text FROM phpns_articles WHERE id=6"
+        },
+        {
+          "kind": "scalar",
+          "sql": "SELECT article_author FROM phpns_articles WHERE id=6"
+        }
+      ],
+      "steps": [
+        {
+          "kind": "instrument",
+          "table": "phpns_articles",
+          "row": "id=6",
+          "column": "article_text",
+          "token1": "DRHLGT_art_before_8670667825",
+          "token2": "DRHLGT_art_after_8670667825",
+          "author_before": "user2"
+        },
+        {
+          "kind": "replay",
+          "role": "user1 (not the article author)",
+          "request": "POST article.php?do=editp id=6 article_text=<token2>",
+          "status_code": 200,
+          "db_article_text_before": "DRHLGT_art_before_8670667825",
+          "db_article_text_after": "DRHLGT_art_after_8670667825",
+          "db_article_author_after": "user1",
+          "updated": true
+        }
+      ],
+      "restore_verified": true
+    },
+    {
+      "gt_id": "GT-014",
+      "app": "phpns",
+      "verified_at": "2026-09-06T04:57:49.530592+00:00",
+      "verdict": "vulnerable",
+      "summary": "user1 GET user.php?do=edit&id=11 returned 200; user2's account data token exposed in the edit form=True.",
+      "sql_statements": [
+        {
+          "kind": "execute",
+          "sql": "UPDATE phpns_users SET full_name='DRHLGT_user_edit_8670669266' WHERE id=11"
+        }
+      ],
+      "steps": [
+        {
+          "kind": "instrument",
+          "table": "phpns_users",
+          "row": "id=11 (user2)",
+          "column": "full_name",
+          "token": "DRHLGT_user_edit_8670669266",
+          "note": "CSV endpoint text says id=6; user2's current database id is 11"
+        },
+        {
+          "kind": "replay",
+          "role": "user1 (editing another account)",
+          "request": "GET user.php?do=edit&id=11",
+          "status_code": 200,
+          "token_exposed_in_edit_form": true,
+          "body_saved": "GT-014_gt014_user1_edit_user11.html"
+        }
+      ],
+      "restore_verified": true
+    },
+    {
+      "gt_id": "GT-015",
+      "app": "phpns",
+      "verified_at": "2026-09-06T04:57:50.871739+00:00",
+      "verdict": "vulnerable",
+      "summary": "user1 POST user.php?do=editp returned 200; user2 (id=11) full_name changed DRHLGT_usr_before_8670670466 -> DRHLGT_usr_after_8670670466 (updated=True).",
+      "sql_statements": [
+        {
+          "kind": "execute",
+          "sql": "UPDATE phpns_users SET full_name='DRHLGT_usr_before_8670670466' WHERE id=11"
+        },
+        {
+          "kind": "query",
+          "sql": "SHOW COLUMNS FROM phpns_users"
+        },
+        {
+          "kind": "query",
+          "sql": "SELECT * FROM phpns_users WHERE id=11 LIMIT 1"
+        },
+        {
+          "kind": "scalar",
+          "sql": "SELECT full_name FROM phpns_users WHERE id=11"
+        }
+      ],
+      "steps": [
+        {
+          "kind": "instrument",
+          "table": "phpns_users",
+          "row": "id=11 (user2)",
+          "column": "full_name",
+          "token1": "DRHLGT_usr_before_8670670466",
+          "token2": "DRHLGT_usr_after_8670670466"
+        },
+        {
+          "kind": "replay",
+          "role": "user1 (editing another account)",
+          "request": "POST user.php?do=editp id=11 fullname=<token2>",
+          "status_code": 200,
+          "db_full_name_before": "DRHLGT_usr_before_8670670466",
+          "db_full_name_after": "DRHLGT_usr_after_8670670466",
+          "updated": true
+        }
+      ],
+      "restore_verified": true
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+<br />
+<font size='1'><table class='xdebug-error xe-notice' dir='ltr' border='1' cellspacing='0' cellpadding='1'>
+<tr><th align='left' bgcolor='#f57900' colspan="5"><span style='background-color: #cc0000; color: #fce94f; font-size: x-large;'>( ! )</span> Notice: Array to string conversion in D:\phpStudy\PHPTutorial\WWW\DVWA\dvwa\includes\dvwaPage.inc.php on line <i>79</i></th></tr>
+<tr><th align='left' bgcolor='#e9b96e' colspan='5'>Call Stack</th></tr>
+<tr><th align='center' bgcolor='#eeeeec'>#</th><th align='left' bgcolor='#eeeeec'>Time</th><th align='left' bgcolor='#eeeeec'>Memory</th><th align='left' bgcolor='#eeeeec'>Function</th><th align='left' bgcolor='#eeeeec'>Location</th></tr>
+<tr><td bgcolor='#eeeeec' align='center'>1</td><td bgcolor='#eeeeec' align='center'>0.0018</td><td bgcolor='#eeeeec' align='right'>150104</td><td bgcolor='#eeeeec'>{main}(  )</td><td title='D:\phpStudy\PHPTutorial\WWW\DVWA\instructions.php' bgcolor='#eeeeec'>...\instructions.php<b>:</b>0</td></tr>
+<tr><td bgcolor='#eeeeec' align='center'>2</td><td bgcolor='#eeeeec' align='center'>0.0041</td><td bgcolor='#eeeeec' align='right'>249560</td><td bgcolor='#eeeeec'>require_once( <font color='#00bb00'>'D:\phpStudy\PHPTutorial\WWW\DVWA\dvwa\includes\dvwaPage.inc.php'</font> )</td><td title='D:\phpStudy\PHPTutorial\WWW\DVWA\instructions.php' bgcolor='#eeeeec'>...\instructions.php<b>:</b>4</td></tr>
+<tr><td bgcolor='#eeeeec' align='center'>3</td><td bgcolor='#eeeeec' align='center'>0.0052</td><td bgcolor='#eeeeec' align='right'>252528</td><td bgcolor='#eeeeec'>dvwa_start_session(  )</td><td title='D:\phpStudy\PHPTutorial\WWW\DVWA\dvwa\includes\dvwaPage.inc.php' bgcolor='#eeeeec'>...\dvwaPage.inc.php<b>:</b>30</td></tr>
+<tr><td bgcolor='#eeeeec' align='center'>4</td><td bgcolor='#eeeeec' align='center'>0.0053</td><td bgcolor='#eeeeec' align='right'>253312</td><td bgcolor='#eeeeec'><a href='http://www.php.net/function.session-set-cookie-params' target='_new'>session_set_cookie_params</a>
+(  )</td><td title='D:\phpStudy\PHPTutorial\WWW\DVWA\dvwa\includes\dvwaPage.inc.php' bgcolor='#eeeeec'>...\dvwaPage.inc.php<b>:</b>79</td></tr>
+</table></font>
+<!DOCTYPE html>
+
+<html lang="en-GB">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+		<title>Instructions :: Damn Vulnerable Web Application (DVWA)</title>
+
+		<link rel="stylesheet" type="text/css" href="dvwa/css/main.css" />
+
+		<link rel="icon" type="\image/ico" href="favicon.ico" />
+
+		<script type="text/javascript" src="dvwa/js/dvwaPage.js"></script>
+
+	</head>
+
+	<body class="home light">
+		<div id="container">
+
+			<div id="header">
+
+				<img src="dvwa/images/logo.png" alt="Damn Vulnerable Web Application" />
+                <a href="#" onclick="javascript:toggleTheme();" class="theme-icon" title="Toggle theme between light and dark.">
+                    <img src="dvwa/images/theme-light-dark.png" alt="Damn Vulnerable Web Application" />
+                </a>
+			</div>
+
+			<div id="main_menu">
+
+				<div id="main_menu_padded">
+				<ul class="menuBlocks"><li class=""><a href="setup.php">Setup DVWA</a></li>
+<li class="selected"><a href="instructions.php">Instructions</a></li>
+</ul><ul class="menuBlocks"><li class=""><a href="about.php">About</a></li>
+</ul>
+				</div>
+
+			</div>
+
+			<div id="main_body">
+
+				
+<div class="body_padded">
+	<h1>Instructions</h1>
+
+	<div class="submenu"><span class="submenu_item selected"><a href="?doc=readme">Read Me</a></span><span class="submenu_item"><a href="?doc=PDF">PDF Guide</a></span><span class="submenu_item"><a href="?doc=changelog">Change Log</a></span><span class="submenu_item"><a href="?doc=copying">Copying</a></span></div>
+
+	<span class="fixed">
+		<h1>DAMN VULNERABLE WEB APPLICATION</h1>
+<p>Damn Vulnerable Web Application (DVWA) is a PHP/MariaDB web application that is damn vulnerable. Its main goal is to be an aid for security professionals to test their skills and tools in a legal environment, help web developers better understand the
