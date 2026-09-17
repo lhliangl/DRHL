@@ -1,0 +1,4076 @@
+{
+  "nodes": [
+    "admin/index.php",
+    "admin/phpinfo.php",
+    "admin/phpinfo.php?=p1",
+    "admin/settings.php",
+    "aim.php",
+    "ba_captcha_bypass.php",
+    "ba_forgotten.php",
+    "ba_insecure_login.php",
+    "ba_insecure_login_1.php",
+    "ba_insecure_login_2.php",
+    "ba_insecure_login_3.php",
+    "ba_logout.php",
+    "ba_logout_1.php",
+    "ba_pwd_attacks.php",
+    "ba_pwd_attacks_1.php",
+    "ba_pwd_attacks_2.php",
+    "ba_pwd_attacks_3.php",
+    "ba_pwd_attacks_4.php",
+    "ba_weak_pwd.php",
+    "backdoor.php",
+    "bof_1.php",
+    "bof_2.php",
+    "captcha.php",
+    "captcha_box.php",
+    "clickjacking.php",
+    "commandi.php",
+    "commandi_blind.php",
+    "config.inc.php",
+    "connect.php",
+    "connect_i.php",
+    "credits.php",
+    "cs_validation.php",
+    "csrf_1.php",
+    "csrf_2.php",
+    "csrf_3.php",
+    "directory_traversal_1.php",
+    "directory_traversal_2.php",
+    "functions_external.php",
+    "heartbleed.php",
+    "hostheader_1.php",
+    "hostheader_2.php",
+    "hpp-1.php",
+    "hpp-2.php",
+    "hpp-3.php",
+    "htmli_current_url.php",
+    "htmli_get.php",
+    "htmli_post.php",
+    "htmli_stored.php",
+    "http_response_splitting.php",
+    "http_verb_tampering.php",
+    "iframei.php",
+    "index.php",
+    "info.php",
+    "info_install.php",
+    "information_disclosure_1.php",
+    "information_disclosure_2.php",
+    "information_disclosure_3.php",
+    "information_disclosure_4.php",
+    "insecure_crypt_storage_1.php",
+    "insecure_crypt_storage_2.php",
+    "insecure_crypt_storage_3.php",
+    "insecure_direct_object_ref_1.php",
+    "insecure_direct_object_ref_2.php",
+    "insecure_direct_object_ref_3.php",
+    "insecure_iframe.php",
+    "install.php",
+    "insuff_transp_layer_protect_1.php",
+    "insuff_transp_layer_protect_2.php",
+    "insuff_transp_layer_protect_3.php",
+    "insuff_transp_layer_protect_4.php",
+    "lang_en.php",
+    "lang_fr.php",
+    "lang_nl.php",
+    "ldap_connect.php",
+    "ldapi.php",
+    "lfi_sqlitemanager.php",
+    "login.php",
+    "logout.php",
+    "maili.php",
+    "manual_interv.php",
+    "password_change.php",
+    "php_cgi.php",
+    "phpi.php",
+    "phpi_sqlitemanager.php",
+    "phpinfo.php",
+    "portal.php",
+    "reset.php",
+    "restrict_device_access.php",
+    "restrict_folder_access.php",
+    "rlfi.php",
+    "secret-cors-1.php",
+    "secret-cors-2.php",
+    "secret-cors-3.php",
+    "secret.php",
+    "secret_change.php",
+    "secret_html.php",
+    "security.php",
+    "security_level_check.php",
+    "security_level_set.php",
+    "selections.php",
+    "shellshock.php",
+    "sm_cors.php",
+    "sm_cross_domain_policy.php",
+    "sm_dos_1.php",
+    "sm_dos_2.php",
+    "sm_dos_3.php",
+    "sm_dos_4.php",
+    "sm_ftp.php",
+    "sm_local_priv_esc_1.php",
+    "sm_local_priv_esc_2.php",
+    "sm_mitm_1.php",
+    "sm_mitm_2.php",
+    "sm_obu_files.php",
+    "sm_robots.php",
+    "sm_samba.php",
+    "sm_snmp.php",
+    "sm_webdav.php",
+    "sm_xst.php",
+    "smgmt_admin_portal.php",
+    "smgmt_cookies_httponly.php",
+    "smgmt_cookies_secure.php",
+    "smgmt_sessionid_url.php",
+    "smgmt_strong_sessions.php",
+    "sqli_1.php",
+    "sqli_10-1.php",
+    "sqli_10-2.php",
+    "sqli_11.php",
+    "sqli_12.php",
+    "sqli_13-ps.php",
+    "sqli_13.php",
+    "sqli_14.php",
+    "sqli_15.php",
+    "sqli_16.php",
+    "sqli_17.php",
+    "sqli_2-ps.php",
+    "sqli_2.php",
+    "sqli_3.php",
+    "sqli_4.php",
+    "sqli_5.php",
+    "sqli_6.php",
+    "sqli_7.php",
+    "sqli_8-1.php",
+    "sqli_8-2.php",
+    "sqli_9.php",
+    "sqli_drupal.php",
+    "ssii.php",
+    "ssrf.php",
+    "test.php",
+    "top_security.php",
+    "training.php",
+    "training_install.php",
+    "unrestricted_file_upload.php",
+    "unvalidated_redir_fwd_1.php",
+    "unvalidated_redir_fwd_2.php",
+    "user_activation.php",
+    "user_extra.php",
+    "user_new.php",
+    "ws_soap.php",
+    "xmli_1.php",
+    "xmli_2.php",
+    "xss_ajax_1-1.php",
+    "xss_ajax_1-2.php",
+    "xss_ajax_2-1.php",
+    "xss_ajax_2-2.php",
+    "xss_back_button.php",
+    "xss_custom_header.php",
+    "xss_eval.php",
+    "xss_get.php",
+    "xss_href-1.php",
+    "xss_href-2.php",
+    "xss_href-3.php",
+    "xss_json.php",
+    "xss_login.php",
+    "xss_php_self.php",
+    "xss_phpmyadmin.php",
+    "xss_post.php",
+    "xss_referer.php",
+    "xss_sqlitemanager.php",
+    "xss_stored_1.php",
+    "xss_stored_2.php",
+    "xss_stored_3.php",
+    "xss_stored_4.php",
+    "xss_user_agent.php",
+    "xxe-1.php",
+    "xxe-2.php"
+  ],
+  "edges": [
+    {
+      "from": "admin/phpinfo.php",
+      "to": "admin/phpinfo.php?=p1"
+    },
+    {
+      "from": "credits.php",
+      "to": "credits.php"
+    },
+    {
+      "from": "credits.php",
+      "to": "portal.php"
+    },
+    {
+      "from": "credits.php",
+      "to": "reset.php"
+    },
+    {
+      "from": "index.php",
+      "to": "login.php"
+    },
+    {
+      "from": "index.php",
+      "to": "portal.php"
+    },
+    {
+      "from": "info.php",
+      "to": "user_new.php"
+    },
+    {
+      "from": "login.php",
+      "to": "login.php"
+    },
+    {
+      "from": "login.php",
+      "to": "training.php"
+    },
+    {
+      "from": "password_change.php",
+      "to": "password_change.php"
+    },
+    {
+      "from": "password_change.php",
+      "to": "portal.php"
+    },
+    {
+      "from": "portal.php",
+      "to": "portal.php"
+    },
+    {
+      "from": "reset.php",
+      "to": "portal.php"
+    },
+    {
+      "from": "reset.php",
+      "to": "reset.php"
+    },
+    {
+      "from": "reset.php",
+      "to": "security_level_set.php"
+    },
+    {
+      "from": "security_level_set.php",
+      "to": "portal.php"
+    },
+    {
+      "from": "security_level_set.php",
+      "to": "security_level_set.php"
+    },
+    {
+      "from": "security_level_set.php",
+      "to": "user_extra.php"
+    },
+    {
+      "from": "training.php",
+      "to": "info.php"
+    },
+    {
+      "from": "user_extra.php",
+      "to": "password_change.php"
+    },
+    {
+      "from": "user_extra.php",
+      "to": "portal.php"
+    },
+    {
+      "from": "user_extra.php",
+      "to": "user_extra.php"
+    },
+    {
+      "from": "user_new.php",
+      "to": "login.php"
+    },
+    {
+      "from": "user_new.php",
+      "to": "user_new.php"
+    }
+  ],
+  "static_edges": [
+    {
+      "from": "admin/index.php",
+      "to": "admin/settings.php"
+    },
+    {
+      "from": "aim.php",
+      "to": "admin/settings.php"
+    },
+    {
+      "from": "ba_captcha_bypass.php",
+      "to": "admin/settings.php"
+    },
+    {
+      "from": "ba_captcha_bypass.php",
+      "to": "security.php"
+    },
+    {
+      "from": "ba_captcha_bypass.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "ba_captcha_bypass.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "ba_forgotten.php",
+      "to": "admin/settings.php"
+    },
+    {
+      "from": "ba_forgotten.php",
+      "to": "connect_i.php"
+    },
+    {
+      "from": "ba_forgotten.php",
+      "to": "functions_external.php"
+    },
+    {
+      "from": "ba_forgotten.php",
+      "to": "security.php"
+    },
+    {
+      "from": "ba_forgotten.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "ba_forgotten.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "ba_insecure_login.php",
+      "to": "security.php"
+    },
+    {
+      "from": "ba_insecure_login.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "ba_insecure_login_1.php",
+      "to": "admin/settings.php"
+    },
+    {
+      "from": "ba_insecure_login_1.php",
+      "to": "security.php"
+    },
+    {
+      "from": "ba_insecure_login_1.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "ba_insecure_login_2.php",
+      "to": "admin/settings.php"
+    },
+    {
+      "from": "ba_insecure_login_2.php",
+      "to": "security.php"
+    },
+    {
+      "from": "ba_insecure_login_2.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "ba_insecure_login_3.php",
+      "to": "admin/settings.php"
+    },
+    {
+      "from": "ba_insecure_login_3.php",
+      "to": "security.php"
+    },
+    {
+      "from": "ba_insecure_login_3.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "ba_logout.php",
+      "to": "security.php"
+    },
+    {
+      "from": "ba_logout.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "ba_logout.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "ba_logout_1.php",
+      "to": "security.php"
+    },
+    {
+      "from": "ba_logout_1.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "ba_pwd_attacks.php",
+      "to": "security.php"
+    },
+    {
+      "from": "ba_pwd_attacks.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "ba_pwd_attacks_1.php",
+      "to": "admin/settings.php"
+    },
+    {
+      "from": "ba_pwd_attacks_1.php",
+      "to": "security.php"
+    },
+    {
+      "from": "ba_pwd_attacks_1.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "ba_pwd_attacks_2.php",
+      "to": "admin/settings.php"
+    },
+    {
+      "from": "ba_pwd_attacks_2.php",
+      "to": "functions_external.php"
+    },
+    {
+      "from": "ba_pwd_attacks_2.php",
+      "to": "security.php"
+    },
+    {
+      "from": "ba_pwd_attacks_2.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "ba_pwd_attacks_3.php",
+      "to": "admin/settings.php"
+    },
+    {
+      "from": "ba_pwd_attacks_3.php",
+      "to": "functions_external.php"
+    },
+    {
+      "from": "ba_pwd_attacks_3.php",
+      "to": "security.php"
+    },
+    {
+      "from": "ba_pwd_attacks_3.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "ba_pwd_attacks_4.php",
+      "to": "admin/settings.php"
+    },
+    {
+      "from": "ba_pwd_attacks_4.php",
+      "to": "security.php"
+    },
+    {
+      "from": "ba_pwd_attacks_4.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "ba_weak_pwd.php",
+      "to": "functions_external.php"
+    },
+    {
+      "from": "ba_weak_pwd.php",
+      "to": "security.php"
+    },
+    {
+      "from": "ba_weak_pwd.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "ba_weak_pwd.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "bof_1.php",
+      "to": "functions_external.php"
+    },
+    {
+      "from": "bof_1.php",
+      "to": "security.php"
+    },
+    {
+      "from": "bof_1.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "bof_1.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "bof_2.php",
+      "to": "security.php"
+    },
+    {
+      "from": "bof_2.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "bof_2.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "captcha.php",
+      "to": "functions_external.php"
+    },
+    {
+      "from": "captcha.php",
+      "to": "security.php"
+    },
+    {
+      "from": "captcha.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "captcha_box.php",
+      "to": "security.php"
+    },
+    {
+      "from": "captcha_box.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "clickjacking.php",
+      "to": "functions_external.php"
+    },
+    {
+      "from": "clickjacking.php",
+      "to": "security.php"
+    },
+    {
+      "from": "clickjacking.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "clickjacking.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "commandi.php",
+      "to": "functions_external.php"
+    },
+    {
+      "from": "commandi.php",
+      "to": "security.php"
+    },
+    {
+      "from": "commandi.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "commandi.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "commandi_blind.php",
+      "to": "functions_external.php"
+    },
+    {
+      "from": "commandi_blind.php",
+      "to": "security.php"
+    },
+    {
+      "from": "commandi_blind.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "commandi_blind.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "config.inc.php",
+      "to": "admin/settings.php"
+    },
+    {
+      "from": "connect.php",
+      "to": "config.inc.php"
+    },
+    {
+      "from": "connect_i.php",
+      "to": "config.inc.php"
+    },
+    {
+      "from": "credits.php",
+      "to": "security.php"
+    },
+    {
+      "from": "credits.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "credits.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "cs_validation.php",
+      "to": "connect_i.php"
+    },
+    {
+      "from": "cs_validation.php",
+      "to": "security.php"
+    },
+    {
+      "from": "cs_validation.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "cs_validation.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "csrf_1.php",
+      "to": "connect_i.php"
+    },
+    {
+      "from": "csrf_1.php",
+      "to": "security.php"
+    },
+    {
+      "from": "csrf_1.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "csrf_1.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "csrf_2.php",
+      "to": "security.php"
+    },
+    {
+      "from": "csrf_2.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "csrf_2.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "csrf_3.php",
+      "to": "connect_i.php"
+    },
+    {
+      "from": "csrf_3.php",
+      "to": "security.php"
+    },
+    {
+      "from": "csrf_3.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "csrf_3.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "directory_traversal_1.php",
+      "to": "admin/settings.php"
+    },
+    {
+      "from": "directory_traversal_1.php",
+      "to": "functions_external.php"
+    },
+    {
+      "from": "directory_traversal_1.php",
+      "to": "security.php"
+    },
+    {
+      "from": "directory_traversal_1.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "directory_traversal_2.php",
+      "to": "admin/settings.php"
+    },
+    {
+      "from": "directory_traversal_2.php",
+      "to": "functions_external.php"
+    },
+    {
+      "from": "directory_traversal_2.php",
+      "to": "security.php"
+    },
+    {
+      "from": "directory_traversal_2.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "heartbleed.php",
+      "to": "security.php"
+    },
+    {
+      "from": "heartbleed.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "heartbleed.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "hostheader_1.php",
+      "to": "security.php"
+    },
+    {
+      "from": "hostheader_1.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "hostheader_1.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "hostheader_2.php",
+      "to": "admin/settings.php"
+    },
+    {
+      "from": "hostheader_2.php",
+      "to": "connect_i.php"
+    },
+    {
+      "from": "hostheader_2.php",
+      "to": "functions_external.php"
+    },
+    {
+      "from": "hostheader_2.php",
+      "to": "security.php"
+    },
+    {
+      "from": "hostheader_2.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "hostheader_2.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "hpp-1.php",
+      "to": "functions_external.php"
+    },
+    {
+      "from": "hpp-1.php",
+      "to": "security.php"
+    },
+    {
+      "from": "hpp-1.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "hpp-1.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "hpp-2.php",
+      "to": "connect.php"
+    },
+    {
+      "from": "hpp-2.php",
+      "to": "functions_external.php"
+    },
+    {
+      "from": "hpp-2.php",
+      "to": "security.php"
+    },
+    {
+      "from": "hpp-2.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "hpp-2.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "hpp-3.php",
+      "to": "connect.php"
+    },
+    {
+      "from": "hpp-3.php",
+      "to": "functions_external.php"
+    },
+    {
+      "from": "hpp-3.php",
+      "to": "security.php"
+    },
+    {
+      "from": "hpp-3.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "hpp-3.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "htmli_current_url.php",
+      "to": "functions_external.php"
+    },
+    {
+      "from": "htmli_current_url.php",
+      "to": "security.php"
+    },
+    {
+      "from": "htmli_current_url.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "htmli_current_url.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "htmli_get.php",
+      "to": "functions_external.php"
+    },
+    {
+      "from": "htmli_get.php",
+      "to": "security.php"
+    },
+    {
+      "from": "htmli_get.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "htmli_get.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "htmli_post.php",
+      "to": "functions_external.php"
+    },
+    {
+      "from": "htmli_post.php",
+      "to": "security.php"
+    },
+    {
+      "from": "htmli_post.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "htmli_post.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "htmli_stored.php",
+      "to": "connect_i.php"
+    },
+    {
+      "from": "htmli_stored.php",
+      "to": "functions_external.php"
+    },
+    {
+      "from": "htmli_stored.php",
+      "to": "security.php"
+    },
+    {
+      "from": "htmli_stored.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "htmli_stored.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "http_response_splitting.php",
+      "to": "functions_external.php"
+    },
+    {
+      "from": "http_response_splitting.php",
+      "to": "security.php"
+    },
+    {
+      "from": "http_response_splitting.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "http_response_splitting.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "http_verb_tampering.php",
+      "to": "connect_i.php"
+    },
+    {
+      "from": "http_verb_tampering.php",
+      "to": "security.php"
+    },
+    {
+      "from": "http_verb_tampering.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "http_verb_tampering.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "iframei.php",
+      "to": "functions_external.php"
+    },
+    {
+      "from": "iframei.php",
+      "to": "security.php"
+    },
+    {
+      "from": "iframei.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "iframei.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "information_disclosure_1.php",
+      "to": "security.php"
+    },
+    {
+      "from": "information_disclosure_1.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "information_disclosure_1.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "information_disclosure_2.php",
+      "to": "security.php"
+    },
+    {
+      "from": "information_disclosure_2.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "information_disclosure_2.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "information_disclosure_3.php",
+      "to": "functions_external.php"
+    },
+    {
+      "from": "information_disclosure_3.php",
+      "to": "security.php"
+    },
+    {
+      "from": "information_disclosure_3.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "information_disclosure_3.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "information_disclosure_4.php",
+      "to": "security.php"
+    },
+    {
+      "from": "information_disclosure_4.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "information_disclosure_4.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "insecure_crypt_storage_1.php",
+      "to": "connect_i.php"
+    },
+    {
+      "from": "insecure_crypt_storage_1.php",
+      "to": "functions_external.php"
+    },
+    {
+      "from": "insecure_crypt_storage_1.php",
+      "to": "security.php"
+    },
+    {
+      "from": "insecure_crypt_storage_1.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "insecure_crypt_storage_1.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "insecure_crypt_storage_2.php",
+      "to": "functions_external.php"
+    },
+    {
+      "from": "insecure_crypt_storage_2.php",
+      "to": "security.php"
+    },
+    {
+      "from": "insecure_crypt_storage_2.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "insecure_crypt_storage_2.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "insecure_crypt_storage_3.php",
+      "to": "connect_i.php"
+    },
+    {
+      "from": "insecure_crypt_storage_3.php",
+      "to": "functions_external.php"
+    },
+    {
+      "from": "insecure_crypt_storage_3.php",
+      "to": "security.php"
+    },
+    {
+      "from": "insecure_crypt_storage_3.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "insecure_crypt_storage_3.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "insecure_direct_object_ref_1.php",
+      "to": "connect_i.php"
+    },
+    {
+      "from": "insecure_direct_object_ref_1.php",
+      "to": "security.php"
+    },
+    {
+      "from": "insecure_direct_object_ref_1.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "insecure_direct_object_ref_1.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "insecure_direct_object_ref_2.php",
+      "to": "functions_external.php"
+    },
+    {
+      "from": "insecure_direct_object_ref_2.php",
+      "to": "security.php"
+    },
+    {
+      "from": "insecure_direct_object_ref_2.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "insecure_direct_object_ref_2.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "insecure_direct_object_ref_3.php",
+      "to": "security.php"
+    },
+    {
+      "from": "insecure_direct_object_ref_3.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "insecure_direct_object_ref_3.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "insecure_iframe.php",
+      "to": "security.php"
+    },
+    {
+      "from": "insecure_iframe.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "insecure_iframe.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "install.php",
+      "to": "config.inc.php"
+    },
+    {
+      "from": "insuff_transp_layer_protect_1.php",
+      "to": "security.php"
+    },
+    {
+      "from": "insuff_transp_layer_protect_1.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "insuff_transp_layer_protect_1.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "insuff_transp_layer_protect_2.php",
+      "to": "security.php"
+    },
+    {
+      "from": "insuff_transp_layer_protect_2.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "insuff_transp_layer_protect_2.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "insuff_transp_layer_protect_3.php",
+      "to": "security.php"
+    },
+    {
+      "from": "insuff_transp_layer_protect_3.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "insuff_transp_layer_protect_3.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "insuff_transp_layer_protect_4.php",
+      "to": "security.php"
+    },
+    {
+      "from": "insuff_transp_layer_protect_4.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "insuff_transp_layer_protect_4.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "ldap_connect.php",
+      "to": "admin/settings.php"
+    },
+    {
+      "from": "ldap_connect.php",
+      "to": "functions_external.php"
+    },
+    {
+      "from": "ldap_connect.php",
+      "to": "security.php"
+    },
+    {
+      "from": "ldap_connect.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "ldapi.php",
+      "to": "functions_external.php"
+    },
+    {
+      "from": "ldapi.php",
+      "to": "security.php"
+    },
+    {
+      "from": "ldapi.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "ldapi.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "lfi_sqlitemanager.php",
+      "to": "security.php"
+    },
+    {
+      "from": "lfi_sqlitemanager.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "lfi_sqlitemanager.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "login.php",
+      "to": "admin/settings.php"
+    },
+    {
+      "from": "login.php",
+      "to": "connect_i.php"
+    },
+    {
+      "from": "logout.php",
+      "to": "security.php"
+    },
+    {
+      "from": "logout.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "maili.php",
+      "to": "admin/settings.php"
+    },
+    {
+      "from": "maili.php",
+      "to": "functions_external.php"
+    },
+    {
+      "from": "maili.php",
+      "to": "security.php"
+    },
+    {
+      "from": "maili.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "maili.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "manual_interv.php",
+      "to": "functions_external.php"
+    },
+    {
+      "from": "manual_interv.php",
+      "to": "security.php"
+    },
+    {
+      "from": "manual_interv.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "manual_interv.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "password_change.php",
+      "to": "connect_i.php"
+    },
+    {
+      "from": "password_change.php",
+      "to": "security.php"
+    },
+    {
+      "from": "password_change.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "password_change.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "php_cgi.php",
+      "to": "security.php"
+    },
+    {
+      "from": "php_cgi.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "php_cgi.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "phpi.php",
+      "to": "security.php"
+    },
+    {
+      "from": "phpi.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "phpi.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "phpi_sqlitemanager.php",
+      "to": "security.php"
+    },
+    {
+      "from": "phpi_sqlitemanager.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "phpi_sqlitemanager.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "portal.php",
+      "to": "security.php"
+    },
+    {
+      "from": "portal.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "portal.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "reset.php",
+      "to": "connect_i.php"
+    },
+    {
+      "from": "reset.php",
+      "to": "security.php"
+    },
+    {
+      "from": "reset.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "reset.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "restrict_device_access.php",
+      "to": "functions_external.php"
+    },
+    {
+      "from": "restrict_device_access.php",
+      "to": "security.php"
+    },
+    {
+      "from": "restrict_device_access.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "restrict_device_access.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "restrict_folder_access.php",
+      "to": "functions_external.php"
+    },
+    {
+      "from": "restrict_folder_access.php",
+      "to": "security.php"
+    },
+    {
+      "from": "restrict_folder_access.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "restrict_folder_access.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "rlfi.php",
+      "to": "functions_external.php"
+    },
+    {
+      "from": "rlfi.php",
+      "to": "security.php"
+    },
+    {
+      "from": "rlfi.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "rlfi.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "secret.php",
+      "to": "connect_i.php"
+    },
+    {
+      "from": "secret.php",
+      "to": "security.php"
+    },
+    {
+      "from": "secret.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "secret_change.php",
+      "to": "connect_i.php"
+    },
+    {
+      "from": "secret_change.php",
+      "to": "security.php"
+    },
+    {
+      "from": "secret_change.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "secret_change.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "secret_html.php",
+      "to": "connect_i.php"
+    },
+    {
+      "from": "secret_html.php",
+      "to": "security.php"
+    },
+    {
+      "from": "secret_html.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "secret_html.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "security.php",
+      "to": "admin/settings.php"
+    },
+    {
+      "from": "security_level_check.php",
+      "to": "admin/settings.php"
+    },
+    {
+      "from": "security_level_set.php",
+      "to": "admin/settings.php"
+    },
+    {
+      "from": "security_level_set.php",
+      "to": "security.php"
+    },
+    {
+      "from": "security_level_set.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "selections.php",
+      "to": "admin/settings.php"
+    },
+    {
+      "from": "shellshock.php",
+      "to": "security.php"
+    },
+    {
+      "from": "shellshock.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "shellshock.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "sm_cors.php",
+      "to": "security.php"
+    },
+    {
+      "from": "sm_cors.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "sm_cors.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "sm_cross_domain_policy.php",
+      "to": "security.php"
+    },
+    {
+      "from": "sm_cross_domain_policy.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "sm_cross_domain_policy.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "sm_dos_1.php",
+      "to": "security.php"
+    },
+    {
+      "from": "sm_dos_1.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "sm_dos_1.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "sm_dos_2.php",
+      "to": "security.php"
+    },
+    {
+      "from": "sm_dos_2.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "sm_dos_2.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "sm_dos_3.php",
+      "to": "security.php"
+    },
+    {
+      "from": "sm_dos_3.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "sm_dos_3.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "sm_dos_4.php",
+      "to": "security.php"
+    },
+    {
+      "from": "sm_dos_4.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "sm_dos_4.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "sm_ftp.php",
+      "to": "security.php"
+    },
+    {
+      "from": "sm_ftp.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "sm_ftp.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "sm_local_priv_esc_1.php",
+      "to": "security.php"
+    },
+    {
+      "from": "sm_local_priv_esc_1.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "sm_local_priv_esc_1.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "sm_local_priv_esc_2.php",
+      "to": "security.php"
+    },
+    {
+      "from": "sm_local_priv_esc_2.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "sm_local_priv_esc_2.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "sm_mitm_1.php",
+      "to": "security.php"
+    },
+    {
+      "from": "sm_mitm_1.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "sm_mitm_1.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "sm_mitm_2.php",
+      "to": "admin/settings.php"
+    },
+    {
+      "from": "sm_mitm_2.php",
+      "to": "connect_i.php"
+    },
+    {
+      "from": "sm_mitm_2.php",
+      "to": "functions_external.php"
+    },
+    {
+      "from": "sm_mitm_2.php",
+      "to": "security.php"
+    },
+    {
+      "from": "sm_mitm_2.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "sm_mitm_2.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "sm_obu_files.php",
+      "to": "functions_external.php"
+    },
+    {
+      "from": "sm_obu_files.php",
+      "to": "security.php"
+    },
+    {
+      "from": "sm_obu_files.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "sm_obu_files.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "sm_robots.php",
+      "to": "functions_external.php"
+    },
+    {
+      "from": "sm_robots.php",
+      "to": "security.php"
+    },
+    {
+      "from": "sm_robots.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "sm_robots.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "sm_samba.php",
+      "to": "security.php"
+    },
+    {
+      "from": "sm_samba.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "sm_samba.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "sm_snmp.php",
+      "to": "security.php"
+    },
+    {
+      "from": "sm_snmp.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "sm_snmp.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "sm_webdav.php",
+      "to": "security.php"
+    },
+    {
+      "from": "sm_webdav.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "sm_webdav.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "sm_xst.php",
+      "to": "security.php"
+    },
+    {
+      "from": "sm_xst.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "sm_xst.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "smgmt_admin_portal.php",
+      "to": "security.php"
+    },
+    {
+      "from": "smgmt_admin_portal.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "smgmt_admin_portal.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "smgmt_cookies_httponly.php",
+      "to": "security.php"
+    },
+    {
+      "from": "smgmt_cookies_httponly.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "smgmt_cookies_httponly.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "smgmt_cookies_secure.php",
+      "to": "security.php"
+    },
+    {
+      "from": "smgmt_cookies_secure.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "smgmt_cookies_secure.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "smgmt_sessionid_url.php",
+      "to": "security.php"
+    },
+    {
+      "from": "smgmt_sessionid_url.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "smgmt_sessionid_url.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "smgmt_strong_sessions.php",
+      "to": "security.php"
+    },
+    {
+      "from": "smgmt_strong_sessions.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "smgmt_strong_sessions.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "sqli_1.php",
+      "to": "connect.php"
+    },
+    {
+      "from": "sqli_1.php",
+      "to": "functions_external.php"
+    },
+    {
+      "from": "sqli_1.php",
+      "to": "security.php"
+    },
+    {
+      "from": "sqli_1.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "sqli_1.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "sqli_10-1.php",
+      "to": "security.php"
+    },
+    {
+      "from": "sqli_10-1.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "sqli_10-1.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "sqli_10-2.php",
+      "to": "connect.php"
+    },
+    {
+      "from": "sqli_10-2.php",
+      "to": "functions_external.php"
+    },
+    {
+      "from": "sqli_10-2.php",
+      "to": "security.php"
+    },
+    {
+      "from": "sqli_10-2.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "sqli_11.php",
+      "to": "functions_external.php"
+    },
+    {
+      "from": "sqli_11.php",
+      "to": "security.php"
+    },
+    {
+      "from": "sqli_11.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "sqli_11.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "sqli_12.php",
+      "to": "functions_external.php"
+    },
+    {
+      "from": "sqli_12.php",
+      "to": "security.php"
+    },
+    {
+      "from": "sqli_12.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "sqli_12.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "sqli_13-ps.php",
+      "to": "connect_i.php"
+    },
+    {
+      "from": "sqli_13-ps.php",
+      "to": "functions_external.php"
+    },
+    {
+      "from": "sqli_13-ps.php",
+      "to": "security.php"
+    },
+    {
+      "from": "sqli_13-ps.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "sqli_13-ps.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "sqli_13.php",
+      "to": "connect.php"
+    },
+    {
+      "from": "sqli_13.php",
+      "to": "functions_external.php"
+    },
+    {
+      "from": "sqli_13.php",
+      "to": "security.php"
+    },
+    {
+      "from": "sqli_13.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "sqli_13.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "sqli_14.php",
+      "to": "functions_external.php"
+    },
+    {
+      "from": "sqli_14.php",
+      "to": "security.php"
+    },
+    {
+      "from": "sqli_14.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "sqli_14.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "sqli_15.php",
+      "to": "connect.php"
+    },
+    {
+      "from": "sqli_15.php",
+      "to": "functions_external.php"
+    },
+    {
+      "from": "sqli_15.php",
+      "to": "security.php"
+    },
+    {
+      "from": "sqli_15.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "sqli_15.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "sqli_16.php",
+      "to": "connect.php"
+    },
+    {
+      "from": "sqli_16.php",
+      "to": "functions_external.php"
+    },
+    {
+      "from": "sqli_16.php",
+      "to": "security.php"
+    },
+    {
+      "from": "sqli_16.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "sqli_16.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "sqli_17.php",
+      "to": "connect_i.php"
+    },
+    {
+      "from": "sqli_17.php",
+      "to": "functions_external.php"
+    },
+    {
+      "from": "sqli_17.php",
+      "to": "security.php"
+    },
+    {
+      "from": "sqli_17.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "sqli_17.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "sqli_2-ps.php",
+      "to": "connect_i.php"
+    },
+    {
+      "from": "sqli_2-ps.php",
+      "to": "functions_external.php"
+    },
+    {
+      "from": "sqli_2-ps.php",
+      "to": "security.php"
+    },
+    {
+      "from": "sqli_2-ps.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "sqli_2-ps.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "sqli_2.php",
+      "to": "connect.php"
+    },
+    {
+      "from": "sqli_2.php",
+      "to": "functions_external.php"
+    },
+    {
+      "from": "sqli_2.php",
+      "to": "security.php"
+    },
+    {
+      "from": "sqli_2.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "sqli_2.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "sqli_3.php",
+      "to": "connect.php"
+    },
+    {
+      "from": "sqli_3.php",
+      "to": "functions_external.php"
+    },
+    {
+      "from": "sqli_3.php",
+      "to": "security.php"
+    },
+    {
+      "from": "sqli_3.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "sqli_3.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "sqli_4.php",
+      "to": "connect.php"
+    },
+    {
+      "from": "sqli_4.php",
+      "to": "functions_external.php"
+    },
+    {
+      "from": "sqli_4.php",
+      "to": "security.php"
+    },
+    {
+      "from": "sqli_4.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "sqli_4.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "sqli_5.php",
+      "to": "connect.php"
+    },
+    {
+      "from": "sqli_5.php",
+      "to": "functions_external.php"
+    },
+    {
+      "from": "sqli_5.php",
+      "to": "security.php"
+    },
+    {
+      "from": "sqli_5.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "sqli_5.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "sqli_6.php",
+      "to": "connect.php"
+    },
+    {
+      "from": "sqli_6.php",
+      "to": "functions_external.php"
+    },
+    {
+      "from": "sqli_6.php",
+      "to": "security.php"
+    },
+    {
+      "from": "sqli_6.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "sqli_6.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "sqli_7.php",
+      "to": "connect_i.php"
+    },
+    {
+      "from": "sqli_7.php",
+      "to": "functions_external.php"
+    },
+    {
+      "from": "sqli_7.php",
+      "to": "security.php"
+    },
+    {
+      "from": "sqli_7.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "sqli_7.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "sqli_8-1.php",
+      "to": "security.php"
+    },
+    {
+      "from": "sqli_8-1.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "sqli_8-1.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "sqli_8-2.php",
+      "to": "connect_i.php"
+    },
+    {
+      "from": "sqli_8-2.php",
+      "to": "security.php"
+    },
+    {
+      "from": "sqli_8-2.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "sqli_9.php",
+      "to": "connect.php"
+    },
+    {
+      "from": "sqli_9.php",
+      "to": "functions_external.php"
+    },
+    {
+      "from": "sqli_9.php",
+      "to": "security.php"
+    },
+    {
+      "from": "sqli_9.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "sqli_9.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "sqli_drupal.php",
+      "to": "security.php"
+    },
+    {
+      "from": "sqli_drupal.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "sqli_drupal.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "ssii.php",
+      "to": "functions_external.php"
+    },
+    {
+      "from": "ssii.php",
+      "to": "security.php"
+    },
+    {
+      "from": "ssii.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "ssii.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "ssrf.php",
+      "to": "functions_external.php"
+    },
+    {
+      "from": "ssrf.php",
+      "to": "security.php"
+    },
+    {
+      "from": "ssrf.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "ssrf.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "unrestricted_file_upload.php",
+      "to": "functions_external.php"
+    },
+    {
+      "from": "unrestricted_file_upload.php",
+      "to": "security.php"
+    },
+    {
+      "from": "unrestricted_file_upload.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "unrestricted_file_upload.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "unvalidated_redir_fwd_1.php",
+      "to": "functions_external.php"
+    },
+    {
+      "from": "unvalidated_redir_fwd_1.php",
+      "to": "security.php"
+    },
+    {
+      "from": "unvalidated_redir_fwd_1.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "unvalidated_redir_fwd_1.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "unvalidated_redir_fwd_2.php",
+      "to": "functions_external.php"
+    },
+    {
+      "from": "unvalidated_redir_fwd_2.php",
+      "to": "security.php"
+    },
+    {
+      "from": "unvalidated_redir_fwd_2.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "unvalidated_redir_fwd_2.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "user_activation.php",
+      "to": "connect_i.php"
+    },
+    {
+      "from": "user_extra.php",
+      "to": "admin/settings.php"
+    },
+    {
+      "from": "user_extra.php",
+      "to": "connect_i.php"
+    },
+    {
+      "from": "user_extra.php",
+      "to": "functions_external.php"
+    },
+    {
+      "from": "user_extra.php",
+      "to": "security.php"
+    },
+    {
+      "from": "user_extra.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "user_extra.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "user_new.php",
+      "to": "admin/settings.php"
+    },
+    {
+      "from": "user_new.php",
+      "to": "connect_i.php"
+    },
+    {
+      "from": "user_new.php",
+      "to": "functions_external.php"
+    },
+    {
+      "from": "ws_soap.php",
+      "to": "connect.php"
+    },
+    {
+      "from": "xmli_1.php",
+      "to": "functions_external.php"
+    },
+    {
+      "from": "xmli_1.php",
+      "to": "security.php"
+    },
+    {
+      "from": "xmli_1.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "xmli_1.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "xmli_2.php",
+      "to": "functions_external.php"
+    },
+    {
+      "from": "xmli_2.php",
+      "to": "security.php"
+    },
+    {
+      "from": "xmli_2.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "xmli_2.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "xss_ajax_1-1.php",
+      "to": "security.php"
+    },
+    {
+      "from": "xss_ajax_1-1.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "xss_ajax_1-1.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "xss_ajax_1-2.php",
+      "to": "functions_external.php"
+    },
+    {
+      "from": "xss_ajax_1-2.php",
+      "to": "security.php"
+    },
+    {
+      "from": "xss_ajax_1-2.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "xss_ajax_2-1.php",
+      "to": "security.php"
+    },
+    {
+      "from": "xss_ajax_2-1.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "xss_ajax_2-1.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "xss_ajax_2-2.php",
+      "to": "functions_external.php"
+    },
+    {
+      "from": "xss_ajax_2-2.php",
+      "to": "security.php"
+    },
+    {
+      "from": "xss_ajax_2-2.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "xss_back_button.php",
+      "to": "functions_external.php"
+    },
+    {
+      "from": "xss_back_button.php",
+      "to": "security.php"
+    },
+    {
+      "from": "xss_back_button.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "xss_back_button.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "xss_custom_header.php",
+      "to": "functions_external.php"
+    },
+    {
+      "from": "xss_custom_header.php",
+      "to": "security.php"
+    },
+    {
+      "from": "xss_custom_header.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "xss_custom_header.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "xss_eval.php",
+      "to": "admin/settings.php"
+    },
+    {
+      "from": "xss_eval.php",
+      "to": "functions_external.php"
+    },
+    {
+      "from": "xss_eval.php",
+      "to": "security.php"
+    },
+    {
+      "from": "xss_eval.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "xss_get.php",
+      "to": "functions_external.php"
+    },
+    {
+      "from": "xss_get.php",
+      "to": "security.php"
+    },
+    {
+      "from": "xss_get.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "xss_get.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "xss_href-1.php",
+      "to": "functions_external.php"
+    },
+    {
+      "from": "xss_href-1.php",
+      "to": "security.php"
+    },
+    {
+      "from": "xss_href-1.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "xss_href-1.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "xss_href-2.php",
+      "to": "connect.php"
+    },
+    {
+      "from": "xss_href-2.php",
+      "to": "functions_external.php"
+    },
+    {
+      "from": "xss_href-2.php",
+      "to": "security.php"
+    },
+    {
+      "from": "xss_href-2.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "xss_href-2.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "xss_href-3.php",
+      "to": "connect.php"
+    },
+    {
+      "from": "xss_href-3.php",
+      "to": "functions_external.php"
+    },
+    {
+      "from": "xss_href-3.php",
+      "to": "security.php"
+    },
+    {
+      "from": "xss_href-3.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "xss_href-3.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "xss_json.php",
+      "to": "functions_external.php"
+    },
+    {
+      "from": "xss_json.php",
+      "to": "security.php"
+    },
+    {
+      "from": "xss_json.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "xss_json.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "xss_login.php",
+      "to": "connect.php"
+    },
+    {
+      "from": "xss_login.php",
+      "to": "functions_external.php"
+    },
+    {
+      "from": "xss_login.php",
+      "to": "security.php"
+    },
+    {
+      "from": "xss_login.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "xss_login.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "xss_php_self.php",
+      "to": "functions_external.php"
+    },
+    {
+      "from": "xss_php_self.php",
+      "to": "security.php"
+    },
+    {
+      "from": "xss_php_self.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "xss_php_self.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "xss_phpmyadmin.php",
+      "to": "security.php"
+    },
+    {
+      "from": "xss_phpmyadmin.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "xss_phpmyadmin.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "xss_post.php",
+      "to": "functions_external.php"
+    },
+    {
+      "from": "xss_post.php",
+      "to": "security.php"
+    },
+    {
+      "from": "xss_post.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "xss_post.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "xss_referer.php",
+      "to": "functions_external.php"
+    },
+    {
+      "from": "xss_referer.php",
+      "to": "security.php"
+    },
+    {
+      "from": "xss_referer.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "xss_referer.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "xss_sqlitemanager.php",
+      "to": "security.php"
+    },
+    {
+      "from": "xss_sqlitemanager.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "xss_sqlitemanager.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "xss_stored_1.php",
+      "to": "connect_i.php"
+    },
+    {
+      "from": "xss_stored_1.php",
+      "to": "functions_external.php"
+    },
+    {
+      "from": "xss_stored_1.php",
+      "to": "security.php"
+    },
+    {
+      "from": "xss_stored_1.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "xss_stored_1.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "xss_stored_2.php",
+      "to": "functions_external.php"
+    },
+    {
+      "from": "xss_stored_2.php",
+      "to": "security.php"
+    },
+    {
+      "from": "xss_stored_2.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "xss_stored_2.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "xss_stored_3.php",
+      "to": "connect_i.php"
+    },
+    {
+      "from": "xss_stored_3.php",
+      "to": "functions_external.php"
+    },
+    {
+      "from": "xss_stored_3.php",
+      "to": "security.php"
+    },
+    {
+      "from": "xss_stored_3.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "xss_stored_3.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "xss_stored_4.php",
+      "to": "connect_i.php"
+    },
+    {
+      "from": "xss_stored_4.php",
+      "to": "functions_external.php"
+    },
+    {
+      "from": "xss_stored_4.php",
+      "to": "security.php"
+    },
+    {
+      "from": "xss_stored_4.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "xss_stored_4.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "xss_user_agent.php",
+      "to": "functions_external.php"
+    },
+    {
+      "from": "xss_user_agent.php",
+      "to": "security.php"
+    },
+    {
+      "from": "xss_user_agent.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "xss_user_agent.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "xxe-1.php",
+      "to": "security.php"
+    },
+    {
+      "from": "xxe-1.php",
+      "to": "security_level_check.php"
+    },
+    {
+      "from": "xxe-1.php",
+      "to": "selections.php"
+    },
+    {
+      "from": "xxe-2.php",
+      "to": "connect_i.php"
+    },
+    {
+      "from": "xxe-2.php",
+      "to": "security.php"
+    },
+    {
+      "from": "xxe-2.php",
+      "to": "security_level_check.php"
+    }
+  ],
+  "node_origins": {
+    "admin/index.php": [
+      "dynamic",
+      "static"
+    ],
+    "admin/phpinfo.php": [
+      "dynamic",
+      "static"
+    ],
+    "admin/phpinfo.php?=p1": [
+      "dynamic"
+    ],
+    "admin/settings.php": [
+      "dynamic",
+      "static"
+    ],
+    "aim.php": [
+      "static"
+    ],
+    "ba_captcha_bypass.php": [
+      "static"
+    ],
+    "ba_forgotten.php": [
+      "static"
+    ],
+    "ba_insecure_login.php": [
+      "static"
+    ],
+    "ba_insecure_login_1.php": [
+      "static"
+    ],
+    "ba_insecure_login_2.php": [
+      "static"
+    ],
+    "ba_insecure_login_3.php": [
+      "static"
+    ],
+    "ba_logout.php": [
+      "static"
+    ],
+    "ba_logout_1.php": [
+      "static"
+    ],
+    "ba_pwd_attacks.php": [
+      "static"
+    ],
+    "ba_pwd_attacks_1.php": [
+      "static"
+    ],
+    "ba_pwd_attacks_2.php": [
+      "static"
+    ],
+    "ba_pwd_attacks_3.php": [
+      "static"
+    ],
+    "ba_pwd_attacks_4.php": [
+      "static"
+    ],
+    "ba_weak_pwd.php": [
+      "static"
+    ],
+    "backdoor.php": [
+      "static"
+    ],
+    "bof_1.php": [
+      "static"
+    ],
+    "bof_2.php": [
+      "static"
+    ],
+    "captcha.php": [
+      "static"
+    ],
+    "captcha_box.php": [
+      "static"
+    ],
+    "clickjacking.php": [
+      "static"
+    ],
+    "commandi.php": [
+      "static"
+    ],
+    "commandi_blind.php": [
+      "static"
+    ],
+    "config.inc.php": [
+      "static"
+    ],
+    "connect.php": [
+      "static"
+    ],
+    "connect_i.php": [
+      "static"
+    ],
+    "credits.php": [
+      "dynamic",
+      "static"
+    ],
+    "cs_validation.php": [
+      "static"
+    ],
+    "csrf_1.php": [
+      "static"
+    ],
+    "csrf_2.php": [
+      "static"
+    ],
+    "csrf_3.php": [
+      "static"
+    ],
+    "directory_traversal_1.php": [
+      "static"
+    ],
+    "directory_traversal_2.php": [
+      "static"
+    ],
+    "functions_external.php": [
+      "static"
+    ],
+    "heartbleed.php": [
+      "static"
+    ],
+    "hostheader_1.php": [
+      "static"
+    ],
+    "hostheader_2.php": [
+      "static"
+    ],
+    "hpp-1.php": [
+      "static"
+    ],
+    "hpp-2.php": [
+      "static"
+    ],
+    "hpp-3.php": [
+      "static"
+    ],
+    "htmli_current_url.php": [
+      "static"
+    ],
+    "htmli_get.php": [
+      "static"
+    ],
+    "htmli_post.php": [
+      "static"
+    ],
+    "htmli_stored.php": [
+      "static"
+    ],
+    "http_response_splitting.php": [
+      "static"
+    ],
+    "http_verb_tampering.php": [
+      "static"
+    ],
+    "iframei.php": [
+      "static"
+    ],
+    "index.php": [
+      "dynamic",
+      "static"
+    ],
+    "info.php": [
+      "dynamic",
+      "static"
+    ],
+    "info_install.php": [
+      "static"
+    ],
+    "information_disclosure_1.php": [
+      "static"
+    ],
+    "information_disclosure_2.php": [
+      "static"
+    ],
+    "information_disclosure_3.php": [
+      "static"
+    ],
+    "information_disclosure_4.php": [
+      "static"
+    ],
+    "insecure_crypt_storage_1.php": [
+      "static"
+    ],
+    "insecure_crypt_storage_2.php": [
+      "static"
+    ],
+    "insecure_crypt_storage_3.php": [
+      "static"
+    ],
+    "insecure_direct_object_ref_1.php": [
+      "static"
+    ],
+    "insecure_direct_object_ref_2.php": [
+      "static"
+    ],
+    "insecure_direct_object_ref_3.php": [
+      "static"
+    ],
+    "insecure_iframe.php": [
+      "static"
+    ],
+    "install.php": [
+      "static"
+    ],
+    "insuff_transp_layer_protect_1.php": [
+      "static"
+    ],
+    "insuff_transp_layer_protect_2.php": [
+      "static"
+    ],
+    "insuff_transp_layer_protect_3.php": [
+      "static"
+    ],
+    "insuff_transp_layer_protect_4.php": [
+      "static"
+    ],
+    "lang_en.php": [
+      "static"
+    ],
+    "lang_fr.php": [
+      "static"
+    ],
+    "lang_nl.php": [
+      "static"
+    ],
+    "ldap_connect.php": [
+      "static"
+    ],
+    "ldapi.php": [
+      "static"
+    ],
+    "lfi_sqlitemanager.php": [
+      "static"
+    ],
+    "login.php": [
+      "dynamic",
+      "static"
+    ],
+    "logout.php": [
+      "static"
+    ],
+    "maili.php": [
+      "static"
+    ],
+    "manual_interv.php": [
+      "static"
+    ],
+    "password_change.php": [
+      "dynamic",
+      "static"
+    ],
+    "php_cgi.php": [
+      "static"
+    ],
+    "phpi.php": [
+      "static"
+    ],
+    "phpi_sqlitemanager.php": [
+      "static"
+    ],
+    "phpinfo.php": [
+      "static"
+    ],
+    "portal.php": [
+      "dynamic",
+      "static"
+    ],
+    "reset.php": [
+      "dynamic",
+      "static"
+    ],
+    "restrict_device_access.php": [
+      "static"
+    ],
+    "restrict_folder_access.php": [
+      "static"
+    ],
+    "rlfi.php": [
+      "static"
+    ],
+    "secret-cors-1.php": [
+      "static"
+    ],
+    "secret-cors-2.php": [
+      "static"
+    ],
+    "secret-cors-3.php": [
+      "static"
+    ],
+    "secret.php": [
+      "static"
+    ],
+    "secret_change.php": [
+      "static"
+    ],
+    "secret_html.php": [
+      "static"
+    ],
+    "security.php": [
+      "static"
+    ],
+    "security_level_check.php": [
+      "static"
+    ],
+    "security_level_set.php": [
+      "dynamic",
+      "static"
+    ],
+    "selections.php": [
+      "static"
+    ],
+    "shellshock.php": [
+      "static"
+    ],
+    "sm_cors.php": [
+      "static"
+    ],
+    "sm_cross_domain_policy.php": [
+      "static"
+    ],
+    "sm_dos_1.php": [
+      "static"
+    ],
+    "sm_dos_2.php": [
+      "static"
+    ],
+    "sm_dos_3.php": [
+      "static"
+    ],
+    "sm_dos_4.php": [
+      "static"
+    ],
+    "sm_ftp.php": [
+      "static"
+    ],
+    "sm_local_priv_esc_1.php": [
+      "static"
+    ],
+    "sm_local_priv_esc_2.php": [
+      "static"
+    ],
+    "sm_mitm_1.php": [
+      "static"
+    ],
+    "sm_mitm_2.php": [
+      "static"
+    ],
+    "sm_obu_files.php": [
+      "static"
+    ],
+    "sm_robots.php": [
+      "static"
+    ],
+    "sm_samba.php": [
+      "static"
+    ],
+    "sm_snmp.php": [
+      "static"
+    ],
+    "sm_webdav.php": [
+      "static"
+    ],
+    "sm_xst.php": [
+      "static"
+    ],
+    "smgmt_admin_portal.php": [
+      "static"
+    ],
+    "smgmt_cookies_httponly.php": [
+      "static"
+    ],
+    "smgmt_cookies_secure.php": [
+      "static"
+    ],
+    "smgmt_sessionid_url.php": [
+      "static"
+    ],
+    "smgmt_strong_sessions.php": [
+      "static"
+    ],
+    "sqli_1.php": [
+      "static"
+    ],
+    "sqli_10-1.php": [
+      "static"
+    ],
+    "sqli_10-2.php": [
+      "static"
+    ],
+    "sqli_11.php": [
+      "static"
+    ],
+    "sqli_12.php": [
+      "static"
+    ],
+    "sqli_13-ps.php": [
+      "static"
+    ],
+    "sqli_13.php": [
+      "static"
+    ],
+    "sqli_14.php": [
+      "static"
+    ],
+    "sqli_15.php": [
+      "static"
+    ],
+    "sqli_16.php": [
+      "static"
+    ],
+    "sqli_17.php": [
+      "static"
+    ],
+    "sqli_2-ps.php": [
+      "static"
+    ],
+    "sqli_2.php": [
+      "static"
+    ],
+    "sqli_3.php": [
+      "static"
+    ],
+    "sqli_4.php": [
+      "static"
+    ],
+    "sqli_5.php": [
+      "static"
+    ],
+    "sqli_6.php": [
+      "static"
+    ],
+    "sqli_7.php": [
+      "static"
+    ],
+    "sqli_8-1.php": [
+      "static"
+    ],
+    "sqli_8-2.php": [
+      "static"
+    ],
+    "sqli_9.php": [
+      "static"
+    ],
+    "sqli_drupal.php": [
+      "static"
+    ],
+    "ssii.php": [
+      "static"
+    ],
+    "ssrf.php": [
+      "static"
+    ],
+    "test.php": [
+      "static"
+    ],
+    "top_security.php": [
+      "static"
+    ],
+    "training.php": [
+      "dynamic",
+      "static"
+    ],
+    "training_install.php": [
+      "static"
+    ],
+    "unrestricted_file_upload.php": [
+      "static"
+    ],
+    "unvalidated_redir_fwd_1.php": [
+      "static"
+    ],
+    "unvalidated_redir_fwd_2.php": [
+      "static"
+    ],
+    "user_activation.php": [
+      "static"
+    ],
+    "user_extra.php": [
+      "dynamic",
+      "static"
+    ],
+    "user_new.php": [
+      "dynamic",
+      "static"
+    ],
+    "ws_soap.php": [
+      "static"
+    ],
+    "xmli_1.php": [
+      "static"
+    ],
+    "xmli_2.php": [
+      "static"
+    ],
+    "xss_ajax_1-1.php": [
+      "static"
+    ],
+    "xss_ajax_1-2.php": [
+      "static"
+    ],
+    "xss_ajax_2-1.php": [
+      "static"
+    ],
+    "xss_ajax_2-2.php": [
+      "static"
+    ],
+    "xss_back_button.php": [
+      "static"
+    ],
+    "xss_custom_header.php": [
+      "static"
+    ],
+    "xss_eval.php": [
+      "static"
+    ],
+    "xss_get.php": [
+      "static"
+    ],
+    "xss_href-1.php": [
+      "static"
+    ],
+    "xss_href-2.php": [
+      "static"
+    ],
+    "xss_href-3.php": [
+      "static"
+    ],
+    "xss_json.php": [
+      "static"
+    ],
+    "xss_login.php": [
+      "static"
+    ],
+    "xss_php_self.php": [
+      "static"
+    ],
+    "xss_phpmyadmin.php": [
+      "static"
+    ],
+    "xss_post.php": [
+      "static"
+    ],
+    "xss_referer.php": [
+      "static"
+    ],
+    "xss_sqlitemanager.php": [
+      "static"
+    ],
+    "xss_stored_1.php": [
+      "static"
+    ],
+    "xss_stored_2.php": [
+      "static"
+    ],
+    "xss_stored_3.php": [
+      "static"
+    ],
+    "xss_stored_4.php": [
+      "static"
+    ],
+    "xss_user_agent.php": [
+      "static"
+    ],
+    "xxe-1.php": [
+      "static"
+    ],
+    "xxe-2.php": [
+      "static"
+    ]
+  },
+  "access": {
+    "admin/index.php": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {},
+          "referer": null
+        }
+      ]
+    },
+    "admin/phpinfo.php": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {},
+          "referer": null
+        }
+      ]
+    },
+    "admin/phpinfo.php?=p1": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {
+            "": "PHPB8B5F2A0-3C92-11d3-A3A9-4C7B08C10000"
+          },
+          "referer": "admin/phpinfo.php"
+        }
+      ]
+    },
+    "admin/settings.php": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {},
+          "referer": null
+        }
+      ]
+    },
+    "credits.php": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "POST",
+          "params": {
+            "bug": "0"
+          },
+          "referer": "credits.php"
+        }
+      ]
+    },
+    "index.php": {
+      "roles": [
+        "admin",
+        "visitor"
+      ],
+      "kinds": [
+        "admin",
+        "visitor"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {},
+          "referer": null
+        },
+        {
+          "role": "visitor",
+          "kind": "visitor",
+          "method": "GET",
+          "params": {},
+          "referer": null
+        }
+      ]
+    },
+    "info.php": {
+      "roles": [
+        "visitor"
+      ],
+      "kinds": [
+        "visitor"
+      ],
+      "requests": [
+        {
+          "role": "visitor",
+          "kind": "visitor",
+          "method": "GET",
+          "params": {},
+          "referer": "training.php"
+        }
+      ]
+    },
+    "login.php": {
+      "roles": [
+        "visitor"
+      ],
+      "kinds": [
+        "visitor"
+      ],
+      "requests": [
+        {
+          "role": "visitor",
+          "kind": "visitor",
+          "method": "POST",
+          "params": {
+            "login": "value_3a867721",
+            "password": "12345678",
+            "security_level": "0"
+          },
+          "referer": "login.php"
+        }
+      ]
+    },
+    "password_change.php": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "POST",
+          "params": {
+            "bug": "0"
+          },
+          "referer": "password_change.php"
+        }
+      ]
+    },
+    "portal.php": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "POST",
+          "params": {
+            "bug": "0"
+          },
+          "referer": "portal.php"
+        }
+      ]
+    },
+    "reset.php": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "POST",
+          "params": {
+            "bug": "0"
+          },
+          "referer": "reset.php"
+        }
+      ]
+    },
+    "security_level_set.php": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "POST",
+          "params": {
+            "bug": "0"
+          },
+          "referer": "security_level_set.php"
+        }
+      ]
+    },
+    "training.php": {
+      "roles": [
+        "visitor"
+      ],
+      "kinds": [
+        "visitor"
+      ],
+      "requests": [
+        {
+          "role": "visitor",
+          "kind": "visitor",
+          "method": "GET",
+          "params": {},
+          "referer": "login.php"
+        }
+      ]
+    },
+    "user_extra.php": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "POST",
+          "params": {
+            "bug": "0"
+          },
+          "referer": "user_extra.php"
+        }
+      ]
+    },
+    "user_new.php": {
+      "roles": [
+        "visitor"
+      ],
+      "kinds": [
+        "visitor"
+      ],
+      "requests": [
+        {
+          "role": "visitor",
+          "kind": "visitor",
+          "method": "POST",
+          "params": {
+            "login": "value_08e22487",
+            "email": "drhl_fee3388d@example.test",
+            "password": "12345678",
+            "password_conf": "12345678",
+            "secret": "value_79d93e0a",
+            "mail_activation": "on"
+          },
+          "referer": "user_new.php"
+        }
+      ]
+    }
+  },
+  "static_only": [
+    "aim.php",
+    "ba_captcha_bypass.php",
+    "ba_forgotten.php",
+    "ba_insecure_login.php",
+    "ba_insecure_login_1.php",
+    "ba_insecure_login_2.php",
+    "ba_insecure_login_3.php",
+    "ba_logout.php",
+    "ba_logout_1.php",
+    "ba_pwd_attacks.php",
+    "ba_pwd_attacks_1.php",
+    "ba_pwd_attacks_2.php",
+    "ba_pwd_attacks_3.php",
+    "ba_pwd_attacks_4.php",
+    "ba_weak_pwd.php",
+    "backdoor.php",
+    "bof_1.php",
+    "bof_2.php",
+    "captcha.php",
+    "captcha_box.php",
+    "clickjacking.php",
+    "commandi.php",
+    "commandi_blind.php",
+    "config.inc.php",
+    "connect.php",
+    "connect_i.php",
+    "cs_validation.php",
+    "csrf_1.php",
+    "csrf_2.php",
+    "csrf_3.php",
+    "directory_traversal_1.php",
+    "directory_traversal_2.php",
+    "functions_external.php",
+    "heartbleed.php",
+    "hostheader_1.php",
+    "hostheader_2.php",
+    "hpp-1.php",
+    "hpp-2.php",
+    "hpp-3.php",
+    "htmli_current_url.php",
+    "htmli_get.php",
+    "htmli_post.php",
+    "htmli_stored.php",
+    "http_response_splitting.php",
+    "http_verb_tampering.php",
+    "iframei.php",
+    "info_install.php",
+    "information_disclosure_1.php",
+    "information_disclosure_2.php",
+    "information_disclosure_3.php",
+    "information_disclosure_4.php",
+    "insecure_crypt_storage_1.php",
+    "insecure_crypt_storage_2.php",
+    "insecure_crypt_storage_3.php",
+    "insecure_direct_object_ref_1.php",
+    "insecure_direct_object_ref_2.php",
+    "insecure_direct_object_ref_3.php",
+    "insecure_iframe.php",
+    "install.php",
+    "insuff_transp_layer_protect_1.php",
+    "insuff_transp_layer_protect_2.php",
+    "insuff_transp_layer_protect_3.php",
+    "insuff_transp_layer_protect_4.php",
+    "lang_en.php",
+    "lang_fr.php",
+    "lang_nl.php",
+    "ldap_connect.php",
+    "ldapi.php",
+    "lfi_sqlitemanager.php",
+    "logout.php",
+    "maili.php",
+    "manual_interv.php",
+    "php_cgi.php",
+    "phpi.php",
+    "phpi_sqlitemanager.php",
+    "phpinfo.php",
+    "restrict_device_access.php",
+    "restrict_folder_access.php",
+    "rlfi.php",
+    "secret-cors-1.php",
+    "secret-cors-2.php",
+    "secret-cors-3.php",
+    "secret.php",
+    "secret_change.php",
+    "secret_html.php",
+    "security.php",
+    "security_level_check.php",
+    "selections.php",
+    "shellshock.php",
+    "sm_cors.php",
+    "sm_cross_domain_policy.php",
+    "sm_dos_1.php",
+    "sm_dos_2.php",
+    "sm_dos_3.php",
+    "sm_dos_4.php",
+    "sm_ftp.php",
+    "sm_local_priv_esc_1.php",
+    "sm_local_priv_esc_2.php",
+    "sm_mitm_1.php",
+    "sm_mitm_2.php",
+    "sm_obu_files.php",
+    "sm_robots.php",
+    "sm_samba.php",
+    "sm_snmp.php",
+    "sm_webdav.php",
+    "sm_xst.php",
+    "smgmt_admin_portal.php",
+    "smgmt_cookies_httponly.php",
+    "smgmt_cookies_secure.php",
+    "smgmt_sessionid_url.php",
+    "smgmt_strong_sessions.php",
+    "sqli_1.php",
+    "sqli_10-1.php",
+    "sqli_10-2.php",
+    "sqli_11.php",
+    "sqli_12.php",
+    "sqli_13-ps.php",
+    "sqli_13.php",
+    "sqli_14.php",
+    "sqli_15.php",
+    "sqli_16.php",
+    "sqli_17.php",
+    "sqli_2-ps.php",
+    "sqli_2.php",
+    "sqli_3.php",
+    "sqli_4.php",
+    "sqli_5.php",
+    "sqli_6.php",
+    "sqli_7.php",
+    "sqli_8-1.php",
+    "sqli_8-2.php",
+    "sqli_9.php",
+    "sqli_drupal.php",
+    "ssii.php",
+    "ssrf.php",
+    "test.php",
+    "top_security.php",
+    "training_install.php",
+    "unrestricted_file_upload.php",
+    "unvalidated_redir_fwd_1.php",
+    "unvalidated_redir_fwd_2.php",
+    "user_activation.php",
+    "ws_soap.php",
+    "xmli_1.php",
+    "xmli_2.php",
+    "xss_ajax_1-1.php",
+    "xss_ajax_1-2.php",
+    "xss_ajax_2-1.php",
+    "xss_ajax_2-2.php",
+    "xss_back_button.php",
+    "xss_custom_header.php",
+    "xss_eval.php",
+    "xss_get.php",
+    "xss_href-1.php",
+    "xss_href-2.php",
+    "xss_href-3.php",
+    "xss_json.php",
+    "xss_login.php",
+    "xss_php_self.php",
+    "xss_phpmyadmin.php",
+    "xss_post.php",
+    "xss_referer.php",
+    "xss_sqlitemanager.php",
+    "xss_stored_1.php",
+    "xss_stored_2.php",
+    "xss_stored_3.php",
+    "xss_stored_4.php",
+    "xss_user_agent.php",
+    "xxe-1.php",
+    "xxe-2.php"
+  ],
+  "source_map": {
+    "admin/index.php": "admin/index.php",
+    "admin/phpinfo.php": "admin/phpinfo.php",
+    "admin/settings.php": "admin/settings.php",
+    "aim.php": "aim.php",
+    "ba_captcha_bypass.php": "ba_captcha_bypass.php",
+    "ba_forgotten.php": "ba_forgotten.php",
+    "ba_insecure_login.php": "ba_insecure_login.php",
+    "ba_insecure_login_1.php": "ba_insecure_login_1.php",
+    "ba_insecure_login_2.php": "ba_insecure_login_2.php",
+    "ba_insecure_login_3.php": "ba_insecure_login_3.php",
+    "ba_logout.php": "ba_logout.php",
+    "ba_logout_1.php": "ba_logout_1.php",
+    "ba_pwd_attacks.php": "ba_pwd_attacks.php",
+    "ba_pwd_attacks_1.php": "ba_pwd_attacks_1.php",
+    "ba_pwd_attacks_2.php": "ba_pwd_attacks_2.php",
+    "ba_pwd_attacks_3.php": "ba_pwd_attacks_3.php",
+    "ba_pwd_attacks_4.php": "ba_pwd_attacks_4.php",
+    "ba_weak_pwd.php": "ba_weak_pwd.php",
+    "backdoor.php": "backdoor.php",
+    "bof_1.php": "bof_1.php",
+    "bof_2.php": "bof_2.php",
+    "captcha.php": "captcha.php",
+    "captcha_box.php": "captcha_box.php",
+    "clickjacking.php": "clickjacking.php",
+    "commandi.php": "commandi.php",
+    "commandi_blind.php": "commandi_blind.php",
+    "config.inc.php": "config.inc.php",
+    "connect.php": "connect.php",
+    "connect_i.php": "connect_i.php",
+    "credits.php": "credits.php",
+    "cs_validation.php": "cs_validation.php",
+    "csrf_1.php": "csrf_1.php",
+    "csrf_2.php": "csrf_2.php",
+    "csrf_3.php": "csrf_3.php",
+    "directory_traversal_1.php": "directory_traversal_1.php",
+    "directory_traversal_2.php": "directory_traversal_2.php",
+    "functions_external.php": "functions_external.php",
+    "heartbleed.php": "heartbleed.php",
+    "hostheader_1.php": "hostheader_1.php",
+    "hostheader_2.php": "hostheader_2.php",
+    "hpp-1.php": "hpp-1.php",
+    "hpp-2.php": "hpp-2.php",
+    "hpp-3.php": "hpp-3.php",
+    "htmli_current_url.php": "htmli_current_url.php",
+    "htmli_get.php": "htmli_get.php",
+    "htmli_post.php": "htmli_post.php",
+    "htmli_stored.php": "htmli_stored.php",
+    "http_response_splitting.php": "http_response_splitting.php",
+    "http_verb_tampering.php": "http_verb_tampering.php",
+    "iframei.php": "iframei.php",
+    "index.php": "index.php",
+    "info.php": "info.php",
+    "info_install.php": "info_install.php",
+    "information_disclosure_1.php": "information_disclosure_1.php",
+    "information_disclosure_2.php": "information_disclosure_2.php",
+    "information_disclosure_3.php": "information_disclosure_3.php",
+    "information_disclosure_4.php": "information_disclosure_4.php",
+    "insecure_crypt_storage_1.php": "insecure_crypt_storage_1.php",
+    "insecure_crypt_storage_2.php": "insecure_crypt_storage_2.php",
+    "insecure_crypt_storage_3.php": "insecure_crypt_storage_3.php",
+    "insecure_direct_object_ref_1.php": "insecure_direct_object_ref_1.php",
+    "insecure_direct_object_ref_2.php": "insecure_direct_object_ref_2.php",
+    "insecure_direct_object_ref_3.php": "insecure_direct_object_ref_3.php",
+    "insecure_iframe.php": "insecure_iframe.php",
+    "install.php": "install.php",
+    "insuff_transp_layer_protect_1.php": "insuff_transp_layer_protect_1.php",
+    "insuff_transp_layer_protect_2.php": "insuff_transp_layer_protect_2.php",
+    "insuff_transp_layer_protect_3.php": "insuff_transp_layer_protect_3.php",
+    "insuff_transp_layer_protect_4.php": "insuff_transp_layer_protect_4.php",
+    "lang_en.php": "lang_en.php",
+    "lang_fr.php": "lang_fr.php",
+    "lang_nl.php": "lang_nl.php",
+    "ldap_connect.php": "ldap_connect.php",
+    "ldapi.php": "ldapi.php",
+    "lfi_sqlitemanager.php": "lfi_sqlitemanager.php",
+    "login.php": "login.php",
+    "logout.php": "logout.php",
+    "maili.php": "maili.php",
+    "manual_interv.php": "manual_interv.php",
+    "password_change.php": "password_change.php",
+    "php_cgi.php": "php_cgi.php",
+    "phpi.php": "phpi.php",
+    "phpi_sqlitemanager.php": "phpi_sqlitemanager.php",
+    "phpinfo.php": "phpinfo.php",
+    "portal.php": "portal.php",
+    "reset.php": "reset.php",
+    "restrict_device_access.php": "restrict_device_access.php",
+    "restrict_folder_access.php": "restrict_folder_access.php",
+    "rlfi.php": "rlfi.php",
+    "secret-cors-1.php": "secret-cors-1.php",
+    "secret-cors-2.php": "secret-cors-2.php",
+    "secret-cors-3.php": "secret-cors-3.php",
+    "secret.php": "secret.php",
+    "secret_change.php": "secret_change.php",
+    "secret_html.php": "secret_html.php",
+    "security.php": "security.php",
+    "security_level_check.php": "security_level_check.php",
+    "security_level_set.php": "security_level_set.php",
+    "selections.php": "selections.php",
+    "shellshock.php": "shellshock.php",
+    "sm_cors.php": "sm_cors.php",
+    "sm_cross_domain_policy.php": "sm_cross_domain_policy.php",
+    "sm_dos_1.php": "sm_dos_1.php",
+    "sm_dos_2.php": "sm_dos_2.php",
+    "sm_dos_3.php": "sm_dos_3.php",
+    "sm_dos_4.php": "sm_dos_4.php",
+    "sm_ftp.php": "sm_ftp.php",
+    "sm_local_priv_esc_1.php": "sm_local_priv_esc_1.php",
+    "sm_local_priv_esc_2.php": "sm_local_priv_esc_2.php",
+    "sm_mitm_1.php": "sm_mitm_1.php",
+    "sm_mitm_2.php": "sm_mitm_2.php",
+    "sm_obu_files.php": "sm_obu_files.php",
+    "sm_robots.php": "sm_robots.php",
+    "sm_samba.php": "sm_samba.php",
+    "sm_snmp.php": "sm_snmp.php",
+    "sm_webdav.php": "sm_webdav.php",
+    "sm_xst.php": "sm_xst.php",
+    "smgmt_admin_portal.php": "smgmt_admin_portal.php",
+    "smgmt_cookies_httponly.php": "smgmt_cookies_httponly.php",
+    "smgmt_cookies_secure.php": "smgmt_cookies_secure.php",
+    "smgmt_sessionid_url.php": "smgmt_sessionid_url.php",
+    "smgmt_strong_sessions.php": "smgmt_strong_sessions.php",
+    "sqli_1.php": "sqli_1.php",
+    "sqli_10-1.php": "sqli_10-1.php",
+    "sqli_10-2.php": "sqli_10-2.php",
+    "sqli_11.php": "sqli_11.php",
+    "sqli_12.php": "sqli_12.php",
+    "sqli_13-ps.php": "sqli_13-ps.php",
+    "sqli_13.php": "sqli_13.php",
+    "sqli_14.php": "sqli_14.php",
+    "sqli_15.php": "sqli_15.php",
+    "sqli_16.php": "sqli_16.php",
+    "sqli_17.php": "sqli_17.php",
+    "sqli_2-ps.php": "sqli_2-ps.php",
+    "sqli_2.php": "sqli_2.php",
+    "sqli_3.php": "sqli_3.php",
+    "sqli_4.php": "sqli_4.php",
+    "sqli_5.php": "sqli_5.php",
+    "sqli_6.php": "sqli_6.php",
+    "sqli_7.php": "sqli_7.php",
+    "sqli_8-1.php": "sqli_8-1.php",
+    "sqli_8-2.php": "sqli_8-2.php",
+    "sqli_9.php": "sqli_9.php",
+    "sqli_drupal.php": "sqli_drupal.php",
+    "ssii.php": "ssii.php",
+    "ssrf.php": "ssrf.php",
+    "test.php": "test.php",
+    "top_security.php": "top_security.php",
+    "training.php": "training.php",
+    "training_install.php": "training_install.php",
+    "unrestricted_file_upload.php": "unrestricted_file_upload.php",
+    "unvalidated_redir_fwd_1.php": "unvalidated_redir_fwd_1.php",
+    "unvalidated_redir_fwd_2.php": "unvalidated_redir_fwd_2.php",
+    "user_activation.php": "user_activation.php",
+    "user_extra.php": "user_extra.php",
+    "user_new.php": "user_new.php",
+    "ws_soap.php": "ws_soap.php",
+    "xmli_1.php": "xmli_1.php",
+    "xmli_2.php": "xmli_2.php",
+    "xss_ajax_1-1.php": "xss_ajax_1-1.php",
+    "xss_ajax_1-2.php": "xss_ajax_1-2.php",
+    "xss_ajax_2-1.php": "xss_ajax_2-1.php",
+    "xss_ajax_2-2.php": "xss_ajax_2-2.php",
+    "xss_back_button.php": "xss_back_button.php",
+    "xss_custom_header.php": "xss_custom_header.php",
+    "xss_eval.php": "xss_eval.php",
+    "xss_get.php": "xss_get.php",
+    "xss_href-1.php": "xss_href-1.php",
+    "xss_href-2.php": "xss_href-2.php",
+    "xss_href-3.php": "xss_href-3.php",
+    "xss_json.php": "xss_json.php",
+    "xss_login.php": "xss_login.php",
+    "xss_php_self.php": "xss_php_self.php",
+    "xss_phpmyadmin.php": "xss_phpmyadmin.php",
+    "xss_post.php": "xss_post.php",
+    "xss_referer.php": "xss_referer.php",
+    "xss_sqlitemanager.php": "xss_sqlitemanager.php",
+    "xss_stored_1.php": "xss_stored_1.php",
+    "xss_stored_2.php": "xss_stored_2.php",
+    "xss_stored_3.php": "xss_stored_3.php",
+    "xss_stored_4.php": "xss_stored_4.php",
+    "xss_user_agent.php": "xss_user_agent.php",
+    "xxe-1.php": "xxe-1.php",
+    "xxe-2.php": "xxe-2.php"
+  },
+  "static_classifications": {
+    "observed": [
+      "admin/index.php",
+      "admin/phpinfo.php",
+      "admin/settings.php",
+      "credits.php",
+      "index.php",
+      "info.php",
+      "login.php",
+      "password_change.php",
+      "portal.php",
+      "reset.php",
+      "security_level_set.php",
+      "training.php",
+      "user_extra.php",
+      "user_new.php"
+    ],
+    "internal_reachable": [
+      "config.inc.php",
+      "connect_i.php",
+      "functions_external.php",
+      "security.php",
+      "security_level_check.php",
+      "selections.php"
+    ],
+    "public_unobserved": [
+      "aim.php",
+      "ba_captcha_bypass.php",
+      "ba_forgotten.php",
+      "ba_insecure_login.php",
+      "ba_insecure_login_1.php",
+      "ba_insecure_login_2.php",
+      "ba_insecure_login_3.php",
+      "ba_logout.php",
+      "ba_logout_1.php",
+      "ba_pwd_attacks.php",
+      "ba_pwd_attacks_1.php",
+      "ba_pwd_attacks_2.php",
+      "ba_pwd_attacks_3.php",
+      "ba_pwd_attacks_4.php",
+      "ba_weak_pwd.php",
+      "backdoor.php",
+      "bof_1.php",
+      "bof_2.php",
+      "captcha.php",
+      "captcha_box.php",
+      "clickjacking.php",
+      "commandi.php",
+      "commandi_blind.php",
+      "config.inc.php",
+      "connect.php",
+      "connect_i.php",
+      "cs_validation.php",
+      "csrf_1.php",
+      "csrf_2.php",
+      "csrf_3.php",
+      "directory_traversal_1.php",
+      "directory_traversal_2.php",
+      "functions_external.php",
+      "heartbleed.php",
+      "hostheader_1.php",
+      "hostheader_2.php",
+      "hpp-1.php",
+      "hpp-2.php",
+      "hpp-3.php",
+      "htmli_current_url.php",
+      "htmli_get.php",
+      "htmli_post.php",
+      "htmli_stored.php",
+      "http_response_splitting.php",
+      "http_verb_tampering.php",
+      "iframei.php",
+      "info_install.php",
+      "information_disclosure_1.php",
+      "information_disclosure_2.php",
+      "information_disclosure_3.php",
+      "information_disclosure_4.php",
+      "insecure_crypt_storage_1.php",
+      "insecure_crypt_storage_2.php",
+      "insecure_crypt_storage_3.php",
+      "insecure_direct_object_ref_1.php",
+      "insecure_direct_object_ref_2.php",
+      "insecure_direct_object_ref_3.php",
+      "insecure_iframe.php",
+      "install.php",
+      "insuff_transp_layer_protect_1.php",
+      "insuff_transp_layer_protect_2.php",
+      "insuff_transp_layer_protect_3.php",
+      "insuff_transp_layer_protect_4.php",
+      "lang_en.php",
+      "lang_fr.php",
+      "lang_nl.php",
+      "ldap_connect.php",
+      "ldapi.php",
+      "lfi_sqlitemanager.php",
+      "logout.php",
+      "maili.php",
+      "manual_interv.php",
+      "php_cgi.php",
+      "phpi.php",
+      "phpi_sqlitemanager.php",
+      "phpinfo.php",
+      "restrict_device_access.php",
+      "restrict_folder_access.php",
+      "rlfi.php",
+      "secret-cors-1.php",
+      "secret-cors-2.php",
+      "secret-cors-3.php",
+      "secret.php",
+      "secret_change.php",
+      "secret_html.php",
+      "security.php",
+      "security_level_check.php",
+      "selections.php",
+      "shellshock.php",
+      "sm_cors.php",
+      "sm_cross_domain_policy.php",
+      "sm_dos_1.php",
+      "sm_dos_2.php",
+      "sm_dos_3.php",
+      "sm_dos_4.php",
+      "sm_ftp.php",
+      "sm_local_priv_esc_1.php",
+      "sm_local_priv_esc_2.php",
+      "sm_mitm_1.php",
+      "sm_mitm_2.php",
+      "sm_obu_files.php",
+      "sm_robots.php",
+      "sm_samba.php",
+      "sm_snmp.php",
+      "sm_webdav.php",
+      "sm_xst.php",
+      "smgmt_admin_portal.php",
+      "smgmt_cookies_httponly.php",
+      "smgmt_cookies_secure.php",
+      "smgmt_sessionid_url.php",
+      "smgmt_strong_sessions.php",
+      "sqli_1.php",
+      "sqli_10-1.php",
+      "sqli_10-2.php",
+      "sqli_11.php",
+      "sqli_12.php",
+      "sqli_13-ps.php",
+      "sqli_13.php",
+      "sqli_14.php",
+      "sqli_15.php",
+      "sqli_16.php",
+      "sqli_17.php",
+      "sqli_2-ps.php",
+      "sqli_2.php",
+      "sqli_3.php",
+      "sqli_4.php",
+      "sqli_5.php",
+      "sqli_6.php",
+      "sqli_7.php",
+      "sqli_8-1.php",
+      "sqli_8-2.php",
+      "sqli_9.php",
+      "sqli_drupal.php",
+      "ssii.php",
+      "ssrf.php",
+      "test.php",
+      "top_security.php",
+      "training_install.php",
+      "unrestricted_file_upload.php",
+      "unvalidated_redir_fwd_1.php",
+      "unvalidated_redir_fwd_2.php",
+      "user_activation.php",
+      "ws_soap.php",
+      "xmli_1.php",
+      "xmli_2.php",
+      "xss_ajax_1-1.php",
+      "xss_ajax_1-2.php",
+      "xss_ajax_2-1.php",
+      "xss_ajax_2-2.php",
+      "xss_back_button.php",
+      "xss_custom_header.php",
+      "xss_eval.php",
+      "xss_get.php",
+      "xss_href-1.php",
+      "xss_href-2.php",
+      "xss_href-3.php",
+      "xss_json.php",
+      "xss_login.php",
+      "xss_php_self.php",
+      "xss_phpmyadmin.php",
+      "xss_post.php",
+      "xss_referer.php",
+      "xss_sqlitemanager.php",
+      "xss_stored_1.php",
+      "xss_stored_2.php",
+      "xss_stored_3.php",
+      "xss_stored_4.php",
+      "xss_user_agent.php",
+      "xxe-1.php",
+      "xxe-2.php"
+    ],
+    "support_unreachable": []
+  }
+}

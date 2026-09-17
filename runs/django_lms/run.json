@@ -1,0 +1,27 @@
+{
+  "status": "completed",
+  "started_at": "2026-07-03T02:15:48.991469+00:00",
+  "config": "D:\\project\\python\\DRHL\\configs\\django_lms.json",
+  "artifacts": {
+    "dynamic_graph": "D:\\project\\python\\DRHL\\runs\\django_lms\\graphs\\dynamic.json",
+    "static_graph": "D:\\project\\python\\DRHL\\runs\\django_lms\\graphs\\static.json",
+    "candidate_parameters": "D:\\project\\python\\DRHL\\runs\\django_lms\\source\\candidate_parameters.json",
+    "candidate_functions": "D:\\project\\python\\DRHL\\runs\\django_lms\\source\\candidate_functions.json",
+    "access_control_parameters": "D:\\project\\python\\DRHL\\runs\\django_lms\\source\\parameters.json",
+    "access_control_functions": "D:\\project\\python\\DRHL\\runs\\django_lms\\source\\functions.json",
+    "access_control_snippets": "D:\\project\\python\\DRHL\\runs\\django_lms\\source\\snippets.json",
+    "fused_graph": "D:\\project\\python\\DRHL\\runs\\django_lms\\graphs\\fused.json",
+    "graph_summary": "D:\\project\\python\\DRHL\\runs\\django_lms\\graphs\\summary.json",
+    "graph_summary_csv": "D:\\project\\python\\DRHL\\runs\\django_lms\\graphs\\summary.csv",
+    "attack_vectors": "D:\\project\\python\\DRHL\\runs\\django_lms\\analysis\\vectors.json",
+    "findings": "D:\\project\\python\\DRHL\\runs\\django_lms\\analysis\\findings.json",
+    "repairs": "D:\\project\\python\\DRHL\\runs\\django_lms\\repair\\manifest.json",
+    "repair_report": "D:\\project\\python\\DRHL\\runs\\django_lms\\repair\\repair_report.md",
+    "metrics_json": "D:\\project\\python\\DRHL\\runs\\django_lms\\metrics\\summary.json",
+    "metrics_csv": "D:\\project\\python\\DRHL\\runs\\django_lms\\metrics\\summary.csv",
+    "llm_access_control_snippets": "D:\\project\\python\\DRHL\\runs\\django_lms\\source\\llm_snippets.json"
+  },
+  "finished_at": "2026-07-03T02:31:30.926091+00:00",
+  "repair_rerun_started_at": "2026-09-13T06:49:08.469511+00:00",
+  "repair_rerun_finished_at": "2026-09-13T06:50:30.576016+00:00"
+}

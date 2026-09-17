@@ -1,0 +1,214 @@
+{
+  "summary": {
+    "vulnerable": 4,
+    "not_vulnerable": 10
+  },
+  "findings": [
+    {
+      "category": "static_only",
+      "page": "admin/setup.php",
+      "actor": "visitor",
+      "status": "vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 200 without redirect or denial marker"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/add.php",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/events_lister/admin/login.php",
+        "redirected: http://localhost/events_lister/admin/login.php"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/copy.php?id=p1",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/events_lister/admin/login.php",
+        "redirected: http://localhost/events_lister/admin/login.php"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/delete.php?id=p1",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/events_lister/admin/login.php",
+        "redirected: http://localhost/events_lister/admin/login.php"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/index.php",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/events_lister/admin/login.php",
+        "redirected: http://localhost/events_lister/admin/login.php"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/list.php?status=active",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/events_lister/admin/login.php",
+        "redirected: http://localhost/events_lister/admin/login.php"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/list.php?status=all",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/events_lister/admin/login.php",
+        "redirected: http://localhost/events_lister/admin/login.php"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/message.php",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/events_lister/admin/login.php",
+        "redirected: http://localhost/events_lister/admin/login.php"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/recover.php",
+      "actor": "visitor",
+      "status": "vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 200 without redirect or denial marker"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/recover.php?id=p1",
+      "actor": "visitor",
+      "status": "vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 200 without redirect or denial marker"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/update.php?id=p1",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/events_lister/admin/login.php",
+        "redirected: http://localhost/events_lister/admin/login.php"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/user_add.php",
+      "actor": "visitor",
+      "status": "vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 200 without redirect or denial marker"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/user_delete.php?id=p1",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/events_lister/admin/login.php",
+        "redirected: http://localhost/events_lister/admin/login.php"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/users.php",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/events_lister/admin/login.php",
+        "redirected: http://localhost/events_lister/admin/login.php"
+      ],
+      "error": null
+    }
+  ]
+}

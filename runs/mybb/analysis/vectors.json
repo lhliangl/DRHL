@@ -1,0 +1,2191 @@
+{
+  "vectors": [
+    {
+      "category": "static_only",
+      "page": "admin/index.php",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "static_only",
+      "page": "portal.php",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "static_only",
+      "page": "rss.php",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "static_only",
+      "page": "task.php",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "static_only",
+      "page": "xmlhttp.php",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "archive/index.php/forum-2.html",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": "forumdisplay.php?fid=p1"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "archive/index.php/thread-1.html",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": "showthread.php?tid=p1"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "calendar.php?action=addevent&calendar=p1",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "action": "addevent",
+          "calendar": "1"
+        },
+        "referer": "calendar.php"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "calendar.php?action=addevent&calendar=p1&private=p1",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "action": "addevent",
+          "calendar": "1",
+          "private": "1"
+        },
+        "referer": "calendar.php"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "admin_only",
+      "page": "editpost.php",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "pid": "1",
+          "my_post_key": "8038851d491c2519bb6c5ded3e4c6158",
+          "language": "english"
+        },
+        "referer": "editpost.php?pid=p1"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "admin_only",
+      "page": "editpost.php?pid=p1",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "pwverify": "value_d4ffe681",
+          "submit": "Verify Forum Password"
+        },
+        "referer": "editpost.php?pid=p1"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "horizontal",
+      "page": "editpost.php?pid=p1",
+      "authorized_roles": [],
+      "request": {
+        "method": "POST",
+        "params": {
+          "pwverify": "value_d4ffe681",
+          "submit": "Verify Forum Password"
+        },
+        "referer": "editpost.php?pid=p1"
+      },
+      "identity_parameters": [
+        "pid"
+      ],
+      "page_overrides": []
+    },
+    {
+      "category": "admin_only",
+      "page": "member.php?action=resendactivation",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "action": "resendactivation"
+        },
+        "referer": "moderation.php"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "admin_only",
+      "page": "misc.php?action=clearpass&fid=p1",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "action": "clearpass",
+          "fid": "2",
+          "my_post_key": "8038851d491c2519bb6c5ded3e4c6158"
+        },
+        "referer": "forumdisplay.php?fid=p1"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "horizontal",
+      "page": "misc.php?action=clearpass&fid=p1",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {
+          "action": "clearpass",
+          "fid": "2",
+          "my_post_key": "8038851d491c2519bb6c5ded3e4c6158"
+        },
+        "referer": "forumdisplay.php?fid=p1"
+      },
+      "identity_parameters": [
+        "fid"
+      ],
+      "page_overrides": []
+    },
+    {
+      "category": "admin_only",
+      "page": "misc.php?action=markread&fid=p1",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "action": "markread",
+          "fid": "2",
+          "my_post_key": "8038851d491c2519bb6c5ded3e4c6158"
+        },
+        "referer": "forumdisplay.php?fid=p1"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "horizontal",
+      "page": "misc.php?action=markread&fid=p1",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {
+          "action": "markread",
+          "fid": "2",
+          "my_post_key": "8038851d491c2519bb6c5ded3e4c6158"
+        },
+        "referer": "forumdisplay.php?fid=p1"
+      },
+      "identity_parameters": [
+        "fid"
+      ],
+      "page_overrides": []
+    },
+    {
+      "category": "admin_only",
+      "page": "modcp.php",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "action": "warninglogs",
+          "filter": "Array",
+          "my_post_key": "8038851d491c2519bb6c5ded3e4c6158",
+          "language": "english"
+        },
+        "referer": "modcp.php?action=warninglogs&filter=p1"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "admin_only",
+      "page": "modcp.php?action=allreports",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "action": "allreports"
+        },
+        "referer": "modcp.php?action=reports"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "admin_only",
+      "page": "modcp.php?action=announcements",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "action": "announcements"
+        },
+        "referer": "modcp.php"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "admin_only",
+      "page": "modcp.php?action=banning",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "action": "banning"
+        },
+        "referer": "modcp.php"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "admin_only",
+      "page": "modcp.php?action=banuser",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "action": "banuser"
+        },
+        "referer": "modcp.php?action=banning"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "admin_only",
+      "page": "modcp.php?action=banuser&uid=p1",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "action": "banuser",
+          "uid": "1"
+        },
+        "referer": "member.php?action=profile&uid=p1"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "horizontal",
+      "page": "modcp.php?action=banuser&uid=p1",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {
+          "action": "banuser",
+          "uid": "1"
+        },
+        "referer": "member.php?action=profile&uid=p1"
+      },
+      "identity_parameters": [
+        "uid"
+      ],
+      "page_overrides": []
+    },
+    {
+      "category": "admin_only",
+      "page": "modcp.php?action=editprofile&uid=p1",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "action": "editprofile",
+          "uid": "1"
+        },
+        "referer": "member.php?action=profile&uid=p1"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "horizontal",
+      "page": "modcp.php?action=editprofile&uid=p1",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {
+          "action": "editprofile",
+          "uid": "1"
+        },
+        "referer": "member.php?action=profile&uid=p1"
+      },
+      "identity_parameters": [
+        "uid"
+      ],
+      "page_overrides": []
+    },
+    {
+      "category": "admin_only",
+      "page": "modcp.php?action=finduser",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "username": "text_8cbe521b",
+          "sortby": "username",
+          "order": "asc"
+        },
+        "referer": "modcp.php?action=finduser"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "admin_only",
+      "page": "modcp.php?action=iplookup&ipaddress=p1",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "action": "iplookup",
+          "ipaddress": "value_3df9bb9b"
+        },
+        "referer": "modcp.php?action=ipsearch"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "admin_only",
+      "page": "modcp.php?action=ipsearch",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "ipaddress": "::1",
+          "search_users": "1",
+          "search_posts": "1"
+        },
+        "referer": "modcp.php?action=ipsearch&ipaddress=p1&search_users=p1"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "admin_only",
+      "page": "modcp.php?action=ipsearch&ipaddress=p1&search_users=p1",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "action": "ipsearch",
+          "ipaddress": "::1",
+          "search_users": "1"
+        },
+        "referer": "online.php"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "admin_only",
+      "page": "modcp.php?action=liftban&uid=p1",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "action": "liftban",
+          "uid": "1",
+          "my_post_key": "8038851d491c2519bb6c5ded3e4c6158"
+        },
+        "referer": "modcp.php?action=banuser&uid=p1"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "horizontal",
+      "page": "modcp.php?action=liftban&uid=p1",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {
+          "action": "liftban",
+          "uid": "1",
+          "my_post_key": "8038851d491c2519bb6c5ded3e4c6158"
+        },
+        "referer": "modcp.php?action=banuser&uid=p1"
+      },
+      "identity_parameters": [
+        "uid"
+      ],
+      "page_overrides": []
+    },
+    {
+      "category": "admin_only",
+      "page": "modcp.php?action=modlogs",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "fid": "index",
+          "uid": "1",
+          "sortby": "dateline",
+          "order": "asc",
+          "perpage": "20"
+        },
+        "referer": "modcp.php?action=modlogs"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "admin_only",
+      "page": "modcp.php?action=modqueue",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "action": "modqueue"
+        },
+        "referer": "modcp.php"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "admin_only",
+      "page": "modcp.php?action=new_announcement&fid=p1",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "action": "new_announcement",
+          "fid": "-1"
+        },
+        "referer": "modcp.php?action=announcements"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "horizontal",
+      "page": "modcp.php?action=new_announcement&fid=p1",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {
+          "action": "new_announcement",
+          "fid": "-1"
+        },
+        "referer": "modcp.php?action=announcements"
+      },
+      "identity_parameters": [
+        "fid"
+      ],
+      "page_overrides": []
+    },
+    {
+      "category": "admin_only",
+      "page": "modcp.php?action=reports",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "action": "reports"
+        },
+        "referer": "modcp.php"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "admin_only",
+      "page": "modcp.php?action=warninglogs",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "action": "warninglogs"
+        },
+        "referer": "modcp.php"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "admin_only",
+      "page": "modcp.php?action=warninglogs&filter%5Bmod_username%5D=p1&filter%5Border%5D=p1&filter%5Bper_page%5D=p1&filter%5Breason%5D=p1&filter%5Bsortby%5D=p1&filter%5Busername%5D=p1",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "action": "warninglogs",
+          "filter[username]": "text_64b6c8df",
+          "filter[mod_username]": "text_3e56c703",
+          "filter[reason]": "value_9d76104d",
+          "filter[sortby]": "dateline",
+          "filter[order]": "desc",
+          "filter[per_page]": "20"
+        },
+        "referer": "modcp.php?action=warninglogs"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "admin_only",
+      "page": "modcp.php?action=warninglogs&filter=p1",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "action": "warninglogs",
+          "filter": "Array",
+          "my_post_key": "8038851d491c2519bb6c5ded3e4c6158",
+          "language": "english"
+        },
+        "referer": "modcp.php?action=warninglogs&filter%5Bmod_username%5D=p1&filter%5Border%5D=p1&filter%5Bper_page%5D=p1&filter%5Breason%5D=p1&filter%5Bsortby%5D=p1&filter%5Busername%5D=p1"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "admin_only",
+      "page": "moderation.php",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "modtype": "thread",
+          "tid": "1",
+          "my_post_key": "8038851d491c2519bb6c5ded3e4c6158",
+          "action": "threadnotes"
+        },
+        "referer": "showthread.php?pid=p1"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "admin_only",
+      "page": "moderation.php?action=getip&pid=p1",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "pwverify": "value_96172946",
+          "submit": "Verify Forum Password"
+        },
+        "referer": "moderation.php?action=getip&pid=p1"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "horizontal",
+      "page": "moderation.php?action=getip&pid=p1",
+      "authorized_roles": [],
+      "request": {
+        "method": "POST",
+        "params": {
+          "pwverify": "value_96172946",
+          "submit": "Verify Forum Password"
+        },
+        "referer": "moderation.php?action=getip&pid=p1"
+      },
+      "identity_parameters": [
+        "pid"
+      ],
+      "page_overrides": []
+    },
+    {
+      "category": "admin_only",
+      "page": "newreply.php",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "tid": "1",
+          "load_all_quotes": "1",
+          "my_post_key": "8038851d491c2519bb6c5ded3e4c6158",
+          "language": "english"
+        },
+        "referer": "newreply.php?load_all_quotes=p1&tid=p1"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "admin_only",
+      "page": "newreply.php?load_all_quotes=p1&tid=p1",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "pwverify": "value_17eef89a",
+          "submit": "Verify Forum Password"
+        },
+        "referer": "newreply.php?load_all_quotes=p1&tid=p1"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "horizontal",
+      "page": "newreply.php?load_all_quotes=p1&tid=p1",
+      "authorized_roles": [],
+      "request": {
+        "method": "POST",
+        "params": {
+          "pwverify": "value_17eef89a",
+          "submit": "Verify Forum Password"
+        },
+        "referer": "newreply.php?load_all_quotes=p1&tid=p1"
+      },
+      "identity_parameters": [
+        "tid"
+      ],
+      "page_overrides": []
+    },
+    {
+      "category": "admin_only",
+      "page": "newreply.php?pid=p1&tid=p1",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "pwverify": "value_73aab85f",
+          "submit": "Verify Forum Password"
+        },
+        "referer": "newreply.php?pid=p1&tid=p1"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "horizontal",
+      "page": "newreply.php?pid=p1&tid=p1",
+      "authorized_roles": [],
+      "request": {
+        "method": "POST",
+        "params": {
+          "pwverify": "value_73aab85f",
+          "submit": "Verify Forum Password"
+        },
+        "referer": "newreply.php?pid=p1&tid=p1"
+      },
+      "identity_parameters": [
+        "pid",
+        "tid"
+      ],
+      "page_overrides": []
+    },
+    {
+      "category": "admin_only",
+      "page": "newreply.php?processed=p1&tid=p1",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "my_post_key": "8038851d491c2519bb6c5ded3e4c6158",
+          "subject": "RE: asdasd",
+          "action": "do_newreply",
+          "posthash": "937ee9843d3a635907e7513bb9ae94aa",
+          "quoted_ids": "value_8967622f",
+          "lastpid": "3",
+          "from_page": "1",
+          "tid": "1",
+          "method": "quickreply",
+          "postoptions[signature]": "1",
+          "postoptions[disablesmilies]": "1",
+          "modoptions[closethread]": "1",
+          "modoptions[stickthread]": "1",
+          "message": "comment_cabaae29",
+          "previewpost": "Preview Post"
+        },
+        "referer": "showthread.php?pid=p1"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "horizontal",
+      "page": "newreply.php?processed=p1&tid=p1",
+      "authorized_roles": [],
+      "request": {
+        "method": "POST",
+        "params": {
+          "my_post_key": "8038851d491c2519bb6c5ded3e4c6158",
+          "subject": "RE: asdasd",
+          "action": "do_newreply",
+          "posthash": "937ee9843d3a635907e7513bb9ae94aa",
+          "quoted_ids": "value_8967622f",
+          "lastpid": "3",
+          "from_page": "1",
+          "tid": "1",
+          "method": "quickreply",
+          "postoptions[signature]": "1",
+          "postoptions[disablesmilies]": "1",
+          "modoptions[closethread]": "1",
+          "modoptions[stickthread]": "1",
+          "message": "comment_cabaae29",
+          "previewpost": "Preview Post"
+        },
+        "referer": "showthread.php?pid=p1"
+      },
+      "identity_parameters": [
+        "tid"
+      ],
+      "page_overrides": []
+    },
+    {
+      "category": "admin_only",
+      "page": "newreply.php?tid=p1",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "pwverify": "value_b9cc78a3",
+          "submit": "Verify Forum Password"
+        },
+        "referer": "newreply.php?tid=p1"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "horizontal",
+      "page": "newreply.php?tid=p1",
+      "authorized_roles": [],
+      "request": {
+        "method": "POST",
+        "params": {
+          "pwverify": "value_b9cc78a3",
+          "submit": "Verify Forum Password"
+        },
+        "referer": "newreply.php?tid=p1"
+      },
+      "identity_parameters": [
+        "tid"
+      ],
+      "page_overrides": []
+    },
+    {
+      "category": "admin_only",
+      "page": "newthread.php",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "fid": "2",
+          "processed": "1",
+          "pwverify": "12345678",
+          "submit": "Verify Forum Password",
+          "my_post_key": "8038851d491c2519bb6c5ded3e4c6158",
+          "language": "english"
+        },
+        "referer": "newthread.php?fid=p1&processed=p1"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "admin_only",
+      "page": "newthread.php?fid=p1",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "fid": "2"
+        },
+        "referer": "forumdisplay.php?fid=p1"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "horizontal",
+      "page": "newthread.php?fid=p1",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {
+          "fid": "2"
+        },
+        "referer": "forumdisplay.php?fid=p1"
+      },
+      "identity_parameters": [
+        "fid"
+      ],
+      "page_overrides": []
+    },
+    {
+      "category": "admin_only",
+      "page": "newthread.php?fid=p1&processed=p1",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "pwverify": "12345678",
+          "submit": "Verify Forum Password"
+        },
+        "referer": "newthread.php?fid=p1&processed=p1"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "horizontal",
+      "page": "newthread.php?fid=p1&processed=p1",
+      "authorized_roles": [],
+      "request": {
+        "method": "POST",
+        "params": {
+          "pwverify": "12345678",
+          "submit": "Verify Forum Password"
+        },
+        "referer": "newthread.php?fid=p1&processed=p1"
+      },
+      "identity_parameters": [
+        "fid"
+      ],
+      "page_overrides": []
+    },
+    {
+      "category": "admin_only",
+      "page": "printthread.php",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "tid": "1",
+          "my_post_key": "8038851d491c2519bb6c5ded3e4c6158",
+          "language": "english"
+        },
+        "referer": "printthread.php?tid=p1"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "admin_only",
+      "page": "printthread.php?tid=p1",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "pwverify": "value_6eaf9f55",
+          "submit": "Verify Forum Password"
+        },
+        "referer": "printthread.php?tid=p1"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "horizontal",
+      "page": "printthread.php?tid=p1",
+      "authorized_roles": [],
+      "request": {
+        "method": "POST",
+        "params": {
+          "pwverify": "value_6eaf9f55",
+          "submit": "Verify Forum Password"
+        },
+        "referer": "printthread.php?tid=p1"
+      },
+      "identity_parameters": [
+        "tid"
+      ],
+      "page_overrides": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "private.php?action=advanced_search",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "action": "advanced_search"
+        },
+        "referer": "private.php"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "private.php?action=delete&pmid=p1",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "action": "delete",
+          "pmid": "1",
+          "my_post_key": "8fd495b95d51b665c22493ccfd043e6a"
+        },
+        "referer": "private.php?action=read&pmid=p1"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "private.php?action=dismiss_notice",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "action": "dismiss_notice",
+          "my_post_key": "8fd495b95d51b665c22493ccfd043e6a"
+        },
+        "referer": "private.php?action=send&uid=p1"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "private.php?action=empty",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "action": "empty"
+        },
+        "referer": "private.php"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "private.php?action=export",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "action": "export"
+        },
+        "referer": "private.php"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "private.php?action=folders",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "action": "folders"
+        },
+        "referer": "usercp.php"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "private.php?action=read&pmid=p1",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "action": "read",
+          "pmid": "1"
+        },
+        "referer": "private.php?action=send&uid=p1"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "private.php?action=send",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "action": "send"
+        },
+        "referer": "usercp.php"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "private.php?action=send&do=forward&pmid=p1",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "action": "send",
+          "pmid": "1",
+          "do": "forward"
+        },
+        "referer": "private.php?action=read&pmid=p1"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "private.php?action=send&do=reply&pmid=p1",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "action": "send",
+          "pmid": "1",
+          "do": "reply"
+        },
+        "referer": "private.php?action=read&pmid=p1"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "private.php?action=tracking",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "action": "tracking"
+        },
+        "referer": "usercp.php"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "private.php?fid=p1",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "fid": "1"
+        },
+        "referer": "usercp.php"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "admin_only",
+      "page": "ratethread.php",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "tid": "1",
+          "rating": "1",
+          "my_post_key": "8038851d491c2519bb6c5ded3e4c6158",
+          "language": "english"
+        },
+        "referer": "ratethread.php?rating=p1&tid=p1"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "admin_only",
+      "page": "ratethread.php?rating=p1&tid=p1",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "pwverify": "value_15508428",
+          "submit": "Verify Forum Password"
+        },
+        "referer": "ratethread.php?rating=p1&tid=p1"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "horizontal",
+      "page": "ratethread.php?rating=p1&tid=p1",
+      "authorized_roles": [],
+      "request": {
+        "method": "POST",
+        "params": {
+          "pwverify": "value_15508428",
+          "submit": "Verify Forum Password"
+        },
+        "referer": "ratethread.php?rating=p1&tid=p1"
+      },
+      "identity_parameters": [
+        "tid"
+      ],
+      "page_overrides": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "search.php?action=getdaily",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "action": "getdaily"
+        },
+        "referer": "usercp.php"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "search.php?action=getnew",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "action": "getnew"
+        },
+        "referer": "usercp.php"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "admin_only",
+      "page": "sendthread.php",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "tid": "1",
+          "my_post_key": "8038851d491c2519bb6c5ded3e4c6158",
+          "language": "english"
+        },
+        "referer": "sendthread.php?tid=p1"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "admin_only",
+      "page": "sendthread.php?tid=p1",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "pwverify": "value_6001f194",
+          "submit": "Verify Forum Password"
+        },
+        "referer": "sendthread.php?tid=p1"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "horizontal",
+      "page": "sendthread.php?tid=p1",
+      "authorized_roles": [],
+      "request": {
+        "method": "POST",
+        "params": {
+          "pwverify": "value_6001f194",
+          "submit": "Verify Forum Password"
+        },
+        "referer": "sendthread.php?tid=p1"
+      },
+      "identity_parameters": [
+        "tid"
+      ],
+      "page_overrides": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "showthread.php",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "tid": "1",
+          "my_post_key": "8fd495b95d51b665c22493ccfd043e6a",
+          "language": "english"
+        },
+        "referer": "showthread.php?tid=p1"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "horizontal",
+      "page": "showthread.php",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "tid": "1",
+          "my_post_key": "8fd495b95d51b665c22493ccfd043e6a",
+          "language": "english"
+        },
+        "referer": "showthread.php?tid=p1"
+      },
+      "identity_parameters": [
+        "tid"
+      ],
+      "page_overrides": []
+    },
+    {
+      "category": "admin_only",
+      "page": "showthread.php?action=lastpost&tid=p1",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "pwverify": "value_922d7a2e",
+          "submit": "Verify Forum Password"
+        },
+        "referer": "showthread.php?action=lastpost&tid=p1"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "horizontal",
+      "page": "showthread.php?action=lastpost&tid=p1",
+      "authorized_roles": [],
+      "request": {
+        "method": "POST",
+        "params": {
+          "pwverify": "value_922d7a2e",
+          "submit": "Verify Forum Password"
+        },
+        "referer": "showthread.php?action=lastpost&tid=p1"
+      },
+      "identity_parameters": [
+        "tid"
+      ],
+      "page_overrides": []
+    },
+    {
+      "category": "admin_only",
+      "page": "showthread.php?action=nextnewest&tid=p1",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "pwverify": "value_d0644ae6",
+          "submit": "Verify Forum Password"
+        },
+        "referer": "showthread.php?action=nextnewest&tid=p1"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "horizontal",
+      "page": "showthread.php?action=nextnewest&tid=p1",
+      "authorized_roles": [],
+      "request": {
+        "method": "POST",
+        "params": {
+          "pwverify": "value_d0644ae6",
+          "submit": "Verify Forum Password"
+        },
+        "referer": "showthread.php?action=nextnewest&tid=p1"
+      },
+      "identity_parameters": [
+        "tid"
+      ],
+      "page_overrides": []
+    },
+    {
+      "category": "admin_only",
+      "page": "showthread.php?action=nextoldest&tid=p1",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "pwverify": "value_32f32bda",
+          "submit": "Verify Forum Password"
+        },
+        "referer": "showthread.php?action=nextoldest&tid=p1"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "horizontal",
+      "page": "showthread.php?action=nextoldest&tid=p1",
+      "authorized_roles": [],
+      "request": {
+        "method": "POST",
+        "params": {
+          "pwverify": "value_32f32bda",
+          "submit": "Verify Forum Password"
+        },
+        "referer": "showthread.php?action=nextoldest&tid=p1"
+      },
+      "identity_parameters": [
+        "tid"
+      ],
+      "page_overrides": []
+    },
+    {
+      "category": "admin_only",
+      "page": "showthread.php?mode=p1&pid=p1&tid=p1",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "pwverify": "value_0d31ad18",
+          "submit": "Verify Forum Password"
+        },
+        "referer": "showthread.php?mode=p1&pid=p1&tid=p1"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "horizontal",
+      "page": "showthread.php?mode=p1&pid=p1&tid=p1",
+      "authorized_roles": [],
+      "request": {
+        "method": "POST",
+        "params": {
+          "pwverify": "value_0d31ad18",
+          "submit": "Verify Forum Password"
+        },
+        "referer": "showthread.php?mode=p1&pid=p1&tid=p1"
+      },
+      "identity_parameters": [
+        "pid",
+        "tid"
+      ],
+      "page_overrides": []
+    },
+    {
+      "category": "admin_only",
+      "page": "showthread.php?pid=p1",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "pid": "1"
+        },
+        "referer": "warnings.php?action=warn&pid=p1&uid=p1"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "horizontal",
+      "page": "showthread.php?pid=p1",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {
+          "pid": "1"
+        },
+        "referer": "warnings.php?action=warn&pid=p1&uid=p1"
+      },
+      "identity_parameters": [
+        "pid"
+      ],
+      "page_overrides": []
+    },
+    {
+      "category": "admin_only",
+      "page": "showthread.php?pid=p1&tid=p1",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "pwverify": "value_d2c17ee3",
+          "submit": "Verify Forum Password"
+        },
+        "referer": "showthread.php?pid=p1&tid=p1"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "horizontal",
+      "page": "showthread.php?pid=p1&tid=p1",
+      "authorized_roles": [],
+      "request": {
+        "method": "POST",
+        "params": {
+          "pwverify": "value_d2c17ee3",
+          "submit": "Verify Forum Password"
+        },
+        "referer": "showthread.php?pid=p1&tid=p1"
+      },
+      "identity_parameters": [
+        "pid",
+        "tid"
+      ],
+      "page_overrides": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "showthread.php?tid=p1",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "pwverify": "DRHL_WRONG_FORUM_PASSWORD",
+          "submit": "Verify Forum Password"
+        },
+        "referer": "showthread.php?tid=p1"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "horizontal",
+      "page": "showthread.php?tid=p1",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "pwverify": "DRHL_WRONG_FORUM_PASSWORD",
+          "submit": "Verify Forum Password"
+        },
+        "referer": "showthread.php?tid=p1"
+      },
+      "identity_parameters": [
+        "tid"
+      ],
+      "page_overrides": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "usercp.php",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "action": "forumsubscriptions",
+          "my_post_key": "8fd495b95d51b665c22493ccfd043e6a",
+          "language": "english"
+        },
+        "referer": "usercp.php?action=forumsubscriptions"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "usercp.php?action=attachments",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "action": "attachments"
+        },
+        "referer": "usercp.php"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "usercp.php?action=avatar",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "action": "avatar"
+        },
+        "referer": "usercp.php"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "admin_only",
+      "page": "usercp.php?action=changename",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "action": "changename"
+        },
+        "referer": "usercp.php"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "usercp.php?action=drafts",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "action": "drafts"
+        },
+        "referer": "usercp.php"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "usercp.php?action=editlists",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "action": "editlists"
+        },
+        "referer": "usercp.php"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "usercp.php?action=editsig",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "action": "editsig"
+        },
+        "referer": "usercp.php"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "usercp.php?action=email",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "action": "email"
+        },
+        "referer": "usercp.php"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "usercp.php?action=forumsubscriptions",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "action": "forumsubscriptions"
+        },
+        "referer": "usercp.php"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "usercp.php?action=options",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "action": "options"
+        },
+        "referer": "usercp.php"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "usercp.php?action=password",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "action": "password"
+        },
+        "referer": "usercp.php"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "usercp.php?action=profile",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "action": "profile"
+        },
+        "referer": "usercp.php"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "usercp.php?action=subscriptions",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "action": "subscriptions"
+        },
+        "referer": "usercp.php"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "usercp.php?action=usergroups",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "action": "usergroups"
+        },
+        "referer": "usercp.php"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "admin_only",
+      "page": "usercp2.php",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "my_post_key": "8038851d491c2519bb6c5ded3e4c6158",
+          "action": "do_addsubscription",
+          "tid": "1",
+          "notification": "0",
+          "submit": "Subscribe to Thread"
+        },
+        "referer": "usercp2.php?action=addsubscription&tid=p1"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "admin_only",
+      "page": "usercp2.php?action=addsubscription&fid=p1&type=forum",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "action": "addsubscription",
+          "type": "forum",
+          "fid": "2",
+          "my_post_key": "8038851d491c2519bb6c5ded3e4c6158"
+        },
+        "referer": "forumdisplay.php?fid=p1"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "horizontal",
+      "page": "usercp2.php?action=addsubscription&fid=p1&type=forum",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {
+          "action": "addsubscription",
+          "type": "forum",
+          "fid": "2",
+          "my_post_key": "8038851d491c2519bb6c5ded3e4c6158"
+        },
+        "referer": "forumdisplay.php?fid=p1"
+      },
+      "identity_parameters": [
+        "fid"
+      ],
+      "page_overrides": []
+    },
+    {
+      "category": "admin_only",
+      "page": "usercp2.php?action=addsubscription&tid=p1",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "action": "addsubscription",
+          "tid": "1",
+          "my_post_key": "8038851d491c2519bb6c5ded3e4c6158"
+        },
+        "referer": "showthread.php?tid=p1"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "horizontal",
+      "page": "usercp2.php?action=addsubscription&tid=p1",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {
+          "action": "addsubscription",
+          "tid": "1",
+          "my_post_key": "8038851d491c2519bb6c5ded3e4c6158"
+        },
+        "referer": "showthread.php?tid=p1"
+      },
+      "identity_parameters": [
+        "tid"
+      ],
+      "page_overrides": []
+    },
+    {
+      "category": "admin_only",
+      "page": "usercp2.php?action=removesubscription&fid=p1&type=forum",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "action": "removesubscription",
+          "type": "forum",
+          "fid": "2",
+          "my_post_key": "8038851d491c2519bb6c5ded3e4c6158"
+        },
+        "referer": "showthread.php?pid=p1"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "horizontal",
+      "page": "usercp2.php?action=removesubscription&fid=p1&type=forum",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {
+          "action": "removesubscription",
+          "type": "forum",
+          "fid": "2",
+          "my_post_key": "8038851d491c2519bb6c5ded3e4c6158"
+        },
+        "referer": "showthread.php?pid=p1"
+      },
+      "identity_parameters": [
+        "fid"
+      ],
+      "page_overrides": []
+    },
+    {
+      "category": "admin_only",
+      "page": "usercp2.php?action=removesubscription&tid=p1",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "action": "removesubscription",
+          "tid": "1",
+          "my_post_key": "8038851d491c2519bb6c5ded3e4c6158"
+        },
+        "referer": "showthread.php?pid=p1"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "horizontal",
+      "page": "usercp2.php?action=removesubscription&tid=p1",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {
+          "action": "removesubscription",
+          "tid": "1",
+          "my_post_key": "8038851d491c2519bb6c5ded3e4c6158"
+        },
+        "referer": "showthread.php?pid=p1"
+      },
+      "identity_parameters": [
+        "tid"
+      ],
+      "page_overrides": []
+    },
+    {
+      "category": "admin_only",
+      "page": "warnings.php",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "my_post_key": "8038851d491c2519bb6c5ded3e4c6158",
+          "action": "do_revoke",
+          "wid": "1",
+          "reason": "value_be6ad23f"
+        },
+        "referer": "warnings.php?action=view&wid=p1"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "admin_only",
+      "page": "warnings.php?action=view&wid=p1",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "action": "view",
+          "wid": "1"
+        },
+        "referer": "warnings.php?action=warn&pid=p1&uid=p1"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "admin_only",
+      "page": "warnings.php?action=warn&pid=p1&uid=p1",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "action": "warn",
+          "uid": "2",
+          "pid": "1"
+        },
+        "referer": "showthread.php?tid=p1"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "horizontal",
+      "page": "warnings.php?action=warn&pid=p1&uid=p1",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {
+          "action": "warn",
+          "uid": "2",
+          "pid": "1"
+        },
+        "referer": "showthread.php?tid=p1"
+      },
+      "identity_parameters": [
+        "pid",
+        "uid"
+      ],
+      "page_overrides": []
+    },
+    {
+      "category": "admin_only",
+      "page": "warnings.php?uid=p1",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "uid": "2"
+        },
+        "referer": "showthread.php?tid=p1"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "horizontal",
+      "page": "warnings.php?uid=p1",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {
+          "uid": "2"
+        },
+        "referer": "showthread.php?tid=p1"
+      },
+      "identity_parameters": [
+        "uid"
+      ],
+      "page_overrides": []
+    }
+  ]
+}

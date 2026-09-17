@@ -1,0 +1,262 @@
+{
+  "category": "authenticated_only",
+  "page": "users/sample.php?userid=p1",
+  "source": "D:\\phpStudy\\PHPTutorial\\WWW\\users\\sample.php",
+  "output": "D:\\project\\python\\DRHL\\runs\\wackopicko\\repair\\files\\attempt-2\\users\\sample.php",
+  "status": "successful_repair",
+  "message": "syntax/compile, vulnerability blocking, and regression validation all passed",
+  "engine": "llm",
+  "plan": "{\"missing_check\": \"Authentication check to ensure the user is logged in\", \"insertion_location\": \"After the opening PHP tag and comment, before the $usercheck = False; line\", \"recommended_guard\": \"require_once(\\\"../include/users.php\\\");\\nif (!Users::is_logged_in()) {\\n    header(\\\"Location: \\\" . Users::$LOGIN_URL);\\n    exit;\\n}\", \"reused_project_semantics\": \"Users::is_logged_in() and Users::$LOGIN_URL from include/users.php\", \"reason\": \"The standalone users/sample.php entry point includes view.php without verifying authentication, allowing unauthenticated visitors to access the view. The application defines Users::is_logged_in() to check the session-based login state and Users::$LOGIN_URL for redirecting unauthorized users. Inserting this guard before processing blocks visitors while allowing any logged-in user (authorized_roles user1, user2) to continue.\"}",
+  "prompt_artifact": "D:\\project\\python\\DRHL\\runs\\wackopicko\\repair\\prompts\\sample-attempt2-4a04c96bf7b2.json",
+  "attempts": 2,
+  "patches_generated": 2,
+  "syntax_compile_ok": 2,
+  "exploit_blocked": 2,
+  "regression_passed": 1,
+  "database_validation_applied": 2,
+  "database_validation_passed": 1,
+  "successful": true,
+  "validation_artifact": "D:\\project\\python\\DRHL\\runs\\wackopicko\\repair\\validation\\sample-9b6033f3b282.json",
+  "attempt_details": [
+    {
+      "attempt": 1,
+      "output": "D:\\project\\python\\DRHL\\runs\\wackopicko\\repair\\files\\attempt-1\\users\\sample.php",
+      "syntax_compile_ok": true,
+      "exploit_blocked": true,
+      "regression_passed": false,
+      "successful": false,
+      "message": "syntax=(No syntax errors detected in D:\\project\\python\\DRHL\\runs\\wackopicko\\repair\\files\\attempt-1\\users\\sample.php); deployment=(source patch applied); vulnerability_blocking=(response=True; database=passed; evidence=visitor:not_vulnerable); regression=(response=False; database=failed; evidence=authorized status=302; denial=['denial redirect: http://localhost/users/login.php'])",
+      "prompt_artifact": "D:\\project\\python\\DRHL\\runs\\wackopicko\\repair\\prompts\\sample-attempt1-a5599520110e.json",
+      "plan": "{\"missing_check\": \"Authentication check for authenticated-only entry point.\", \"insertion_location\": \"In users/sample.php, immediately before the `include(\\\"view.php\\\");` line (after `$usercheck = False;`), ensuring the Users class context is loaded.\", \"recommended_guard\": \"require_once(\\\"../include/users.php\\\");\\nif (!Users::is_logged_in()) {\\n    header(\\\"Location: \\\" . Users::$LOGIN_URL);\\n    exit;\\n}\", \"reused_project_semantics\": \"Uses Users::is_logged_in() from include/users.php to verify an active session, and Users::$LOGIN_URL as the redirect target for unauthenticated users. The require_once pattern follows include/users.php's own dependency loading.\", \"reason\": \"The file includes view.php without any authentication, and the `$usercheck = False;` flag may disable view.php's internal check, allowing visitors to access authenticated-only content. Placing the guard before the include blocks unauthorized requests while still allowing logged-in users (user1, user2) to proceed.\"}",
+      "database_validation_passed": false,
+      "database_validation": {
+        "oracle_version": 2,
+        "scope": "repair_only",
+        "applicable": true,
+        "passed": false,
+        "status": "failed",
+        "dimensions": {
+          "vulnerability_blocking": {
+            "phase": "attack",
+            "applicable": true,
+            "passed": true
+          },
+          "regression": {
+            "phase": "authorized",
+            "applicable": true,
+            "passed": false
+          }
+        },
+        "scenarios": [
+          {
+            "name": "GT-031-sample-authenticated-read",
+            "operation": "read",
+            "passed": false,
+            "phases": [
+              {
+                "phase": "attack",
+                "role": "visitor",
+                "session_before_setup": false,
+                "setup_sql": [
+                  "UPDATE users SET login='DRHLR_d23727623103' WHERE id=5"
+                ],
+                "session_requests": [],
+                "request": {
+                  "method": "GET",
+                  "page": "users/sample.php?userid=5",
+                  "params": {
+                    "userid": "5"
+                  },
+                  "referer": "users/home.php",
+                  "cookie_names": []
+                },
+                "response": {
+                  "status_code": 302,
+                  "url": "http://localhost/users/sample.php?userid=5",
+                  "body_length": 0
+                },
+                "query": null,
+                "observed": null,
+                "assertions": [
+                  {
+                    "type": "response_not_contains",
+                    "expected": "DRHLR_d23727623103",
+                    "passed": true
+                  }
+                ],
+                "passed": true
+              },
+              {
+                "phase": "authorized",
+                "role": "user2",
+                "session_before_setup": true,
+                "setup_sql": [
+                  "UPDATE users SET login='DRHLR_d23727623103' WHERE id=5"
+                ],
+                "session_requests": [],
+                "request": {
+                  "method": "GET",
+                  "page": "users/sample.php?userid=5",
+                  "params": {
+                    "userid": "5"
+                  },
+                  "referer": "users/home.php",
+                  "cookie_names": []
+                },
+                "response": {
+                  "status_code": 302,
+                  "url": "http://localhost/users/sample.php?userid=5",
+                  "body_length": 0
+                },
+                "query": null,
+                "observed": null,
+                "assertions": [
+                  {
+                    "type": "response_contains",
+                    "expected": "DRHLR_d23727623103",
+                    "passed": false
+                  }
+                ],
+                "passed": false
+              }
+            ]
+          }
+        ],
+        "combined_dimensions": {
+          "vulnerability_blocking": {
+            "passed": true,
+            "response_oracle_passed": true,
+            "database_oracle_applicable": true,
+            "database_oracle_passed": true
+          },
+          "regression": {
+            "passed": false,
+            "response_oracle_passed": false,
+            "database_oracle_applicable": true,
+            "database_oracle_passed": false
+          }
+        }
+      }
+    },
+    {
+      "attempt": 2,
+      "output": "D:\\project\\python\\DRHL\\runs\\wackopicko\\repair\\files\\attempt-2\\users\\sample.php",
+      "syntax_compile_ok": true,
+      "exploit_blocked": true,
+      "regression_passed": true,
+      "successful": true,
+      "message": "syntax=(No syntax errors detected in D:\\project\\python\\DRHL\\runs\\wackopicko\\repair\\files\\attempt-2\\users\\sample.php); deployment=(source patch applied); vulnerability_blocking=(response=True; database=passed; evidence=visitor:not_vulnerable); regression=(response=True; database=passed; evidence=authorized status=200; denial=[])",
+      "prompt_artifact": "D:\\project\\python\\DRHL\\runs\\wackopicko\\repair\\prompts\\sample-attempt2-4a04c96bf7b2.json",
+      "plan": "{\"missing_check\": \"Authentication check to ensure the user is logged in\", \"insertion_location\": \"After the opening PHP tag and comment, before the $usercheck = False; line\", \"recommended_guard\": \"require_once(\\\"../include/users.php\\\");\\nif (!Users::is_logged_in()) {\\n    header(\\\"Location: \\\" . Users::$LOGIN_URL);\\n    exit;\\n}\", \"reused_project_semantics\": \"Users::is_logged_in() and Users::$LOGIN_URL from include/users.php\", \"reason\": \"The standalone users/sample.php entry point includes view.php without verifying authentication, allowing unauthenticated visitors to access the view. The application defines Users::is_logged_in() to check the session-based login state and Users::$LOGIN_URL for redirecting unauthorized users. Inserting this guard before processing blocks visitors while allowing any logged-in user (authorized_roles user1, user2) to continue.\"}",
+      "database_validation_passed": true,
+      "database_validation": {
+        "oracle_version": 2,
+        "scope": "repair_only",
+        "applicable": true,
+        "passed": true,
+        "status": "passed",
+        "dimensions": {
+          "vulnerability_blocking": {
+            "phase": "attack",
+            "applicable": true,
+            "passed": true
+          },
+          "regression": {
+            "phase": "authorized",
+            "applicable": true,
+            "passed": true
+          }
+        },
+        "scenarios": [
+          {
+            "name": "GT-031-sample-authenticated-read",
+            "operation": "read",
+            "passed": true,
+            "phases": [
+              {
+                "phase": "attack",
+                "role": "visitor",
+                "session_before_setup": false,
+                "setup_sql": [
+                  "UPDATE users SET login='DRHLR_fa85e9773793' WHERE id=5"
+                ],
+                "session_requests": [],
+                "request": {
+                  "method": "GET",
+                  "page": "users/sample.php?userid=5",
+                  "params": {
+                    "userid": "5"
+                  },
+                  "referer": "users/home.php",
+                  "cookie_names": []
+                },
+                "response": {
+                  "status_code": 302,
+                  "url": "http://localhost/users/sample.php?userid=5",
+                  "body_length": 0
+                },
+                "query": null,
+                "observed": null,
+                "assertions": [
+                  {
+                    "type": "response_not_contains",
+                    "expected": "DRHLR_fa85e9773793",
+                    "passed": true
+                  }
+                ],
+                "passed": true
+              },
+              {
+                "phase": "authorized",
+                "role": "user2",
+                "session_before_setup": true,
+                "setup_sql": [
+                  "UPDATE users SET login='DRHLR_fa85e9773793' WHERE id=5"
+                ],
+                "session_requests": [],
+                "request": {
+                  "method": "GET",
+                  "page": "users/sample.php?userid=5",
+                  "params": {
+                    "userid": "5"
+                  },
+                  "referer": "users/home.php",
+                  "cookie_names": []
+                },
+                "response": {
+                  "status_code": 200,
+                  "url": "http://localhost/users/sample.php?userid=5",
+                  "body_length": 2619
+                },
+                "query": null,
+                "observed": null,
+                "assertions": [
+                  {
+                    "type": "response_contains",
+                    "expected": "DRHLR_fa85e9773793",
+                    "passed": true
+                  }
+                ],
+                "passed": true
+              }
+            ]
+          }
+        ],
+        "combined_dimensions": {
+          "vulnerability_blocking": {
+            "passed": true,
+            "response_oracle_passed": true,
+            "database_oracle_applicable": true,
+            "database_oracle_passed": true
+          },
+          "regression": {
+            "passed": true,
+            "response_oracle_passed": true,
+            "database_oracle_applicable": true,
+            "database_oracle_passed": true
+          }
+        }
+      }
+    }
+  ]
+}

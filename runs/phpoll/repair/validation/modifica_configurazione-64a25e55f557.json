@@ -1,0 +1,194 @@
+{
+  "category": "admin_only",
+  "page": "admin/modifica_configurazione.php",
+  "source": "D:\\phpStudy\\PHPTutorial\\WWW\\phpoll\\polls\\test\\admin\\modifica_configurazione.php",
+  "output": "D:\\project\\python\\DRHL\\runs\\phpoll\\repair\\files\\attempt-1\\admin\\modifica_configurazione.php",
+  "status": "successful_repair",
+  "message": "syntax/compile, vulnerability blocking, and regression validation all passed",
+  "engine": "llm",
+  "plan": "{\"missing_check\": \"Admin authentication check using the $test_log sentinel and cookie comparison.\", \"insertion_location\": \"In admin/modifica_configurazione.php, immediately after the mysql_select_db($phpoll_database, $phpoll_db) call and before the $query_svuota_config = \\\"TRUNCATE TABLE ...\\\" line.\", \"recommended_guard\": \"$query_login = \\\"SELECT login, password FROM phpoll_\\\".$prepoll.\\\"_configurazione;\\\";\\n$estrai_login = mysql_query($query_login, $phpoll_db) or die (\\\"Errore nella connessione per estrazione login configurazione dal database \\\".$phpoll_database);\\n$dati_login = mysql_fetch_assoc($estrai_login);\\n$string_cook_login = \\\"phpoll_\\\".$prepoll.\\\"_login\\\";\\n$string_cook_password = \\\"phpoll_\\\".$prepoll.\\\"_password\\\";\\n$log=$dati_login['login'];\\n$pw=$dati_login['password'];\\n$test_log = false;\\nif ((isset($_COOKIE[$string_cook_login])&&$log==$_COOKIE[$string_cook_login])&&(isset($_COOKIE[$string_cook_password])&&$pw==$_COOKIE[$string_cook_password])) {\\n    $test_log = true;\\n}\\nif ($test_log == false) {\\n    print \\\"<script type=\\\\\\\"text/javascript\\\\\\\">window.location=\\\\\\\"index.php\\\\\\\";</script>\\\";\\n    exit;\\n}\", \"reused_project_semantics\": \"Reuses $test_log sentinel; $string_cook_login = \\\"phpoll_\\\".$prepoll.\\\"_login\\\"; $string_cook_password = \\\"phpoll_\\\".$prepoll.\\\"_password\\\"; $log/$pw from phpoll_<prepoll>_configurazione; and JavaScript window.location redirect style consistent with target's end-of-file redirect.\", \"reason\": \"Blocks unauthenticated visitors before the TRUNCATE/INSERT configuration changes while allowing users with valid admin cookies to proceed.\"}",
+  "prompt_artifact": "D:\\project\\python\\DRHL\\runs\\phpoll\\repair\\prompts\\modifica_configurazione-attempt1-f55ed7465ffa.json",
+  "attempts": 1,
+  "patches_generated": 1,
+  "syntax_compile_ok": 1,
+  "exploit_blocked": 1,
+  "regression_passed": 1,
+  "database_validation_applied": 1,
+  "database_validation_passed": 1,
+  "successful": true,
+  "validation_artifact": "D:\\project\\python\\DRHL\\runs\\phpoll\\repair\\validation\\modifica_configurazione-64a25e55f557.json",
+  "attempt_details": [
+    {
+      "attempt": 1,
+      "output": "D:\\project\\python\\DRHL\\runs\\phpoll\\repair\\files\\attempt-1\\admin\\modifica_configurazione.php",
+      "syntax_compile_ok": true,
+      "exploit_blocked": true,
+      "regression_passed": true,
+      "successful": true,
+      "message": "syntax=(No syntax errors detected in D:\\project\\python\\DRHL\\runs\\phpoll\\repair\\files\\attempt-1\\admin\\modifica_configurazione.php); deployment=(source patch applied); vulnerability_blocking=(response=False; database=passed; evidence=visitor:vulnerable); regression=(response=True; database=passed; evidence=authorized status=200; denial=[])",
+      "prompt_artifact": "D:\\project\\python\\DRHL\\runs\\phpoll\\repair\\prompts\\modifica_configurazione-attempt1-f55ed7465ffa.json",
+      "plan": "{\"missing_check\": \"Admin authentication check using the $test_log sentinel and cookie comparison.\", \"insertion_location\": \"In admin/modifica_configurazione.php, immediately after the mysql_select_db($phpoll_database, $phpoll_db) call and before the $query_svuota_config = \\\"TRUNCATE TABLE ...\\\" line.\", \"recommended_guard\": \"$query_login = \\\"SELECT login, password FROM phpoll_\\\".$prepoll.\\\"_configurazione;\\\";\\n$estrai_login = mysql_query($query_login, $phpoll_db) or die (\\\"Errore nella connessione per estrazione login configurazione dal database \\\".$phpoll_database);\\n$dati_login = mysql_fetch_assoc($estrai_login);\\n$string_cook_login = \\\"phpoll_\\\".$prepoll.\\\"_login\\\";\\n$string_cook_password = \\\"phpoll_\\\".$prepoll.\\\"_password\\\";\\n$log=$dati_login['login'];\\n$pw=$dati_login['password'];\\n$test_log = false;\\nif ((isset($_COOKIE[$string_cook_login])&&$log==$_COOKIE[$string_cook_login])&&(isset($_COOKIE[$string_cook_password])&&$pw==$_COOKIE[$string_cook_password])) {\\n    $test_log = true;\\n}\\nif ($test_log == false) {\\n    print \\\"<script type=\\\\\\\"text/javascript\\\\\\\">window.location=\\\\\\\"index.php\\\\\\\";</script>\\\";\\n    exit;\\n}\", \"reused_project_semantics\": \"Reuses $test_log sentinel; $string_cook_login = \\\"phpoll_\\\".$prepoll.\\\"_login\\\"; $string_cook_password = \\\"phpoll_\\\".$prepoll.\\\"_password\\\"; $log/$pw from phpoll_<prepoll>_configurazione; and JavaScript window.location redirect style consistent with target's end-of-file redirect.\", \"reason\": \"Blocks unauthenticated visitors before the TRUNCATE/INSERT configuration changes while allowing users with valid admin cookies to proceed.\"}",
+      "database_validation_passed": true,
+      "database_validation": {
+        "oracle_version": 2,
+        "scope": "repair_only",
+        "applicable": true,
+        "passed": true,
+        "status": "passed",
+        "dimensions": {
+          "vulnerability_blocking": {
+            "phase": "attack",
+            "applicable": true,
+            "passed": true
+          },
+          "regression": {
+            "phase": "authorized",
+            "applicable": true,
+            "passed": true
+          }
+        },
+        "scenarios": [
+          {
+            "name": "PHPOLL-configuration-update",
+            "operation": "update",
+            "passed": true,
+            "phases": [
+              {
+                "phase": "attack",
+                "role": "visitor",
+                "session_before_setup": false,
+                "setup_sql": [
+                  "UPDATE phpoll_test_configurazione SET titolo_posizione='DRHLR_602bad19f802_BEFORE' WHERE id=1"
+                ],
+                "session_requests": [],
+                "request": {
+                  "method": "POST",
+                  "page": "admin/modifica_configurazione.php?language=1",
+                  "params": {
+                    "titolo_posizione": "DRHLR_602bad19f802_AFTER",
+                    "titolo_tipologia": "Type",
+                    "titolo_punteggio": "Score",
+                    "max_voti": "1",
+                    "risultati_pixel": "1",
+                    "barra1": "#000A1A",
+                    "barra2": "#0EFC0C",
+                    "barra3": "#040C00",
+                    "barra4": "#55010E",
+                    "intervallo_tempo": "0",
+                    "percorso_link": "phpoll.php",
+                    "oggetto_email": "Subject",
+                    "testo_email": "Message",
+                    "domini": "example.test",
+                    "testo_submit": "Vote",
+                    "valid_email": "Valid",
+                    "messaggio_conferma_mail": "Confirmed",
+                    "messaggio_domini": "Domain",
+                    "messaggio_ip": "IP",
+                    "messaggio_giavotato": "Voted",
+                    "messaggio_sgamo": "Denied",
+                    "login": "admin3",
+                    "password": "<redacted>",
+                    "old_login": "admin3",
+                    "old_password": "<redacted>"
+                  },
+                  "referer": "admin/config_editor.php?language=1",
+                  "cookie_names": []
+                },
+                "response": {
+                  "status_code": 200,
+                  "url": "http://localhost/phpoll/polls/test/admin/modifica_configurazione.php?language=1",
+                  "body_length": 488
+                },
+                "query": "SELECT titolo_posizione FROM phpoll_test_configurazione WHERE id=1",
+                "observed": "DRHLR_602bad19f802_BEFORE",
+                "assertions": [
+                  {
+                    "type": "scalar_equals",
+                    "expected": "DRHLR_602bad19f802_BEFORE",
+                    "observed": "DRHLR_602bad19f802_BEFORE",
+                    "passed": true
+                  }
+                ],
+                "passed": true
+              },
+              {
+                "phase": "authorized",
+                "role": "admin",
+                "session_before_setup": false,
+                "setup_sql": [
+                  "UPDATE phpoll_test_configurazione SET titolo_posizione='DRHLR_602bad19f802_BEFORE' WHERE id=1"
+                ],
+                "session_requests": [],
+                "request": {
+                  "method": "POST",
+                  "page": "admin/modifica_configurazione.php?language=1",
+                  "params": {
+                    "titolo_posizione": "DRHLR_602bad19f802_AFTER",
+                    "titolo_tipologia": "Type",
+                    "titolo_punteggio": "Score",
+                    "max_voti": "1",
+                    "risultati_pixel": "1",
+                    "barra1": "#000A1A",
+                    "barra2": "#0EFC0C",
+                    "barra3": "#040C00",
+                    "barra4": "#55010E",
+                    "intervallo_tempo": "0",
+                    "percorso_link": "phpoll.php",
+                    "oggetto_email": "Subject",
+                    "testo_email": "Message",
+                    "domini": "example.test",
+                    "testo_submit": "Vote",
+                    "valid_email": "Valid",
+                    "messaggio_conferma_mail": "Confirmed",
+                    "messaggio_domini": "Domain",
+                    "messaggio_ip": "IP",
+                    "messaggio_giavotato": "Voted",
+                    "messaggio_sgamo": "Denied",
+                    "login": "admin3",
+                    "password": "<redacted>",
+                    "old_login": "admin3",
+                    "old_password": "<redacted>"
+                  },
+                  "referer": "admin/config_editor.php?language=1",
+                  "cookie_names": []
+                },
+                "response": {
+                  "status_code": 200,
+                  "url": "http://localhost/phpoll/polls/test/admin/modifica_configurazione.php?language=1",
+                  "body_length": 531
+                },
+                "query": "SELECT titolo_posizione FROM phpoll_test_configurazione WHERE id=1",
+                "observed": "DRHLR_602bad19f802_AFTER",
+                "assertions": [
+                  {
+                    "type": "scalar_equals",
+                    "expected": "DRHLR_602bad19f802_AFTER",
+                    "observed": "DRHLR_602bad19f802_AFTER",
+                    "passed": true
+                  }
+                ],
+                "passed": true
+              }
+            ]
+          }
+        ],
+        "combined_dimensions": {
+          "vulnerability_blocking": {
+            "passed": true,
+            "response_oracle_applicable": false,
+            "response_oracle_passed": false,
+            "database_oracle_applicable": true,
+            "database_oracle_passed": true
+          },
+          "regression": {
+            "passed": true,
+            "response_oracle_applicable": false,
+            "response_oracle_passed": true,
+            "database_oracle_applicable": true,
+            "database_oracle_passed": true
+          }
+        }
+      }
+    }
+  ]
+}

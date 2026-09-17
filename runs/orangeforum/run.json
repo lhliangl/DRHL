@@ -1,0 +1,28 @@
+{
+  "status": "completed",
+  "started_at": "2026-07-03T13:15:43.490390+00:00",
+  "config": "D:\\project\\python\\DRHL\\configs\\orangeforum.json",
+  "artifacts": {
+    "dynamic_graph": "D:\\project\\python\\DRHL\\runs\\orangeforum\\graphs\\dynamic.json",
+    "static_graph": "D:\\project\\python\\DRHL\\runs\\orangeforum\\graphs\\static.json",
+    "candidate_parameters": "D:\\project\\python\\DRHL\\runs\\orangeforum\\source\\candidate_parameters.json",
+    "candidate_functions": "D:\\project\\python\\DRHL\\runs\\orangeforum\\source\\candidate_functions.json",
+    "access_control_parameters": "D:\\project\\python\\DRHL\\runs\\orangeforum\\source\\parameters.json",
+    "access_control_functions": "D:\\project\\python\\DRHL\\runs\\orangeforum\\source\\functions.json",
+    "access_control_snippets": "D:\\project\\python\\DRHL\\runs\\orangeforum\\source\\snippets.json",
+    "fused_graph": "D:\\project\\python\\DRHL\\runs\\orangeforum\\graphs\\fused.json",
+    "graph_summary": "D:\\project\\python\\DRHL\\runs\\orangeforum\\graphs\\summary.json",
+    "graph_summary_csv": "D:\\project\\python\\DRHL\\runs\\orangeforum\\graphs\\summary.csv",
+    "attack_vectors": "D:\\project\\python\\DRHL\\runs\\orangeforum\\analysis\\vectors.json",
+    "findings": "D:\\project\\python\\DRHL\\runs\\orangeforum\\analysis\\findings.json",
+    "repairs": "D:\\project\\python\\DRHL\\runs\\orangeforum\\repair\\manifest.json",
+    "repair_report": "D:\\project\\python\\DRHL\\runs\\orangeforum\\repair\\repair_report.md",
+    "metrics_json": "D:\\project\\python\\DRHL\\runs\\orangeforum\\metrics\\summary.json",
+    "metrics_csv": "D:\\project\\python\\DRHL\\runs\\orangeforum\\metrics\\summary.csv",
+    "llm_access_control_snippets": "D:\\project\\python\\DRHL\\runs\\orangeforum\\source\\llm_snippets.json"
+  },
+  "finished_at": "2026-07-03T13:20:36.285072+00:00",
+  "repair_only_finished_at": "2026-07-03T13:57:37.262856+00:00",
+  "repair_rerun_started_at": "2026-09-13T07:29:29.222646+00:00",
+  "repair_rerun_finished_at": "2026-09-13T07:31:26.423438+00:00"
+}

@@ -1,0 +1,387 @@
+{
+  "functions": [
+    {
+      "id": "common.php:LCF1",
+      "path": "common.php",
+      "name": "f_find_member",
+      "parameters": [
+        "$id",
+        "$col"
+      ],
+      "body": "{\n\tglobal $lang_male,$lang_female,$theme_file,$lang_guest,$autoactivate,$member_level,$lang_country;\n\n\t$mysql_f_find_member_query = mysql_query(\"SELECT * FROM awcm_members WHERE id = '$id'\");\n\t$mysql_f_find_member_row   = mysql_fetch_assoc($mysql_f_find_member_query);\n\t\n\tif ($col == username) {\n\t\tprint '<a href=\"member.php?id='.$id.'\">';\n\t\techo $mysql_f_find_member_row['username'];\n\t\tprint '</a>';\n\t\tif($id == '0') {\n\t\t\tprint $lang_guest;\n\t\t} elseif ($id == 'no') {\n\t\t\tprint $lang_guest;\n\t\t}\n\t}\tif ($col == username2) {\n\t\techo $mysql_f_find_member_row['username'];\n\t\tif($id == '0') {\n\t\t\tprint $lang_guest;\n\t\t}\n\t} if ($col == email) {\n\t\techo $mysql_f_find_member_row['email'];\n\t} if ($col == sex) {\n\t\tif($mysql_f_find_member_row['sex'] == 'male') {\n\t\t\tprint $lang_male;\n\t\t} elseif($mysql_f_find_member_row['sex'] == 'female') {\n\t\t\tprint $lang_female;\n\t\t}\n\t} if ($col == country) {\n\t\techo $mysql_f_find_member_row['country'];\n\t} if ($col == avatar) {\n\t\techo $mysql_f_find_member_row['avatar'];\n\t} if ($col == signature) {\n\t\techo $mysql_f_find_member_row['signature'];\n\t} if ($col == level) {\n\t\t$member_level = $mysql_f_find_member_row['level'];\n\t} if ($col == title) {\n\t\techo $mysql_f_find_member_row['title'];\n\t} if ($col == autoactivate) {\n\t\t$autoactivate = $mysql_f_find_member_row['autoactivate'];\n\t} if($col == notes) {\n\t\techo $mysql_f_find_member_row['notes'];\n\t} if($col == 'sexx') {\n\t\t$ffm_sex = $mysql_f_find_member_row['sex'];\n\t} if($col == 'password') {\n\t\t$mysql_f_find_member_row['password'];\n\t} if($col == 'vavatar') {\n\t\tprint '<iframe src=\"includes/avatar.php?id='.$mysql_f_find_member_row['id'].'&w=100&h=100\" frameborder=\"0\" height=\"100\" width=\"100\"></iframe>';\n\t} if($col == 'svavatar') {\n\t\tprint '<iframe src=\"includes/avatar.php?id='.$id.'&w=70&h=70\" frameborder=\"0\" height=\"70\" width=\"70\"></iframe>';\n\t} if($col == 'box') {\n\t\t?>\n<table cellspacing=\"0\" cellpadding=\"0\" width=\"100%\" class=\"memberinfo_table\">\n<tr><td width=\"1\"><iframe src=\"includes/avatar.php?id=<?php echo $id; ?>&w=100&h=100\" frameborder=\"0\" height=\"100\" width=\"100\"></iframe></td><td width=\"10\"></td><td valign=\"top\">\n<span class=\"text_large\">\n<?php print '<a href=\"member.php?id='.$id.'\">'; echo $mysql_f_find_member_row['username']; print '</a>'; ?></span><br /><span class=\"text_small\"><?php print $mysql_f_find_member_row['title']; ?></span><br /><span class=\"text_small\">\n<?php print $lang_country; ?> : <?php echo $mysql_f_find_member_row['country']; ?>\n</span>\n</td>\n\n</tr>\n</table>\n\t\t<?php\n\t}\n}",
+      "start_line": 8,
+      "end_line": 72,
+      "code": "function f_find_member($id,$col) {\n\tglobal $lang_male,$lang_female,$theme_file,$lang_guest,$autoactivate,$member_level,$lang_country;\n\n\t$mysql_f_find_member_query = mysql_query(\"SELECT * FROM awcm_members WHERE id = '$id'\");\n\t$mysql_f_find_member_row   = mysql_fetch_assoc($mysql_f_find_member_query);\n\t\n\tif ($col == username) {\n\t\tprint '<a href=\"member.php?id='.$id.'\">';\n\t\techo $mysql_f_find_member_row['username'];\n\t\tprint '</a>';\n\t\tif($id == '0') {\n\t\t\tprint $lang_guest;\n\t\t} elseif ($id == 'no') {\n\t\t\tprint $lang_guest;\n\t\t}\n\t}\tif ($col == username2) {\n\t\techo $mysql_f_find_member_row['username'];\n\t\tif($id == '0') {\n\t\t\tprint $lang_guest;\n\t\t}\n\t} if ($col == email) {\n\t\techo $mysql_f_find_member_row['email'];\n\t} if ($col == sex) {\n\t\tif($mysql_f_find_member_row['sex'] == 'male') {\n\t\t\tprint $lang_male;\n\t\t} elseif($mysql_f_find_member_row['sex'] == 'female') {\n\t\t\tprint $lang_female;\n\t\t}\n\t} if ($col == country) {\n\t\techo $mysql_f_find_member_row['country'];\n\t} if ($col == avatar) {\n\t\techo $mysql_f_find_member_row['avatar'];\n\t} if ($col == signature) {\n\t\techo $mysql_f_find_member_row['signature'];\n\t} if ($col == level) {\n\t\t$member_level = $mysql_f_find_member_row['level'];\n\t} if ($col == title) {\n\t\techo $mysql_f_find_member_row['title'];\n\t} if ($col == autoactivate) {\n\t\t$autoactivate = $mysql_f_find_member_row['autoactivate'];\n\t} if($col == notes) {\n\t\techo $mysql_f_find_member_row['notes'];\n\t} if($col == 'sexx') {\n\t\t$ffm_sex = $mysql_f_find_member_row['sex'];\n\t} if($col == 'password') {\n\t\t$mysql_f_find_member_row['password'];\n\t} if($col == 'vavatar') {\n\t\tprint '<iframe src=\"includes/avatar.php?id='.$mysql_f_find_member_row['id'].'&w=100&h=100\" frameborder=\"0\" height=\"100\" width=\"100\"></iframe>';\n\t} if($col == 'svavatar') {\n\t\tprint '<iframe src=\"includes/avatar.php?id='.$id.'&w=70&h=70\" frameborder=\"0\" height=\"70\" width=\"70\"></iframe>';\n\t} if($col == 'box') {\n\t\t?>\n<table cellspacing=\"0\" cellpadding=\"0\" width=\"100%\" class=\"memberinfo_table\">\n<tr><td width=\"1\"><iframe src=\"includes/avatar.php?id=<?php echo $id; ?>&w=100&h=100\" frameborder=\"0\" height=\"100\" width=\"100\"></iframe></td><td width=\"10\"></td><td valign=\"top\">\n<span class=\"text_large\">\n<?php print '<a href=\"member.php?id='.$id.'\">'; echo $mysql_f_find_member_row['username']; print '</a>'; ?></span><br /><span class=\"text_small\"><?php print $mysql_f_find_member_row['title']; ?></span><br /><span class=\"text_small\">\n<?php print $lang_country; ?> : <?php echo $mysql_f_find_member_row['country']; ?>\n</span>\n</td>\n\n</tr>\n</table>\n\t\t<?php\n\t}\n}"
+    },
+    {
+      "id": "control/common.php:LCF2",
+      "path": "control/common.php",
+      "name": "f_find_member",
+      "parameters": [
+        "$id",
+        "$col"
+      ],
+      "body": "{\n\tglobal $lang_male,$lang_female,$theme_file,$lang_guest,$autoactivate,$member_level,$lang_country;\n\n\t$mysql_f_find_member_query = mysql_query(\"SELECT * FROM awcm_members WHERE id = '$id'\");\n\t$mysql_f_find_member_row   = mysql_fetch_assoc($mysql_f_find_member_query);\n\t\n\tif ($col == username) {\n\t\tprint '<a href=\"../member.php?id='.$id.'\" target=\"_blank\">';\n\t\techo $mysql_f_find_member_row['username'];\n\t\tprint '</a>';\n\t\tif($id == '0') {\n\t\t\tprint $lang_guest;\n\t\t}\n\t}\n}",
+      "start_line": 71,
+      "end_line": 85,
+      "code": "function f_find_member($id,$col) {\n\tglobal $lang_male,$lang_female,$theme_file,$lang_guest,$autoactivate,$member_level,$lang_country;\n\n\t$mysql_f_find_member_query = mysql_query(\"SELECT * FROM awcm_members WHERE id = '$id'\");\n\t$mysql_f_find_member_row   = mysql_fetch_assoc($mysql_f_find_member_query);\n\t\n\tif ($col == username) {\n\t\tprint '<a href=\"../member.php?id='.$id.'\" target=\"_blank\">';\n\t\techo $mysql_f_find_member_row['username'];\n\t\tprint '</a>';\n\t\tif($id == '0') {\n\t\t\tprint $lang_guest;\n\t\t}\n\t}\n}"
+    },
+    {
+      "id": "control/db_backup.php:LCF3",
+      "path": "control/db_backup.php",
+      "name": "mysql_dump",
+      "parameters": [
+        "$database"
+      ],
+      "body": "{\n      $query = '';\n      $tables = @mysql_list_tables($database);\n      while ($row = @mysql_fetch_row($tables)) { $table_list[] = $row[0]; }\n      for ($i = 0; $i < @count($table_list); $i++) {\n      $results = mysql_query('DESCRIBE ' . $database . '.' . $table_list[$i]);\n      $query .= 'DROP TABLE IF EXISTS `' . $database . '.' . $table_list[$i] . '`;' . lnbr;\n      $query .= lnbr . 'CREATE TABLE `' . $database . '.' . $table_list[$i] . '` (' . lnbr;\n      $tmp = '';\n      while ($row = @mysql_fetch_assoc($results)) {\n      $query .= '`' . $row['Field'] . '` ' . $row['Type'];\n      if ($row['Null'] != 'YES') { $query .= ' NOT NULL'; }\n      if ($row['Default'] != '') { $query .= ' DEFAULT \\'' . $row['Default'] . '\\''; }\n      if ($row['Extra']) { $query .= ' ' . strtoupper($row['Extra']); }\n      if ($row['Key'] == 'PRI') { $tmp = 'primary key(' . $row['Field'] . ')'; }\n\n      $query .= ','. lnbr;\n\n      }\n\n      $query .= $tmp . lnbr . ');' . str_repeat(lnbr, 2);\n\n      $results = mysql_query('SELECT * FROM ' . $database . '.' . $table_list[$i]);\n\n      while ($row = @mysql_fetch_assoc($results)) {\n\n      $query .= 'INSERT INTO `' . $database . '.' . $table_list[$i] .'` (';\n\n      $data = Array();\n\n      while (list($key, $value) = @each($row)) { $data['keys'][] = $key; $data['values'][] = addslashes($value); }\n\n      $query .= join($data['keys'], ', ') . ')' . lnbr . 'VALUES (\\'' . join($data['values'], '\\', \\'') . '\\');' . lnbr;\n\n      }\n\n      $query .= str_repeat(lnbr, 2);\n\n      }\n\n      return $query;\n\n      }",
+      "start_line": 11,
+      "end_line": 53,
+      "code": "function mysql_dump($database) {\n      $query = '';\n      $tables = @mysql_list_tables($database);\n      while ($row = @mysql_fetch_row($tables)) { $table_list[] = $row[0]; }\n      for ($i = 0; $i < @count($table_list); $i++) {\n      $results = mysql_query('DESCRIBE ' . $database . '.' . $table_list[$i]);\n      $query .= 'DROP TABLE IF EXISTS `' . $database . '.' . $table_list[$i] . '`;' . lnbr;\n      $query .= lnbr . 'CREATE TABLE `' . $database . '.' . $table_list[$i] . '` (' . lnbr;\n      $tmp = '';\n      while ($row = @mysql_fetch_assoc($results)) {\n      $query .= '`' . $row['Field'] . '` ' . $row['Type'];\n      if ($row['Null'] != 'YES') { $query .= ' NOT NULL'; }\n      if ($row['Default'] != '') { $query .= ' DEFAULT \\'' . $row['Default'] . '\\''; }\n      if ($row['Extra']) { $query .= ' ' . strtoupper($row['Extra']); }\n      if ($row['Key'] == 'PRI') { $tmp = 'primary key(' . $row['Field'] . ')'; }\n\n      $query .= ','. lnbr;\n\n      }\n\n      $query .= $tmp . lnbr . ');' . str_repeat(lnbr, 2);\n\n      $results = mysql_query('SELECT * FROM ' . $database . '.' . $table_list[$i]);\n\n      while ($row = @mysql_fetch_assoc($results)) {\n\n      $query .= 'INSERT INTO `' . $database . '.' . $table_list[$i] .'` (';\n\n      $data = Array();\n\n      while (list($key, $value) = @each($row)) { $data['keys'][] = $key; $data['values'][] = addslashes($value); }\n\n      $query .= join($data['keys'], ', ') . ')' . lnbr . 'VALUES (\\'' . join($data['values'], '\\', \\'') . '\\');' . lnbr;\n\n      }\n\n      $query .= str_repeat(lnbr, 2);\n\n      }\n\n      return $query;\n\n      }"
+    },
+    {
+      "id": "includes/classes/rssreader.php:LCF4",
+      "path": "includes/classes/rssreader.php",
+      "name": "parse",
+      "parameters": [],
+      "body": "{\n\t\t$parser=xml_parser_create();\n\t\txml_set_element_handler($parser, \"startElement\", \"endElement\");\n\t\txml_set_character_data_handler($parser, \"characterData\");\n\t\txml_parse($parser, $this->xml, true)\n\t\t\tor die(sprintf(\"XML error: %s at line %d\", \n\t\t\t\txml_error_string(xml_get_error_code($parser)), \n\t\t\t\txml_get_current_line_number($parser)));\n\t\txml_parser_free($parser);\n\t}",
+      "start_line": 117,
+      "end_line": 126,
+      "code": "function parse(){\n\t\t$parser=xml_parser_create();\n\t\txml_set_element_handler($parser, \"startElement\", \"endElement\");\n\t\txml_set_character_data_handler($parser, \"characterData\");\n\t\txml_parse($parser, $this->xml, true)\n\t\t\tor die(sprintf(\"XML error: %s at line %d\", \n\t\t\t\txml_error_string(xml_get_error_code($parser)), \n\t\t\t\txml_get_current_line_number($parser)));\n\t\txml_parser_free($parser);\n\t}"
+    },
+    {
+      "id": "includes/classes/rssreader.php:LCF5",
+      "path": "includes/classes/rssreader.php",
+      "name": "showHeading",
+      "parameters": [
+        "$tag=\"\""
+      ],
+      "body": "{\n\t\t$tag=$tag?$tag:\"h1\";\n\t\tif($this->title)\n\t\t\tprint \"<$tag>$this->title</$tag>\\n\";\n\t}",
+      "start_line": 128,
+      "end_line": 132,
+      "code": "function showHeading($tag=\"\"){\n\t\t$tag=$tag?$tag:\"h1\";\n\t\tif($this->title)\n\t\t\tprint \"<$tag>$this->title</$tag>\\n\";\n\t}"
+    },
+    {
+      "id": "includes/classes/rssreader.php:LCF6",
+      "path": "includes/classes/rssreader.php",
+      "name": "showImage",
+      "parameters": [
+        "$align=\"\""
+      ],
+      "body": "{\n\t\t$this->image->show($align);\n\t}",
+      "start_line": 134,
+      "end_line": 136,
+      "code": "function showImage($align=\"\"){\n\t\t$this->image->show($align);\n\t}"
+    },
+    {
+      "id": "includes/classes/rssreader.php:LCF7",
+      "path": "includes/classes/rssreader.php",
+      "name": "showLink",
+      "parameters": [],
+      "body": "{\n\t\tif($this->link)\n\t\t\tprint \"<a href=\\\"$this->link\\\">$this->link</a>\\n\";\n\t}",
+      "start_line": 138,
+      "end_line": 141,
+      "code": "function showLink(){\n\t\tif($this->link)\n\t\t\tprint \"<a href=\\\"$this->link\\\">$this->link</a>\\n\";\n\t}"
+    },
+    {
+      "id": "includes/classes/rssreader.php:LCF8",
+      "path": "includes/classes/rssreader.php",
+      "name": "showDescription",
+      "parameters": [],
+      "body": "{\n\t\tif($this->description)\n\t\t\tprint \"<p>$this->description</p>\\n\";\n\t}",
+      "start_line": 142,
+      "end_line": 145,
+      "code": "function showDescription(){\n\t\tif($this->description)\n\t\t\tprint \"<p>$this->description</p>\\n\";\n\t}"
+    },
+    {
+      "id": "includes/classes/rssreader.php:LCF9",
+      "path": "includes/classes/rssreader.php",
+      "name": "showStories",
+      "parameters": [],
+      "body": "{\n\t\techo \"<dl>\\n\";\n\t\t$n=0;\n\t\tforeach($this->stories as $story){\n\t\t\t$n++;\n\t\t\tif ($this->maxstories && $n>$this->maxstories)\n\t\t\t\tbreak;\n\t\t\t$story->show();\n\t\t}\n\t\techo \"</dl>\\n\";\n\t}",
+      "start_line": 147,
+      "end_line": 157,
+      "code": "function showStories(){\n\t\techo \"<dl>\\n\";\n\t\t$n=0;\n\t\tforeach($this->stories as $story){\n\t\t\t$n++;\n\t\t\tif ($this->maxstories && $n>$this->maxstories)\n\t\t\t\tbreak;\n\t\t\t$story->show();\n\t\t}\n\t\techo \"</dl>\\n\";\n\t}"
+    },
+    {
+      "id": "includes/classes/rssreader.php:LCF10",
+      "path": "includes/classes/rssreader.php",
+      "name": "showtitles",
+      "parameters": [],
+      "body": "{\n\t\t$n=0;\n\t\tforeach($this->stories as $story){\n\t\t\t$n++;\n\t\t\tif ($this->maxstories && $n>$this->maxstories)\n\t\t\t\tbreak;\n\t\t\t$story->show2();\n\t\t}\n\t}",
+      "start_line": 158,
+      "end_line": 166,
+      "code": "function showtitles(){\n\t\t$n=0;\n\t\tforeach($this->stories as $story){\n\t\t\t$n++;\n\t\t\tif ($this->maxstories && $n>$this->maxstories)\n\t\t\t\tbreak;\n\t\t\t$story->show2();\n\t\t}\n\t}"
+    },
+    {
+      "id": "includes/classes/rssreader.php:LCF11",
+      "path": "includes/classes/rssreader.php",
+      "name": "rssFeed",
+      "parameters": [
+        "$uri=''"
+      ],
+      "body": "{\n\t\t$this->image=new rssImage();\n\t\tif($uri){\n\t\t\t$this->url=$uri;\n\t\t\t$this->getFeed();\n\t\t} else {\n\t\t\t$this->error=\"No URL for RSS feed\";\n\t\t}\n\t}",
+      "start_line": 170,
+      "end_line": 178,
+      "code": "function rssFeed($uri=''){\n\t\t$this->image=new rssImage();\n\t\tif($uri){\n\t\t\t$this->url=$uri;\n\t\t\t$this->getFeed();\n\t\t} else {\n\t\t\t$this->error=\"No URL for RSS feed\";\n\t\t}\n\t}"
+    },
+    {
+      "id": "includes/classes/rssreader.php:LCF12",
+      "path": "includes/classes/rssreader.php",
+      "name": "getFeed",
+      "parameters": [],
+      "body": "{\n\t\t// if we have a URL\n\t\tif ($this->url){\n\t\t\tif (extension_loaded('curl')) {\n\t\t\t\t$this->xml=$this->getRemoteFile($this->url);\n\t\t\t}\n\t\t}\n\t}",
+      "start_line": 181,
+      "end_line": 188,
+      "code": "function getFeed(){\n\t\t// if we have a URL\n\t\tif ($this->url){\n\t\t\tif (extension_loaded('curl')) {\n\t\t\t\t$this->xml=$this->getRemoteFile($this->url);\n\t\t\t}\n\t\t}\n\t}"
+    },
+    {
+      "id": "includes/classes/rssreader.php:LCF13",
+      "path": "includes/classes/rssreader.php",
+      "name": "getRemoteFile",
+      "parameters": [
+        "$url"
+      ],
+      "body": "{\n\t\t$s=new gwSocket();\n\t\tif($s->getUrl($url)){\n\t\t\tif(is_array($s->headers)){\n\t\t\t\t$h=array_change_key_case($s->headers, CASE_LOWER);\n\t\t\t\tif($s->error) // failed to connect with host\n\t\t\t\t\t$buffer=$this->errorReturn($s->error);\n\t\t\t\telseif(preg_match(\"/404/\",$h['status'])) // page not found\n\t\t\t\t\t$buffer=$this->errorReturn(\"Page Not Found\");\n\t\t\t\telseif(preg_match(\"/xml/i\",$h['content-type'])) // got XML back\n\t\t\t\t\t$buffer=$s->page;\n\t\t\t\telse // got a page, but wrong content type\n\t\t\t\t\t$buffer=$this->errorReturn(\"The server did not return XML. The content type returned was \".$h['content-type']);\n\t\t\t} else {\n\t\t\t\t$buffer=$this->errorReturn(\"An unknown error occurred.\");\n\t\t\t}\n\t\t}else{\n\t\t\t$buffer=$this->errorReturn(\"An unknown error occurred.\");\n\t\t}\n\t\treturn $buffer;\n\t}",
+      "start_line": 190,
+      "end_line": 210,
+      "code": "function getRemoteFile($url){\n\t\t$s=new gwSocket();\n\t\tif($s->getUrl($url)){\n\t\t\tif(is_array($s->headers)){\n\t\t\t\t$h=array_change_key_case($s->headers, CASE_LOWER);\n\t\t\t\tif($s->error) // failed to connect with host\n\t\t\t\t\t$buffer=$this->errorReturn($s->error);\n\t\t\t\telseif(preg_match(\"/404/\",$h['status'])) // page not found\n\t\t\t\t\t$buffer=$this->errorReturn(\"Page Not Found\");\n\t\t\t\telseif(preg_match(\"/xml/i\",$h['content-type'])) // got XML back\n\t\t\t\t\t$buffer=$s->page;\n\t\t\t\telse // got a page, but wrong content type\n\t\t\t\t\t$buffer=$this->errorReturn(\"The server did not return XML. The content type returned was \".$h['content-type']);\n\t\t\t} else {\n\t\t\t\t$buffer=$this->errorReturn(\"An unknown error occurred.\");\n\t\t\t}\n\t\t}else{\n\t\t\t$buffer=$this->errorReturn(\"An unknown error occurred.\");\n\t\t}\n\t\treturn $buffer;\n\t}"
+    },
+    {
+      "id": "includes/classes/rssreader.php:LCF14",
+      "path": "includes/classes/rssreader.php",
+      "name": "errorReturn",
+      "parameters": [
+        "$error"
+      ],
+      "body": "{\n\t\t$retVal=\"<?xml version=\\\"1.0\\\" ?>\\n\".\n\t\t\t\"<rss version=\\\"2.0\\\">\\n\".\n\t\t\t\"\\t<channel>\\n\".\n\t\t\t\"\\t\\t<title>Failed to Get RSS Data</title>\\n\".\n\t\t\t\"\\t\\t<description>An error was ecnountered attempting to get the RSS data: $error</description>\\n\".\n\t\t\t\"\\t\\t<pubdate>\".date(\"D, d F Y H:i:s T\").\"</pubdate>\\n\".\n\t\t\t\"\\t\\t<lastbuilddate>\".date(\"D, d F Y H:i:s T\").\"</lastbuilddate>\\n\".\n\t\t\t\"\\t</channel>\\n\".\n\t\t\t\"</rss>\\n\";\n\t\treturn $retVal;\n\t}",
+      "start_line": 212,
+      "end_line": 223,
+      "code": "function errorReturn($error){\n\t\t$retVal=\"<?xml version=\\\"1.0\\\" ?>\\n\".\n\t\t\t\"<rss version=\\\"2.0\\\">\\n\".\n\t\t\t\"\\t<channel>\\n\".\n\t\t\t\"\\t\\t<title>Failed to Get RSS Data</title>\\n\".\n\t\t\t\"\\t\\t<description>An error was ecnountered attempting to get the RSS data: $error</description>\\n\".\n\t\t\t\"\\t\\t<pubdate>\".date(\"D, d F Y H:i:s T\").\"</pubdate>\\n\".\n\t\t\t\"\\t\\t<lastbuilddate>\".date(\"D, d F Y H:i:s T\").\"</lastbuilddate>\\n\".\n\t\t\t\"\\t</channel>\\n\".\n\t\t\t\"</rss>\\n\";\n\t\treturn $retVal;\n\t}"
+    },
+    {
+      "id": "includes/classes/rssreader.php:LCF15",
+      "path": "includes/classes/rssreader.php",
+      "name": "addStory",
+      "parameters": [
+        "$o"
+      ],
+      "body": "{\n\t\tif(is_object($o))\n\t\t\t$this->stories[]=$o;\n\t\telse\n\t\t\t$this->error=\"Type mismatach: expected object\";\n\t}",
+      "start_line": 225,
+      "end_line": 230,
+      "code": "function addStory($o){\n\t\tif(is_object($o))\n\t\t\t$this->stories[]=$o;\n\t\telse\n\t\t\t$this->error=\"Type mismatach: expected object\";\n\t}"
+    },
+    {
+      "id": "includes/classes/rssreader.php:LCF16",
+      "path": "includes/classes/rssreader.php",
+      "name": "show",
+      "parameters": [
+        "$align=\"\""
+      ],
+      "body": "{\n\t\tif($this->url){\n\t\t\tif($this->link)\n\t\t\t\tprint \"<a href=\\\"$this->link\\\">\";\n\t\t\tprint \"<img src=\\\"$this->url\\\" style=\\\"border:none;\\\"\";\n\t\t\tif($this->title)\n\t\t\t\tprint \" alt=\\\"$this->title\\\"\";\n\t\t\tif($this->width)\n\t\t\t\tprint \" width=\\\"$this->width\\\" height=\\\"$this->height\\\"\";\n\t\t\tif($align)\n\t\t\t\tprint \" align=\\\"$align\\\"\";\n\t\t\tprint \">\";\t\n\t\t\tif($this->link)\n\t\t\t\tprint \"</a>\";\n\t\t}\n\t}",
+      "start_line": 241,
+      "end_line": 256,
+      "code": "function show($align=\"\"){\n\t\tif($this->url){\n\t\t\tif($this->link)\n\t\t\t\tprint \"<a href=\\\"$this->link\\\">\";\n\t\t\tprint \"<img src=\\\"$this->url\\\" style=\\\"border:none;\\\"\";\n\t\t\tif($this->title)\n\t\t\t\tprint \" alt=\\\"$this->title\\\"\";\n\t\t\tif($this->width)\n\t\t\t\tprint \" width=\\\"$this->width\\\" height=\\\"$this->height\\\"\";\n\t\t\tif($align)\n\t\t\t\tprint \" align=\\\"$align\\\"\";\n\t\t\tprint \">\";\t\n\t\t\tif($this->link)\n\t\t\t\tprint \"</a>\";\n\t\t}\n\t}"
+    },
+    {
+      "id": "includes/classes/rssreader.php:LCF17",
+      "path": "includes/classes/rssreader.php",
+      "name": "show",
+      "parameters": [],
+      "body": "{\n\t\tif($this->title){\n\t\t\tif($this->link){\n\t\t\t\techo \"<dt><a href=\\\"$this->link\\\">$this->title</a></dt>\\n\";\n\t\t\t}elseif($this->title){\n\t\t\t\techo \"<dt>$this->title</a></dt>\\n\";\n\t\t\t}\n\t\t\techo \"<dd>\";\n\t\t\tif($this->pubdate)\n\t\t\t\techo \"<i>$this->pubdate</i> - \";\n\t\t\tif($this->description)\n\t\t\t\techo \"$this->description\";\n\t\t\techo \"</dd>\\n\";\n\t\t}\n\t}",
+      "start_line": 265,
+      "end_line": 279,
+      "code": "function show(){\n\t\tif($this->title){\n\t\t\tif($this->link){\n\t\t\t\techo \"<dt><a href=\\\"$this->link\\\">$this->title</a></dt>\\n\";\n\t\t\t}elseif($this->title){\n\t\t\t\techo \"<dt>$this->title</a></dt>\\n\";\n\t\t\t}\n\t\t\techo \"<dd>\";\n\t\t\tif($this->pubdate)\n\t\t\t\techo \"<i>$this->pubdate</i> - \";\n\t\t\tif($this->description)\n\t\t\t\techo \"$this->description\";\n\t\t\techo \"</dd>\\n\";\n\t\t}\n\t}"
+    },
+    {
+      "id": "includes/classes/rssreader.php:LCF18",
+      "path": "includes/classes/rssreader.php",
+      "name": "show2",
+      "parameters": [],
+      "body": "{\n\t\tif($this->title){\n\t\t\tif($this->link){\n\t\t\t\techo \"<a target='_blank' href=\\\"$this->link\\\">$this->title</a>    <img src='\".$_GET[img].\"' height='20' width='20' />  \";\n\t\t\t}elseif($this->title){\n\t\t\t\techo \"$this->title</a>\";\n\t\t\t}\n\t\t}\n\t}",
+      "start_line": 280,
+      "end_line": 288,
+      "code": "function show2(){\n\t\tif($this->title){\n\t\t\tif($this->link){\n\t\t\t\techo \"<a target='_blank' href=\\\"$this->link\\\">$this->title</a>    <img src='\".$_GET[img].\"' height='20' width='20' />  \";\n\t\t\t}elseif($this->title){\n\t\t\t\techo \"$this->title</a>\";\n\t\t\t}\n\t\t}\n\t}"
+    },
+    {
+      "id": "includes/classes/rssreader.php:LCF19",
+      "path": "includes/classes/rssreader.php",
+      "name": "getUrl",
+      "parameters": [
+        "$url"
+      ],
+      "body": "{\n\t\t$retVal=\"\";\n\t\t$url_parsed = parse_url($url);\n\t\t$scheme = $url_parsed[\"scheme\"];\n\t\t$host = $url_parsed[\"host\"];\n\t\t$port = $url_parsed[\"port\"]?$url_parsed[\"port\"]:\"80\";\n\t\t$user = $url_parsed[\"user\"];\n\t\t$pass = $url_parsed[\"pass\"];\n\t\t$path = $url_parsed[\"path\"]?$url_parsed[\"path\"]:\"/\";\n\t\t$query = $url_parsed[\"query\"];\n\t\t$anchor = $url_parsed[\"fragment\"];\n\n\t\tif (!empty($host)){\n\n\t\t\t// attempt to open the socket\n\t\t\tif($fp = fsockopen($host, $port, $errno, $errstr, 2)){\n\n\t\t\t\t$path .= $query?\"?$query\":\"\";\n\t\t\t\t$path .= $anchor?\"$anchor\":\"\";\n\n\t\t\t\t// this is the request we send to the host\n\t\t\t\t$out = \"GET $path \".\n\t\t\t\t\t\"HTTP/1.0\\r\\n\".\n\t\t\t\t\t\"Host: $host\\r\\n\".\n\t\t\t\t\t\"Connection: Close\\r\\n\".\n\t\t\t\t\t\"User-Agent: $this->userAgent\\r\\n\";\n\t\t\t\tif($user)\n\t\t\t\t\t$out .= \"Authorization: Basic \".\n\t\t\t\t\t\tbase64_encode(\"$user:$pass\").\"\\r\\n\";\n\t\t\t\t$out .= \"\\r\\n\";\n\n\t\t\t\tfputs($fp, $out);\n\t\t\t\twhile (!feof($fp)) {\n\t\t\t\t\t$retVal.=fgets($fp, 128);\n\t\t\t\t}\n\t\t\t\tfclose($fp);\n\t\t\t} else {\n\t\t\t\t$this->error=\"Failed to make connection to host.\";//$errstr;\n\t\t\t}\n\t\t\t$this->result=$retVal;\n\t\t\t$this->headers=$this->parseHeaders(trim(substr($retVal,0,strpos($retVal,\"\\r\\n\\r\\n\"))));\n\t\t\t$this->page=trim(stristr($retVal,\"\\r\\n\\r\\n\")).\"\\n\";\n\t\t\tif(isset($this->headers['Location'])){\n\t\t\t\t$this->redirects++;\n\t\t\t\tif($this->redirects<$this->maxRedirects){\n\t\t\t\t\t$location=$this->headers['Location'];\n\t\t\t\t\t$this->headers=array();\n\t\t\t\t\t$this->result=\"\";\n\t\t\t\t\t$this->page=\"\";\n\t\t\t\t\t$this->getUrl($location);\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t\treturn (!$retVal=\"\");\n\t}",
+      "start_line": 303,
+      "end_line": 357,
+      "code": "function getUrl( $url ) {\n\t\t$retVal=\"\";\n\t\t$url_parsed = parse_url($url);\n\t\t$scheme = $url_parsed[\"scheme\"];\n\t\t$host = $url_parsed[\"host\"];\n\t\t$port = $url_parsed[\"port\"]?$url_parsed[\"port\"]:\"80\";\n\t\t$user = $url_parsed[\"user\"];\n\t\t$pass = $url_parsed[\"pass\"];\n\t\t$path = $url_parsed[\"path\"]?$url_parsed[\"path\"]:\"/\";\n\t\t$query = $url_parsed[\"query\"];\n\t\t$anchor = $url_parsed[\"fragment\"];\n\n\t\tif (!empty($host)){\n\n\t\t\t// attempt to open the socket\n\t\t\tif($fp = fsockopen($host, $port, $errno, $errstr, 2)){\n\n\t\t\t\t$path .= $query?\"?$query\":\"\";\n\t\t\t\t$path .= $anchor?\"$anchor\":\"\";\n\n\t\t\t\t// this is the request we send to the host\n\t\t\t\t$out = \"GET $path \".\n\t\t\t\t\t\"HTTP/1.0\\r\\n\".\n\t\t\t\t\t\"Host: $host\\r\\n\".\n\t\t\t\t\t\"Connection: Close\\r\\n\".\n\t\t\t\t\t\"User-Agent: $this->userAgent\\r\\n\";\n\t\t\t\tif($user)\n\t\t\t\t\t$out .= \"Authorization: Basic \".\n\t\t\t\t\t\tbase64_encode(\"$user:$pass\").\"\\r\\n\";\n\t\t\t\t$out .= \"\\r\\n\";\n\n\t\t\t\tfputs($fp, $out);\n\t\t\t\twhile (!feof($fp)) {\n\t\t\t\t\t$retVal.=fgets($fp, 128);\n\t\t\t\t}\n\t\t\t\tfclose($fp);\n\t\t\t} else {\n\t\t\t\t$this->error=\"Failed to make connection to host.\";//$errstr;\n\t\t\t}\n\t\t\t$this->result=$retVal;\n\t\t\t$this->headers=$this->parseHeaders(trim(substr($retVal,0,strpos($retVal,\"\\r\\n\\r\\n\"))));\n\t\t\t$this->page=trim(stristr($retVal,\"\\r\\n\\r\\n\")).\"\\n\";\n\t\t\tif(isset($this->headers['Location'])){\n\t\t\t\t$this->redirects++;\n\t\t\t\tif($this->redirects<$this->maxRedirects){\n\t\t\t\t\t$location=$this->headers['Location'];\n\t\t\t\t\t$this->headers=array();\n\t\t\t\t\t$this->result=\"\";\n\t\t\t\t\t$this->page=\"\";\n\t\t\t\t\t$this->getUrl($location);\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t\treturn (!$retVal=\"\");\n\t}"
+    },
+    {
+      "id": "includes/classes/rssreader.php:LCF20",
+      "path": "includes/classes/rssreader.php",
+      "name": "parseHeaders",
+      "parameters": [
+        "$s"
+      ],
+      "body": "{\n\t\t$h=preg_split(\"/[\\r\\n]/\",$s);\n\t\tforeach($h as $i){\n\t\t\t$i=trim($i);\n\t\t\tif(strstr($i,\":\")){\n\t\t\t\tlist($k,$v)=explode(\":\",$i);\n\t\t\t\t$hdr[$k]=substr(stristr($i,\":\"),2);\n\t\t\t}else{\n\t\t\t\tif(strlen($i)>3)\n\t\t\t\t\t$hdr[]=$i;\n\t\t\t}\n\t\t}\n\t\tif(isset($hdr[0])){\n\t\t\t$hdr['Status']=$hdr[0];\n\t\t\tunset($hdr[0]);\n\t\t}\n\t\treturn $hdr;\n\t}",
+      "start_line": 359,
+      "end_line": 376,
+      "code": "function parseHeaders($s){\n\t\t$h=preg_split(\"/[\\r\\n]/\",$s);\n\t\tforeach($h as $i){\n\t\t\t$i=trim($i);\n\t\t\tif(strstr($i,\":\")){\n\t\t\t\tlist($k,$v)=explode(\":\",$i);\n\t\t\t\t$hdr[$k]=substr(stristr($i,\":\"),2);\n\t\t\t}else{\n\t\t\t\tif(strlen($i)>3)\n\t\t\t\t\t$hdr[]=$i;\n\t\t\t}\n\t\t}\n\t\tif(isset($hdr[0])){\n\t\t\t$hdr['Status']=$hdr[0];\n\t\t\tunset($hdr[0]);\n\t\t}\n\t\treturn $hdr;\n\t}"
+    },
+    {
+      "id": "includes/classes/rssreader.php:LCF21",
+      "path": "includes/classes/rssreader.php",
+      "name": "startElement",
+      "parameters": [
+        "$parser",
+        "$name",
+        "$attrs"
+      ],
+      "body": "{\n\tglobal $insideitem, $tag, $isimage;\n\t$tag = $name;\n\tif($name==\"IMAGE\")\n\t\t$isimage=true;\n\tif ($name == \"ITEM\") {\n\t\t$insideitem = true;\n\t}\n}",
+      "start_line": 384,
+      "end_line": 392,
+      "code": "function startElement($parser, $name, $attrs) {\n\tglobal $insideitem, $tag, $isimage;\n\t$tag = $name;\n\tif($name==\"IMAGE\")\n\t\t$isimage=true;\n\tif ($name == \"ITEM\") {\n\t\t$insideitem = true;\n\t}\n}"
+    },
+    {
+      "id": "includes/classes/rssreader.php:LCF22",
+      "path": "includes/classes/rssreader.php",
+      "name": "endElement",
+      "parameters": [
+        "$parser",
+        "$name"
+      ],
+      "body": "{\n\tglobal $insideitem, $title, $description, $link, $pubdate, $stories, $rss, $globaldata, $isimage;\n\t$globaldata=trim($globaldata);\n\t// if we're finishing a news item\n\tif ($name == \"ITEM\") {\n\t\t// create a new news story object\n\t\t$story=new newsStory();\n\t\t// assign the title, link, description and publication date\n\t\t$story->title=trim($title);\n\t\t$story->link=trim($link);\n\t\t$story->description=trim($description);\n\t\t$story->pubdate=trim($pubdate);\n\t\t// add it to our array of stories\n\t\t$rss->addStory($story);\n\t\t// reset our global variables\n\t\t$title = \"\";\n\t\t$description = \"\";\n\t\t$link = \"\";\n\t\t$pubdate = \"\";\n\t\t$insideitem = false;\n\t} else {\n\t\tswitch($name){\n\t\t\tcase \"TITLE\":\n\t\t\t\tif(!$isimage)\n\t\t\t\t\tif(!$insideitem)\n\t\t\t\t\t\t$rss->title=$globaldata;\n\t\t\t\tbreak;\n\t\t\tcase \"LINK\":\n\t\t\t\tif(!$insideitem)\n\t\t\t\t\t$rss->link=$globaldata;\n\t\t\t\tbreak;\n\t\t\tcase \"COPYRIGHT\":\n\t\t\t\tif(!$insideitem)\n\t\t\t\t\t$rss->copyright=$globaldata;\n\t\t\t\tbreak;\n\t\t\tcase \"DESCRIPTION\":\n\t\t\t\tif(!$insideitem)\n\t\t\t\t\t$rss->description=$globaldata;\n\t\t\t\tbreak;\n\t\t}\n\t}\n\tif($isimage){\n\t\tswitch($name){\n\t\t\tcase \"TITLE\": $rss->image->title=$globaldata;break;\n\t\t\tcase \"URL\": $rss->image->url=$globaldata;break;\n\t\t\tcase \"LINK\": $rss->image->link=$globaldata;break;\n\t\t\tcase \"WIDTH\": $rss->image->width=$globaldata;break;\n\t\t\tcase \"HEIGHT\": $rss->image->height=$globaldata;break;\n\t\t}\n\t}\n\tif($name==\"IMAGE\")\t\n\t\t$isimage=false;\n\t$globaldata=\"\";\n}",
+      "start_line": 394,
+      "end_line": 447,
+      "code": "function endElement($parser, $name) {\n\tglobal $insideitem, $title, $description, $link, $pubdate, $stories, $rss, $globaldata, $isimage;\n\t$globaldata=trim($globaldata);\n\t// if we're finishing a news item\n\tif ($name == \"ITEM\") {\n\t\t// create a new news story object\n\t\t$story=new newsStory();\n\t\t// assign the title, link, description and publication date\n\t\t$story->title=trim($title);\n\t\t$story->link=trim($link);\n\t\t$story->description=trim($description);\n\t\t$story->pubdate=trim($pubdate);\n\t\t// add it to our array of stories\n\t\t$rss->addStory($story);\n\t\t// reset our global variables\n\t\t$title = \"\";\n\t\t$description = \"\";\n\t\t$link = \"\";\n\t\t$pubdate = \"\";\n\t\t$insideitem = false;\n\t} else {\n\t\tswitch($name){\n\t\t\tcase \"TITLE\":\n\t\t\t\tif(!$isimage)\n\t\t\t\t\tif(!$insideitem)\n\t\t\t\t\t\t$rss->title=$globaldata;\n\t\t\t\tbreak;\n\t\t\tcase \"LINK\":\n\t\t\t\tif(!$insideitem)\n\t\t\t\t\t$rss->link=$globaldata;\n\t\t\t\tbreak;\n\t\t\tcase \"COPYRIGHT\":\n\t\t\t\tif(!$insideitem)\n\t\t\t\t\t$rss->copyright=$globaldata;\n\t\t\t\tbreak;\n\t\t\tcase \"DESCRIPTION\":\n\t\t\t\tif(!$insideitem)\n\t\t\t\t\t$rss->description=$globaldata;\n\t\t\t\tbreak;\n\t\t}\n\t}\n\tif($isimage){\n\t\tswitch($name){\n\t\t\tcase \"TITLE\": $rss->image->title=$globaldata;break;\n\t\t\tcase \"URL\": $rss->image->url=$globaldata;break;\n\t\t\tcase \"LINK\": $rss->image->link=$globaldata;break;\n\t\t\tcase \"WIDTH\": $rss->image->width=$globaldata;break;\n\t\t\tcase \"HEIGHT\": $rss->image->height=$globaldata;break;\n\t\t}\n\t}\n\tif($name==\"IMAGE\")\t\n\t\t$isimage=false;\n\t$globaldata=\"\";\n}"
+    },
+    {
+      "id": "includes/classes/rssreader.php:LCF23",
+      "path": "includes/classes/rssreader.php",
+      "name": "characterData",
+      "parameters": [
+        "$parser",
+        "$data"
+      ],
+      "body": "{\n\tglobal $insideitem, $tag, $title, $description, $link, $pubdate, $globaldata;\n\tif ($insideitem) {\n\t\tswitch ($tag) {\n\t\t\tcase \"TITLE\":\n\t\t\t\t$title .= $data;\n\t\t\t\tbreak;\n\t\t\tcase \"DESCRIPTION\":\n\t\t\t\t$description .= $data;\n\t\t\t\tbreak;\n\t\t\tcase \"LINK\":\n\t\t\t\t$link .= $data;\n\t\t\t\tbreak;\n\t\t\tcase \"PUBDATE\":\n\t\t\tcase \"DC:DATE\":\n\t\t\t\t$pubdate .= $data;\n\t\t\t\tbreak;\n\t\t}\n\t} else {\n\t\t$globaldata.=$data;\n\t}\n}",
+      "start_line": 449,
+      "end_line": 470,
+      "code": "function characterData($parser, $data) {\n\tglobal $insideitem, $tag, $title, $description, $link, $pubdate, $globaldata;\n\tif ($insideitem) {\n\t\tswitch ($tag) {\n\t\t\tcase \"TITLE\":\n\t\t\t\t$title .= $data;\n\t\t\t\tbreak;\n\t\t\tcase \"DESCRIPTION\":\n\t\t\t\t$description .= $data;\n\t\t\t\tbreak;\n\t\t\tcase \"LINK\":\n\t\t\t\t$link .= $data;\n\t\t\t\tbreak;\n\t\t\tcase \"PUBDATE\":\n\t\t\tcase \"DC:DATE\":\n\t\t\t\t$pubdate .= $data;\n\t\t\t\tbreak;\n\t\t}\n\t} else {\n\t\t$globaldata.=$data;\n\t}\n}"
+    },
+    {
+      "id": "includes/functions.php:LCF24",
+      "path": "includes/functions.php",
+      "name": "f_mysql_error",
+      "parameters": [
+        "$num"
+      ],
+      "body": "{\n\tif ($num == 1) {\n\t\tprint 'AWCM failed in connecting to the database <span style=\"color:#ff0000;\">[ Error:001 ]</span>  <br/><span style=\"color:#ff0000;\" dir=\"ltr\"> [ خطأ:001 ]</span> فشل في الإتصال بقاعدة البيانات AWCM  ';\n\t}\n}",
+      "start_line": 3,
+      "end_line": 7,
+      "code": "function f_mysql_error($num) {\n\tif ($num == 1) {\n\t\tprint 'AWCM failed in connecting to the database <span style=\"color:#ff0000;\">[ Error:001 ]</span>  <br/><span style=\"color:#ff0000;\" dir=\"ltr\"> [ خطأ:001 ]</span> فشل في الإتصال بقاعدة البيانات AWCM  ';\n\t}\n}"
+    },
+    {
+      "id": "includes/functions.php:LCF25",
+      "path": "includes/functions.php",
+      "name": "f_block_content",
+      "parameters": [
+        "$id"
+      ],
+      "body": "{\n\tglobal $lang_login , $lang_password , $lang_your_email , $lang_remember_me , $lang_register , $member , $lang_logout , $lang_member_control_panel ,$lang_welcome, $theme_file;\n\n\t$mysql_f_block_content_query \n= mysql_query(\"SELECT * FROM awcm_blocks WHERE id = $id\");\n\t$mysql_f_block_content_row   = mysql_fetch_assoc($mysql_f_block_content_query);\n\t\n\techo $mysql_f_block_content_row['content'];\n\t\n\t$f_block_content_file = $mysql_f_block_content_row['file'];\n\t\n\tif ($f_block_content_file == no) { } else {\n\t@include(\"blocks/$f_block_content_file\");\t\n\t}\n\n}",
+      "start_line": 9,
+      "end_line": 24,
+      "code": "function f_block_content($id) {\n\tglobal $lang_login , $lang_password , $lang_your_email , $lang_remember_me , $lang_register , $member , $lang_logout , $lang_member_control_panel ,$lang_welcome, $theme_file;\n\n\t$mysql_f_block_content_query \n= mysql_query(\"SELECT * FROM awcm_blocks WHERE id = $id\");\n\t$mysql_f_block_content_row   = mysql_fetch_assoc($mysql_f_block_content_query);\n\t\n\techo $mysql_f_block_content_row['content'];\n\t\n\t$f_block_content_file = $mysql_f_block_content_row['file'];\n\t\n\tif ($f_block_content_file == no) { } else {\n\t@include(\"blocks/$f_block_content_file\");\t\n\t}\n\n}"
+    },
+    {
+      "id": "includes/functions.php:LCF26",
+      "path": "includes/functions.php",
+      "name": "f_window",
+      "parameters": [
+        "$a"
+      ],
+      "body": "{\n\n\tglobal $theme_file;\n\n\tif ($a == top) {\n\t\t@include (\"themes/$theme_file/window_top.html\");\n\t} elseif ($a == down) {\n\t\t@include (\"themes/$theme_file/window_down.html\");\n\t}\n}",
+      "start_line": 26,
+      "end_line": 35,
+      "code": "function f_window($a) {\n\n\tglobal $theme_file;\n\n\tif ($a == top) {\n\t\t@include (\"themes/$theme_file/window_top.html\");\n\t} elseif ($a == down) {\n\t\t@include (\"themes/$theme_file/window_down.html\");\n\t}\n}"
+    },
+    {
+      "id": "includes/functions.php:LCF27",
+      "path": "includes/functions.php",
+      "name": "image",
+      "parameters": [
+        "$url",
+        "$gradual",
+        "$h",
+        "$w",
+        "$altr",
+        "$thumb"
+      ],
+      "body": "{\n\tglobal $ajax;\nif($thumb == \"\") {\n$theurl = $url;\n} else {\n$theurl = $thumb;\n}\n\tif ($ajax == 'on') {\n?>\n\n<center>\n<a href=\"<?php echo $url; ?>\" class=\"thickbox\" title=\"<?php print $altr; ?>\"><img alt=\"<?php print $altr; ?>\" src=\"<?php echo $theurl; ?>\" height=\"<?php echo $h; ?>\" width=\"<?php echo $w; ?>\" class=\"gradualfader\" /></a>\n\n<?php if($gradual == 'yes') { ?><script>\ngradualFader.init()\n</script><?php } ?>\n</center>\n\n\n\n<?php\n\t} else {\nprint '<center>';\n$imggg = '<img src=\"'.$url.'\" height=\"'.$h.'\" width=\"'.$w.'\" border=\"0\"/>';\n\t\t?>\n<SCRIPT LANGUAGE=\"JavaScript\">\n\nfunction popUp(URL) {\nday = new Date();\nid = day.getTime();\neval(\"page\" + id + \" = window.open(URL, '\" + id + \"', 'toolbar=0,scrollbars=1,location=0,statusbar=0,menubar=0,resizable=1,width=600,height=450,left = 500,top = 134');\");\n}\n\n</script>\n<A HREF=\"javascript:popUp('<?php echo $url; ?>')\"><?php echo $imggg; ?></A>\n\t\t<?php\nprint '</center>';\n\t}\n}",
+      "start_line": 37,
+      "end_line": 75,
+      "code": "function image($url,$gradual,$h,$w,$altr,$thumb) {\n\tglobal $ajax;\nif($thumb == \"\") {\n$theurl = $url;\n} else {\n$theurl = $thumb;\n}\n\tif ($ajax == 'on') {\n?>\n\n<center>\n<a href=\"<?php echo $url; ?>\" class=\"thickbox\" title=\"<?php print $altr; ?>\"><img alt=\"<?php print $altr; ?>\" src=\"<?php echo $theurl; ?>\" height=\"<?php echo $h; ?>\" width=\"<?php echo $w; ?>\" class=\"gradualfader\" /></a>\n\n<?php if($gradual == 'yes') { ?><script>\ngradualFader.init()\n</script><?php } ?>\n</center>\n\n\n\n<?php\n\t} else {\nprint '<center>';\n$imggg = '<img src=\"'.$url.'\" height=\"'.$h.'\" width=\"'.$w.'\" border=\"0\"/>';\n\t\t?>\n<SCRIPT LANGUAGE=\"JavaScript\">\n\nfunction popUp(URL) {\nday = new Date();\nid = day.getTime();\neval(\"page\" + id + \" = window.open(URL, '\" + id + \"', 'toolbar=0,scrollbars=1,location=0,statusbar=0,menubar=0,resizable=1,width=600,height=450,left = 500,top = 134');\");\n}\n\n</script>\n<A HREF=\"javascript:popUp('<?php echo $url; ?>')\"><?php echo $imggg; ?></A>\n\t\t<?php\nprint '</center>';\n\t}\n}"
+    },
+    {
+      "id": "includes/functions.php:LCF28",
+      "path": "includes/functions.php",
+      "name": "frame",
+      "parameters": [
+        "$text",
+        "$url",
+        "$altr"
+      ],
+      "body": "{\n\tglobal $ajax;\n\tif ($ajax == 'on') {\n?>\n<a href=\"<?php echo $url; ?>\n<?php if(eregi('&',$url)) { ?>\n&KeepThis=true&TB_iframe=true&height=400&width=500\n<?php } else { ?>\n?KeepThis=true&TB_iframe=true&height=400&width=500\n<?php } ?>\n\" title=\"<?php echo $altr; ?>\" class=\"thickbox\"><?php echo $text; ?></a>\n<?php\n\t} else {\n\t\t?>\n<SCRIPT LANGUAGE=\"JavaScript\">\n\nfunction popUp(URL) {\nday = new Date();\nid = day.getTime();\neval(\"page\" + id + \" = window.open(URL, '\" + id + \"', 'toolbar=0,scrollbars=1,location=0,statusbar=0,menubar=0,resizable=1,width=450,height=400,left = 500,top = 134');\");\n}\n\n</script>\n<A HREF=\"javascript:popUp('<?php echo $url; ?>')\"><?php echo $text; ?></A>\n\t\t<?php\n\t\t\n\t}\n}",
+      "start_line": 77,
+      "end_line": 104,
+      "code": "function frame($text,$url,$altr) {\n\tglobal $ajax;\n\tif ($ajax == 'on') {\n?>\n<a href=\"<?php echo $url; ?>\n<?php if(eregi('&',$url)) { ?>\n&KeepThis=true&TB_iframe=true&height=400&width=500\n<?php } else { ?>\n?KeepThis=true&TB_iframe=true&height=400&width=500\n<?php } ?>\n\" title=\"<?php echo $altr; ?>\" class=\"thickbox\"><?php echo $text; ?></a>\n<?php\n\t} else {\n\t\t?>\n<SCRIPT LANGUAGE=\"JavaScript\">\n\nfunction popUp(URL) {\nday = new Date();\nid = day.getTime();\neval(\"page\" + id + \" = window.open(URL, '\" + id + \"', 'toolbar=0,scrollbars=1,location=0,statusbar=0,menubar=0,resizable=1,width=450,height=400,left = 500,top = 134');\");\n}\n\n</script>\n<A HREF=\"javascript:popUp('<?php echo $url; ?>')\"><?php echo $text; ?></A>\n\t\t<?php\n\t\t\n\t}\n}"
+    },
+    {
+      "id": "includes/functions.php:LCF29",
+      "path": "includes/functions.php",
+      "name": "rate",
+      "parameters": [
+        "$id",
+        "$qesm"
+      ],
+      "body": "{\nglobal $member,$theme_file;\n$star_on = \"themes/$theme_file/icons/rate_on.gif\";\n$star_off = \"themes/$theme_file/icons/rate_off.gif\";\n?><script>\n$(document).ready(function(){\n\t$(\"#rate_done\").hide();\n\t$(\"#rate_load\").hide();\n\t$(\"#str1\").hover(function(){\n\t\t$(\"#str1\").attr(\"src\",\"<?php echo $star_on; ?>\");\n\t\t$(\"#str2\").attr(\"src\",\"<?php echo $star_off; ?>\");\n\t\t$(\"#str3\").attr(\"src\",\"<?php echo $star_off; ?>\");\n\t\t$(\"#str4\").attr(\"src\",\"<?php echo $star_off; ?>\");\n\t\t$(\"#str5\").attr(\"src\",\"<?php echo $star_off; ?>\");\n\t});\n\t$(\"#str2\").hover(function(){\n\t\t$(\"#str1\").attr(\"src\",\"<?php echo $star_on; ?>\");\n\t\t$(\"#str2\").attr(\"src\",\"<?php echo $star_on; ?>\");\n\t\t$(\"#str3\").attr(\"src\",\"<?php echo $star_off; ?>\");\n\t\t$(\"#str4\").attr(\"src\",\"<?php echo $star_off; ?>\");\n\t\t$(\"#str5\").attr(\"src\",\"<?php echo $star_off; ?>\");\n\t});\n\t$(\"#str3\").hover(function(){\n\t\t$(\"#str1\").attr(\"src\",\"<?php echo $star_on; ?>\");\n\t\t$(\"#str2\").attr(\"src\",\"<?php echo $star_on; ?>\");\n\t\t$(\"#str3\").attr(\"src\",\"<?php echo $star_on; ?>\");\n\t\t$(\"#str4\").attr(\"src\",\"<?php echo $star_off; ?>\");\n\t\t$(\"#str5\").attr(\"src\",\"<?php echo $star_off; ?>\");\n\t});\n\t$(\"#str4\").hover(function(){\n\t\t$(\"#str1\").attr(\"src\",\"<?php echo $star_on; ?>\");\n\t\t$(\"#str2\").attr(\"src\",\"<?php echo $star_on; ?>\");\n\t\t$(\"#str3\").attr(\"src\",\"<?php echo $star_on; ?>\");\n\t\t$(\"#str4\").attr(\"src\",\"<?php echo $star_on; ?>\");\n\t\t$(\"#str5\").attr(\"src\",\"<?php echo $star_off; ?>\");\n\t});\n\t$(\"#str5\").hover(function(){\n\t\t$(\"#str1\").attr(\"src\",\"<?php echo $star_on; ?>\");\n\t\t$(\"#str2\").attr(\"src\",\"<?php echo $star_on; ?>\");\n\t\t$(\"#str3\").attr(\"src\",\"<?php echo $star_on; ?>\");\n\t\t$(\"#str4\").attr(\"src\",\"<?php echo $star_on; ?>\");\n\t\t$(\"#str5\").attr(\"src\",\"<?php echo $star_on; ?>\");\n\t});\n\t$(\"#str1\").click(function() {\n\t\t$(\"#rate_done\").hide();\n\t\t$(\"#rate_load\").fadeIn(2000, function() {\n\t\t\t$(\"#rate_load\").hide();\n\t\t\t$(\"#rate_done\").fadeIn(2000, function() { $(\"#rate_done\").fadeOut(4000, function() { }); });\n\t\t}); \n\t});\n\t$(\"#str2\").click(function() {\n\t\t$(\"#rate_done\").hide();\n\t\t$(\"#rate_load\").fadeIn(2000, function() {\n\t\t\t$(\"#rate_load\").hide();\n\t\t\t$(\"#rate_done\").fadeIn(2000, function() { $(\"#rate_done\").fadeOut(4000, function() { }); });\n\t\t}); \n\t});\n\t$(\"#str3\").click(function() {\n\t\t$(\"#rate_done\").hide();\n\t\t$(\"#rate_load\").fadeIn(2000, function() {\n\t\t\t$(\"#rate_load\").hide();\n\t\t\t$(\"#rate_done\").fadeIn(2000, function() { $(\"#rate_done\").fadeOut(4000, function() { }); });\n\t\t}); \n\t});\n\t$(\"#str4\").click(function() {\n\t\t$(\"#rate_done\").hide();\n\t\t$(\"#rate_load\").fadeIn(2000, function() {\n\t\t\t$(\"#rate_load\").hide();\n\t\t\t$(\"#rate_done\").fadeIn(2000, function() { $(\"#rate_done\").fadeOut(4000, function() { }); });\n\t\t}); \n\t});\n\t$(\"#str5\").click(function() {\n\n\t\t$(\"#rate_load\").fadeIn(2000, function() {\n\t\t\t$(\"#rate_load\").hide();\n\t\t\t$(\"#rate_done\").fadeIn(2000, function() { $(\"#rate_done\").fadeOut(4000, function() { }); });\n\t\t}); \n\t});\n});\n</script>\n<?php\nif($qesm == 'lesson') {\n$mysql_ratefuntion_query = mysql_query(\"SELECT id,rate FROM awcm_lessons_lessons WHERE id = '$id'\");\n$mysql_ratefuntion_row = mysql_fetch_array($mysql_ratefuntion_query);\n$rate = $mysql_ratefuntion_row['rate'];\n} elseif($qesm == 'flash') {\n$mysql_ratefuntion_query = mysql_query(\"SELECT id,rate FROM awcm_flashs_flashs WHERE id = '$id'\");\n$mysql_ratefuntion_row = mysql_fetch_array($mysql_ratefuntion_query);\n$rate = $mysql_ratefuntion_row['rate'];\n} elseif($qesm == 'pro') {\n$mysql_ratefuntion_query = mysql_query(\"SELECT id,rate FROM awcm_pro_pro WHERE id = '$id'\");\n$mysql_ratefuntion_row = mysql_fetch_array($mysql_ratefuntion_query);\n$rate = $mysql_ratefuntion_row['rate'];\n} elseif($qesm == 'vid') {\n$mysql_ratefuntion_query = mysql_query(\"SELECT id,rate FROM awcm_videos_videos WHERE id = '$id'\");\n$mysql_ratefuntion_row = mysql_fetch_array($mysql_ratefuntion_query);\n$rate = $mysql_ratefuntion_row['rate'];\n} elseif($qesm == 'news') {\n$mysql_ratefuntion_query = mysql_query(\"SELECT id,rate FROM awcm_news_news WHERE id = '$id'\");\n$mysql_ratefuntion_row = mysql_fetch_array($mysql_ratefuntion_query);\n$rate = $mysql_ratefuntion_row['rate'];\n} elseif($qesm == 'site') {\n$mysql_ratefuntion_query = mysql_query(\"SELECT id,rate FROM awcm_weblinks_sites WHERE id = '$id'\");\n$mysql_ratefuntion_row = mysql_fetch_array($mysql_ratefuntion_query);\n$rate = $mysql_ratefuntion_row['rate'];\n} elseif($qesm == 'topic') {\n$mysql_ratefuntion_query = mysql_query(\"SELECT id,rate FROM awcm_topics_topics WHERE id = '$id'\");\n$mysql_ratefuntion_row = mysql_fetch_array($mysql_ratefuntion_query);\n$rate = $mysql_ratefuntion_row['rate'];\n} elseif($qesm == 'image') {\n$mysql_ratefuntion_query = mysql_query(\"SELECT id,rate FROM awcm_images_images WHERE id = '$id'\");\n$mysql_ratefuntion_row = mysql_fetch_array($mysql_ratefuntion_query);\n$rate = $mysql_ratefuntion_row['rate'];\n}\n//rating stars\n?>\n<span id=\"rating_stars\">\n<?php if($rate <= 0) { ?>\n<a href=\"rate.php?t=<?php echo $qesm; ?>&v=1&id=<?php echo $id; ?>&m=min\" target=\"rate\">\n<img id=\"str1\" src=\"<?php echo $star_off; ?>\" height=\"16\" width=\"16\"/></a>\n<a href=\"rate.php?t=<?php echo $qesm; ?>&v=2&id=<?php echo $id; ?>&m=min\" target=\"rate\">\n<img id=\"str2\" src=\"<?php echo $star_off; ?>\" height=\"16\" width=\"16\"/></a>\n<a href=\"rate.php?t=<?php echo $qesm; ?>&v=1&id=<?php echo $id; ?>&m=pls\" target=\"rate\">\n<img id=\"str3\" src=\"<?php echo $star_off; ?>\" height=\"16\" width=\"16\"/></a>\n<a href=\"rate.php?t=<?php echo $qesm; ?>&v=2&id=<?php echo $id; ?>&m=pls\" target=\"rate\">\n<img id=\"str4\" src=\"<?php echo $star_off; ?>\" height=\"16\" width=\"16\"/></a>\n<a href=\"rate.php?t=<?php echo $qesm; ?>&v=3&id=<?php echo $id; ?>&m=pls\" target=\"rate\">\n<img id=\"str5\" src=\"<?php echo $star_off; ?>\" height=\"16\" width=\"16\"/></a>\n<script>\t$(\"#rating_stars\").mouseout(function() {\n\t\t$(\"#str1\").attr(\"src\",\"<?php echo $star_off; ?>\");\n\t\t$(\"#str2\").attr(\"src\",\"<?php echo $star_off; ?>\");\n\t\t$(\"#str3\").attr(\"src\",\"<?php echo $star_off; ?>\");\n\t\t$(\"#str4\").attr(\"src\",\"<?php echo $star_off; ?>\");\n\t\t$(\"#str5\").attr(\"src\",\"<?php echo $star_off; ?>\");\n\t});\n</script>\n<?php } elseif($rate <= 5) { ?>\n<a href=\"rate.php?t=<?php echo $qesm; ?>&v=1&id=<?php echo $id; ?>&m=min\" target=\"rate\">\n<img id=\"str1\" src=\"<?php echo $star_on; ?>\" height=\"16\" width=\"16\"/></a>\n<a href=\"rate.php?t=<?php echo $qesm; ?>&v=2&id=<?php echo $id; ?>&m=min\" target=\"rate\">\n<img id=\"str2\" src=\"<?php echo $star_off; ?>\" height=\"16\" width=\"16\"/></a>\n<a href=\"rate.php?t=<?php echo $qesm; ?>&v=1&id=<?php echo $id; ?>&m=pls\" target=\"rate\">\n<img id=\"str3\" src=\"<?php echo $star_off; ?>\" height=\"16\" width=\"16\"/></a>\n<a href=\"rate.php?t=<?php echo $qesm; ?>&v=2&id=<?php echo $id; ?>&m=pls\" target=\"rate\">\n<img id=\"str4\" src=\"<?php echo $star_off; ?>\" height=\"16\" width=\"16\"/></a>\n<a href=\"rate.php?t=<?php echo $qesm; ?>&v=3&id=<?php echo $id; ?>&m=pls\" target=\"rate\">\n<img id=\"str5\" src=\"<?php echo $star_off; ?>\" height=\"16\" width=\"16\"/></a>\n<script>\t$(\"#rating_stars\").mouseout(function() {\n\t\t$(\"#str1\").attr(\"src\",\"<?php echo $star_on; ?>\");\n\t\t$(\"#str2\").attr(\"src\",\"<?php echo $star_off; ?>\");\n\t\t$(\"#str3\").attr(\"src\",\"<?php echo $star_off; ?>\");\n\t\t$(\"#str4\").attr(\"src\",\"<?php echo $star_off; ?>\");\n\t\t$(\"#str5\").attr(\"src\",\"<?php echo $star_off; ?>\");\n\t});\n</script>\n<?php } elseif($rate <= 40) { ?>\n<a href=\"rate.php?t=<?php echo $qesm; ?>&v=1&id=<?php echo $id; ?>&m=min\" target=\"rate\">\n<img id=\"str1\" src=\"<?php echo $star_on; ?>\" height=\"16\" width=\"16\"/></a>\n<a href=\"rate.php?t=<?php echo $qesm; ?>&v=2&id=<?php echo $id; ?>&m=min\" target=\"rate\">\n<img id=\"str2\" src=\"<?php echo $star_on; ?>\" height=\"16\" width=\"16\"/></a>\n<a href=\"rate.php?t=<?php echo $qesm; ?>&v=1&id=<?php echo $id; ?>&m=pls\" target=\"rate\">\n<img id=\"str3\" src=\"<?php echo $star_off; ?>\" height=\"16\" width=\"16\"/></a>\n<a href=\"rate.php?t=<?php echo $qesm; ?>&v=2&id=<?php echo $id; ?>&m=pls\" target=\"rate\">\n<img id=\"str4\" src=\"<?php echo $star_off; ?>\" height=\"16\" width=\"16\"/></a>\n<a href=\"rate.php?t=<?php echo $qesm; ?>&v=3&id=<?php echo $id; ?>&m=pls\" target=\"rate\">\n<img id=\"str5\" src=\"<?php echo $star_off; ?>\" height=\"16\" width=\"16\"/></a>\n<script>\t$(\"#rating_stars\").mouseout(function() {\n\t\t$(\"#str1\").attr(\"src\",\"<?php echo $star_on; ?>\");\n\t\t$(\"#str2\").attr(\"src\",\"<?php echo $star_on; ?>\");\n\t\t$(\"#str3\").attr(\"src\",\"<?php echo $star_off; ?>\");\n\t\t$(\"#str4\").attr(\"src\",\"<?php echo $star_off; ?>\");\n\t\t$(\"#str5\").attr(\"src\",\"<?php echo $star_off; ?>\");\n\t});\n</script>\n<?php } elseif($rate <= 100) { ?>\n<a href=\"rate.php?t=<?php echo $qesm; ?>&v=1&id=<?php echo $id; ?>&m=min\" target=\"rate\">\n<img id=\"str1\" src=\"<?php echo $star_on; ?>\" height=\"16\" width=\"16\"/></a>\n<a href=\"rate.php?t=<?php echo $qesm; ?>&v=2&id=<?php echo $id; ?>&m=min\" target=\"rate\">\n<img id=\"str2\" src=\"<?php echo $star_on; ?>\" height=\"16\" width=\"16\"/></a>\n<a href=\"rate.php?t=<?php echo $qesm; ?>&v=1&id=<?php echo $id; ?>&m=pls\" target=\"rate\">\n<img id=\"str3\" src=\"<?php echo $star_on; ?>\" height=\"16\" width=\"16\"/></a>\n<a href=\"rate.php?t=<?php echo $qesm; ?>&v=2&id=<?php echo $id; ?>&m=pls\" target=\"rate\">\n<img id=\"str4\" src=\"<?php echo $star_off; ?>\" height=\"16\" width=\"16\"/></a>\n<a href=\"rate.php?t=<?php echo $qesm; ?>&v=3&id=<?php echo $id; ?>&m=pls\" target=\"rate\">\n<img id=\"str5\" src=\"<?php echo $star_off; ?>\" height=\"16\" width=\"16\"/></a>\n<script>\t$(\"#rating_stars\").mouseout(function() {\n\t\t$(\"#str1\").attr(\"src\",\"<?php echo $star_on; ?>\");\n\t\t$(\"#str2\").attr(\"src\",\"<?php echo $star_on; ?>\");\n\t\t$(\"#str3\").attr(\"src\",\"<?php echo $star_on; ?>\");\n\t\t$(\"#str4\").attr(\"src\",\"<?php echo $star_off; ?>\");\n\t\t$(\"#str5\").attr(\"src\",\"<?php echo $star_off; ?>\");\n\t});\n</script>\n<?php } elseif($rate <= 160) { ?>\n<a href=\"rate.php?t=<?php echo $qesm; ?>&v=1&id=<?php echo $id; ?>&m=min\" target=\"rate\">\n<img id=\"str1\" src=\"<?php echo $star_on; ?>\" height=\"16\" width=\"16\"/></a>\n<a href=\"rate.php?t=<?php echo $qesm; ?>&v=2&id=<?php echo $id; ?>&m=min\" target=\"rate\">\n<img id=\"str2\" src=\"<?php echo $star_on; ?>\" height=\"16\" width=\"16\"/></a>\n<a href=\"rate.php?t=<?php echo $qesm; ?>&v=1&id=<?php echo $id; ?>&m=pls\" target=\"rate\">\n<img id=\"str3\" src=\"<?php echo $star_on; ?>\" height=\"16\" width=\"16\"/></a>\n<a href=\"rate.php?t=<?php echo $qesm; ?>&v=2&id=<?php echo $id; ?>&m=pls\" target=\"rate\">\n<img id=\"str4\" src=\"<?php echo $star_on; ?>\" height=\"16\" width=\"16\"/></a>\n<a href=\"rate.php?t=<?php echo $qesm; ?>&v=3&id=<?php echo $id; ?>&m=pls\" target=\"rate\">\n<img id=\"str5\" src=\"<?php echo $star_off; ?>\" height=\"16\" width=\"16\"/></a>\n<script>\t$(\"#rating_stars\").mouseout(function() {\n\t\t$(\"#str1\").attr(\"src\",\"<?php echo $star_on; ?>\");\n\t\t$(\"#str2\").attr(\"src\",\"<?php echo $star_on; ?>\");\n\t\t$(\"#str3\").attr(\"src\",\"<?php echo $star_on; ?>\");\n\t\t$(\"#str4\").attr(\"src\",\"<?php echo $star_on; ?>\");\n\t\t$(\"#str5\").attr(\"src\",\"<?php echo $star_off; ?>\");\n\t});\n</script>\n<?php } elseif($rate <= 210) { ?>\n<a href=\"rate.php?t=<?php echo $qesm; ?>&v=1&id=<?php echo $id; ?>&m=min\" target=\"rate\">\n<img id=\"str1\" src=\"<?php echo $star_on; ?>\" height=\"16\" width=\"16\"/></a>\n<a href=\"rate.php?t=<?php echo $qesm; ?>&v=2&id=<?php echo $id; ?>&m=min\" target=\"rate\">\n<img id=\"str2\" src=\"<?php echo $star_on; ?>\" height=\"16\" width=\"16\"/></a>\n<a href=\"rate.php?t=<?php echo $qesm; ?>&v=1&id=<?php echo $id; ?>&m=pls\" target=\"rate\">\n<img id=\"str3\" src=\"<?php echo $star_on; ?>\" height=\"16\" width=\"16\"/></a>\n<a href=\"rate.php?t=<?php echo $qesm; ?>&v=2&id=<?php echo $id; ?>&m=pls\" target=\"rate\">\n<img id=\"str4\" src=\"<?php echo $star_on; ?>\" height=\"16\" width=\"16\"/></a>\n<a href=\"rate.php?t=<?php echo $qesm; ?>&v=3&id=<?php echo $id; ?>&m=pls\" target=\"rate\">\n<img id=\"str5\" src=\"<?php echo $star_on; ?>\" height=\"16\" width=\"16\"/></a>\n<script>\t$(\"#rating_stars\").mouseout(function() {\n\t\t$(\"#str1\").attr(\"src\",\"<?php echo $star_on; ?>\");\n\t\t$(\"#str2\").attr(\"src\",\"<?php echo $star_on; ?>\");\n\t\t$(\"#str3\").attr(\"src\",\"<?php echo $star_on; ?>\");\n\t\t$(\"#str4\").attr(\"src\",\"<?php echo $star_on; ?>\");\n\t\t$(\"#str5\").attr(\"src\",\"<?php echo $star_on; ?>\");\n\t});\n</script>\n<?php } elseif($rate >= 211) { ?>\n<a href=\"rate.php?t=<?php echo $qesm; ?>&v=1&id=<?php echo $id; ?>&m=min\" target=\"rate\">\n<img id=\"str1\" src=\"<?php echo $star_on; ?>\" height=\"16\" width=\"16\"/></a>\n<a href=\"rate.php?t=<?php echo $qesm; ?>&v=2&id=<?php echo $id; ?>&m=min\" target=\"rate\">\n<img id=\"str2\" src=\"<?php echo $star_on; ?>\" height=\"16\" width=\"16\"/></a>\n<a href=\"rate.php?t=<?php echo $qesm; ?>&v=1&id=<?php echo $id; ?>&m=pls\" target=\"rate\">\n<img id=\"str3\" src=\"<?php echo $star_on; ?>\" height=\"16\" width=\"16\"/></a>\n<a href=\"rate.php?t=<?php echo $qesm; ?>&v=2&id=<?php echo $id; ?>&m=pls\" target=\"rate\">\n<img id=\"str4\" src=\"<?php echo $star_on; ?>\" height=\"16\" width=\"16\"/></a>\n<a href=\"rate.php?t=<?php echo $qesm; ?>&v=3&id=<?php echo $id; ?>&m=pls\" target=\"rate\">\n<img id=\"str5\" src=\"<?php echo $star_on; ?>\" height=\"16\" width=\"16\"/></a>\n<script>\t$(\"#rating_stars\").mouseout(function() {\n\t\t$(\"#str1\").attr(\"src\",\"<?php echo $star_on; ?>\");\n\t\t$(\"#str2\").attr(\"src\",\"<?php echo $star_on; ?>\");\n\t\t$(\"#str3\").attr(\"src\",\"<?php echo $star_on; ?>\");\n\t\t$(\"#str4\").attr(\"src\",\"<?php echo $star_on; ?>\");\n\t\t$(\"#str5\").attr(\"src\",\"<?php echo $star_on; ?>\");\n\t});\n</script>\n<?php } ?>\n\n</span>\n<img id=\"rate_done\" src=\"themes/<?php echo $theme_file; ?>/icons/done.gif\" height=\"16\" width=\"16\"/>\n<img id=\"rate_load\" src=\"themes/<?php echo $theme_file; ?>/icons/loading_circle.gif\" height=\"16\" width=\"16\"/>\n<?php\nif($member == no) { } else {\n?>\n\n<?php\n}\n//rating stars-end\n?>\n<iframe name=\"rate\" frameborder=\"0\" height=\"0\" width=\"0\"></iframe>\n<?php\n}",
+      "start_line": 106,
+      "end_line": 371,
+      "code": "function rate($id,$qesm) {\nglobal $member,$theme_file;\n$star_on = \"themes/$theme_file/icons/rate_on.gif\";\n$star_off = \"themes/$theme_file/icons/rate_off.gif\";\n?><script>\n$(document).ready(function(){\n\t$(\"#rate_done\").hide();\n\t$(\"#rate_load\").hide();\n\t$(\"#str1\").hover(function(){\n\t\t$(\"#str1\").attr(\"src\",\"<?php echo $star_on; ?>\");\n\t\t$(\"#str2\").attr(\"src\",\"<?php echo $star_off; ?>\");\n\t\t$(\"#str3\").attr(\"src\",\"<?php echo $star_off; ?>\");\n\t\t$(\"#str4\").attr(\"src\",\"<?php echo $star_off; ?>\");\n\t\t$(\"#str5\").attr(\"src\",\"<?php echo $star_off; ?>\");\n\t});\n\t$(\"#str2\").hover(function(){\n\t\t$(\"#str1\").attr(\"src\",\"<?php echo $star_on; ?>\");\n\t\t$(\"#str2\").attr(\"src\",\"<?php echo $star_on; ?>\");\n\t\t$(\"#str3\").attr(\"src\",\"<?php echo $star_off; ?>\");\n\t\t$(\"#str4\").attr(\"src\",\"<?php echo $star_off; ?>\");\n\t\t$(\"#str5\").attr(\"src\",\"<?php echo $star_off; ?>\");\n\t});\n\t$(\"#str3\").hover(function(){\n\t\t$(\"#str1\").attr(\"src\",\"<?php echo $star_on; ?>\");\n\t\t$(\"#str2\").attr(\"src\",\"<?php echo $star_on; ?>\");\n\t\t$(\"#str3\").attr(\"src\",\"<?php echo $star_on; ?>\");\n\t\t$(\"#str4\").attr(\"src\",\"<?php echo $star_off; ?>\");\n\t\t$(\"#str5\").attr(\"src\",\"<?php echo $star_off; ?>\");\n\t});\n\t$(\"#str4\").hover(function(){\n\t\t$(\"#str1\").attr(\"src\",\"<?php echo $star_on; ?>\");\n\t\t$(\"#str2\").attr(\"src\",\"<?php echo $star_on; ?>\");\n\t\t$(\"#str3\").attr(\"src\",\"<?php echo $star_on; ?>\");\n\t\t$(\"#str4\").attr(\"src\",\"<?php echo $star_on; ?>\");\n\t\t$(\"#str5\").attr(\"src\",\"<?php echo $star_off; ?>\");\n\t});\n\t$(\"#str5\").hover(function(){\n\t\t$(\"#str1\").attr(\"src\",\"<?php echo $star_on; ?>\");\n\t\t$(\"#str2\").attr(\"src\",\"<?php echo $star_on; ?>\");\n\t\t$(\"#str3\").attr(\"src\",\"<?php echo $star_on; ?>\");\n\t\t$(\"#str4\").attr(\"src\",\"<?php echo $star_on; ?>\");\n\t\t$(\"#str5\").attr(\"src\",\"<?php echo $star_on; ?>\");\n\t});\n\t$(\"#str1\").click(function() {\n\t\t$(\"#rate_done\").hide();\n\t\t$(\"#rate_load\").fadeIn(2000, function() {\n\t\t\t$(\"#rate_load\").hide();\n\t\t\t$(\"#rate_done\").fadeIn(2000, function() { $(\"#rate_done\").fadeOut(4000, function() { }); });\n\t\t}); \n\t});\n\t$(\"#str2\").click(function() {\n\t\t$(\"#rate_done\").hide();\n\t\t$(\"#rate_load\").fadeIn(2000, function() {\n\t\t\t$(\"#rate_load\").hide();\n\t\t\t$(\"#rate_done\").fadeIn(2000, function() { $(\"#rate_done\").fadeOut(4000, function() { }); });\n\t\t}); \n\t});\n\t$(\"#str3\").click(function() {\n\t\t$(\"#rate_done\").hide();\n\t\t$(\"#rate_load\").fadeIn(2000, function() {\n\t\t\t$(\"#rate_load\").hide();\n\t\t\t$(\"#rate_done\").fadeIn(2000, function() { $(\"#rate_done\").fadeOut(4000, function() { }); });\n\t\t}); \n\t});\n\t$(\"#str4\").click(function() {\n\t\t$(\"#rate_done\").hide();\n\t\t$(\"#rate_load\").fadeIn(2000, function() {\n\t\t\t$(\"#rate_load\").hide();\n\t\t\t$(\"#rate_done\").fadeIn(2000, function() { $(\"#rate_done\").fadeOut(4000, function() { }); });\n\t\t}); \n\t});\n\t$(\"#str5\").click(function() {\n\n\t\t$(\"#rate_load\").fadeIn(2000, function() {\n\t\t\t$(\"#rate_load\").hide();\n\t\t\t$(\"#rate_done\").fadeIn(2000, function() { $(\"#rate_done\").fadeOut(4000, function() { }); });\n\t\t}); \n\t});\n});\n</script>\n<?php\nif($qesm == 'lesson') {\n$mysql_ratefuntion_query = mysql_query(\"SELECT id,rate FROM awcm_lessons_lessons WHERE id = '$id'\");\n$mysql_ratefuntion_row = mysql_fetch_array($mysql_ratefuntion_query);\n$rate = $mysql_ratefuntion_row['rate'];\n} elseif($qesm == 'flash') {\n$mysql_ratefuntion_query = mysql_query(\"SELECT id,rate FROM awcm_flashs_flashs WHERE id = '$id'\");\n$mysql_ratefuntion_row = mysql_fetch_array($mysql_ratefuntion_query);\n$rate = $mysql_ratefuntion_row['rate'];\n} elseif($qesm == 'pro') {\n$mysql_ratefuntion_query = mysql_query(\"SELECT id,rate FROM awcm_pro_pro WHERE id = '$id'\");\n$mysql_ratefuntion_row = mysql_fetch_array($mysql_ratefuntion_query);\n$rate = $mysql_ratefuntion_row['rate'];\n} elseif($qesm == 'vid') {\n$mysql_ratefuntion_query = mysql_query(\"SELECT id,rate FROM awcm_videos_videos WHERE id = '$id'\");\n$mysql_ratefuntion_row = mysql_fetch_array($mysql_ratefuntion_query);\n$rate = $mysql_ratefuntion_row['rate'];\n} elseif($qesm == 'news') {\n$mysql_ratefuntion_query = mysql_query(\"SELECT id,rate FROM awcm_news_news WHERE id = '$id'\");\n$mysql_ratefuntion_row = mysql_fetch_array($mysql_ratefuntion_query);\n$rate = $mysql_ratefuntion_row['rate'];\n} elseif($qesm == 'site') {\n$mysql_ratefuntion_query = mysql_query(\"SELECT id,rate FROM awcm_weblinks_sites WHERE id = '$id'\");\n$mysql_ratefuntion_row = mysql_fetch_array($mysql_ratefuntion_query);\n$rate = $mysql_ratefuntion_row['rate'];\n} elseif($qesm == 'topic') {\n$mysql_ratefuntion_query = mysql_query(\"SELECT id,rate FROM awcm_topics_topics WHERE id = '$id'\");\n$mysql_ratefuntion_row = mysql_fetch_array($mysql_ratefuntion_query);\n$rate = $mysql_ratefuntion_row['rate'];\n} elseif($qesm == 'image') {\n$mysql_ratefuntion_query = mysql_query(\"SELECT id,rate FROM awcm_images_images WHERE id = '$id'\");\n$mysql_ratefuntion_row = mysql_fetch_array($mysql_ratefuntion_query);\n$rate = $mysql_ratefuntion_row['rate'];\n}\n//rating stars\n?>\n<span id=\"rating_stars\">\n<?php if($rate <= 0) { ?>\n<a href=\"rate.php?t=<?php echo $qesm; ?>&v=1&id=<?php echo $id; ?>&m=min\" target=\"rate\">\n<img id=\"str1\" src=\"<?php echo $star_off; ?>\" height=\"16\" width=\"16\"/></a>\n<a href=\"rate.php?t=<?php echo $qesm; ?>&v=2&id=<?php echo $id; ?>&m=min\" target=\"rate\">\n<img id=\"str2\" src=\"<?php echo $star_off; ?>\" height=\"16\" width=\"16\"/></a>\n<a href=\"rate.php?t=<?php echo $qesm; ?>&v=1&id=<?php echo $id; ?>&m=pls\" target=\"rate\">\n<img id=\"str3\" src=\"<?php echo $star_off; ?>\" height=\"16\" width=\"16\"/></a>\n<a href=\"rate.php?t=<?php echo $qesm; ?>&v=2&id=<?php echo $id; ?>&m=pls\" target=\"rate\">\n<img id=\"str4\" src=\"<?php echo $star_off; ?>\" height=\"16\" width=\"16\"/></a>\n<a href=\"rate.php?t=<?php echo $qesm; ?>&v=3&id=<?php echo $id; ?>&m=pls\" target=\"rate\">\n<img id=\"str5\" src=\"<?php echo $star_off; ?>\" height=\"16\" width=\"16\"/></a>\n<script>\t$(\"#rating_stars\").mouseout(function() {\n\t\t$(\"#str1\").attr(\"src\",\"<?php echo $star_off; ?>\");\n\t\t$(\"#str2\").attr(\"src\",\"<?php echo $star_off; ?>\");\n\t\t$(\"#str3\").attr(\"src\",\"<?php echo $star_off; ?>\");\n\t\t$(\"#str4\").attr(\"src\",\"<?php echo $star_off; ?>\");\n\t\t$(\"#str5\").attr(\"src\",\"<?php echo $star_off; ?>\");\n\t});\n</script>\n<?php } elseif($rate <= 5) { ?>\n<a href=\"rate.php?t=<?php echo $qesm; ?>&v=1&id=<?php echo $id; ?>&m=min\" target=\"rate\">\n<img id=\"str1\" src=\"<?php echo $star_on; ?>\" height=\"16\" width=\"16\"/></a>\n<a href=\"rate.php?t=<?php echo $qesm; ?>&v=2&id=<?php echo $id; ?>&m=min\" target=\"rate\">\n<img id=\"str2\" src=\"<?php echo $star_off; ?>\" height=\"16\" width=\"16\"/></a>\n<a href=\"rate.php?t=<?php echo $qesm; ?>&v=1&id=<?php echo $id; ?>&m=pls\" target=\"rate\">\n<img id=\"str3\" src=\"<?php echo $star_off; ?>\" height=\"16\" width=\"16\"/></a>\n<a href=\"rate.php?t=<?php echo $qesm; ?>&v=2&id=<?php echo $id; ?>&m=pls\" target=\"rate\">\n<img id=\"str4\" src=\"<?php echo $star_off; ?>\" height=\"16\" width=\"16\"/></a>\n<a href=\"rate.php?t=<?php echo $qesm; ?>&v=3&id=<?php echo $id; ?>&m=pls\" target=\"rate\">\n<img id=\"str5\" src=\"<?php echo $star_off; ?>\" height=\"16\" width=\"16\"/></a>\n<script>\t$(\"#rating_stars\").mouseout(function() {\n\t\t$(\"#str1\").attr(\"src\",\"<?php echo $star_on; ?>\");\n\t\t$(\"#str2\").attr(\"src\",\"<?php echo $star_off; ?>\");\n\t\t$(\"#str3\").attr(\"src\",\"<?php echo $star_off; ?>\");\n\t\t$(\"#str4\").attr(\"src\",\"<?php echo $star_off; ?>\");\n\t\t$(\"#str5\").attr(\"src\",\"<?php echo $star_off; ?>\");\n\t});\n</script>\n<?php } elseif($rate <= 40) { ?>\n<a href=\"rate.php?t=<?php echo $qesm; ?>&v=1&id=<?php echo $id; ?>&m=min\" target=\"rate\">\n<img id=\"str1\" src=\"<?php echo $star_on; ?>\" height=\"16\" width=\"16\"/></a>\n<a href=\"rate.php?t=<?php echo $qesm; ?>&v=2&id=<?php echo $id; ?>&m=min\" target=\"rate\">\n<img id=\"str2\" src=\"<?php echo $star_on; ?>\" height=\"16\" width=\"16\"/></a>\n<a href=\"rate.php?t=<?php echo $qesm; ?>&v=1&id=<?php echo $id; ?>&m=pls\" target=\"rate\">\n<img id=\"str3\" src=\"<?php echo $star_off; ?>\" height=\"16\" width=\"16\"/></a>\n<a href=\"rate.php?t=<?php echo $qesm; ?>&v=2&id=<?php echo $id; ?>&m=pls\" target=\"rate\">\n<img id=\"str4\" src=\"<?php echo $star_off; ?>\" height=\"16\" width=\"16\"/></a>\n<a href=\"rate.php?t=<?php echo $qesm; ?>&v=3&id=<?php echo $id; ?>&m=pls\" target=\"rate\">\n<img id=\"str5\" src=\"<?php echo $star_off; ?>\" height=\"16\" width=\"16\"/></a>\n<script>\t$(\"#rating_stars\").mouseout(function() {\n\t\t$(\"#str1\").attr(\"src\",\"<?php echo $star_on; ?>\");\n\t\t$(\"#str2\").attr(\"src\",\"<?php echo $star_on; ?>\");\n\t\t$(\"#str3\").attr(\"src\",\"<?php echo $star_off; ?>\");\n\t\t$(\"#str4\").attr(\"src\",\"<?php echo $star_off; ?>\");\n\t\t$(\"#str5\").attr(\"src\",\"<?php echo $star_off; ?>\");\n\t});\n</script>\n<?php } elseif($rate <= 100) { ?>\n<a href=\"rate.php?t=<?php echo $qesm; ?>&v=1&id=<?php echo $id; ?>&m=min\" target=\"rate\">\n<img id=\"str1\" src=\"<?php echo $star_on; ?>\" height=\"16\" width=\"16\"/></a>\n<a href=\"rate.php?t=<?php echo $qesm; ?>&v=2&id=<?php echo $id; ?>&m=min\" target=\"rate\">\n<img id=\"str2\" src=\"<?php echo $star_on; ?>\" height=\"16\" width=\"16\"/></a>\n<a href=\"rate.php?t=<?php echo $qesm; ?>&v=1&id=<?php echo $id; ?>&m=pls\" target=\"rate\">\n<img id=\"str3\" src=\"<?php echo $star_on; ?>\" height=\"16\" width=\"16\"/></a>\n<a href=\"rate.php?t=<?php echo $qesm; ?>&v=2&id=<?php echo $id; ?>&m=pls\" target=\"rate\">\n<img id=\"str4\" src=\"<?php echo $star_off; ?>\" height=\"16\" width=\"16\"/></a>\n<a href=\"rate.php?t=<?php echo $qesm; ?>&v=3&id=<?php echo $id; ?>&m=pls\" target=\"rate\">\n<img id=\"str5\" src=\"<?php echo $star_off; ?>\" height=\"16\" width=\"16\"/></a>\n<script>\t$(\"#rating_stars\").mouseout(function() {\n\t\t$(\"#str1\").attr(\"src\",\"<?php echo $star_on; ?>\");\n\t\t$(\"#str2\").attr(\"src\",\"<?php echo $star_on; ?>\");\n\t\t$(\"#str3\").attr(\"src\",\"<?php echo $star_on; ?>\");\n\t\t$(\"#str4\").attr(\"src\",\"<?php echo $star_off; ?>\");\n\t\t$(\"#str5\").attr(\"src\",\"<?php echo $star_off; ?>\");\n\t});\n</script>\n<?php } elseif($rate <= 160) { ?>\n<a href=\"rate.php?t=<?php echo $qesm; ?>&v=1&id=<?php echo $id; ?>&m=min\" target=\"rate\">\n<img id=\"str1\" src=\"<?php echo $star_on; ?>\" height=\"16\" width=\"16\"/></a>\n<a href=\"rate.php?t=<?php echo $qesm; ?>&v=2&id=<?php echo $id; ?>&m=min\" target=\"rate\">\n<img id=\"str2\" src=\"<?php echo $star_on; ?>\" height=\"16\" width=\"16\"/></a>\n<a href=\"rate.php?t=<?php echo $qesm; ?>&v=1&id=<?php echo $id; ?>&m=pls\" target=\"rate\">\n<img id=\"str3\" src=\"<?php echo $star_on; ?>\" height=\"16\" width=\"16\"/></a>\n<a href=\"rate.php?t=<?php echo $qesm; ?>&v=2&id=<?php echo $id; ?>&m=pls\" target=\"rate\">\n<img id=\"str4\" src=\"<?php echo $star_on; ?>\" height=\"16\" width=\"16\"/></a>\n<a href=\"rate.php?t=<?php echo $qesm; ?>&v=3&id=<?php echo $id; ?>&m=pls\" target=\"rate\">\n<img id=\"str5\" src=\"<?php echo $star_off; ?>\" height=\"16\" width=\"16\"/></a>\n<script>\t$(\"#rating_stars\").mouseout(function() {\n\t\t$(\"#str1\").attr(\"src\",\"<?php echo $star_on; ?>\");\n\t\t$(\"#str2\").attr(\"src\",\"<?php echo $star_on; ?>\");\n\t\t$(\"#str3\").attr(\"src\",\"<?php echo $star_on; ?>\");\n\t\t$(\"#str4\").attr(\"src\",\"<?php echo $star_on; ?>\");\n\t\t$(\"#str5\").attr(\"src\",\"<?php echo $star_off; ?>\");\n\t});\n</script>\n<?php } elseif($rate <= 210) { ?>\n<a href=\"rate.php?t=<?php echo $qesm; ?>&v=1&id=<?php echo $id; ?>&m=min\" target=\"rate\">\n<img id=\"str1\" src=\"<?php echo $star_on; ?>\" height=\"16\" width=\"16\"/></a>\n<a href=\"rate.php?t=<?php echo $qesm; ?>&v=2&id=<?php echo $id; ?>&m=min\" target=\"rate\">\n<img id=\"str2\" src=\"<?php echo $star_on; ?>\" height=\"16\" width=\"16\"/></a>\n<a href=\"rate.php?t=<?php echo $qesm; ?>&v=1&id=<?php echo $id; ?>&m=pls\" target=\"rate\">\n<img id=\"str3\" src=\"<?php echo $star_on; ?>\" height=\"16\" width=\"16\"/></a>\n<a href=\"rate.php?t=<?php echo $qesm; ?>&v=2&id=<?php echo $id; ?>&m=pls\" target=\"rate\">\n<img id=\"str4\" src=\"<?php echo $star_on; ?>\" height=\"16\" width=\"16\"/></a>\n<a href=\"rate.php?t=<?php echo $qesm; ?>&v=3&id=<?php echo $id; ?>&m=pls\" target=\"rate\">\n<img id=\"str5\" src=\"<?php echo $star_on; ?>\" height=\"16\" width=\"16\"/></a>\n<script>\t$(\"#rating_stars\").mouseout(function() {\n\t\t$(\"#str1\").attr(\"src\",\"<?php echo $star_on; ?>\");\n\t\t$(\"#str2\").attr(\"src\",\"<?php echo $star_on; ?>\");\n\t\t$(\"#str3\").attr(\"src\",\"<?php echo $star_on; ?>\");\n\t\t$(\"#str4\").attr(\"src\",\"<?php echo $star_on; ?>\");\n\t\t$(\"#str5\").attr(\"src\",\"<?php echo $star_on; ?>\");\n\t});\n</script>\n<?php } elseif($rate >= 211) { ?>\n<a href=\"rate.php?t=<?php echo $qesm; ?>&v=1&id=<?php echo $id; ?>&m=min\" target=\"rate\">\n<img id=\"str1\" src=\"<?php echo $star_on; ?>\" height=\"16\" width=\"16\"/></a>\n<a href=\"rate.php?t=<?php echo $qesm; ?>&v=2&id=<?php echo $id; ?>&m=min\" target=\"rate\">\n<img id=\"str2\" src=\"<?php echo $star_on; ?>\" height=\"16\" width=\"16\"/></a>\n<a href=\"rate.php?t=<?php echo $qesm; ?>&v=1&id=<?php echo $id; ?>&m=pls\" target=\"rate\">\n<img id=\"str3\" src=\"<?php echo $star_on; ?>\" height=\"16\" width=\"16\"/></a>\n<a href=\"rate.php?t=<?php echo $qesm; ?>&v=2&id=<?php echo $id; ?>&m=pls\" target=\"rate\">\n<img id=\"str4\" src=\"<?php echo $star_on; ?>\" height=\"16\" width=\"16\"/></a>\n<a href=\"rate.php?t=<?php echo $qesm; ?>&v=3&id=<?php echo $id; ?>&m=pls\" target=\"rate\">\n<img id=\"str5\" src=\"<?php echo $star_on; ?>\" height=\"16\" width=\"16\"/></a>\n<script>\t$(\"#rating_stars\").mouseout(function() {\n\t\t$(\"#str1\").attr(\"src\",\"<?php echo $star_on; ?>\");\n\t\t$(\"#str2\").attr(\"src\",\"<?php echo $star_on; ?>\");\n\t\t$(\"#str3\").attr(\"src\",\"<?php echo $star_on; ?>\");\n\t\t$(\"#str4\").attr(\"src\",\"<?php echo $star_on; ?>\");\n\t\t$(\"#str5\").attr(\"src\",\"<?php echo $star_on; ?>\");\n\t});\n</script>\n<?php } ?>\n\n</span>\n<img id=\"rate_done\" src=\"themes/<?php echo $theme_file; ?>/icons/done.gif\" height=\"16\" width=\"16\"/>\n<img id=\"rate_load\" src=\"themes/<?php echo $theme_file; ?>/icons/loading_circle.gif\" height=\"16\" width=\"16\"/>\n<?php\nif($member == no) { } else {\n?>\n\n<?php\n}\n//rating stars-end\n?>\n<iframe name=\"rate\" frameborder=\"0\" height=\"0\" width=\"0\"></iframe>\n<?php\n}"
+    },
+    {
+      "id": "includes/functions.php:LCF30",
+      "path": "includes/functions.php",
+      "name": "g2h",
+      "parameters": [
+        "$gre",
+        "$type=\"all\""
+      ],
+      "body": "{\nlist($d, $m, $y) = explode('/', $gre);\nif (($y>1582)||(($y==1582)&&($m>10))||(($y==1582)&&($m==10)&&($d>14))){\n$jd=(int)((1461*($y+4800+(int)(($m-14)/12)))/4)+(int)((367*($m-2-12*((int)(($m-14)/12))))/12)-(int)((3*((int)(($y+4900+(int)(($m-14)/12))/100)))/4)+$d-32074;\n}else{\n$jd = 367*$y-(int)((7*($y+5001+(int)(($m-9)/7)))/4)+(int)((275*$m)/9)+$d+1729777;\n}\n$l=$jd-1948440+10632;\n$n=(int)(($l-1)/10631);\n$l=$l-10631*$n+354;\n$j=((int)((10985-$l)/5316))*((int)((50*$l)/17719))+((int)($l/5670))*((int)((43*$l)/15238));\n$l=$l-((int)((30-$j)/15))*((int)((17719*$j)/50))-((int)($j/16))*((int)((15238*$j)/43))+29 ;\n$m=(int)((24*$l)/709);\n$d=$l-(int)((709*$m)/24);\n$y=30*$n+$j-30;\nif ($type==\"all\") {return \"$y/$m/$d\";}\nelseif ($type==\"dd\") {return \"$d\";}\nelseif ($type==\"mm\") {return \"$m\";}\nelseif ($type==\"yy\") {return \"$y\";}\n}",
+      "start_line": 375,
+      "end_line": 394,
+      "code": "function g2h($gre,$type=\"all\") {\nlist($d, $m, $y) = explode('/', $gre);\nif (($y>1582)||(($y==1582)&&($m>10))||(($y==1582)&&($m==10)&&($d>14))){\n$jd=(int)((1461*($y+4800+(int)(($m-14)/12)))/4)+(int)((367*($m-2-12*((int)(($m-14)/12))))/12)-(int)((3*((int)(($y+4900+(int)(($m-14)/12))/100)))/4)+$d-32074;\n}else{\n$jd = 367*$y-(int)((7*($y+5001+(int)(($m-9)/7)))/4)+(int)((275*$m)/9)+$d+1729777;\n}\n$l=$jd-1948440+10632;\n$n=(int)(($l-1)/10631);\n$l=$l-10631*$n+354;\n$j=((int)((10985-$l)/5316))*((int)((50*$l)/17719))+((int)($l/5670))*((int)((43*$l)/15238));\n$l=$l-((int)((30-$j)/15))*((int)((17719*$j)/50))-((int)($j/16))*((int)((15238*$j)/43))+29 ;\n$m=(int)((24*$l)/709);\n$d=$l-(int)((709*$m)/24);\n$y=30*$n+$j-30;\nif ($type==\"all\") {return \"$y/$m/$d\";}\nelseif ($type==\"dd\") {return \"$d\";}\nelseif ($type==\"mm\") {return \"$m\";}\nelseif ($type==\"yy\") {return \"$y\";}\n}"
+    },
+    {
+      "id": "includes/functions.php:LCF31",
+      "path": "includes/functions.php",
+      "name": "f_date",
+      "parameters": [
+        "$date"
+      ],
+      "body": "{\nglobal $lang_date_hijri,$lang_date_christian,$mysql_maininfo_row;\nif($mysql_maininfo_row['date_type'] == 'hijri') {\necho g2h(date(\"$date\",time()),\"dd\");  \nprint '/';\necho g2h(date(\"$date\",time()),\"mm\");  \nprint '/';\necho g2h(date(\"$date\",time()),\"yy\");  \nprint ' '.$lang_date_hijri.'';\n} else {\nprint $date;\nprint ' ';\nprint $lang_date_christian;\n}\n}",
+      "start_line": 396,
+      "end_line": 410,
+      "code": "function f_date($date) {\nglobal $lang_date_hijri,$lang_date_christian,$mysql_maininfo_row;\nif($mysql_maininfo_row['date_type'] == 'hijri') {\necho g2h(date(\"$date\",time()),\"dd\");  \nprint '/';\necho g2h(date(\"$date\",time()),\"mm\");  \nprint '/';\necho g2h(date(\"$date\",time()),\"yy\");  \nprint ' '.$lang_date_hijri.'';\n} else {\nprint $date;\nprint ' ';\nprint $lang_date_christian;\n}\n}"
+    },
+    {
+      "id": "install/upgrade2.php:LCF32",
+      "path": "install/upgrade2.php",
+      "name": "member_id",
+      "parameters": [
+        "$username"
+      ],
+      "body": "{\n$query = mysql_query(\"SELECT id,username FROM $dbname.am_members WHERE username = '$username'\");\n$rowtgfe = mysql_fetch_array($query);\nreturn $rowtgfe['id'];\n}",
+      "start_line": 16,
+      "end_line": 20,
+      "code": "function member_id($username) {\n$query = mysql_query(\"SELECT id,username FROM $dbname.am_members WHERE username = '$username'\");\n$rowtgfe = mysql_fetch_array($query);\nreturn $rowtgfe['id'];\n}"
+    }
+  ]
+}

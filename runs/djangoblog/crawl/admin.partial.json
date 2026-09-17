@@ -1,0 +1,375 @@
+{
+  "role": "admin",
+  "kind": "admin",
+  "nodes": [
+    "./",
+    "admin/",
+    "admin/auth/",
+    "admin/auth/group/",
+    "admin/auth/group/1/change/",
+    "admin/auth/group/add/",
+    "admin/auth/user/",
+    "admin/auth/user/4/change/",
+    "admin/auth/user/4/delete/",
+    "admin/auth/user/4/history/",
+    "admin/auth/user/4/password/",
+    "admin/auth/user/add/",
+    "admin/blog/",
+    "admin/blog/post/",
+    "admin/blog/post/5/change/",
+    "admin/blog/post/add/",
+    "admin/password_change/",
+    "eee/",
+    "my-first-ever-post/",
+    "post-2/",
+    "post-3/",
+    "post-4/"
+  ],
+  "edges": [
+    {
+      "from": "./",
+      "to": "my-first-ever-post/"
+    },
+    {
+      "from": "./",
+      "to": "post-2/"
+    },
+    {
+      "from": "./",
+      "to": "post-3/"
+    },
+    {
+      "from": "./",
+      "to": "post-4/"
+    },
+    {
+      "from": "admin/",
+      "to": "admin/auth/group/add/"
+    },
+    {
+      "from": "admin/",
+      "to": "admin/blog/post/5/change/"
+    },
+    {
+      "from": "admin/auth/",
+      "to": "admin/auth/user/"
+    },
+    {
+      "from": "admin/auth/group/",
+      "to": "admin/auth/group/"
+    },
+    {
+      "from": "admin/auth/group/",
+      "to": "admin/auth/group/1/change/"
+    },
+    {
+      "from": "admin/auth/group/1/change/",
+      "to": "admin/auth/"
+    },
+    {
+      "from": "admin/auth/group/1/change/",
+      "to": "admin/auth/group/1/change/"
+    },
+    {
+      "from": "admin/auth/group/add/",
+      "to": "admin/auth/group/add/"
+    },
+    {
+      "from": "admin/auth/user/",
+      "to": "admin/auth/user/"
+    },
+    {
+      "from": "admin/auth/user/",
+      "to": "admin/auth/user/4/change/"
+    },
+    {
+      "from": "admin/auth/user/4/change/",
+      "to": "admin/auth/user/4/change/"
+    },
+    {
+      "from": "admin/auth/user/4/change/",
+      "to": "admin/auth/user/4/delete/"
+    },
+    {
+      "from": "admin/auth/user/4/change/",
+      "to": "admin/auth/user/4/history/"
+    },
+    {
+      "from": "admin/auth/user/4/change/",
+      "to": "admin/auth/user/4/password/"
+    },
+    {
+      "from": "admin/auth/user/4/delete/",
+      "to": "admin/"
+    },
+    {
+      "from": "admin/auth/user/4/delete/",
+      "to": "admin/auth/user/4/delete/"
+    },
+    {
+      "from": "admin/auth/user/4/password/",
+      "to": "admin/auth/user/4/password/"
+    },
+    {
+      "from": "admin/auth/user/add/",
+      "to": "admin/auth/user/add/"
+    },
+    {
+      "from": "admin/blog/",
+      "to": "admin/password_change/"
+    },
+    {
+      "from": "admin/blog/post/",
+      "to": "admin/blog/post/"
+    },
+    {
+      "from": "admin/blog/post/",
+      "to": "admin/blog/post/add/"
+    },
+    {
+      "from": "admin/blog/post/5/change/",
+      "to": "admin/auth/user/add/"
+    },
+    {
+      "from": "admin/blog/post/5/change/",
+      "to": "admin/blog/post/"
+    },
+    {
+      "from": "admin/blog/post/5/change/",
+      "to": "admin/blog/post/5/change/"
+    },
+    {
+      "from": "admin/blog/post/add/",
+      "to": "admin/blog/"
+    },
+    {
+      "from": "admin/blog/post/add/",
+      "to": "admin/blog/post/add/"
+    },
+    {
+      "from": "admin/password_change/",
+      "to": "admin/password_change/"
+    },
+    {
+      "from": "eee/",
+      "to": "./"
+    }
+  ],
+  "requests": {
+    "eee/": {
+      "method": "GET",
+      "params": {},
+      "referer": null
+    },
+    "admin/login/?next=%2Fadmin%2F": {
+      "method": "POST",
+      "params": {
+        "next": "/admin/",
+        "csrfmiddlewaretoken": "68zjDMnbpVawJ3qGU1kQlXnWgha0fUgcYpR04BnGfHVqFHnenHZvkKfoIoAuOKmL",
+        "username": "admin",
+        "password": "admin"
+      },
+      "referer": null
+    },
+    "favicon.ico": {
+      "method": "GET",
+      "params": {},
+      "referer": null
+    },
+    "admin/": {
+      "method": "GET",
+      "params": {},
+      "referer": null
+    },
+    "./": {
+      "method": "GET",
+      "params": {},
+      "referer": "eee/"
+    },
+    "my-first-ever-post/": {
+      "method": "GET",
+      "params": {},
+      "referer": "./"
+    },
+    "post-2/": {
+      "method": "GET",
+      "params": {},
+      "referer": "./"
+    },
+    "post-3/": {
+      "method": "GET",
+      "params": {},
+      "referer": "./"
+    },
+    "post-4/": {
+      "method": "GET",
+      "params": {},
+      "referer": "./"
+    },
+    "admin/auth/group/": {
+      "method": "POST",
+      "params": {
+        "csrfmiddlewaretoken": "6UqEiQL4GZyBajSFVWmDLcWb1dPb6huyS5XUzbHcsHmsoTu53po0GkxVGxg7uv31",
+        "action": "value_f27d28e5",
+        "select_across": "0"
+      },
+      "referer": "admin/auth/group/"
+    },
+    "admin/auth/group/1/change/": {
+      "method": "POST",
+      "params": {
+        "csrfmiddlewaretoken": "vVjxSyChpOsvakDD3IO4csBmOA96qCQ7h6QN9TypbwgmoUf3bbQr7Ac6tUA2OQpA",
+        "name": "user",
+        "permissions_old": "value_6bd03ce3",
+        "permissions": "value_8b0397e7",
+        "_save": "Save",
+        "_addanother": "Save and add another",
+        "_continue": "Save and continue editing"
+      },
+      "referer": "admin/auth/group/1/change/"
+    },
+    "admin/auth/": {
+      "method": "GET",
+      "params": {},
+      "referer": "admin/auth/group/1/change/"
+    },
+    "admin/auth/user/": {
+      "method": "POST",
+      "params": {
+        "csrfmiddlewaretoken": "zIOZGP0qgDx0ts1GIPT7qo95blyBUQ2VlTlfXaWy2llRH2D6QiVulwKPQFZxi4Bo",
+        "action": "value_b497beb3",
+        "select_across": "0"
+      },
+      "referer": "admin/auth/user/"
+    },
+    "admin/auth/user/4/change/": {
+      "method": "POST",
+      "params": {
+        "csrfmiddlewaretoken": "Y1DvZiH3bW1ezvwUKPAILHkYhrb7hweRKcaLgDDbXEP5N58kSiC5GPVIWLC3FKNk",
+        "username": "user2",
+        "first_name": "DRHL",
+        "last_name": "Tester",
+        "email": "user1@gmail.com",
+        "is_active": "on",
+        "is_staff": "on",
+        "groups_old": "value_f684e9d7",
+        "groups": "value_6a762892",
+        "user_permissions_old": "value_e94cfed6",
+        "user_permissions": "value_8cafe15f",
+        "last_login_0": "text_2803226a",
+        "last_login_1": "text_65f3b773",
+        "date_joined_0": "2025-10-17",
+        "date_joined_1": "12:09:22",
+        "initial-date_joined_0": "2025-10-17",
+        "initial-date_joined_1": "12:09:22",
+        "_save": "Save",
+        "_addanother": "Save and add another",
+        "_continue": "Save and continue editing"
+      },
+      "referer": "admin/auth/user/4/change/"
+    },
+    "admin/auth/user/4/delete/": {
+      "method": "POST",
+      "params": {
+        "csrfmiddlewaretoken": "b5NL9LuWkUIPh4abdE6xCANtODfj8lS8Xgk1q6q46CwGvEMBl78UxIodtXGfwzrB",
+        "post": "yes"
+      },
+      "referer": "admin/auth/user/4/delete/"
+    },
+    "admin/blog/post/5/change/": {
+      "method": "POST",
+      "params": {
+        "csrfmiddlewaretoken": "lJ8QGLQehZXZTaDdmFBODaAByoghFh7x7UF6X6Mm3HLQ7KfDu8DbyibldIHd3vG0",
+        "title": "eee",
+        "slug": "eee",
+        "author": "2",
+        "content": "eee",
+        "status": "0",
+        "_save": "Save",
+        "_addanother": "Save and add another",
+        "_continue": "Save and continue editing"
+      },
+      "referer": "admin/blog/post/5/change/"
+    },
+    "admin/auth/user/add/": {
+      "method": "POST",
+      "params": {
+        "csrfmiddlewaretoken": "PhwRwHJF66dULmOXvIc8b3SvZt4O0HxeBs37N2FNSO1LZWqnDbev6btfENvKoV6H",
+        "_popup": "1",
+        "_to_field": "id",
+        "username": "admin",
+        "password1": "12345678",
+        "password2": "12345678",
+        "_save": "Save"
+      },
+      "referer": "admin/auth/user/add/"
+    },
+    "admin/blog/post/": {
+      "method": "POST",
+      "params": {
+        "csrfmiddlewaretoken": "5Z7tWpjY3qfobXzOUM0SzEatDL0wdHwhRaEJdKf6P83fpxbe2f2fuMLdi5rsBV5K",
+        "action": "value_8dea9b65",
+        "select_across": "0"
+      },
+      "referer": "admin/blog/post/"
+    },
+    "admin/blog/post/add/": {
+      "method": "POST",
+      "params": {
+        "csrfmiddlewaretoken": "qjp0WLWBwrPeOxIZ8k3aKK6jIm7EjTA5cuWgd6SJi9D527kpgN5xFSH3nGyAH79y",
+        "title": "DRHL Django Post",
+        "slug": "drhl-django-post",
+        "author": "value_023a4540",
+        "content": "DRHL generated Django blog content for access-control testing.",
+        "status": "0",
+        "_save": "Save",
+        "_addanother": "Save and add another",
+        "_continue": "Save and continue editing"
+      },
+      "referer": "admin/blog/post/add/"
+    },
+    "admin/blog/": {
+      "method": "GET",
+      "params": {},
+      "referer": "admin/blog/post/add/"
+    },
+    "admin/password_change/": {
+      "method": "POST",
+      "params": {
+        "csrfmiddlewaretoken": "wxYUKPQRiVeXgKc0E5in8RHb1riDjSqViIva1aMZ4D2OukOqMykK3ZiVGLJzH6Zo",
+        "old_password": "12345678",
+        "new_password1": "12345678",
+        "new_password2": "12345678"
+      },
+      "referer": "admin/password_change/"
+    },
+    "admin/auth/group/add/": {
+      "method": "POST",
+      "params": {
+        "csrfmiddlewaretoken": "n8strBueXYLCgZ6wOxNVpwy42ZrKRt1L9jZJIWqmJGztuzIWW0PikE9OHjSGfHAe",
+        "name": "text_0e134946",
+        "permissions_old": "value_2acd1f5e",
+        "permissions": "value_75c635a3",
+        "_save": "Save",
+        "_addanother": "Save and add another",
+        "_continue": "Save and continue editing"
+      },
+      "referer": "admin/auth/group/add/"
+    },
+    "admin/auth/user/4/password/": {
+      "method": "POST",
+      "params": {
+        "csrfmiddlewaretoken": "f54YQ8N474HMBLXmaBjWzz5B40VHp1QZ1gBe7tJcTMvDPlzMi4ljuHGlJkmDNfps",
+        "username": "user2",
+        "password1": "12345678",
+        "password2": "12345678"
+      },
+      "referer": "admin/auth/user/4/password/"
+    },
+    "admin/auth/user/4/history/": {
+      "method": "GET",
+      "params": {},
+      "referer": "admin/auth/user/4/change/"
+    }
+  }
+}

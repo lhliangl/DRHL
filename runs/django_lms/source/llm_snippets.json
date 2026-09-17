@@ -1,0 +1,53 @@
+{
+  "summary": {
+    "source_items": 11,
+    "llm_items": 11,
+    "items_removed": 0
+  },
+  "snippets": [
+    {
+      "path": "accounts/decorators.py",
+      "code": "def student_required(function=None, redirect_field_name=REDIRECT_FIELD_NAME, login_url=Http404):\n    \"\"\"\n    Decorator for views that checks that the logged in user is a student,\n    redirects to the log-in page if necessary.\n    \"\"\"\n    actual_decorator = user_passes_test(\n        lambda u: u.is_active and u.is_student or u.is_superuser,\n        login_url=login_url,\n        redirect_field_name=redirect_field_name\n    )\n    if function:\n        return actual_decorator(function)\n    return actual_decorator"
+    },
+    {
+      "path": "accounts/decorators.py",
+      "code": "user_passes_test(\n        lambda u: u.is_active and u.is_student or u.is_superuser,\n        login_url=login_url,\n        redirect_field_name=redirect_field_name\n    )"
+    },
+    {
+      "path": "accounts/decorators.py",
+      "code": "def lecturer_required(function=None, redirect_field_name=REDIRECT_FIELD_NAME, login_url=Http404):\n    \"\"\"\n    Decorator for views that checks that the logged in user is a teacher,\n    redirects to the log-in page if necessary.\n    \"\"\"\n    actual_decorator = user_passes_test(\n        lambda u: u.is_active and u.is_lecturer or u.is_superuser,\n        login_url=login_url,\n        redirect_field_name=redirect_field_name\n    )\n    if function:\n        return actual_decorator(function)\n    return actual_decorator"
+    },
+    {
+      "path": "accounts/decorators.py",
+      "code": "user_passes_test(\n        lambda u: u.is_active and u.is_lecturer or u.is_superuser,\n        login_url=login_url,\n        redirect_field_name=redirect_field_name\n    )"
+    },
+    {
+      "path": "accounts/decorators.py",
+      "code": "def admin_required(function=None, redirect_field_name=REDIRECT_FIELD_NAME, login_url=Http404):\n    \"\"\"\n    Decorator for views that checks that the logged in user is a teacher,\n    redirects to the log-in page if necessary.\n    \"\"\"\n    actual_decorator = user_passes_test(\n        lambda u: u.is_active and u.is_superuser,\n        login_url=login_url,\n        redirect_field_name=redirect_field_name\n    )\n    if function:\n        return actual_decorator(function)\n    return actual_decorator"
+    },
+    {
+      "path": "accounts/decorators.py",
+      "code": "user_passes_test(\n        lambda u: u.is_active and u.is_superuser,\n        login_url=login_url,\n        redirect_field_name=redirect_field_name\n    )"
+    },
+    {
+      "path": "quiz/views.py",
+      "code": "super(QuizMarkerMixin, self).dispatch(*args, **kwargs)"
+    },
+    {
+      "path": "quiz/views.py",
+      "code": "super(QuizUserProgressView, self).dispatch(request, *args, **kwargs)"
+    },
+    {
+      "path": "quiz/views.py",
+      "code": "def dispatch(self, request, *args, **kwargs):\n        self.quiz = get_object_or_404(Quiz, slug=self.kwargs['slug'])\n        self.course = get_object_or_404(Course, pk=self.kwargs['pk'])\n        quizQuestions = Question.objects.filter(quiz=self.quiz).count()\n        course = get_object_or_404(Course, pk=self.kwargs['pk'])\n\n        if quizQuestions <= 0:\n            messages.warning(request, f'Question set of the quiz is empty. try later!')\n            return redirect('quiz_index', self.course.slug)\n\n        if self.quiz.draft and not request.user.has_perm('quiz.change_quiz'):\n            raise PermissionDenied\n\n        self.sitting = Sitting.objects.user_sitting(request.user, self.quiz, self.course)\n\n        if self.sitting is False:\n            # return render(request, self.single_complete_template_name)\n            messages.info(request, f'You have already sat this exam and only one sitting is permitted')\n            return redirect('quiz_index', self.course.slug)\n\n        return super(QuizTake, self).dispatch(request, *args, **kwargs)"
+    },
+    {
+      "path": "quiz/views.py",
+      "if_framework": "if self.quiz.draft and not request.user.has_perm('quiz.change_quiz'):\n    raise PermissionDenied"
+    },
+    {
+      "path": "quiz/views.py",
+      "code": "super(QuizTake, self).dispatch(request, *args, **kwargs)"
+    }
+  ]
+}

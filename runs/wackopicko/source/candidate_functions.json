@@ -1,0 +1,719 @@
+{
+  "functions": [
+    {
+      "id": "include/admins.php:LCF1",
+      "path": "include/admins.php",
+      "name": "get_admin_id",
+      "parameters": [
+        "$adminid"
+      ],
+      "body": "{\n      $query = sprintf(\"SELECT * from admin where id = '%d'\",\n\t\t       mysql_real_escape_string($userid));\n      $res = mysql_query($query);\n      if ($res)\n      {\n\t return mysql_fetch_assoc($res);\n      }\n      else\n      {\n\t return False;\n      }\n   }",
+      "start_line": 12,
+      "end_line": 25,
+      "code": "function get_admin_id($adminid)\n   {\n      $query = sprintf(\"SELECT * from admin where id = '%d'\",\n\t\t       mysql_real_escape_string($userid));\n      $res = mysql_query($query);\n      if ($res)\n      {\n\t return mysql_fetch_assoc($res);\n      }\n      else\n      {\n\t return False;\n      }\n   }"
+    },
+    {
+      "id": "include/admins.php:LCF2",
+      "path": "include/admins.php",
+      "name": "get_admin_session",
+      "parameters": [
+        "$sessid"
+      ],
+      "body": "{\n      $query = sprintf(\"SELECT admin.id, admin.login, admin.password from admin, admin_session where admin_session.id = '%s' and admin_session.admin_id = admin.id limit 1;\",\n\t\t       mysql_real_escape_string($sessid));\n      $res = mysql_query($query);\n      if ($res)\n      {\n\t return mysql_fetch_assoc($res);\n      }\n      else\n      {\n\t return False;\n      }\n   }",
+      "start_line": 27,
+      "end_line": 40,
+      "code": "function get_admin_session($sessid)\n   {\n      $query = sprintf(\"SELECT admin.id, admin.login, admin.password from admin, admin_session where admin_session.id = '%s' and admin_session.admin_id = admin.id limit 1;\",\n\t\t       mysql_real_escape_string($sessid));\n      $res = mysql_query($query);\n      if ($res)\n      {\n\t return mysql_fetch_assoc($res);\n      }\n      else\n      {\n\t return False;\n      }\n   }"
+    },
+    {
+      "id": "include/admins.php:LCF3",
+      "path": "include/admins.php",
+      "name": "create_admin",
+      "parameters": [
+        "$login",
+        "$pass"
+      ],
+      "body": "{\n      $query = sprintf(\"INSERT into `admin` (`id`, `login`, `password`) VALUES (NULL, '%s', SHA1('%s'));\",\n\t\t       mysql_real_escape_string($login),\n\t\t       mysql_real_escape_string($pass));\n      if ($res = mysql_query($query))\n      {\n\t return mysql_insert_id();\n      }\n      else\n      {\n\t return False;\n      }\n   }",
+      "start_line": 42,
+      "end_line": 55,
+      "code": "function create_admin($login, $pass)\n   {\n      $query = sprintf(\"INSERT into `admin` (`id`, `login`, `password`) VALUES (NULL, '%s', SHA1('%s'));\",\n\t\t       mysql_real_escape_string($login),\n\t\t       mysql_real_escape_string($pass));\n      if ($res = mysql_query($query))\n      {\n\t return mysql_insert_id();\n      }\n      else\n      {\n\t return False;\n      }\n   }"
+    },
+    {
+      "id": "include/admins.php:LCF4",
+      "path": "include/admins.php",
+      "name": "login_admin",
+      "parameters": [
+        "$adminid"
+      ],
+      "body": "{\n      // Don't trust the php session, we're using our own\n      $query = sprintf(\"INSERT into `admin_session` (`id`, `admin_id`, `created_on`) VALUES (NULL, '%s', NOW());\",\n\t\t       mysql_real_escape_string($adminid));\n      if ($res = mysql_query($query))\n      {\n\t // add the cookie\n\t $id = mysql_insert_id();\n\t setcookie(\"session\", $id);\n\t return mysql_insert_id();\n      }\n      else\n      {\n\t return False;\n      }\n   }",
+      "start_line": 57,
+      "end_line": 73,
+      "code": "function login_admin($adminid)\n   {\n      // Don't trust the php session, we're using our own\n      $query = sprintf(\"INSERT into `admin_session` (`id`, `admin_id`, `created_on`) VALUES (NULL, '%s', NOW());\",\n\t\t       mysql_real_escape_string($adminid));\n      if ($res = mysql_query($query))\n      {\n\t // add the cookie\n\t $id = mysql_insert_id();\n\t setcookie(\"session\", $id);\n\t return mysql_insert_id();\n      }\n      else\n      {\n\t return False;\n      }\n   }"
+    },
+    {
+      "id": "include/admins.php:LCF5",
+      "path": "include/admins.php",
+      "name": "clean_admin_session",
+      "parameters": [],
+      "body": "{\n      mysql_query(\"DELETE from admin_session WHERE created_on < DATE_SUB( NOW(), INTERVAL 1 HOUR );\");\n   }",
+      "start_line": 74,
+      "end_line": 77,
+      "code": "function clean_admin_session()\n   {\n      mysql_query(\"DELETE from admin_session WHERE created_on < DATE_SUB( NOW(), INTERVAL 1 HOUR );\");\n   }"
+    },
+    {
+      "id": "include/admins.php:LCF6",
+      "path": "include/admins.php",
+      "name": "check_login",
+      "parameters": [
+        "$admin",
+        "$pass"
+      ],
+      "body": "{\n      $query = sprintf(\"SELECT * from `admin` where `login` like '%s' and `password` = SHA1( '%s' ) limit 1;\",\n\t\t       mysql_real_escape_string($admin),\n\t\t       mysql_real_escape_string($pass));\n      $res = mysql_query($query);\n      if ($res)\n      {\n\t return mysql_fetch_assoc($res);\n      }\n      else\n      {\n\t return False;\n      }\n   }",
+      "start_line": 79,
+      "end_line": 93,
+      "code": "function check_login($admin, $pass)\n   {\n      $query = sprintf(\"SELECT * from `admin` where `login` like '%s' and `password` = SHA1( '%s' ) limit 1;\",\n\t\t       mysql_real_escape_string($admin),\n\t\t       mysql_real_escape_string($pass));\n      $res = mysql_query($query);\n      if ($res)\n      {\n\t return mysql_fetch_assoc($res);\n      }\n      else\n      {\n\t return False;\n      }\n   }"
+    },
+    {
+      "id": "include/admins.php:LCF7",
+      "path": "include/admins.php",
+      "name": "current_admin",
+      "parameters": [],
+      "body": "{\n      if (isset($_COOKIE['session']))\n      {\n\t if (!$cur_admin)\n\t {\n\t    Admins::clean_admin_session();\n\t    $cur_user = Admins::get_admin_session($_COOKIE['session']);\n\t }\n\t return $cur_user;\n      }\n      else\n      {\n\t return False;\n      }\n   }",
+      "start_line": 95,
+      "end_line": 110,
+      "code": "function current_admin()\n   {\n      if (isset($_COOKIE['session']))\n      {\n\t if (!$cur_admin)\n\t {\n\t    Admins::clean_admin_session();\n\t    $cur_user = Admins::get_admin_session($_COOKIE['session']);\n\t }\n\t return $cur_user;\n      }\n      else\n      {\n\t return False;\n      }\n   }"
+    },
+    {
+      "id": "include/admins.php:LCF8",
+      "path": "include/admins.php",
+      "name": "is_logged_in",
+      "parameters": [],
+      "body": "{\n      if (Admins::current_admin())\n      {\n\t return true;\n      }\n      else\n      {\n\t return False;\n      }\n   }",
+      "start_line": 112,
+      "end_line": 122,
+      "code": "function is_logged_in()\n   {\n      if (Admins::current_admin())\n      {\n\t return true;\n      }\n      else\n      {\n\t return False;\n      }\n   }"
+    },
+    {
+      "id": "include/cart.php:LCF9",
+      "path": "include/cart.php",
+      "name": "add_coupon",
+      "parameters": [
+        "$cartid",
+        "$couponcode"
+      ],
+      "body": "{\n      $query = sprintf(\"SELECT * from `coupons` where code = '%s' LIMIT 1;\", mysql_real_escape_string($couponcode));\n      if (!$res = mysql_query($query))\n      {\n\t return False;\n      }\n      if (!$arr = mysql_fetch_assoc($res))\n      {\n\t return False;\n      }\n      $couponid = $arr['id'];\n      $query = sprintf(\"INSERT into `cart_coupons` (`cart_id`, `coupon_id`) VALUES ('%d', '%d');\",\n                        mysql_real_escape_string($cartid),\n                        mysql_real_escape_string($couponid));\n      return mysql_query($query);\n   }",
+      "start_line": 12,
+      "end_line": 28,
+      "code": "function add_coupon($cartid, $couponcode)\n   {\n      $query = sprintf(\"SELECT * from `coupons` where code = '%s' LIMIT 1;\", mysql_real_escape_string($couponcode));\n      if (!$res = mysql_query($query))\n      {\n\t return False;\n      }\n      if (!$arr = mysql_fetch_assoc($res))\n      {\n\t return False;\n      }\n      $couponid = $arr['id'];\n      $query = sprintf(\"INSERT into `cart_coupons` (`cart_id`, `coupon_id`) VALUES ('%d', '%d');\",\n                        mysql_real_escape_string($cartid),\n                        mysql_real_escape_string($couponid));\n      return mysql_query($query);\n   }"
+    },
+    {
+      "id": "include/cart.php:LCF10",
+      "path": "include/cart.php",
+      "name": "get_cart",
+      "parameters": [
+        "$userid"
+      ],
+      "body": "{\n      $query = sprintf(\"SELECT * from cart where user_id = '%d' limit 1;\",\n\t\t       mysql_real_escape_string($userid));\n      $res = mysql_query($query);\n      if ($res)\n      {\n\t return mysql_fetch_assoc($res);\n      }\n      else\n      {\n\t return False;\n      }      \n   }",
+      "start_line": 30,
+      "end_line": 43,
+      "code": "function get_cart($userid)\n   {\n      $query = sprintf(\"SELECT * from cart where user_id = '%d' limit 1;\",\n\t\t       mysql_real_escape_string($userid));\n      $res = mysql_query($query);\n      if ($res)\n      {\n\t return mysql_fetch_assoc($res);\n      }\n      else\n      {\n\t return False;\n      }      \n   }"
+    },
+    {
+      "id": "include/cart.php:LCF11",
+      "path": "include/cart.php",
+      "name": "create_cart",
+      "parameters": [
+        "$userid"
+      ],
+      "body": "{\n      $query = sprintf(\"INSERT into `cart` (`id`, `user_id`, `created_on`) VALUES (NULL, '%d', NOW());\",\n\t\t       mysql_real_escape_string($userid));\n      if (mysql_query($query))\n      {\n\t return mysql_insert_id();\n      }\n      else\n      {\n\t return False;\n      }      \n   }",
+      "start_line": 45,
+      "end_line": 57,
+      "code": "function create_cart($userid)\n   {\n      $query = sprintf(\"INSERT into `cart` (`id`, `user_id`, `created_on`) VALUES (NULL, '%d', NOW());\",\n\t\t       mysql_real_escape_string($userid));\n      if (mysql_query($query))\n      {\n\t return mysql_insert_id();\n      }\n      else\n      {\n\t return False;\n      }      \n   }"
+    },
+    {
+      "id": "include/cart.php:LCF12",
+      "path": "include/cart.php",
+      "name": "add_to_cart",
+      "parameters": [
+        "$cartid",
+        "$picid"
+      ],
+      "body": "{\n      $query = sprintf(\"INSERT into `cart_items` (`id`, `cart_id`, `picture_id`) VALUES (NULL, '%d', '%d');\",\n\t\t       mysql_real_escape_string($cartid),\n\t\t       mysql_real_escape_string($picid));\n      if (mysql_query($query))\n      {\n\t return mysql_insert_id();\n      }\n      else\n      {\n\t return False;\n      }      \n   }",
+      "start_line": 59,
+      "end_line": 72,
+      "code": "function add_to_cart($cartid, $picid)\n   {\n      $query = sprintf(\"INSERT into `cart_items` (`id`, `cart_id`, `picture_id`) VALUES (NULL, '%d', '%d');\",\n\t\t       mysql_real_escape_string($cartid),\n\t\t       mysql_real_escape_string($picid));\n      if (mysql_query($query))\n      {\n\t return mysql_insert_id();\n      }\n      else\n      {\n\t return False;\n      }      \n   }"
+    },
+    {
+      "id": "include/cart.php:LCF13",
+      "path": "include/cart.php",
+      "name": "delete_from_cart",
+      "parameters": [
+        "$cartid",
+        "$picid"
+      ],
+      "body": "{\n      $query = sprintf(\"DELETE from `cart_items` where cart_id = '%d' and picture_id = '%d' limit 1;\",\n\t\t       mysql_real_escape_string($cartid),\n\t\t       mysql_real_escape_string($picid));\n      if (mysql_query($query))\n      {\n\t return True;\n      }\n      else\n      {\n\t return False;\n      }      \n   }",
+      "start_line": 75,
+      "end_line": 88,
+      "code": "function delete_from_cart($cartid, $picid)\n   {\n      $query = sprintf(\"DELETE from `cart_items` where cart_id = '%d' and picture_id = '%d' limit 1;\",\n\t\t       mysql_real_escape_string($cartid),\n\t\t       mysql_real_escape_string($picid));\n      if (mysql_query($query))\n      {\n\t return True;\n      }\n      else\n      {\n\t return False;\n      }      \n   }"
+    },
+    {
+      "id": "include/cart.php:LCF14",
+      "path": "include/cart.php",
+      "name": "cart_items",
+      "parameters": [
+        "$cartid"
+      ],
+      "body": "{\n      $query = sprintf(\"SELECT * from cart_items, pictures where cart_items.cart_id = '%d' and cart_items.picture_id = pictures.id;\",\n\t\t       mysql_real_escape_string($cartid));\n      $res = mysql_query($query);\n      if ($res)\n      {\n\t while ($row = mysql_fetch_assoc($res))\n\t {\n\t    $to_ret[] = $row;\n\t }\n\t return $to_ret;\n      }\n      else\n      {\n\t return False;\n      }      \n   }",
+      "start_line": 90,
+      "end_line": 107,
+      "code": "function cart_items($cartid)\n   {\n      $query = sprintf(\"SELECT * from cart_items, pictures where cart_items.cart_id = '%d' and cart_items.picture_id = pictures.id;\",\n\t\t       mysql_real_escape_string($cartid));\n      $res = mysql_query($query);\n      if ($res)\n      {\n\t while ($row = mysql_fetch_assoc($res))\n\t {\n\t    $to_ret[] = $row;\n\t }\n\t return $to_ret;\n      }\n      else\n      {\n\t return False;\n      }      \n   }"
+    },
+    {
+      "id": "include/cart.php:LCF15",
+      "path": "include/cart.php",
+      "name": "cart_coupons",
+      "parameters": [
+        "$cartid"
+      ],
+      "body": "{\n      $query = sprintf(\"SELECT coupons.code, coupons.discount from cart_coupons, coupons where cart_coupons.cart_id = '%d' and cart_coupons.coupon_id = coupons.id;\",\n\t\t       mysql_real_escape_string($cartid));\n      $res = mysql_query($query);\n      if ($res)\n      {\n\t while ($row = mysql_fetch_assoc($res))\n\t {\n\t    $to_ret[] = $row;\n\t }\n\t return $to_ret;\n      }\n      else\n      {\n\t return False;\n      }      \n   }",
+      "start_line": 109,
+      "end_line": 126,
+      "code": "function cart_coupons($cartid)\n   {\n      $query = sprintf(\"SELECT coupons.code, coupons.discount from cart_coupons, coupons where cart_coupons.cart_id = '%d' and cart_coupons.coupon_id = coupons.id;\",\n\t\t       mysql_real_escape_string($cartid));\n      $res = mysql_query($query);\n      if ($res)\n      {\n\t while ($row = mysql_fetch_assoc($res))\n\t {\n\t    $to_ret[] = $row;\n\t }\n\t return $to_ret;\n      }\n      else\n      {\n\t return False;\n      }      \n   }"
+    },
+    {
+      "id": "include/cart.php:LCF16",
+      "path": "include/cart.php",
+      "name": "cart_total",
+      "parameters": [
+        "$cartid"
+      ],
+      "body": "{\n      $coupons = Cart::cart_coupons($cartid);\n      $query = sprintf(\"SELECT SUM(pictures.price) from cart_items, pictures where cart_items.cart_id = '%d' and cart_items.picture_id = pictures.id;\",\n\t\t       mysql_real_escape_string($cartid));\n      $res = mysql_query($query);\n      if ($res)\n      {\n\t $row = mysql_fetch_row($res);\n\t $sum = $row[0];\t \n\t if ($coupons)\n\t {\n\t    foreach ($coupons as $coupon)\n\t    {\n\t       $sum *= $coupon['discount'] / 100.0;\n\t    }\n\t }\n\t return $sum;\n      }\n      else\n      {\n\t return False;\n      }      \t\t       \n   }",
+      "start_line": 128,
+      "end_line": 151,
+      "code": "function cart_total($cartid)\n   {\n      $coupons = Cart::cart_coupons($cartid);\n      $query = sprintf(\"SELECT SUM(pictures.price) from cart_items, pictures where cart_items.cart_id = '%d' and cart_items.picture_id = pictures.id;\",\n\t\t       mysql_real_escape_string($cartid));\n      $res = mysql_query($query);\n      if ($res)\n      {\n\t $row = mysql_fetch_row($res);\n\t $sum = $row[0];\t \n\t if ($coupons)\n\t {\n\t    foreach ($coupons as $coupon)\n\t    {\n\t       $sum *= $coupon['discount'] / 100.0;\n\t    }\n\t }\n\t return $sum;\n      }\n      else\n      {\n\t return False;\n      }      \t\t       \n   }"
+    },
+    {
+      "id": "include/cart.php:LCF17",
+      "path": "include/cart.php",
+      "name": "purchase",
+      "parameters": [
+        "$cart"
+      ],
+      "body": "{\n      mysql_query(\"BEGIN;\");\n      $items = Cart::cart_items($cart['id']);\n      $coupons = Cart::cart_coupons($cartid);\n      $sum = 0;\n      foreach ($items as $item)\n      {\n\t $sum += $item['price'];\n\t $query = sprintf(\"INSERT into `own` (`id`, `user_id`, `picture_id`) VALUES (NULL, '%d', '%d');\",\n\t\t\t  mysql_real_escape_string($cart['user_id']),\n\t\t\t  mysql_real_escape_string($item['picture_id']));\t \n\t if (!mysql_query($query))\n\t {\n\t    mysql_query(\"ROLLBACK;\");\n\t    return False;\n\t }\n\t $query = sprintf(\"UPDATE `users` set tradebux = tradebux + %d where id = '%d' limit 1;\",\n\t\t\t  mysql_real_escape_string($item['price']),\n\t\t\t  mysql_real_escape_string($item['user_id']));\n\t if (!mysql_query($query))\n\t {\n\t    mysql_query(\"ROLLBACK;\");\n\t    return False;\n\t }\n      }\n      if ($coupons)\n      {\n\t foreach ($coupons as $coupon)\n\t {\n\t    $sum *= $coupon['discount'] / 100.0;\n\t }\n      }\n      \n      $query = sprintf(\"UPDATE `users` set tradebux = tradebux - %d where id = '%d' limit 1;\",\n\t\t       mysql_real_escape_string($sum),\n\t\t       mysql_real_escape_string($cart['user_id']));\n      if (!mysql_query($query))\n      {\n\t mysql_query(\"ROLLBACK;\");\n\t return False;\n      }\n      \n      if (!Cart::delete_cart($cart['id'], True))\n      {\n\t mysql_query(\"ROLLBACK;\");\n\t return False;\n      }\n      \n      mysql_query(\"COMMIT;\");\n      return True;\n   }",
+      "start_line": 153,
+      "end_line": 204,
+      "code": "function purchase($cart)\n   {\n      mysql_query(\"BEGIN;\");\n      $items = Cart::cart_items($cart['id']);\n      $coupons = Cart::cart_coupons($cartid);\n      $sum = 0;\n      foreach ($items as $item)\n      {\n\t $sum += $item['price'];\n\t $query = sprintf(\"INSERT into `own` (`id`, `user_id`, `picture_id`) VALUES (NULL, '%d', '%d');\",\n\t\t\t  mysql_real_escape_string($cart['user_id']),\n\t\t\t  mysql_real_escape_string($item['picture_id']));\t \n\t if (!mysql_query($query))\n\t {\n\t    mysql_query(\"ROLLBACK;\");\n\t    return False;\n\t }\n\t $query = sprintf(\"UPDATE `users` set tradebux = tradebux + %d where id = '%d' limit 1;\",\n\t\t\t  mysql_real_escape_string($item['price']),\n\t\t\t  mysql_real_escape_string($item['user_id']));\n\t if (!mysql_query($query))\n\t {\n\t    mysql_query(\"ROLLBACK;\");\n\t    return False;\n\t }\n      }\n      if ($coupons)\n      {\n\t foreach ($coupons as $coupon)\n\t {\n\t    $sum *= $coupon['discount'] / 100.0;\n\t }\n      }\n      \n      $query = sprintf(\"UPDATE `users` set tradebux = tradebux - %d where id = '%d' limit 1;\",\n\t\t       mysql_real_escape_string($sum),\n\t\t       mysql_real_escape_string($cart['user_id']));\n      if (!mysql_query($query))\n      {\n\t mysql_query(\"ROLLBACK;\");\n\t return False;\n      }\n      \n      if (!Cart::delete_cart($cart['id'], True))\n      {\n\t mysql_query(\"ROLLBACK;\");\n\t return False;\n      }\n      \n      mysql_query(\"COMMIT;\");\n      return True;\n   }"
+    },
+    {
+      "id": "include/cart.php:LCF18",
+      "path": "include/cart.php",
+      "name": "delete_cart",
+      "parameters": [
+        "$cartid",
+        "$in_transaction"
+      ],
+      "body": "{\n      if (!$in_transaction)\n      {\n\t mysql_query(\"BEGIN;\");\n      }\n      $query = sprintf(\"DELETE from cart_items where cart_items.cart_id = '%d'\",\n\t\t       mysql_real_escape_string($cartid));\n      if (!mysql_query($query))\n      {\n\t if (!$in_transaction)\n\t {\n\t    mysql_query(\"ROLLBACK;\");\n\t }\n\t return False;\n      }\n      $query = sprintf(\"DELETE from cart where id = '%d' limit 1;\",\n\t\t       mysql_real_escape_string($cartid));\n      if (!mysql_query($query))\n      {\n\t if (!$in_transaction)\n\t {\n\t    mysql_query(\"ROLLBACK;\");\n\t }\n\t return False;\n      }\n      \n      if (!$in_transaction)\n      {\n\t mysql_query(\"COMMIT;\");\n      }\n      return True;\n   }",
+      "start_line": 206,
+      "end_line": 238,
+      "code": "function delete_cart($cartid, $in_transaction)\n   {\n      if (!$in_transaction)\n      {\n\t mysql_query(\"BEGIN;\");\n      }\n      $query = sprintf(\"DELETE from cart_items where cart_items.cart_id = '%d'\",\n\t\t       mysql_real_escape_string($cartid));\n      if (!mysql_query($query))\n      {\n\t if (!$in_transaction)\n\t {\n\t    mysql_query(\"ROLLBACK;\");\n\t }\n\t return False;\n      }\n      $query = sprintf(\"DELETE from cart where id = '%d' limit 1;\",\n\t\t       mysql_real_escape_string($cartid));\n      if (!mysql_query($query))\n      {\n\t if (!$in_transaction)\n\t {\n\t    mysql_query(\"ROLLBACK;\");\n\t }\n\t return False;\n      }\n      \n      if (!$in_transaction)\n      {\n\t mysql_query(\"COMMIT;\");\n      }\n      return True;\n   }"
+    },
+    {
+      "id": "include/comments.php:LCF19",
+      "path": "include/comments.php",
+      "name": "add_preview",
+      "parameters": [
+        "$text",
+        "$userid",
+        "$pictureid"
+      ],
+      "body": "{\n      $query = sprintf(\"INSERT INTO `comments_preview` (`id`, `text`, `user_id`, `picture_id`, `created_on`) VALUES (NULL, '%s', '%d', '%d', NOW());\",\n\t\t       mysql_real_escape_string($text),\n\t\t       mysql_real_escape_string($userid),\n\t\t       mysql_real_escape_string($pictureid));\n      mysql_query($query);\n      return mysql_insert_id();\n   }",
+      "start_line": 11,
+      "end_line": 19,
+      "code": "function add_preview($text, $userid, $pictureid)\n   {\n      $query = sprintf(\"INSERT INTO `comments_preview` (`id`, `text`, `user_id`, `picture_id`, `created_on`) VALUES (NULL, '%s', '%d', '%d', NOW());\",\n\t\t       mysql_real_escape_string($text),\n\t\t       mysql_real_escape_string($userid),\n\t\t       mysql_real_escape_string($pictureid));\n      mysql_query($query);\n      return mysql_insert_id();\n   }"
+    },
+    {
+      "id": "include/comments.php:LCF20",
+      "path": "include/comments.php",
+      "name": "get_all_comments_picture",
+      "parameters": [
+        "$picid"
+      ],
+      "body": "{\n      $query = sprintf(\"SELECT `comments`.`user_id` , `comments`.`text` , `comments`.`created_on` , `users`.`login` FROM `comments` , `users` WHERE `picture_id` = '%d' AND `users`.`id` = `comments`.`user_id` ORDER BY created_on DESC;\",\n\t\t       mysql_real_escape_string($picid));\n      $res = mysql_query($query);\n      if ($res)\n      {\n\t while ($row = mysql_fetch_assoc($res))\n\t {\n\t    $to_return[] = $row;\n\t }\n\t return $to_return;\n      }\n      else\n      {\n\t return False;\n      }\n   }",
+      "start_line": 21,
+      "end_line": 38,
+      "code": "function get_all_comments_picture($picid)\n   {\n      $query = sprintf(\"SELECT `comments`.`user_id` , `comments`.`text` , `comments`.`created_on` , `users`.`login` FROM `comments` , `users` WHERE `picture_id` = '%d' AND `users`.`id` = `comments`.`user_id` ORDER BY created_on DESC;\",\n\t\t       mysql_real_escape_string($picid));\n      $res = mysql_query($query);\n      if ($res)\n      {\n\t while ($row = mysql_fetch_assoc($res))\n\t {\n\t    $to_return[] = $row;\n\t }\n\t return $to_return;\n      }\n      else\n      {\n\t return False;\n      }\n   }"
+    },
+    {
+      "id": "include/comments.php:LCF21",
+      "path": "include/comments.php",
+      "name": "delete_preview",
+      "parameters": [
+        "$previewid",
+        "$userid"
+      ],
+      "body": "{\n      $query = sprintf(\"DELETE from `comments_preview` where id = '%d' and user_id = '%d'\",\n                        mysql_real_escape_string($previewid),\n                        mysql_real_escape_string($userid));\n      return mysql_query($query);\n   }",
+      "start_line": 40,
+      "end_line": 46,
+      "code": "function delete_preview($previewid, $userid)\n   {\n      $query = sprintf(\"DELETE from `comments_preview` where id = '%d' and user_id = '%d'\",\n                        mysql_real_escape_string($previewid),\n                        mysql_real_escape_string($userid));\n      return mysql_query($query);\n   }"
+    },
+    {
+      "id": "include/comments.php:LCF22",
+      "path": "include/comments.php",
+      "name": "add_comment",
+      "parameters": [
+        "$previewid",
+        "$userid"
+      ],
+      "body": "{     \n      mysql_query(\"BEGIN;\");\n      $query = sprintf(\"SELECT `user_id`, `text`, `picture_id`, `created_on` from `comments_preview` where `id` = '%d' and `user_id` = '%d' LIMIT 1;\",\n                        mysql_real_escape_string($previewid),\n                        mysql_real_escape_string($userid));\n      $res = mysql_query($query);\n      if (!$res)\n      {\n\t mysql_query(\"ROLLBACK;\");\n\t return False;\n      }\n      $preview = mysql_fetch_assoc($res);\n\n      $query = sprintf(\"INSERT INTO `comments` (`id`, `text`, `user_id`, `picture_id`, `created_on`) VALUES (NULL, '%s', '%d', '%d', '%s');\",\n\t\t       mysql_real_escape_string($preview['text']),\n\t\t       mysql_real_escape_string($preview['user_id']),\n\t\t       mysql_real_escape_string($preview['picture_id']),\n                       mysql_real_escape_string($preview['created_on']));\n                       \n      if (!mysql_query($query))\n      {\n\t mysql_query(\"ROLLBACK;\");\n\t return False;\n      }\n\n      $query = sprintf(\"DELETE from `comments_preview` where id = '%d'\",\n                        mysql_real_escape_string($preview['id']));\n      if (!mysql_query($query))\n      {\n\t mysql_query(\"ROLLBACK;\");\n\t return False;\n      }\n      return mysql_query(\"COMMIT;\");\n      \n   }",
+      "start_line": 48,
+      "end_line": 83,
+      "code": "function add_comment($previewid, $userid)\n   {     \n      mysql_query(\"BEGIN;\");\n      $query = sprintf(\"SELECT `user_id`, `text`, `picture_id`, `created_on` from `comments_preview` where `id` = '%d' and `user_id` = '%d' LIMIT 1;\",\n                        mysql_real_escape_string($previewid),\n                        mysql_real_escape_string($userid));\n      $res = mysql_query($query);\n      if (!$res)\n      {\n\t mysql_query(\"ROLLBACK;\");\n\t return False;\n      }\n      $preview = mysql_fetch_assoc($res);\n\n      $query = sprintf(\"INSERT INTO `comments` (`id`, `text`, `user_id`, `picture_id`, `created_on`) VALUES (NULL, '%s', '%d', '%d', '%s');\",\n\t\t       mysql_real_escape_string($preview['text']),\n\t\t       mysql_real_escape_string($preview['user_id']),\n\t\t       mysql_real_escape_string($preview['picture_id']),\n                       mysql_real_escape_string($preview['created_on']));\n                       \n      if (!mysql_query($query))\n      {\n\t mysql_query(\"ROLLBACK;\");\n\t return False;\n      }\n\n      $query = sprintf(\"DELETE from `comments_preview` where id = '%d'\",\n                        mysql_real_escape_string($preview['id']));\n      if (!mysql_query($query))\n      {\n\t mysql_query(\"ROLLBACK;\");\n\t return False;\n      }\n      return mysql_query(\"COMMIT;\");\n      \n   }"
+    },
+    {
+      "id": "include/database.php:LCF23",
+      "path": "include/database.php",
+      "name": "__construct",
+      "parameters": [
+        "$server",
+        "$user_name",
+        "$pass",
+        "$db"
+      ],
+      "body": "{\n      $this->conn = mysql_connect($server, $user_name, $pass);\n      mysql_select_db($db, $this->conn);\n      mysql_set_charset('utf8');\n   }",
+      "start_line": 6,
+      "end_line": 11,
+      "code": "function __construct($server, $user_name, $pass, $db)\n   {\n      $this->conn = mysql_connect($server, $user_name, $pass);\n      mysql_select_db($db, $this->conn);\n      mysql_set_charset('utf8');\n   }"
+    },
+    {
+      "id": "include/database.php:LCF24",
+      "path": "include/database.php",
+      "name": "__destruct",
+      "parameters": [],
+      "body": "{\n      mysql_close($this->conn);\n   }",
+      "start_line": 13,
+      "end_line": 16,
+      "code": "function __destruct()\n   {\n      mysql_close($this->conn);\n   }"
+    },
+    {
+      "id": "include/functions.php:LCF25",
+      "path": "include/functions.php",
+      "name": "http_redirect",
+      "parameters": [
+        "$url"
+      ],
+      "body": "{\n   header(\"Location: {$url}\", True, 303);\n   exit(0);\n}",
+      "start_line": 5,
+      "end_line": 9,
+      "code": "function http_redirect($url)\n{\n   header(\"Location: {$url}\", True, 303);\n   exit(0);\n}"
+    },
+    {
+      "id": "include/functions.php:LCF26",
+      "path": "include/functions.php",
+      "name": "error_404",
+      "parameters": [],
+      "body": "{\n   header(\"HTTP/1.1 404 Not Found\", True, 404);\n   exit(0);\n}",
+      "start_line": 11,
+      "end_line": 15,
+      "code": "function error_404()\n{\n   header(\"HTTP/1.1 404 Not Found\", True, 404);\n   exit(0);\n}"
+    },
+    {
+      "id": "include/functions.php:LCF27",
+      "path": "include/functions.php",
+      "name": "require_login",
+      "parameters": [],
+      "body": "{\n   session_start();\n   if (!Users::is_logged_in())\n   {\n      http_redirect(Users::$LOGIN_URL);\n   }\n}",
+      "start_line": 17,
+      "end_line": 24,
+      "code": "function require_login()\n{\n   session_start();\n   if (!Users::is_logged_in())\n   {\n      http_redirect(Users::$LOGIN_URL);\n   }\n}"
+    },
+    {
+      "id": "include/functions.php:LCF28",
+      "path": "include/functions.php",
+      "name": "require_admin_login",
+      "parameters": [],
+      "body": "{\n   if (!Admins::is_logged_in())\n   {\n      http_redirect(Admins::$LOGIN_URL);\n   }\n}",
+      "start_line": 26,
+      "end_line": 32,
+      "code": "function require_admin_login()\n{\n   if (!Admins::is_logged_in())\n   {\n      http_redirect(Admins::$LOGIN_URL);\n   }\n}"
+    },
+    {
+      "id": "include/functions.php:LCF29",
+      "path": "include/functions.php",
+      "name": "h",
+      "parameters": [
+        "$str"
+      ],
+      "body": "{\n   return htmlspecialchars($str);\n}",
+      "start_line": 34,
+      "end_line": 37,
+      "code": "function h ($str)\n{\n   return htmlspecialchars($str);\n}"
+    },
+    {
+      "id": "include/functions.php:LCF30",
+      "path": "include/functions.php",
+      "name": "url_origin",
+      "parameters": [
+        "$s",
+        "$use_forwarded_host = false"
+      ],
+      "body": "{\n    $ssl      = ( ! empty( $s['HTTPS'] ) && $s['HTTPS'] == 'on' );\n    $sp       = strtolower( $s['SERVER_PROTOCOL'] );\n    $protocol = substr( $sp, 0, strpos( $sp, '/' ) ) . ( ( $ssl ) ? 's' : '' );\n    $port     = $s['SERVER_PORT'];\n    $port     = ( ( ! $ssl && $port=='80' ) || ( $ssl && $port=='443' ) ) ? '' : ':'.$port;\n    $host     = ( $use_forwarded_host && isset( $s['HTTP_X_FORWARDED_HOST'] ) ) ? $s['HTTP_X_FORWARDED_HOST'] : ( isset( $s['HTTP_HOST'] ) ? $s['HTTP_HOST'] : null );\n    $host     = isset( $host ) ? $host : $s['SERVER_NAME'] . $port;\n    return $protocol . '://' . $host;\n}",
+      "start_line": 39,
+      "end_line": 49,
+      "code": "function url_origin( $s, $use_forwarded_host = false )\n{\n    $ssl      = ( ! empty( $s['HTTPS'] ) && $s['HTTPS'] == 'on' );\n    $sp       = strtolower( $s['SERVER_PROTOCOL'] );\n    $protocol = substr( $sp, 0, strpos( $sp, '/' ) ) . ( ( $ssl ) ? 's' : '' );\n    $port     = $s['SERVER_PORT'];\n    $port     = ( ( ! $ssl && $port=='80' ) || ( $ssl && $port=='443' ) ) ? '' : ':'.$port;\n    $host     = ( $use_forwarded_host && isset( $s['HTTP_X_FORWARDED_HOST'] ) ) ? $s['HTTP_X_FORWARDED_HOST'] : ( isset( $s['HTTP_HOST'] ) ? $s['HTTP_HOST'] : null );\n    $host     = isset( $host ) ? $host : $s['SERVER_NAME'] . $port;\n    return $protocol . '://' . $host;\n}"
+    },
+    {
+      "id": "include/guestbook.php:LCF31",
+      "path": "include/guestbook.php",
+      "name": "get_all_guestbooks",
+      "parameters": [],
+      "body": "{\n      $query = sprintf(\"SELECT `id`, `name`, `comment`, `created_on` from `guestbook` ORDER BY created_on DESC;\");\n      $res = mysql_query($query);\n      if ($res)\n      {\n\t while ($row = mysql_fetch_assoc($res))\n\t {\n\t    $to_return[] = $row;\n\t }\n\t return $to_return;\n      }\n      else\n      {\n\t return False;\n      }\n   }",
+      "start_line": 9,
+      "end_line": 25,
+      "code": "function get_all_guestbooks()\n   {\n      $query = sprintf(\"SELECT `id`, `name`, `comment`, `created_on` from `guestbook` ORDER BY created_on DESC;\");\n      $res = mysql_query($query);\n      if ($res)\n      {\n\t while ($row = mysql_fetch_assoc($res))\n\t {\n\t    $to_return[] = $row;\n\t }\n\t return $to_return;\n      }\n      else\n      {\n\t return False;\n      }\n   }"
+    },
+    {
+      "id": "include/guestbook.php:LCF32",
+      "path": "include/guestbook.php",
+      "name": "add_guestbook",
+      "parameters": [
+        "$name",
+        "$comment",
+        "$vuln = False"
+      ],
+      "body": "{\n      if ($vuln)\n      {\n\t $query = sprintf(\"INSERT INTO `guestbook` (`id`, `name`, `comment`, `created_on`) VALUES (NULL, '%s', '%s', NOW());\",\n\t\t\t  $name,\n\t\t\t  mysql_real_escape_string($comment));\n      }\n      else\n      {\n\t $query = sprintf(\"INSERT INTO `guestbook` (`id`, `name`, `comment`, `created_on`) VALUES (NULL, '%s', '%s', NOW());\",\n\t\t\t  mysql_real_escape_string($name),\n\t\t\t  mysql_real_escape_string($comment));\n      }\n      return mysql_query($query);\n   }",
+      "start_line": 27,
+      "end_line": 42,
+      "code": "function add_guestbook($name, $comment, $vuln = False)\n   {\n      if ($vuln)\n      {\n\t $query = sprintf(\"INSERT INTO `guestbook` (`id`, `name`, `comment`, `created_on`) VALUES (NULL, '%s', '%s', NOW());\",\n\t\t\t  $name,\n\t\t\t  mysql_real_escape_string($comment));\n      }\n      else\n      {\n\t $query = sprintf(\"INSERT INTO `guestbook` (`id`, `name`, `comment`, `created_on`) VALUES (NULL, '%s', '%s', NOW());\",\n\t\t\t  mysql_real_escape_string($name),\n\t\t\t  mysql_real_escape_string($comment));\n      }\n      return mysql_query($query);\n   }"
+    },
+    {
+      "id": "include/html_functions.php:LCF33",
+      "path": "include/html_functions.php",
+      "name": "our_header",
+      "parameters": [
+        "$selected = \"\"",
+        "$search_terms = \"\""
+      ],
+      "body": "{\n\n   ?>\n<html>\n  <head>\n    <link rel=\"stylesheet\" href=\"/css/blueprint/screen.css\" type=\"text/css\" media=\"screen, projection\">\n    <link rel=\"stylesheet\" href=\"/css/blueprint/print.css\" type=\"text/css\" media=\"print\">\n    <!--[if IE]><link rel=\"stylesheet\" href=\"/css/blueprint/ie.css\" type=\"text/css\" media=\"screen, projection\"><![endif]-->\n    <link rel=\"stylesheet\" href=\"/css/stylings.css\" type=\"text/css\" media=\"screen\">\n    <title>WackoPicko.com</title>\n  </head>\n  <body>\n    <div class=\"container \" style=\"border: 2px solid #5c95cf;\">\n      <div class=\"column span-24 first last\">\n\t<h1 id=\"title\"><a href=\"/\">WackoPicko.com</a></h1>\n      </div>\n      <div id=\"menu\">\n\t<div class=\"column prepend-1 span-14 first\">\n\t  <ul class=\"menu\">\n\t    <li class=\"<?php if($selected == \"home\"){ echo 'current'; } ?>\"><a href=\"/users/home.php\"><span>Home</span></a></li>\n\t    <li class=\"<?php if($selected == \"upload\"){ echo 'current'; } ?>\"><a href=\"/pictures/upload.php\"><span>Upload</span></a></li>\n\t    <li class=\"<?php if($selected == \"recent\"){ echo 'current'; } ?>\"><a href=\"/pictures/recent.php\"><span>Recent</span></a></li>\n            <li class=\"<?php if($selected == \"guestbook\"){ echo 'current'; } ?>\"><a href=\"/guestbook.php\"><span>Guestbook</span></a></li>\n\n      <?php if (Users::is_logged_in()) { ?><li class=\"<?php if($selected == \"cart\"){ echo 'current'; } ?>\"><a href=\"/cart/review.php\"><span>Cart</span></a></li> <?php } ?>\n\t  </ul>\n\t</div>\n\t<div class=\"column prepend-1 span-7 first last\">\n\t  <ul class=\"menu top_login\" >\n      <?php if (Users::is_logged_in()){ ?>\n\t    <li><a href=\"/users/logout.php\"><Span>Logout</span></a></li>\n      <?php } else { ?>\n\t    <li><a href=\"/users/login.php\"><Span>Login</span></a></li>\n      <?php } ?>\n\t  </ul>\n\t</div>\n      </div>\n\n\n\n      <div class=\"column span-24 first last\" id=\"search_bar_blue\">\n\t<div class=\"column prepend-17 span-7 first last\" id=\"search_box\">\n\t  <form action=\"/pictures/search.php\" method=\"get\" style=\"display:inline;\">\n\t    <input id=\"query2\" name=\"query\" size=\"15\" style=\"padding: 2px; font-size: 16px; text-decoration:none;border:none;vertical-align:middle;\" type=\"text\" value=\"<?=h($search_terms) ?>\"/>\n\t    <input src=\"/images/search_button_white.gif\" type=\"image\" style=\"border: 0pt none ; position: relative; top: 0px;vertical-align:middle;margin-left: 1em;\" />\n\t  </form>\n\t</div>\n      </div>\n   <?php\n}",
+      "start_line": 7,
+      "end_line": 57,
+      "code": "function our_header($selected = \"\", $search_terms = \"\")\n{\n\n   ?>\n<html>\n  <head>\n    <link rel=\"stylesheet\" href=\"/css/blueprint/screen.css\" type=\"text/css\" media=\"screen, projection\">\n    <link rel=\"stylesheet\" href=\"/css/blueprint/print.css\" type=\"text/css\" media=\"print\">\n    <!--[if IE]><link rel=\"stylesheet\" href=\"/css/blueprint/ie.css\" type=\"text/css\" media=\"screen, projection\"><![endif]-->\n    <link rel=\"stylesheet\" href=\"/css/stylings.css\" type=\"text/css\" media=\"screen\">\n    <title>WackoPicko.com</title>\n  </head>\n  <body>\n    <div class=\"container \" style=\"border: 2px solid #5c95cf;\">\n      <div class=\"column span-24 first last\">\n\t<h1 id=\"title\"><a href=\"/\">WackoPicko.com</a></h1>\n      </div>\n      <div id=\"menu\">\n\t<div class=\"column prepend-1 span-14 first\">\n\t  <ul class=\"menu\">\n\t    <li class=\"<?php if($selected == \"home\"){ echo 'current'; } ?>\"><a href=\"/users/home.php\"><span>Home</span></a></li>\n\t    <li class=\"<?php if($selected == \"upload\"){ echo 'current'; } ?>\"><a href=\"/pictures/upload.php\"><span>Upload</span></a></li>\n\t    <li class=\"<?php if($selected == \"recent\"){ echo 'current'; } ?>\"><a href=\"/pictures/recent.php\"><span>Recent</span></a></li>\n            <li class=\"<?php if($selected == \"guestbook\"){ echo 'current'; } ?>\"><a href=\"/guestbook.php\"><span>Guestbook</span></a></li>\n\n      <?php if (Users::is_logged_in()) { ?><li class=\"<?php if($selected == \"cart\"){ echo 'current'; } ?>\"><a href=\"/cart/review.php\"><span>Cart</span></a></li> <?php } ?>\n\t  </ul>\n\t</div>\n\t<div class=\"column prepend-1 span-7 first last\">\n\t  <ul class=\"menu top_login\" >\n      <?php if (Users::is_logged_in()){ ?>\n\t    <li><a href=\"/users/logout.php\"><Span>Logout</span></a></li>\n      <?php } else { ?>\n\t    <li><a href=\"/users/login.php\"><Span>Login</span></a></li>\n      <?php } ?>\n\t  </ul>\n\t</div>\n      </div>\n\n\n\n      <div class=\"column span-24 first last\" id=\"search_bar_blue\">\n\t<div class=\"column prepend-17 span-7 first last\" id=\"search_box\">\n\t  <form action=\"/pictures/search.php\" method=\"get\" style=\"display:inline;\">\n\t    <input id=\"query2\" name=\"query\" size=\"15\" style=\"padding: 2px; font-size: 16px; text-decoration:none;border:none;vertical-align:middle;\" type=\"text\" value=\"<?=h($search_terms) ?>\"/>\n\t    <input src=\"/images/search_button_white.gif\" type=\"image\" style=\"border: 0pt none ; position: relative; top: 0px;vertical-align:middle;margin-left: 1em;\" />\n\t  </form>\n\t</div>\n      </div>\n   <?php\n}"
+    },
+    {
+      "id": "include/html_functions.php:LCF34",
+      "path": "include/html_functions.php",
+      "name": "error_message",
+      "parameters": [],
+      "body": "{\n   global $flash;\n   if ($flash['error'])\n   {\n      ?>\n<p class=\"span-10 error\">\n\t <?= h($flash['error']) ?>\n</p>\n      <?php\n   }\n}",
+      "start_line": 59,
+      "end_line": 70,
+      "code": "function error_message()\n{\n   global $flash;\n   if ($flash['error'])\n   {\n      ?>\n<p class=\"span-10 error\">\n\t <?= h($flash['error']) ?>\n</p>\n      <?php\n   }\n}"
+    },
+    {
+      "id": "include/html_functions.php:LCF35",
+      "path": "include/html_functions.php",
+      "name": "our_footer",
+      "parameters": [],
+      "body": "{\n   ?>\n       <div class=\"column span-24 first last\" id=\"footer\" >\n\t<ul>\n\t  <li><a href=\"/\">Home</a> |</li>\n          <li><a href=\"/admin/index.php?page=login\">Admin</a> |</li>\n\t  <li><a href=\"mailto:contact@wackopicko.com\">Contact</a> |</li>\n\t  <li><a href=\"/tos.php\">Terms of Service</a></li>\n\t</ul>\n      </div>\n    </div>\n  </body>\n</html>\n   <?php\n\n}",
+      "start_line": 72,
+      "end_line": 88,
+      "code": "function our_footer()\n{\n   ?>\n       <div class=\"column span-24 first last\" id=\"footer\" >\n\t<ul>\n\t  <li><a href=\"/\">Home</a> |</li>\n          <li><a href=\"/admin/index.php?page=login\">Admin</a> |</li>\n\t  <li><a href=\"mailto:contact@wackopicko.com\">Contact</a> |</li>\n\t  <li><a href=\"/tos.php\">Terms of Service</a></li>\n\t</ul>\n      </div>\n    </div>\n  </body>\n</html>\n   <?php\n\n}"
+    },
+    {
+      "id": "include/html_functions.php:LCF36",
+      "path": "include/html_functions.php",
+      "name": "thumbnail_pic_list",
+      "parameters": [
+        "$pictures",
+        "$high_quality = False"
+      ],
+      "body": "{\n   ?>\n<div class=\"column prepend-1 span-21 first last\" style=\"margin-bottom: 2em;\">\n      <?php if ($pictures) { ?>\n<ul class=\"thumbnail-pic-list\">\n<?php\n   for ($i = 0; $i < count($pictures); $i++)\n   {\n      $link_to = '';\n      if (!$high_quality)\n      {\n        $link_to = Pictures::$VIEW_PIC_URL . \"?\";\n      }\n      else\n      {\n        $link_to = Pictures::$HIGH_QUALITY_URL . \"?\";\n      }\n      $pic = $pictures[$i];\n      if ($i != 0 && (($i % 4) == 0))\n      {\n\t ?>\n</ul>\n</div>\n<div class=\"column prepend-1 span-21 first last\" style=\"margin-bottom: 2em;\">\n<ul class=\"thumbnail-pic-list\">\n\t <?php\n      }\n$link_to = $link_to . \"picid=\" . $pic['id'];\nif ($high_quality)\n{\n  $link_to = $link_to . \"&key=\" . urlencode($pic['high_quality']);\n}\n?>\n<li>\n<a href=\"<?=h($link_to) ?>\"><img src=\"/upload/<?=h( $pic['filename']) ?>.128_128.jpg\" height=\"128\" width=\"128\" /></a>\n</li>\n<?php\n\n   }\n?>\n<?php }\n   else { ?>\n<h3 class=\"error\">No pictures here...</h3>\n\n\n<?php } ?>\n</ul>\n</div>\n<?php\n}",
+      "start_line": 90,
+      "end_line": 140,
+      "code": "function thumbnail_pic_list($pictures, $high_quality = False)\n{\n   ?>\n<div class=\"column prepend-1 span-21 first last\" style=\"margin-bottom: 2em;\">\n      <?php if ($pictures) { ?>\n<ul class=\"thumbnail-pic-list\">\n<?php\n   for ($i = 0; $i < count($pictures); $i++)\n   {\n      $link_to = '';\n      if (!$high_quality)\n      {\n        $link_to = Pictures::$VIEW_PIC_URL . \"?\";\n      }\n      else\n      {\n        $link_to = Pictures::$HIGH_QUALITY_URL . \"?\";\n      }\n      $pic = $pictures[$i];\n      if ($i != 0 && (($i % 4) == 0))\n      {\n\t ?>\n</ul>\n</div>\n<div class=\"column prepend-1 span-21 first last\" style=\"margin-bottom: 2em;\">\n<ul class=\"thumbnail-pic-list\">\n\t <?php\n      }\n$link_to = $link_to . \"picid=\" . $pic['id'];\nif ($high_quality)\n{\n  $link_to = $link_to . \"&key=\" . urlencode($pic['high_quality']);\n}\n?>\n<li>\n<a href=\"<?=h($link_to) ?>\"><img src=\"/upload/<?=h( $pic['filename']) ?>.128_128.jpg\" height=\"128\" width=\"128\" /></a>\n</li>\n<?php\n\n   }\n?>\n<?php }\n   else { ?>\n<h3 class=\"error\">No pictures here...</h3>\n\n\n<?php } ?>\n</ul>\n</div>\n<?php\n}"
+    },
+    {
+      "id": "include/html_functions.php:LCF37",
+      "path": "include/html_functions.php",
+      "name": "high_quality_item_link",
+      "parameters": [
+        "$item"
+      ],
+      "body": "{\n   $name = url_origin($_SERVER);\n   $high_quality_encoded = urlencode($item['high_quality']);\n   $link = $name . Pictures::$HIGH_QUALITY_URL . \"?picid={$item['id']}&key={$high_quality_encoded}\";\n   return \"<a href='{$link}'>{$link}</a>\";\n}",
+      "start_line": 142,
+      "end_line": 148,
+      "code": "function high_quality_item_link($item)\n{\n   $name = url_origin($_SERVER);\n   $high_quality_encoded = urlencode($item['high_quality']);\n   $link = $name . Pictures::$HIGH_QUALITY_URL . \"?picid={$item['id']}&key={$high_quality_encoded}\";\n   return \"<a href='{$link}'>{$link}</a>\";\n}"
+    },
+    {
+      "id": "include/pictures.php:LCF38",
+      "path": "include/pictures.php",
+      "name": "get_all_pictures_by_user",
+      "parameters": [
+        "$userid"
+      ],
+      "body": "{\n      $query = sprintf(\"SELECT *, UNIX_TIMESTAMP(created_on) as created_on_unix from pictures where user_id = '%d'\",\n\t\t       mysql_real_escape_string($userid));\n      $res = mysql_query($query);\n      if ($res)\n      {\n\t while ($row = mysql_fetch_assoc($res))\n\t {\n\t    $to_ret[] = $row;\n\t }\n\t return $to_ret;\n      }\n      else\n      {\n\t return False;\n      }\n   }",
+      "start_line": 12,
+      "end_line": 29,
+      "code": "function get_all_pictures_by_user($userid)\n   {\n      $query = sprintf(\"SELECT *, UNIX_TIMESTAMP(created_on) as created_on_unix from pictures where user_id = '%d'\",\n\t\t       mysql_real_escape_string($userid));\n      $res = mysql_query($query);\n      if ($res)\n      {\n\t while ($row = mysql_fetch_assoc($res))\n\t {\n\t    $to_ret[] = $row;\n\t }\n\t return $to_ret;\n      }\n      else\n      {\n\t return False;\n      }\n   }"
+    },
+    {
+      "id": "include/pictures.php:LCF39",
+      "path": "include/pictures.php",
+      "name": "get_some_pictures_by_user",
+      "parameters": [
+        "$userid",
+        "$not_this",
+        "$limit"
+      ],
+      "body": "{\n      $query = sprintf(\"SELECT pictures.filename, pictures.id, pictures.user_id, users.login from pictures, users where pictures.id != '%d' and pictures.user_id = '%d' and pictures.user_id = users.id order by RAND() limit %d;\",\n\t\t       mysql_real_escape_string($not_this),\n\t\t       mysql_real_escape_string($userid),\n\t\t       mysql_real_escape_string($limit));\n      $res = mysql_query($query);\n      if ($res)\n      {\n\t while ($row = mysql_fetch_assoc($res))\n\t {\n\t    $to_ret[] = $row;\n\t }\n\t return $to_ret;\n      }\n      else\n      {\n\t return False;\n      }\n   }",
+      "start_line": 30,
+      "end_line": 49,
+      "code": "function get_some_pictures_by_user($userid, $not_this, $limit)\n   {\n      $query = sprintf(\"SELECT pictures.filename, pictures.id, pictures.user_id, users.login from pictures, users where pictures.id != '%d' and pictures.user_id = '%d' and pictures.user_id = users.id order by RAND() limit %d;\",\n\t\t       mysql_real_escape_string($not_this),\n\t\t       mysql_real_escape_string($userid),\n\t\t       mysql_real_escape_string($limit));\n      $res = mysql_query($query);\n      if ($res)\n      {\n\t while ($row = mysql_fetch_assoc($res))\n\t {\n\t    $to_ret[] = $row;\n\t }\n\t return $to_ret;\n      }\n      else\n      {\n\t return False;\n      }\n   }"
+    },
+    {
+      "id": "include/pictures.php:LCF40",
+      "path": "include/pictures.php",
+      "name": "get_some_pictures_by_tag",
+      "parameters": [
+        "$tag",
+        "$not_this",
+        "$limit"
+      ],
+      "body": "{\n      $query = sprintf(\"SELECT pictures.filename, pictures.id, pictures.user_id, users.login from pictures, users where pictures.id != '%d' and pictures.tag like '%s' and pictures.user_id = users.id order by RAND() limit %d;\",\n\t\t       mysql_real_escape_string($not_this),\n\t\t       mysql_real_escape_string($tag),\n\t\t       mysql_real_escape_string($limit));\n      $res = mysql_query($query) or die(mysql_error());\n      if ($res)\n      {\n\t while ($row = mysql_fetch_assoc($res))\n\t {\n\t    $to_ret[] = $row;\n\t }\n\t return $to_ret;\n      }\n      else\n      {\n\t return False;\n      }\n   }",
+      "start_line": 51,
+      "end_line": 70,
+      "code": "function get_some_pictures_by_tag($tag, $not_this, $limit)\n   {\n      $query = sprintf(\"SELECT pictures.filename, pictures.id, pictures.user_id, users.login from pictures, users where pictures.id != '%d' and pictures.tag like '%s' and pictures.user_id = users.id order by RAND() limit %d;\",\n\t\t       mysql_real_escape_string($not_this),\n\t\t       mysql_real_escape_string($tag),\n\t\t       mysql_real_escape_string($limit));\n      $res = mysql_query($query) or die(mysql_error());\n      if ($res)\n      {\n\t while ($row = mysql_fetch_assoc($res))\n\t {\n\t    $to_ret[] = $row;\n\t }\n\t return $to_ret;\n      }\n      else\n      {\n\t return False;\n      }\n   }"
+    },
+    {
+      "id": "include/pictures.php:LCF41",
+      "path": "include/pictures.php",
+      "name": "get_all_pictures_by_tag",
+      "parameters": [
+        "$tag"
+      ],
+      "body": "{\n      $query = sprintf(\"SELECT *, UNIX_TIMESTAMP(created_on) as created_on_unix from pictures where tag like '%s'\",\n\t\t       mysql_real_escape_string($tag));\n      $res = mysql_query($query);\n      if ($res)\n      {\n\t while ($row = mysql_fetch_assoc($res))\n\t {\n\t    $to_ret[] = $row;\n\t }\n\t return $to_ret;\n      }\n      else\n      {\n\t return False;\n      }\n   }",
+      "start_line": 72,
+      "end_line": 89,
+      "code": "function get_all_pictures_by_tag($tag)\n   {\n      $query = sprintf(\"SELECT *, UNIX_TIMESTAMP(created_on) as created_on_unix from pictures where tag like '%s'\",\n\t\t       mysql_real_escape_string($tag));\n      $res = mysql_query($query);\n      if ($res)\n      {\n\t while ($row = mysql_fetch_assoc($res))\n\t {\n\t    $to_ret[] = $row;\n\t }\n\t return $to_ret;\n      }\n      else\n      {\n\t return False;\n      }\n   }"
+    },
+    {
+      "id": "include/pictures.php:LCF42",
+      "path": "include/pictures.php",
+      "name": "get_recent_pictures",
+      "parameters": [
+        "$limit = 10"
+      ],
+      "body": "{\n      $query = sprintf(\"SELECT * from `pictures` order by created_on DESC limit %d;\",\n\t\t       mysql_real_escape_string($limit));\n      $res = mysql_query($query);\n      if ($res)\n      {\n\t while ($row = mysql_fetch_assoc($res))\n\t {\n\t    $to_ret[] = $row;\n\t }\n\t return $to_ret;\n      }\n      else\n      {\n\t return False;\n      }\n   }",
+      "start_line": 91,
+      "end_line": 108,
+      "code": "function get_recent_pictures($limit = 10)\n   {\n      $query = sprintf(\"SELECT * from `pictures` order by created_on DESC limit %d;\",\n\t\t       mysql_real_escape_string($limit));\n      $res = mysql_query($query);\n      if ($res)\n      {\n\t while ($row = mysql_fetch_assoc($res))\n\t {\n\t    $to_ret[] = $row;\n\t }\n\t return $to_ret;\n      }\n      else\n      {\n\t return False;\n      }\n   }"
+    },
+    {
+      "id": "include/pictures.php:LCF43",
+      "path": "include/pictures.php",
+      "name": "get_picture",
+      "parameters": [
+        "$picid"
+      ],
+      "body": "{\n      $query = sprintf(\"SELECT pictures.id, pictures.title, pictures.filename, pictures.high_quality, pictures.price, pictures.user_id, pictures.tag, users.login,  UNIX_TIMESTAMP(pictures.created_on) as created_on_unix from pictures, users where pictures.id = '%d' and pictures.user_id = users.id limit 1\",\n\t\t       mysql_real_escape_string($picid));\n      $res = mysql_query($query);\n      if ($res)\n      {\n\t return mysql_fetch_assoc($res);\n      }\n      else\n      {\n\t return False;\n      }\n   }",
+      "start_line": 110,
+      "end_line": 123,
+      "code": "function get_picture($picid)\n   {\n      $query = sprintf(\"SELECT pictures.id, pictures.title, pictures.filename, pictures.high_quality, pictures.price, pictures.user_id, pictures.tag, users.login,  UNIX_TIMESTAMP(pictures.created_on) as created_on_unix from pictures, users where pictures.id = '%d' and pictures.user_id = users.id limit 1\",\n\t\t       mysql_real_escape_string($picid));\n      $res = mysql_query($query);\n      if ($res)\n      {\n\t return mysql_fetch_assoc($res);\n      }\n      else\n      {\n\t return False;\n      }\n   }"
+    },
+    {
+      "id": "include/pictures.php:LCF44",
+      "path": "include/pictures.php",
+      "name": "get_purchased_pictures",
+      "parameters": [
+        "$userid"
+      ],
+      "body": "{\n      $query = sprintf(\"SELECT pictures.id, pictures.filename, pictures.high_quality from pictures, own where own.user_id = '%d' and pictures.id = own.picture_id;\",\n\t\t       mysql_real_escape_string($userid));\n      $res = mysql_query($query);\n      if ($res)\n      {\n\t while ($row = mysql_fetch_assoc($res))\n\t {\n\t    $to_ret[] = $row;\n\t }\n\t return $to_ret;\n      }\n      else\n      {\n\t return False;\n      }\n   }",
+      "start_line": 125,
+      "end_line": 142,
+      "code": "function get_purchased_pictures($userid)\n   {\n      $query = sprintf(\"SELECT pictures.id, pictures.filename, pictures.high_quality from pictures, own where own.user_id = '%d' and pictures.id = own.picture_id;\",\n\t\t       mysql_real_escape_string($userid));\n      $res = mysql_query($query);\n      if ($res)\n      {\n\t while ($row = mysql_fetch_assoc($res))\n\t {\n\t    $to_ret[] = $row;\n\t }\n\t return $to_ret;\n      }\n      else\n      {\n\t return False;\n      }\n   }"
+    },
+    {
+      "id": "include/pictures.php:LCF45",
+      "path": "include/pictures.php",
+      "name": "create_picture",
+      "parameters": [
+        "$title",
+        "$width",
+        "$height",
+        "$tag",
+        "$filename",
+        "$price",
+        "$userid"
+      ],
+      "body": "{\n      $high_quality_key = mt_rand(0, 10000000);\n      $high_quality_key = base64_encode($high_quality_key);\n      $query = sprintf(\"INSERT INTO `pictures` (`id`, `title`, `width`, `height`, `tag`, `filename`, `price`, `high_quality`, `created_on`, `user_id`) VALUES (NULL, '%s', '%d', '%d', '%s', '%s', '%d', '%s', NOW(), '%d');\",\n\t\t       mysql_real_escape_string($title),\n\t\t       mysql_real_escape_string($width),\n\t\t       mysql_real_escape_string($height),\n\t\t       mysql_real_escape_string($tag),\n\t\t       mysql_real_escape_string($filename),\n\t\t       mysql_real_escape_string($price),\n\t\t       mysql_real_escape_string($high_quality_key),\n\t\t       mysql_real_escape_string($userid));\n      if (mysql_query($query))\n      {\n\t return mysql_insert_id();\n      }\n      else\n      {\n\t return False;\n      }\n   }",
+      "start_line": 144,
+      "end_line": 165,
+      "code": "function create_picture($title, $width, $height, $tag, $filename, $price, $userid)\n   {\n      $high_quality_key = mt_rand(0, 10000000);\n      $high_quality_key = base64_encode($high_quality_key);\n      $query = sprintf(\"INSERT INTO `pictures` (`id`, `title`, `width`, `height`, `tag`, `filename`, `price`, `high_quality`, `created_on`, `user_id`) VALUES (NULL, '%s', '%d', '%d', '%s', '%s', '%d', '%s', NOW(), '%d');\",\n\t\t       mysql_real_escape_string($title),\n\t\t       mysql_real_escape_string($width),\n\t\t       mysql_real_escape_string($height),\n\t\t       mysql_real_escape_string($tag),\n\t\t       mysql_real_escape_string($filename),\n\t\t       mysql_real_escape_string($price),\n\t\t       mysql_real_escape_string($high_quality_key),\n\t\t       mysql_real_escape_string($userid));\n      if (mysql_query($query))\n      {\n\t return mysql_insert_id();\n      }\n      else\n      {\n\t return False;\n      }\n   }"
+    },
+    {
+      "id": "include/pictures.php:LCF46",
+      "path": "include/pictures.php",
+      "name": "add_conflict",
+      "parameters": [
+        "$orig_filename",
+        "$new_filename",
+        "$new_tag",
+        "$new_name",
+        "$new_price",
+        "$user_id"
+      ],
+      "body": "{\n      $query = sprintf(\"INSERT INTO `conflict_pictures` (`id`, `orig_filename`, `new_filename`, `new_tag`, `new_name`, `new_price`, `user_id`) VALUES (NULL, '%s', '%s', '%s', '%s', '%d', '%s');\",\n\t\t       mysql_real_escape_string($orig_filename),\n\t\t       mysql_real_escape_string($new_filename),\n\t\t       mysql_real_escape_string($new_tag),\n\t\t       mysql_real_escape_string($new_name),\n\t\t       mysql_real_escape_string($new_price),\n\t\t       mysql_real_escape_string($user_id));\n      if (mysql_query($query))\n      {\n\t return mysql_insert_id();\n      }\n      else\n      {\n\t return False;\n      }\n   }",
+      "start_line": 169,
+      "end_line": 186,
+      "code": "function add_conflict($orig_filename, $new_filename, $new_tag, $new_name, $new_price, $user_id)\n   {\n      $query = sprintf(\"INSERT INTO `conflict_pictures` (`id`, `orig_filename`, `new_filename`, `new_tag`, `new_name`, `new_price`, `user_id`) VALUES (NULL, '%s', '%s', '%s', '%s', '%d', '%s');\",\n\t\t       mysql_real_escape_string($orig_filename),\n\t\t       mysql_real_escape_string($new_filename),\n\t\t       mysql_real_escape_string($new_tag),\n\t\t       mysql_real_escape_string($new_name),\n\t\t       mysql_real_escape_string($new_price),\n\t\t       mysql_real_escape_string($user_id));\n      if (mysql_query($query))\n      {\n\t return mysql_insert_id();\n      }\n      else\n      {\n\t return False;\n      }\n   }"
+    },
+    {
+      "id": "include/pictures.php:LCF47",
+      "path": "include/pictures.php",
+      "name": "delete_conflict",
+      "parameters": [
+        "$conflictid",
+        "$choice"
+      ],
+      "body": "{\n      $to_ret = False;\n      $query = sprintf(\"SELECT * from `conflict_pictures` where `id` = '%d' limit 1;\",\n\t\t       mysql_real_escape_string($conflictid));\n      if ($res = mysql_query($query))\n      {\n\t $conflict = mysql_fetch_assoc($res);\n\t if ($choice == \"first\")\n\t {\n\t    $to_ret = Pictures::create_picture($conflict['new_name'], 128, 128, $conflict['new_tag'], $conflict['orig_filename'] , $conflict['new_price'], $conflict['user_id']);\n\t }\n\t else\n\t {\n\t    $to_ret = Pictures::create_picture($conflict['new_name'], 128, 128, $conflict['new_tag'], basename($conflict['new_filename']), $conflict['new_price'], $conflict['user_id']);\n\t }\n      }\n      $query = sprintf(\"DELETE from `conflict_pictures` where `id` = '%d' limit 1;\",\n\t\t       mysql_real_escape_string($conflictid));\n      mysql_query($query);\n      return $to_ret;\n   }",
+      "start_line": 190,
+      "end_line": 211,
+      "code": "function delete_conflict($conflictid, $choice)\n   {\n      $to_ret = False;\n      $query = sprintf(\"SELECT * from `conflict_pictures` where `id` = '%d' limit 1;\",\n\t\t       mysql_real_escape_string($conflictid));\n      if ($res = mysql_query($query))\n      {\n\t $conflict = mysql_fetch_assoc($res);\n\t if ($choice == \"first\")\n\t {\n\t    $to_ret = Pictures::create_picture($conflict['new_name'], 128, 128, $conflict['new_tag'], $conflict['orig_filename'] , $conflict['new_price'], $conflict['user_id']);\n\t }\n\t else\n\t {\n\t    $to_ret = Pictures::create_picture($conflict['new_name'], 128, 128, $conflict['new_tag'], basename($conflict['new_filename']), $conflict['new_price'], $conflict['user_id']);\n\t }\n      }\n      $query = sprintf(\"DELETE from `conflict_pictures` where `id` = '%d' limit 1;\",\n\t\t       mysql_real_escape_string($conflictid));\n      mysql_query($query);\n      return $to_ret;\n   }"
+    },
+    {
+      "id": "include/pictures.php:LCF48",
+      "path": "include/pictures.php",
+      "name": "get_conflict",
+      "parameters": [
+        "$conflictid",
+        "$userid"
+      ],
+      "body": "{\n      $query = sprintf(\"SELECT * from `conflict_pictures` where `id` = '%d' and user_id = '%d' limit 1;\",\n\t\t       mysql_real_escape_string($conflictid),\n\t\t       mysql_real_escape_string($userid));\n      $res = mysql_query($query);\n      if ($res)\n      {\n\t return mysql_fetch_assoc($res);\n      }\n      else\n      {\n\t return False;\n      }\n   }",
+      "start_line": 213,
+      "end_line": 227,
+      "code": "function get_conflict($conflictid, $userid)\n   {\n      $query = sprintf(\"SELECT * from `conflict_pictures` where `id` = '%d' and user_id = '%d' limit 1;\",\n\t\t       mysql_real_escape_string($conflictid),\n\t\t       mysql_real_escape_string($userid));\n      $res = mysql_query($query);\n      if ($res)\n      {\n\t return mysql_fetch_assoc($res);\n      }\n      else\n      {\n\t return False;\n      }\n   }"
+    },
+    {
+      "id": "include/pictures.php:LCF49",
+      "path": "include/pictures.php",
+      "name": "resize_image",
+      "parameters": [
+        "$source_pic",
+        "$destination_pic",
+        "$max_width",
+        "$max_height"
+      ],
+      "body": "{\n      $src = imagecreatefromjpeg($source_pic);\n      list($width,$height)=getimagesize($source_pic);\n\n      $x_ratio = $max_width / $width;\n      $y_ratio = $max_height / $height;\n\n      if( ($width <= $max_width) && ($height <= $max_height) )\n      {\n\t $tn_width = $width;\n\t $tn_height = $height;\n      }\n      elseif (($x_ratio * $height) < $max_height)\n      {\n\t $tn_height = ceil($x_ratio * $height);\n\t $tn_width = $max_width;\n      }\n      else\n      {\n\t $tn_width = ceil($y_ratio * $width);\n\t $tn_height = $max_height;\n      }\n\n      $tmp=imagecreatetruecolor($tn_width,$tn_height);\n      imagecopyresampled($tmp,$src,0,0,0,0,$tn_width, $tn_height,$width,$height);\n\n      imagejpeg($tmp,$destination_pic,100);\n      imagedestroy($src);\n      imagedestroy($tmp);\n   }",
+      "start_line": 229,
+      "end_line": 259,
+      "code": "function resize_image($source_pic, $destination_pic, $max_width, $max_height)\n   {\n      $src = imagecreatefromjpeg($source_pic);\n      list($width,$height)=getimagesize($source_pic);\n\n      $x_ratio = $max_width / $width;\n      $y_ratio = $max_height / $height;\n\n      if( ($width <= $max_width) && ($height <= $max_height) )\n      {\n\t $tn_width = $width;\n\t $tn_height = $height;\n      }\n      elseif (($x_ratio * $height) < $max_height)\n      {\n\t $tn_height = ceil($x_ratio * $height);\n\t $tn_width = $max_width;\n      }\n      else\n      {\n\t $tn_width = ceil($y_ratio * $width);\n\t $tn_height = $max_height;\n      }\n\n      $tmp=imagecreatetruecolor($tn_width,$tn_height);\n      imagecopyresampled($tmp,$src,0,0,0,0,$tn_width, $tn_height,$width,$height);\n\n      imagejpeg($tmp,$destination_pic,100);\n      imagedestroy($src);\n      imagedestroy($tmp);\n   }"
+    },
+    {
+      "id": "include/users.php:LCF50",
+      "path": "include/users.php",
+      "name": "get_user",
+      "parameters": [
+        "$userid"
+      ],
+      "body": "{\n      $query = sprintf(\"SELECT * from users where id = '%d'\",\n\t\t       mysql_real_escape_string($userid));\n      $res = mysql_query($query);\n      if ($res)\n      {\n\t return mysql_fetch_assoc($res);\n      }\n      else\n      {\n\t return False;\n      }\n   }",
+      "start_line": 15,
+      "end_line": 28,
+      "code": "function get_user($userid)\n   {\n      $query = sprintf(\"SELECT * from users where id = '%d'\",\n\t\t       mysql_real_escape_string($userid));\n      $res = mysql_query($query);\n      if ($res)\n      {\n\t return mysql_fetch_assoc($res);\n      }\n      else\n      {\n\t return False;\n      }\n   }"
+    },
+    {
+      "id": "include/users.php:LCF51",
+      "path": "include/users.php",
+      "name": "create_user",
+      "parameters": [
+        "$username",
+        "$pass",
+        "$firstname",
+        "$lastname",
+        "$vuln = False"
+      ],
+      "body": "{\n      $salt = mt_rand(0, 900);\n      $salt = base64_encode($salt);\n      $initial_bux = 100;\n      if ($vuln)\n      {\n\t $pass = mysql_real_escape_string($pass);\n\t $firstname = mysql_real_escape_string($firstname);\n\t $pass = $pass . $salt;\n\t $query = \"INSERT INTO `users` (`id`, `login`, `password`, `firstname`, `lastname`, `salt`, `tradebux`, `created_on`, `last_login_on`) VALUES (NULL, '{$username}', SHA1('{$pass}'), '{$firstname}', '{$lastname}','{$salt}', '{$initial_bux}', NOW(), NOW());\";\n      }\n      else\n      {\n\t $query = sprintf(\"INSERT INTO `users` (`id`, `login`, `password`, `firstname`, `lastname`, `salt`, `tradebux`, `created_on`, `last_login_on`) VALUES (NULL, '%s', SHA1('%s'), '%s', '%s', '%s','%d', NOW(), NOW());\",\n\t\t\t  mysql_real_escape_string($username),\n\t\t\t  mysql_real_escape_string($pass . $salt),\n\t\t\t  mysql_real_escape_string($firstname),\n\t                  mysql_real_escape_string($lastname),\n\t\t\t  mysql_real_escape_string($salt),\n\t\t\t  mysql_real_escape_string($initial_bux));\n\t\t\t  \n      }\n      if ($res = mysql_query($query))\n      {\n\t return mysql_insert_id();\n      }\n      else\n      {\n\t if ($vuln)\n\t {\n\t    die(mysql_error());\n\t }\n\t else\n\t {\n\t    return False;\n\t }\n      }\n\t \n   }",
+      "start_line": 30,
+      "end_line": 69,
+      "code": "function create_user($username, $pass, $firstname, $lastname, $vuln = False)\n   {\n      $salt = mt_rand(0, 900);\n      $salt = base64_encode($salt);\n      $initial_bux = 100;\n      if ($vuln)\n      {\n\t $pass = mysql_real_escape_string($pass);\n\t $firstname = mysql_real_escape_string($firstname);\n\t $pass = $pass . $salt;\n\t $query = \"INSERT INTO `users` (`id`, `login`, `password`, `firstname`, `lastname`, `salt`, `tradebux`, `created_on`, `last_login_on`) VALUES (NULL, '{$username}', SHA1('{$pass}'), '{$firstname}', '{$lastname}','{$salt}', '{$initial_bux}', NOW(), NOW());\";\n      }\n      else\n      {\n\t $query = sprintf(\"INSERT INTO `users` (`id`, `login`, `password`, `firstname`, `lastname`, `salt`, `tradebux`, `created_on`, `last_login_on`) VALUES (NULL, '%s', SHA1('%s'), '%s', '%s', '%s','%d', NOW(), NOW());\",\n\t\t\t  mysql_real_escape_string($username),\n\t\t\t  mysql_real_escape_string($pass . $salt),\n\t\t\t  mysql_real_escape_string($firstname),\n\t                  mysql_real_escape_string($lastname),\n\t\t\t  mysql_real_escape_string($salt),\n\t\t\t  mysql_real_escape_string($initial_bux));\n\t\t\t  \n      }\n      if ($res = mysql_query($query))\n      {\n\t return mysql_insert_id();\n      }\n      else\n      {\n\t if ($vuln)\n\t {\n\t    die(mysql_error());\n\t }\n\t else\n\t {\n\t    return False;\n\t }\n      }\n\t \n   }"
+    },
+    {
+      "id": "include/users.php:LCF52",
+      "path": "include/users.php",
+      "name": "login_user",
+      "parameters": [
+        "$userid"
+      ],
+      "body": "{\n      session_start();\n      $_SESSION['userid'] = $userid;\n      $query = sprintf(\"UPDATE `users` SET `last_login_on` = NOW( ) WHERE `users`.`id` = '%d' LIMIT 1;\",\n\t\t       mysql_real_escape_string($userid));\n      return mysql_query($query);\n   }",
+      "start_line": 71,
+      "end_line": 78,
+      "code": "function login_user($userid)\n   {\n      session_start();\n      $_SESSION['userid'] = $userid;\n      $query = sprintf(\"UPDATE `users` SET `last_login_on` = NOW( ) WHERE `users`.`id` = '%d' LIMIT 1;\",\n\t\t       mysql_real_escape_string($userid));\n      return mysql_query($query);\n   }"
+    },
+    {
+      "id": "include/users.php:LCF53",
+      "path": "include/users.php",
+      "name": "logout",
+      "parameters": [],
+      "body": "{\n      session_unset();\n   }",
+      "start_line": 80,
+      "end_line": 83,
+      "code": "function logout()\n   {\n      session_unset();\n   }"
+    },
+    {
+      "id": "include/users.php:LCF54",
+      "path": "include/users.php",
+      "name": "check_login",
+      "parameters": [
+        "$username",
+        "$pass",
+        "$vuln = False"
+      ],
+      "body": "{\n      if ($vuln)\n      {\n\t $query = sprintf(\"SELECT * from `users` where `login` like '%s' and `password` = SHA1( CONCAT('%s', `salt`)) limit 1;\",\n\t                   $username,\n\t                   mysql_real_escape_string($pass));\t \n      }\n      else\n      {\n\t $query = sprintf(\"SELECT * from `users` where `login` like '%s' and `password` = SHA1( CONCAT('%s', `salt`)) limit 1;\",\n\t                   mysql_real_escape_string($username),\n\t                   mysql_real_escape_string($pass));\n      }\n      $res = mysql_query($query);\n      if ($res)\n      {\n\t return mysql_fetch_assoc($res);\n      }\n      else\n      {\n\t if ($vuln)\n\t {\n\t    die(mysql_error());\n\t }\n\t else\n\t {\n\t    return False;\n\t }\n      }\n   }",
+      "start_line": 85,
+      "end_line": 115,
+      "code": "function check_login($username, $pass, $vuln = False)\n   {\n      if ($vuln)\n      {\n\t $query = sprintf(\"SELECT * from `users` where `login` like '%s' and `password` = SHA1( CONCAT('%s', `salt`)) limit 1;\",\n\t                   $username,\n\t                   mysql_real_escape_string($pass));\t \n      }\n      else\n      {\n\t $query = sprintf(\"SELECT * from `users` where `login` like '%s' and `password` = SHA1( CONCAT('%s', `salt`)) limit 1;\",\n\t                   mysql_real_escape_string($username),\n\t                   mysql_real_escape_string($pass));\n      }\n      $res = mysql_query($query);\n      if ($res)\n      {\n\t return mysql_fetch_assoc($res);\n      }\n      else\n      {\n\t if ($vuln)\n\t {\n\t    die(mysql_error());\n\t }\n\t else\n\t {\n\t    return False;\n\t }\n      }\n   }"
+    },
+    {
+      "id": "include/users.php:LCF55",
+      "path": "include/users.php",
+      "name": "similar_login",
+      "parameters": [
+        "$login",
+        "$vuln = False"
+      ],
+      "body": "{\n      if ($vuln)\n      {\n\t $query = \"SELECT * from `users` where `firstname` like '%{$login}%' and firstname != '{$login}'\";\n      }\n      else\n      {\n\t $query = sprintf(\"SELECT * from `users` where `firstname` like '%%%s%%' and firstname != '%s'\",\n\t\t\t  mysql_real_escape_string($login),\n\t\t\t  mysql_real_escape_string($login));\n      }\n      $res = mysql_query($query);\n      if ($res)\n      {\n\t while ($row = mysql_fetch_assoc($res))\n\t {\n\t    $to_ret[] = $row;\n\t }\n\t return $to_ret;\n\t \n      }\n      else\n      {\n\t if ($vuln)\n\t {\n\t    die(mysql_error());\n\t }\n\t return False;\n      }\n      \n      \n   }",
+      "start_line": 117,
+      "end_line": 149,
+      "code": "function similar_login($login, $vuln = False)\n   {\n      if ($vuln)\n      {\n\t $query = \"SELECT * from `users` where `firstname` like '%{$login}%' and firstname != '{$login}'\";\n      }\n      else\n      {\n\t $query = sprintf(\"SELECT * from `users` where `firstname` like '%%%s%%' and firstname != '%s'\",\n\t\t\t  mysql_real_escape_string($login),\n\t\t\t  mysql_real_escape_string($login));\n      }\n      $res = mysql_query($query);\n      if ($res)\n      {\n\t while ($row = mysql_fetch_assoc($res))\n\t {\n\t    $to_ret[] = $row;\n\t }\n\t return $to_ret;\n\t \n      }\n      else\n      {\n\t if ($vuln)\n\t {\n\t    die(mysql_error());\n\t }\n\t return False;\n      }\n      \n      \n   }"
+    },
+    {
+      "id": "include/users.php:LCF56",
+      "path": "include/users.php",
+      "name": "current_user",
+      "parameters": [],
+      "body": "{\n      if (isset($_SESSION['userid']))\n      {\n\t if (!$cur_user)\n\t {\n\t    $cur_user = Users::get_user($_SESSION['userid']);\n\t }\n\t return $cur_user;\n      }\n      else\n      {\n\t return False;\n      }\n   }",
+      "start_line": 151,
+      "end_line": 165,
+      "code": "function current_user()\n   {\n      if (isset($_SESSION['userid']))\n      {\n\t if (!$cur_user)\n\t {\n\t    $cur_user = Users::get_user($_SESSION['userid']);\n\t }\n\t return $cur_user;\n      }\n      else\n      {\n\t return False;\n      }\n   }"
+    },
+    {
+      "id": "include/users.php:LCF57",
+      "path": "include/users.php",
+      "name": "is_logged_in",
+      "parameters": [],
+      "body": "{\n      if (Users::current_user())\n      {\n\t return True;\n      }\n      else\n      {\n\t return False;\n      }\n   }",
+      "start_line": 167,
+      "end_line": 177,
+      "code": "function is_logged_in()\n   {\n      if (Users::current_user())\n      {\n\t return True;\n      }\n      else\n      {\n\t return False;\n      }\n   }"
+    },
+    {
+      "id": "pictures/high_quality.php:LCF58",
+      "path": "pictures/high_quality.php",
+      "name": "mime_content_type",
+      "parameters": [
+        "$f"
+      ],
+      "body": "{\r\n      $ext = strtolower(substr(strrchr($f, '.'), 1));\r\n      if ($ext == 'jpg' || $ext == 'jpeg') { return 'image/jpeg'; }\r\n      if ($ext == 'png') { return 'image/png'; }\r\n      if ($ext == 'gif') { return 'image/gif'; }\r\n      return 'application/octet-stream';\r\n   }",
+      "start_line": 8,
+      "end_line": 14,
+      "code": "function mime_content_type($f) {\r\n      $ext = strtolower(substr(strrchr($f, '.'), 1));\r\n      if ($ext == 'jpg' || $ext == 'jpeg') { return 'image/jpeg'; }\r\n      if ($ext == 'png') { return 'image/png'; }\r\n      if ($ext == 'gif') { return 'image/gif'; }\r\n      return 'application/octet-stream';\r\n   }"
+    }
+  ]
+}

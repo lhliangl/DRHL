@@ -1,0 +1,688 @@
+{
+  "parameters": [
+    {
+      "id": "views/admin.go:LCP64",
+      "path": "views/admin.go",
+      "expression": "user.IsSuperAdmin",
+      "aliases": [
+        "user.IsSuperAdmin"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 23,
+          "condition": "!user.IsSuperAdmin"
+        },
+        {
+          "source": "conditional",
+          "line": 100,
+          "condition": "!user.IsSuperAdmin"
+        },
+        {
+          "source": "conditional",
+          "line": 129,
+          "condition": "!user.IsSuperAdmin"
+        },
+        {
+          "source": "conditional",
+          "line": 162,
+          "condition": "domain.DomainID != user.DomainID || !user.IsSuperAdmin"
+        }
+      ],
+      "condition_indexes": [
+        0,
+        7,
+        10,
+        14
+      ],
+      "validation_evidence": [
+        {
+          "kind": "terminating_condition",
+          "line": 23,
+          "condition": "!user.IsSuperAdmin",
+          "terminations": [
+            {
+              "kind": "http_denial",
+              "line": 24,
+              "code": "http.Error(w, http.StatusText(403), http.StatusForbidden)"
+            }
+          ]
+        },
+        {
+          "kind": "terminating_condition",
+          "line": 100,
+          "condition": "!user.IsSuperAdmin",
+          "terminations": [
+            {
+              "kind": "http_denial",
+              "line": 101,
+              "code": "http.Error(w, http.StatusText(http.StatusForbidden), http.StatusForbidden)"
+            }
+          ]
+        },
+        {
+          "kind": "terminating_condition",
+          "line": 129,
+          "condition": "!user.IsSuperAdmin",
+          "terminations": [
+            {
+              "kind": "http_denial",
+              "line": 130,
+              "code": "http.Error(w, http.StatusText(http.StatusForbidden), http.StatusForbidden)"
+            }
+          ]
+        },
+        {
+          "kind": "terminating_condition",
+          "line": 162,
+          "condition": "domain.DomainID != user.DomainID || !user.IsSuperAdmin",
+          "terminations": [
+            {
+              "kind": "http_denial",
+              "line": 163,
+              "code": "http.Error(w, http.StatusText(http.StatusForbidden), http.StatusForbidden)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "views/admin.go:LCP72",
+      "path": "views/admin.go",
+      "expression": "modUser.DomainID",
+      "aliases": [
+        "modUser.DomainID"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 146,
+          "condition": "modUser.DomainID != domain.DomainID"
+        }
+      ],
+      "condition_indexes": [
+        13
+      ],
+      "validation_evidence": [
+        {
+          "kind": "terminating_condition",
+          "line": 146,
+          "condition": "modUser.DomainID != domain.DomainID",
+          "terminations": [
+            {
+              "kind": "http_denial",
+              "line": 147,
+              "code": "http.Error(w, http.StatusText(http.StatusForbidden), http.StatusForbidden)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "views/admin.go:LCP73",
+      "path": "views/admin.go",
+      "expression": "domain.DomainID",
+      "aliases": [
+        "domain.DomainID"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 146,
+          "condition": "modUser.DomainID != domain.DomainID"
+        },
+        {
+          "source": "conditional",
+          "line": 162,
+          "condition": "domain.DomainID != user.DomainID || !user.IsSuperAdmin"
+        }
+      ],
+      "condition_indexes": [
+        13,
+        14
+      ],
+      "validation_evidence": [
+        {
+          "kind": "terminating_condition",
+          "line": 146,
+          "condition": "modUser.DomainID != domain.DomainID",
+          "terminations": [
+            {
+              "kind": "http_denial",
+              "line": 147,
+              "code": "http.Error(w, http.StatusText(http.StatusForbidden), http.StatusForbidden)"
+            }
+          ]
+        },
+        {
+          "kind": "terminating_condition",
+          "line": 162,
+          "condition": "domain.DomainID != user.DomainID || !user.IsSuperAdmin",
+          "terminations": [
+            {
+              "kind": "http_denial",
+              "line": 163,
+              "code": "http.Error(w, http.StatusText(http.StatusForbidden), http.StatusForbidden)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "views/admin.go:LCP74",
+      "path": "views/admin.go",
+      "expression": "user.DomainID",
+      "aliases": [
+        "user.DomainID"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 162,
+          "condition": "domain.DomainID != user.DomainID || !user.IsSuperAdmin"
+        }
+      ],
+      "condition_indexes": [
+        14
+      ],
+      "validation_evidence": [
+        {
+          "kind": "terminating_condition",
+          "line": 162,
+          "condition": "domain.DomainID != user.DomainID || !user.IsSuperAdmin",
+          "terminations": [
+            {
+              "kind": "http_denial",
+              "line": 163,
+              "code": "http.Error(w, http.StatusText(http.StatusForbidden), http.StatusForbidden)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "views/auth.go:LCP93",
+      "path": "views/auth.go",
+      "expression": "r.Method",
+      "aliases": [
+        "r.Method"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 109,
+          "condition": "r.Method == \"GET\""
+        },
+        {
+          "source": "conditional",
+          "line": 146,
+          "condition": "r.Method == \"GET\""
+        }
+      ],
+      "condition_indexes": [
+        10,
+        16
+      ],
+      "validation_evidence": [
+        {
+          "kind": "terminating_condition",
+          "line": 109,
+          "condition": "r.Method == \"GET\"",
+          "terminations": [
+            {
+              "kind": "redirect",
+              "line": 110,
+              "code": "http.Redirect(w, r, basePath+\"auth/signin?next=\"+getNextPathFromURL(r.URL), http.StatusSeeOther)"
+            }
+          ]
+        },
+        {
+          "kind": "terminating_condition",
+          "line": 146,
+          "condition": "r.Method == \"GET\"",
+          "terminations": [
+            {
+              "kind": "redirect",
+              "line": 147,
+              "code": "http.Redirect(w, r, basePath+\"auth/signin?next=\"+getNextPathFromURL(r.URL), http.StatusSeeOther)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "views/auth.go:LCP95",
+      "path": "views/auth.go",
+      "expression": "domain.IsRegularSigninEnabled",
+      "aliases": [
+        "domain.IsRegularSigninEnabled"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 178,
+          "condition": "!domain.IsRegularSigninEnabled"
+        }
+      ],
+      "condition_indexes": [
+        17
+      ],
+      "validation_evidence": [
+        {
+          "kind": "terminating_condition",
+          "line": 178,
+          "condition": "!domain.IsRegularSigninEnabled",
+          "terminations": [
+            {
+              "kind": "http_denial",
+              "line": 179,
+              "code": "http.Error(w, \"Signing in with password is disabled. Please use your email to get a one-time signin link.\", http.StatusForbidden)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "views/auth.go:LCP98",
+      "path": "views/auth.go",
+      "expression": "signupToken",
+      "aliases": [
+        "signupToken"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 271,
+          "condition": "signupToken != \"\" && signupToken != domain.SignupToken"
+        },
+        {
+          "source": "conditional",
+          "line": 277,
+          "condition": "domain.SignupToken == \"\" || signupToken == \"\" || domain.SignupToken != signupToken"
+        },
+        {
+          "source": "conditional",
+          "line": 320,
+          "condition": "signupToken != \"\" && signupToken != domain.SignupToken"
+        },
+        {
+          "source": "conditional",
+          "line": 341,
+          "condition": "domain.SignupToken == \"\" || signupToken == \"\" || domain.SignupToken != signupToken"
+        }
+      ],
+      "condition_indexes": [
+        25,
+        27,
+        33,
+        38
+      ],
+      "validation_evidence": [
+        {
+          "kind": "terminating_condition",
+          "line": 277,
+          "condition": "domain.SignupToken == \"\" || signupToken == \"\" || domain.SignupToken != signupToken",
+          "terminations": [
+            {
+              "kind": "http_denial",
+              "line": 278,
+              "code": "http.Error(w, \"Signup is disabled. Contact the admin.\", http.StatusForbidden)"
+            }
+          ]
+        },
+        {
+          "kind": "terminating_condition",
+          "line": 341,
+          "condition": "domain.SignupToken == \"\" || signupToken == \"\" || domain.SignupToken != signupToken",
+          "terminations": [
+            {
+              "kind": "http_denial",
+              "line": 342,
+              "code": "http.Error(w, \"Signup is disabled. Contact the admin.\", http.StatusForbidden)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "views/auth.go:LCP99",
+      "path": "views/auth.go",
+      "expression": "domain.SignupToken",
+      "aliases": [
+        "domain.SignupToken"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 271,
+          "condition": "signupToken != \"\" && signupToken != domain.SignupToken"
+        },
+        {
+          "source": "conditional",
+          "line": 277,
+          "condition": "domain.SignupToken == \"\" || signupToken == \"\" || domain.SignupToken != signupToken"
+        },
+        {
+          "source": "conditional",
+          "line": 320,
+          "condition": "signupToken != \"\" && signupToken != domain.SignupToken"
+        },
+        {
+          "source": "conditional",
+          "line": 341,
+          "condition": "domain.SignupToken == \"\" || signupToken == \"\" || domain.SignupToken != signupToken"
+        }
+      ],
+      "condition_indexes": [
+        25,
+        27,
+        33,
+        38
+      ],
+      "validation_evidence": [
+        {
+          "kind": "terminating_condition",
+          "line": 277,
+          "condition": "domain.SignupToken == \"\" || signupToken == \"\" || domain.SignupToken != signupToken",
+          "terminations": [
+            {
+              "kind": "http_denial",
+              "line": 278,
+              "code": "http.Error(w, \"Signup is disabled. Contact the admin.\", http.StatusForbidden)"
+            }
+          ]
+        },
+        {
+          "kind": "terminating_condition",
+          "line": 341,
+          "condition": "domain.SignupToken == \"\" || signupToken == \"\" || domain.SignupToken != signupToken",
+          "terminations": [
+            {
+              "kind": "http_denial",
+              "line": 342,
+              "code": "http.Error(w, \"Signup is disabled. Contact the admin.\", http.StatusForbidden)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "views/comments.go:LCP131",
+      "path": "views/comments.go",
+      "expression": "topic.IsReadOnly",
+      "aliases": [
+        "topic.IsReadOnly"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 96,
+          "condition": "topic.IsReadOnly"
+        }
+      ],
+      "condition_indexes": [
+        17
+      ],
+      "validation_evidence": [
+        {
+          "kind": "terminating_condition",
+          "line": 96,
+          "condition": "topic.IsReadOnly",
+          "terminations": [
+            {
+              "kind": "http_denial",
+              "line": 97,
+              "code": "http.Error(w, http.StatusText(http.StatusForbidden), http.StatusForbidden)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "views/users.go:LCP155",
+      "path": "views/users.go",
+      "expression": "user",
+      "aliases": [
+        "user"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 38,
+          "condition": "(user != nil) && (domain.DomainID == user.DomainID)"
+        },
+        {
+          "source": "conditional",
+          "line": 49,
+          "condition": "user == nil"
+        }
+      ],
+      "condition_indexes": [
+        2,
+        5
+      ],
+      "validation_evidence": [
+        {
+          "kind": "terminating_condition",
+          "line": 49,
+          "condition": "user == nil",
+          "terminations": [
+            {
+              "kind": "http_denial",
+              "line": 50,
+              "code": "http.Error(w, http.StatusText(http.StatusForbidden), http.StatusForbidden)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "views/users.go:LCP156",
+      "path": "views/users.go",
+      "expression": "domain.DomainID",
+      "aliases": [
+        "domain.DomainID"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 38,
+          "condition": "(user != nil) && (domain.DomainID == user.DomainID)"
+        },
+        {
+          "source": "conditional",
+          "line": 55,
+          "condition": "(user.DomainID != domain.DomainID) || !(user.IsSuperMod || user.IsSuperAdmin)"
+        }
+      ],
+      "condition_indexes": [
+        2,
+        7
+      ],
+      "validation_evidence": [
+        {
+          "kind": "terminating_condition",
+          "line": 55,
+          "condition": "(user.DomainID != domain.DomainID) || !(user.IsSuperMod || user.IsSuperAdmin)",
+          "terminations": [
+            {
+              "kind": "http_denial",
+              "line": 56,
+              "code": "http.Error(w, http.StatusText(http.StatusForbidden), http.StatusForbidden)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "views/users.go:LCP157",
+      "path": "views/users.go",
+      "expression": "user.DomainID",
+      "aliases": [
+        "user.DomainID"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 38,
+          "condition": "(user != nil) && (domain.DomainID == user.DomainID)"
+        },
+        {
+          "source": "conditional",
+          "line": 55,
+          "condition": "(user.DomainID != domain.DomainID) || !(user.IsSuperMod || user.IsSuperAdmin)"
+        }
+      ],
+      "condition_indexes": [
+        2,
+        7
+      ],
+      "validation_evidence": [
+        {
+          "kind": "terminating_condition",
+          "line": 55,
+          "condition": "(user.DomainID != domain.DomainID) || !(user.IsSuperMod || user.IsSuperAdmin)",
+          "terminations": [
+            {
+              "kind": "http_denial",
+              "line": 56,
+              "code": "http.Error(w, http.StatusText(http.StatusForbidden), http.StatusForbidden)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "views/users.go:LCP158",
+      "path": "views/users.go",
+      "expression": "user.IsSuperAdmin",
+      "aliases": [
+        "user.IsSuperAdmin"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 39,
+          "condition": "user.IsSuperAdmin || user.IsSuperMod"
+        },
+        {
+          "source": "conditional",
+          "line": 55,
+          "condition": "(user.DomainID != domain.DomainID) || !(user.IsSuperMod || user.IsSuperAdmin)"
+        }
+      ],
+      "condition_indexes": [
+        3,
+        7
+      ],
+      "validation_evidence": [
+        {
+          "kind": "terminating_condition",
+          "line": 55,
+          "condition": "(user.DomainID != domain.DomainID) || !(user.IsSuperMod || user.IsSuperAdmin)",
+          "terminations": [
+            {
+              "kind": "http_denial",
+              "line": 56,
+              "code": "http.Error(w, http.StatusText(http.StatusForbidden), http.StatusForbidden)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "views/users.go:LCP159",
+      "path": "views/users.go",
+      "expression": "user.IsSuperMod",
+      "aliases": [
+        "user.IsSuperMod"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 39,
+          "condition": "user.IsSuperAdmin || user.IsSuperMod"
+        },
+        {
+          "source": "conditional",
+          "line": 55,
+          "condition": "(user.DomainID != domain.DomainID) || !(user.IsSuperMod || user.IsSuperAdmin)"
+        }
+      ],
+      "condition_indexes": [
+        3,
+        7
+      ],
+      "validation_evidence": [
+        {
+          "kind": "terminating_condition",
+          "line": 55,
+          "condition": "(user.DomainID != domain.DomainID) || !(user.IsSuperMod || user.IsSuperAdmin)",
+          "terminations": [
+            {
+              "kind": "http_denial",
+              "line": 56,
+              "code": "http.Error(w, http.StatusText(http.StatusForbidden), http.StatusForbidden)"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

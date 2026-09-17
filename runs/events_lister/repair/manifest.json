@@ -1,0 +1,301 @@
+{
+  "summary": {
+    "Repair Items": 2,
+    "Total Repair Attempts": 2,
+    "Patch Generation Attempts": 2,
+    "Patches Generated": 2,
+    "Failed Patches": 0,
+    "Syntax / Compile OK": 2,
+    "Exploit Blocked": 2,
+    "Regression Passed": 2,
+    "Database Validation Applied": 1,
+    "Database Validation Passed": 1,
+    "Successful Repairs": 2,
+    "Failed Repairs": 0,
+    "Successful on Attempt 1": 2,
+    "Successful on Attempt 2": 0,
+    "Successful on Attempt 3": 0
+  },
+  "repairs": [
+    {
+      "category": "static_only",
+      "page": "admin/setup.php",
+      "source": "D:\\phpStudy\\PHPTutorial\\WWW\\events_lister\\admin\\setup.php",
+      "output": "D:\\project\\python\\DRHL\\runs\\events_lister\\repair\\files\\attempt-1\\admin\\setup.php",
+      "status": "successful_repair",
+      "message": "syntax/compile, vulnerability blocking, and regression validation all passed",
+      "engine": "llm",
+      "plan": "{\"missing_check\": \"Admin authentication/authorization guard using the project's checkUser()/validUser session check.\", \"insertion_location\": \"admin/setup.php, inside the initial <?php block after the GPL comment and before the closing ?> that precedes the HTML form/output.\", \"recommended_guard\": \"include('common.php');\\ncheckUser();\", \"reused_project_semantics\": \"Reuses checkUser() from admin/common.php, which performs: if ((!isset($_SESSION['validUser'])) || ($_SESSION['validUser'] != true)) { header('Location: login.php'); }. This is the same guard called by admin/add.php, admin/add_user.php, admin/copy.php, admin/delete.php, admin/index.php, admin/list.php, admin/message.php, admin/update.php, admin/user_delete.php, and admin/users.php.\", \"reason\": \"admin/setup.php is an admin-only standalone entry point but currently lacks the checkUser() guard, so an unauthorized visitor can reach it and run database setup/admin creation logic. Adding the project's common.php guard before any HTML or POST processing blocks unauthorized requests with the existing login.php redirect while preserving intended admin access for sessions where $_SESSION['validUser'] === true.\"}",
+      "prompt_artifact": "D:\\project\\python\\DRHL\\runs\\events_lister\\repair\\prompts\\setup-attempt1-016df14b2de7.json",
+      "attempts": 1,
+      "patches_generated": 1,
+      "syntax_compile_ok": 1,
+      "exploit_blocked": 1,
+      "regression_passed": 1,
+      "database_validation_applied": 0,
+      "database_validation_passed": 0,
+      "successful": true,
+      "validation_artifact": "D:\\project\\python\\DRHL\\runs\\events_lister\\repair\\validation\\setup-16356589c36f.json",
+      "attempt_details": [
+        {
+          "attempt": 1,
+          "output": "D:\\project\\python\\DRHL\\runs\\events_lister\\repair\\files\\attempt-1\\admin\\setup.php",
+          "syntax_compile_ok": true,
+          "exploit_blocked": true,
+          "regression_passed": true,
+          "successful": true,
+          "message": "syntax=(No syntax errors detected in D:\\project\\python\\DRHL\\runs\\events_lister\\repair\\files\\attempt-1\\admin\\setup.php); deployment=(source patch applied); vulnerability_blocking=(response=True; database=not_applicable; evidence=GET: visitor:not_vulnerable); regression=(response=True; database=not_applicable; evidence=GET: regression is not applicable because the vector has no authorized role)",
+          "prompt_artifact": "D:\\project\\python\\DRHL\\runs\\events_lister\\repair\\prompts\\setup-attempt1-016df14b2de7.json",
+          "plan": "{\"missing_check\": \"Admin authentication/authorization guard using the project's checkUser()/validUser session check.\", \"insertion_location\": \"admin/setup.php, inside the initial <?php block after the GPL comment and before the closing ?> that precedes the HTML form/output.\", \"recommended_guard\": \"include('common.php');\\ncheckUser();\", \"reused_project_semantics\": \"Reuses checkUser() from admin/common.php, which performs: if ((!isset($_SESSION['validUser'])) || ($_SESSION['validUser'] != true)) { header('Location: login.php'); }. This is the same guard called by admin/add.php, admin/add_user.php, admin/copy.php, admin/delete.php, admin/index.php, admin/list.php, admin/message.php, admin/update.php, admin/user_delete.php, and admin/users.php.\", \"reason\": \"admin/setup.php is an admin-only standalone entry point but currently lacks the checkUser() guard, so an unauthorized visitor can reach it and run database setup/admin creation logic. Adding the project's common.php guard before any HTML or POST processing blocks unauthorized requests with the existing login.php redirect while preserving intended admin access for sessions where $_SESSION['validUser'] === true.\"}",
+          "database_validation_passed": true,
+          "database_validation": {
+            "oracle_version": 2,
+            "scope": "repair_only",
+            "applicable": false,
+            "passed": true,
+            "status": "not_configured",
+            "display_as_passed": false,
+            "message": "no repair database oracle matched; response oracle retained",
+            "dimensions": {
+              "vulnerability_blocking": {
+                "phase": "attack",
+                "applicable": false,
+                "passed": true
+              },
+              "regression": {
+                "phase": "authorized",
+                "applicable": false,
+                "passed": true
+              }
+            },
+            "scenarios": [],
+            "response_vectors": [
+              {
+                "operation": "GET",
+                "method": "GET",
+                "page": "admin/setup.php",
+                "page_overrides": [],
+                "params": {},
+                "referer": null,
+                "vulnerability_blocking_passed": true,
+                "regression_passed": true,
+                "findings": [
+                  {
+                    "category": "static_only",
+                    "page": "admin/setup.php",
+                    "actor": "visitor",
+                    "status": "not_vulnerable",
+                    "confidence": "high",
+                    "method": "GET",
+                    "http_status": 302,
+                    "evidence": [
+                      "oracle=response-cascade",
+                      "denial redirect: http://localhost/events_lister/admin/login.php"
+                    ],
+                    "error": null
+                  }
+                ],
+                "regression_evidence": "regression is not applicable because the vector has no authorized role"
+              }
+            ],
+            "combined_dimensions": {
+              "vulnerability_blocking": {
+                "passed": true,
+                "response_oracle_applicable": true,
+                "response_oracle_passed": true,
+                "database_oracle_applicable": false,
+                "database_oracle_passed": true
+              },
+              "regression": {
+                "passed": true,
+                "response_oracle_applicable": true,
+                "response_oracle_passed": true,
+                "database_oracle_applicable": false,
+                "database_oracle_passed": true
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/user_add.php",
+      "source": "D:\\phpStudy\\PHPTutorial\\WWW\\events_lister\\admin\\user_add.php",
+      "output": "D:\\project\\python\\DRHL\\runs\\events_lister\\repair\\files\\attempt-1\\admin\\user_add.php",
+      "status": "successful_repair",
+      "message": "syntax/compile, vulnerability blocking, and regression validation all passed",
+      "engine": "llm",
+      "plan": "{\"missing_check\": \"checkUser() auth guard from admin/common.php, with the required admin/common.php include\", \"insertion_location\": \"At the top of admin/user_add.php, inside the initial PHP block after the license comment and before the closing `?>` that precedes `<!DOCTYPE html>`\", \"recommended_guard\": \"include(\\\"common.php\\\");\\ncheckUser();\", \"reused_project_semantics\": \"admin/common.php starts the session and defines checkUser(); checkUser() checks $_SESSION['validUser'] and redirects with header('Location: login.php') when it is not true. Other admin scripts (add.php, add_user.php, copy.php, delete.php, index.php, list.php, message.php, update.php, user_delete.php, users.php) call checkUser().\", \"reason\": \"An unauthenticated visitor can POST to admin/user_add.php and insert an admin user because the page never calls the project's checkUser() guard. Adding the existing common.php include plus checkUser() at the top blocks unauthorized requests before sensitive database operations while preserving intended admin access.\"}",
+      "prompt_artifact": "D:\\project\\python\\DRHL\\runs\\events_lister\\repair\\prompts\\user_add-attempt1-e94af03091ff.json",
+      "attempts": 1,
+      "patches_generated": 1,
+      "syntax_compile_ok": 1,
+      "exploit_blocked": 1,
+      "regression_passed": 1,
+      "database_validation_applied": 1,
+      "database_validation_passed": 1,
+      "successful": true,
+      "validation_artifact": "D:\\project\\python\\DRHL\\runs\\events_lister\\repair\\validation\\user_add-dc656d46a697.json",
+      "attempt_details": [
+        {
+          "attempt": 1,
+          "output": "D:\\project\\python\\DRHL\\runs\\events_lister\\repair\\files\\attempt-1\\admin\\user_add.php",
+          "syntax_compile_ok": true,
+          "exploit_blocked": true,
+          "regression_passed": true,
+          "successful": true,
+          "message": "syntax=(No syntax errors detected in D:\\project\\python\\DRHL\\runs\\events_lister\\repair\\files\\attempt-1\\admin\\user_add.php); deployment=(source patch applied); vulnerability_blocking=(response=True; database=passed; evidence=POST: visitor:not_vulnerable); regression=(response=True; database=passed; evidence=POST: authorized status=200; denial=[])",
+          "prompt_artifact": "D:\\project\\python\\DRHL\\runs\\events_lister\\repair\\prompts\\user_add-attempt1-e94af03091ff.json",
+          "plan": "{\"missing_check\": \"checkUser() auth guard from admin/common.php, with the required admin/common.php include\", \"insertion_location\": \"At the top of admin/user_add.php, inside the initial PHP block after the license comment and before the closing `?>` that precedes `<!DOCTYPE html>`\", \"recommended_guard\": \"include(\\\"common.php\\\");\\ncheckUser();\", \"reused_project_semantics\": \"admin/common.php starts the session and defines checkUser(); checkUser() checks $_SESSION['validUser'] and redirects with header('Location: login.php') when it is not true. Other admin scripts (add.php, add_user.php, copy.php, delete.php, index.php, list.php, message.php, update.php, user_delete.php, users.php) call checkUser().\", \"reason\": \"An unauthenticated visitor can POST to admin/user_add.php and insert an admin user because the page never calls the project's checkUser() guard. Adding the existing common.php include plus checkUser() at the top blocks unauthorized requests before sensitive database operations while preserving intended admin access.\"}",
+          "database_validation_passed": true,
+          "database_validation": {
+            "oracle_version": 2,
+            "scope": "repair_only",
+            "applicable": true,
+            "passed": true,
+            "status": "passed",
+            "dimensions": {
+              "vulnerability_blocking": {
+                "phase": "attack",
+                "applicable": true,
+                "passed": true
+              },
+              "regression": {
+                "phase": "authorized",
+                "applicable": true,
+                "passed": true
+              }
+            },
+            "scenarios": [
+              {
+                "name": "events-lister-user-add-admin-create",
+                "operation": "create",
+                "passed": true,
+                "phases": [
+                  {
+                    "phase": "attack",
+                    "role": "visitor",
+                    "session_before_setup": false,
+                    "setup_sql": [],
+                    "session_requests": [],
+                    "request": {
+                      "method": "POST",
+                      "page": "admin/user_add.php",
+                      "params": {
+                        "uname": "DRHLR_6302c88c8530",
+                        "pword": "abc123",
+                        "submit": "Add user"
+                      },
+                      "referer": "admin/user_add.php",
+                      "cookie_names": []
+                    },
+                    "response": {
+                      "status_code": 302,
+                      "url": "http://localhost/events_lister/admin/user_add.php",
+                      "body_length": 0
+                    },
+                    "query": "SELECT COUNT(*) FROM admin WHERE uname='DRHLR_6302c88c8530'",
+                    "observed": "0",
+                    "assertions": [
+                      {
+                        "type": "scalar_zero",
+                        "expected": "0",
+                        "observed": "0",
+                        "passed": true
+                      }
+                    ],
+                    "passed": true
+                  },
+                  {
+                    "phase": "authorized",
+                    "role": "admin",
+                    "session_before_setup": false,
+                    "setup_sql": [],
+                    "session_requests": [],
+                    "request": {
+                      "method": "POST",
+                      "page": "admin/user_add.php",
+                      "params": {
+                        "uname": "DRHLR_6302c88c8530",
+                        "pword": "abc123",
+                        "submit": "Add user"
+                      },
+                      "referer": "admin/user_add.php",
+                      "cookie_names": []
+                    },
+                    "response": {
+                      "status_code": 200,
+                      "url": "http://localhost/events_lister/admin/user_add.php",
+                      "body_length": 1789
+                    },
+                    "query": "SELECT COUNT(*) FROM admin WHERE uname='DRHLR_6302c88c8530'",
+                    "observed": "1",
+                    "assertions": [
+                      {
+                        "type": "scalar_nonzero",
+                        "expected": "nonzero",
+                        "observed": "1",
+                        "passed": true
+                      }
+                    ],
+                    "passed": true
+                  }
+                ]
+              }
+            ],
+            "response_vectors": [
+              {
+                "operation": "POST",
+                "method": "POST",
+                "page": "admin/user_add.php",
+                "page_overrides": [],
+                "params": {
+                  "uname": "text_25e9b5fc",
+                  "pword": "value_e6041d8d",
+                  "submit": "Add user"
+                },
+                "referer": "admin/user_add.php",
+                "vulnerability_blocking_passed": true,
+                "regression_passed": true,
+                "findings": [
+                  {
+                    "category": "admin_only",
+                    "page": "admin/user_add.php",
+                    "actor": "visitor",
+                    "status": "not_vulnerable",
+                    "confidence": "high",
+                    "method": "POST",
+                    "http_status": 302,
+                    "evidence": [
+                      "oracle=response-cascade",
+                      "denial redirect: http://localhost/events_lister/admin/login.php"
+                    ],
+                    "error": null
+                  }
+                ],
+                "regression_evidence": "authorized status=200; denial=[]"
+              }
+            ],
+            "combined_dimensions": {
+              "vulnerability_blocking": {
+                "passed": true,
+                "response_oracle_applicable": true,
+                "response_oracle_passed": true,
+                "database_oracle_applicable": true,
+                "database_oracle_passed": true
+              },
+              "regression": {
+                "passed": true,
+                "response_oracle_applicable": true,
+                "response_oracle_passed": true,
+                "database_oracle_applicable": true,
+                "database_oracle_passed": true
+              }
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

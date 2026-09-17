@@ -46,12 +46,13 @@ drhl/
 configs/                 example application configurations
 database_recovery/       optional database baseline capture/restore helpers
 docs/                    additional notes and placeholder figures
+runs/                    published main-experiment artifacts and execution logs
 tests/                   unit and offline integration tests
 requirements.txt         pinned Python dependencies used in our environment
 pyproject.toml           package metadata and console entry point
 ```
 
-Runtime outputs are written to `runs/<application>/` by default and are intentionally not part of the source package.
+Runtime outputs are written to `runs/<application>/` by default. The repository includes the artifacts and execution logs used for the reported main-experiment results.
 
 ## Requirements
 

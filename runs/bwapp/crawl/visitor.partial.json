@@ -1,0 +1,89 @@
+{
+  "role": "visitor",
+  "kind": "visitor",
+  "nodes": [
+    "index.php",
+    "info.php",
+    "login.php",
+    "training.php",
+    "user_new.php"
+  ],
+  "edges": [
+    {
+      "from": "index.php",
+      "to": "login.php"
+    },
+    {
+      "from": "info.php",
+      "to": "user_new.php"
+    },
+    {
+      "from": "login.php",
+      "to": "login.php"
+    },
+    {
+      "from": "login.php",
+      "to": "training.php"
+    },
+    {
+      "from": "training.php",
+      "to": "info.php"
+    },
+    {
+      "from": "user_new.php",
+      "to": "login.php"
+    },
+    {
+      "from": "user_new.php",
+      "to": "user_new.php"
+    }
+  ],
+  "requests": {
+    "index.php": {
+      "method": "GET",
+      "params": {},
+      "referer": null
+    },
+    "login.php": {
+      "method": "POST",
+      "params": {
+        "login": "value_3a867721",
+        "password": "12345678",
+        "security_level": "0"
+      },
+      "referer": "login.php"
+    },
+    "portal.php": {
+      "method": "GET",
+      "params": {},
+      "referer": null
+    },
+    "images/favicon.ico": {
+      "method": "GET",
+      "params": {},
+      "referer": null
+    },
+    "training.php": {
+      "method": "GET",
+      "params": {},
+      "referer": "login.php"
+    },
+    "info.php": {
+      "method": "GET",
+      "params": {},
+      "referer": "training.php"
+    },
+    "user_new.php": {
+      "method": "POST",
+      "params": {
+        "login": "value_08e22487",
+        "email": "drhl_fee3388d@example.test",
+        "password": "12345678",
+        "password_conf": "12345678",
+        "secret": "value_79d93e0a",
+        "mail_activation": "on"
+      },
+      "referer": "user_new.php"
+    }
+  }
+}

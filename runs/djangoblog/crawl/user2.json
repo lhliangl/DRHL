@@ -1,0 +1,148 @@
+{
+  "role": "user2",
+  "kind": "user",
+  "nodes": [
+    "./",
+    "admin/",
+    "admin/blog/",
+    "admin/blog/post/",
+    "admin/blog/post/1/change/",
+    "admin/password_change/",
+    "eee/",
+    "my-first-ever-post/",
+    "post-2/",
+    "post-3/",
+    "post-4/"
+  ],
+  "edges": [
+    {
+      "from": "./",
+      "to": "my-first-ever-post/"
+    },
+    {
+      "from": "./",
+      "to": "post-2/"
+    },
+    {
+      "from": "./",
+      "to": "post-3/"
+    },
+    {
+      "from": "./",
+      "to": "post-4/"
+    },
+    {
+      "from": "admin/",
+      "to": "admin/password_change/"
+    },
+    {
+      "from": "admin/blog/",
+      "to": "admin/"
+    },
+    {
+      "from": "admin/blog/post/",
+      "to": "admin/blog/post/"
+    },
+    {
+      "from": "admin/blog/post/",
+      "to": "admin/blog/post/1/change/"
+    },
+    {
+      "from": "admin/blog/post/1/change/",
+      "to": "admin/blog/"
+    },
+    {
+      "from": "admin/blog/post/1/change/",
+      "to": "admin/blog/post/1/change/"
+    },
+    {
+      "from": "admin/password_change/",
+      "to": "admin/password_change/"
+    },
+    {
+      "from": "eee/",
+      "to": "./"
+    }
+  ],
+  "requests": {
+    "eee/": {
+      "method": "GET",
+      "params": {},
+      "referer": null
+    },
+    "admin/login/?next=%2Fadmin%2F": {
+      "method": "POST",
+      "params": {
+        "next": "/admin/",
+        "csrfmiddlewaretoken": "FVDwmNIWThFLwPeCGv1j3uHpjJtQoU6eaw09CqFMPFoNYIgiBNjCbZQJ1RJBj7NU",
+        "username": "user2",
+        "password": "lhl020422"
+      },
+      "referer": null
+    },
+    "favicon.ico": {
+      "method": "GET",
+      "params": {},
+      "referer": null
+    },
+    "admin/": {
+      "method": "GET",
+      "params": {},
+      "referer": null
+    },
+    "./": {
+      "method": "GET",
+      "params": {},
+      "referer": "eee/"
+    },
+    "my-first-ever-post/": {
+      "method": "GET",
+      "params": {},
+      "referer": "./"
+    },
+    "post-2/": {
+      "method": "GET",
+      "params": {},
+      "referer": "./"
+    },
+    "post-3/": {
+      "method": "GET",
+      "params": {},
+      "referer": "./"
+    },
+    "post-4/": {
+      "method": "GET",
+      "params": {},
+      "referer": "./"
+    },
+    "admin/blog/post/": {
+      "method": "POST",
+      "params": {
+        "csrfmiddlewaretoken": "nqs0epFB4MDQq7E5ptfJZz3lcra4ZRQwebMciiHL8Q7V4M3npjTLScjB5n2jlMgb"
+      },
+      "referer": "admin/blog/post/"
+    },
+    "admin/blog/post/1/change/": {
+      "method": "POST",
+      "params": {
+        "csrfmiddlewaretoken": "cH9O8HkEHPySJ1c89nZXKHz9F8jKcXG13st0cAmOLT2XnGBq9dDZDkPpy4bZyS6G"
+      },
+      "referer": "admin/blog/post/1/change/"
+    },
+    "admin/blog/": {
+      "method": "GET",
+      "params": {},
+      "referer": "admin/blog/post/1/change/"
+    },
+    "admin/password_change/": {
+      "method": "POST",
+      "params": {
+        "csrfmiddlewaretoken": "7rVT4BeiZ1aaNjYmvWBYn7zbOzuWt37EYcf58ugs35EfrYnEvMf0gKPrHvmbPYxj",
+        "old_password": "12345678",
+        "new_password1": "12345678",
+        "new_password2": "12345678"
+      },
+      "referer": "admin/password_change/"
+    }
+  }
+}

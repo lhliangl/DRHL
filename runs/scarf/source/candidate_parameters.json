@@ -1,0 +1,3241 @@
+{
+  "parameters": [
+    {
+      "id": "addsession.php:LCP1",
+      "path": "addsession.php",
+      "expression": "$_POST['submit']",
+      "aliases": [
+        "$_POST['submit']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 5,
+          "condition": "(isset($_POST['submit']))"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "addsession.php:LCP2",
+      "path": "addsession.php",
+      "expression": "$name",
+      "aliases": [
+        "$name",
+        "$_POST['name']"
+      ],
+      "database_relations": [
+        {
+          "table": "sessions",
+          "field": "",
+          "line": 24
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 9,
+          "condition": "(empty($name))"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "addsession.php:LCP3",
+      "path": "addsession.php",
+      "expression": "$chair",
+      "aliases": [
+        "$chair",
+        "$_POST['chair']"
+      ],
+      "database_relations": [
+        {
+          "table": "sessions",
+          "field": "",
+          "line": 24
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 10,
+          "condition": "(empty($chair))"
+        }
+      ],
+      "condition_indexes": [
+        2
+      ]
+    },
+    {
+      "id": "addsession.php:LCP4",
+      "path": "addsession.php",
+      "expression": "$_POST['starthour']",
+      "aliases": [
+        "$_POST['starthour']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 11,
+          "condition": "(empty ($_POST['starthour']) || empty($_POST['startminute']) || empty($_POST['month']) || empty($_POST['day']) || empty($_POST['year']))"
+        }
+      ],
+      "condition_indexes": [
+        3
+      ]
+    },
+    {
+      "id": "addsession.php:LCP5",
+      "path": "addsession.php",
+      "expression": "$_POST['startminute']",
+      "aliases": [
+        "$_POST['startminute']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 11,
+          "condition": "(empty ($_POST['starthour']) || empty($_POST['startminute']) || empty($_POST['month']) || empty($_POST['day']) || empty($_POST['year']))"
+        }
+      ],
+      "condition_indexes": [
+        3
+      ]
+    },
+    {
+      "id": "addsession.php:LCP6",
+      "path": "addsession.php",
+      "expression": "$_POST['month']",
+      "aliases": [
+        "$_POST['month']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 11,
+          "condition": "(empty ($_POST['starthour']) || empty($_POST['startminute']) || empty($_POST['month']) || empty($_POST['day']) || empty($_POST['year']))"
+        }
+      ],
+      "condition_indexes": [
+        3
+      ]
+    },
+    {
+      "id": "addsession.php:LCP7",
+      "path": "addsession.php",
+      "expression": "$_POST['day']",
+      "aliases": [
+        "$_POST['day']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 11,
+          "condition": "(empty ($_POST['starthour']) || empty($_POST['startminute']) || empty($_POST['month']) || empty($_POST['day']) || empty($_POST['year']))"
+        }
+      ],
+      "condition_indexes": [
+        3
+      ]
+    },
+    {
+      "id": "addsession.php:LCP8",
+      "path": "addsession.php",
+      "expression": "$_POST['year']",
+      "aliases": [
+        "$_POST['year']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 11,
+          "condition": "(empty ($_POST['starthour']) || empty($_POST['startminute']) || empty($_POST['month']) || empty($_POST['day']) || empty($_POST['year']))"
+        }
+      ],
+      "condition_indexes": [
+        3
+      ]
+    },
+    {
+      "id": "addsession.php:LCP9",
+      "path": "addsession.php",
+      "expression": "$endtimestamp",
+      "aliases": [
+        "$endtimestamp"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 20,
+          "condition": "($endtimestamp < $timestamp)"
+        }
+      ],
+      "condition_indexes": [
+        4
+      ]
+    },
+    {
+      "id": "addsession.php:LCP10",
+      "path": "addsession.php",
+      "expression": "$timestamp",
+      "aliases": [
+        "$timestamp"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 20,
+          "condition": "($endtimestamp < $timestamp)"
+        }
+      ],
+      "condition_indexes": [
+        4
+      ]
+    },
+    {
+      "id": "comments.php:LCP11",
+      "path": "comments.php",
+      "expression": "$_GET['paper_id']",
+      "aliases": [
+        "$_GET['paper_id']",
+        "$id",
+        "$where"
+      ],
+      "database_relations": [
+        {
+          "table": "comments",
+          "field": "",
+          "line": 82
+        },
+        {
+          "table": "papers",
+          "field": "paper_id",
+          "line": 91
+        },
+        {
+          "table": "comments",
+          "field": "paper_id",
+          "line": 94
+        },
+        {
+          "table": "comments",
+          "field": "",
+          "line": 117
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 36,
+          "condition": "(! isset($_GET['paper_id']) )"
+        },
+        {
+          "source": "conditional",
+          "line": 125,
+          "condition": "(! isset($id) && (int) $row['paper_id'] != $cur_id)"
+        },
+        {
+          "source": "conditional",
+          "line": 148,
+          "condition": "(isset($id))"
+        }
+      ],
+      "condition_indexes": [
+        0,
+        11,
+        15
+      ]
+    },
+    {
+      "id": "comments.php:LCP12",
+      "path": "comments.php",
+      "expression": "$_GET['comment_id']",
+      "aliases": [
+        "$_GET['comment_id']",
+        "$comment_id",
+        "$row[0]",
+        "$title"
+      ],
+      "database_relations": [
+        {
+          "table": "comments",
+          "field": "comment_id",
+          "line": 50
+        },
+        {
+          "table": "comments",
+          "field": "comment_id",
+          "line": 53
+        },
+        {
+          "table": "comments",
+          "field": "comment_id",
+          "line": 58
+        },
+        {
+          "table": "",
+          "field": "comment_id",
+          "line": 70
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 45,
+          "condition": "(isset($_GET['comment_id']))"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "comments.php:LCP13",
+      "path": "comments.php",
+      "expression": "$_GET['delete']",
+      "aliases": [
+        "$_GET['delete']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 49,
+          "condition": "(isset($_GET['delete']))"
+        }
+      ],
+      "condition_indexes": [
+        2
+      ]
+    },
+    {
+      "id": "comments.php:LCP14",
+      "path": "comments.php",
+      "expression": "$_GET['approve']",
+      "aliases": [
+        "$_GET['approve']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 52,
+          "condition": "(isset($_GET['approve']))"
+        }
+      ],
+      "condition_indexes": [
+        3
+      ]
+    },
+    {
+      "id": "comments.php:LCP15",
+      "path": "comments.php",
+      "expression": "$result",
+      "aliases": [
+        "$result"
+      ],
+      "database_relations": [
+        {
+          "table": "comments",
+          "field": "",
+          "line": 58
+        },
+        {
+          "table": "papers",
+          "field": "",
+          "line": 91
+        },
+        {
+          "table": "users",
+          "field": "",
+          "line": 99
+        },
+        {
+          "table": "comments",
+          "field": "",
+          "line": 117
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 59,
+          "condition": "(mysql_num_rows($result) != 1)"
+        },
+        {
+          "source": "conditional",
+          "line": 119,
+          "condition": "(mysql_num_rows($result) == 0)"
+        }
+      ],
+      "condition_indexes": [
+        4,
+        10
+      ]
+    },
+    {
+      "id": "comments.php:LCP16",
+      "path": "comments.php",
+      "expression": "$row['showemail']",
+      "aliases": [
+        "$row['showemail']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 62,
+          "condition": "($row['showemail'])"
+        },
+        {
+          "source": "conditional",
+          "line": 132,
+          "condition": "($row['showemail'])"
+        }
+      ],
+      "condition_indexes": [
+        5,
+        12
+      ]
+    },
+    {
+      "id": "comments.php:LCP17",
+      "path": "comments.php",
+      "expression": "$row['approved']",
+      "aliases": [
+        "$row['approved']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 68,
+          "condition": "(! $row['approved'])"
+        },
+        {
+          "source": "conditional",
+          "line": 138,
+          "condition": "($row['approved'])"
+        }
+      ],
+      "condition_indexes": [
+        6,
+        14
+      ]
+    },
+    {
+      "id": "comments.php:LCP18",
+      "path": "comments.php",
+      "expression": "$_POST['submit']",
+      "aliases": [
+        "$_POST['submit']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 76,
+          "condition": "(isset($_POST['submit']))"
+        }
+      ],
+      "condition_indexes": [
+        7
+      ]
+    },
+    {
+      "id": "comments.php:LCP19",
+      "path": "comments.php",
+      "expression": "$approved",
+      "aliases": [
+        "$approved"
+      ],
+      "database_relations": [
+        {
+          "table": "comments",
+          "field": "",
+          "line": 82
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 83,
+          "condition": "(! $approved)"
+        }
+      ],
+      "condition_indexes": [
+        9
+      ]
+    },
+    {
+      "id": "comments.php:LCP20",
+      "path": "comments.php",
+      "expression": "$row['paper_id']",
+      "aliases": [
+        "$row['paper_id']",
+        "$cur_id"
+      ],
+      "database_relations": [
+        {
+          "table": "papers",
+          "field": "paper_id",
+          "line": 127
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 125,
+          "condition": "(! isset($id) && (int) $row['paper_id'] != $cur_id)"
+        }
+      ],
+      "condition_indexes": [
+        11
+      ]
+    },
+    {
+      "id": "editpaper.php:LCP21",
+      "path": "editpaper.php",
+      "expression": "$_GET['paper_id']",
+      "aliases": [
+        "$_GET['paper_id']",
+        "$_POST['paper_id']",
+        "$id",
+        "$order",
+        "$row[0]"
+      ],
+      "database_relations": [
+        {
+          "table": "papers",
+          "field": "paper_id",
+          "line": 7
+        },
+        {
+          "table": "authors",
+          "field": "paper_id",
+          "line": 9
+        },
+        {
+          "table": "files",
+          "field": "paper_id",
+          "line": 152
+        },
+        {
+          "table": "papers",
+          "field": "paper_id",
+          "line": 310
+        },
+        {
+          "table": "authors",
+          "field": "paper_id",
+          "line": 312
+        },
+        {
+          "table": "files",
+          "field": "paper_id",
+          "line": 323
+        },
+        {
+          "table": "files",
+          "field": "paper_id",
+          "line": 325
+        },
+        {
+          "table": "files",
+          "field": "paper_id",
+          "line": 343
+        },
+        {
+          "table": "files",
+          "field": "",
+          "line": 344
+        },
+        {
+          "table": "authors",
+          "field": "",
+          "line": 354
+        },
+        {
+          "table": "papers",
+          "field": "",
+          "line": 301
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 5,
+          "condition": "(isset($_GET['paper_id']))"
+        },
+        {
+          "source": "conditional",
+          "line": 264,
+          "condition": "(isset($_GET['paper_id']))"
+        },
+        {
+          "source": "conditional",
+          "line": 267,
+          "condition": "(isset($_GET['paper_id']))"
+        },
+        {
+          "source": "conditional",
+          "line": 298,
+          "condition": "(!isset($_POST['paper_id']))"
+        },
+        {
+          "source": "conditional",
+          "line": 359,
+          "condition": "(!isset($_POST['paper_id']))"
+        }
+      ],
+      "condition_indexes": [
+        0,
+        7,
+        8,
+        15,
+        22
+      ]
+    },
+    {
+      "id": "editpaper.php:LCP22",
+      "path": "editpaper.php",
+      "expression": "$_POST['submit']",
+      "aliases": [
+        "$_POST['submit']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 16,
+          "condition": "(!isset($_POST['submit']))"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "editpaper.php:LCP23",
+      "path": "editpaper.php",
+      "expression": "$authors",
+      "aliases": [
+        "$authors"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 65,
+          "condition": "(!isset($authors))"
+        }
+      ],
+      "condition_indexes": [
+        2
+      ]
+    },
+    {
+      "id": "editpaper.php:LCP24",
+      "path": "editpaper.php",
+      "expression": "$count",
+      "aliases": [
+        "$count"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 76,
+          "condition": "($count != 0)"
+        }
+      ],
+      "condition_indexes": [
+        3
+      ]
+    },
+    {
+      "id": "editpaper.php:LCP25",
+      "path": "editpaper.php",
+      "expression": "$row['user_id']",
+      "aliases": [
+        "$row['user_id']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 83,
+          "condition": "(!strcmp($row['user_id'], $user_id))"
+        }
+      ],
+      "condition_indexes": [
+        4
+      ]
+    },
+    {
+      "id": "editpaper.php:LCP26",
+      "path": "editpaper.php",
+      "expression": "$user_id",
+      "aliases": [
+        "$user_id"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 83,
+          "condition": "(!strcmp($row['user_id'], $user_id))"
+        }
+      ],
+      "condition_indexes": [
+        4
+      ]
+    },
+    {
+      "id": "editpaper.php:LCP27",
+      "path": "editpaper.php",
+      "expression": "$session_id",
+      "aliases": [
+        "$session_id"
+      ],
+      "database_relations": [
+        {
+          "table": "sessions",
+          "field": "session_id",
+          "line": 181
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 180,
+          "condition": "(isset($session_id) && ! is_admin())"
+        },
+        {
+          "source": "conditional",
+          "line": 189,
+          "condition": "(isset($session_id) && $session_id == $row[session_id])"
+        }
+      ],
+      "condition_indexes": [
+        5,
+        6
+      ]
+    },
+    {
+      "id": "editpaper.php:LCP28",
+      "path": "editpaper.php",
+      "expression": "$row[session_id]",
+      "aliases": [
+        "$row[session_id]"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 189,
+          "condition": "(isset($session_id) && $session_id == $row[session_id])"
+        }
+      ],
+      "condition_indexes": [
+        6
+      ]
+    },
+    {
+      "id": "editpaper.php:LCP29",
+      "path": "editpaper.php",
+      "expression": "$_POST['title']",
+      "aliases": [
+        "$_POST['title']",
+        "$title"
+      ],
+      "database_relations": [
+        {
+          "table": "papers",
+          "field": "",
+          "line": 301
+        },
+        {
+          "table": "papers",
+          "field": "title",
+          "line": 302
+        },
+        {
+          "table": "papers",
+          "field": "title",
+          "line": 310
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 276,
+          "condition": "(empty($_POST['title']))"
+        }
+      ],
+      "condition_indexes": [
+        9
+      ]
+    },
+    {
+      "id": "editpaper.php:LCP30",
+      "path": "editpaper.php",
+      "expression": "$_POST['abstract']",
+      "aliases": [
+        "$_POST['abstract']",
+        "$abstract"
+      ],
+      "database_relations": [
+        {
+          "table": "papers",
+          "field": "",
+          "line": 301
+        },
+        {
+          "table": "papers",
+          "field": "abstract",
+          "line": 302
+        },
+        {
+          "table": "papers",
+          "field": "abstract",
+          "line": 310
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 277,
+          "condition": "(empty($_POST['abstract']))"
+        }
+      ],
+      "condition_indexes": [
+        10
+      ]
+    },
+    {
+      "id": "editpaper.php:LCP31",
+      "path": "editpaper.php",
+      "expression": "$_POST['authors']",
+      "aliases": [
+        "$_POST['authors']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 278,
+          "condition": "(0 == count($_POST['authors']))"
+        }
+      ],
+      "condition_indexes": [
+        11
+      ]
+    },
+    {
+      "id": "editpaper.php:LCP32",
+      "path": "editpaper.php",
+      "expression": "$session",
+      "aliases": [
+        "$session",
+        "$_POST['session']"
+      ],
+      "database_relations": [
+        {
+          "table": "papers",
+          "field": "session_id",
+          "line": 299
+        },
+        {
+          "table": "papers",
+          "field": "",
+          "line": 301
+        },
+        {
+          "table": "papers",
+          "field": "session_id",
+          "line": 302
+        },
+        {
+          "table": "papers",
+          "field": "session_id",
+          "line": 310
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 280,
+          "condition": "((string)$session !== (string)(int)$session)"
+        },
+        {
+          "source": "conditional",
+          "line": 282,
+          "condition": "(0 == mysql_num_rows(query(\"SELECT * FROM sessions WHERE session_id='$session'\")))"
+        }
+      ],
+      "condition_indexes": [
+        12,
+        13
+      ]
+    },
+    {
+      "id": "editpaper.php:LCP33",
+      "path": "editpaper.php",
+      "expression": "$filename",
+      "aliases": [
+        "$filename",
+        "$_FILES['pdf']['tmp_name']",
+        "$file['tmp_name']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 293,
+          "condition": "(!empty($filename))"
+        },
+        {
+          "source": "conditional",
+          "line": 307,
+          "condition": "(!empty($filename))"
+        },
+        {
+          "source": "conditional",
+          "line": 333,
+          "condition": "(!empty($filename))"
+        }
+      ],
+      "condition_indexes": [
+        14,
+        16,
+        20
+      ]
+    },
+    {
+      "id": "editpaper.php:LCP34",
+      "path": "editpaper.php",
+      "expression": "$name",
+      "aliases": [
+        "$name",
+        "$_POST[\"filename$num\"]",
+        "$_POST[\"oldfilename$num\"]",
+        "$newname",
+        "$oldname",
+        "$value"
+      ],
+      "database_relations": [
+        {
+          "table": "files",
+          "field": "name",
+          "line": 323
+        },
+        {
+          "table": "files",
+          "field": "name",
+          "line": 325
+        },
+        {
+          "table": "files",
+          "field": "name",
+          "line": 343
+        },
+        {
+          "table": "files",
+          "field": "",
+          "line": 344
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 318,
+          "condition": "(!strcmp(substr($name, 0, 11), \"oldfilename\"))"
+        },
+        {
+          "source": "conditional",
+          "line": 322,
+          "condition": "(empty($_POST[\"filename$num\"]))"
+        },
+        {
+          "source": "conditional",
+          "line": 330,
+          "condition": "(!strcmp(substr($name, 0, 4), \"file\"))"
+        }
+      ],
+      "condition_indexes": [
+        17,
+        18,
+        19
+      ]
+    },
+    {
+      "id": "editpaper.php:LCP35",
+      "path": "editpaper.php",
+      "expression": "$author",
+      "aliases": [
+        "$author"
+      ],
+      "database_relations": [
+        {
+          "table": "authors",
+          "field": "",
+          "line": 354
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 353,
+          "condition": "(! empty($author))"
+        }
+      ],
+      "condition_indexes": [
+        21
+      ]
+    },
+    {
+      "id": "editsession.php:LCP36",
+      "path": "editsession.php",
+      "expression": "$_GET['session_id']",
+      "aliases": [
+        "$_GET['session_id']",
+        "$id"
+      ],
+      "database_relations": [
+        {
+          "table": "",
+          "field": "session_id",
+          "line": 14
+        },
+        {
+          "table": "sessions",
+          "field": "session_id",
+          "line": 16
+        },
+        {
+          "table": "sessions",
+          "field": "session_id",
+          "line": 26
+        },
+        {
+          "table": "sessions",
+          "field": "session_id",
+          "line": 36
+        },
+        {
+          "table": "sessions",
+          "field": "session_id",
+          "line": 42
+        },
+        {
+          "table": "sessions",
+          "field": "session_id",
+          "line": 44
+        },
+        {
+          "table": "",
+          "field": "session_id",
+          "line": 54
+        },
+        {
+          "table": "sessions",
+          "field": "session_id",
+          "line": 58
+        },
+        {
+          "table": "papers",
+          "field": "session_id",
+          "line": 116
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 3,
+          "condition": "(!isset($_GET['session_id']))"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "editsession.php:LCP37",
+      "path": "editsession.php",
+      "expression": "$_GET['action']",
+      "aliases": [
+        "$_GET['action']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 12,
+          "condition": "(isset($_GET['action']))"
+        },
+        {
+          "source": "conditional",
+          "line": 13,
+          "condition": "(!strcmp($_GET['action'], \"delete\"))"
+        },
+        {
+          "source": "conditional",
+          "line": 15,
+          "condition": "(!strcmp($_GET['action'], \"confirmdelete\"))"
+        }
+      ],
+      "condition_indexes": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "id": "editsession.php:LCP38",
+      "path": "editsession.php",
+      "expression": "$_POST['submit']",
+      "aliases": [
+        "$_POST['submit']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 22,
+          "condition": "(isset($_POST['submit']))"
+        }
+      ],
+      "condition_indexes": [
+        4
+      ]
+    },
+    {
+      "id": "editsession.php:LCP39",
+      "path": "editsession.php",
+      "expression": "$_POST['starthour']",
+      "aliases": [
+        "$_POST['starthour']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 23,
+          "condition": "((-1 == (int) $_POST['starthour']) || (-1 == (int) $_POST['startminute']) || (0 == (int) $_POST['month']) || (0 == (int) $_POST['day']) || empty($_POST['year']))"
+        },
+        {
+          "source": "conditional",
+          "line": 24,
+          "condition": "((-1 == (int) $_POST['starthour']) && (-1 == (int) $_POST['startminute']) && (0 == (int) $_POST['month']) && (0 == (int) $_POST['day']) && empty($_POST['year']))"
+        }
+      ],
+      "condition_indexes": [
+        5,
+        6
+      ]
+    },
+    {
+      "id": "editsession.php:LCP40",
+      "path": "editsession.php",
+      "expression": "$_POST['startminute']",
+      "aliases": [
+        "$_POST['startminute']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 23,
+          "condition": "((-1 == (int) $_POST['starthour']) || (-1 == (int) $_POST['startminute']) || (0 == (int) $_POST['month']) || (0 == (int) $_POST['day']) || empty($_POST['year']))"
+        },
+        {
+          "source": "conditional",
+          "line": 24,
+          "condition": "((-1 == (int) $_POST['starthour']) && (-1 == (int) $_POST['startminute']) && (0 == (int) $_POST['month']) && (0 == (int) $_POST['day']) && empty($_POST['year']))"
+        }
+      ],
+      "condition_indexes": [
+        5,
+        6
+      ]
+    },
+    {
+      "id": "editsession.php:LCP41",
+      "path": "editsession.php",
+      "expression": "$_POST['month']",
+      "aliases": [
+        "$_POST['month']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 23,
+          "condition": "((-1 == (int) $_POST['starthour']) || (-1 == (int) $_POST['startminute']) || (0 == (int) $_POST['month']) || (0 == (int) $_POST['day']) || empty($_POST['year']))"
+        },
+        {
+          "source": "conditional",
+          "line": 24,
+          "condition": "((-1 == (int) $_POST['starthour']) && (-1 == (int) $_POST['startminute']) && (0 == (int) $_POST['month']) && (0 == (int) $_POST['day']) && empty($_POST['year']))"
+        }
+      ],
+      "condition_indexes": [
+        5,
+        6
+      ]
+    },
+    {
+      "id": "editsession.php:LCP42",
+      "path": "editsession.php",
+      "expression": "$_POST['day']",
+      "aliases": [
+        "$_POST['day']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 23,
+          "condition": "((-1 == (int) $_POST['starthour']) || (-1 == (int) $_POST['startminute']) || (0 == (int) $_POST['month']) || (0 == (int) $_POST['day']) || empty($_POST['year']))"
+        },
+        {
+          "source": "conditional",
+          "line": 24,
+          "condition": "((-1 == (int) $_POST['starthour']) && (-1 == (int) $_POST['startminute']) && (0 == (int) $_POST['month']) && (0 == (int) $_POST['day']) && empty($_POST['year']))"
+        }
+      ],
+      "condition_indexes": [
+        5,
+        6
+      ]
+    },
+    {
+      "id": "editsession.php:LCP43",
+      "path": "editsession.php",
+      "expression": "$_POST['year']",
+      "aliases": [
+        "$_POST['year']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 23,
+          "condition": "((-1 == (int) $_POST['starthour']) || (-1 == (int) $_POST['startminute']) || (0 == (int) $_POST['month']) || (0 == (int) $_POST['day']) || empty($_POST['year']))"
+        },
+        {
+          "source": "conditional",
+          "line": 24,
+          "condition": "((-1 == (int) $_POST['starthour']) && (-1 == (int) $_POST['startminute']) && (0 == (int) $_POST['month']) && (0 == (int) $_POST['day']) && empty($_POST['year']))"
+        }
+      ],
+      "condition_indexes": [
+        5,
+        6
+      ]
+    },
+    {
+      "id": "editsession.php:LCP44",
+      "path": "editsession.php",
+      "expression": "$endtimestamp",
+      "aliases": [
+        "$endtimestamp"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 33,
+          "condition": "($endtimestamp < $timestamp)"
+        }
+      ],
+      "condition_indexes": [
+        7
+      ]
+    },
+    {
+      "id": "editsession.php:LCP45",
+      "path": "editsession.php",
+      "expression": "$timestamp",
+      "aliases": [
+        "$timestamp"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 33,
+          "condition": "($endtimestamp < $timestamp)"
+        }
+      ],
+      "condition_indexes": [
+        7
+      ]
+    },
+    {
+      "id": "editsession.php:LCP46",
+      "path": "editsession.php",
+      "expression": "$pap_id",
+      "aliases": [
+        "$pap_id"
+      ],
+      "database_relations": [
+        {
+          "table": "papers",
+          "field": "paper_id",
+          "line": 48
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 41,
+          "condition": "(!strcmp($pap_id, \"name\"))"
+        },
+        {
+          "source": "conditional",
+          "line": 43,
+          "condition": "(!strcmp($pap_id, \"chair\"))"
+        },
+        {
+          "source": "conditional",
+          "line": 45,
+          "condition": "(is_numeric($pap_id))"
+        }
+      ],
+      "condition_indexes": [
+        8,
+        9,
+        10
+      ]
+    },
+    {
+      "id": "editsession.php:LCP47",
+      "path": "editsession.php",
+      "expression": "$row['user_id']",
+      "aliases": [
+        "$row['user_id']",
+        "$chair"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 70,
+          "condition": "(!strcmp($row['user_id'], $chair))"
+        }
+      ],
+      "condition_indexes": [
+        11
+      ]
+    },
+    {
+      "id": "editsession.php:LCP48",
+      "path": "editsession.php",
+      "expression": "$starttime",
+      "aliases": [
+        "$starttime",
+        "$row['starttime']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 89,
+          "condition": "($starttime != 0)"
+        }
+      ],
+      "condition_indexes": [
+        12
+      ]
+    },
+    {
+      "id": "editsession.php:LCP49",
+      "path": "editsession.php",
+      "expression": "$i",
+      "aliases": [
+        "$i"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 124,
+          "condition": "($i == $row['order'])"
+        }
+      ],
+      "condition_indexes": [
+        13
+      ]
+    },
+    {
+      "id": "editsession.php:LCP50",
+      "path": "editsession.php",
+      "expression": "$row['order']",
+      "aliases": [
+        "$row['order']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 124,
+          "condition": "($i == $row['order'])"
+        }
+      ],
+      "condition_indexes": [
+        13
+      ]
+    },
+    {
+      "id": "forgot.php:LCP51",
+      "path": "forgot.php",
+      "expression": "$_POST['email']",
+      "aliases": [
+        "$_POST['email']",
+        "$email"
+      ],
+      "database_relations": [
+        {
+          "table": "users",
+          "field": "email",
+          "line": 12
+        },
+        {
+          "table": "users",
+          "field": "email",
+          "line": 17
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 2,
+          "condition": "(! isset($_POST['email']) )"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "forgot.php:LCP52",
+      "path": "forgot.php",
+      "expression": "$result",
+      "aliases": [
+        "$result"
+      ],
+      "database_relations": [
+        {
+          "table": "users",
+          "field": "",
+          "line": 12
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 13,
+          "condition": "(mysql_num_rows($result) == 0)"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "functions.php:LCP53",
+      "path": "functions.php",
+      "expression": "$result",
+      "aliases": [
+        "$result"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 11,
+          "condition": "(!$result)"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "functions.php:LCP54",
+      "path": "functions.php",
+      "expression": "$_SESSION['privilege']",
+      "aliases": [
+        "$_SESSION['privilege']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 16,
+          "condition": "($_SESSION['privilege'] == 'admin')"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "functions.php:LCP55",
+      "path": "functions.php",
+      "expression": "$user_email",
+      "aliases": [
+        "$user_email"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 21,
+          "condition": "(strstr($user_email, '@') && strstr($user_email, '.'))"
+        },
+        {
+          "source": "conditional",
+          "line": 22,
+          "condition": "(preg_match($chars, $user_email))"
+        }
+      ],
+      "condition_indexes": [
+        0,
+        1
+      ]
+    },
+    {
+      "id": "functions.php:LCP56",
+      "path": "functions.php",
+      "expression": "$chars",
+      "aliases": [
+        "$chars"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 22,
+          "condition": "(preg_match($chars, $user_email))"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "functions.php:LCP57",
+      "path": "functions.php",
+      "expression": "$result",
+      "aliases": [
+        "$result"
+      ],
+      "database_relations": [
+        {
+          "table": "users",
+          "field": "",
+          "line": 46
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 47,
+          "condition": "(mysql_num_rows($result) == 0)"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "functions.php:LCP58",
+      "path": "functions.php",
+      "expression": "$_SESSION['user_id']",
+      "aliases": [
+        "$_SESSION['user_id']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "database"
+      ],
+      "locations": [
+        {
+          "source": "database",
+          "line": 54,
+          "condition": "$_SESSION['user_id']"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "functions.php:LCP59",
+      "path": "functions.php",
+      "expression": "$_SESSION",
+      "aliases": [
+        "$_SESSION"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 53,
+          "condition": "(array_key_exists(\"user_id\", $_SESSION))"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "functions.php:LCP60",
+      "path": "functions.php",
+      "expression": "$row[0]",
+      "aliases": [
+        "$row[0]"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 78,
+          "condition": "($row[0])"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "functions.php:LCP61",
+      "path": "functions.php",
+      "expression": "$row[0]",
+      "aliases": [
+        "$row[0]"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 84,
+          "condition": "($row[0])"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "functions.php:LCP62",
+      "path": "functions.php",
+      "expression": "$result",
+      "aliases": [
+        "$result"
+      ],
+      "database_relations": [
+        {
+          "table": "options",
+          "field": "",
+          "line": 92
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 93,
+          "condition": "(! $result)"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "functions.php:LCP63",
+      "path": "functions.php",
+      "expression": "$value",
+      "aliases": [
+        "$value"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 121,
+          "condition": "(!is_numeric($value))"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "functions.php:LCP64",
+      "path": "functions.php",
+      "expression": "$value",
+      "aliases": [
+        "$value"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 129,
+          "condition": "( is_array($value) )"
+        },
+        {
+          "source": "conditional",
+          "line": 133,
+          "condition": "( !empty($value) && is_string($value) )"
+        }
+      ],
+      "condition_indexes": [
+        0,
+        1
+      ]
+    },
+    {
+      "id": "generaloptions.php:LCP65",
+      "path": "generaloptions.php",
+      "expression": "$_POST['submit']",
+      "aliases": [
+        "$_POST['submit']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 2,
+          "condition": "(isset($_POST['submit']))"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "generaloptions.php:LCP66",
+      "path": "generaloptions.php",
+      "expression": "$value['error']",
+      "aliases": [
+        "$value['error']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 10,
+          "condition": "(!$value['error'])"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "generaloptions.php:LCP67",
+      "path": "generaloptions.php",
+      "expression": "$value['tmp_name']",
+      "aliases": [
+        "$value['tmp_name']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 14,
+          "condition": "(! move_uploaded_file($value['tmp_name'], $row[0]))"
+        }
+      ],
+      "condition_indexes": [
+        2
+      ]
+    },
+    {
+      "id": "generaloptions.php:LCP68",
+      "path": "generaloptions.php",
+      "expression": "$row[0]",
+      "aliases": [
+        "$row[0]"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 14,
+          "condition": "(! move_uploaded_file($value['tmp_name'], $row[0]))"
+        }
+      ],
+      "condition_indexes": [
+        2
+      ]
+    },
+    {
+      "id": "generaloptions.php:LCP69",
+      "path": "generaloptions.php",
+      "expression": "$_POST['usersubmit']",
+      "aliases": [
+        "$_POST['usersubmit']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 19,
+          "condition": "(isset($_POST['usersubmit']))"
+        }
+      ],
+      "condition_indexes": [
+        3
+      ]
+    },
+    {
+      "id": "generaloptions.php:LCP70",
+      "path": "generaloptions.php",
+      "expression": "$id",
+      "aliases": [
+        "$id",
+        "$row['user_id']",
+        "$temp[0]"
+      ],
+      "database_relations": [
+        {
+          "table": "users",
+          "field": "user_id",
+          "line": 36
+        },
+        {
+          "table": "",
+          "field": "name",
+          "line": 87
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 25,
+          "condition": "(is_numeric($id) && count($temp) == 2)"
+        }
+      ],
+      "condition_indexes": [
+        4
+      ]
+    },
+    {
+      "id": "generaloptions.php:LCP71",
+      "path": "generaloptions.php",
+      "expression": "$temp",
+      "aliases": [
+        "$temp"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 25,
+          "condition": "(is_numeric($id) && count($temp) == 2)"
+        }
+      ],
+      "condition_indexes": [
+        4
+      ]
+    },
+    {
+      "id": "generaloptions.php:LCP72",
+      "path": "generaloptions.php",
+      "expression": "$values['showemail']",
+      "aliases": [
+        "$values['showemail']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 29,
+          "condition": "(isset($values['showemail']))"
+        }
+      ],
+      "condition_indexes": [
+        5
+      ]
+    },
+    {
+      "id": "generaloptions.php:LCP73",
+      "path": "generaloptions.php",
+      "expression": "$_GET['delete_email']",
+      "aliases": [
+        "$_GET['delete_email']"
+      ],
+      "database_relations": [
+        {
+          "table": "users",
+          "field": "email",
+          "line": 41
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 40,
+          "condition": "(isset($_GET['delete_email']))"
+        }
+      ],
+      "condition_indexes": [
+        6
+      ]
+    },
+    {
+      "id": "generaloptions.php:LCP74",
+      "path": "generaloptions.php",
+      "expression": "$row['type']",
+      "aliases": [
+        "$row['type']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 52,
+          "condition": "(! strcmp(\"text\", $row['type']))"
+        },
+        {
+          "source": "conditional",
+          "line": 54,
+          "condition": "(! strcmp(\"boolean\", $row['type']))"
+        },
+        {
+          "source": "conditional",
+          "line": 63,
+          "condition": "(! strcmp(\"file\", $row['type']))"
+        }
+      ],
+      "condition_indexes": [
+        7,
+        8,
+        10
+      ]
+    },
+    {
+      "id": "generaloptions.php:LCP75",
+      "path": "generaloptions.php",
+      "expression": "$row['value']",
+      "aliases": [
+        "$row['value']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 56,
+          "condition": "(! strcmp(\"0\", $row['value']))"
+        }
+      ],
+      "condition_indexes": [
+        9
+      ]
+    },
+    {
+      "id": "generaloptions.php:LCP76",
+      "path": "generaloptions.php",
+      "expression": "$name",
+      "aliases": [
+        "$name"
+      ],
+      "database_relations": [
+        {
+          "table": "options",
+          "field": "name",
+          "line": 7
+        },
+        {
+          "table": "options",
+          "field": "name",
+          "line": 11
+        },
+        {
+          "table": "",
+          "field": "",
+          "line": 87
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 84,
+          "condition": "(!strcmp($name, \"showemail\"))"
+        },
+        {
+          "source": "conditional",
+          "line": 86,
+          "condition": "(!strcmp($name, \"privilege\"))"
+        },
+        {
+          "source": "conditional",
+          "line": 90,
+          "condition": "(!strcmp($name, \"user_id\"))"
+        }
+      ],
+      "condition_indexes": [
+        11,
+        12,
+        13
+      ]
+    },
+    {
+      "id": "getfile.php:LCP77",
+      "path": "getfile.php",
+      "expression": "$result",
+      "aliases": [
+        "$result"
+      ],
+      "database_relations": [
+        {
+          "table": "files",
+          "field": "",
+          "line": 6
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 8,
+          "condition": "(mysql_num_rows($result) == 0)"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "header.php:LCP78",
+      "path": "header.php",
+      "expression": "$_GET['paper_id']",
+      "aliases": [
+        "$_GET['paper_id']",
+        "$id"
+      ],
+      "database_relations": [
+        {
+          "table": "papers",
+          "field": "paper_id",
+          "line": 20
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 18,
+          "condition": "(isset($_GET['paper_id']))"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "header.php:LCP79",
+      "path": "header.php",
+      "expression": "$_SESSION['email']",
+      "aliases": [
+        "$_SESSION['email']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 48,
+          "condition": "(!isset($_SESSION['email']))"
+        }
+      ],
+      "condition_indexes": [
+        3
+      ]
+    },
+    {
+      "id": "index.php:LCP80",
+      "path": "index.php",
+      "expression": "$result",
+      "aliases": [
+        "$result"
+      ],
+      "database_relations": [
+        {
+          "table": "users",
+          "field": "",
+          "line": 5
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 6,
+          "condition": "(mysql_num_rows($result) == 0)"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "install.php:LCP81",
+      "path": "install.php",
+      "expression": "$_POST['dbname']",
+      "aliases": [
+        "$_POST['dbname']",
+        "$dbname"
+      ],
+      "database_relations": [
+        {
+          "table": "",
+          "field": "",
+          "line": 111
+        },
+        {
+          "table": "",
+          "field": "",
+          "line": 152
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 75,
+          "condition": "(isset($_POST['dbname']))"
+        },
+        {
+          "source": "conditional",
+          "line": 91,
+          "condition": "(! mysql_query(\"CREATE DATABASE \" . mysql_real_escape_string($dbname)))"
+        }
+      ],
+      "condition_indexes": [
+        0,
+        1
+      ]
+    },
+    {
+      "id": "install.php:LCP82",
+      "path": "install.php",
+      "expression": "$out",
+      "aliases": [
+        "$out"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 93,
+          "condition": "(strstr($out, \"database exists\"))"
+        }
+      ],
+      "condition_indexes": [
+        2
+      ]
+    },
+    {
+      "id": "install.php:LCP83",
+      "path": "install.php",
+      "expression": "$_POST['confirmdrop']",
+      "aliases": [
+        "$_POST['confirmdrop']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 94,
+          "condition": "(!isset($_POST['confirmdrop']))"
+        }
+      ],
+      "condition_indexes": [
+        3
+      ]
+    },
+    {
+      "id": "install.php:LCP84",
+      "path": "install.php",
+      "expression": "$fp",
+      "aliases": [
+        "$fp"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 170,
+          "condition": "($fp === FALSE)"
+        }
+      ],
+      "condition_indexes": [
+        4
+      ]
+    },
+    {
+      "id": "install.php:LCP85",
+      "path": "install.php",
+      "expression": "$_GET['instructions']",
+      "aliases": [
+        "$_GET['instructions']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 188,
+          "condition": "(isset($_GET['instructions']))"
+        }
+      ],
+      "condition_indexes": [
+        5
+      ]
+    },
+    {
+      "id": "login.php:LCP86",
+      "path": "login.php",
+      "expression": "$_SESSION['user_id']",
+      "aliases": [
+        "$_SESSION['user_id']",
+        "$row['user_id']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "database"
+      ],
+      "locations": [
+        {
+          "source": "database",
+          "line": 1,
+          "condition": "$_SESSION['user_id']"
+        },
+        {
+          "source": "database",
+          "line": 19,
+          "condition": "$_SESSION['user_id']"
+        }
+      ],
+      "condition_indexes": [
+        0,
+        1
+      ]
+    },
+    {
+      "id": "login.php:LCP87",
+      "path": "login.php",
+      "expression": "$_GET[\"logout\"]",
+      "aliases": [
+        "$_GET[\"logout\"]"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 2,
+          "condition": "(isset($_GET[\"logout\"]))"
+        }
+      ],
+      "condition_indexes": [
+        2
+      ]
+    },
+    {
+      "id": "login.php:LCP88",
+      "path": "login.php",
+      "expression": "$_POST[\"email\"]",
+      "aliases": [
+        "$_POST[\"email\"]"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 9,
+          "condition": "(isset($_POST[\"email\"]))"
+        }
+      ],
+      "condition_indexes": [
+        3
+      ]
+    },
+    {
+      "id": "login.php:LCP89",
+      "path": "login.php",
+      "expression": "$result",
+      "aliases": [
+        "$result"
+      ],
+      "database_relations": [
+        {
+          "table": "users",
+          "field": "",
+          "line": 10
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 11,
+          "condition": "(mysql_num_rows($result) == 0)"
+        },
+        {
+          "source": "conditional",
+          "line": 14,
+          "condition": "(mysql_num_rows($result) == 1)"
+        }
+      ],
+      "condition_indexes": [
+        4,
+        5
+      ]
+    },
+    {
+      "id": "login.php:LCP90",
+      "path": "login.php",
+      "expression": "$_GET['referer']",
+      "aliases": [
+        "$_GET['referer']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 21,
+          "condition": "(isset($_GET['referer']))"
+        }
+      ],
+      "condition_indexes": [
+        6
+      ]
+    },
+    {
+      "id": "register.php:LCP91",
+      "path": "register.php",
+      "expression": "$_POST['email']",
+      "aliases": [
+        "$_POST['email']",
+        "$email"
+      ],
+      "database_relations": [
+        {
+          "table": "users",
+          "field": "email",
+          "line": 37
+        },
+        {
+          "table": "users",
+          "field": "",
+          "line": 52
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 2,
+          "condition": "(!isset($_POST['email']))"
+        },
+        {
+          "source": "conditional",
+          "line": 27,
+          "condition": "(strcmp($_POST['email'], $_POST['email2']))"
+        },
+        {
+          "source": "conditional",
+          "line": 35,
+          "condition": "(!empty ($_POST['email']) )"
+        },
+        {
+          "source": "conditional",
+          "line": 36,
+          "condition": "(! validate_email($email) )"
+        },
+        {
+          "source": "conditional",
+          "line": 55,
+          "condition": "(! empty($_POST['email']))"
+        }
+      ],
+      "condition_indexes": [
+        0,
+        5,
+        6,
+        7,
+        12
+      ]
+    },
+    {
+      "id": "register.php:LCP92",
+      "path": "register.php",
+      "expression": "$_SESSION['createnewadmin']",
+      "aliases": [
+        "$_SESSION['createnewadmin']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 3,
+          "condition": "(isset($_SESSION['createnewadmin']))"
+        },
+        {
+          "source": "conditional",
+          "line": 44,
+          "condition": "(isset($_SESSION['createnewadmin']))"
+        }
+      ],
+      "condition_indexes": [
+        1,
+        10
+      ]
+    },
+    {
+      "id": "register.php:LCP93",
+      "path": "register.php",
+      "expression": "$_SERVER['PHP_SELF']",
+      "aliases": [
+        "$_SERVER['PHP_SELF']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 27,
+          "condition": "(! strcmp($_SERVER['PHP_SELF'], $_SERVER['HTTP_REFERER']) && ! is_admin())"
+        }
+      ],
+      "condition_indexes": [
+        4
+      ]
+    },
+    {
+      "id": "register.php:LCP94",
+      "path": "register.php",
+      "expression": "$_SERVER['HTTP_REFERER']",
+      "aliases": [
+        "$_SERVER['HTTP_REFERER']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 27,
+          "condition": "(! strcmp($_SERVER['PHP_SELF'], $_SERVER['HTTP_REFERER']) && ! is_admin())"
+        }
+      ],
+      "condition_indexes": [
+        4
+      ]
+    },
+    {
+      "id": "register.php:LCP95",
+      "path": "register.php",
+      "expression": "$_POST['email2']",
+      "aliases": [
+        "$_POST['email2']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 27,
+          "condition": "(strcmp($_POST['email'], $_POST['email2']))"
+        }
+      ],
+      "condition_indexes": [
+        5
+      ]
+    },
+    {
+      "id": "register.php:LCP96",
+      "path": "register.php",
+      "expression": "$result",
+      "aliases": [
+        "$result"
+      ],
+      "database_relations": [
+        {
+          "table": "users",
+          "field": "",
+          "line": 37
+        },
+        {
+          "table": "users",
+          "field": "",
+          "line": 45
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 38,
+          "condition": "(mysql_num_rows($result) > 0)"
+        },
+        {
+          "source": "conditional",
+          "line": 46,
+          "condition": "(mysql_num_rows($result) != 0)"
+        }
+      ],
+      "condition_indexes": [
+        8,
+        11
+      ]
+    },
+    {
+      "id": "showpaper.php:LCP97",
+      "path": "showpaper.php",
+      "expression": "$result",
+      "aliases": [
+        "$result"
+      ],
+      "database_relations": [
+        {
+          "table": "papers",
+          "field": "",
+          "line": 5
+        },
+        {
+          "table": "authors",
+          "field": "",
+          "line": 11
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 6,
+          "condition": "(mysql_num_rows($result) == 0)"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "showpaper.php:LCP98",
+      "path": "showpaper.php",
+      "expression": "$row[1]",
+      "aliases": [
+        "$row[1]"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 24,
+          "condition": "(!strcmp($row[1], \"application/xpdf\") || !strcmp($row[1], \"application/pdf\"))"
+        }
+      ],
+      "condition_indexes": [
+        2
+      ]
+    },
+    {
+      "id": "showpaper.php:LCP99",
+      "path": "showpaper.php",
+      "expression": "$row['showemail']",
+      "aliases": [
+        "$row['showemail']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 32,
+          "condition": "($row['showemail'] || is_admin())"
+        }
+      ],
+      "condition_indexes": [
+        3
+      ]
+    },
+    {
+      "id": "showsessions.php:LCP100",
+      "path": "showsessions.php",
+      "expression": "$_SESSION['email']",
+      "aliases": [
+        "$_SESSION['email']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 4,
+          "condition": "(!isset($_SESSION['email']))"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "showsessions.php:LCP101",
+      "path": "showsessions.php",
+      "expression": "$result",
+      "aliases": [
+        "$result"
+      ],
+      "database_relations": [
+        {
+          "table": "sessions",
+          "field": "",
+          "line": 8
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 10,
+          "condition": "(mysql_num_rows($result) == 0)"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "showsessions.php:LCP102",
+      "path": "showsessions.php",
+      "expression": "$curday",
+      "aliases": [
+        "$curday",
+        "$day"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 19,
+          "condition": "(strcmp($curday, $day))"
+        }
+      ],
+      "condition_indexes": [
+        2
+      ]
+    },
+    {
+      "id": "showsessions.php:LCP103",
+      "path": "showsessions.php",
+      "expression": "$row['starttime']",
+      "aliases": [
+        "$row['starttime']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 23,
+          "condition": "(strcmp($row['starttime'], \"0\"))"
+        }
+      ],
+      "condition_indexes": [
+        3
+      ]
+    },
+    {
+      "id": "showsessions.php:LCP104",
+      "path": "showsessions.php",
+      "expression": "$result2",
+      "aliases": [
+        "$result2"
+      ],
+      "database_relations": [
+        {
+          "table": "papers",
+          "field": "",
+          "line": 34
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 36,
+          "condition": "(mysql_num_rows($result2) == 0)"
+        }
+      ],
+      "condition_indexes": [
+        5
+      ]
+    },
+    {
+      "id": "showsessions.php:LCP105",
+      "path": "showsessions.php",
+      "expression": "$row3[0]",
+      "aliases": [
+        "$row3[0]"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 49,
+          "condition": "($row3[0] != 1)"
+        }
+      ],
+      "condition_indexes": [
+        7
+      ]
+    },
+    {
+      "id": "showsessions.php:LCP106",
+      "path": "showsessions.php",
+      "expression": "$count",
+      "aliases": [
+        "$count"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 55,
+          "condition": "($count != 0)"
+        }
+      ],
+      "condition_indexes": [
+        8
+      ]
+    },
+    {
+      "id": "useroptions.php:LCP107",
+      "path": "useroptions.php",
+      "expression": "$_POST['submit']",
+      "aliases": [
+        "$_POST['submit']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 6,
+          "condition": "(isset($_POST['submit']) )"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "useroptions.php:LCP108",
+      "path": "useroptions.php",
+      "expression": "$_POST['showemail']",
+      "aliases": [
+        "$_POST['showemail']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 7,
+          "condition": "($_POST['showemail'])"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "useroptions.php:LCP109",
+      "path": "useroptions.php",
+      "expression": "$_POST['password']",
+      "aliases": [
+        "$_POST['password']",
+        "$pass"
+      ],
+      "database_relations": [
+        {
+          "table": "users",
+          "field": "password",
+          "line": 15
+        },
+        {
+          "table": "users",
+          "field": "",
+          "line": 32
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 11,
+          "condition": "(!empty($_POST['password']))"
+        },
+        {
+          "source": "conditional",
+          "line": 12,
+          "condition": "(strcmp($_POST['password'], $_POST['password2']))"
+        }
+      ],
+      "condition_indexes": [
+        2,
+        3
+      ]
+    },
+    {
+      "id": "useroptions.php:LCP110",
+      "path": "useroptions.php",
+      "expression": "$_POST['password2']",
+      "aliases": [
+        "$_POST['password2']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 12,
+          "condition": "(strcmp($_POST['password'], $_POST['password2']))"
+        }
+      ],
+      "condition_indexes": [
+        3
+      ]
+    },
+    {
+      "id": "useroptions.php:LCP111",
+      "path": "useroptions.php",
+      "expression": "$email",
+      "aliases": [
+        "$email",
+        "$_POST['email']",
+        "$row[4]"
+      ],
+      "database_relations": [
+        {
+          "table": "users",
+          "field": "email",
+          "line": 32
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 19,
+          "condition": "(strcmp($email, $_POST['email']))"
+        },
+        {
+          "source": "conditional",
+          "line": 20,
+          "condition": "(strcmp($_POST['email'], $_POST['email2']))"
+        }
+      ],
+      "condition_indexes": [
+        4,
+        5
+      ]
+    },
+    {
+      "id": "useroptions.php:LCP112",
+      "path": "useroptions.php",
+      "expression": "$_POST['email2']",
+      "aliases": [
+        "$_POST['email2']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 20,
+          "condition": "(strcmp($_POST['email'], $_POST['email2']))"
+        }
+      ],
+      "condition_indexes": [
+        5
+      ]
+    },
+    {
+      "id": "useroptions.php:LCP113",
+      "path": "useroptions.php",
+      "expression": "$ret",
+      "aliases": [
+        "$ret"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 30,
+          "condition": "($ret === FALSE)"
+        }
+      ],
+      "condition_indexes": [
+        6
+      ]
+    },
+    {
+      "id": "useroptions.php:LCP114",
+      "path": "useroptions.php",
+      "expression": "$showemail",
+      "aliases": [
+        "$showemail",
+        "$row[2]"
+      ],
+      "database_relations": [
+        {
+          "table": "users",
+          "field": "showemail",
+          "line": 9
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 50,
+          "condition": "($showemail)"
+        }
+      ],
+      "condition_indexes": [
+        7
+      ]
+    }
+  ]
+}

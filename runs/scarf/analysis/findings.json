@@ -1,0 +1,414 @@
+{
+  "summary": {
+    "vulnerable": 7,
+    "not_vulnerable": 22
+  },
+  "findings": [
+    {
+      "category": "static_only",
+      "page": "install.php",
+      "actor": "visitor",
+      "status": "vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 200 without redirect or denial marker"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "addsession.php",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you don't have access to view this page"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "addsession.php",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you don't have access to view this page"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "addsession.php",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you don't have access to view this page"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "comments.php",
+      "actor": "visitor",
+      "status": "vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 200 without redirect or denial marker"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "comments.php",
+      "actor": "user1",
+      "status": "vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 200 without redirect or denial marker"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "comments.php",
+      "actor": "user2",
+      "status": "vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 200 without redirect or denial marker"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "comments.php?comment_id=p1",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you don't have access to view this page"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "comments.php?comment_id=p1",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you don't have access to view this page"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "comments.php?comment_id=p1",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you don't have access to view this page"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "editpaper.php",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you don't have access to view this page"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "editpaper.php",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you don't have access to view this page"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "editpaper.php",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you don't have access to view this page"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "editpaper.php?paper_id=p1",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you don't have access to view this page"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "editpaper.php?paper_id=p1",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you don't have access to view this page"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "editpaper.php?paper_id=p1",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you don't have access to view this page"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "editsession.php?action=confirmdelete&session_id=p1",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you don't have access to view this page"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "editsession.php?action=confirmdelete&session_id=p1",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you don't have access to view this page"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "editsession.php?action=confirmdelete&session_id=p1",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you don't have access to view this page"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "editsession.php?action=delete&session_id=p1",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you don't have access to view this page"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "editsession.php?action=delete&session_id=p1",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you don't have access to view this page"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "editsession.php?action=delete&session_id=p1",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you don't have access to view this page"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "editsession.php?session_id=p1",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you don't have access to view this page"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "editsession.php?session_id=p1",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you don't have access to view this page"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "editsession.php?session_id=p1",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you don't have access to view this page"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "generaloptions.php",
+      "actor": "visitor",
+      "status": "vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 200 without redirect or denial marker"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "generaloptions.php",
+      "actor": "user1",
+      "status": "vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 200 without redirect or denial marker"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "generaloptions.php",
+      "actor": "user2",
+      "status": "vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 200 without redirect or denial marker"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "useroptions.php",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you must be logged in to access this feature"
+      ],
+      "error": null
+    }
+  ]
+}

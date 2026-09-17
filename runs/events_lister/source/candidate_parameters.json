@@ -1,0 +1,1515 @@
+{
+  "parameters": [
+    {
+      "id": "admin/add.php:LCP1",
+      "path": "admin/add.php",
+      "expression": "$_POST['submit']",
+      "aliases": [
+        "$_POST['submit']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 40,
+          "condition": "(!isset($_POST['submit']))"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "admin/add.php:LCP2",
+      "path": "admin/add.php",
+      "expression": "$_SERVER['HTTP_REFERER']",
+      "aliases": [
+        "$_SERVER['HTTP_REFERER']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 80,
+          "condition": "(strpos($_SERVER['HTTP_REFERER'], $_SERVER['HTTP_HOST'])>7 || !strpos($_SERVER['HTTP_REFERER'], $_SERVER['HTTP_HOST']))"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "admin/add.php:LCP3",
+      "path": "admin/add.php",
+      "expression": "$_SERVER['HTTP_HOST']",
+      "aliases": [
+        "$_SERVER['HTTP_HOST']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 80,
+          "condition": "(strpos($_SERVER['HTTP_REFERER'], $_SERVER['HTTP_HOST'])>7 || !strpos($_SERVER['HTTP_REFERER'], $_SERVER['HTTP_HOST']))"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "admin/add.php:LCP4",
+      "path": "admin/add.php",
+      "expression": "$rt",
+      "aliases": [
+        "$rt"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 138,
+          "condition": "($rt)"
+        }
+      ],
+      "condition_indexes": [
+        2
+      ]
+    },
+    {
+      "id": "admin/add_user.php:LCP5",
+      "path": "admin/add_user.php",
+      "expression": "$_POST['submit']",
+      "aliases": [
+        "$_POST['submit']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 66,
+          "condition": "(!isset($_POST['submit']))"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "admin/add_user.php:LCP6",
+      "path": "admin/add_user.php",
+      "expression": "$res",
+      "aliases": [
+        "$res"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 114,
+          "condition": "(mysqli_num_rows($res) > 0)"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "admin/add_user.php:LCP7",
+      "path": "admin/add_user.php",
+      "expression": "$rt",
+      "aliases": [
+        "$rt"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 133,
+          "condition": "($rt)"
+        }
+      ],
+      "condition_indexes": [
+        2
+      ]
+    },
+    {
+      "id": "admin/common.php:LCP8",
+      "path": "admin/common.php",
+      "expression": "$_SESSION['userName']",
+      "aliases": [
+        "$_SESSION['userName']",
+        "$query",
+        "$username"
+      ],
+      "database_relations": [
+        {
+          "table": "admin",
+          "field": "uname",
+          "line": 34
+        },
+        {
+          "table": "admin",
+          "field": "",
+          "line": 34
+        }
+      ],
+      "sources": [
+        "database"
+      ],
+      "locations": [
+        {
+          "source": "database",
+          "line": 56,
+          "condition": "$_SESSION['userName']"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "admin/common.php:LCP9",
+      "path": "admin/common.php",
+      "expression": "$pword",
+      "aliases": [
+        "$pword"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 53,
+          "condition": "($pword == md5($password.$salt))"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "admin/common.php:LCP10",
+      "path": "admin/common.php",
+      "expression": "$password",
+      "aliases": [
+        "$password"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 53,
+          "condition": "($pword == md5($password.$salt))"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "admin/common.php:LCP11",
+      "path": "admin/common.php",
+      "expression": "$salt",
+      "aliases": [
+        "$salt"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 53,
+          "condition": "($pword == md5($password.$salt))"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "admin/common.php:LCP12",
+      "path": "admin/common.php",
+      "expression": "$validUser",
+      "aliases": [
+        "$validUser"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 59,
+          "condition": "($validUser != true)"
+        },
+        {
+          "source": "conditional",
+          "line": 61,
+          "condition": "($validUser == true)"
+        }
+      ],
+      "condition_indexes": [
+        2,
+        3
+      ]
+    },
+    {
+      "id": "admin/common.php:LCP13",
+      "path": "admin/common.php",
+      "expression": "$_SESSION['userName']",
+      "aliases": [
+        "$_SESSION['userName']"
+      ],
+      "database_relations": [
+        {
+          "table": "admin",
+          "field": "uname",
+          "line": 34
+        },
+        {
+          "table": "admin",
+          "field": "",
+          "line": 34
+        }
+      ],
+      "sources": [
+        "database"
+      ],
+      "locations": [
+        {
+          "source": "database",
+          "line": 1,
+          "condition": "$_SESSION['userName']"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "admin/common.php:LCP14",
+      "path": "admin/common.php",
+      "expression": "$_SESSION['validUser']",
+      "aliases": [
+        "$_SESSION['validUser']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 72,
+          "condition": "((!isset($_SESSION['validUser'])) || ($_SESSION['validUser'] != true))"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "admin/copy.php:LCP15",
+      "path": "admin/copy.php",
+      "expression": "$_POST['submit']",
+      "aliases": [
+        "$_POST['submit']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 92,
+          "condition": "(!isset($_POST['submit']))"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "admin/copy.php:LCP16",
+      "path": "admin/copy.php",
+      "expression": "$rt",
+      "aliases": [
+        "$rt"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 170,
+          "condition": "($rt)"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "admin/db.php:LCP17",
+      "path": "admin/db.php",
+      "expression": "$page_name",
+      "aliases": [
+        "$page_name"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 5,
+          "condition": "($page_name == 'add.php')"
+        },
+        {
+          "source": "conditional",
+          "line": 6,
+          "condition": "($page_name == 'update.php')"
+        },
+        {
+          "source": "conditional",
+          "line": 7,
+          "condition": "($page_name == 'copy.php')"
+        },
+        {
+          "source": "conditional",
+          "line": 9,
+          "condition": "($page_name == 'add.php')"
+        }
+      ],
+      "condition_indexes": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "id": "admin/delete.php:LCP18",
+      "path": "admin/delete.php",
+      "expression": "$_POST['submit']",
+      "aliases": [
+        "$_POST['submit']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 60,
+          "condition": "(!isset($_POST['submit']))"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "admin/delete.php:LCP19",
+      "path": "admin/delete.php",
+      "expression": "$query",
+      "aliases": [
+        "$query",
+        "$_GET['id']",
+        "$_POST['ud_id']",
+        "$id",
+        "$ud_id"
+      ],
+      "database_relations": [
+        {
+          "table": "events",
+          "field": "",
+          "line": 39
+        },
+        {
+          "table": "events",
+          "field": "",
+          "line": 81
+        },
+        {
+          "table": "events",
+          "field": "id",
+          "line": 39
+        },
+        {
+          "table": "events",
+          "field": "id",
+          "line": 81
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 84,
+          "condition": "($query)"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "admin/index.php:LCP20",
+      "path": "admin/index.php",
+      "expression": "$id",
+      "aliases": [
+        "$id"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 68,
+          "condition": "($id == \"\")"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "admin/list.php:LCP21",
+      "path": "admin/list.php",
+      "expression": "$status",
+      "aliases": [
+        "$status",
+        "$_GET['status']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 45,
+          "condition": "($status ==null)"
+        },
+        {
+          "source": "conditional",
+          "line": 68,
+          "condition": "($status=='active')"
+        },
+        {
+          "source": "conditional",
+          "line": 71,
+          "condition": "($status=='all')"
+        }
+      ],
+      "condition_indexes": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "id": "admin/list.php:LCP22",
+      "path": "admin/list.php",
+      "expression": "$result",
+      "aliases": [
+        "$result"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 104,
+          "condition": "(!mysqli_num_rows($result))"
+        }
+      ],
+      "condition_indexes": [
+        3
+      ]
+    },
+    {
+      "id": "admin/login.php:LCP23",
+      "path": "admin/login.php",
+      "expression": "$_POST['submitBtn']",
+      "aliases": [
+        "$_POST['submitBtn']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 24,
+          "condition": "(isset($_POST['submitBtn']))"
+        },
+        {
+          "source": "conditional",
+          "line": 88,
+          "condition": "(isset($_POST['submitBtn']))"
+        }
+      ],
+      "condition_indexes": [
+        0,
+        3
+      ]
+    },
+    {
+      "id": "admin/login.php:LCP24",
+      "path": "admin/login.php",
+      "expression": "$filename",
+      "aliases": [
+        "$filename"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 61,
+          "condition": "(file_exists($filename))"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "admin/login.php:LCP25",
+      "path": "admin/login.php",
+      "expression": "$error",
+      "aliases": [
+        "$error"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 70,
+          "condition": "($error != '')"
+        },
+        {
+          "source": "conditional",
+          "line": 95,
+          "condition": "($error == '')"
+        }
+      ],
+      "condition_indexes": [
+        2,
+        4
+      ]
+    },
+    {
+      "id": "admin/message.php:LCP26",
+      "path": "admin/message.php",
+      "expression": "$_POST['submit']",
+      "aliases": [
+        "$_POST['submit']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 58,
+          "condition": "(!isset($_POST['submit']))"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "admin/message.php:LCP27",
+      "path": "admin/message.php",
+      "expression": "$query",
+      "aliases": [
+        "$query",
+        "$_POST['ud_description']",
+        "$ud_description"
+      ],
+      "database_relations": [
+        {
+          "table": "no_events",
+          "field": "description",
+          "line": 97
+        },
+        {
+          "table": "no_events",
+          "field": "",
+          "line": 40
+        },
+        {
+          "table": "no_events",
+          "field": "",
+          "line": 97
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 100,
+          "condition": "($query)"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "admin/recover.php:LCP28",
+      "path": "admin/recover.php",
+      "expression": "$_POST['submit']",
+      "aliases": [
+        "$_POST['submit']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 33,
+          "condition": "(!isset($_POST['submit']))"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "admin/recover.php:LCP29",
+      "path": "admin/recover.php",
+      "expression": "$email",
+      "aliases": [
+        "$email",
+        "$_REQUEST['email']",
+        "$query"
+      ],
+      "database_relations": [
+        {
+          "table": "admin",
+          "field": "uname",
+          "line": 85
+        },
+        {
+          "table": "admin",
+          "field": "",
+          "line": 85
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 77,
+          "condition": "($email ==\"\")"
+        },
+        {
+          "source": "conditional",
+          "line": 97,
+          "condition": "($uname == $email)"
+        }
+      ],
+      "condition_indexes": [
+        1,
+        2
+      ]
+    },
+    {
+      "id": "admin/recover.php:LCP30",
+      "path": "admin/recover.php",
+      "expression": "$uname",
+      "aliases": [
+        "$uname"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 97,
+          "condition": "($uname == $email)"
+        }
+      ],
+      "condition_indexes": [
+        2
+      ]
+    },
+    {
+      "id": "admin/reset.php:LCP31",
+      "path": "admin/reset.php",
+      "expression": "$_POST['submit']",
+      "aliases": [
+        "$_POST['submit']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 30,
+          "condition": "(!isset($_POST['submit']) )"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "admin/reset.php:LCP32",
+      "path": "admin/reset.php",
+      "expression": "$code",
+      "aliases": [
+        "$code",
+        "$_GET['code']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 51,
+          "condition": "(($code != $pw) || ($code ==null))"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "admin/reset.php:LCP33",
+      "path": "admin/reset.php",
+      "expression": "$pw",
+      "aliases": [
+        "$pw"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 51,
+          "condition": "(($code != $pw) || ($code ==null))"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "admin/setup.php:LCP34",
+      "path": "admin/setup.php",
+      "expression": "$_POST['submit']",
+      "aliases": [
+        "$_POST['submit']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 58,
+          "condition": "(!isset($_POST['submit']))"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "admin/setup.php:LCP35",
+      "path": "admin/setup.php",
+      "expression": "$query5",
+      "aliases": [
+        "$query5"
+      ],
+      "database_relations": [
+        {
+          "table": "admin",
+          "field": "",
+          "line": 155
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 158,
+          "condition": "($query5)"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "admin/setup.php:LCP36",
+      "path": "admin/setup.php",
+      "expression": "$test_event",
+      "aliases": [
+        "$test_event",
+        "$_POST['test_event']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 161,
+          "condition": "($test_event ==\"yes\")"
+        }
+      ],
+      "condition_indexes": [
+        2
+      ]
+    },
+    {
+      "id": "admin/setup.php:LCP37",
+      "path": "admin/setup.php",
+      "expression": "$id",
+      "aliases": [
+        "$id"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 211,
+          "condition": "($id != \"\")"
+        }
+      ],
+      "condition_indexes": [
+        3
+      ]
+    },
+    {
+      "id": "admin/update.php:LCP38",
+      "path": "admin/update.php",
+      "expression": "$_POST['submit']",
+      "aliases": [
+        "$_POST['submit']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 41,
+          "condition": "(!isset($_POST['submit']))"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "admin/update.php:LCP39",
+      "path": "admin/update.php",
+      "expression": "$rt",
+      "aliases": [
+        "$rt"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 89,
+          "condition": "($rt)"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "admin/user_add.php:LCP40",
+      "path": "admin/user_add.php",
+      "expression": "$_POST['submit']",
+      "aliases": [
+        "$_POST['submit']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 62,
+          "condition": "(!isset($_POST['submit']))"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "admin/user_add.php:LCP41",
+      "path": "admin/user_add.php",
+      "expression": "$res",
+      "aliases": [
+        "$res"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 105,
+          "condition": "(mysqli_num_rows($res) > 0)"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "admin/user_add.php:LCP42",
+      "path": "admin/user_add.php",
+      "expression": "$rt",
+      "aliases": [
+        "$rt"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 123,
+          "condition": "($rt)"
+        }
+      ],
+      "condition_indexes": [
+        2
+      ]
+    },
+    {
+      "id": "admin/user_delete.php:LCP43",
+      "path": "admin/user_delete.php",
+      "expression": "$_SESSION['userName']",
+      "aliases": [
+        "$_SESSION['userName']",
+        "$un"
+      ],
+      "database_relations": [
+        {
+          "table": "admin",
+          "field": "uname",
+          "line": 34
+        },
+        {
+          "table": "admin",
+          "field": "",
+          "line": 34
+        }
+      ],
+      "sources": [
+        "database",
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "database",
+          "line": 22,
+          "condition": "$_SESSION['userName']"
+        },
+        {
+          "source": "conditional",
+          "line": 57,
+          "condition": "($uname == $un)"
+        }
+      ],
+      "condition_indexes": [
+        0,
+        2
+      ]
+    },
+    {
+      "id": "admin/user_delete.php:LCP44",
+      "path": "admin/user_delete.php",
+      "expression": "$num",
+      "aliases": [
+        "$num"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 46,
+          "condition": "($num > 0)"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "admin/user_delete.php:LCP45",
+      "path": "admin/user_delete.php",
+      "expression": "$uname",
+      "aliases": [
+        "$uname",
+        "$row['uname']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 57,
+          "condition": "($uname == $un)"
+        },
+        {
+          "source": "conditional",
+          "line": 69,
+          "condition": "($uname == 'demo')"
+        }
+      ],
+      "condition_indexes": [
+        2,
+        4
+      ]
+    },
+    {
+      "id": "admin/user_delete.php:LCP46",
+      "path": "admin/user_delete.php",
+      "expression": "$id",
+      "aliases": [
+        "$id",
+        "$_GET['id']",
+        "$_POST['ud_id']",
+        "$query",
+        "$row['id']",
+        "$ud_id"
+      ],
+      "database_relations": [
+        {
+          "table": "admin",
+          "field": "",
+          "line": 43
+        },
+        {
+          "table": "admin",
+          "field": "",
+          "line": 102
+        },
+        {
+          "table": "admin",
+          "field": "id",
+          "line": 43
+        },
+        {
+          "table": "admin",
+          "field": "id",
+          "line": 102
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 63,
+          "condition": "($id == '1')"
+        },
+        {
+          "source": "conditional",
+          "line": 105,
+          "condition": "($query)"
+        }
+      ],
+      "condition_indexes": [
+        3,
+        6
+      ]
+    },
+    {
+      "id": "admin/user_delete.php:LCP47",
+      "path": "admin/user_delete.php",
+      "expression": "$_POST['submit']",
+      "aliases": [
+        "$_POST['submit']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 77,
+          "condition": "(!isset($_POST['submit']))"
+        }
+      ],
+      "condition_indexes": [
+        5
+      ]
+    },
+    {
+      "id": "index.php:LCP48",
+      "path": "index.php",
+      "expression": "$result",
+      "aliases": [
+        "$result"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 60,
+          "condition": "(!$result)"
+        },
+        {
+          "source": "conditional",
+          "line": 144,
+          "condition": "(!mysqli_num_rows($result))"
+        }
+      ],
+      "condition_indexes": [
+        0,
+        9
+      ]
+    },
+    {
+      "id": "index.php:LCP49",
+      "path": "index.php",
+      "expression": "$html",
+      "aliases": [
+        "$html"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 106,
+          "condition": "($html ==\"0\")"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "index.php:LCP50",
+      "path": "index.php",
+      "expression": "$hour",
+      "aliases": [
+        "$hour"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 112,
+          "condition": "($hour !=\"10\")"
+        }
+      ],
+      "condition_indexes": [
+        2
+      ]
+    },
+    {
+      "id": "index.php:LCP51",
+      "path": "index.php",
+      "expression": "$hour_end",
+      "aliases": [
+        "$hour_end"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 116,
+          "condition": "($hour_end !=\"10\")"
+        },
+        {
+          "source": "conditional",
+          "line": 120,
+          "condition": "(($hour_end =='') && ($minute_end =='') && ($ampm_end ==''))"
+        }
+      ],
+      "condition_indexes": [
+        3,
+        4
+      ]
+    },
+    {
+      "id": "index.php:LCP52",
+      "path": "index.php",
+      "expression": "$minute_end",
+      "aliases": [
+        "$minute_end"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 120,
+          "condition": "(($hour_end =='') && ($minute_end =='') && ($ampm_end ==''))"
+        }
+      ],
+      "condition_indexes": [
+        4
+      ]
+    },
+    {
+      "id": "index.php:LCP53",
+      "path": "index.php",
+      "expression": "$ampm_end",
+      "aliases": [
+        "$ampm_end"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 120,
+          "condition": "(($hour_end =='') && ($minute_end =='') && ($ampm_end ==''))"
+        }
+      ],
+      "condition_indexes": [
+        4
+      ]
+    },
+    {
+      "id": "index.php:LCP54",
+      "path": "index.php",
+      "expression": "$month_end",
+      "aliases": [
+        "$month_end"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 123,
+          "condition": "(($month_end =='') && ($day_end =='') && ($year_end ==''))"
+        }
+      ],
+      "condition_indexes": [
+        5
+      ]
+    },
+    {
+      "id": "index.php:LCP55",
+      "path": "index.php",
+      "expression": "$day_end",
+      "aliases": [
+        "$day_end"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 123,
+          "condition": "(($month_end =='') && ($day_end =='') && ($year_end ==''))"
+        }
+      ],
+      "condition_indexes": [
+        5
+      ]
+    },
+    {
+      "id": "index.php:LCP56",
+      "path": "index.php",
+      "expression": "$year_end",
+      "aliases": [
+        "$year_end"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 123,
+          "condition": "(($month_end =='') && ($day_end =='') && ($year_end ==''))"
+        }
+      ],
+      "condition_indexes": [
+        5
+      ]
+    },
+    {
+      "id": "index.php:LCP57",
+      "path": "index.php",
+      "expression": "$email",
+      "aliases": [
+        "$email"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 133,
+          "condition": "($email)"
+        }
+      ],
+      "condition_indexes": [
+        6
+      ]
+    },
+    {
+      "id": "index.php:LCP58",
+      "path": "index.php",
+      "expression": "$phone",
+      "aliases": [
+        "$phone"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 134,
+          "condition": "($phone)"
+        }
+      ],
+      "condition_indexes": [
+        7
+      ]
+    },
+    {
+      "id": "index.php:LCP59",
+      "path": "index.php",
+      "expression": "$link",
+      "aliases": [
+        "$link"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 136,
+          "condition": "($link)"
+        }
+      ],
+      "condition_indexes": [
+        8
+      ]
+    }
+  ]
+}

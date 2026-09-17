@@ -1,0 +1,204 @@
+{
+  "functions": [
+    {
+      "id": "comments.php:LCF1",
+      "path": "comments.php",
+      "name": "sendAuthorsEmails",
+      "parameters": [
+        "$comment_id"
+      ],
+      "body": "{\r\n\t$row = mysql_fetch_row(query(\"SELECT paper_id FROM comments WHERE comment_id='$comment_id'\"));\r\n\t$paper_id = (int) $row[0];\r\n\t$row = mysql_fetch_row(query(\"SELECT users.email, comments.comment FROM comments LEFT JOIN users USING (user_id) WHERE comment_id='$comment_id'\"));\r\n\t$author = $row[0];\r\n\t$comment = $row[1];\r\n\t$row = mysql_fetch_row(query(\"SELECT title FROM papers WHERE paper_id='$paper_id'\"));\r\n\t$title = $row[0];\r\n\t$result = query(\"SELECT users.email FROM authors INNER JOIN users USING (user_id) WHERE paper_id='$paper_id'\");\r\n\r\n\twhile ($row = mysql_fetch_row($result)) {\r\n\t\tmail($row[0], \"Comment on $title\", \"$author has posted a comment on your paper titled '$title':\r\n\r\n$comment\r\n\r\nPlease visit \" . getBaseLink() . \"/showpaper.php?paper_id=$paper_id\r\n\r\nto respond.\", \"From: scarf-do-not-reply@\" . $_SERVER['HTTP_HOST']);\r\n\t}\r\n\t\r\n\t$result = query(\"SELECT DISTINCT users.email FROM comments INNER JOIN users USING (user_id) WHERE paper_id='$paper_id'\");\r\n\twhile ($row = mysql_fetch_row($result)) {\r\n                mail($row[0], \"Comment on $title\", \"$author has posted a comment on the paper titled '$title'. You are being notified since you have posted to that topic as well.\r\n\r\n$comment\r\n\r\nPlease visit \" . getBaseLink() . \"/showpaper.php?paper_id=$paper_id\r\n\r\nto respond.\", \"From: scarf-do-not-reply@\" . $_SERVER['HTTP_HOST']);\r\n        }\r\n\r\n}",
+      "start_line": 3,
+      "end_line": 34,
+      "code": "function sendAuthorsEmails($comment_id) {\r\n\t$row = mysql_fetch_row(query(\"SELECT paper_id FROM comments WHERE comment_id='$comment_id'\"));\r\n\t$paper_id = (int) $row[0];\r\n\t$row = mysql_fetch_row(query(\"SELECT users.email, comments.comment FROM comments LEFT JOIN users USING (user_id) WHERE comment_id='$comment_id'\"));\r\n\t$author = $row[0];\r\n\t$comment = $row[1];\r\n\t$row = mysql_fetch_row(query(\"SELECT title FROM papers WHERE paper_id='$paper_id'\"));\r\n\t$title = $row[0];\r\n\t$result = query(\"SELECT users.email FROM authors INNER JOIN users USING (user_id) WHERE paper_id='$paper_id'\");\r\n\r\n\twhile ($row = mysql_fetch_row($result)) {\r\n\t\tmail($row[0], \"Comment on $title\", \"$author has posted a comment on your paper titled '$title':\r\n\r\n$comment\r\n\r\nPlease visit \" . getBaseLink() . \"/showpaper.php?paper_id=$paper_id\r\n\r\nto respond.\", \"From: scarf-do-not-reply@\" . $_SERVER['HTTP_HOST']);\r\n\t}\r\n\t\r\n\t$result = query(\"SELECT DISTINCT users.email FROM comments INNER JOIN users USING (user_id) WHERE paper_id='$paper_id'\");\r\n\twhile ($row = mysql_fetch_row($result)) {\r\n                mail($row[0], \"Comment on $title\", \"$author has posted a comment on the paper titled '$title'. You are being notified since you have posted to that topic as well.\r\n\r\n$comment\r\n\r\nPlease visit \" . getBaseLink() . \"/showpaper.php?paper_id=$paper_id\r\n\r\nto respond.\", \"From: scarf-do-not-reply@\" . $_SERVER['HTTP_HOST']);\r\n        }\r\n\r\n}"
+    },
+    {
+      "id": "functions.php:LCF2",
+      "path": "functions.php",
+      "name": "query",
+      "parameters": [
+        "$sql"
+      ],
+      "body": "{\r\n\t$result = mysql_query($sql);\r\n\tif (!$result) die(mysql_error());\r\n\treturn $result;\r\n}",
+      "start_line": 9,
+      "end_line": 13,
+      "code": "function query($sql) {\r\n\t$result = mysql_query($sql);\r\n\tif (!$result) die(mysql_error());\r\n\treturn $result;\r\n}"
+    },
+    {
+      "id": "functions.php:LCF3",
+      "path": "functions.php",
+      "name": "is_admin",
+      "parameters": [],
+      "body": "{\r\n\tif ($_SESSION['privilege'] == 'admin') return TRUE;\r\n\telse return FALSE;\r\n}",
+      "start_line": 15,
+      "end_line": 18,
+      "code": "function is_admin() {\r\n\tif ($_SESSION['privilege'] == 'admin') return TRUE;\r\n\telse return FALSE;\r\n}"
+    },
+    {
+      "id": "functions.php:LCF4",
+      "path": "functions.php",
+      "name": "validate_email",
+      "parameters": [
+        "$user_email"
+      ],
+      "body": "{\r\n        $chars = \"/^([a-z0-9+_]|\\\\-|\\\\.)+@(([a-z0-9_]|\\\\-)+\\\\.)+[a-z]{2,6}\\$/i\";\r\n        if(strstr($user_email, '@') && strstr($user_email, '.')) {\r\n                if (preg_match($chars, $user_email)) {\r\n                        return true;\r\n                } else {\r\n                        return false;\r\n                }\r\n        } else {\r\n                return false;\r\n        }\r\n}",
+      "start_line": 19,
+      "end_line": 30,
+      "code": "function validate_email($user_email) {\r\n        $chars = \"/^([a-z0-9+_]|\\\\-|\\\\.)+@(([a-z0-9_]|\\\\-)+\\\\.)+[a-z]{2,6}\\$/i\";\r\n        if(strstr($user_email, '@') && strstr($user_email, '.')) {\r\n                if (preg_match($chars, $user_email)) {\r\n                        return true;\r\n                } else {\r\n                        return false;\r\n                }\r\n        } else {\r\n                return false;\r\n        }\r\n}"
+    },
+    {
+      "id": "functions.php:LCF5",
+      "path": "functions.php",
+      "name": "genpassword",
+      "parameters": [
+        "$length"
+      ],
+      "body": "{\r\n\t$chars = \"abcdefghijklmnpqrstuvwxyzABCDEFGHIJKLMNPQRSTUVWXYZ123456789\";\r\n\tsrand((double)microtime()*1000000);\r\n\t$password=\"\";\r\n\tfor ($i=0;$i<$length;$i++)\r\n        \t$password .= substr ($chars, rand() % strlen($chars), 1);\r\n\treturn $password;\r\n}",
+      "start_line": 31,
+      "end_line": 38,
+      "code": "function genpassword($length){\r\n\t$chars = \"abcdefghijklmnpqrstuvwxyzABCDEFGHIJKLMNPQRSTUVWXYZ123456789\";\r\n\tsrand((double)microtime()*1000000);\r\n\t$password=\"\";\r\n\tfor ($i=0;$i<$length;$i++)\r\n        \t$password .= substr ($chars, rand() % strlen($chars), 1);\r\n\treturn $password;\r\n}"
+    },
+    {
+      "id": "functions.php:LCF6",
+      "path": "functions.php",
+      "name": "getEmail",
+      "parameters": [],
+      "body": "{\r\n\t/*\r\n\tif (array_key_exists(\"email\", $_SESSION))\r\n\t\treturn $_SESSION['email'];\r\n\telse\r\n\t\treturn FALSE;\r\n\t*/\r\n\t$result = query(\"SELECT email FROM users WHERE user_id='\" . getUserID() .\"'\");\r\n\tif (mysql_num_rows($result) == 0) return FALSE;\r\n\t$row = mysql_fetch_row($result);\r\n\t\r\n\treturn $row[0];\r\n}",
+      "start_line": 39,
+      "end_line": 51,
+      "code": "function getEmail() {\r\n\t/*\r\n\tif (array_key_exists(\"email\", $_SESSION))\r\n\t\treturn $_SESSION['email'];\r\n\telse\r\n\t\treturn FALSE;\r\n\t*/\r\n\t$result = query(\"SELECT email FROM users WHERE user_id='\" . getUserID() .\"'\");\r\n\tif (mysql_num_rows($result) == 0) return FALSE;\r\n\t$row = mysql_fetch_row($result);\r\n\t\r\n\treturn $row[0];\r\n}"
+    },
+    {
+      "id": "functions.php:LCF7",
+      "path": "functions.php",
+      "name": "getUserID",
+      "parameters": [],
+      "body": "{\r\n\tif (array_key_exists(\"user_id\", $_SESSION))\r\n\t\treturn $_SESSION['user_id'];\r\n\telse\r\n\t\treturn FALSE;\r\n}",
+      "start_line": 52,
+      "end_line": 57,
+      "code": "function getUserID() {\r\n\tif (array_key_exists(\"user_id\", $_SESSION))\r\n\t\treturn $_SESSION['user_id'];\r\n\telse\r\n\t\treturn FALSE;\r\n}"
+    },
+    {
+      "id": "functions.php:LCF8",
+      "path": "functions.php",
+      "name": "getName",
+      "parameters": [],
+      "body": "{\r\n\t$result = query(\"SELECT CONCAT(firstname, ' ', lastname) from users where `email`='\" . getEmail() . \"'\");\r\n\t$row = mysql_fetch_row($result);\r\n\treturn $row[0];\r\n}",
+      "start_line": 59,
+      "end_line": 63,
+      "code": "function getName() {\r\n\t$result = query(\"SELECT CONCAT(firstname, ' ', lastname) from users where `email`='\" . getEmail() . \"'\");\r\n\t$row = mysql_fetch_row($result);\r\n\treturn $row[0];\r\n}"
+    },
+    {
+      "id": "functions.php:LCF9",
+      "path": "functions.php",
+      "name": "require_admin",
+      "parameters": [],
+      "body": "{\r\n\tif (!is_admin()) {\r\n\t        die (\"You don't have access to view this page, sorry. Please try going to the <a href='index.php'>index page</a> to view the site.\");\r\n\t}\r\n}",
+      "start_line": 65,
+      "end_line": 69,
+      "code": "function require_admin() {\r\n\tif (!is_admin()) {\r\n\t        die (\"You don't have access to view this page, sorry. Please try going to the <a href='index.php'>index page</a> to view the site.\");\r\n\t}\r\n}"
+    },
+    {
+      "id": "functions.php:LCF10",
+      "path": "functions.php",
+      "name": "require_loggedin",
+      "parameters": [],
+      "body": "{\r\n\tif (getEmail() === FALSE) {\r\n\t\tdie (\"You must be logged in to access this feature. Please try going to the <a href='index.php'>index page</a> to view the site.\");\r\n\t}\r\n}",
+      "start_line": 70,
+      "end_line": 74,
+      "code": "function require_loggedin() {\r\n\tif (getEmail() === FALSE) {\r\n\t\tdie (\"You must be logged in to access this feature. Please try going to the <a href='index.php'>index page</a> to view the site.\");\r\n\t}\r\n}"
+    },
+    {
+      "id": "functions.php:LCF11",
+      "path": "functions.php",
+      "name": "showEmail",
+      "parameters": [
+        "$email"
+      ],
+      "body": "{\r\n\t$result = query(\"SELECT showemail FROM users WHERE email='$email'\");\r\n\t$row = mysql_fetch_row($result);\r\n\tif ($row[0]) return TRUE;\r\n\telse return FALSE;\r\n}",
+      "start_line": 75,
+      "end_line": 80,
+      "code": "function showEmail($email) {\r\n\t$result = query(\"SELECT showemail FROM users WHERE email='$email'\");\r\n\t$row = mysql_fetch_row($result);\r\n\tif ($row[0]) return TRUE;\r\n\telse return FALSE;\r\n}"
+    },
+    {
+      "id": "functions.php:LCF12",
+      "path": "functions.php",
+      "name": "is_moderated",
+      "parameters": [],
+      "body": "{\r\n\t$result = query(\"SELECT value FROM options WHERE name='Is Forum Moderated (emails the admins on every post)'\");\r\n        $row = mysql_fetch_row($result);\r\n        if ($row[0]) return TRUE;\r\n        else return FALSE;\r\n}",
+      "start_line": 81,
+      "end_line": 86,
+      "code": "function is_moderated() {\r\n\t$result = query(\"SELECT value FROM options WHERE name='Is Forum Moderated (emails the admins on every post)'\");\r\n        $row = mysql_fetch_row($result);\r\n        if ($row[0]) return TRUE;\r\n        else return FALSE;\r\n}"
+    },
+    {
+      "id": "functions.php:LCF13",
+      "path": "functions.php",
+      "name": "getBaseLink",
+      "parameters": [],
+      "body": "{\r\n        $pos = strrpos($_SERVER['REQUEST_URI'], \"/\");\r\n        return \"http://\" . $_SERVER['HTTP_HOST'] . substr($_SERVER['REQUEST_URI'],0,$pos);\r\n}",
+      "start_line": 87,
+      "end_line": 90,
+      "code": "function getBaseLink() {\r\n        $pos = strrpos($_SERVER['REQUEST_URI'], \"/\");\r\n        return \"http://\" . $_SERVER['HTTP_HOST'] . substr($_SERVER['REQUEST_URI'],0,$pos);\r\n}"
+    },
+    {
+      "id": "functions.php:LCF14",
+      "path": "functions.php",
+      "name": "getSiteName",
+      "parameters": [],
+      "body": "{\r\n\t$result = mysql_query(\"SELECT value FROM options WHERE name='Conference Name'\");\r\n\tif (! $result) return \"Conf DB Conference Disussion Forum\";\r\n\t$row = mysql_fetch_row($result);\r\n\treturn $row[0];\r\n}",
+      "start_line": 91,
+      "end_line": 96,
+      "code": "function getSiteName() {\r\n\t$result = mysql_query(\"SELECT value FROM options WHERE name='Conference Name'\");\r\n\tif (! $result) return \"Conf DB Conference Disussion Forum\";\r\n\t$row = mysql_fetch_row($result);\r\n\treturn $row[0];\r\n}"
+    },
+    {
+      "id": "functions.php:LCF15",
+      "path": "functions.php",
+      "name": "logToFile",
+      "parameters": [
+        "$string"
+      ],
+      "body": "{\r\n\tif (is_writeable(\"log\")) {\r\n\t\t$f = fopen(\"log\", \"a\");\r\n\t\tfwrite($f, date(\"F j, Y, g:i a\") . \": $string\\n\");\r\n\t\tfclose($f);\r\n\t}\r\n}",
+      "start_line": 97,
+      "end_line": 103,
+      "code": "function logToFile($string) {\r\n\tif (is_writeable(\"log\")) {\r\n\t\t$f = fopen(\"log\", \"a\");\r\n\t\tfwrite($f, date(\"F j, Y, g:i a\") . \": $string\\n\");\r\n\t\tfclose($f);\r\n\t}\r\n}"
+    },
+    {
+      "id": "functions.php:LCF16",
+      "path": "functions.php",
+      "name": "implode_with_keys",
+      "parameters": [
+        "$glue",
+        "$array",
+        "$valwrap=''"
+      ],
+      "body": "{\r\n       foreach($array AS $key => $value) {\r\n           $ret[] = $key.\"=\".$valwrap.mysql_real_escape_string($value).$valwrap;\r\n       }\r\n       return implode($glue, $ret);\r\n   }",
+      "start_line": 104,
+      "end_line": 110,
+      "code": "function implode_with_keys($glue, $array, $valwrap='')\r\n   {\r\n       foreach($array AS $key => $value) {\r\n           $ret[] = $key.\"=\".$valwrap.mysql_real_escape_string($value).$valwrap;\r\n       }\r\n       return implode($glue, $ret);\r\n   }"
+    },
+    {
+      "id": "functions.php:LCF17",
+      "path": "functions.php",
+      "name": "quote_smart",
+      "parameters": [
+        "$value"
+      ],
+      "body": "{\r\n   // Stripslashes\r\n   if (get_magic_quotes_gpc()) {\r\n       $value = stripslashes($value);\r\n   }\r\n   // Quote if not a number or a numeric string\r\n   if (!is_numeric($value)) {\r\n       $value = \"'\" . mysql_real_escape_string($value) . \"'\";\r\n   }\r\n   return $value;\r\n}",
+      "start_line": 114,
+      "end_line": 125,
+      "code": "function quote_smart($value)\r\n{\r\n   // Stripslashes\r\n   if (get_magic_quotes_gpc()) {\r\n       $value = stripslashes($value);\r\n   }\r\n   // Quote if not a number or a numeric string\r\n   if (!is_numeric($value)) {\r\n       $value = \"'\" . mysql_real_escape_string($value) . \"'\";\r\n   }\r\n   return $value;\r\n}"
+    },
+    {
+      "id": "functions.php:LCF18",
+      "path": "functions.php",
+      "name": "stripslashes_deep",
+      "parameters": [
+        "$value"
+      ],
+      "body": "{\r\n       if( is_array($value) )\r\n       {\r\n             $value = array_map('stripslashes_deep', $value);\r\n       }\r\n       elseif ( !empty($value) && is_string($value) )\r\n       {\r\n             $value = stripslashes($value);\r\n       }\r\n       return $value;\r\n   }",
+      "start_line": 128,
+      "end_line": 138,
+      "code": "function stripslashes_deep($value) {\r\n       if( is_array($value) )\r\n       {\r\n             $value = array_map('stripslashes_deep', $value);\r\n       }\r\n       elseif ( !empty($value) && is_string($value) )\r\n       {\r\n             $value = stripslashes($value);\r\n       }\r\n       return $value;\r\n   }"
+    }
+  ]
+}

@@ -1,0 +1,807 @@
+{
+  "role": "user1",
+  "kind": "user",
+  "nodes": [
+    "./",
+    "cart/action.php?action=add&picid=18",
+    "cart/action.php?action=add&picid=19",
+    "cart/action.php?action=add&picid=20",
+    "cart/action.php?action=add&picid=21",
+    "cart/action.php?action=add&picid=22",
+    "cart/action.php?action=add&picid=23",
+    "cart/action.php?action=add&picid=24",
+    "cart/action.php?action=add&picid=47",
+    "cart/action.php?action=addcoupon",
+    "cart/action.php?action=delete",
+    "cart/confirm.php",
+    "cart/review.php",
+    "comments/add_comment.php",
+    "comments/delete_preview_comment.php",
+    "comments/preview_comment.php",
+    "error.php?msg=p1",
+    "guestbook.php",
+    "index.php",
+    "passcheck.php",
+    "piccheck.php",
+    "pictures/high_quality.php?key=MTE0MTkyMQ%3D%3D&picid=20",
+    "pictures/high_quality.php?key=MzI0ODk4OA%3D%3D&picid=23",
+    "pictures/high_quality.php?key=NDAxNjQwNA%3D%3D&picid=19",
+    "pictures/high_quality.php?key=NDg0MDUz&picid=24",
+    "pictures/high_quality.php?key=NTQ3MTg1Ng%3D%3D&picid=18",
+    "pictures/high_quality.php?key=NzczMjk4OA%3D%3D&picid=21",
+    "pictures/high_quality.php?key=ODE5Mjk0Nw%3D%3D&picid=22",
+    "pictures/purchased.php",
+    "pictures/recent.php",
+    "pictures/search.php",
+    "pictures/search.php?query=nature&x=p1&y=p1",
+    "pictures/upload.php",
+    "pictures/view.php?picid=",
+    "pictures/view.php?picid=18",
+    "pictures/view.php?picid=19",
+    "pictures/view.php?picid=20",
+    "pictures/view.php?picid=21",
+    "pictures/view.php?picid=22",
+    "pictures/view.php?picid=23",
+    "pictures/view.php?picid=24",
+    "pictures/view.php?picid=46",
+    "pictures/view.php?picid=47",
+    "tos.php",
+    "users/home.php",
+    "users/register.php",
+    "users/sample.php?userid=p1",
+    "users/similar.php",
+    "users/view.php?userid=p1"
+  ],
+  "edges": [
+    {
+      "from": "./",
+      "to": "cart/review.php"
+    },
+    {
+      "from": "./",
+      "to": "piccheck.php"
+    },
+    {
+      "from": "./",
+      "to": "pictures/search.php"
+    },
+    {
+      "from": "./",
+      "to": "users/register.php"
+    },
+    {
+      "from": "cart/action.php?action=add&picid=18",
+      "to": "cart/review.php"
+    },
+    {
+      "from": "cart/action.php?action=add&picid=19",
+      "to": "cart/review.php"
+    },
+    {
+      "from": "cart/action.php?action=add&picid=20",
+      "to": "cart/review.php"
+    },
+    {
+      "from": "cart/action.php?action=add&picid=21",
+      "to": "cart/review.php"
+    },
+    {
+      "from": "cart/action.php?action=add&picid=22",
+      "to": "cart/review.php"
+    },
+    {
+      "from": "cart/action.php?action=add&picid=23",
+      "to": "cart/review.php"
+    },
+    {
+      "from": "cart/action.php?action=add&picid=24",
+      "to": "cart/review.php"
+    },
+    {
+      "from": "cart/action.php?action=add&picid=47",
+      "to": "cart/review.php"
+    },
+    {
+      "from": "cart/action.php?action=delete",
+      "to": "error.php?msg=p1"
+    },
+    {
+      "from": "cart/action.php?action=delete",
+      "to": "users/home.php"
+    },
+    {
+      "from": "cart/confirm.php",
+      "to": "error.php?msg=p1"
+    },
+    {
+      "from": "cart/review.php",
+      "to": "cart/action.php?action=addcoupon"
+    },
+    {
+      "from": "cart/review.php",
+      "to": "cart/action.php?action=delete"
+    },
+    {
+      "from": "cart/review.php",
+      "to": "cart/confirm.php"
+    },
+    {
+      "from": "cart/review.php",
+      "to": "guestbook.php"
+    },
+    {
+      "from": "cart/review.php",
+      "to": "pictures/search.php"
+    },
+    {
+      "from": "cart/review.php",
+      "to": "tos.php"
+    },
+    {
+      "from": "comments/delete_preview_comment.php",
+      "to": "pictures/view.php?picid="
+    },
+    {
+      "from": "comments/preview_comment.php",
+      "to": "comments/add_comment.php"
+    },
+    {
+      "from": "comments/preview_comment.php",
+      "to": "comments/delete_preview_comment.php"
+    },
+    {
+      "from": "comments/preview_comment.php",
+      "to": "comments/preview_comment.php"
+    },
+    {
+      "from": "comments/preview_comment.php",
+      "to": "pictures/search.php"
+    },
+    {
+      "from": "error.php?msg=p1",
+      "to": "pictures/search.php"
+    },
+    {
+      "from": "guestbook.php",
+      "to": "guestbook.php"
+    },
+    {
+      "from": "guestbook.php",
+      "to": "pictures/recent.php"
+    },
+    {
+      "from": "guestbook.php",
+      "to": "pictures/search.php"
+    },
+    {
+      "from": "index.php",
+      "to": "piccheck.php"
+    },
+    {
+      "from": "index.php",
+      "to": "pictures/search.php"
+    },
+    {
+      "from": "passcheck.php",
+      "to": "passcheck.php"
+    },
+    {
+      "from": "passcheck.php",
+      "to": "pictures/search.php"
+    },
+    {
+      "from": "piccheck.php",
+      "to": "piccheck.php"
+    },
+    {
+      "from": "piccheck.php",
+      "to": "pictures/search.php"
+    },
+    {
+      "from": "pictures/purchased.php",
+      "to": "pictures/high_quality.php?key=NDAxNjQwNA%3D%3D&picid=19"
+    },
+    {
+      "from": "pictures/purchased.php",
+      "to": "pictures/high_quality.php?key=NDg0MDUz&picid=24"
+    },
+    {
+      "from": "pictures/purchased.php",
+      "to": "pictures/high_quality.php?key=NTQ3MTg1Ng%3D%3D&picid=18"
+    },
+    {
+      "from": "pictures/purchased.php",
+      "to": "pictures/high_quality.php?key=NzczMjk4OA%3D%3D&picid=21"
+    },
+    {
+      "from": "pictures/purchased.php",
+      "to": "pictures/high_quality.php?key=ODE5Mjk0Nw%3D%3D&picid=22"
+    },
+    {
+      "from": "pictures/purchased.php",
+      "to": "pictures/search.php"
+    },
+    {
+      "from": "pictures/recent.php",
+      "to": "pictures/search.php"
+    },
+    {
+      "from": "pictures/recent.php",
+      "to": "pictures/upload.php"
+    },
+    {
+      "from": "pictures/recent.php",
+      "to": "pictures/view.php?picid=18"
+    },
+    {
+      "from": "pictures/recent.php",
+      "to": "pictures/view.php?picid=20"
+    },
+    {
+      "from": "pictures/recent.php",
+      "to": "pictures/view.php?picid=47"
+    },
+    {
+      "from": "pictures/search.php",
+      "to": "pictures/search.php?query=nature&x=p1&y=p1"
+    },
+    {
+      "from": "pictures/search.php?query=nature&x=p1&y=p1",
+      "to": "pictures/search.php"
+    },
+    {
+      "from": "pictures/upload.php",
+      "to": "pictures/search.php"
+    },
+    {
+      "from": "pictures/upload.php",
+      "to": "pictures/upload.php"
+    },
+    {
+      "from": "pictures/upload.php",
+      "to": "users/home.php"
+    },
+    {
+      "from": "pictures/view.php?picid=18",
+      "to": "cart/action.php?action=add&picid=18"
+    },
+    {
+      "from": "pictures/view.php?picid=18",
+      "to": "comments/preview_comment.php"
+    },
+    {
+      "from": "pictures/view.php?picid=18",
+      "to": "pictures/search.php"
+    },
+    {
+      "from": "pictures/view.php?picid=18",
+      "to": "pictures/view.php?picid=19"
+    },
+    {
+      "from": "pictures/view.php?picid=19",
+      "to": "cart/action.php?action=add&picid=19"
+    },
+    {
+      "from": "pictures/view.php?picid=19",
+      "to": "comments/preview_comment.php"
+    },
+    {
+      "from": "pictures/view.php?picid=19",
+      "to": "pictures/search.php"
+    },
+    {
+      "from": "pictures/view.php?picid=19",
+      "to": "pictures/view.php?picid=23"
+    },
+    {
+      "from": "pictures/view.php?picid=20",
+      "to": "cart/action.php?action=add&picid=20"
+    },
+    {
+      "from": "pictures/view.php?picid=20",
+      "to": "comments/preview_comment.php"
+    },
+    {
+      "from": "pictures/view.php?picid=20",
+      "to": "pictures/search.php"
+    },
+    {
+      "from": "pictures/view.php?picid=20",
+      "to": "pictures/view.php?picid=21"
+    },
+    {
+      "from": "pictures/view.php?picid=21",
+      "to": "comments/preview_comment.php"
+    },
+    {
+      "from": "pictures/view.php?picid=21",
+      "to": "pictures/search.php"
+    },
+    {
+      "from": "pictures/view.php?picid=22",
+      "to": "cart/action.php?action=add&picid=22"
+    },
+    {
+      "from": "pictures/view.php?picid=22",
+      "to": "comments/preview_comment.php"
+    },
+    {
+      "from": "pictures/view.php?picid=22",
+      "to": "pictures/search.php"
+    },
+    {
+      "from": "pictures/view.php?picid=23",
+      "to": "cart/action.php?action=add&picid=23"
+    },
+    {
+      "from": "pictures/view.php?picid=23",
+      "to": "comments/preview_comment.php"
+    },
+    {
+      "from": "pictures/view.php?picid=23",
+      "to": "pictures/search.php"
+    },
+    {
+      "from": "pictures/view.php?picid=23",
+      "to": "pictures/view.php?picid=24"
+    },
+    {
+      "from": "pictures/view.php?picid=24",
+      "to": "cart/action.php?action=add&picid=24"
+    },
+    {
+      "from": "pictures/view.php?picid=24",
+      "to": "comments/preview_comment.php"
+    },
+    {
+      "from": "pictures/view.php?picid=24",
+      "to": "pictures/search.php"
+    },
+    {
+      "from": "pictures/view.php?picid=24",
+      "to": "pictures/view.php?picid=22"
+    },
+    {
+      "from": "pictures/view.php?picid=46",
+      "to": "comments/preview_comment.php"
+    },
+    {
+      "from": "pictures/view.php?picid=46",
+      "to": "pictures/search.php"
+    },
+    {
+      "from": "pictures/view.php?picid=46",
+      "to": "users/view.php?userid=p1"
+    },
+    {
+      "from": "pictures/view.php?picid=47",
+      "to": "cart/action.php?action=add&picid=47"
+    },
+    {
+      "from": "pictures/view.php?picid=47",
+      "to": "comments/preview_comment.php"
+    },
+    {
+      "from": "pictures/view.php?picid=47",
+      "to": "pictures/search.php"
+    },
+    {
+      "from": "tos.php",
+      "to": "./"
+    },
+    {
+      "from": "tos.php",
+      "to": "pictures/search.php"
+    },
+    {
+      "from": "users/home.php",
+      "to": "pictures/purchased.php"
+    },
+    {
+      "from": "users/home.php",
+      "to": "pictures/search.php"
+    },
+    {
+      "from": "users/home.php",
+      "to": "users/sample.php?userid=p1"
+    },
+    {
+      "from": "users/home.php",
+      "to": "users/similar.php"
+    },
+    {
+      "from": "users/register.php",
+      "to": "passcheck.php"
+    },
+    {
+      "from": "users/register.php",
+      "to": "pictures/search.php"
+    },
+    {
+      "from": "users/register.php",
+      "to": "users/register.php"
+    },
+    {
+      "from": "users/sample.php?userid=p1",
+      "to": "pictures/search.php"
+    },
+    {
+      "from": "users/sample.php?userid=p1",
+      "to": "pictures/view.php?picid=46"
+    },
+    {
+      "from": "users/similar.php",
+      "to": "pictures/search.php"
+    },
+    {
+      "from": "users/view.php?userid=p1",
+      "to": "pictures/search.php"
+    }
+  ],
+  "requests": {
+    "comments/delete_preview_comment.php": {
+      "method": "POST",
+      "params": {
+        "previewid": "79",
+        "picid": "46"
+      },
+      "referer": "comments/preview_comment.php"
+    },
+    "pictures/view.php?picid=": {
+      "method": "GET",
+      "params": {
+        "picid": ""
+      },
+      "referer": "comments/delete_preview_comment.php"
+    },
+    "users/login.php": {
+      "method": "POST",
+      "params": {
+        "password": "scanner1",
+        "username": "scanner1"
+      },
+      "referer": null
+    },
+    "favicon.ico": {
+      "method": "GET",
+      "params": {},
+      "referer": null
+    },
+    "users/home.php": {
+      "method": "GET",
+      "params": {},
+      "referer": null
+    },
+    "comments/add_comment.php": {
+      "method": "POST",
+      "params": {
+        "previewid": "79",
+        "picid": "46"
+      },
+      "referer": "comments/preview_comment.php"
+    },
+    "comments/preview_comment.php": {
+      "method": "POST",
+      "params": {
+        "text": "value_3c14cc2c",
+        "picid": "47"
+      },
+      "referer": "pictures/view.php?picid=47"
+    },
+    "pictures/high_quality.php?key=MzI0ODk4OA%3D%3D&picid=23": {
+      "method": "GET",
+      "params": {
+        "picid": "23",
+        "key": "MzI0ODk4OA=="
+      },
+      "referer": null
+    },
+    "pictures/high_quality.php?key=MTE0MTkyMQ%3D%3D&picid=20": {
+      "method": "GET",
+      "params": {
+        "picid": "20",
+        "key": "MTE0MTkyMQ=="
+      },
+      "referer": null
+    },
+    "cart/action.php?action=add&picid=21": {
+      "method": "GET",
+      "params": {
+        "action": "add",
+        "picid": "21"
+      },
+      "referer": null
+    },
+    "cart/review.php": {
+      "method": "GET",
+      "params": {},
+      "referer": "cart/action.php?action=add&picid=21"
+    },
+    "pictures/search.php": {
+      "method": "GET",
+      "params": {
+        "query": "nature"
+      },
+      "referer": "index.php"
+    },
+    "cart/action.php?action=delete": {
+      "method": "POST",
+      "params": {
+        "pics[]": "47"
+      },
+      "referer": "cart/review.php"
+    },
+    "cart/action.php?action=addcoupon": {
+      "method": "POST",
+      "params": {
+        "couponcode": "value_d6ff845c"
+      },
+      "referer": "cart/review.php"
+    },
+    "pictures/search.php?query=nature&x=p1&y=p1": {
+      "method": "GET",
+      "params": {
+        "query": "nature",
+        "x": "38",
+        "y": "12"
+      },
+      "referer": "cart/review.php"
+    },
+    "tos.php": {
+      "method": "GET",
+      "params": {},
+      "referer": "cart/review.php"
+    },
+    "./": {
+      "method": "GET",
+      "params": {},
+      "referer": "tos.php"
+    },
+    "piccheck.php": {
+      "method": "POST",
+      "params": {
+        "MAX_FILE_SIZE": "30000",
+        "name": "DRHL Tester"
+      },
+      "referer": "index.php"
+    },
+    "error.php?msg=p1": {
+      "method": "GET",
+      "params": {
+        "msg": "You have no cart, nothing to delete!"
+      },
+      "referer": "cart/review.php"
+    },
+    "guestbook.php": {
+      "method": "POST",
+      "params": {
+        "name": "DRHL Tester",
+        "comment": "DRHL coverage comment"
+      },
+      "referer": "guestbook.php"
+    },
+    "pictures/recent.php": {
+      "method": "GET",
+      "params": {},
+      "referer": "guestbook.php"
+    },
+    "pictures/upload.php": {
+      "method": "POST",
+      "params": {
+        "------WebKitFormBoundaryM0kPednTPvJUZ16O\r\nContent-Disposition: form-data; name": "\"MAX_FILE_SIZE\"\r\n\r\n10485760\r\n------WebKitFormBoundaryM0kPednTPvJUZ16O\r\nContent-Disposition: form-data; name=\"tag\"\r\n\r\n\r\n------WebKitFormBoundaryM0kPednTPvJUZ16O\r\nContent-Disposition: form-data; name=\"name\"\r\n\r\n\r\n------WebKitFormBoundaryM0kPednTPvJUZ16O\r\nContent-Disposition: form-data; name=\"title\"\r\n\r\n\r\n------WebKitFormBoundaryM0kPednTPvJUZ16O\r\nContent-Disposition: form-data; name=\"price\"\r\n\r\n\r\n------WebKitFormBoundaryM0kPednTPvJUZ16O\r\nContent-Disposition: form-data; name=\"pic\"; filename=\"\"\r\nContent-Type: application/octet-stream\r\n\r\n\r\n------WebKitFormBoundaryM0kPednTPvJUZ16O--\r\n"
+      },
+      "referer": "pictures/upload.php"
+    },
+    "pictures/purchased.php": {
+      "method": "GET",
+      "params": {},
+      "referer": "users/home.php"
+    },
+    "pictures/high_quality.php?key=NzczMjk4OA%3D%3D&picid=21": {
+      "method": "GET",
+      "params": {
+        "picid": "21",
+        "key": "NzczMjk4OA=="
+      },
+      "referer": "pictures/purchased.php"
+    },
+    "pictures/high_quality.php?key=NTQ3MTg1Ng%3D%3D&picid=18": {
+      "method": "GET",
+      "params": {
+        "picid": "18",
+        "key": "NTQ3MTg1Ng=="
+      },
+      "referer": "pictures/purchased.php"
+    },
+    "pictures/high_quality.php?key=ODE5Mjk0Nw%3D%3D&picid=22": {
+      "method": "GET",
+      "params": {
+        "picid": "22",
+        "key": "ODE5Mjk0Nw=="
+      },
+      "referer": "pictures/purchased.php"
+    },
+    "pictures/high_quality.php?key=NDAxNjQwNA%3D%3D&picid=19": {
+      "method": "GET",
+      "params": {
+        "picid": "19",
+        "key": "NDAxNjQwNA=="
+      },
+      "referer": "pictures/purchased.php"
+    },
+    "pictures/high_quality.php?key=NDg0MDUz&picid=24": {
+      "method": "GET",
+      "params": {
+        "picid": "24",
+        "key": "NDg0MDUz"
+      },
+      "referer": "pictures/purchased.php"
+    },
+    "users/sample.php?userid=p1": {
+      "method": "GET",
+      "params": {
+        "userid": "4"
+      },
+      "referer": "users/home.php"
+    },
+    "pictures/view.php?picid=46": {
+      "method": "GET",
+      "params": {
+        "picid": "46"
+      },
+      "referer": "users/sample.php?userid=p1"
+    },
+    "users/view.php?userid=p1": {
+      "method": "GET",
+      "params": {
+        "userid": "4"
+      },
+      "referer": "pictures/view.php?picid=46"
+    },
+    "users/similar.php": {
+      "method": "GET",
+      "params": {},
+      "referer": "users/home.php"
+    },
+    "pictures/view.php?picid=18": {
+      "method": "GET",
+      "params": {
+        "picid": "18"
+      },
+      "referer": "pictures/recent.php"
+    },
+    "pictures/view.php?picid=19": {
+      "method": "GET",
+      "params": {
+        "picid": "19"
+      },
+      "referer": "pictures/view.php?picid=18"
+    },
+    "pictures/view.php?picid=23": {
+      "method": "GET",
+      "params": {
+        "picid": "23"
+      },
+      "referer": "pictures/view.php?picid=19"
+    },
+    "pictures/view.php?picid=24": {
+      "method": "GET",
+      "params": {
+        "picid": "24"
+      },
+      "referer": "pictures/view.php?picid=23"
+    },
+    "pictures/view.php?picid=22": {
+      "method": "GET",
+      "params": {
+        "picid": "22"
+      },
+      "referer": "pictures/view.php?picid=24"
+    },
+    "cart/action.php?action=add&picid=22": {
+      "method": "GET",
+      "params": {
+        "action": "add",
+        "picid": "22"
+      },
+      "referer": "pictures/view.php?picid=22"
+    },
+    "cart/confirm.php": {
+      "method": "GET",
+      "params": {},
+      "referer": "cart/review.php"
+    },
+    "cart/action.php?action=add&picid=24": {
+      "method": "GET",
+      "params": {
+        "action": "add",
+        "picid": "24"
+      },
+      "referer": "pictures/view.php?picid=24"
+    },
+    "cart/action.php?action=add&picid=23": {
+      "method": "GET",
+      "params": {
+        "action": "add",
+        "picid": "23"
+      },
+      "referer": "pictures/view.php?picid=23"
+    },
+    "cart/action.php?action=add&picid=19": {
+      "method": "GET",
+      "params": {
+        "action": "add",
+        "picid": "19"
+      },
+      "referer": "pictures/view.php?picid=19"
+    },
+    "cart/action.php?action=add&picid=18": {
+      "method": "GET",
+      "params": {
+        "action": "add",
+        "picid": "18"
+      },
+      "referer": "pictures/view.php?picid=18"
+    },
+    "pictures/view.php?picid=20": {
+      "method": "GET",
+      "params": {
+        "picid": "20"
+      },
+      "referer": "pictures/recent.php"
+    },
+    "pictures/view.php?picid=21": {
+      "method": "GET",
+      "params": {
+        "picid": "21"
+      },
+      "referer": "pictures/view.php?picid=20"
+    },
+    "cart/action.php?action=add&picid=20": {
+      "method": "GET",
+      "params": {
+        "action": "add",
+        "picid": "20"
+      },
+      "referer": "pictures/view.php?picid=20"
+    },
+    "pictures/view.php?picid=47": {
+      "method": "GET",
+      "params": {
+        "picid": "47"
+      },
+      "referer": "pictures/recent.php"
+    },
+    "cart/action.php?action=add&picid=47": {
+      "method": "GET",
+      "params": {
+        "action": "add",
+        "picid": "47"
+      },
+      "referer": "pictures/view.php?picid=47"
+    },
+    "users/register.php": {
+      "method": "POST",
+      "params": {
+        "username": "drhl_user",
+        "firstname": "DRHL",
+        "lastname": "Tester",
+        "password": "12345678",
+        "againpass": "12345678"
+      },
+      "referer": "users/register.php"
+    },
+    "passcheck.php": {
+      "method": "POST",
+      "params": {
+        "password": "12345678"
+      },
+      "referer": "passcheck.php"
+    },
+    "index.php": {
+      "method": "GET",
+      "params": {},
+      "referer": null
+    }
+  }
+}

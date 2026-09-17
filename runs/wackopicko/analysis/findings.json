@@ -1,0 +1,458 @@
+{
+  "summary": {
+    "vulnerable": 3,
+    "not_vulnerable": 29
+  },
+  "findings": [
+    {
+      "category": "static_only",
+      "page": "cart/add_coupon.php",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "empty response body (possible silent exception)"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "cart/action.php?action=add&picid=18",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 303,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/users/login.php"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "cart/action.php?action=add&picid=19",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 303,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/users/login.php"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "cart/action.php?action=add&picid=20",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 303,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/users/login.php"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "cart/action.php?action=add&picid=21",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 303,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/users/login.php"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "cart/action.php?action=add&picid=22",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 303,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/users/login.php"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "cart/action.php?action=add&picid=23",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 303,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/users/login.php"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "cart/action.php?action=add&picid=24",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 303,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/users/login.php"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "cart/action.php?action=add&picid=46",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 303,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/users/login.php"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "cart/action.php?action=add&picid=47",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 303,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/users/login.php"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "cart/action.php?action=addcoupon",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 303,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/users/login.php"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "cart/action.php?action=delete",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 303,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/users/login.php"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "cart/confirm.php",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 303,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/users/login.php"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "cart/review.php",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 303,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/users/login.php"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "comments/add_comment.php",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 303,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/users/login.php"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "comments/delete_preview_comment.php",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 303,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/users/login.php"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "comments/preview_comment.php",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 303,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/users/login.php"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "error.php?msg=p1",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": null,
+      "evidence": [
+        "oracle=response-cascade",
+        "configured public page; successful access is not a vulnerability"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "pictures/high_quality.php?key=MTE0MTkyMQ%3D%3D&picid=20",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 303,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/users/login.php"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "pictures/high_quality.php?key=MzI0ODk4OA%3D%3D&picid=23",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 303,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/users/login.php"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "pictures/high_quality.php?key=NDAxNjQwNA%3D%3D&picid=19",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 303,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/users/login.php"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "pictures/high_quality.php?key=NDg0MDUz&picid=24",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 303,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/users/login.php"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "pictures/high_quality.php?key=NTQ3MTg1Ng%3D%3D&picid=18",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 303,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/users/login.php"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "pictures/high_quality.php?key=NzczMjk4OA%3D%3D&picid=21",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 303,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/users/login.php"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "pictures/high_quality.php?key=ODE5Mjk0Nw%3D%3D&picid=22",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 303,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/users/login.php"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "pictures/purchased.php",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 303,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/users/login.php"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "pictures/view.php?picid=",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 303,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/users/login.php"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "users/sample.php?userid=p1",
+      "actor": "visitor",
+      "status": "vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 200 without redirect or denial marker"
+      ],
+      "error": null
+    },
+    {
+      "category": "horizontal",
+      "page": "users/sample.php?userid=p1",
+      "actor": "user1",
+      "status": "vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 200 without redirect or denial marker",
+        "horizontal override: userid=11"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "users/similar.php",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 303,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/users/login.php"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "users/view.php?userid=p1",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 303,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/users/login.php"
+      ],
+      "error": null
+    },
+    {
+      "category": "horizontal",
+      "page": "users/view.php?userid=p1",
+      "actor": "user1",
+      "status": "vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 200 without redirect or denial marker",
+        "horizontal override: userid=11"
+      ],
+      "error": null
+    }
+  ]
+}

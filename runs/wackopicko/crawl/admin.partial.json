@@ -1,0 +1,436 @@
+{
+  "role": "admin",
+  "kind": "admin",
+  "nodes": [
+    "./",
+    "admin/function.require",
+    "admin/function.require-once",
+    "admin/index.php?page=create",
+    "admin/index.php?page=home",
+    "admin/index.php?page=login",
+    "guestbook.php",
+    "index.php",
+    "passcheck.php",
+    "piccheck.php",
+    "pictures/recent.php",
+    "pictures/search.php",
+    "pictures/search.php?query=nature&x=p1&y=p1",
+    "pictures/upload.php",
+    "pictures/view.php?picid=18",
+    "pictures/view.php?picid=19",
+    "pictures/view.php?picid=20",
+    "pictures/view.php?picid=21",
+    "pictures/view.php?picid=22",
+    "pictures/view.php?picid=23",
+    "pictures/view.php?picid=24",
+    "pictures/view.php?picid=46",
+    "pictures/view.php?picid=47",
+    "tos.php",
+    "users/home.php",
+    "users/login.php",
+    "users/register.php",
+    "users/sample.php?userid=1"
+  ],
+  "edges": [
+    {
+      "from": "./",
+      "to": "piccheck.php"
+    },
+    {
+      "from": "./",
+      "to": "pictures/search.php"
+    },
+    {
+      "from": "./",
+      "to": "users/login.php"
+    },
+    {
+      "from": "./",
+      "to": "users/sample.php?userid=1"
+    },
+    {
+      "from": "admin/index.php?page=create",
+      "to": "admin/function.require"
+    },
+    {
+      "from": "admin/index.php?page=create",
+      "to": "admin/function.require-once"
+    },
+    {
+      "from": "admin/index.php?page=home",
+      "to": "admin/index.php?page=create"
+    },
+    {
+      "from": "admin/index.php?page=login",
+      "to": "admin/index.php?page=login"
+    },
+    {
+      "from": "guestbook.php",
+      "to": "guestbook.php"
+    },
+    {
+      "from": "guestbook.php",
+      "to": "pictures/recent.php"
+    },
+    {
+      "from": "guestbook.php",
+      "to": "pictures/search.php"
+    },
+    {
+      "from": "index.php",
+      "to": "piccheck.php"
+    },
+    {
+      "from": "index.php",
+      "to": "pictures/search.php"
+    },
+    {
+      "from": "index.php",
+      "to": "tos.php"
+    },
+    {
+      "from": "passcheck.php",
+      "to": "guestbook.php"
+    },
+    {
+      "from": "passcheck.php",
+      "to": "passcheck.php"
+    },
+    {
+      "from": "passcheck.php",
+      "to": "pictures/search.php"
+    },
+    {
+      "from": "piccheck.php",
+      "to": "piccheck.php"
+    },
+    {
+      "from": "piccheck.php",
+      "to": "pictures/search.php"
+    },
+    {
+      "from": "pictures/recent.php",
+      "to": "pictures/search.php"
+    },
+    {
+      "from": "pictures/recent.php",
+      "to": "pictures/upload.php"
+    },
+    {
+      "from": "pictures/recent.php",
+      "to": "pictures/view.php?picid=18"
+    },
+    {
+      "from": "pictures/recent.php",
+      "to": "pictures/view.php?picid=19"
+    },
+    {
+      "from": "pictures/recent.php",
+      "to": "pictures/view.php?picid=20"
+    },
+    {
+      "from": "pictures/recent.php",
+      "to": "pictures/view.php?picid=21"
+    },
+    {
+      "from": "pictures/recent.php",
+      "to": "pictures/view.php?picid=22"
+    },
+    {
+      "from": "pictures/recent.php",
+      "to": "pictures/view.php?picid=23"
+    },
+    {
+      "from": "pictures/recent.php",
+      "to": "pictures/view.php?picid=24"
+    },
+    {
+      "from": "pictures/recent.php",
+      "to": "pictures/view.php?picid=46"
+    },
+    {
+      "from": "pictures/recent.php",
+      "to": "pictures/view.php?picid=47"
+    },
+    {
+      "from": "pictures/search.php",
+      "to": "pictures/search.php?query=nature&x=p1&y=p1"
+    },
+    {
+      "from": "pictures/search.php?query=nature&x=p1&y=p1",
+      "to": "pictures/search.php"
+    },
+    {
+      "from": "pictures/upload.php",
+      "to": "users/login.php"
+    },
+    {
+      "from": "pictures/view.php?picid=18",
+      "to": "users/login.php"
+    },
+    {
+      "from": "pictures/view.php?picid=19",
+      "to": "users/login.php"
+    },
+    {
+      "from": "pictures/view.php?picid=20",
+      "to": "users/login.php"
+    },
+    {
+      "from": "pictures/view.php?picid=21",
+      "to": "users/login.php"
+    },
+    {
+      "from": "pictures/view.php?picid=22",
+      "to": "users/login.php"
+    },
+    {
+      "from": "pictures/view.php?picid=23",
+      "to": "users/login.php"
+    },
+    {
+      "from": "pictures/view.php?picid=24",
+      "to": "users/login.php"
+    },
+    {
+      "from": "pictures/view.php?picid=46",
+      "to": "users/login.php"
+    },
+    {
+      "from": "pictures/view.php?picid=47",
+      "to": "users/login.php"
+    },
+    {
+      "from": "tos.php",
+      "to": "./"
+    },
+    {
+      "from": "tos.php",
+      "to": "pictures/search.php"
+    },
+    {
+      "from": "users/home.php",
+      "to": "users/login.php"
+    },
+    {
+      "from": "users/login.php",
+      "to": "pictures/search.php"
+    },
+    {
+      "from": "users/login.php",
+      "to": "users/home.php"
+    },
+    {
+      "from": "users/login.php",
+      "to": "users/login.php"
+    },
+    {
+      "from": "users/login.php",
+      "to": "users/register.php"
+    },
+    {
+      "from": "users/register.php",
+      "to": "passcheck.php"
+    },
+    {
+      "from": "users/register.php",
+      "to": "pictures/search.php"
+    },
+    {
+      "from": "users/register.php",
+      "to": "users/register.php"
+    },
+    {
+      "from": "users/sample.php?userid=1",
+      "to": "pictures/search.php"
+    }
+  ],
+  "requests": {
+    "admin/index.php?page=login": {
+      "method": "POST",
+      "params": {
+        "adminname": "text_a334f7ca",
+        "password": "12345678"
+      },
+      "referer": "admin/index.php?page=login"
+    },
+    "favicon.ico": {
+      "method": "GET",
+      "params": {},
+      "referer": null
+    },
+    "admin/index.php?page=home": {
+      "method": "GET",
+      "params": {
+        "page": "home"
+      },
+      "referer": null
+    },
+    "admin/index.php?page=create": {
+      "method": "GET",
+      "params": {
+        "page": "create"
+      },
+      "referer": "admin/index.php?page=home"
+    },
+    "admin/function.require": {
+      "method": "GET",
+      "params": {},
+      "referer": "admin/index.php?page=create"
+    },
+    "admin/function.require-once": {
+      "method": "GET",
+      "params": {},
+      "referer": "admin/index.php?page=create"
+    },
+    "index.php": {
+      "method": "GET",
+      "params": {},
+      "referer": null
+    },
+    "pictures/search.php": {
+      "method": "GET",
+      "params": {
+        "query": "nature"
+      },
+      "referer": "users/sample.php?userid=1"
+    },
+    "piccheck.php": {
+      "method": "POST",
+      "params": {
+        "MAX_FILE_SIZE": "30000",
+        "name": "DRHL Tester"
+      },
+      "referer": "./"
+    },
+    "pictures/search.php?query=nature&x=p1&y=p1": {
+      "method": "GET",
+      "params": {
+        "query": "nature",
+        "x": "37",
+        "y": "12"
+      },
+      "referer": "index.php"
+    },
+    "tos.php": {
+      "method": "GET",
+      "params": {},
+      "referer": "index.php"
+    },
+    "./": {
+      "method": "GET",
+      "params": {},
+      "referer": "tos.php"
+    },
+    "users/login.php": {
+      "method": "POST",
+      "params": {},
+      "referer": "users/login.php"
+    },
+    "users/register.php": {
+      "method": "POST",
+      "params": {},
+      "referer": "users/register.php"
+    },
+    "passcheck.php": {
+      "method": "POST",
+      "params": {
+        "password": "12345678"
+      },
+      "referer": "passcheck.php"
+    },
+    "guestbook.php": {
+      "method": "POST",
+      "params": {
+        "name": "DRHL Tester",
+        "comment": "DRHL coverage comment"
+      },
+      "referer": "guestbook.php"
+    },
+    "pictures/recent.php": {
+      "method": "GET",
+      "params": {},
+      "referer": "guestbook.php"
+    },
+    "pictures/upload.php": {
+      "method": "GET",
+      "params": {},
+      "referer": "pictures/recent.php"
+    },
+    "users/home.php": {
+      "method": "GET",
+      "params": {},
+      "referer": "users/login.php"
+    },
+    "pictures/view.php?picid=18": {
+      "method": "GET",
+      "params": {
+        "picid": "18"
+      },
+      "referer": "pictures/recent.php"
+    },
+    "pictures/view.php?picid=19": {
+      "method": "GET",
+      "params": {
+        "picid": "19"
+      },
+      "referer": "pictures/recent.php"
+    },
+    "pictures/view.php?picid=20": {
+      "method": "GET",
+      "params": {
+        "picid": "20"
+      },
+      "referer": "pictures/recent.php"
+    },
+    "pictures/view.php?picid=21": {
+      "method": "GET",
+      "params": {
+        "picid": "21"
+      },
+      "referer": "pictures/recent.php"
+    },
+    "pictures/view.php?picid=22": {
+      "method": "GET",
+      "params": {
+        "picid": "22"
+      },
+      "referer": "pictures/recent.php"
+    },
+    "pictures/view.php?picid=23": {
+      "method": "GET",
+      "params": {
+        "picid": "23"
+      },
+      "referer": "pictures/recent.php"
+    },
+    "pictures/view.php?picid=24": {
+      "method": "GET",
+      "params": {
+        "picid": "24"
+      },
+      "referer": "pictures/recent.php"
+    },
+    "pictures/view.php?picid=46": {
+      "method": "GET",
+      "params": {
+        "picid": "46"
+      },
+      "referer": "pictures/recent.php"
+    },
+    "pictures/view.php?picid=47": {
+      "method": "GET",
+      "params": {
+        "picid": "47"
+      },
+      "referer": "pictures/recent.php"
+    },
+    "users/sample.php?userid=1": {
+      "method": "GET",
+      "params": {
+        "userid": "1"
+      },
+      "referer": "./"
+    }
+  }
+}

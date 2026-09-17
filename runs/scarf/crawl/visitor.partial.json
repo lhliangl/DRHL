@@ -1,0 +1,123 @@
+{
+  "role": "visitor",
+  "kind": "visitor",
+  "nodes": [
+    "forgot.php",
+    "getpaper.php?paper_id=p1",
+    "index.php",
+    "login.php",
+    "login.php?referer=p1",
+    "register.php",
+    "showpaper.php?paper_id=p1",
+    "showsessions.php"
+  ],
+  "edges": [
+    {
+      "from": "forgot.php",
+      "to": "forgot.php"
+    },
+    {
+      "from": "getpaper.php?paper_id=p1",
+      "to": "forgot.php"
+    },
+    {
+      "from": "index.php",
+      "to": "showpaper.php?paper_id=p1"
+    },
+    {
+      "from": "login.php",
+      "to": "login.php"
+    },
+    {
+      "from": "login.php",
+      "to": "login.php?referer=p1"
+    },
+    {
+      "from": "login.php?referer=p1",
+      "to": "forgot.php"
+    },
+    {
+      "from": "login.php?referer=p1",
+      "to": "login.php"
+    },
+    {
+      "from": "login.php?referer=p1",
+      "to": "register.php"
+    },
+    {
+      "from": "register.php",
+      "to": "register.php"
+    },
+    {
+      "from": "register.php",
+      "to": "showsessions.php"
+    },
+    {
+      "from": "showpaper.php?paper_id=p1",
+      "to": "getpaper.php?paper_id=p1"
+    },
+    {
+      "from": "showpaper.php?paper_id=p1",
+      "to": "login.php"
+    }
+  ],
+  "requests": {
+    "index.php": {
+      "method": "GET",
+      "params": {},
+      "referer": null
+    },
+    "showpaper.php?paper_id=p1": {
+      "method": "GET",
+      "params": {
+        "paper_id": "122"
+      },
+      "referer": "index.php"
+    },
+    "login.php": {
+      "method": "POST",
+      "params": {
+        "email": "drhl_779d2765@example.test",
+        "password": "12345678"
+      },
+      "referer": "login.php?referer=p1"
+    },
+    "login.php?referer=p1": {
+      "method": "GET",
+      "params": {
+        "referer": "/scarf/login.php"
+      },
+      "referer": "login.php"
+    },
+    "register.php": {
+      "method": "POST",
+      "params": {
+        "email": "drhl_453eef81@example.test",
+        "email2": "drhl_e3bed029@example.test",
+        "firstname": "text_e981ba58",
+        "lastname": "text_921b3966",
+        "affiliation": "org_417c4edf"
+      },
+      "referer": "register.php"
+    },
+    "showsessions.php": {
+      "method": "GET",
+      "params": {},
+      "referer": "register.php"
+    },
+    "forgot.php": {
+      "method": "POST",
+      "params": {
+        "email": "drhl_aa92a48e@example.test"
+      },
+      "referer": "forgot.php"
+    },
+    "getpaper.php?paper_id=p1": {
+      "method": "GET",
+      "params": {
+        "paper_id": "122"
+      },
+      "referer": "showpaper.php?paper_id=p1"
+    }
+  }
+}

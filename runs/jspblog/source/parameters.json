@@ -1,0 +1,46 @@
+{
+  "parameters": [
+    {
+      "id": "admin/auth.jsp:LCP3",
+      "path": "admin/auth.jsp",
+      "expression": "drhlLoggedIn",
+      "aliases": [
+        "drhlLoggedIn",
+        "isLoggedIn"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 2,
+          "condition": "(drhlLoggedIn == null || !drhlLoggedIn.equals(\"true\"))"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ],
+      "validation_evidence": [
+        {
+          "kind": "terminating_condition",
+          "line": 2,
+          "condition": "(drhlLoggedIn == null || !drhlLoggedIn.equals(\"true\"))",
+          "terminations": [
+            {
+              "kind": "configured_denial",
+              "line": 13,
+              "code": "response.sendRedirect(\"index.jsp\");"
+            },
+            {
+              "kind": "configured_denial",
+              "line": 14,
+              "code": "return;"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

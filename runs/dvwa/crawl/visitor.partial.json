@@ -1,0 +1,35 @@
+{
+  "role": "visitor",
+  "kind": "visitor",
+  "nodes": [
+    "index.php",
+    "login.php"
+  ],
+  "edges": [
+    {
+      "from": "index.php",
+      "to": "login.php"
+    },
+    {
+      "from": "login.php",
+      "to": "login.php"
+    }
+  ],
+  "requests": {
+    "index.php": {
+      "method": "GET",
+      "params": {},
+      "referer": null
+    },
+    "login.php": {
+      "method": "POST",
+      "params": {
+        "username": "text_2320b2c3",
+        "password": "12345678",
+        "Login": "Login",
+        "user_token": "237e615d266cf809d33e4cf6fe22e19f"
+      },
+      "referer": "login.php"
+    }
+  }
+}

@@ -1,0 +1,607 @@
+{
+  "role": "admin",
+  "kind": "admin",
+  "nodes": [
+    "./",
+    "about.php",
+    "config/config.inc.php.dist",
+    "index.php",
+    "instructions.php",
+    "instructions.php?doc=p1",
+    "security.php",
+    "setup.php",
+    "vulnerabilities/api/",
+    "vulnerabilities/authbypass/",
+    "vulnerabilities/brute/",
+    "vulnerabilities/brute/?Login=p1&password=p1&username=p1",
+    "vulnerabilities/captcha/",
+    "vulnerabilities/cryptography/",
+    "vulnerabilities/cryptography/index.php",
+    "vulnerabilities/csp/",
+    "vulnerabilities/csrf/",
+    "vulnerabilities/csrf/?Change=p1&password_conf=p1&password_new=p1",
+    "vulnerabilities/exec/",
+    "vulnerabilities/fi/?page=file1.php",
+    "vulnerabilities/fi/?page=file2.php",
+    "vulnerabilities/fi/?page=file3.php",
+    "vulnerabilities/fi/?page=include.php",
+    "vulnerabilities/javascript/",
+    "vulnerabilities/open_redirect/",
+    "vulnerabilities/open_redirect/source/info.php?id=1",
+    "vulnerabilities/open_redirect/source/info.php?id=2",
+    "vulnerabilities/open_redirect/source/low.php?redirect=info.php%3Fid%3D1",
+    "vulnerabilities/open_redirect/source/low.php?redirect=info.php%3Fid%3D2",
+    "vulnerabilities/sqli/",
+    "vulnerabilities/sqli/?Submit=p1&id=1",
+    "vulnerabilities/sqli_blind/",
+    "vulnerabilities/sqli_blind/?Submit=p1&id=1",
+    "vulnerabilities/upload/",
+    "vulnerabilities/weak_id/",
+    "vulnerabilities/xss_d/",
+    "vulnerabilities/xss_d/?default=p1",
+    "vulnerabilities/xss_r/",
+    "vulnerabilities/xss_r/?name=p1",
+    "vulnerabilities/xss_s/"
+  ],
+  "edges": [
+    {
+      "from": "about.php",
+      "to": "security.php"
+    },
+    {
+      "from": "config/config.inc.php.dist",
+      "to": "instructions.php"
+    },
+    {
+      "from": "instructions.php",
+      "to": "config/config.inc.php.dist"
+    },
+    {
+      "from": "instructions.php",
+      "to": "instructions.php?doc=p1"
+    },
+    {
+      "from": "instructions.php?doc=p1",
+      "to": "./"
+    },
+    {
+      "from": "security.php",
+      "to": "security.php"
+    },
+    {
+      "from": "security.php",
+      "to": "vulnerabilities/cryptography/"
+    },
+    {
+      "from": "setup.php",
+      "to": "instructions.php"
+    },
+    {
+      "from": "setup.php",
+      "to": "setup.php"
+    },
+    {
+      "from": "vulnerabilities/api/",
+      "to": "about.php"
+    },
+    {
+      "from": "vulnerabilities/authbypass/",
+      "to": "vulnerabilities/javascript/"
+    },
+    {
+      "from": "vulnerabilities/brute/",
+      "to": "setup.php"
+    },
+    {
+      "from": "vulnerabilities/brute/",
+      "to": "vulnerabilities/brute/"
+    },
+    {
+      "from": "vulnerabilities/brute/",
+      "to": "vulnerabilities/brute/?Login=p1&password=p1&username=p1"
+    },
+    {
+      "from": "vulnerabilities/brute/?Login=p1&password=p1&username=p1",
+      "to": "vulnerabilities/brute/?Login=p1&password=p1&username=p1"
+    },
+    {
+      "from": "vulnerabilities/captcha/",
+      "to": "vulnerabilities/captcha/"
+    },
+    {
+      "from": "vulnerabilities/captcha/",
+      "to": "vulnerabilities/upload/"
+    },
+    {
+      "from": "vulnerabilities/cryptography/",
+      "to": "vulnerabilities/cryptography/index.php"
+    },
+    {
+      "from": "vulnerabilities/cryptography/",
+      "to": "vulnerabilities/open_redirect/"
+    },
+    {
+      "from": "vulnerabilities/cryptography/index.php",
+      "to": "vulnerabilities/cryptography/index.php"
+    },
+    {
+      "from": "vulnerabilities/csp/",
+      "to": "vulnerabilities/csp/"
+    },
+    {
+      "from": "vulnerabilities/csp/",
+      "to": "vulnerabilities/xss_s/"
+    },
+    {
+      "from": "vulnerabilities/csrf/",
+      "to": "vulnerabilities/csrf/"
+    },
+    {
+      "from": "vulnerabilities/csrf/",
+      "to": "vulnerabilities/csrf/?Change=p1&password_conf=p1&password_new=p1"
+    },
+    {
+      "from": "vulnerabilities/csrf/",
+      "to": "vulnerabilities/exec/"
+    },
+    {
+      "from": "vulnerabilities/csrf/?Change=p1&password_conf=p1&password_new=p1",
+      "to": "vulnerabilities/csrf/?Change=p1&password_conf=p1&password_new=p1"
+    },
+    {
+      "from": "vulnerabilities/exec/",
+      "to": "vulnerabilities/brute/"
+    },
+    {
+      "from": "vulnerabilities/exec/",
+      "to": "vulnerabilities/exec/"
+    },
+    {
+      "from": "vulnerabilities/fi/?page=file3.php",
+      "to": "vulnerabilities/csrf/"
+    },
+    {
+      "from": "vulnerabilities/fi/?page=include.php",
+      "to": "vulnerabilities/fi/?page=file1.php"
+    },
+    {
+      "from": "vulnerabilities/fi/?page=include.php",
+      "to": "vulnerabilities/fi/?page=file2.php"
+    },
+    {
+      "from": "vulnerabilities/fi/?page=include.php",
+      "to": "vulnerabilities/fi/?page=file3.php"
+    },
+    {
+      "from": "vulnerabilities/javascript/",
+      "to": "vulnerabilities/csp/"
+    },
+    {
+      "from": "vulnerabilities/javascript/",
+      "to": "vulnerabilities/javascript/"
+    },
+    {
+      "from": "vulnerabilities/open_redirect/",
+      "to": "vulnerabilities/open_redirect/source/low.php?redirect=info.php%3Fid%3D1"
+    },
+    {
+      "from": "vulnerabilities/open_redirect/",
+      "to": "vulnerabilities/open_redirect/source/low.php?redirect=info.php%3Fid%3D2"
+    },
+    {
+      "from": "vulnerabilities/open_redirect/source/info.php?id=1",
+      "to": "vulnerabilities/open_redirect/source/info.php?id=1"
+    },
+    {
+      "from": "vulnerabilities/open_redirect/source/info.php?id=2",
+      "to": "vulnerabilities/authbypass/"
+    },
+    {
+      "from": "vulnerabilities/open_redirect/source/info.php?id=2",
+      "to": "vulnerabilities/open_redirect/source/info.php?id=2"
+    },
+    {
+      "from": "vulnerabilities/open_redirect/source/low.php?redirect=info.php%3Fid%3D1",
+      "to": "vulnerabilities/open_redirect/source/info.php?id=1"
+    },
+    {
+      "from": "vulnerabilities/open_redirect/source/low.php?redirect=info.php%3Fid%3D2",
+      "to": "vulnerabilities/open_redirect/source/info.php?id=2"
+    },
+    {
+      "from": "vulnerabilities/sqli/",
+      "to": "vulnerabilities/captcha/"
+    },
+    {
+      "from": "vulnerabilities/sqli/",
+      "to": "vulnerabilities/sqli/"
+    },
+    {
+      "from": "vulnerabilities/sqli/",
+      "to": "vulnerabilities/sqli/?Submit=p1&id=1"
+    },
+    {
+      "from": "vulnerabilities/sqli/?Submit=p1&id=1",
+      "to": "vulnerabilities/sqli/?Submit=p1&id=1"
+    },
+    {
+      "from": "vulnerabilities/sqli_blind/",
+      "to": "vulnerabilities/sqli/"
+    },
+    {
+      "from": "vulnerabilities/sqli_blind/",
+      "to": "vulnerabilities/sqli_blind/"
+    },
+    {
+      "from": "vulnerabilities/sqli_blind/",
+      "to": "vulnerabilities/sqli_blind/?Submit=p1&id=1"
+    },
+    {
+      "from": "vulnerabilities/sqli_blind/?Submit=p1&id=1",
+      "to": "vulnerabilities/sqli_blind/?Submit=p1&id=1"
+    },
+    {
+      "from": "vulnerabilities/upload/",
+      "to": "vulnerabilities/fi/?page=include.php"
+    },
+    {
+      "from": "vulnerabilities/upload/",
+      "to": "vulnerabilities/upload/"
+    },
+    {
+      "from": "vulnerabilities/weak_id/",
+      "to": "vulnerabilities/sqli_blind/"
+    },
+    {
+      "from": "vulnerabilities/weak_id/",
+      "to": "vulnerabilities/weak_id/"
+    },
+    {
+      "from": "vulnerabilities/xss_d/",
+      "to": "vulnerabilities/weak_id/"
+    },
+    {
+      "from": "vulnerabilities/xss_d/",
+      "to": "vulnerabilities/xss_d/"
+    },
+    {
+      "from": "vulnerabilities/xss_d/",
+      "to": "vulnerabilities/xss_d/?default=p1"
+    },
+    {
+      "from": "vulnerabilities/xss_d/?default=p1",
+      "to": "vulnerabilities/xss_d/?default=p1"
+    },
+    {
+      "from": "vulnerabilities/xss_r/",
+      "to": "vulnerabilities/xss_d/"
+    },
+    {
+      "from": "vulnerabilities/xss_r/",
+      "to": "vulnerabilities/xss_r/"
+    },
+    {
+      "from": "vulnerabilities/xss_r/",
+      "to": "vulnerabilities/xss_r/?name=p1"
+    },
+    {
+      "from": "vulnerabilities/xss_r/?name=p1",
+      "to": "vulnerabilities/xss_r/?name=p1"
+    },
+    {
+      "from": "vulnerabilities/xss_s/",
+      "to": "vulnerabilities/xss_r/"
+    },
+    {
+      "from": "vulnerabilities/xss_s/",
+      "to": "vulnerabilities/xss_s/"
+    }
+  ],
+  "requests": {
+    "vulnerabilities/api/": {
+      "method": "GET",
+      "params": {},
+      "referer": null
+    },
+    "login.php": {
+      "method": "POST",
+      "params": {
+        "username": "admin",
+        "password": "123456",
+        "Login": "Login",
+        "user_token": "21fca561e974a515cc783187c2c42f13"
+      },
+      "referer": null
+    },
+    "index.php": {
+      "method": "GET",
+      "params": {},
+      "referer": null
+    },
+    "favicon.ico": {
+      "method": "GET",
+      "params": {},
+      "referer": null
+    },
+    "about.php": {
+      "method": "GET",
+      "params": {},
+      "referer": "vulnerabilities/api/"
+    },
+    "security.php": {
+      "method": "POST",
+      "params": {
+        "security": "low",
+        "seclev_submit": "Submit",
+        "user_token": "e01ee516a56950fffa6d24e080ed4250"
+      },
+      "referer": "security.php"
+    },
+    "vulnerabilities/cryptography/": {
+      "method": "GET",
+      "params": {},
+      "referer": "security.php"
+    },
+    "vulnerabilities/cryptography/index.php": {
+      "method": "POST",
+      "params": {
+        "password": "12345678"
+      },
+      "referer": "vulnerabilities/cryptography/index.php"
+    },
+    "vulnerabilities/open_redirect/": {
+      "method": "GET",
+      "params": {},
+      "referer": "vulnerabilities/cryptography/"
+    },
+    "vulnerabilities/open_redirect/source/low.php?redirect=info.php%3Fid%3D2": {
+      "method": "GET",
+      "params": {
+        "redirect": "info.php?id=2"
+      },
+      "referer": "vulnerabilities/open_redirect/"
+    },
+    "vulnerabilities/open_redirect/source/info.php?id=2": {
+      "method": "GET",
+      "params": {
+        "id": "2"
+      },
+      "referer": "vulnerabilities/open_redirect/source/low.php?redirect=info.php%3Fid%3D2"
+    },
+    "vulnerabilities/authbypass/": {
+      "method": "GET",
+      "params": {},
+      "referer": "vulnerabilities/open_redirect/source/info.php?id=2"
+    },
+    "vulnerabilities/authbypass/get_user_data.php": {
+      "method": "GET",
+      "params": {},
+      "referer": "vulnerabilities/open_redirect/source/info.php?id=2"
+    },
+    "vulnerabilities/javascript/": {
+      "method": "POST",
+      "params": {
+        "token": "8b479aefbd90795395b3e7089ae0dc09",
+        "phrase": "ChangeMe",
+        "send": "Submit"
+      },
+      "referer": "vulnerabilities/javascript/"
+    },
+    "vulnerabilities/csp/": {
+      "method": "POST",
+      "params": {
+        "include": "value_de8e0182"
+      },
+      "referer": "vulnerabilities/csp/"
+    },
+    "vulnerabilities/xss_s/": {
+      "method": "POST",
+      "params": {
+        "txtName": "text_711d65d3",
+        "mtxMessage": "comment_c12986ef",
+        "btnSign": "Sign Guestbook",
+        "btnClear": "Clear Guestbook"
+      },
+      "referer": "vulnerabilities/xss_s/"
+    },
+    "vulnerabilities/xss_r/": {
+      "method": "GET",
+      "params": {
+        "name": "text_fb07a4e2"
+      },
+      "referer": "vulnerabilities/xss_r/"
+    },
+    "vulnerabilities/xss_r/?name=p1": {
+      "method": "GET",
+      "params": {
+        "name": "text_e3205c12"
+      },
+      "referer": "vulnerabilities/xss_r/?name=p1"
+    },
+    "vulnerabilities/xss_d/": {
+      "method": "GET",
+      "params": {
+        "default": "English"
+      },
+      "referer": "vulnerabilities/xss_d/"
+    },
+    "vulnerabilities/xss_d/?default=p1": {
+      "method": "GET",
+      "params": {
+        "default": "English"
+      },
+      "referer": "vulnerabilities/xss_d/?default=p1"
+    },
+    "vulnerabilities/weak_id/": {
+      "method": "POST",
+      "params": {},
+      "referer": "vulnerabilities/weak_id/"
+    },
+    "vulnerabilities/sqli_blind/": {
+      "method": "GET",
+      "params": {
+        "id": "1",
+        "Submit": "Submit"
+      },
+      "referer": "vulnerabilities/sqli_blind/"
+    },
+    "vulnerabilities/sqli_blind/?Submit=p1&id=1": {
+      "method": "GET",
+      "params": {
+        "id": "1",
+        "Submit": "Submit"
+      },
+      "referer": "vulnerabilities/sqli_blind/?Submit=p1&id=1"
+    },
+    "vulnerabilities/sqli/": {
+      "method": "GET",
+      "params": {
+        "id": "1",
+        "Submit": "Submit"
+      },
+      "referer": "vulnerabilities/sqli/"
+    },
+    "vulnerabilities/sqli/?Submit=p1&id=1": {
+      "method": "GET",
+      "params": {
+        "id": "1",
+        "Submit": "Submit"
+      },
+      "referer": "vulnerabilities/sqli/?Submit=p1&id=1"
+    },
+    "vulnerabilities/captcha/": {
+      "method": "POST",
+      "params": {
+        "step": "1",
+        "password_new": "12345678",
+        "password_conf": "12345678",
+        "Change": "Change"
+      },
+      "referer": "vulnerabilities/captcha/"
+    },
+    "vulnerabilities/upload/": {
+      "method": "POST",
+      "params": {
+        "MAX_FILE_SIZE": "100000",
+        "Upload": "Upload"
+      },
+      "referer": "vulnerabilities/upload/"
+    },
+    "vulnerabilities/fi/?page=include.php": {
+      "method": "GET",
+      "params": {
+        "page": "include.php"
+      },
+      "referer": "vulnerabilities/upload/"
+    },
+    "vulnerabilities/fi/?page=file3.php": {
+      "method": "GET",
+      "params": {
+        "page": "file3.php"
+      },
+      "referer": "vulnerabilities/fi/?page=include.php"
+    },
+    "vulnerabilities/csrf/": {
+      "method": "GET",
+      "params": {
+        "password_new": "12345678",
+        "password_conf": "12345678",
+        "Change": "Change"
+      },
+      "referer": "vulnerabilities/csrf/"
+    },
+    "vulnerabilities/csrf/?Change=p1&password_conf=p1&password_new=p1": {
+      "method": "GET",
+      "params": {
+        "password_new": "12345678",
+        "password_conf": "12345678",
+        "Change": "Change"
+      },
+      "referer": "vulnerabilities/csrf/?Change=p1&password_conf=p1&password_new=p1"
+    },
+    "vulnerabilities/exec/": {
+      "method": "POST",
+      "params": {
+        "ip": "value_02511d4d",
+        "Submit": "Submit"
+      },
+      "referer": "vulnerabilities/exec/"
+    },
+    "vulnerabilities/brute/": {
+      "method": "GET",
+      "params": {
+        "username": "text_7385575f",
+        "password": "12345678",
+        "Login": "Login"
+      },
+      "referer": "vulnerabilities/brute/"
+    },
+    "vulnerabilities/brute/?Login=p1&password=p1&username=p1": {
+      "method": "GET",
+      "params": {
+        "username": "text_27a5e144",
+        "password": "12345678",
+        "Login": "Login"
+      },
+      "referer": "vulnerabilities/brute/?Login=p1&password=p1&username=p1"
+    },
+    "setup.php": {
+      "method": "POST",
+      "params": {
+        "create_db": "Create / Reset Database",
+        "user_token": "50e0dbad7873804dd8779e8867552e38"
+      },
+      "referer": "setup.php"
+    },
+    "instructions.php": {
+      "method": "GET",
+      "params": {},
+      "referer": "setup.php"
+    },
+    "config/config.inc.php.dist": {
+      "method": "GET",
+      "params": {},
+      "referer": "instructions.php"
+    },
+    "instructions.php?doc=p1": {
+      "method": "GET",
+      "params": {
+        "doc": "copying"
+      },
+      "referer": "instructions.php"
+    },
+    "./": {
+      "method": "GET",
+      "params": {},
+      "referer": "instructions.php?doc=p1"
+    },
+    "vulnerabilities/fi/?page=file2.php": {
+      "method": "GET",
+      "params": {
+        "page": "file2.php"
+      },
+      "referer": "vulnerabilities/fi/?page=include.php"
+    },
+    "vulnerabilities/fi/?page=file1.php": {
+      "method": "GET",
+      "params": {
+        "page": "file1.php"
+      },
+      "referer": "vulnerabilities/fi/?page=include.php"
+    },
+    "vulnerabilities/open_redirect/source/low.php?redirect=info.php%3Fid%3D1": {
+      "method": "GET",
+      "params": {
+        "redirect": "info.php?id=1"
+      },
+      "referer": "vulnerabilities/open_redirect/"
+    },
+    "vulnerabilities/open_redirect/source/info.php?id=1": {
+      "method": "GET",
+      "params": {
+        "id": "1"
+      },
+      "referer": "vulnerabilities/open_redirect/source/low.php?redirect=info.php%3Fid%3D1"
+    }
+  }
+}

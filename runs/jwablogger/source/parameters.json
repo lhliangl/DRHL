@@ -1,0 +1,107 @@
+{
+  "parameters": [
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/BlogManager.java:LCP12",
+      "path": "java/jwaBlogger/src/jwaBlogger/BlogManager.java",
+      "expression": "trusted",
+      "aliases": [
+        "trusted"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 433,
+          "condition": "(! trusted)"
+        }
+      ],
+      "condition_indexes": [
+        16
+      ],
+      "validation_evidence": [
+        {
+          "kind": "java_jsp_role_source",
+          "source": "isUserInRole",
+          "role": "trusted"
+        }
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/BlogManager.java:LCP24",
+      "path": "java/jwaBlogger/src/jwaBlogger/BlogManager.java",
+      "expression": "isAdmin",
+      "aliases": [
+        "isAdmin",
+        "administrator"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 561,
+          "condition": "(!isAdmin)"
+        },
+        {
+          "source": "conditional",
+          "line": 586,
+          "condition": "(!isAdmin)"
+        },
+        {
+          "source": "conditional",
+          "line": 611,
+          "condition": "(!isAdmin)"
+        },
+        {
+          "source": "conditional",
+          "line": 636,
+          "condition": "(!isAdmin)"
+        },
+        {
+          "source": "conditional",
+          "line": 653,
+          "condition": "(!isAdmin)"
+        }
+      ],
+      "condition_indexes": [
+        27,
+        31,
+        35,
+        37,
+        38
+      ],
+      "validation_evidence": [
+        {
+          "kind": "java_jsp_role_source",
+          "source": "isUserInRole",
+          "role": "administrator"
+        },
+        {
+          "kind": "java_jsp_role_source",
+          "source": "isUserInRole",
+          "role": "administrator"
+        },
+        {
+          "kind": "java_jsp_role_source",
+          "source": "isUserInRole",
+          "role": "administrator"
+        },
+        {
+          "kind": "java_jsp_role_source",
+          "source": "isUserInRole",
+          "role": "administrator"
+        },
+        {
+          "kind": "java_jsp_role_source",
+          "source": "isUserInRole",
+          "role": "administrator"
+        }
+      ]
+    }
+  ]
+}

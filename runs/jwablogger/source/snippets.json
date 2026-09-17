@@ -1,0 +1,124 @@
+{
+  "snippets": [
+    {
+      "path": "java/jwaBlogger/src/jwaBlogger/BlogManager.java",
+      "kind": "conditional",
+      "start_line": 433,
+      "end_line": 434,
+      "condition": "(! trusted)",
+      "terminations": [],
+      "code": "if (! trusted)\r\n          validateAndFixHtml(blogEntry, blogEntryText);",
+      "parameter_ids": [
+        "java/jwaBlogger/src/jwaBlogger/BlogManager.java:LCP12"
+      ],
+      "function_ids": [],
+      "semantic_evidence": [
+        {
+          "kind": "java_jsp_role_source",
+          "source": "isUserInRole",
+          "role": "trusted"
+        }
+      ]
+    },
+    {
+      "path": "java/jwaBlogger/src/jwaBlogger/BlogManager.java",
+      "kind": "conditional",
+      "start_line": 561,
+      "end_line": 562,
+      "condition": "(!isAdmin)",
+      "terminations": [],
+      "code": "if (!isAdmin)\r\n              getDatabaseManager().parameterizedUpdate(\"insert into view_control values(?, ?, null)\", blogEntry.getBlogEntryId(), control);",
+      "parameter_ids": [
+        "java/jwaBlogger/src/jwaBlogger/BlogManager.java:LCP24"
+      ],
+      "function_ids": [],
+      "semantic_evidence": [
+        {
+          "kind": "java_jsp_role_source",
+          "source": "isUserInRole",
+          "role": "administrator"
+        }
+      ]
+    },
+    {
+      "path": "java/jwaBlogger/src/jwaBlogger/BlogManager.java",
+      "kind": "conditional",
+      "start_line": 586,
+      "end_line": 587,
+      "condition": "(!isAdmin)",
+      "terminations": [],
+      "code": "if (!isAdmin)\r\n              getDatabaseManager().parameterizedUpdate(\"insert into vote_control values(?, ?, null)\", blogEntry.getBlogEntryId(), control);",
+      "parameter_ids": [
+        "java/jwaBlogger/src/jwaBlogger/BlogManager.java:LCP24"
+      ],
+      "function_ids": [],
+      "semantic_evidence": [
+        {
+          "kind": "java_jsp_role_source",
+          "source": "isUserInRole",
+          "role": "administrator"
+        }
+      ]
+    },
+    {
+      "path": "java/jwaBlogger/src/jwaBlogger/BlogManager.java",
+      "kind": "conditional",
+      "start_line": 611,
+      "end_line": 612,
+      "condition": "(!isAdmin)",
+      "terminations": [],
+      "code": "if (!isAdmin)\r\n              getDatabaseManager().parameterizedUpdate(\"insert into spam_control values(?, ?, null)\", blogEntry.getBlogEntryId(), control);",
+      "parameter_ids": [
+        "java/jwaBlogger/src/jwaBlogger/BlogManager.java:LCP24"
+      ],
+      "function_ids": [],
+      "semantic_evidence": [
+        {
+          "kind": "java_jsp_role_source",
+          "source": "isUserInRole",
+          "role": "administrator"
+        }
+      ]
+    },
+    {
+      "path": "java/jwaBlogger/src/jwaBlogger/BlogManager.java",
+      "kind": "conditional",
+      "start_line": 636,
+      "end_line": 637,
+      "condition": "(!isAdmin)",
+      "terminations": [],
+      "code": "if(!isAdmin)\r\n              getDatabaseManager().parameterizedUpdate(\"insert into comment_vote_control values(?, ?, null)\", blogEntryComment.getBlogEntryCommentId(), control);",
+      "parameter_ids": [
+        "java/jwaBlogger/src/jwaBlogger/BlogManager.java:LCP24"
+      ],
+      "function_ids": [],
+      "semantic_evidence": [
+        {
+          "kind": "java_jsp_role_source",
+          "source": "isUserInRole",
+          "role": "administrator"
+        }
+      ]
+    },
+    {
+      "path": "java/jwaBlogger/src/jwaBlogger/BlogManager.java",
+      "kind": "conditional",
+      "start_line": 653,
+      "end_line": 654,
+      "condition": "(!isAdmin)",
+      "terminations": [],
+      "code": "if (!isAdmin)\r\n              getDatabaseManager().parameterizedUpdate(\"insert into comment_spam_control values(?, ?, null)\", blogEntryComment.getBlogEntryCommentId(), control);",
+      "parameter_ids": [
+        "java/jwaBlogger/src/jwaBlogger/BlogManager.java:LCP24"
+      ],
+      "function_ids": [],
+      "semantic_evidence": [
+        {
+          "kind": "java_jsp_role_source",
+          "source": "isUserInRole",
+          "role": "administrator"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "snippets": [
+    {
+      "path": "admin/auth.jsp",
+      "kind": "conditional",
+      "start_line": 2,
+      "end_line": 8,
+      "condition": "(drhlLoggedIn == null || !drhlLoggedIn.equals(\"true\"))",
+      "terminations": [
+        {
+          "kind": "configured_denial",
+          "line": 13,
+          "code": "response.sendRedirect(\"index.jsp\");"
+        },
+        {
+          "kind": "configured_denial",
+          "line": 14,
+          "code": "return;"
+        }
+      ],
+      "code": "<%\nString drhlLoggedIn = (String) session.getAttribute(\"isLoggedIn\");\nif (drhlLoggedIn == null || !drhlLoggedIn.equals(\"true\")) {\n    response.sendRedirect(\"index.jsp\");\n    return;\n}\n%>",
+      "parameter_ids": [
+        "admin/auth.jsp:LCP3"
+      ],
+      "function_ids": [],
+      "if_framework": "if (drhlLoggedIn == null || !drhlLoggedIn.equals(\"true\")) {\n    response.sendRedirect(\"index.jsp\");\n    return;\n}"
+    }
+  ]
+}

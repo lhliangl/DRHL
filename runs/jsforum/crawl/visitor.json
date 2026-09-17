@@ -1,0 +1,74 @@
+{
+  "role": "visitor",
+  "kind": "visitor",
+  "nodes": [
+    "forum/index.jsp",
+    "forum/info.jsp?action=p1",
+    "forum/register.jsp",
+    "servlet/forum.AddUser",
+    "servlet/forum.Login"
+  ],
+  "edges": [
+    {
+      "from": "forum/index.jsp",
+      "to": "forum/register.jsp"
+    },
+    {
+      "from": "forum/index.jsp",
+      "to": "servlet/forum.Login"
+    },
+    {
+      "from": "forum/info.jsp?action=p1",
+      "to": "servlet/forum.Login"
+    },
+    {
+      "from": "forum/register.jsp",
+      "to": "servlet/forum.AddUser"
+    },
+    {
+      "from": "forum/register.jsp",
+      "to": "servlet/forum.Login"
+    },
+    {
+      "from": "servlet/forum.AddUser",
+      "to": "forum/info.jsp?action=p1"
+    }
+  ],
+  "requests": {
+    "forum/index.jsp": {
+      "method": "GET",
+      "params": {},
+      "referer": null
+    },
+    "servlet/forum.Login": {
+      "method": "POST",
+      "params": {
+        "username": "admin",
+        "password": "123456"
+      },
+      "referer": "forum/index.jsp"
+    },
+    "forum/register.jsp": {
+      "method": "GET",
+      "params": {},
+      "referer": "forum/index.jsp"
+    },
+    "servlet/forum.AddUser": {
+      "method": "POST",
+      "params": {
+        "user": "value_64d18799",
+        "password": "123456",
+        "password2": "123456",
+        "email": "drhl@example.test"
+      },
+      "referer": "forum/register.jsp"
+    },
+    "forum/info.jsp?action=p1": {
+      "method": "GET",
+      "params": {
+        "action": "regcomplete"
+      },
+      "referer": "forum/register.jsp"
+    }
+  }
+}

@@ -1,0 +1,1021 @@
+{
+  "summary": {
+    "vulnerable": 3,
+    "not_vulnerable": 66
+  },
+  "findings": [
+    {
+      "category": "static_only",
+      "page": "vulnerabilities/api/index.php",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/DVWA/login.php",
+        "static-only page did not match configured high-risk standalone patterns"
+      ],
+      "error": null
+    },
+    {
+      "category": "static_only",
+      "page": "vulnerabilities/api/src/GenericController.php",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "static page response body was empty; treated as not vulnerable"
+      ],
+      "error": null
+    },
+    {
+      "category": "static_only",
+      "page": "vulnerabilities/api/src/HealthController.php",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "static-only page did not match configured high-risk standalone patterns"
+      ],
+      "error": null
+    },
+    {
+      "category": "static_only",
+      "page": "vulnerabilities/api/src/Helpers.php",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "static page response body was empty; treated as not vulnerable"
+      ],
+      "error": null
+    },
+    {
+      "category": "static_only",
+      "page": "vulnerabilities/api/src/Login.php",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "authentication page: http://localhost/DVWA/vulnerabilities/api/src/Login.php",
+        "static-only page did not match configured high-risk standalone patterns"
+      ],
+      "error": null
+    },
+    {
+      "category": "static_only",
+      "page": "vulnerabilities/api/src/LoginController.php",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "static-only page did not match configured high-risk standalone patterns"
+      ],
+      "error": null
+    },
+    {
+      "category": "static_only",
+      "page": "vulnerabilities/api/src/Order.php",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "static-only page did not match configured high-risk standalone patterns"
+      ],
+      "error": null
+    },
+    {
+      "category": "static_only",
+      "page": "vulnerabilities/api/src/OrderController.php",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "static-only page did not match configured high-risk standalone patterns"
+      ],
+      "error": null
+    },
+    {
+      "category": "static_only",
+      "page": "vulnerabilities/api/src/Token.php",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "static-only page did not match configured high-risk standalone patterns"
+      ],
+      "error": null
+    },
+    {
+      "category": "static_only",
+      "page": "vulnerabilities/api/src/User.php",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "static-only page did not match configured high-risk standalone patterns"
+      ],
+      "error": null
+    },
+    {
+      "category": "static_only",
+      "page": "vulnerabilities/api/src/UserController.php",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "static-only page did not match configured high-risk standalone patterns"
+      ],
+      "error": null
+    },
+    {
+      "category": "static_only",
+      "page": "vulnerabilities/authbypass/change_user_details.php",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: access denied",
+        "static-only page did not match configured high-risk standalone patterns"
+      ],
+      "error": null
+    },
+    {
+      "category": "static_only",
+      "page": "vulnerabilities/authbypass/get_user_data.php",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: access denied",
+        "static-only page did not match configured high-risk standalone patterns"
+      ],
+      "error": null
+    },
+    {
+      "category": "static_only",
+      "page": "vulnerabilities/authbypass/index.php",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/DVWA/login.php",
+        "static-only page did not match configured high-risk standalone patterns"
+      ],
+      "error": null
+    },
+    {
+      "category": "static_only",
+      "page": "vulnerabilities/brute/index.php",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/DVWA/login.php",
+        "static-only page did not match configured high-risk standalone patterns"
+      ],
+      "error": null
+    },
+    {
+      "category": "static_only",
+      "page": "vulnerabilities/captcha/index.php",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/DVWA/login.php",
+        "static-only page did not match configured high-risk standalone patterns"
+      ],
+      "error": null
+    },
+    {
+      "category": "static_only",
+      "page": "vulnerabilities/csp/index.php",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/DVWA/login.php",
+        "static-only page did not match configured high-risk standalone patterns"
+      ],
+      "error": null
+    },
+    {
+      "category": "static_only",
+      "page": "vulnerabilities/csrf/index.php",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/DVWA/login.php",
+        "static-only page did not match configured high-risk standalone patterns"
+      ],
+      "error": null
+    },
+    {
+      "category": "static_only",
+      "page": "vulnerabilities/csrf/test_credentials.php",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/DVWA/login.php",
+        "static-only page did not match configured high-risk standalone patterns"
+      ],
+      "error": null
+    },
+    {
+      "category": "static_only",
+      "page": "vulnerabilities/exec/index.php",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/DVWA/login.php",
+        "static-only page did not match configured high-risk standalone patterns"
+      ],
+      "error": null
+    },
+    {
+      "category": "static_only",
+      "page": "vulnerabilities/fi/index.php",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/DVWA/login.php",
+        "static-only page did not match configured high-risk standalone patterns"
+      ],
+      "error": null
+    },
+    {
+      "category": "static_only",
+      "page": "vulnerabilities/javascript/index.php",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/DVWA/login.php",
+        "static-only page did not match configured high-risk standalone patterns"
+      ],
+      "error": null
+    },
+    {
+      "category": "static_only",
+      "page": "vulnerabilities/open_redirect/index.php",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/DVWA/login.php",
+        "static-only page did not match configured high-risk standalone patterns"
+      ],
+      "error": null
+    },
+    {
+      "category": "static_only",
+      "page": "vulnerabilities/sqli/index.php",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/DVWA/login.php",
+        "static-only page did not match configured high-risk standalone patterns"
+      ],
+      "error": null
+    },
+    {
+      "category": "static_only",
+      "page": "vulnerabilities/sqli_blind/index.php",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/DVWA/login.php",
+        "static-only page did not match configured high-risk standalone patterns"
+      ],
+      "error": null
+    },
+    {
+      "category": "static_only",
+      "page": "vulnerabilities/upload/index.php",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/DVWA/login.php",
+        "static-only page did not match configured high-risk standalone patterns"
+      ],
+      "error": null
+    },
+    {
+      "category": "static_only",
+      "page": "vulnerabilities/weak_id/index.php",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/DVWA/login.php",
+        "static-only page did not match configured high-risk standalone patterns"
+      ],
+      "error": null
+    },
+    {
+      "category": "static_only",
+      "page": "vulnerabilities/xss_d/index.php",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/DVWA/login.php",
+        "static-only page did not match configured high-risk standalone patterns"
+      ],
+      "error": null
+    },
+    {
+      "category": "static_only",
+      "page": "vulnerabilities/xss_r/index.php",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/DVWA/login.php",
+        "static-only page did not match configured high-risk standalone patterns"
+      ],
+      "error": null
+    },
+    {
+      "category": "static_only",
+      "page": "vulnerabilities/xss_s/index.php",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/DVWA/login.php",
+        "static-only page did not match configured high-risk standalone patterns"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "./",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/DVWA/login.php",
+        "redirected: http://localhost/DVWA/login.php"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "about.php",
+      "actor": "visitor",
+      "status": "vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 200 without redirect or denial marker"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "instructions.php",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: access denied"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "instructions.php?doc=p1",
+      "actor": "visitor",
+      "status": "vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 200 without redirect or denial marker"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "security.php",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/DVWA/login.php",
+        "redirected: http://localhost/DVWA/login.php"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "setup.php",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "redirected: http://localhost/DVWA/setup.php"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "vulnerabilities/api/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/DVWA/login.php",
+        "redirected: http://localhost/DVWA/login.php"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "vulnerabilities/authbypass/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/DVWA/login.php",
+        "redirected: http://localhost/DVWA/login.php"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "vulnerabilities/brute/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/DVWA/login.php",
+        "redirected: http://localhost/DVWA/login.php"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "vulnerabilities/brute/?Login=p1&password=p1&username=p1",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/DVWA/login.php",
+        "redirected: http://localhost/DVWA/login.php"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "vulnerabilities/captcha/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/DVWA/login.php",
+        "redirected: http://localhost/DVWA/login.php"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "vulnerabilities/cryptography/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/DVWA/login.php",
+        "redirected: http://localhost/DVWA/login.php"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "vulnerabilities/cryptography/index.php",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/DVWA/login.php",
+        "redirected: http://localhost/DVWA/login.php"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "vulnerabilities/csp/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/DVWA/login.php",
+        "redirected: http://localhost/DVWA/login.php"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "vulnerabilities/csrf/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/DVWA/login.php",
+        "redirected: http://localhost/DVWA/login.php"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "vulnerabilities/csrf/?Change=p1&password_conf=p1&password_new=p1",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/DVWA/login.php",
+        "redirected: http://localhost/DVWA/login.php"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "vulnerabilities/exec/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/DVWA/login.php",
+        "redirected: http://localhost/DVWA/login.php"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "vulnerabilities/fi/?page=file1.php",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/DVWA/login.php",
+        "redirected: http://localhost/DVWA/login.php"
+      ],
+      "error": null
+    },
+    {
+      "category": "horizontal",
+      "page": "vulnerabilities/fi/?page=file1.php",
+      "actor": "user",
+      "status": "not_vulnerable",
+      "confidence": "none",
+      "method": "GET",
+      "http_status": null,
+      "evidence": [
+        "no horizontal override value was configured; treated as not vulnerable by binary reporting policy"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "vulnerabilities/fi/?page=file2.php",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/DVWA/login.php",
+        "redirected: http://localhost/DVWA/login.php"
+      ],
+      "error": null
+    },
+    {
+      "category": "horizontal",
+      "page": "vulnerabilities/fi/?page=file2.php",
+      "actor": "user",
+      "status": "not_vulnerable",
+      "confidence": "none",
+      "method": "GET",
+      "http_status": null,
+      "evidence": [
+        "no horizontal override value was configured; treated as not vulnerable by binary reporting policy"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "vulnerabilities/fi/?page=file3.php",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/DVWA/login.php",
+        "redirected: http://localhost/DVWA/login.php"
+      ],
+      "error": null
+    },
+    {
+      "category": "horizontal",
+      "page": "vulnerabilities/fi/?page=file3.php",
+      "actor": "user",
+      "status": "not_vulnerable",
+      "confidence": "none",
+      "method": "GET",
+      "http_status": null,
+      "evidence": [
+        "no horizontal override value was configured; treated as not vulnerable by binary reporting policy"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "vulnerabilities/fi/?page=include.php",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/DVWA/login.php",
+        "redirected: http://localhost/DVWA/login.php"
+      ],
+      "error": null
+    },
+    {
+      "category": "horizontal",
+      "page": "vulnerabilities/fi/?page=include.php",
+      "actor": "user",
+      "status": "not_vulnerable",
+      "confidence": "none",
+      "method": "GET",
+      "http_status": null,
+      "evidence": [
+        "no horizontal override value was configured; treated as not vulnerable by binary reporting policy"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "vulnerabilities/javascript/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/DVWA/login.php",
+        "redirected: http://localhost/DVWA/login.php"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "vulnerabilities/open_redirect/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/DVWA/login.php",
+        "redirected: http://localhost/DVWA/login.php"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "vulnerabilities/sqli/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/DVWA/login.php",
+        "redirected: http://localhost/DVWA/login.php"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "vulnerabilities/sqli/?Submit=p1&id=1",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/DVWA/login.php",
+        "redirected: http://localhost/DVWA/login.php"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "vulnerabilities/sqli_blind/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/DVWA/login.php",
+        "redirected: http://localhost/DVWA/login.php"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "vulnerabilities/sqli_blind/?Submit=p1&id=1",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/DVWA/login.php",
+        "redirected: http://localhost/DVWA/login.php"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "vulnerabilities/upload/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/DVWA/login.php",
+        "redirected: http://localhost/DVWA/login.php"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "vulnerabilities/weak_id/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/DVWA/login.php",
+        "redirected: http://localhost/DVWA/login.php"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "vulnerabilities/xss_d/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/DVWA/login.php",
+        "redirected: http://localhost/DVWA/login.php"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "vulnerabilities/xss_d/?default=p1",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/DVWA/login.php",
+        "redirected: http://localhost/DVWA/login.php"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "vulnerabilities/xss_r/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/DVWA/login.php",
+        "redirected: http://localhost/DVWA/login.php"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "vulnerabilities/xss_r/?name=p1",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/DVWA/login.php",
+        "redirected: http://localhost/DVWA/login.php"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "vulnerabilities/xss_s/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/DVWA/login.php",
+        "redirected: http://localhost/DVWA/login.php"
+      ],
+      "error": null
+    },
+    {
+      "category": "static_only",
+      "page": "setup.php",
+      "actor": "visitor",
+      "status": "vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 200 without redirect or denial marker"
+      ],
+      "error": null
+    }
+  ]
+}

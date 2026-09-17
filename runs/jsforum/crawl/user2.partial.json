@@ -1,0 +1,177 @@
+{
+  "role": "user2",
+  "kind": "user",
+  "nodes": [
+    "forum/index.jsp",
+    "forum/index.jsp?forum_id=p1&page=editmessage&reply_id=p1&thread_id=p1",
+    "forum/index.jsp?forum_id=p1&page=message&thread_id=p1",
+    "forum/index.jsp?forum_id=p1&page=thread",
+    "forum/index.jsp?forum_id=p1&page=thread&thread_id=p1",
+    "forum/index.jsp?page=profile",
+    "servlet/forum.AddReply",
+    "servlet/forum.AddThread",
+    "servlet/forum.ChangeMessage",
+    "servlet/forum.ChangeProfile"
+  ],
+  "edges": [
+    {
+      "from": "forum/index.jsp",
+      "to": "forum/index.jsp?page=profile"
+    },
+    {
+      "from": "forum/index.jsp?forum_id=p1&page=editmessage&reply_id=p1&thread_id=p1",
+      "to": "forum/index.jsp?forum_id=p1&page=thread&thread_id=p1"
+    },
+    {
+      "from": "forum/index.jsp?forum_id=p1&page=editmessage&reply_id=p1&thread_id=p1",
+      "to": "servlet/forum.ChangeMessage"
+    },
+    {
+      "from": "forum/index.jsp?forum_id=p1&page=message&thread_id=p1",
+      "to": "forum/index.jsp?forum_id=p1&page=editmessage&reply_id=p1&thread_id=p1"
+    },
+    {
+      "from": "forum/index.jsp?forum_id=p1&page=message&thread_id=p1",
+      "to": "servlet/forum.AddReply"
+    },
+    {
+      "from": "forum/index.jsp?forum_id=p1&page=thread",
+      "to": "forum/index.jsp"
+    },
+    {
+      "from": "forum/index.jsp?forum_id=p1&page=thread",
+      "to": "forum/index.jsp?forum_id=p1&page=message&thread_id=p1"
+    },
+    {
+      "from": "forum/index.jsp?forum_id=p1&page=thread",
+      "to": "servlet/forum.AddThread"
+    },
+    {
+      "from": "forum/index.jsp?forum_id=p1&page=thread&thread_id=p1",
+      "to": "servlet/forum.AddThread"
+    },
+    {
+      "from": "forum/index.jsp?page=profile",
+      "to": "servlet/forum.ChangeProfile"
+    },
+    {
+      "from": "servlet/forum.AddReply",
+      "to": "forum/index.jsp?forum_id=p1&page=message&thread_id=p1"
+    },
+    {
+      "from": "servlet/forum.AddThread",
+      "to": "forum/index.jsp?forum_id=p1&page=thread"
+    },
+    {
+      "from": "servlet/forum.ChangeMessage",
+      "to": "forum/index.jsp?forum_id=p1&page=message&thread_id=p1"
+    },
+    {
+      "from": "servlet/forum.ChangeProfile",
+      "to": "forum/index.jsp?page=profile"
+    }
+  ],
+  "requests": {
+    "forum/index.jsp?forum_id=p1&page=thread": {
+      "method": "GET",
+      "params": {
+        "page": "thread",
+        "forum_id": "0"
+      },
+      "referer": null
+    },
+    "forum/index.jsp": {
+      "method": "GET",
+      "params": {},
+      "referer": null
+    },
+    "servlet/forum.Login": {
+      "method": "POST",
+      "params": {
+        "password": "123456",
+        "username": "user2"
+      },
+      "referer": null
+    },
+    "servlet/forum.AddThread": {
+      "method": "POST",
+      "params": {
+        "forum_id": "0",
+        "lastThread_id": "3",
+        "user": "user2",
+        "title": "DRHL Test Topic",
+        "message": "DRHL generated forum message for access-control testing."
+      },
+      "referer": "forum/index.jsp?forum_id=p1&page=thread&thread_id=p1"
+    },
+    "forum/index.jsp?page=profile": {
+      "method": "GET",
+      "params": {
+        "page": "profile"
+      },
+      "referer": "forum/index.jsp"
+    },
+    "servlet/forum.ChangeProfile": {
+      "method": "POST",
+      "params": {
+        "avatar_list": "./avatars/avatar_1.jpg",
+        "link_avatar": "./avatars/avatar_4.jpg"
+      },
+      "referer": "forum/index.jsp?page=profile"
+    },
+    "forum/index.jsp?forum_id=p1&page=message&thread_id=p1": {
+      "method": "GET",
+      "params": {
+        "page": "message",
+        "forum_id": "0",
+        "thread_id": "0",
+        "start": "0"
+      },
+      "referer": "forum/index.jsp?forum_id=p1&page=thread"
+    },
+    "servlet/forum.AddReply": {
+      "method": "POST",
+      "params": {
+        "forum_id": "0",
+        "thread_id": "0",
+        "lastReply_id": "3",
+        "user": "user2",
+        "start": "0",
+        "message": "DRHL generated forum message for access-control testing."
+      },
+      "referer": "forum/index.jsp?forum_id=p1&page=message&thread_id=p1"
+    },
+    "forum/index.jsp?forum_id=p1&page=editmessage&reply_id=p1&thread_id=p1": {
+      "method": "GET",
+      "params": {
+        "page": "editmessage",
+        "forum_id": "0",
+        "thread_id": "0",
+        "reply_id": "4",
+        "start": "0"
+      },
+      "referer": "forum/index.jsp?forum_id=p1&page=message&thread_id=p1"
+    },
+    "servlet/forum.ChangeMessage": {
+      "method": "POST",
+      "params": {
+        "start": "0",
+        "forum_id": "0",
+        "thread_id": "0",
+        "reply_id": "4",
+        "message": "DRHL generated forum message for access-control testing."
+      },
+      "referer": "forum/index.jsp?forum_id=p1&page=editmessage&reply_id=p1&thread_id=p1"
+    },
+    "forum/index.jsp?forum_id=p1&page=thread&thread_id=p1": {
+      "method": "GET",
+      "params": {
+        "page": "thread",
+        "forum_id": "0",
+        "thread_id": "0",
+        "start": "0"
+      },
+      "referer": "forum/index.jsp?forum_id=p1&page=editmessage&reply_id=p1&thread_id=p1"
+    }
+  }
+}

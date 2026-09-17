@@ -1,0 +1,6009 @@
+{
+  "parameters": [
+    {
+      "id": "dvwa/includes/dvwaPage.inc.php:LCP1",
+      "path": "dvwa/includes/dvwaPage.inc.php",
+      "expression": "$html",
+      "aliases": [
+        "$html"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 16,
+          "condition": "( !isset( $html ) )"
+        }
+      ],
+      "condition_indexes": [
+        2
+      ]
+    },
+    {
+      "id": "dvwa/includes/dvwaPage.inc.php:LCP2",
+      "path": "dvwa/includes/dvwaPage.inc.php",
+      "expression": "$_COOKIE['security']",
+      "aliases": [
+        "$_COOKIE['security']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 22,
+          "condition": "( !isset( $_COOKIE[ 'security' ] ) || !in_array( $_COOKIE[ 'security' ], $security_levels ) )"
+        }
+      ],
+      "condition_indexes": [
+        3
+      ]
+    },
+    {
+      "id": "dvwa/includes/dvwaPage.inc.php:LCP3",
+      "path": "dvwa/includes/dvwaPage.inc.php",
+      "expression": "$security_levels",
+      "aliases": [
+        "$security_levels"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 22,
+          "condition": "( !isset( $_COOKIE[ 'security' ] ) || !in_array( $_COOKIE[ 'security' ], $security_levels ) )"
+        },
+        {
+          "source": "conditional",
+          "line": 24,
+          "condition": "( in_array( $_DVWA[ 'default_security_level' ], $security_levels) )"
+        }
+      ],
+      "condition_indexes": [
+        3,
+        4
+      ]
+    },
+    {
+      "id": "dvwa/includes/dvwaPage.inc.php:LCP4",
+      "path": "dvwa/includes/dvwaPage.inc.php",
+      "expression": "$_DVWA['default_security_level']",
+      "aliases": [
+        "$_DVWA['default_security_level']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 24,
+          "condition": "( in_array( $_DVWA[ 'default_security_level' ], $security_levels) )"
+        }
+      ],
+      "condition_indexes": [
+        4
+      ]
+    },
+    {
+      "id": "dvwa/includes/dvwaPage.inc.php:LCP5",
+      "path": "dvwa/includes/dvwaPage.inc.php",
+      "expression": "$_POST",
+      "aliases": [
+        "$_POST"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 108,
+          "condition": "(array_key_exists (\"Login\", $_POST) && $_POST['Login'] == \"Login\")"
+        }
+      ],
+      "condition_indexes": [
+        5
+      ]
+    },
+    {
+      "id": "dvwa/includes/dvwaPage.inc.php:LCP6",
+      "path": "dvwa/includes/dvwaPage.inc.php",
+      "expression": "$_POST['Login']",
+      "aliases": [
+        "$_POST['Login']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 108,
+          "condition": "(array_key_exists (\"Login\", $_POST) && $_POST['Login'] == \"Login\")"
+        }
+      ],
+      "condition_indexes": [
+        5
+      ]
+    },
+    {
+      "id": "dvwa/includes/dvwaPage.inc.php:LCP7",
+      "path": "dvwa/includes/dvwaPage.inc.php",
+      "expression": "$_DVWA",
+      "aliases": [
+        "$_DVWA"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 116,
+          "condition": "(!array_key_exists (\"default_locale\", $_DVWA))"
+        }
+      ],
+      "condition_indexes": [
+        7
+      ]
+    },
+    {
+      "id": "dvwa/includes/dvwaPage.inc.php:LCP8",
+      "path": "dvwa/includes/dvwaPage.inc.php",
+      "expression": "$DBMS",
+      "aliases": [
+        "$DBMS"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 551,
+          "condition": "( $DBMS == 'MySQL' )"
+        },
+        {
+          "source": "conditional",
+          "line": 554,
+          "condition": "( $DBMS == 'PGSQL' )"
+        }
+      ],
+      "condition_indexes": [
+        8,
+        9
+      ]
+    },
+    {
+      "id": "dvwa/includes/dvwaPage.inc.php:LCP9",
+      "path": "dvwa/includes/dvwaPage.inc.php",
+      "expression": "$security_level",
+      "aliases": [
+        "$security_level"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 50,
+          "condition": "($security_level == 'impossible')"
+        },
+        {
+          "source": "conditional",
+          "line": 97,
+          "condition": "($security_level == 'impossible')"
+        }
+      ],
+      "condition_indexes": [
+        0,
+        2
+      ]
+    },
+    {
+      "id": "dvwa/includes/dvwaPage.inc.php:LCP10",
+      "path": "dvwa/includes/dvwaPage.inc.php",
+      "expression": "$_COOKIE[session_name()]",
+      "aliases": [
+        "$_COOKIE[session_name()]"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 102,
+          "condition": "(isset($_COOKIE[session_name()]))"
+        }
+      ],
+      "condition_indexes": [
+        3
+      ]
+    },
+    {
+      "id": "dvwa/includes/dvwaPage.inc.php:LCP11",
+      "path": "dvwa/includes/dvwaPage.inc.php",
+      "expression": "$_SESSION['dvwa']",
+      "aliases": [
+        "$_SESSION['dvwa']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 125,
+          "condition": "( !isset( $_SESSION[ 'dvwa' ] ) )"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "dvwa/includes/dvwaPage.inc.php:LCP12",
+      "path": "dvwa/includes/dvwaPage.inc.php",
+      "expression": "$pActions",
+      "aliases": [
+        "$pActions"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 133,
+          "condition": "(in_array('authenticated', $pActions))"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "dvwa/includes/dvwaPage.inc.php:LCP13",
+      "path": "dvwa/includes/dvwaPage.inc.php",
+      "expression": "dvwaisloggedin",
+      "aliases": [
+        "dvwaisloggedin"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 134,
+          "condition": "( !dvwaIsLoggedIn())"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "dvwa/includes/dvwaPage.inc.php:LCP14",
+      "path": "dvwa/includes/dvwaPage.inc.php",
+      "expression": "$_DVWA",
+      "aliases": [
+        "$_DVWA"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 149,
+          "condition": "(array_key_exists(\"disable_authentication\", $_DVWA) && $_DVWA['disable_authentication'])"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "dvwa/includes/dvwaPage.inc.php:LCP15",
+      "path": "dvwa/includes/dvwaPage.inc.php",
+      "expression": "$_DVWA['disable_authentication']",
+      "aliases": [
+        "$_DVWA['disable_authentication']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 149,
+          "condition": "(array_key_exists(\"disable_authentication\", $_DVWA) && $_DVWA['disable_authentication'])"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "dvwa/includes/dvwaPage.inc.php:LCP16",
+      "path": "dvwa/includes/dvwaPage.inc.php",
+      "expression": "$_SERVER",
+      "aliases": [
+        "$_SERVER"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 164,
+          "condition": "( array_key_exists( 'HTTP_X_FORWARDED_PREFIX' , $_SERVER ))"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "dvwa/includes/dvwaPage.inc.php:LCP17",
+      "path": "dvwa/includes/dvwaPage.inc.php",
+      "expression": "$_COOKIE['theme']",
+      "aliases": [
+        "$_COOKIE['theme']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 193,
+          "condition": "(isset($_COOKIE['theme']))"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "dvwa/includes/dvwaPage.inc.php:LCP18",
+      "path": "dvwa/includes/dvwaPage.inc.php",
+      "expression": "$_COOKIE['security']",
+      "aliases": [
+        "$_COOKIE['security']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 204,
+          "condition": "(isset($_COOKIE['security']))"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "dvwa/includes/dvwaPage.inc.php:LCP19",
+      "path": "dvwa/includes/dvwaPage.inc.php",
+      "expression": "$_DVWA",
+      "aliases": [
+        "$_DVWA"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 210,
+          "condition": "(array_key_exists(\"disable_authentication\", $_DVWA) && $_DVWA['disable_authentication'])"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "dvwa/includes/dvwaPage.inc.php:LCP20",
+      "path": "dvwa/includes/dvwaPage.inc.php",
+      "expression": "$_DVWA['disable_authentication']",
+      "aliases": [
+        "$_DVWA['disable_authentication']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 210,
+          "condition": "(array_key_exists(\"disable_authentication\", $_DVWA) && $_DVWA['disable_authentication'])"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "dvwa/includes/dvwaPage.inc.php:LCP21",
+      "path": "dvwa/includes/dvwaPage.inc.php",
+      "expression": "$pSecurityLevel",
+      "aliases": [
+        "$pSecurityLevel",
+        "$_COOKIE['security']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 220,
+          "condition": "( $pSecurityLevel == 'impossible' )"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "dvwa/includes/dvwaPage.inc.php:LCP22",
+      "path": "dvwa/includes/dvwaPage.inc.php",
+      "expression": "$pLocale",
+      "aliases": [
+        "$pLocale",
+        "$dvwaSession['locale']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 244,
+          "condition": "( in_array( $pLocale, $locales) )"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "dvwa/includes/dvwaPage.inc.php:LCP23",
+      "path": "dvwa/includes/dvwaPage.inc.php",
+      "expression": "$locales",
+      "aliases": [
+        "$locales"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 244,
+          "condition": "( in_array( $pLocale, $locales) )"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "dvwa/includes/dvwaPage.inc.php:LCP24",
+      "path": "dvwa/includes/dvwaPage.inc.php",
+      "expression": "$dvwaSession['messages']",
+      "aliases": [
+        "$dvwaSession['messages']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 255,
+          "condition": "( !isset( $dvwaSession[ 'messages' ] ) )"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "dvwa/includes/dvwaPage.inc.php:LCP25",
+      "path": "dvwa/includes/dvwaPage.inc.php",
+      "expression": "$dvwaSession['messages']",
+      "aliases": [
+        "$dvwaSession['messages']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 264,
+          "condition": "( !isset( $dvwaSession[ 'messages' ] ) || count( $dvwaSession[ 'messages' ] ) == 0 )"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "dvwa/includes/dvwaPage.inc.php:LCP26",
+      "path": "dvwa/includes/dvwaPage.inc.php",
+      "expression": "dvwaisloggedin",
+      "aliases": [
+        "dvwaisloggedin"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 286,
+          "condition": "( dvwaIsLoggedIn() )"
+        },
+        {
+          "source": "conditional",
+          "line": 296,
+          "condition": "( dvwaIsLoggedIn() )"
+        },
+        {
+          "source": "conditional",
+          "line": 321,
+          "condition": "( dvwaIsLoggedIn() )"
+        },
+        {
+          "source": "conditional",
+          "line": 327,
+          "condition": "( dvwaIsLoggedIn() )"
+        },
+        {
+          "source": "conditional",
+          "line": 374,
+          "condition": "( dvwaIsLoggedIn() )"
+        }
+      ],
+      "condition_indexes": [
+        0,
+        1,
+        3,
+        4,
+        7
+      ]
+    },
+    {
+      "id": "dvwa/includes/dvwaPage.inc.php:LCP27",
+      "path": "dvwa/includes/dvwaPage.inc.php",
+      "expression": "dvwacurrentuser",
+      "aliases": [
+        "dvwacurrentuser"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 312,
+          "condition": "(dvwaCurrentUser() == \"admin\")"
+        }
+      ],
+      "condition_indexes": [
+        2
+      ]
+    },
+    {
+      "id": "dvwa/includes/dvwaPage.inc.php:LCP28",
+      "path": "dvwa/includes/dvwaPage.inc.php",
+      "expression": "$messagesHtml",
+      "aliases": [
+        "$messagesHtml"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 369,
+          "condition": "( $messagesHtml )"
+        }
+      ],
+      "condition_indexes": [
+        6
+      ]
+    },
+    {
+      "id": "dvwa/includes/dvwaPage.inc.php:LCP29",
+      "path": "dvwa/includes/dvwaPage.inc.php",
+      "expression": "$pPage['source_button']",
+      "aliases": [
+        "$pPage['source_button']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 376,
+          "condition": "( $pPage[ 'source_button' ] )"
+        }
+      ],
+      "condition_indexes": [
+        8
+      ]
+    },
+    {
+      "id": "dvwa/includes/dvwaPage.inc.php:LCP30",
+      "path": "dvwa/includes/dvwaPage.inc.php",
+      "expression": "$pPage['help_button']",
+      "aliases": [
+        "$pPage['help_button']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 379,
+          "condition": "( $pPage[ 'help_button' ] )"
+        }
+      ],
+      "condition_indexes": [
+        9
+      ]
+    },
+    {
+      "id": "dvwa/includes/dvwaPage.inc.php:LCP31",
+      "path": "dvwa/includes/dvwaPage.inc.php",
+      "expression": "$text",
+      "aliases": [
+        "$text"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 527,
+          "condition": "(is_null( $text ) || $text == \"\")"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "dvwa/includes/dvwaPage.inc.php:LCP32",
+      "path": "dvwa/includes/dvwaPage.inc.php",
+      "expression": "$DBMS",
+      "aliases": [
+        "$DBMS"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 568,
+          "condition": "( $DBMS == 'MySQL' )"
+        },
+        {
+          "source": "conditional",
+          "line": 581,
+          "condition": "( $DBMS == 'PGSQL' )"
+        }
+      ],
+      "condition_indexes": [
+        0,
+        2
+      ]
+    },
+    {
+      "id": "dvwa/includes/dvwaPage.inc.php:LCP33",
+      "path": "dvwa/includes/dvwaPage.inc.php",
+      "expression": "$GLOBALS[\"___mysqli_ston\"]",
+      "aliases": [
+        "$GLOBALS[\"___mysqli_ston\"]"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 569,
+          "condition": "( !@($GLOBALS[\"___mysqli_ston\"] = mysqli_connect( $_DVWA[ 'db_server' ],  $_DVWA[ 'db_user' ],  $_DVWA[ 'db_password' ], \"\", $_DVWA[ 'db_port' ] ))\n\t\t|| !@((bool)mysqli_query($GLOBALS[\"___mysqli_ston\"], \"USE \" . $_DVWA[ 'db_database' ])) )"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "dvwa/includes/dvwaPage.inc.php:LCP34",
+      "path": "dvwa/includes/dvwaPage.inc.php",
+      "expression": "$_DVWA['db_server']",
+      "aliases": [
+        "$_DVWA['db_server']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 569,
+          "condition": "( !@($GLOBALS[\"___mysqli_ston\"] = mysqli_connect( $_DVWA[ 'db_server' ],  $_DVWA[ 'db_user' ],  $_DVWA[ 'db_password' ], \"\", $_DVWA[ 'db_port' ] ))\n\t\t|| !@((bool)mysqli_query($GLOBALS[\"___mysqli_ston\"], \"USE \" . $_DVWA[ 'db_database' ])) )"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "dvwa/includes/dvwaPage.inc.php:LCP35",
+      "path": "dvwa/includes/dvwaPage.inc.php",
+      "expression": "$_DVWA['db_user']",
+      "aliases": [
+        "$_DVWA['db_user']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 569,
+          "condition": "( !@($GLOBALS[\"___mysqli_ston\"] = mysqli_connect( $_DVWA[ 'db_server' ],  $_DVWA[ 'db_user' ],  $_DVWA[ 'db_password' ], \"\", $_DVWA[ 'db_port' ] ))\n\t\t|| !@((bool)mysqli_query($GLOBALS[\"___mysqli_ston\"], \"USE \" . $_DVWA[ 'db_database' ])) )"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "dvwa/includes/dvwaPage.inc.php:LCP36",
+      "path": "dvwa/includes/dvwaPage.inc.php",
+      "expression": "$_DVWA['db_password']",
+      "aliases": [
+        "$_DVWA['db_password']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 569,
+          "condition": "( !@($GLOBALS[\"___mysqli_ston\"] = mysqli_connect( $_DVWA[ 'db_server' ],  $_DVWA[ 'db_user' ],  $_DVWA[ 'db_password' ], \"\", $_DVWA[ 'db_port' ] ))\n\t\t|| !@((bool)mysqli_query($GLOBALS[\"___mysqli_ston\"], \"USE \" . $_DVWA[ 'db_database' ])) )"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "dvwa/includes/dvwaPage.inc.php:LCP37",
+      "path": "dvwa/includes/dvwaPage.inc.php",
+      "expression": "$_DVWA['db_port']",
+      "aliases": [
+        "$_DVWA['db_port']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 569,
+          "condition": "( !@($GLOBALS[\"___mysqli_ston\"] = mysqli_connect( $_DVWA[ 'db_server' ],  $_DVWA[ 'db_user' ],  $_DVWA[ 'db_password' ], \"\", $_DVWA[ 'db_port' ] ))\n\t\t|| !@((bool)mysqli_query($GLOBALS[\"___mysqli_ston\"], \"USE \" . $_DVWA[ 'db_database' ])) )"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "dvwa/includes/dvwaPage.inc.php:LCP38",
+      "path": "dvwa/includes/dvwaPage.inc.php",
+      "expression": "$_DVWA['db_database']",
+      "aliases": [
+        "$_DVWA['db_database']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 569,
+          "condition": "( !@($GLOBALS[\"___mysqli_ston\"] = mysqli_connect( $_DVWA[ 'db_server' ],  $_DVWA[ 'db_user' ],  $_DVWA[ 'db_password' ], \"\", $_DVWA[ 'db_port' ] ))\n\t\t|| !@((bool)mysqli_query($GLOBALS[\"___mysqli_ston\"], \"USE \" . $_DVWA[ 'db_database' ])) )"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "dvwa/includes/dvwaPage.inc.php:LCP39",
+      "path": "dvwa/includes/dvwaPage.inc.php",
+      "expression": "$_DVWA['SQLI_DB']",
+      "aliases": [
+        "$_DVWA['SQLI_DB']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 591,
+          "condition": "($_DVWA['SQLI_DB'] == SQLITE)"
+        }
+      ],
+      "condition_indexes": [
+        3
+      ]
+    },
+    {
+      "id": "dvwa/includes/dvwaPage.inc.php:LCP40",
+      "path": "dvwa/includes/dvwaPage.inc.php",
+      "expression": "$_DVWA",
+      "aliases": [
+        "$_DVWA"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 636,
+          "condition": "(array_key_exists(\"disable_authentication\", $_DVWA) && $_DVWA['disable_authentication'])"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "dvwa/includes/dvwaPage.inc.php:LCP41",
+      "path": "dvwa/includes/dvwaPage.inc.php",
+      "expression": "$_DVWA['disable_authentication']",
+      "aliases": [
+        "$_DVWA['disable_authentication']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 636,
+          "condition": "(array_key_exists(\"disable_authentication\", $_DVWA) && $_DVWA['disable_authentication'])"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "dvwa/includes/dvwaPage.inc.php:LCP42",
+      "path": "dvwa/includes/dvwaPage.inc.php",
+      "expression": "$user_token",
+      "aliases": [
+        "$user_token"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 640,
+          "condition": "( $user_token !== $session_token || !isset( $session_token ) )"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "dvwa/includes/dvwaPage.inc.php:LCP43",
+      "path": "dvwa/includes/dvwaPage.inc.php",
+      "expression": "$session_token",
+      "aliases": [
+        "$session_token"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 640,
+          "condition": "( $user_token !== $session_token || !isset( $session_token ) )"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "dvwa/includes/dvwaPage.inc.php:LCP44",
+      "path": "dvwa/includes/dvwaPage.inc.php",
+      "expression": "$_SESSION['session_token']",
+      "aliases": [
+        "$_SESSION['session_token']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 647,
+          "condition": "( isset( $_SESSION[ 'session_token' ] ) )"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP45",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$line",
+      "aliases": [
+        "$line"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 174,
+          "condition": "(chop($line) === '')"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP46",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$CurrentBlock",
+      "aliases": [
+        "$CurrentBlock",
+        "$Block"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 176,
+          "condition": "(isset($CurrentBlock))"
+        },
+        {
+          "source": "conditional",
+          "line": 211,
+          "condition": "(isset($Block))"
+        },
+        {
+          "source": "conditional",
+          "line": 250,
+          "condition": "(isset($Block))"
+        },
+        {
+          "source": "conditional",
+          "line": 256,
+          "condition": "(isset($CurrentBlock))"
+        },
+        {
+          "source": "conditional",
+          "line": 277,
+          "condition": "(isset($CurrentBlock) and $CurrentBlock['type'] === 'Paragraph')"
+        },
+        {
+          "source": "conditional",
+          "line": 282,
+          "condition": "(isset($Block))"
+        },
+        {
+          "source": "conditional",
+          "line": 288,
+          "condition": "(isset($CurrentBlock))"
+        },
+        {
+          "source": "conditional",
+          "line": 309,
+          "condition": "(isset($CurrentBlock))"
+        }
+      ],
+      "condition_indexes": [
+        1,
+        3,
+        6,
+        8,
+        10,
+        11,
+        12,
+        14
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP47",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$CurrentBlock['continuable']",
+      "aliases": [
+        "$CurrentBlock['continuable']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 206,
+          "condition": "(isset($CurrentBlock['continuable']))"
+        },
+        {
+          "source": "conditional",
+          "line": 301,
+          "condition": "(isset($CurrentBlock['continuable']) and $this->isBlockCompletable($CurrentBlock['type']))"
+        }
+      ],
+      "condition_indexes": [
+        2,
+        13
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP48",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$this",
+      "aliases": [
+        "$this"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 219,
+          "condition": "($this->isBlockCompletable($CurrentBlock['type']))"
+        },
+        {
+          "source": "conditional",
+          "line": 264,
+          "condition": "($this->isBlockContinuable($blockType))"
+        },
+        {
+          "source": "conditional",
+          "line": 301,
+          "condition": "(isset($CurrentBlock['continuable']) and $this->isBlockCompletable($CurrentBlock['type']))"
+        }
+      ],
+      "condition_indexes": [
+        4,
+        9,
+        13
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP49",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$CurrentBlock['type']",
+      "aliases": [
+        "$CurrentBlock['type']",
+        "$methodName"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 219,
+          "condition": "($this->isBlockCompletable($CurrentBlock['type']))"
+        },
+        {
+          "source": "conditional",
+          "line": 277,
+          "condition": "(isset($CurrentBlock) and $CurrentBlock['type'] === 'Paragraph')"
+        },
+        {
+          "source": "conditional",
+          "line": 301,
+          "condition": "(isset($CurrentBlock['continuable']) and $this->isBlockCompletable($CurrentBlock['type']))"
+        }
+      ],
+      "condition_indexes": [
+        4,
+        10,
+        13
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP50",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$this->BlockTypes[$marker]",
+      "aliases": [
+        "$this->BlockTypes[$marker]"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 235,
+          "condition": "(isset($this->BlockTypes[$marker]))"
+        }
+      ],
+      "condition_indexes": [
+        5
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP51",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$Block['identified']",
+      "aliases": [
+        "$Block['identified']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 254,
+          "condition": "( ! isset($Block['identified']))"
+        }
+      ],
+      "condition_indexes": [
+        7
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP52",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$blockType",
+      "aliases": [
+        "$blockType",
+        "$Block['type']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 264,
+          "condition": "($this->isBlockContinuable($blockType))"
+        }
+      ],
+      "condition_indexes": [
+        9
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP53",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$Component['element']",
+      "aliases": [
+        "$Component['element']",
+        "$Component['markup']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 321,
+          "condition": "( ! isset($Component['element']))"
+        },
+        {
+          "source": "conditional",
+          "line": 323,
+          "condition": "(isset($Component['markup']))"
+        }
+      ],
+      "condition_indexes": [
+        0,
+        1
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP54",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$Component['hidden']",
+      "aliases": [
+        "$Component['hidden']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 327,
+          "condition": "(isset($Component['hidden']))"
+        }
+      ],
+      "condition_indexes": [
+        2
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP55",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$Block",
+      "aliases": [
+        "$Block",
+        "$text"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 351,
+          "condition": "(isset($Block) and $Block['type'] === 'Paragraph' and ! isset($Block['interrupted']))"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP56",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$Block['type']",
+      "aliases": [
+        "$Block['type']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 351,
+          "condition": "(isset($Block) and $Block['type'] === 'Paragraph' and ! isset($Block['interrupted']))"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP57",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$Block['interrupted']",
+      "aliases": [
+        "$Block['interrupted']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 351,
+          "condition": "(isset($Block) and $Block['type'] === 'Paragraph' and ! isset($Block['interrupted']))"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP58",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$Line['indent']",
+      "aliases": [
+        "$Line['indent']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 356,
+          "condition": "($Line['indent'] >= 4)"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP59",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$Line['indent']",
+      "aliases": [
+        "$Line['indent']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 376,
+          "condition": "($Line['indent'] >= 4)"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP60",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$Block['interrupted']",
+      "aliases": [
+        "$Block['interrupted']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 378,
+          "condition": "(isset($Block['interrupted']))"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP61",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$this->markupEscaped",
+      "aliases": [
+        "$this->markupEscaped"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 405,
+          "condition": "($this->markupEscaped or $this->safeMode)"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP62",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$this->safeMode",
+      "aliases": [
+        "$this->safeMode"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 405,
+          "condition": "($this->markupEscaped or $this->safeMode)"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP63",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$Line['text']",
+      "aliases": [
+        "$Line['text']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 410,
+          "condition": "(strpos($Line['text'], '<!--') === 0)"
+        },
+        {
+          "source": "conditional",
+          "line": 419,
+          "condition": "(strpos($Line['text'], '-->') !== false)"
+        }
+      ],
+      "condition_indexes": [
+        1,
+        2
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP64",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$Block['closed']",
+      "aliases": [
+        "$Block['closed']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 430,
+          "condition": "(isset($Block['closed']))"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP65",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$Line['text']",
+      "aliases": [
+        "$Line['text']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 437,
+          "condition": "(strpos($Line['text'], '-->') !== false)"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP66",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$openerLength",
+      "aliases": [
+        "$openerLength"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 454,
+          "condition": "($openerLength < 3)"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP67",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$infostring",
+      "aliases": [
+        "$infostring"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 461,
+          "condition": "(strpos($infostring, '`') !== false)"
+        },
+        {
+          "source": "conditional",
+          "line": 471,
+          "condition": "($infostring !== '')"
+        }
+      ],
+      "condition_indexes": [
+        1,
+        2
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP68",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$Block['complete']",
+      "aliases": [
+        "$Block['complete']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 504,
+          "condition": "(isset($Block['complete']))"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP69",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$Block['interrupted']",
+      "aliases": [
+        "$Block['interrupted']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 509,
+          "condition": "(isset($Block['interrupted']))"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP70",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$len",
+      "aliases": [
+        "$len"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 516,
+          "condition": "(($len = strspn($Line['text'], $Block['char'])) >= $Block['openerLength']\n            and chop(substr($Line['text'], $len), ' ') === ''\n        )"
+        }
+      ],
+      "condition_indexes": [
+        2
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP71",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$Line['text']",
+      "aliases": [
+        "$Line['text']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 516,
+          "condition": "(($len = strspn($Line['text'], $Block['char'])) >= $Block['openerLength']\n            and chop(substr($Line['text'], $len), ' ') === ''\n        )"
+        }
+      ],
+      "condition_indexes": [
+        2
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP72",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$Block['char']",
+      "aliases": [
+        "$Block['char']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 516,
+          "condition": "(($len = strspn($Line['text'], $Block['char'])) >= $Block['openerLength']\n            and chop(substr($Line['text'], $len), ' ') === ''\n        )"
+        }
+      ],
+      "condition_indexes": [
+        2
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP73",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$Block['openerLength']",
+      "aliases": [
+        "$Block['openerLength']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 516,
+          "condition": "(($len = strspn($Line['text'], $Block['char'])) >= $Block['openerLength']\n            and chop(substr($Line['text'], $len), ' ') === ''\n        )"
+        }
+      ],
+      "condition_indexes": [
+        2
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP74",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$level",
+      "aliases": [
+        "$level"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 543,
+          "condition": "($level > 6)"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP75",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$this->strictMode",
+      "aliases": [
+        "$this->strictMode"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 550,
+          "condition": "($this->strictMode and isset($text[0]) and $text[0] !== ' ')"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP76",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$text[0]",
+      "aliases": [
+        "$text[0]"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 550,
+          "condition": "($this->strictMode and isset($text[0]) and $text[0] !== ' ')"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP77",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$pattern",
+      "aliases": [
+        "$pattern",
+        "$Line['text'][0]",
+        "$name"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 578,
+          "condition": "(preg_match('/^('.$pattern.'([ ]++|$))(.*+)/', $Line['text'], $matches))"
+        },
+        {
+          "source": "conditional",
+          "line": 610,
+          "condition": "($name === 'ol')"
+        }
+      ],
+      "condition_indexes": [
+        0,
+        3
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP78",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$Line['text']",
+      "aliases": [
+        "$Line['text']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 578,
+          "condition": "(preg_match('/^('.$pattern.'([ ]++|$))(.*+)/', $Line['text'], $matches))"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP79",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$matches",
+      "aliases": [
+        "$matches"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 578,
+          "condition": "(preg_match('/^('.$pattern.'([ ]++|$))(.*+)/', $Line['text'], $matches))"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP80",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$contentIndent",
+      "aliases": [
+        "$contentIndent"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 582,
+          "condition": "($contentIndent >= 5)"
+        },
+        {
+          "source": "conditional",
+          "line": 588,
+          "condition": "($contentIndent === 0)"
+        }
+      ],
+      "condition_indexes": [
+        1,
+        2
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP81",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$listStart",
+      "aliases": [
+        "$listStart",
+        "$Block['element']['attributes']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 614,
+          "condition": "($listStart !== '1')"
+        }
+      ],
+      "condition_indexes": [
+        4
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP82",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$CurrentBlock",
+      "aliases": [
+        "$CurrentBlock"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 616,
+          "condition": "(\n                        isset($CurrentBlock)\n                        and $CurrentBlock['type'] === 'Paragraph'\n                        and ! isset($CurrentBlock['interrupted'])\n                    )"
+        }
+      ],
+      "condition_indexes": [
+        5
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP83",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$CurrentBlock['type']",
+      "aliases": [
+        "$CurrentBlock['type']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 616,
+          "condition": "(\n                        isset($CurrentBlock)\n                        and $CurrentBlock['type'] === 'Paragraph'\n                        and ! isset($CurrentBlock['interrupted'])\n                    )"
+        }
+      ],
+      "condition_indexes": [
+        5
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP84",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$CurrentBlock['interrupted']",
+      "aliases": [
+        "$CurrentBlock['interrupted']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 616,
+          "condition": "(\n                        isset($CurrentBlock)\n                        and $CurrentBlock['type'] === 'Paragraph'\n                        and ! isset($CurrentBlock['interrupted'])\n                    )"
+        }
+      ],
+      "condition_indexes": [
+        5
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP85",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$Block['interrupted']",
+      "aliases": [
+        "$Block['interrupted']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 645,
+          "condition": "(isset($Block['interrupted']) and empty($Block['li']['handler']['argument']))"
+        },
+        {
+          "source": "conditional",
+          "line": 663,
+          "condition": "(isset($Block['interrupted']))"
+        },
+        {
+          "source": "conditional",
+          "line": 703,
+          "condition": "(isset($Block['interrupted']))"
+        },
+        {
+          "source": "conditional",
+          "line": 719,
+          "condition": "( ! isset($Block['interrupted']))"
+        }
+      ],
+      "condition_indexes": [
+        0,
+        2,
+        6,
+        7
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP86",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$Block['li']['handler']['argument']",
+      "aliases": [
+        "$Block['li']['handler']['argument']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 645,
+          "condition": "(isset($Block['interrupted']) and empty($Block['li']['handler']['argument']))"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP87",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$Line['indent']",
+      "aliases": [
+        "$Line['indent']",
+        "$Block['indent']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 652,
+          "condition": "($Line['indent'] < $requiredIndent\n            and (\n                (\n                    $Block['data']['type'] === 'ol'\n                    and preg_match('/^[0-9]++'.$Block['data']['markerTypeRegex'].'(?:[ ]++(.*)|$)/', $Line['text'], $matches)\n                ) or (\n                    $Block['data']['type'] === 'ul'\n                    and preg_match('/^'.$Block['data']['markerTypeRegex'].'(?:[ ]++(.*)|$)/', $Line['text'], $matches)\n                )\n            )\n        )"
+        },
+        {
+          "source": "conditional",
+          "line": 691,
+          "condition": "($Line['indent'] < $requiredIndent and $this->blockList($Line))"
+        },
+        {
+          "source": "conditional",
+          "line": 701,
+          "condition": "($Line['indent'] >= $requiredIndent)"
+        }
+      ],
+      "condition_indexes": [
+        1,
+        3,
+        5
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP88",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$requiredIndent",
+      "aliases": [
+        "$requiredIndent"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 652,
+          "condition": "($Line['indent'] < $requiredIndent\n            and (\n                (\n                    $Block['data']['type'] === 'ol'\n                    and preg_match('/^[0-9]++'.$Block['data']['markerTypeRegex'].'(?:[ ]++(.*)|$)/', $Line['text'], $matches)\n                ) or (\n                    $Block['data']['type'] === 'ul'\n                    and preg_match('/^'.$Block['data']['markerTypeRegex'].'(?:[ ]++(.*)|$)/', $Line['text'], $matches)\n                )\n            )\n        )"
+        },
+        {
+          "source": "conditional",
+          "line": 691,
+          "condition": "($Line['indent'] < $requiredIndent and $this->blockList($Line))"
+        },
+        {
+          "source": "conditional",
+          "line": 701,
+          "condition": "($Line['indent'] >= $requiredIndent)"
+        }
+      ],
+      "condition_indexes": [
+        1,
+        3,
+        5
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP89",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$Block['data']['type']",
+      "aliases": [
+        "$Block['data']['type']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 652,
+          "condition": "($Line['indent'] < $requiredIndent\n            and (\n                (\n                    $Block['data']['type'] === 'ol'\n                    and preg_match('/^[0-9]++'.$Block['data']['markerTypeRegex'].'(?:[ ]++(.*)|$)/', $Line['text'], $matches)\n                ) or (\n                    $Block['data']['type'] === 'ul'\n                    and preg_match('/^'.$Block['data']['markerTypeRegex'].'(?:[ ]++(.*)|$)/', $Line['text'], $matches)\n                )\n            )\n        )"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP90",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$Block['data']['markerTypeRegex']",
+      "aliases": [
+        "$Block['data']['markerTypeRegex']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 652,
+          "condition": "($Line['indent'] < $requiredIndent\n            and (\n                (\n                    $Block['data']['type'] === 'ol'\n                    and preg_match('/^[0-9]++'.$Block['data']['markerTypeRegex'].'(?:[ ]++(.*)|$)/', $Line['text'], $matches)\n                ) or (\n                    $Block['data']['type'] === 'ul'\n                    and preg_match('/^'.$Block['data']['markerTypeRegex'].'(?:[ ]++(.*)|$)/', $Line['text'], $matches)\n                )\n            )\n        )"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP91",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$Line['text']",
+      "aliases": [
+        "$Line['text']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 652,
+          "condition": "($Line['indent'] < $requiredIndent\n            and (\n                (\n                    $Block['data']['type'] === 'ol'\n                    and preg_match('/^[0-9]++'.$Block['data']['markerTypeRegex'].'(?:[ ]++(.*)|$)/', $Line['text'], $matches)\n                ) or (\n                    $Block['data']['type'] === 'ul'\n                    and preg_match('/^'.$Block['data']['markerTypeRegex'].'(?:[ ]++(.*)|$)/', $Line['text'], $matches)\n                )\n            )\n        )"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP92",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$matches",
+      "aliases": [
+        "$matches"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 652,
+          "condition": "($Line['indent'] < $requiredIndent\n            and (\n                (\n                    $Block['data']['type'] === 'ol'\n                    and preg_match('/^[0-9]++'.$Block['data']['markerTypeRegex'].'(?:[ ]++(.*)|$)/', $Line['text'], $matches)\n                ) or (\n                    $Block['data']['type'] === 'ul'\n                    and preg_match('/^'.$Block['data']['markerTypeRegex'].'(?:[ ]++(.*)|$)/', $Line['text'], $matches)\n                )\n            )\n        )"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP93",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$this",
+      "aliases": [
+        "$this"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 691,
+          "condition": "($Line['indent'] < $requiredIndent and $this->blockList($Line))"
+        },
+        {
+          "source": "conditional",
+          "line": 696,
+          "condition": "($Line['text'][0] === '[' and $this->blockReference($Line))"
+        }
+      ],
+      "condition_indexes": [
+        3,
+        4
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP94",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$Line",
+      "aliases": [
+        "$Line"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 691,
+          "condition": "($Line['indent'] < $requiredIndent and $this->blockList($Line))"
+        },
+        {
+          "source": "conditional",
+          "line": 696,
+          "condition": "($Line['text'][0] === '[' and $this->blockReference($Line))"
+        }
+      ],
+      "condition_indexes": [
+        3,
+        4
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP95",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$Line['text'][0]",
+      "aliases": [
+        "$Line['text'][0]"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 696,
+          "condition": "($Line['text'][0] === '[' and $this->blockReference($Line))"
+        }
+      ],
+      "condition_indexes": [
+        4
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP96",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$Block['loose']",
+      "aliases": [
+        "$Block['loose']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 731,
+          "condition": "(isset($Block['loose']))"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP97",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$li['handler']['argument']",
+      "aliases": [
+        "$li['handler']['argument']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 735,
+          "condition": "(end($li['handler']['argument']) !== '')"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP98",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$Line['text']",
+      "aliases": [
+        "$Line['text']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 750,
+          "condition": "(preg_match('/^>[ ]?+(.*+)/', $Line['text'], $matches))"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP99",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$matches",
+      "aliases": [
+        "$matches"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 750,
+          "condition": "(preg_match('/^>[ ]?+(.*+)/', $Line['text'], $matches))"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP100",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$Block['interrupted']",
+      "aliases": [
+        "$Block['interrupted']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 769,
+          "condition": "(isset($Block['interrupted']))"
+        },
+        {
+          "source": "conditional",
+          "line": 781,
+          "condition": "( ! isset($Block['interrupted']))"
+        }
+      ],
+      "condition_indexes": [
+        0,
+        2
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP101",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$Line['text'][0]",
+      "aliases": [
+        "$Line['text'][0]"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 774,
+          "condition": "($Line['text'][0] === '>' and preg_match('/^>[ ]?+(.*+)/', $Line['text'], $matches))"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP102",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$Line['text']",
+      "aliases": [
+        "$Line['text']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 774,
+          "condition": "($Line['text'][0] === '>' and preg_match('/^>[ ]?+(.*+)/', $Line['text'], $matches))"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP103",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$matches",
+      "aliases": [
+        "$matches"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 774,
+          "condition": "($Line['text'][0] === '>' and preg_match('/^>[ ]?+(.*+)/', $Line['text'], $matches))"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP104",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$Line['text']",
+      "aliases": [
+        "$Line['text']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 796,
+          "condition": "(substr_count($Line['text'], $marker) >= 3 and chop($Line['text'], \" $marker\") === '')"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP105",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$marker",
+      "aliases": [
+        "$marker",
+        "$Line['text'][0]"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 796,
+          "condition": "(substr_count($Line['text'], $marker) >= 3 and chop($Line['text'], \" $marker\") === '')"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP106",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$Block",
+      "aliases": [
+        "$Block"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 813,
+          "condition": "( ! isset($Block) or $Block['type'] !== 'Paragraph' or isset($Block['interrupted']))"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP107",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$Block['type']",
+      "aliases": [
+        "$Block['type']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 813,
+          "condition": "( ! isset($Block) or $Block['type'] !== 'Paragraph' or isset($Block['interrupted']))"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP108",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$Block['interrupted']",
+      "aliases": [
+        "$Block['interrupted']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 813,
+          "condition": "( ! isset($Block) or $Block['type'] !== 'Paragraph' or isset($Block['interrupted']))"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP109",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$Line['indent']",
+      "aliases": [
+        "$Line['indent']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 818,
+          "condition": "($Line['indent'] < 4 and chop(chop($Line['text'], ' '), $Line['text'][0]) === '')"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP110",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$Line['text']",
+      "aliases": [
+        "$Line['text']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 818,
+          "condition": "($Line['indent'] < 4 and chop(chop($Line['text'], ' '), $Line['text'][0]) === '')"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP111",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$Line['text'][0]",
+      "aliases": [
+        "$Line['text'][0]",
+        "$Block['element']['name']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 818,
+          "condition": "($Line['indent'] < 4 and chop(chop($Line['text'], ' '), $Line['text'][0]) === '')"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP112",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$this->markupEscaped",
+      "aliases": [
+        "$this->markupEscaped"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 831,
+          "condition": "($this->markupEscaped or $this->safeMode)"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP113",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$this->safeMode",
+      "aliases": [
+        "$this->safeMode"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 831,
+          "condition": "($this->markupEscaped or $this->safeMode)"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP114",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$this->regexHtmlAttribute",
+      "aliases": [
+        "$this->regexHtmlAttribute"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 836,
+          "condition": "(preg_match('/^<[\\/]?+(\\w*)(?:[ ]*+'.$this->regexHtmlAttribute.')*+[ ]*+(\\/)?>/', $Line['text'], $matches))"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP115",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$Line['text']",
+      "aliases": [
+        "$Line['text']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 836,
+          "condition": "(preg_match('/^<[\\/]?+(\\w*)(?:[ ]*+'.$this->regexHtmlAttribute.')*+[ ]*+(\\/)?>/', $Line['text'], $matches))"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP116",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$matches",
+      "aliases": [
+        "$matches"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 836,
+          "condition": "(preg_match('/^<[\\/]?+(\\w*)(?:[ ]*+'.$this->regexHtmlAttribute.')*+[ ]*+(\\/)?>/', $Line['text'], $matches))"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP117",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$element",
+      "aliases": [
+        "$element",
+        "$matches[1]"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 840,
+          "condition": "(in_array($element, $this->textLevelElements))"
+        }
+      ],
+      "condition_indexes": [
+        2
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP118",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$this->textLevelElements",
+      "aliases": [
+        "$this->textLevelElements"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 840,
+          "condition": "(in_array($element, $this->textLevelElements))"
+        }
+      ],
+      "condition_indexes": [
+        2
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP119",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$Block['closed']",
+      "aliases": [
+        "$Block['closed']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 859,
+          "condition": "(isset($Block['closed']) or isset($Block['interrupted']))"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP120",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$Block['interrupted']",
+      "aliases": [
+        "$Block['interrupted']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 859,
+          "condition": "(isset($Block['closed']) or isset($Block['interrupted']))"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP121",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$Line['text']",
+      "aliases": [
+        "$Line['text']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 874,
+          "condition": "(strpos($Line['text'], ']') !== false\n            and preg_match('/^\\[(.+?)\\]:[ ]*+<?(\\S+?)>?(?:[ ]+[\"\\'(](.+)[\"\\')])?[ ]*+$/', $Line['text'], $matches)\n        )"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP122",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$matches",
+      "aliases": [
+        "$matches"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 874,
+          "condition": "(strpos($Line['text'], ']') !== false\n            and preg_match('/^\\[(.+?)\\]:[ ]*+<?(\\S+?)>?(?:[ ]+[\"\\'(](.+)[\"\\')])?[ ]*+$/', $Line['text'], $matches)\n        )"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP123",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$Block",
+      "aliases": [
+        "$Block",
+        "$alignments"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 899,
+          "condition": "( ! isset($Block) or $Block['type'] !== 'Paragraph' or isset($Block['interrupted']))"
+        },
+        {
+          "source": "conditional",
+          "line": 962,
+          "condition": "(count($headerCells) !== count($alignments))"
+        }
+      ],
+      "condition_indexes": [
+        0,
+        6
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP124",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$Block['type']",
+      "aliases": [
+        "$Block['type']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 899,
+          "condition": "( ! isset($Block) or $Block['type'] !== 'Paragraph' or isset($Block['interrupted']))"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP125",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$Block['interrupted']",
+      "aliases": [
+        "$Block['interrupted']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 899,
+          "condition": "( ! isset($Block) or $Block['type'] !== 'Paragraph' or isset($Block['interrupted']))"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP126",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$Block['element']['handler']['argument']",
+      "aliases": [
+        "$Block['element']['handler']['argument']",
+        "$header"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 904,
+          "condition": "(\n            strpos($Block['element']['handler']['argument'], '|') === false\n            and strpos($Line['text'], '|') === false\n            and strpos($Line['text'], ':') === false\n            or strpos($Block['element']['handler']['argument'], \"\\n\") !== false\n        )"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP127",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$Line['text']",
+      "aliases": [
+        "$Line['text']",
+        "$divider"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 904,
+          "condition": "(\n            strpos($Block['element']['handler']['argument'], '|') === false\n            and strpos($Line['text'], '|') === false\n            and strpos($Line['text'], ':') === false\n            or strpos($Block['element']['handler']['argument'], \"\\n\") !== false\n        )"
+        },
+        {
+          "source": "conditional",
+          "line": 913,
+          "condition": "(chop($Line['text'], ' -:|') !== '')"
+        }
+      ],
+      "condition_indexes": [
+        1,
+        2
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP128",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$dividerCell",
+      "aliases": [
+        "$dividerCell"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 931,
+          "condition": "($dividerCell === '')"
+        },
+        {
+          "source": "conditional",
+          "line": 943,
+          "condition": "(substr($dividerCell, - 1) === ':')"
+        }
+      ],
+      "condition_indexes": [
+        3,
+        5
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP129",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$dividerCell[0]",
+      "aliases": [
+        "$dividerCell[0]"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 938,
+          "condition": "($dividerCell[0] === ':')"
+        }
+      ],
+      "condition_indexes": [
+        4
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP130",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$headerCells",
+      "aliases": [
+        "$headerCells"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 962,
+          "condition": "(count($headerCells) !== count($alignments))"
+        }
+      ],
+      "condition_indexes": [
+        6
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP131",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$alignments[$index]",
+      "aliases": [
+        "$alignments[$index]",
+        "$HeaderElement['attributes']",
+        "$alignment"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 980,
+          "condition": "(isset($alignments[$index]))"
+        }
+      ],
+      "condition_indexes": [
+        7
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP132",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$Block['interrupted']",
+      "aliases": [
+        "$Block['interrupted']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 1022,
+          "condition": "(isset($Block['interrupted']))"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP133",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$Block['alignments']",
+      "aliases": [
+        "$Block['alignments']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 1027,
+          "condition": "(count($Block['alignments']) === 1 or $Line['text'][0] === '|' or strpos($Line['text'], '|'))"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP134",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$Line['text'][0]",
+      "aliases": [
+        "$Line['text'][0]"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 1027,
+          "condition": "(count($Block['alignments']) === 1 or $Line['text'][0] === '|' or strpos($Line['text'], '|'))"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP135",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$Line['text']",
+      "aliases": [
+        "$Line['text']",
+        "$row"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 1027,
+          "condition": "(count($Block['alignments']) === 1 or $Line['text'][0] === '|' or strpos($Line['text'], '|'))"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP136",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$Block['alignments'][$index]",
+      "aliases": [
+        "$Block['alignments'][$index]",
+        "$Element['attributes']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 1053,
+          "condition": "(isset($Block['alignments'][$index]))"
+        }
+      ],
+      "condition_indexes": [
+        2
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP137",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$Block['interrupted']",
+      "aliases": [
+        "$Block['interrupted']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 1095,
+          "condition": "(isset($Block['interrupted']))"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP138",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$nonNestables[$inlineType]",
+      "aliases": [
+        "$nonNestables[$inlineType]"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 1161,
+          "condition": "(isset($nonNestables[$inlineType]))"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP139",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$Inline",
+      "aliases": [
+        "$Inline"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 1168,
+          "condition": "( ! isset($Inline))"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP140",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$Inline['position']",
+      "aliases": [
+        "$Inline['position']",
+        "$markerPosition"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 1175,
+          "condition": "(isset($Inline['position']) and $Inline['position'] > $markerPosition)"
+        },
+        {
+          "source": "conditional",
+          "line": 1182,
+          "condition": "( ! isset($Inline['position']))"
+        }
+      ],
+      "condition_indexes": [
+        2,
+        3
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP141",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$Element['autobreak']",
+      "aliases": [
+        "$Element['autobreak']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 1226,
+          "condition": "( ! isset($Element['autobreak']))"
+        }
+      ],
+      "condition_indexes": [
+        4
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP142",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$marker",
+      "aliases": [
+        "$marker",
+        "$Excerpt['text'][0]"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 1262,
+          "condition": "(preg_match('/^(['.$marker.']++)[ ]*+(.+?)[ ]*+(?<!['.$marker.'])\\1(?!'.$marker.')/s', $Excerpt['text'], $matches))"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP143",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$Excerpt['text']",
+      "aliases": [
+        "$Excerpt['text']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 1262,
+          "condition": "(preg_match('/^(['.$marker.']++)[ ]*+(.+?)[ ]*+(?<!['.$marker.'])\\1(?!'.$marker.')/s', $Excerpt['text'], $matches))"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP144",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$matches",
+      "aliases": [
+        "$matches"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 1262,
+          "condition": "(preg_match('/^(['.$marker.']++)[ ]*+(.+?)[ ]*+(?<!['.$marker.'])\\1(?!'.$marker.')/s', $Excerpt['text'], $matches))"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP145",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$Excerpt['text']",
+      "aliases": [
+        "$Excerpt['text']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 1284,
+          "condition": "(strpos($Excerpt['text'], '>') !== false\n            and preg_match(\"/^<((mailto:)?$commonMarkEmail)>/i\", $Excerpt['text'], $matches)\n        )"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP146",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$commonMarkEmail",
+      "aliases": [
+        "$commonMarkEmail",
+        "$hostnameLabel"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 1284,
+          "condition": "(strpos($Excerpt['text'], '>') !== false\n            and preg_match(\"/^<((mailto:)?$commonMarkEmail)>/i\", $Excerpt['text'], $matches)\n        )"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP147",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$matches",
+      "aliases": [
+        "$matches"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 1284,
+          "condition": "(strpos($Excerpt['text'], '>') !== false\n            and preg_match(\"/^<((mailto:)?$commonMarkEmail)>/i\", $Excerpt['text'], $matches)\n        )"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP148",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$matches[2]",
+      "aliases": [
+        "$matches[2]"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 1289,
+          "condition": "( ! isset($matches[2]))"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP149",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$Excerpt['text'][1]",
+      "aliases": [
+        "$Excerpt['text'][1]"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 1309,
+          "condition": "( ! isset($Excerpt['text'][1]))"
+        },
+        {
+          "source": "conditional",
+          "line": 1316,
+          "condition": "($Excerpt['text'][1] === $marker and preg_match($this->StrongRegex[$marker], $Excerpt['text'], $matches))"
+        }
+      ],
+      "condition_indexes": [
+        0,
+        1
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP150",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$marker",
+      "aliases": [
+        "$marker",
+        "$Excerpt['text'][0]"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 1316,
+          "condition": "($Excerpt['text'][1] === $marker and preg_match($this->StrongRegex[$marker], $Excerpt['text'], $matches))"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP151",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$this->StrongRegex[$marker]",
+      "aliases": [
+        "$this->StrongRegex[$marker]"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 1316,
+          "condition": "($Excerpt['text'][1] === $marker and preg_match($this->StrongRegex[$marker], $Excerpt['text'], $matches))"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP152",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$Excerpt['text']",
+      "aliases": [
+        "$Excerpt['text']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 1316,
+          "condition": "($Excerpt['text'][1] === $marker and preg_match($this->StrongRegex[$marker], $Excerpt['text'], $matches))"
+        },
+        {
+          "source": "conditional",
+          "line": 1320,
+          "condition": "(preg_match($this->EmRegex[$marker], $Excerpt['text'], $matches))"
+        }
+      ],
+      "condition_indexes": [
+        1,
+        2
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP153",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$matches",
+      "aliases": [
+        "$matches"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 1316,
+          "condition": "($Excerpt['text'][1] === $marker and preg_match($this->StrongRegex[$marker], $Excerpt['text'], $matches))"
+        },
+        {
+          "source": "conditional",
+          "line": 1320,
+          "condition": "(preg_match($this->EmRegex[$marker], $Excerpt['text'], $matches))"
+        }
+      ],
+      "condition_indexes": [
+        1,
+        2
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP154",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$this->EmRegex[$marker]",
+      "aliases": [
+        "$this->EmRegex[$marker]"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 1320,
+          "condition": "(preg_match($this->EmRegex[$marker], $Excerpt['text'], $matches))"
+        }
+      ],
+      "condition_indexes": [
+        2
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP155",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$Excerpt['text'][1]",
+      "aliases": [
+        "$Excerpt['text'][1]"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 1344,
+          "condition": "(isset($Excerpt['text'][1]) and in_array($Excerpt['text'][1], $this->specialCharacters))"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP156",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$this->specialCharacters",
+      "aliases": [
+        "$this->specialCharacters"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 1344,
+          "condition": "(isset($Excerpt['text'][1]) and in_array($Excerpt['text'][1], $this->specialCharacters))"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP157",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$Excerpt['text'][1]",
+      "aliases": [
+        "$Excerpt['text'][1]"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 1355,
+          "condition": "( ! isset($Excerpt['text'][1]) or $Excerpt['text'][1] !== '[')"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP158",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$Link",
+      "aliases": [
+        "$Link"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 1364,
+          "condition": "($Link === null)"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP159",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$remainder",
+      "aliases": [
+        "$remainder",
+        "$Excerpt['text']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 1408,
+          "condition": "(preg_match('/\\[((?:[^][]++|(?R))*+)\\]/', $remainder, $matches))"
+        },
+        {
+          "source": "conditional",
+          "line": 1421,
+          "condition": "(preg_match('/^[(]\\s*+((?:[^ ()]++|[(][^ )]+[)])++)(?:[ ]+(\"[^\"]*+\"|\\'[^\\']*+\\'))?\\s*+[)]/', $remainder, $matches))"
+        },
+        {
+          "source": "conditional",
+          "line": 1434,
+          "condition": "(preg_match('/^\\s*\\[(.*?)\\]/', $remainder, $matches))"
+        }
+      ],
+      "condition_indexes": [
+        0,
+        1,
+        3
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP160",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$matches",
+      "aliases": [
+        "$matches"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 1408,
+          "condition": "(preg_match('/\\[((?:[^][]++|(?R))*+)\\]/', $remainder, $matches))"
+        },
+        {
+          "source": "conditional",
+          "line": 1421,
+          "condition": "(preg_match('/^[(]\\s*+((?:[^ ()]++|[(][^ )]+[)])++)(?:[ ]+(\"[^\"]*+\"|\\'[^\\']*+\\'))?\\s*+[)]/', $remainder, $matches))"
+        },
+        {
+          "source": "conditional",
+          "line": 1434,
+          "condition": "(preg_match('/^\\s*\\[(.*?)\\]/', $remainder, $matches))"
+        }
+      ],
+      "condition_indexes": [
+        0,
+        1,
+        3
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP161",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$matches[2]",
+      "aliases": [
+        "$matches[2]"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 1425,
+          "condition": "(isset($matches[2]))"
+        }
+      ],
+      "condition_indexes": [
+        2
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP162",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$this->DefinitionData['Reference'][$definition]",
+      "aliases": [
+        "$this->DefinitionData['Reference'][$definition]",
+        "$Definition"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 1446,
+          "condition": "( ! isset($this->DefinitionData['Reference'][$definition]))"
+        }
+      ],
+      "condition_indexes": [
+        4
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP163",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$this->markupEscaped",
+      "aliases": [
+        "$this->markupEscaped"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 1465,
+          "condition": "($this->markupEscaped or $this->safeMode or strpos($Excerpt['text'], '>') === false)"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP164",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$this->safeMode",
+      "aliases": [
+        "$this->safeMode"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 1465,
+          "condition": "($this->markupEscaped or $this->safeMode or strpos($Excerpt['text'], '>') === false)"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP165",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$Excerpt['text']",
+      "aliases": [
+        "$Excerpt['text']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 1465,
+          "condition": "($this->markupEscaped or $this->safeMode or strpos($Excerpt['text'], '>') === false)"
+        },
+        {
+          "source": "conditional",
+          "line": 1470,
+          "condition": "($Excerpt['text'][1] === '/' and preg_match('/^<\\/\\w[\\w-]*+[ ]*+>/s', $Excerpt['text'], $matches))"
+        },
+        {
+          "source": "conditional",
+          "line": 1478,
+          "condition": "($Excerpt['text'][1] === '!' and preg_match('/^<!---?[^>-](?:-?+[^-])*-->/s', $Excerpt['text'], $matches))"
+        },
+        {
+          "source": "conditional",
+          "line": 1486,
+          "condition": "($Excerpt['text'][1] !== ' ' and preg_match('/^<\\w[\\w-]*+(?:[ ]*+'.$this->regexHtmlAttribute.')*+[ ]*+\\/?>/s', $Excerpt['text'], $matches))"
+        }
+      ],
+      "condition_indexes": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP166",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$Excerpt['text'][1]",
+      "aliases": [
+        "$Excerpt['text'][1]"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 1470,
+          "condition": "($Excerpt['text'][1] === '/' and preg_match('/^<\\/\\w[\\w-]*+[ ]*+>/s', $Excerpt['text'], $matches))"
+        },
+        {
+          "source": "conditional",
+          "line": 1478,
+          "condition": "($Excerpt['text'][1] === '!' and preg_match('/^<!---?[^>-](?:-?+[^-])*-->/s', $Excerpt['text'], $matches))"
+        },
+        {
+          "source": "conditional",
+          "line": 1486,
+          "condition": "($Excerpt['text'][1] !== ' ' and preg_match('/^<\\w[\\w-]*+(?:[ ]*+'.$this->regexHtmlAttribute.')*+[ ]*+\\/?>/s', $Excerpt['text'], $matches))"
+        }
+      ],
+      "condition_indexes": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP167",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$matches",
+      "aliases": [
+        "$matches"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 1470,
+          "condition": "($Excerpt['text'][1] === '/' and preg_match('/^<\\/\\w[\\w-]*+[ ]*+>/s', $Excerpt['text'], $matches))"
+        },
+        {
+          "source": "conditional",
+          "line": 1478,
+          "condition": "($Excerpt['text'][1] === '!' and preg_match('/^<!---?[^>-](?:-?+[^-])*-->/s', $Excerpt['text'], $matches))"
+        },
+        {
+          "source": "conditional",
+          "line": 1486,
+          "condition": "($Excerpt['text'][1] !== ' ' and preg_match('/^<\\w[\\w-]*+(?:[ ]*+'.$this->regexHtmlAttribute.')*+[ ]*+\\/?>/s', $Excerpt['text'], $matches))"
+        }
+      ],
+      "condition_indexes": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP168",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$this->regexHtmlAttribute",
+      "aliases": [
+        "$this->regexHtmlAttribute"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 1486,
+          "condition": "($Excerpt['text'][1] !== ' ' and preg_match('/^<\\w[\\w-]*+(?:[ ]*+'.$this->regexHtmlAttribute.')*+[ ]*+\\/?>/s', $Excerpt['text'], $matches))"
+        }
+      ],
+      "condition_indexes": [
+        3
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP169",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$Excerpt['text']",
+      "aliases": [
+        "$Excerpt['text']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 1497,
+          "condition": "(substr($Excerpt['text'], 1, 1) !== ' ' and strpos($Excerpt['text'], ';') !== false\n            and preg_match('/^&(#?+[0-9a-zA-Z]++);/', $Excerpt['text'], $matches)\n        )"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP170",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$matches",
+      "aliases": [
+        "$matches"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 1497,
+          "condition": "(substr($Excerpt['text'], 1, 1) !== ' ' and strpos($Excerpt['text'], ';') !== false\n            and preg_match('/^&(#?+[0-9a-zA-Z]++);/', $Excerpt['text'], $matches)\n        )"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP171",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$Excerpt['text'][1]",
+      "aliases": [
+        "$Excerpt['text'][1]"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 1511,
+          "condition": "( ! isset($Excerpt['text'][1]))"
+        },
+        {
+          "source": "conditional",
+          "line": 1516,
+          "condition": "($Excerpt['text'][1] === '~' and preg_match('/^~~(?=\\S)(.+?)(?<=\\S)~~/', $Excerpt['text'], $matches))"
+        }
+      ],
+      "condition_indexes": [
+        0,
+        1
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP172",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$Excerpt['text']",
+      "aliases": [
+        "$Excerpt['text']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 1516,
+          "condition": "($Excerpt['text'][1] === '~' and preg_match('/^~~(?=\\S)(.+?)(?<=\\S)~~/', $Excerpt['text'], $matches))"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP173",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$matches",
+      "aliases": [
+        "$matches"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 1516,
+          "condition": "($Excerpt['text'][1] === '~' and preg_match('/^~~(?=\\S)(.+?)(?<=\\S)~~/', $Excerpt['text'], $matches))"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP174",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$this->urlsLinked",
+      "aliases": [
+        "$this->urlsLinked"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 1534,
+          "condition": "($this->urlsLinked !== true or ! isset($Excerpt['text'][2]) or $Excerpt['text'][2] !== '/')"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP175",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$Excerpt['text'][2]",
+      "aliases": [
+        "$Excerpt['text'][2]"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 1534,
+          "condition": "($this->urlsLinked !== true or ! isset($Excerpt['text'][2]) or $Excerpt['text'][2] !== '/')"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP176",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$Excerpt['context']",
+      "aliases": [
+        "$Excerpt['context']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 1539,
+          "condition": "(strpos($Excerpt['context'], 'http') !== false\n            and preg_match('/\\bhttps?+:[\\/]{2}[^\\s<]+\\b\\/*+/ui', $Excerpt['context'], $matches, PREG_OFFSET_CAPTURE)\n        )"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP177",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$matches",
+      "aliases": [
+        "$matches"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 1539,
+          "condition": "(strpos($Excerpt['context'], 'http') !== false\n            and preg_match('/\\bhttps?+:[\\/]{2}[^\\s<]+\\b\\/*+/ui', $Excerpt['context'], $matches, PREG_OFFSET_CAPTURE)\n        )"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP178",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$Excerpt['text']",
+      "aliases": [
+        "$Excerpt['text']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 1562,
+          "condition": "(strpos($Excerpt['text'], '>') !== false and preg_match('/^<(\\w++:\\/{2}[^ >]++)>/i', $Excerpt['text'], $matches))"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP179",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$matches",
+      "aliases": [
+        "$matches"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 1562,
+          "condition": "(strpos($Excerpt['text'], '>') !== false and preg_match('/^<(\\w++:\\/{2}[^ >]++)>/i', $Excerpt['text'], $matches))"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP180",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$Element['handler']",
+      "aliases": [
+        "$Element['handler']",
+        "$Element['handler']['function']",
+        "$function"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 1593,
+          "condition": "(isset($Element['handler']))"
+        },
+        {
+          "source": "conditional",
+          "line": 1600,
+          "condition": "(is_string($Element['handler']))"
+        }
+      ],
+      "condition_indexes": [
+        0,
+        2
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP181",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$Element['nonNestables']",
+      "aliases": [
+        "$Element['nonNestables']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 1595,
+          "condition": "(!isset($Element['nonNestables']))"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP182",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$destination",
+      "aliases": [
+        "$destination",
+        "$Element['handler']['destination']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 1616,
+          "condition": "($destination === 'handler')"
+        }
+      ],
+      "condition_indexes": [
+        3
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP183",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$Element['elements']",
+      "aliases": [
+        "$Element['elements']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 1641,
+          "condition": "(isset($Element['elements']))"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP184",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$Element['element']",
+      "aliases": [
+        "$Element['element']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 1645,
+          "condition": "(isset($Element['element']))"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP185",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$Element['elements']",
+      "aliases": [
+        "$Element['elements']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 1655,
+          "condition": "(isset($Element['elements']))"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP186",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$Element['element']",
+      "aliases": [
+        "$Element['element']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 1659,
+          "condition": "(isset($Element['element']))"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP187",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$this->safeMode",
+      "aliases": [
+        "$this->safeMode"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 1691,
+          "condition": "($this->safeMode)"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP188",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$hasName",
+      "aliases": [
+        "$hasName"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 1703,
+          "condition": "($hasName)"
+        },
+        {
+          "source": "conditional",
+          "line": 1765,
+          "condition": "($hasName)"
+        }
+      ],
+      "condition_indexes": [
+        1,
+        10
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP189",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$Element['attributes']",
+      "aliases": [
+        "$Element['attributes']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 1707,
+          "condition": "(isset($Element['attributes']))"
+        }
+      ],
+      "condition_indexes": [
+        2
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP190",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$value",
+      "aliases": [
+        "$value"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 1711,
+          "condition": "($value === null)"
+        }
+      ],
+      "condition_indexes": [
+        3
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP191",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$Element['text']",
+      "aliases": [
+        "$Element['text']",
+        "$Element['rawHtml']",
+        "$text"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 1723,
+          "condition": "(isset($Element['text']))"
+        },
+        {
+          "source": "conditional",
+          "line": 1729,
+          "condition": "(isset($Element['rawHtml']))"
+        }
+      ],
+      "condition_indexes": [
+        4,
+        5
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP192",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$hasContent",
+      "aliases": [
+        "$hasContent"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 1739,
+          "condition": "($hasContent)"
+        }
+      ],
+      "condition_indexes": [
+        6
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP193",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$Element['elements']",
+      "aliases": [
+        "$Element['elements']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 1743,
+          "condition": "(isset($Element['elements']))"
+        }
+      ],
+      "condition_indexes": [
+        7
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP194",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$Element['element']",
+      "aliases": [
+        "$Element['element']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 1747,
+          "condition": "(isset($Element['element']))"
+        }
+      ],
+      "condition_indexes": [
+        8
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP195",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$permitRawHtml",
+      "aliases": [
+        "$permitRawHtml"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 1753,
+          "condition": "(!$permitRawHtml)"
+        }
+      ],
+      "condition_indexes": [
+        9
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP196",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$Element",
+      "aliases": [
+        "$Element"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 1781,
+          "condition": "(empty($Element))"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP197",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$lines",
+      "aliases": [
+        "$lines"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 1807,
+          "condition": "( ! in_array('', $lines)\n            and isset($Elements[0]) and isset($Elements[0]['name'])\n            and $Elements[0]['name'] === 'p'\n        )"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP198",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$Elements[0]",
+      "aliases": [
+        "$Elements[0]"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 1807,
+          "condition": "( ! in_array('', $lines)\n            and isset($Elements[0]) and isset($Elements[0]['name'])\n            and $Elements[0]['name'] === 'p'\n        )"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP199",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$Elements[0]['name']",
+      "aliases": [
+        "$Elements[0]['name']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 1807,
+          "condition": "( ! in_array('', $lines)\n            and isset($Elements[0]) and isset($Elements[0]['name'])\n            and $Elements[0]['name'] === 'p'\n        )"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP200",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$Element['name']",
+      "aliases": [
+        "$Element['name']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 1869,
+          "condition": "( ! isset($Element['name']))"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP201",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$safeUrlNameToAtt[$Element['name']]",
+      "aliases": [
+        "$safeUrlNameToAtt[$Element['name']]"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 1875,
+          "condition": "(isset($safeUrlNameToAtt[$Element['name']]))"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP202",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$Element['attributes']",
+      "aliases": [
+        "$Element['attributes']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 1880,
+          "condition": "( ! empty($Element['attributes']))"
+        }
+      ],
+      "condition_indexes": [
+        2
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP203",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$goodAttribute",
+      "aliases": [
+        "$goodAttribute"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 1885,
+          "condition": "( ! preg_match($goodAttribute, $att))"
+        }
+      ],
+      "condition_indexes": [
+        3
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP204",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$att",
+      "aliases": [
+        "$att"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 1885,
+          "condition": "( ! preg_match($goodAttribute, $att))"
+        }
+      ],
+      "condition_indexes": [
+        3
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP205",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$len",
+      "aliases": [
+        "$len"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 1928,
+          "condition": "($len > strlen($string))"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCP206",
+      "path": "dvwa/includes/Parsedown.php",
+      "expression": "$string",
+      "aliases": [
+        "$string"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 1928,
+          "condition": "($len > strlen($string))"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "instructions.php:LCP207",
+      "path": "instructions.php",
+      "expression": "$selectedDocId",
+      "aliases": [
+        "$selectedDocId",
+        "$_GET['doc']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 21,
+          "condition": "( !array_key_exists( $selectedDocId, $docs ) )"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "instructions.php:LCP208",
+      "path": "instructions.php",
+      "expression": "$docs",
+      "aliases": [
+        "$docs"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 21,
+          "condition": "( !array_key_exists( $selectedDocId, $docs ) )"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "instructions.php:LCP209",
+      "path": "instructions.php",
+      "expression": "$docs[$selectedDocId]['type']",
+      "aliases": [
+        "$docs[$selectedDocId]['type']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 28,
+          "condition": "($docs[ $selectedDocId ]['type'] == \"markdown\")"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "login.php:LCP210",
+      "path": "login.php",
+      "expression": "$_POST['Login']",
+      "aliases": [
+        "$_POST['Login']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 10,
+          "condition": "( isset( $_POST[ 'Login' ] ) )"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "login.php:LCP211",
+      "path": "login.php",
+      "expression": "$_SESSION",
+      "aliases": [
+        "$_SESSION"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 12,
+          "condition": "(array_key_exists (\"session_token\", $_SESSION))"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "login.php:LCP212",
+      "path": "login.php",
+      "expression": "$result",
+      "aliases": [
+        "$result"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 34,
+          "condition": "( mysqli_num_rows( $result ) != 1 )"
+        },
+        {
+          "source": "conditional",
+          "line": 41,
+          "condition": "( $result && mysqli_num_rows( $result ) == 1 )"
+        }
+      ],
+      "condition_indexes": [
+        2,
+        3
+      ]
+    },
+    {
+      "id": "security.php:LCP213",
+      "path": "security.php",
+      "expression": "$_POST['seclev_submit']",
+      "aliases": [
+        "$_POST['seclev_submit']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 13,
+          "condition": "( isset( $_POST['seclev_submit'] ) )"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "security.php:LCP214",
+      "path": "security.php",
+      "expression": "$_POST['security']",
+      "aliases": [
+        "$_POST['security']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 18,
+          "condition": "( $_POST[ 'security' ] )"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "security.php:LCP215",
+      "path": "security.php",
+      "expression": "$securityLevel",
+      "aliases": [
+        "$securityLevel",
+        "$securityLevelHtml"
+      ],
+      "database_relations": [
+        {
+          "table": "",
+          "field": "",
+          "line": 53
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 43,
+          "condition": "( $securityLevel == dvwaSecurityLevelGet() )"
+        }
+      ],
+      "condition_indexes": [
+        2
+      ]
+    },
+    {
+      "id": "setup.php:LCP216",
+      "path": "setup.php",
+      "expression": "$_POST['create_db']",
+      "aliases": [
+        "$_POST['create_db']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 12,
+          "condition": "( isset( $_POST[ 'create_db' ] ) )"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "setup.php:LCP217",
+      "path": "setup.php",
+      "expression": "$_SESSION",
+      "aliases": [
+        "$_SESSION"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 14,
+          "condition": "(array_key_exists (\"session_token\", $_SESSION))"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "setup.php:LCP218",
+      "path": "setup.php",
+      "expression": "$DBMS",
+      "aliases": [
+        "$DBMS"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 22,
+          "condition": "( $DBMS == 'MySQL' )"
+        },
+        {
+          "source": "conditional",
+          "line": 25,
+          "condition": "($DBMS == 'PGSQL')"
+        },
+        {
+          "source": "conditional",
+          "line": 40,
+          "condition": "( $DBMS == 'MySQL' )"
+        },
+        {
+          "source": "conditional",
+          "line": 42,
+          "condition": "($DBMS == 'PGSQL')"
+        }
+      ],
+      "condition_indexes": [
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    {
+      "id": "setup.php:LCP219",
+      "path": "setup.php",
+      "expression": "$git_log",
+      "aliases": [
+        "$git_log"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 52,
+          "condition": "(!is_null ($git_log))"
+        }
+      ],
+      "condition_indexes": [
+        8
+      ]
+    },
+    {
+      "id": "setup.php:LCP220",
+      "path": "setup.php",
+      "expression": "$out",
+      "aliases": [
+        "$out"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 60,
+          "condition": "($out == \"\")"
+        }
+      ],
+      "condition_indexes": [
+        9
+      ]
+    },
+    {
+      "id": "vulnerabilities/brute/index.php:LCP221",
+      "path": "vulnerabilities/brute/index.php",
+      "expression": "$vulnerabilityFile",
+      "aliases": [
+        "$vulnerabilityFile"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 50,
+          "condition": "( $vulnerabilityFile == 'high.php' || $vulnerabilityFile == 'impossible.php' )"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "vulnerabilities/captcha/index.php:LCP222",
+      "path": "vulnerabilities/captcha/index.php",
+      "expression": "$_DVWA['recaptcha_public_key']",
+      "aliases": [
+        "$_DVWA['recaptcha_public_key']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 38,
+          "condition": "( $_DVWA[ 'recaptcha_public_key' ] == \"\" )"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "vulnerabilities/captcha/index.php:LCP223",
+      "path": "vulnerabilities/captcha/index.php",
+      "expression": "$hide_form",
+      "aliases": [
+        "$hide_form"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 53,
+          "condition": "( $hide_form )"
+        }
+      ],
+      "condition_indexes": [
+        2
+      ]
+    },
+    {
+      "id": "vulnerabilities/captcha/index.php:LCP224",
+      "path": "vulnerabilities/captcha/index.php",
+      "expression": "$vulnerabilityFile",
+      "aliases": [
+        "$vulnerabilityFile"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 62,
+          "condition": "( $vulnerabilityFile == 'impossible.php' )"
+        },
+        {
+          "source": "conditional",
+          "line": 74,
+          "condition": "( $vulnerabilityFile == 'high.php' )"
+        },
+        {
+          "source": "conditional",
+          "line": 77,
+          "condition": "( $vulnerabilityFile == 'high.php' || $vulnerabilityFile == 'impossible.php' )"
+        }
+      ],
+      "condition_indexes": [
+        3,
+        4,
+        5
+      ]
+    },
+    {
+      "id": "vulnerabilities/csrf/index.php:LCP225",
+      "path": "vulnerabilities/csrf/index.php",
+      "expression": "$vulnerabilityFile",
+      "aliases": [
+        "$vulnerabilityFile"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 56,
+          "condition": "( $vulnerabilityFile == 'impossible.php' )"
+        },
+        {
+          "source": "conditional",
+          "line": 70,
+          "condition": "( $vulnerabilityFile == 'high.php' || $vulnerabilityFile == 'impossible.php' )"
+        }
+      ],
+      "condition_indexes": [
+        1,
+        2
+      ]
+    },
+    {
+      "id": "vulnerabilities/csrf/test_credentials.php:LCP226",
+      "path": "vulnerabilities/csrf/test_credentials.php",
+      "expression": "$_POST['Login']",
+      "aliases": [
+        "$_POST['Login']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 10,
+          "condition": "( isset( $_POST[ 'Login' ] ) )"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "vulnerabilities/csrf/test_credentials.php:LCP227",
+      "path": "vulnerabilities/csrf/test_credentials.php",
+      "expression": "$result",
+      "aliases": [
+        "$result"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 23,
+          "condition": "( $result && mysqli_num_rows( $result ) == 1 )"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "vulnerabilities/exec/index.php:LCP228",
+      "path": "vulnerabilities/exec/index.php",
+      "expression": "$vulnerabilityFile",
+      "aliases": [
+        "$vulnerabilityFile"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 48,
+          "condition": "( $vulnerabilityFile == 'impossible.php' )"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "vulnerabilities/fi/file3.php:LCP229",
+      "path": "vulnerabilities/fi/file3.php",
+      "expression": "$_SERVER",
+      "aliases": [
+        "$_SERVER"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 11,
+          "condition": "( array_key_exists( 'HTTP_X_FORWARDED_FOR', $_SERVER ))"
+        },
+        {
+          "source": "conditional",
+          "line": 16,
+          "condition": "( array_key_exists( 'HTTP_REFERER', $_SERVER ))"
+        }
+      ],
+      "condition_indexes": [
+        0,
+        1
+      ]
+    },
+    {
+      "id": "vulnerabilities/fi/index.php:LCP230",
+      "path": "vulnerabilities/fi/index.php",
+      "expression": "$file",
+      "aliases": [
+        "$file"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 35,
+          "condition": "( isset( $file ) )"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "vulnerabilities/javascript/index.php:LCP231",
+      "path": "vulnerabilities/javascript/index.php",
+      "expression": "$_SERVER['REQUEST_METHOD']",
+      "aliases": [
+        "$_SERVER['REQUEST_METHOD']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 34,
+          "condition": "($_SERVER['REQUEST_METHOD'] == \"POST\")"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "vulnerabilities/javascript/index.php:LCP232",
+      "path": "vulnerabilities/javascript/index.php",
+      "expression": "$_POST",
+      "aliases": [
+        "$_POST"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 35,
+          "condition": "(array_key_exists (\"phrase\", $_POST) && array_key_exists (\"token\", $_POST))"
+        }
+      ],
+      "condition_indexes": [
+        2
+      ]
+    },
+    {
+      "id": "vulnerabilities/javascript/index.php:LCP233",
+      "path": "vulnerabilities/javascript/index.php",
+      "expression": "$phrase",
+      "aliases": [
+        "$phrase",
+        "$_POST['phrase']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 40,
+          "condition": "($phrase == \"success\")"
+        }
+      ],
+      "condition_indexes": [
+        3
+      ]
+    },
+    {
+      "id": "vulnerabilities/javascript/index.php:LCP234",
+      "path": "vulnerabilities/javascript/index.php",
+      "expression": "$token",
+      "aliases": [
+        "$token",
+        "$_POST['token']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 43,
+          "condition": "($token == md5(str_rot13(\"success\")))"
+        },
+        {
+          "source": "conditional",
+          "line": 50,
+          "condition": "($token == strrev(\"XXsuccessXX\"))"
+        },
+        {
+          "source": "conditional",
+          "line": 57,
+          "condition": "($token == hash(\"sha256\", hash(\"sha256\", \"XX\" . strrev(\"success\")) . \"ZZ\"))"
+        }
+      ],
+      "condition_indexes": [
+        5,
+        6,
+        7
+      ]
+    },
+    {
+      "id": "vulnerabilities/sqli/index.php:LCP235",
+      "path": "vulnerabilities/sqli/index.php",
+      "expression": "$vulnerabilityFile",
+      "aliases": [
+        "$vulnerabilityFile"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 41,
+          "condition": "( $vulnerabilityFile == 'high.php' )"
+        },
+        {
+          "source": "conditional",
+          "line": 49,
+          "condition": "( $vulnerabilityFile == 'medium.php' )"
+        },
+        {
+          "source": "conditional",
+          "line": 61,
+          "condition": "( $vulnerabilityFile == 'impossible.php' )"
+        }
+      ],
+      "condition_indexes": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "id": "vulnerabilities/sqli/session-input.php:LCP236",
+      "path": "vulnerabilities/sqli/session-input.php",
+      "expression": "$_POST['id']",
+      "aliases": [
+        "$_POST['id']",
+        "$_SESSION['id']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 11,
+          "condition": "( isset( $_POST[ 'id' ] ) )"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "vulnerabilities/sqli_blind/cookie-input.php:LCP237",
+      "path": "vulnerabilities/sqli_blind/cookie-input.php",
+      "expression": "$_POST['id']",
+      "aliases": [
+        "$_POST['id']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 11,
+          "condition": "( isset( $_POST[ 'id' ] ) )"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "vulnerabilities/sqli_blind/index.php:LCP238",
+      "path": "vulnerabilities/sqli_blind/index.php",
+      "expression": "$vulnerabilityFile",
+      "aliases": [
+        "$vulnerabilityFile"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 53,
+          "condition": "( $vulnerabilityFile == 'high.php' )"
+        },
+        {
+          "source": "conditional",
+          "line": 61,
+          "condition": "( $vulnerabilityFile == 'medium.php' )"
+        },
+        {
+          "source": "conditional",
+          "line": 76,
+          "condition": "( $vulnerabilityFile == 'impossible.php' )"
+        }
+      ],
+      "condition_indexes": [
+        3,
+        4,
+        5
+      ]
+    },
+    {
+      "id": "vulnerabilities/upload/index.php:LCP239",
+      "path": "vulnerabilities/upload/index.php",
+      "expression": "$PHPUploadPath",
+      "aliases": [
+        "$PHPUploadPath"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 36,
+          "condition": "( !is_writable( $PHPUploadPath ) )"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "vulnerabilities/upload/index.php:LCP240",
+      "path": "vulnerabilities/upload/index.php",
+      "expression": "$vulnerabilityFile",
+      "aliases": [
+        "$vulnerabilityFile"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 58,
+          "condition": "( $vulnerabilityFile == 'impossible.php' )"
+        }
+      ],
+      "condition_indexes": [
+        3
+      ]
+    },
+    {
+      "id": "vulnerabilities/view_help.php:LCP241",
+      "path": "vulnerabilities/view_help.php",
+      "expression": "$_GET",
+      "aliases": [
+        "$_GET"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 11,
+          "condition": "(array_key_exists (\"id\", $_GET) &&\r\n\tarray_key_exists (\"security\", $_GET) &&\r\n\tarray_key_exists (\"locale\", $_GET))"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "vulnerabilities/view_help.php:LCP242",
+      "path": "vulnerabilities/view_help.php",
+      "expression": "$locale",
+      "aliases": [
+        "$locale",
+        "$_GET['locale']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 19,
+          "condition": "($locale == 'en')"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "vulnerabilities/view_source.php:LCP243",
+      "path": "vulnerabilities/view_source.php",
+      "expression": "$_GET",
+      "aliases": [
+        "$_GET"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 11,
+          "condition": "(array_key_exists (\"id\", $_GET) && array_key_exists (\"security\", $_GET))"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "vulnerabilities/view_source.php:LCP244",
+      "path": "vulnerabilities/view_source.php",
+      "expression": "$id",
+      "aliases": [
+        "$id",
+        "$_GET['id']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 16,
+          "condition": "($id)"
+        },
+        {
+          "source": "conditional",
+          "line": 64,
+          "condition": "(file_exists (DVWA_WEB_PAGE_TO_ROOT . \"vulnerabilities/{$id}/source/{$security}.js\"))"
+        }
+      ],
+      "condition_indexes": [
+        1,
+        2
+      ]
+    },
+    {
+      "id": "vulnerabilities/view_source.php:LCP245",
+      "path": "vulnerabilities/view_source.php",
+      "expression": "$security",
+      "aliases": [
+        "$security",
+        "$_GET['security']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 64,
+          "condition": "(file_exists (DVWA_WEB_PAGE_TO_ROOT . \"vulnerabilities/{$id}/source/{$security}.js\"))"
+        }
+      ],
+      "condition_indexes": [
+        2
+      ]
+    },
+    {
+      "id": "vulnerabilities/view_source_all.php:LCP246",
+      "path": "vulnerabilities/view_source_all.php",
+      "expression": "$_GET",
+      "aliases": [
+        "$_GET"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 11,
+          "condition": "(array_key_exists (\"id\", $_GET))"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "vulnerabilities/view_source_all.php:LCP247",
+      "path": "vulnerabilities/view_source_all.php",
+      "expression": "$id",
+      "aliases": [
+        "$id",
+        "$_GET['id']",
+        "$highsrc",
+        "$impsrc",
+        "$lowsrc",
+        "$medsrc"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 30,
+          "condition": "($id)"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "vulnerabilities/xss_d/index.php:LCP248",
+      "path": "vulnerabilities/xss_d/index.php",
+      "expression": "$vulnerabilityFile",
+      "aliases": [
+        "$vulnerabilityFile"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 36,
+          "condition": "($vulnerabilityFile == 'impossible.php')"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "vulnerabilities/xss_r/index.php:LCP249",
+      "path": "vulnerabilities/xss_r/index.php",
+      "expression": "$vulnerabilityFile",
+      "aliases": [
+        "$vulnerabilityFile"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 46,
+          "condition": "( $vulnerabilityFile == 'impossible.php' )"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "vulnerabilities/xss_s/index.php:LCP250",
+      "path": "vulnerabilities/xss_s/index.php",
+      "expression": "$_POST",
+      "aliases": [
+        "$_POST"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 16,
+          "condition": "(array_key_exists (\"btnClear\", $_POST))"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "vulnerabilities/xss_s/index.php:LCP251",
+      "path": "vulnerabilities/xss_s/index.php",
+      "expression": "$vulnerabilityFile",
+      "aliases": [
+        "$vulnerabilityFile"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 63,
+          "condition": "( $vulnerabilityFile == 'impossible.php' )"
+        }
+      ],
+      "condition_indexes": [
+        2
+      ]
+    }
+  ]
+}

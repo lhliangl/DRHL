@@ -1,0 +1,27 @@
+{
+  "status": "completed",
+  "started_at": "2026-06-29T12:26:56.483307+00:00",
+  "config": "D:\\project\\python\\DRHL\\configs\\phpoll.json",
+  "artifacts": {
+    "dynamic_graph": "D:\\project\\python\\DRHL\\runs\\phpoll\\graphs\\dynamic.json",
+    "static_graph": "D:\\project\\python\\DRHL\\runs\\phpoll\\graphs\\static.json",
+    "candidate_parameters": "D:\\project\\python\\DRHL\\runs\\phpoll\\source\\candidate_parameters.json",
+    "candidate_functions": "D:\\project\\python\\DRHL\\runs\\phpoll\\source\\candidate_functions.json",
+    "access_control_parameters": "D:\\project\\python\\DRHL\\runs\\phpoll\\source\\parameters.json",
+    "access_control_functions": "D:\\project\\python\\DRHL\\runs\\phpoll\\source\\functions.json",
+    "access_control_snippets": "D:\\project\\python\\DRHL\\runs\\phpoll\\source\\snippets.json",
+    "fused_graph": "D:\\project\\python\\DRHL\\runs\\phpoll\\graphs\\fused.json",
+    "graph_summary": "D:\\project\\python\\DRHL\\runs\\phpoll\\graphs\\summary.json",
+    "graph_summary_csv": "D:\\project\\python\\DRHL\\runs\\phpoll\\graphs\\summary.csv",
+    "attack_vectors": "D:\\project\\python\\DRHL\\runs\\phpoll\\analysis\\vectors.json",
+    "findings": "D:\\project\\python\\DRHL\\runs\\phpoll\\analysis\\findings.json",
+    "repairs": "D:\\project\\python\\DRHL\\runs\\phpoll\\repair\\manifest.json",
+    "repair_report": "D:\\project\\python\\DRHL\\runs\\phpoll\\repair\\repair_report.md",
+    "metrics_json": "D:\\project\\python\\DRHL\\runs\\phpoll\\metrics\\summary.json",
+    "metrics_csv": "D:\\project\\python\\DRHL\\runs\\phpoll\\metrics\\summary.csv",
+    "llm_access_control_snippets": "D:\\project\\python\\DRHL\\runs\\phpoll\\source\\llm_snippets.json"
+  },
+  "finished_at": "2026-06-29T12:29:55.814367+00:00",
+  "repair_rerun_started_at": "2026-09-13T01:13:48.918722+00:00",
+  "repair_rerun_finished_at": "2026-09-13T01:17:44.866114+00:00"
+}

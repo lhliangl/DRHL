@@ -1,0 +1,124 @@
+{
+  "vectors": [
+    {
+      "category": "authenticated_only",
+      "page": "blogger/saveComment",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "blogEntryId": "5444",
+          "internalName": "drhl_test_entry",
+          "author": "user1",
+          "commentText": "DRHL generated comment for access-control testing.",
+          "captchaId": "0",
+          "captchaAnswer": "test"
+        },
+        "referer": "blogger/viewEntry/5444/drhl_test_entry.html"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "blogger/saveEntry",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "blogEntryId": "5444",
+          "title": "DRHL Test Entry",
+          "tags": "drhl security",
+          "description": "DRHL generated entry for access-control testing.",
+          "externalUrl": "http://",
+          "blogText": "DRHL generated blog body for access-control testing.",
+          "isVisible": "true",
+          "hasComments": "true",
+          "hasAnonymousComments": "true",
+          "save": "Save Entry"
+        },
+        "referer": "blogger/viewEntry/5444/drhl_test_entry.html?c=entry"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "horizontal",
+      "page": "blogger/saveEntry",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "blogEntryId": "5444",
+          "title": "DRHL Test Entry",
+          "tags": "drhl security",
+          "description": "DRHL generated entry for access-control testing.",
+          "externalUrl": "http://",
+          "blogText": "DRHL generated blog body for access-control testing.",
+          "isVisible": "true",
+          "hasComments": "true",
+          "hasAnonymousComments": "true",
+          "save": "Save Entry"
+        },
+        "referer": "blogger/viewEntry/5444/drhl_test_entry.html?c=entry"
+      },
+      "identity_parameters": [
+        "blogEntryId"
+      ]
+    },
+    {
+      "category": "authenticated_only",
+      "page": "blogger/search?author=p1&searchString=p1",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "searchString": "'user1'",
+          "author": "y"
+        },
+        "referer": null
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "blogger/viewEntry/5444/drhl_test_entry.html",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": "blogger?c=register"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "blogger?c=entry",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "c": "entry"
+        },
+        "referer": null
+      },
+      "identity_parameters": []
+    }
+  ]
+}

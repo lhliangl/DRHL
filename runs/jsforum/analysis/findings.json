@@ -1,0 +1,366 @@
+{
+  "summary": {
+    "vulnerable": 8,
+    "not_vulnerable": 17
+  },
+  "findings": [
+    {
+      "category": "static_only",
+      "page": "servlet/forum.Logout",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "static page response body was empty; treated as not vulnerable"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "forum/index.jsp?forum_id=p1&page=editmessage&reply_id=p1&thread_id=p1",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "Java exception trace in response body"
+      ],
+      "error": null
+    },
+    {
+      "category": "horizontal",
+      "page": "forum/index.jsp?page=editmessage&forum_id=0&thread_id=0&reply_id=2&start=0",
+      "actor": "user1",
+      "status": "vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 200 without redirect or denial marker",
+        "horizontal override: reply_id=2",
+        "horizontal page override: forum/index.jsp?page=editmessage&forum_id=0&thread_id=0&reply_id=2&start=0"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "forum/index.jsp?forum_id=p1&page=message&thread_id=p1",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you have to login first",
+        "login form in response"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "forum/index.jsp?forum_id=p1&page=thread",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you have to login first",
+        "login form in response"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "forum/index.jsp?forum_id=p1&page=thread&thread_id=p1",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you have to login first",
+        "login form in response"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "forum/index.jsp?page=profile",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you have to login first",
+        "login form in response"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "servlet/forum.AddForum",
+      "actor": "user1",
+      "status": "vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "write request accepted with configured success redirect: http://localhost:8080/JsForum/forum/index.jsp"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "servlet/forum.AddForum",
+      "actor": "user2",
+      "status": "vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "write request accepted with configured success redirect: http://localhost:8080/JsForum/forum/index.jsp"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "servlet/forum.AddForum",
+      "actor": "visitor",
+      "status": "vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "write request accepted with configured success redirect: http://localhost:8080/JsForum/forum/index.jsp"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "servlet/forum.AddReply",
+      "actor": "visitor",
+      "status": "vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "write request accepted with configured success redirect: http://localhost:8080/JsForum/forum/index.jsp?page=message&forum_id=0&thread_id=0&start=0"
+      ],
+      "error": null
+    },
+    {
+      "category": "horizontal",
+      "page": "servlet/forum.AddReply",
+      "actor": "user1",
+      "status": "vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "write request accepted with configured success redirect: http://localhost:8080/JsForum/forum/index.jsp?page=message&forum_id=0&thread_id=0&start=0",
+        "horizontal override: user=user2"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "servlet/forum.AddThread",
+      "actor": "visitor",
+      "status": "vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "write request accepted with configured success redirect: http://localhost:8080/JsForum/forum/index.jsp?page=thread&forum_id=0"
+      ],
+      "error": null
+    },
+    {
+      "category": "horizontal",
+      "page": "servlet/forum.AddThread",
+      "actor": "user1",
+      "status": "vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "write request accepted with configured success redirect: http://localhost:8080/JsForum/forum/index.jsp?page=thread&forum_id=0",
+        "horizontal override: user=user2"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "servlet/forum.ChangeMessage",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "empty response body (possible silent exception)"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "servlet/forum.ChangeProfile",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "empty response body (possible silent exception)"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "servlet/forum.DeleteForum?forum_id=p1",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "empty response body (possible silent exception)"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "servlet/forum.DeleteForum?forum_id=p1",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "empty response body (possible silent exception)"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "servlet/forum.DeleteForum?forum_id=p1",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "empty response body (possible silent exception)"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "servlet/forum.DeleteReply?forum_id=p1&reply_id=p1&thread_id=p1",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "empty response body (possible silent exception)"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "servlet/forum.DeleteReply?forum_id=p1&reply_id=p1&thread_id=p1",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "empty response body (possible silent exception)"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "servlet/forum.DeleteReply?forum_id=p1&reply_id=p1&thread_id=p1",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "empty response body (possible silent exception)"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "servlet/forum.DeleteThread?forum_id=p1&thread_id=p1",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "empty response body (possible silent exception)"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "servlet/forum.DeleteThread?forum_id=p1&thread_id=p1",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "empty response body (possible silent exception)"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "servlet/forum.DeleteThread?forum_id=p1&thread_id=p1",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "empty response body (possible silent exception)"
+      ],
+      "error": null
+    }
+  ]
+}

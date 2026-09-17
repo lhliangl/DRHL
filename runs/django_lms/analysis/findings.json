@@ -1,0 +1,4073 @@
+{
+  "summary": {
+    "vulnerable": 4,
+    "not_vulnerable": 272
+  },
+  "findings": [
+    {
+      "category": "static_only",
+      "page": "<int:pk>/<slug>/take/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 404,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 404",
+        "denial marker: page not found",
+        "invalid resource marker: page not found",
+        "target resource did not exist; access-control vulnerability is not confirmed"
+      ],
+      "error": null
+    },
+    {
+      "category": "static_only",
+      "page": "<int:pk>/course/add/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 404,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 404",
+        "denial marker: page not found",
+        "invalid resource marker: page not found",
+        "target resource did not exist; access-control vulnerability is not confirmed"
+      ],
+      "error": null
+    },
+    {
+      "category": "static_only",
+      "page": "<int:pk>/delete/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 404,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 404",
+        "denial marker: page not found",
+        "invalid resource marker: page not found",
+        "target resource did not exist; access-control vulnerability is not confirmed"
+      ],
+      "error": null
+    },
+    {
+      "category": "static_only",
+      "page": "<int:pk>/detail/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 404,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 404",
+        "denial marker: page not found",
+        "invalid resource marker: page not found",
+        "target resource did not exist; access-control vulnerability is not confirmed"
+      ],
+      "error": null
+    },
+    {
+      "category": "static_only",
+      "page": "<int:pk>/edit/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 404,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 404",
+        "denial marker: page not found",
+        "invalid resource marker: page not found",
+        "target resource did not exist; access-control vulnerability is not confirmed"
+      ],
+      "error": null
+    },
+    {
+      "category": "static_only",
+      "page": "<slug>/<int:pk>/add/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 404,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 404",
+        "denial marker: page not found",
+        "invalid resource marker: page not found",
+        "target resource did not exist; access-control vulnerability is not confirmed"
+      ],
+      "error": null
+    },
+    {
+      "category": "static_only",
+      "page": "<slug>/<int:pk>/delete/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 404,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 404",
+        "denial marker: page not found",
+        "invalid resource marker: page not found",
+        "target resource did not exist; access-control vulnerability is not confirmed"
+      ],
+      "error": null
+    },
+    {
+      "category": "static_only",
+      "page": "<slug>/quiz_add/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 404,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 404",
+        "denial marker: page not found",
+        "invalid resource marker: page not found",
+        "target resource did not exist; access-control vulnerability is not confirmed"
+      ],
+      "error": null
+    },
+    {
+      "category": "static_only",
+      "page": "<slug>/quizzes/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 404,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 404",
+        "denial marker: page not found",
+        "invalid resource marker: page not found",
+        "target resource did not exist; access-control vulnerability is not confirmed"
+      ],
+      "error": null
+    },
+    {
+      "category": "static_only",
+      "page": "accounts/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 404,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 404",
+        "denial marker: page not found",
+        "invalid resource marker: page not found",
+        "target resource did not exist; access-control vulnerability is not confirmed"
+      ],
+      "error": null
+    },
+    {
+      "category": "static_only",
+      "page": "accounts/api/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 403,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 403"
+      ],
+      "error": null
+    },
+    {
+      "category": "static_only",
+      "page": "add/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 404,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 404",
+        "denial marker: page not found",
+        "invalid resource marker: page not found",
+        "target resource did not exist; access-control vulnerability is not confirmed"
+      ],
+      "error": null
+    },
+    {
+      "category": "static_only",
+      "page": "allocated_course/<int:pk>/edit/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 404,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 404",
+        "denial marker: page not found",
+        "invalid resource marker: page not found",
+        "target resource did not exist; access-control vulnerability is not confirmed"
+      ],
+      "error": null
+    },
+    {
+      "category": "static_only",
+      "page": "checkout",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 404,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 404",
+        "denial marker: page not found",
+        "invalid resource marker: page not found",
+        "target resource did not exist; access-control vulnerability is not confirmed"
+      ],
+      "error": null
+    },
+    {
+      "category": "static_only",
+      "page": "coinbase/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 404,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 404",
+        "denial marker: page not found",
+        "invalid resource marker: page not found",
+        "target resource did not exist; access-control vulnerability is not confirmed"
+      ],
+      "error": null
+    },
+    {
+      "category": "static_only",
+      "page": "complete/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 404,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 404",
+        "denial marker: page not found",
+        "invalid resource marker: page not found",
+        "target resource did not exist; access-control vulnerability is not confirmed"
+      ],
+      "error": null
+    },
+    {
+      "category": "static_only",
+      "page": "course/<int:pk>/deallocate/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 404,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 404",
+        "denial marker: page not found",
+        "invalid resource marker: page not found",
+        "target resource did not exist; access-control vulnerability is not confirmed"
+      ],
+      "error": null
+    },
+    {
+      "category": "static_only",
+      "page": "course/<slug>/detail/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 404,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 404",
+        "denial marker: page not found",
+        "invalid resource marker: page not found",
+        "target resource did not exist; access-control vulnerability is not confirmed"
+      ],
+      "error": null
+    },
+    {
+      "category": "static_only",
+      "page": "course/<slug>/documentations/<int:file_id>/delete/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 404,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 404",
+        "denial marker: page not found",
+        "invalid resource marker: page not found",
+        "target resource did not exist; access-control vulnerability is not confirmed"
+      ],
+      "error": null
+    },
+    {
+      "category": "static_only",
+      "page": "course/<slug>/documentations/<int:file_id>/edit/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 404,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 404",
+        "denial marker: page not found",
+        "invalid resource marker: page not found",
+        "target resource did not exist; access-control vulnerability is not confirmed"
+      ],
+      "error": null
+    },
+    {
+      "category": "static_only",
+      "page": "course/<slug>/documentations/upload/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 404,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 404",
+        "denial marker: page not found",
+        "invalid resource marker: page not found",
+        "target resource did not exist; access-control vulnerability is not confirmed"
+      ],
+      "error": null
+    },
+    {
+      "category": "static_only",
+      "page": "course/<slug>/edit/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 404,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 404",
+        "denial marker: page not found",
+        "invalid resource marker: page not found",
+        "target resource did not exist; access-control vulnerability is not confirmed"
+      ],
+      "error": null
+    },
+    {
+      "category": "static_only",
+      "page": "course/<slug>/video_tutorials/<video_slug>/delete/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 404,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 404",
+        "denial marker: page not found",
+        "invalid resource marker: page not found",
+        "target resource did not exist; access-control vulnerability is not confirmed"
+      ],
+      "error": null
+    },
+    {
+      "category": "static_only",
+      "page": "course/<slug>/video_tutorials/<video_slug>/detail/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 404,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 404",
+        "denial marker: page not found",
+        "invalid resource marker: page not found",
+        "target resource did not exist; access-control vulnerability is not confirmed"
+      ],
+      "error": null
+    },
+    {
+      "category": "static_only",
+      "page": "course/<slug>/video_tutorials/<video_slug>/edit/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 404,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 404",
+        "denial marker: page not found",
+        "invalid resource marker: page not found",
+        "target resource did not exist; access-control vulnerability is not confirmed"
+      ],
+      "error": null
+    },
+    {
+      "category": "static_only",
+      "page": "course/<slug>/video_tutorials/upload/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 404,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 404",
+        "denial marker: page not found",
+        "invalid resource marker: page not found",
+        "target resource did not exist; access-control vulnerability is not confirmed"
+      ],
+      "error": null
+    },
+    {
+      "category": "static_only",
+      "page": "course/allocated/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 404,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 404",
+        "denial marker: page not found",
+        "invalid resource marker: page not found",
+        "target resource did not exist; access-control vulnerability is not confirmed"
+      ],
+      "error": null
+    },
+    {
+      "category": "static_only",
+      "page": "course/assign/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 404,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 404",
+        "denial marker: page not found",
+        "invalid resource marker: page not found",
+        "target resource did not exist; access-control vulnerability is not confirmed"
+      ],
+      "error": null
+    },
+    {
+      "category": "static_only",
+      "page": "course/delete/<slug>/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 404,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 404",
+        "denial marker: page not found",
+        "invalid resource marker: page not found",
+        "target resource did not exist; access-control vulnerability is not confirmed"
+      ],
+      "error": null
+    },
+    {
+      "category": "static_only",
+      "page": "course/drop/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 404,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 404",
+        "denial marker: page not found",
+        "invalid resource marker: page not found",
+        "target resource did not exist; access-control vulnerability is not confirmed"
+      ],
+      "error": null
+    },
+    {
+      "category": "static_only",
+      "page": "course/registration/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 404,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 404",
+        "denial marker: page not found",
+        "invalid resource marker: page not found",
+        "target resource did not exist; access-control vulnerability is not confirmed"
+      ],
+      "error": null
+    },
+    {
+      "category": "static_only",
+      "page": "create-invoice/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 404,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 404",
+        "denial marker: page not found",
+        "invalid resource marker: page not found",
+        "target resource did not exist; access-control vulnerability is not confirmed"
+      ],
+      "error": null
+    },
+    {
+      "category": "static_only",
+      "page": "create-payment-intent",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 404,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 404",
+        "denial marker: page not found",
+        "invalid resource marker: page not found",
+        "target resource did not exist; access-control vulnerability is not confirmed"
+      ],
+      "error": null
+    },
+    {
+      "category": "static_only",
+      "page": "gopay-charge/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 404,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 404",
+        "denial marker: page not found",
+        "invalid resource marker: page not found",
+        "target resource did not exist; access-control vulnerability is not confirmed"
+      ],
+      "error": null
+    },
+    {
+      "category": "static_only",
+      "page": "invoice-detail/<int:id>/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 404,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 404",
+        "denial marker: page not found",
+        "invalid resource marker: page not found",
+        "target resource did not exist; access-control vulnerability is not confirmed"
+      ],
+      "error": null
+    },
+    {
+      "category": "static_only",
+      "page": "marking/<int:pk>/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 404,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 404",
+        "denial marker: page not found",
+        "invalid resource marker: page not found",
+        "target resource did not exist; access-control vulnerability is not confirmed"
+      ],
+      "error": null
+    },
+    {
+      "category": "static_only",
+      "page": "marking_list/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 404,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 404",
+        "denial marker: page not found",
+        "invalid resource marker: page not found",
+        "target resource did not exist; access-control vulnerability is not confirmed"
+      ],
+      "error": null
+    },
+    {
+      "category": "static_only",
+      "page": "mc-question/add/<slug>/<int:quiz_id>/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 404,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 404",
+        "denial marker: page not found",
+        "invalid resource marker: page not found",
+        "target resource did not exist; access-control vulnerability is not confirmed"
+      ],
+      "error": null
+    },
+    {
+      "category": "static_only",
+      "page": "my_courses/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 404,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 404",
+        "denial marker: page not found",
+        "invalid resource marker: page not found",
+        "target resource did not exist; access-control vulnerability is not confirmed"
+      ],
+      "error": null
+    },
+    {
+      "category": "static_only",
+      "page": "paylike/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 404,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 404",
+        "denial marker: page not found",
+        "invalid resource marker: page not found",
+        "target resource did not exist; access-control vulnerability is not confirmed"
+      ],
+      "error": null
+    },
+    {
+      "category": "static_only",
+      "page": "payment-succeed/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 404,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 404",
+        "denial marker: page not found",
+        "invalid resource marker: page not found",
+        "target resource did not exist; access-control vulnerability is not confirmed"
+      ],
+      "error": null
+    },
+    {
+      "category": "static_only",
+      "page": "payments/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 500,
+      "evidence": [
+        "oracle=response-cascade",
+        "static-only page did not match configured high-risk standalone patterns"
+      ],
+      "error": null
+    },
+    {
+      "category": "static_only",
+      "page": "paypal/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 404,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 404",
+        "denial marker: page not found",
+        "invalid resource marker: page not found",
+        "target resource did not exist; access-control vulnerability is not confirmed"
+      ],
+      "error": null
+    },
+    {
+      "category": "static_only",
+      "page": "progress/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 404,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 404",
+        "denial marker: page not found",
+        "invalid resource marker: page not found",
+        "target resource did not exist; access-control vulnerability is not confirmed"
+      ],
+      "error": null
+    },
+    {
+      "category": "static_only",
+      "page": "quiz/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 404,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 404",
+        "denial marker: page not found",
+        "invalid resource marker: page not found",
+        "target resource did not exist; access-control vulnerability is not confirmed"
+      ],
+      "error": null
+    },
+    {
+      "category": "static_only",
+      "page": "result/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 404,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 404",
+        "denial marker: page not found",
+        "invalid resource marker: page not found",
+        "target resource did not exist; access-control vulnerability is not confirmed"
+      ],
+      "error": null
+    },
+    {
+      "category": "static_only",
+      "page": "stripe-charge/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 404,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 404",
+        "denial marker: page not found",
+        "invalid resource marker: page not found",
+        "target resource did not exist; access-control vulnerability is not confirmed"
+      ],
+      "error": null
+    },
+    {
+      "category": "static_only",
+      "page": "stripe/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 404,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 404",
+        "denial marker: page not found",
+        "invalid resource marker: page not found",
+        "target resource did not exist; access-control vulnerability is not confirmed"
+      ],
+      "error": null
+    },
+    {
+      "category": "static_only",
+      "page": "webhook",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 404,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 404",
+        "denial marker: page not found",
+        "invalid resource marker: page not found",
+        "target resource did not exist; access-control vulnerability is not confirmed"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "accounts/admin_panel/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/accounts/login/?next=/accounts/admin_panel/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "accounts/admin_panel/",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 500,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: not found",
+        "invalid resource marker: not found",
+        "target resource did not exist; access-control vulnerability is not confirmed"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "accounts/admin_panel/",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 500,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: not found",
+        "invalid resource marker: not found",
+        "target resource did not exist; access-control vulnerability is not confirmed"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "accounts/change_password/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/accounts/login/?next=/accounts/change_password/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "accounts/lecturer/add/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/accounts/login/?next=/accounts/lecturer/add/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "accounts/lecturer/add/",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 403,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 403"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "accounts/lecturer/add/",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 403,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 403"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "accounts/lecturers/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/accounts/login/?next=/accounts/lecturers/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "accounts/lecturers/",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 403,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 403"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "accounts/lecturers/",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 403,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 403"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "accounts/lecturers/20/delete/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/accounts/login/?next=/accounts/lecturers/20/delete/%3Fcsrfmiddlewaretoken%3DefdJggc4hNs4NFNeKXU6s2BnliF97A7sjyG5WwI3iOZZAdyBcJhmDn06avDySQtg"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "accounts/lecturers/20/delete/",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 500,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: not found",
+        "invalid resource marker: not found",
+        "target resource did not exist; access-control vulnerability is not confirmed"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "accounts/lecturers/20/delete/",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 500,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: not found",
+        "invalid resource marker: not found",
+        "target resource did not exist; access-control vulnerability is not confirmed"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "accounts/profile/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/accounts/login/?next=/accounts/profile/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "accounts/profile/19/detail/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/accounts/login/?next=/accounts/profile/19/detail/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "accounts/profile/19/detail/",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 500,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: not found",
+        "invalid resource marker: not found",
+        "target resource did not exist; access-control vulnerability is not confirmed"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "accounts/profile/19/detail/",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 500,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: not found",
+        "invalid resource marker: not found",
+        "target resource did not exist; access-control vulnerability is not confirmed"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "accounts/setting/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/accounts/login/?next=/accounts/setting/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "accounts/student/19/edit/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/accounts/login/?next=/accounts/student/19/edit/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "accounts/student/19/edit/",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 403,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 403"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "accounts/student/19/edit/",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 403,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 403"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "accounts/student/add/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/accounts/login/?next=/accounts/student/add/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "accounts/student/add/",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 403,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 403"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "accounts/student/add/",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 403,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 403"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "accounts/students/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/accounts/login/?next=/accounts/students/%3Fstudent_id%3D1%26name%3DDRHL%2BTest%2BName%26department%3D1"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "accounts/students/",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 500,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: not found",
+        "invalid resource marker: not found",
+        "target resource did not exist; access-control vulnerability is not confirmed"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "accounts/students/",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 500,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: not found",
+        "invalid resource marker: not found",
+        "target resource did not exist; access-control vulnerability is not confirmed"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "accounts/students/17/delete/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/accounts/login/?next=/accounts/students/17/delete/%3Fcsrfmiddlewaretoken%3DPOKta0LGZdmQfjId5OKKOXC0esARgjm4U7dPQghF0eTL2RtAxA70Zi1J3Fyg1zIS"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "accounts/students/17/delete/",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 500,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: not found",
+        "invalid resource marker: not found",
+        "target resource did not exist; access-control vulnerability is not confirmed"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "accounts/students/17/delete/",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 500,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: not found",
+        "invalid resource marker: not found",
+        "target resource did not exist; access-control vulnerability is not confirmed"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "accounts/students/18/delete/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/accounts/login/?next=/accounts/students/18/delete/%3Fcsrfmiddlewaretoken%3DWLlmVB1hRUJ1zeFH8JxLkMlOi9ymIy9H14OIBRxgSVgWmMq4AvU1v7Kx7mwLtOvv"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "accounts/students/18/delete/",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 500,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: not found",
+        "invalid resource marker: not found",
+        "target resource did not exist; access-control vulnerability is not confirmed"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "accounts/students/18/delete/",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 500,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: not found",
+        "invalid resource marker: not found",
+        "target resource did not exist; access-control vulnerability is not confirmed"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "accounts/students/?department=p1&name=p1&student_id=p1",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/accounts/login/?next=/accounts/students/%3Fdepartment%3D1%26name%3DDRHL%2BTest%2BName%26student_id%3D1"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "accounts/students/?department=p1&name=p1&student_id=p1",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 500,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: not found",
+        "invalid resource marker: not found",
+        "target resource did not exist; access-control vulnerability is not confirmed"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "accounts/students/?department=p1&name=p1&student_id=p1",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 500,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: not found",
+        "invalid resource marker: not found",
+        "target resource did not exist; access-control vulnerability is not confirmed"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "add_item/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/accounts/login/?next=/add_item/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "add_item/",
+      "actor": "user1",
+      "status": "vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 200 without redirect or denial marker"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "add_item/",
+      "actor": "user2",
+      "status": "vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 200 without redirect or denial marker"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "add_item/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/accounts/login/?next=/add_item/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "add_item/",
+      "actor": "user1",
+      "status": "vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 200 without redirect or denial marker"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "add_item/",
+      "actor": "user2",
+      "status": "vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 200 without redirect or denial marker"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/accounts/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/accounts/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/accounts/",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/accounts/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/accounts/",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/accounts/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/accounts/parent/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/accounts/parent/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/accounts/parent/",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/accounts/parent/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/accounts/parent/",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/accounts/parent/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/accounts/parent/add/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/accounts/parent/add/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/accounts/parent/add/",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/accounts/parent/add/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/accounts/parent/add/",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/accounts/parent/add/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/accounts/student/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/accounts/student/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/accounts/student/",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/accounts/student/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/accounts/student/",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/accounts/student/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/accounts/student/add/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/accounts/student/add/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/accounts/student/add/",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/accounts/student/add/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/accounts/student/add/",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/accounts/student/add/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/accounts/user/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/accounts/user/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/accounts/user/",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/accounts/user/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/accounts/user/",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/accounts/user/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/accounts/user/add/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/accounts/user/add/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/accounts/user/add/",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/accounts/user/add/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/accounts/user/add/",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/accounts/user/add/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/app/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/app/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/app/",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/app/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/app/",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/app/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/app/newsandevents/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/app/newsandevents/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/app/newsandevents/",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/app/newsandevents/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/app/newsandevents/",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/app/newsandevents/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/app/newsandevents/add/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/app/newsandevents/add/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/app/newsandevents/add/",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/app/newsandevents/add/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/app/newsandevents/add/",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/app/newsandevents/add/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/app/semester/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/app/semester/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/app/semester/",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/app/semester/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/app/semester/",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/app/semester/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/app/semester/add/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/app/semester/add/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/app/semester/add/",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/app/semester/add/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/app/semester/add/",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/app/semester/add/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/app/session/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/app/session/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/app/session/",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/app/session/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/app/session/",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/app/session/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/app/session/add/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/app/session/add/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/app/session/add/",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/app/session/add/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/app/session/add/",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/app/session/add/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/auth/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/auth/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/auth/",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/auth/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/auth/",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/auth/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/auth/group/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/auth/group/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/auth/group/",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/auth/group/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/auth/group/",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/auth/group/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/auth/group/add/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/auth/group/add/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/auth/group/add/",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/auth/group/add/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/auth/group/add/",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/auth/group/add/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/course/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/course/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/course/",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/course/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/course/",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/course/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/course/course/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/course/course/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/course/course/",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/course/course/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/course/course/",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/course/course/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/course/course/add/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/course/course/add/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/course/course/add/",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/course/course/add/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/course/course/add/",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/course/course/add/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/course/courseallocation/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/course/courseallocation/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/course/courseallocation/",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/course/courseallocation/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/course/courseallocation/",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/course/courseallocation/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/course/courseallocation/1/change/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/course/courseallocation/1/change/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/course/courseallocation/1/change/",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/course/courseallocation/1/change/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/course/courseallocation/1/change/",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/course/courseallocation/1/change/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/course/courseallocation/add/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/course/courseallocation/add/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/course/courseallocation/add/",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/course/courseallocation/add/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/course/courseallocation/add/",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/course/courseallocation/add/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/course/program/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/course/program/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/course/program/",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/course/program/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/course/program/",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/course/program/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/course/program/add/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/course/program/add/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/course/program/add/",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/course/program/add/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/course/program/add/",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/course/program/add/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/course/upload/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/course/upload/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/course/upload/",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/course/upload/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/course/upload/",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/course/upload/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/course/upload/add/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/course/upload/add/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/course/upload/add/",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/course/upload/add/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/course/upload/add/",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/course/upload/add/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/password_change/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/password_change/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/password_change/",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/password_change/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/password_change/",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/password_change/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/quiz/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/quiz/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/quiz/",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/quiz/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/quiz/",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/quiz/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/quiz/essay_question/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/quiz/essay_question/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/quiz/essay_question/",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/quiz/essay_question/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/quiz/essay_question/",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/quiz/essay_question/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/quiz/essay_question/add/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/quiz/essay_question/add/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/quiz/essay_question/add/",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/quiz/essay_question/add/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/quiz/essay_question/add/",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/quiz/essay_question/add/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/quiz/mcquestion/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/quiz/mcquestion/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/quiz/mcquestion/",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/quiz/mcquestion/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/quiz/mcquestion/",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/quiz/mcquestion/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/quiz/mcquestion/add/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/quiz/mcquestion/add/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/quiz/mcquestion/add/",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/quiz/mcquestion/add/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/quiz/mcquestion/add/",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/quiz/mcquestion/add/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/quiz/progress/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/quiz/progress/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/quiz/progress/",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/quiz/progress/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/quiz/progress/",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/quiz/progress/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/quiz/progress/add/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/quiz/progress/add/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/quiz/progress/add/",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/quiz/progress/add/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/quiz/progress/add/",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/quiz/progress/add/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/quiz/quiz/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/quiz/quiz/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/quiz/quiz/",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/quiz/quiz/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/quiz/quiz/",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/quiz/quiz/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/quiz/quiz/add/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/quiz/quiz/add/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/quiz/quiz/add/",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/quiz/quiz/add/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/quiz/quiz/add/",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/quiz/quiz/add/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/quiz/sitting/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/quiz/sitting/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/quiz/sitting/",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/quiz/sitting/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/quiz/sitting/",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/quiz/sitting/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/quiz/sitting/add/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/quiz/sitting/add/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/quiz/sitting/add/",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/quiz/sitting/add/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/quiz/sitting/add/",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/quiz/sitting/add/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/result/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/result/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/result/",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/result/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/result/",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/result/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/result/result/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/result/result/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/result/result/",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/result/result/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/result/result/",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/result/result/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/result/result/add/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/result/result/add/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/result/result/add/",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/result/result/add/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/result/result/add/",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/result/result/add/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/result/takencourse/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/result/takencourse/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/result/takencourse/",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/result/takencourse/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/result/takencourse/",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/result/takencourse/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/result/takencourse/add/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/result/takencourse/add/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/result/takencourse/add/",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/result/takencourse/add/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/result/takencourse/add/",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/result/takencourse/add/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "dashboard/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/accounts/login/?next=/dashboard/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "dashboard/",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 500,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: not found",
+        "invalid resource marker: not found",
+        "target resource did not exist; access-control vulnerability is not confirmed"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "dashboard/",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 500,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: not found",
+        "invalid resource marker: not found",
+        "target resource did not exist; access-control vulnerability is not confirmed"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "item/13/delete/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/accounts/login/?next=/item/13/delete/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "item/13/delete/",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 500,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: not found",
+        "invalid resource marker: not found",
+        "target resource did not exist; access-control vulnerability is not confirmed"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "item/13/delete/",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 500,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: not found",
+        "invalid resource marker: not found",
+        "target resource did not exist; access-control vulnerability is not confirmed"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "programs/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/accounts/login/?next=/programs/%3Fcsrfmiddlewaretoken%3DQI97X1glN5pZHfTq3eLIZCIQXygj6dbBzi1zuDXbTzG7s2yTWkEBCdiLSUM2zWsA%26program_filter%3Dvalue_6fed2064"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "programs/13/course/add/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/accounts/login/?next=/programs/13/course/add/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "programs/13/course/add/",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 403,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 403"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "programs/13/course/add/",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 403,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 403"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "programs/13/detail/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/accounts/login/?next=/programs/13/detail/%3Fname%3DDRHL%2BTest%2BName%26code%3DDRHL101%26year%3D1"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "programs/13/detail/?code=p1&name=p1&year=p1",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/accounts/login/?next=/programs/13/detail/%3Fcode%3DDRHL101%26name%3DDRHL%2BTest%2BName%26year%3D1"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "programs/?csrfmiddlewaretoken=p1&program_filter=p1",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/accounts/login/?next=/programs/%3Fcsrfmiddlewaretoken%3DP4F2TaCTSybREcjNyb8hYVQdiikH3Ay7yExuqMjJY2sZpZYgrh1aBwq8dEQqwjP6%26program_filter%3Dvalue_6fed2064"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "programs/add/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/accounts/login/?next=/programs/add/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "programs/add/",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 403,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 403"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "programs/add/",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 403,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 403"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "programs/course/delete/software-testing/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/accounts/login/?next=/programs/course/delete/software-testing/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "programs/course/delete/software-testing/",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 500,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: not found",
+        "invalid resource marker: not found",
+        "target resource did not exist; access-control vulnerability is not confirmed"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "programs/course/delete/software-testing/",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 500,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: not found",
+        "invalid resource marker: not found",
+        "target resource did not exist; access-control vulnerability is not confirmed"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "programs/course/drop/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/accounts/login/?next=/programs/course/drop/"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "programs/course/registration/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/accounts/login/?next=/programs/course/registration/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "programs/course/secure-software-engineering/edit/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/accounts/login/?next=/programs/course/secure-software-engineering/edit/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "programs/course/secure-software-engineering/edit/",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 403,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 403"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "programs/course/secure-software-engineering/edit/",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 403,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 403"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "programs/course/software-testing/detail/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/accounts/login/?next=/programs/course/software-testing/detail/"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "programs/my_courses/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/accounts/login/?next=/programs/my_courses/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "quiz/marking_list/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/accounts/login/?next=/quiz/marking_list/%3Fuser_filter%3Dvalue_3836fc26%26quiz_filter%3Dvalue_efb408ae"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "quiz/marking_list/",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 500,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: not found",
+        "invalid resource marker: not found",
+        "target resource did not exist; access-control vulnerability is not confirmed"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "quiz/marking_list/",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 500,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: not found",
+        "invalid resource marker: not found",
+        "target resource did not exist; access-control vulnerability is not confirmed"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "quiz/marking_list/?quiz_filter=p1&user_filter=p1",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/accounts/login/?next=/quiz/marking_list/%3Fquiz_filter%3Dvalue_efb408ae%26user_filter%3Dvalue_3836fc26"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "quiz/marking_list/?quiz_filter=p1&user_filter=p1",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 500,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: not found",
+        "invalid resource marker: not found",
+        "target resource did not exist; access-control vulnerability is not confirmed"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "quiz/marking_list/?quiz_filter=p1&user_filter=p1",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 500,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: not found",
+        "invalid resource marker: not found",
+        "target resource did not exist; access-control vulnerability is not confirmed"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "quiz/progress/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/accounts/login/?next=/quiz/progress/"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "quiz/software-testing/quizzes/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/accounts/login/?next=/quiz/software-testing/quizzes/"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "result/assessment/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/accounts/login/?next=/result/assessment/"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "result/grade/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/accounts/login/?next=/result/grade/"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "result/registration/form/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/accounts/login/?next=/result/registration/form/"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "search/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": null,
+      "evidence": [
+        "oracle=response-cascade",
+        "configured public page; successful access is not a vulnerability"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "semester/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/accounts/login/?next=/semester/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "semester/",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 500,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: not found",
+        "invalid resource marker: not found",
+        "target resource did not exist; access-control vulnerability is not confirmed"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "semester/",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 500,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: not found",
+        "invalid resource marker: not found",
+        "target resource did not exist; access-control vulnerability is not confirmed"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "semester/add/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/accounts/login/?next=/semester/add/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "semester/add/",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 403,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 403"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "semester/add/",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 403,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 403"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "session/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/accounts/login/?next=/session/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "session/",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 500,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: not found",
+        "invalid resource marker: not found",
+        "target resource did not exist; access-control vulnerability is not confirmed"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "session/",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 500,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: not found",
+        "invalid resource marker: not found",
+        "target resource did not exist; access-control vulnerability is not confirmed"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "session/2/delete/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/accounts/login/?next=/session/2/delete/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "session/2/delete/",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 500,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: not found",
+        "invalid resource marker: not found",
+        "target resource did not exist; access-control vulnerability is not confirmed"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "session/2/delete/",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 500,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: not found",
+        "invalid resource marker: not found",
+        "target resource did not exist; access-control vulnerability is not confirmed"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "session/add/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/accounts/login/?next=/session/add/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "session/add/",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 403,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 403"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "session/add/",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 403,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 403"
+      ],
+      "error": null
+    }
+  ]
+}

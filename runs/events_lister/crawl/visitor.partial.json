@@ -1,0 +1,15 @@
+{
+  "role": "visitor",
+  "kind": "visitor",
+  "nodes": [
+    "index.php"
+  ],
+  "edges": [],
+  "requests": {
+    "index.php": {
+      "method": "GET",
+      "params": {},
+      "referer": null
+    }
+  }
+}

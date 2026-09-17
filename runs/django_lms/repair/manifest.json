@@ -1,0 +1,167 @@
+{
+  "summary": {
+    "Repair Items": 1,
+    "Total Repair Attempts": 1,
+    "Patch Generation Attempts": 1,
+    "Patches Generated": 1,
+    "Failed Patches": 0,
+    "Syntax / Compile OK": 1,
+    "Exploit Blocked": 1,
+    "Regression Passed": 1,
+    "Database Validation Applied": 1,
+    "Database Validation Passed": 1,
+    "Successful Repairs": 1,
+    "Failed Repairs": 0,
+    "Successful on Attempt 1": 1,
+    "Successful on Attempt 2": 0,
+    "Successful on Attempt 3": 0
+  },
+  "repairs": [
+    {
+      "category": "admin_only",
+      "page": "add_item/",
+      "source": "D:\\project\\python\\django_lms\\app\\views.py",
+      "output": "D:\\project\\python\\DRHL\\runs\\django_lms\\repair\\files\\attempt-1\\app\\views.py",
+      "status": "successful_repair",
+      "message": "syntax/compile, vulnerability blocking, and regression validation all passed",
+      "engine": "llm",
+      "plan": "{\"missing_check\": \"`@admin_required` on the `add_item`/`post_add` view\", \"insertion_location\": \"app/views.py, immediately after the existing `@login_required` decorator and before `def post_add(request):` (the view mapped to `add_item/`).\", \"recommended_guard\": \"`@admin_required`\", \"reused_project_semantics\": \"Uses `accounts.decorators.admin_required`, which wraps `user_passes_test(lambda u: u.is_active and u.is_superuser, login_url=Http404)`, matching the project's admin-only check used on `dashboard_view`.\", \"reason\": \"`add_item/` is admin-only, but the view handling it is only protected by `@login_required`; a normal `user1` can reach it and POST. Adding the existing `@admin_required` decorator blocks non-admin users before form processing/save, while preserving authorized admin access.\"}",
+      "prompt_artifact": "D:\\project\\python\\DRHL\\runs\\django_lms\\repair\\prompts\\views-attempt1-0af81e3ec733.json",
+      "attempts": 1,
+      "patches_generated": 1,
+      "syntax_compile_ok": 1,
+      "exploit_blocked": 1,
+      "regression_passed": 1,
+      "database_validation_applied": 1,
+      "database_validation_passed": 1,
+      "successful": true,
+      "validation_artifact": "D:\\project\\python\\DRHL\\runs\\django_lms\\repair\\validation\\views-025272a598a0.json",
+      "attempt_details": [
+        {
+          "attempt": 1,
+          "output": "D:\\project\\python\\DRHL\\runs\\django_lms\\repair\\files\\attempt-1\\app\\views.py",
+          "syntax_compile_ok": true,
+          "exploit_blocked": true,
+          "regression_passed": true,
+          "successful": true,
+          "message": "syntax=(py_compile exited with 0); deployment=(source patch applied; reload=([djangoblog_server] stopped PID 3736\n[djangoblog_server] already running: http://localhost:8000/)); vulnerability_blocking=(response=True; database=passed; evidence=visitor:not_vulnerable; user1:not_vulnerable; user2:not_vulnerable); regression=(response=True; database=passed; evidence=authorized status=200; denial=[])",
+          "prompt_artifact": "D:\\project\\python\\DRHL\\runs\\django_lms\\repair\\prompts\\views-attempt1-0af81e3ec733.json",
+          "plan": "{\"missing_check\": \"`@admin_required` on the `add_item`/`post_add` view\", \"insertion_location\": \"app/views.py, immediately after the existing `@login_required` decorator and before `def post_add(request):` (the view mapped to `add_item/`).\", \"recommended_guard\": \"`@admin_required`\", \"reused_project_semantics\": \"Uses `accounts.decorators.admin_required`, which wraps `user_passes_test(lambda u: u.is_active and u.is_superuser, login_url=Http404)`, matching the project's admin-only check used on `dashboard_view`.\", \"reason\": \"`add_item/` is admin-only, but the view handling it is only protected by `@login_required`; a normal `user1` can reach it and POST. Adding the existing `@admin_required` decorator blocks non-admin users before form processing/save, while preserving authorized admin access.\"}",
+          "database_validation_passed": true,
+          "database_validation": {
+            "oracle_version": 2,
+            "scope": "repair_only",
+            "applicable": true,
+            "passed": true,
+            "status": "passed",
+            "dimensions": {
+              "vulnerability_blocking": {
+                "phase": "attack",
+                "applicable": true,
+                "passed": true
+              },
+              "regression": {
+                "phase": "authorized",
+                "applicable": true,
+                "passed": true
+              }
+            },
+            "scenarios": [
+              {
+                "name": "django-lms-add-item-admin-create",
+                "operation": "create",
+                "passed": true,
+                "phases": [
+                  {
+                    "phase": "attack",
+                    "role": "user1",
+                    "session_before_setup": false,
+                    "setup_sql": [],
+                    "session_requests": [],
+                    "request": {
+                      "method": "POST",
+                      "page": "add_item/",
+                      "params": {
+                        "title": "DRHLR_13482f359918",
+                        "summary": "DRHL repair oracle unauthorized item",
+                        "posted_as": "News"
+                      },
+                      "referer": "add_item/",
+                      "cookie_names": []
+                    },
+                    "response": {
+                      "status_code": 403,
+                      "url": "http://localhost:8000/add_item/",
+                      "body_length": 2506
+                    },
+                    "query": "SELECT COUNT(*) FROM app_newsandevents WHERE title='DRHLR_13482f359918'",
+                    "observed": "0",
+                    "assertions": [
+                      {
+                        "type": "scalar_zero",
+                        "expected": "0",
+                        "observed": "0",
+                        "passed": true
+                      }
+                    ],
+                    "passed": true
+                  },
+                  {
+                    "phase": "authorized",
+                    "role": "admin",
+                    "session_before_setup": false,
+                    "setup_sql": [],
+                    "session_requests": [],
+                    "request": {
+                      "method": "POST",
+                      "page": "add_item/",
+                      "params": {
+                        "title": "DRHLR_13482f359918",
+                        "summary": "DRHL repair oracle authorized item",
+                        "posted_as": "News"
+                      },
+                      "referer": "add_item/",
+                      "cookie_names": []
+                    },
+                    "response": {
+                      "status_code": 302,
+                      "url": "http://localhost:8000/add_item/",
+                      "body_length": 0
+                    },
+                    "query": "SELECT COUNT(*) FROM app_newsandevents WHERE title='DRHLR_13482f359918'",
+                    "observed": "1",
+                    "assertions": [
+                      {
+                        "type": "scalar_nonzero",
+                        "expected": "nonzero",
+                        "observed": "1",
+                        "passed": true
+                      }
+                    ],
+                    "passed": true
+                  }
+                ]
+              }
+            ],
+            "combined_dimensions": {
+              "vulnerability_blocking": {
+                "passed": true,
+                "response_oracle_applicable": true,
+                "response_oracle_passed": true,
+                "database_oracle_applicable": true,
+                "database_oracle_passed": true
+              },
+              "regression": {
+                "passed": true,
+                "response_oracle_applicable": true,
+                "response_oracle_passed": true,
+                "database_oracle_applicable": true,
+                "database_oracle_passed": true
+              }
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

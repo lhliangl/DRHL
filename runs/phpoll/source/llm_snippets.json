@@ -1,0 +1,21 @@
+{
+  "summary": {
+    "source_items": 6,
+    "llm_items": 3,
+    "items_removed": 3
+  },
+  "snippets": [
+    {
+      "path": "admin/band_editor.php",
+      "if_framework": "$query_login = \"SELECT login, password FROM phpoll_\".$prepoll.\"_configurazione;\";\n$estrai_login = mysql_query($query_login, $phpoll_db)\n  or die (\"Errore nella connessione per estrazione login configurazione dal database \".$phpoll_database);\n$dati_login = mysql_fetch_assoc($estrai_login);\n$string_cook_login = \"phpoll_\".$prepoll.\"_login\";\n$string_cook_password = \"phpoll_\".$prepoll.\"_password\";\n$log=$dati_login['login'];\n$pw=$dati_login['password'];\n$test_log = false;\nif ((isset($_COOKIE[$string_cook_login])&&$log==$_COOKIE[$string_cook_login])&&(isset($_COOKIE[$string_cook_password])&&$pw==$_COOKIE[$string_cook_password])) {\n    $test_log = true;\n}"
+    },
+    {
+      "path": "admin/config_editor.php",
+      "if_framework": "$query_login = \"SELECT login, password FROM phpoll_\".$prepoll.\"_configurazione;\";\n$estrai_login = mysql_query($query_login, $phpoll_db)\n  or die (\"Errore nella connessione per estrazione login configurazione dal database \".$phpoll_database);\n$dati_login = mysql_fetch_assoc($estrai_login);\n$string_cook_login = \"phpoll_\".$prepoll.\"_login\";\n$string_cook_password = \"phpoll_\".$prepoll.\"_password\";\n$log=$dati_login['login'];\n$pw=$dati_login['password'];\n$test_log = false;\nif ((isset($_COOKIE[$string_cook_login])&&$log==$_COOKIE[$string_cook_login])&&(isset($_COOKIE[$string_cook_password])&&$pw==$_COOKIE[$string_cook_password])) {\n    $test_log = true;\n}"
+    },
+    {
+      "path": "admin/votanti.php",
+      "if_framework": "$query_login = \"SELECT login, password FROM phpoll_\".$prepoll.\"_configurazione;\";\n$estrai_login = mysql_query($query_login, $phpoll_db)\n  or die (\"Errore nella connessione per estrazione login configurazione dal database \".$phpoll_database);\n$dati_login = mysql_fetch_assoc($estrai_login);\n$string_cook_login = \"phpoll_\".$prepoll.\"_login\";\n$string_cook_password = \"phpoll_\".$prepoll.\"_password\";\n$log=$dati_login['login'];\n$pw=$dati_login['password'];\n$test_log = false;\nif ((isset($_COOKIE[$string_cook_login])&&$log==$_COOKIE[$string_cook_login])&&(isset($_COOKIE[$string_cook_password])&&$pw==$_COOKIE[$string_cook_password])) {\n    $test_log = true;\n}"
+    }
+  ]
+}

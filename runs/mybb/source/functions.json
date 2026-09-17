@@ -1,0 +1,58 @@
+{
+  "functions": [
+    {
+      "id": "inc/functions.php:LCF664",
+      "path": "inc/functions.php",
+      "name": "check_forum_password",
+      "parameters": [
+        "$fid",
+        "$pid=0"
+      ],
+      "body": "{\n\tglobal $mybb, $header, $footer, $headerinclude, $theme, $templates, $lang, $forum_cache;\n\t\n\t$showform = true;\n\t\n\tif(!is_array($forum_cache))\n\t{\n\t\t$forum_cache = cache_forums();\n\t\tif(!$forum_cache)\n\t\t{\n\t\t\treturn false;\n\t\t}\n\t}\n\n\t// Loop through each of parent forums to ensure we have a password for them too\n\t$parents = explode(',', $forum_cache[$fid]['parentlist']);\n\trsort($parents);\n\tif(!empty($parents))\n\t{\n\t\tforeach($parents as $parent_id)\n\t\t{\n\t\t\tif($parent_id == $fid || $parent_id == $pid)\n\t\t\t{\n\t\t\t\tcontinue;\n\t\t\t}\n\t\t\t\n\t\t\tif($forum_cache[$parent_id]['password'] != \"\")\n\t\t\t{\n\t\t\t\tcheck_forum_password($parent_id, $fid);\n\t\t\t}\n\t\t}\n\t}\n\t\n\t$password = $forum_cache[$fid]['password'];\n\tif($password)\n\t{\n\t\tif($mybb->input['pwverify'] && $pid == 0)\n\t\t{\n\t\t\tif($password == $mybb->input['pwverify'])\n\t\t\t{\n\t\t\t\tmy_setcookie(\"forumpass[$fid]\", md5($mybb->user['uid'].$mybb->input['pwverify']), null, true);\n\t\t\t\t$showform = false;\n\t\t\t}\n\t\t\telse\n\t\t\t{\n\t\t\t\teval(\"\\$pwnote = \\\"\".$templates->get(\"forumdisplay_password_wrongpass\").\"\\\";\");\n\t\t\t\t$showform = true;\n\t\t\t}\n\t\t}\n\t\telse\n\t\t{\n\t\t\tif(!$mybb->cookies['forumpass'][$fid] || ($mybb->cookies['forumpass'][$fid] && md5($mybb->user['uid'].$password) != $mybb->cookies['forumpass'][$fid]))\n\t\t\t{\n\t\t\t\t$showform = true;\n\t\t\t}\n\t\t\telse\n\t\t\t{\n\t\t\t\t$showform = false;\n\t\t\t}\n\t\t}\n\t}\n\telse\n\t{\n\t\t$showform = false;\n\t}\n\n\tif($showform)\n\t{\n\t\tif($pid)\n\t\t{\n\t\t\theader(\"Location: \".$mybb->settings['bburl'].\"/\".get_forum_link($fid));\n\t\t}\n\t\telse\n\t\t{\n\t\t\t$_SERVER['REQUEST_URI'] = htmlspecialchars_uni($_SERVER['REQUEST_URI']);\n\t\t\teval(\"\\$pwform = \\\"\".$templates->get(\"forumdisplay_password\").\"\\\";\");\n\t\t\toutput_page($pwform);\n\t\t}\n\t\texit;\n\t}\n}",
+      "start_line": 1312,
+      "end_line": 1393,
+      "conditions": [
+        "($password == $mybb->input['pwverify'])",
+        "(!$mybb->cookies['forumpass'][$fid] || ($mybb->cookies['forumpass'][$fid] && md5($mybb->user['uid'].$password) != $mybb->cookies['forumpass'][$fid]))",
+        "($showform)"
+      ],
+      "code": "function check_forum_password($fid, $pid=0)\n{\n\tglobal $mybb, $header, $footer, $headerinclude, $theme, $templates, $lang, $forum_cache;\n\t\n\t$showform = true;\n\t\n\tif(!is_array($forum_cache))\n\t{\n\t\t$forum_cache = cache_forums();\n\t\tif(!$forum_cache)\n\t\t{\n\t\t\treturn false;\n\t\t}\n\t}\n\n\t// Loop through each of parent forums to ensure we have a password for them too\n\t$parents = explode(',', $forum_cache[$fid]['parentlist']);\n\trsort($parents);\n\tif(!empty($parents))\n\t{\n\t\tforeach($parents as $parent_id)\n\t\t{\n\t\t\tif($parent_id == $fid || $parent_id == $pid)\n\t\t\t{\n\t\t\t\tcontinue;\n\t\t\t}\n\t\t\t\n\t\t\tif($forum_cache[$parent_id]['password'] != \"\")\n\t\t\t{\n\t\t\t\tcheck_forum_password($parent_id, $fid);\n\t\t\t}\n\t\t}\n\t}\n\t\n\t$password = $forum_cache[$fid]['password'];\n\tif($password)\n\t{\n\t\tif($mybb->input['pwverify'] && $pid == 0)\n\t\t{\n\t\t\tif($password == $mybb->input['pwverify'])\n\t\t\t{\n\t\t\t\tmy_setcookie(\"forumpass[$fid]\", md5($mybb->user['uid'].$mybb->input['pwverify']), null, true);\n\t\t\t\t$showform = false;\n\t\t\t}\n\t\t\telse\n\t\t\t{\n\t\t\t\teval(\"\\$pwnote = \\\"\".$templates->get(\"forumdisplay_password_wrongpass\").\"\\\";\");\n\t\t\t\t$showform = true;\n\t\t\t}\n\t\t}\n\t\telse\n\t\t{\n\t\t\tif(!$mybb->cookies['forumpass'][$fid] || ($mybb->cookies['forumpass'][$fid] && md5($mybb->user['uid'].$password) != $mybb->cookies['forumpass'][$fid]))\n\t\t\t{\n\t\t\t\t$showform = true;\n\t\t\t}\n\t\t\telse\n\t\t\t{\n\t\t\t\t$showform = false;\n\t\t\t}\n\t\t}\n\t}\n\telse\n\t{\n\t\t$showform = false;\n\t}\n\n\tif($showform)\n\t{\n\t\tif($pid)\n\t\t{\n\t\t\theader(\"Location: \".$mybb->settings['bburl'].\"/\".get_forum_link($fid));\n\t\t}\n\t\telse\n\t\t{\n\t\t\t$_SERVER['REQUEST_URI'] = htmlspecialchars_uni($_SERVER['REQUEST_URI']);\n\t\t\teval(\"\\$pwform = \\\"\".$templates->get(\"forumdisplay_password\").\"\\\";\");\n\t\t\toutput_page($pwform);\n\t\t}\n\t\texit;\n\t}\n}",
+      "parameter_ids": [
+        "inc/functions.php:LCP3322",
+        "inc/functions.php:LCP3323",
+        "inc/functions.php:LCP3324",
+        "inc/functions.php:LCP3325",
+        "inc/functions.php:LCP3326"
+      ],
+      "validation_evidence": [
+        "validated_parameter_condition",
+        "same_branch_termination"
+      ]
+    },
+    {
+      "id": "inc/functions_archive.php:LCF784",
+      "path": "inc/functions_archive.php",
+      "name": "check_forum_password_archive",
+      "parameters": [
+        "$fid",
+        "$pid=0"
+      ],
+      "body": "{\n\tglobal $forum_cache;\n\t\n\tif(!is_array($forum_cache))\n\t{\n\t\t$forum_cache = cache_forums();\n\t\tif(!$forum_cache)\n\t\t{\n\t\t\treturn false;\n\t\t}\n\t}\n\n\t// Loop through each of parent forums to ensure we have a password for them too\n\t$parents = explode(',', $forum_cache[$fid]['parentlist']);\n\trsort($parents);\n\tif(!empty($parents))\n\t{\n\t\tforeach($parents as $parent_id)\n\t\t{\n\t\t\tif($parent_id == $fid || $parent_id == $pid)\n\t\t\t{\n\t\t\t\tcontinue;\n\t\t\t}\n\t\t\t\n\t\t\tif($forum_cache[$parent_id]['password'] != \"\")\n\t\t\t{\n\t\t\t\tcheck_forum_password_archive($parent_id, $fid);\n\t\t\t}\n\t\t}\n\t}\n\t\n\t$password = $forum_cache[$fid]['password'];\n\tif($password)\n\t{\n\t\tif(!$mybb->cookies['forumpass'][$fid] || ($mybb->cookies['forumpass'][$fid] && md5($mybb->user['uid'].$password) != $mybb->cookies['forumpass'][$fid]))\n\t\t{\n\t\t\tarchive_error_no_permission();\n\t\t}\n\t}\n}",
+      "start_line": 225,
+      "end_line": 265,
+      "conditions": [
+        "(!$mybb->cookies['forumpass'][$fid] || ($mybb->cookies['forumpass'][$fid] && md5($mybb->user['uid'].$password) != $mybb->cookies['forumpass'][$fid]))"
+      ],
+      "code": "function check_forum_password_archive($fid, $pid=0)\n{\n\tglobal $forum_cache;\n\t\n\tif(!is_array($forum_cache))\n\t{\n\t\t$forum_cache = cache_forums();\n\t\tif(!$forum_cache)\n\t\t{\n\t\t\treturn false;\n\t\t}\n\t}\n\n\t// Loop through each of parent forums to ensure we have a password for them too\n\t$parents = explode(',', $forum_cache[$fid]['parentlist']);\n\trsort($parents);\n\tif(!empty($parents))\n\t{\n\t\tforeach($parents as $parent_id)\n\t\t{\n\t\t\tif($parent_id == $fid || $parent_id == $pid)\n\t\t\t{\n\t\t\t\tcontinue;\n\t\t\t}\n\t\t\t\n\t\t\tif($forum_cache[$parent_id]['password'] != \"\")\n\t\t\t{\n\t\t\t\tcheck_forum_password_archive($parent_id, $fid);\n\t\t\t}\n\t\t}\n\t}\n\t\n\t$password = $forum_cache[$fid]['password'];\n\tif($password)\n\t{\n\t\tif(!$mybb->cookies['forumpass'][$fid] || ($mybb->cookies['forumpass'][$fid] && md5($mybb->user['uid'].$password) != $mybb->cookies['forumpass'][$fid]))\n\t\t{\n\t\t\tarchive_error_no_permission();\n\t\t}\n\t}\n}",
+      "parameter_ids": [
+        "inc/functions_archive.php:LCP3702",
+        "inc/functions_archive.php:LCP3703",
+        "inc/functions_archive.php:LCP3701"
+      ],
+      "validation_evidence": [
+        "validated_parameter_condition",
+        "same_branch_termination"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1760 @@
+{
+  "parameters": [
+    {
+      "id": "article.php:LCP2",
+      "path": "article.php",
+      "expression": "$_SESSION['username']",
+      "aliases": [
+        "$_SESSION['username']"
+      ],
+      "database_relations": [
+        {
+          "table": "",
+          "field": "i",
+          "line": 135
+        }
+      ],
+      "sources": [
+        "database"
+      ],
+      "locations": [
+        {
+          "source": "database",
+          "line": 149,
+          "condition": "$_SESSION['username']"
+        },
+        {
+          "source": "database",
+          "line": 291,
+          "condition": "$_SESSION['username']"
+        },
+        {
+          "source": "database",
+          "line": 345,
+          "condition": "$_SESSION['username']"
+        }
+      ],
+      "condition_indexes": [
+        0,
+        1,
+        2
+      ],
+      "validation_evidence": [
+        {
+          "kind": "php_session_identity_key",
+          "key": "username"
+        },
+        {
+          "kind": "php_session_identity_key",
+          "key": "username"
+        },
+        {
+          "kind": "php_session_identity_key",
+          "key": "username"
+        }
+      ]
+    },
+    {
+      "id": "article.php:LCP5",
+      "path": "article.php",
+      "expression": "$globalvars['rank'][10]",
+      "aliases": [
+        "$globalvars['rank'][10]"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 19,
+          "condition": "($globalvars['rank'][10] == 0)"
+        },
+        {
+          "source": "conditional",
+          "line": 32,
+          "condition": "($globalvars['rank'][10] == 0)"
+        },
+        {
+          "source": "conditional",
+          "line": 67,
+          "condition": "($globalvars['rank'][10] == 0)"
+        },
+        {
+          "source": "conditional",
+          "line": 73,
+          "condition": "($globalvars['rank'][10] == 2)"
+        }
+      ],
+      "condition_indexes": [
+        5,
+        7,
+        9,
+        10
+      ],
+      "validation_evidence": [
+        {
+          "kind": "terminating_condition",
+          "line": 19,
+          "condition": "($globalvars['rank'][10] == 0)",
+          "terminations": [
+            {
+              "kind": "redirect",
+              "line": 20,
+              "code": "header(\"Location: index.php?do=permissiondenied\");",
+              "denial_text": false
+            }
+          ]
+        },
+        {
+          "kind": "terminating_condition",
+          "line": 32,
+          "condition": "($globalvars['rank'][10] == 0)",
+          "terminations": [
+            {
+              "kind": "redirect",
+              "line": 33,
+              "code": "header(\"Location: index.php?do=permissiondenied\");",
+              "denial_text": false
+            }
+          ]
+        },
+        {
+          "kind": "terminating_condition",
+          "line": 67,
+          "condition": "($globalvars['rank'][10] == 0)",
+          "terminations": [
+            {
+              "kind": "redirect",
+              "line": 68,
+              "code": "header(\"Location: index.php?do=permissiondenied\");",
+              "denial_text": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "article.php:LCP18",
+      "path": "article.php",
+      "expression": "$globalvars['rank'][14]",
+      "aliases": [
+        "$globalvars['rank'][14]"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 186,
+          "condition": "($globalvars['rank'][14] == 0)"
+        },
+        {
+          "source": "conditional",
+          "line": 218,
+          "condition": "($globalvars['rank'][14] == 0)"
+        }
+      ],
+      "condition_indexes": [
+        28,
+        34
+      ],
+      "validation_evidence": [
+        {
+          "kind": "terminating_condition",
+          "line": 186,
+          "condition": "($globalvars['rank'][14] == 0)",
+          "terminations": [
+            {
+              "kind": "redirect",
+              "line": 187,
+              "code": "header(\"Location: index.php?do=permissiondenied\");",
+              "denial_text": false
+            }
+          ]
+        },
+        {
+          "kind": "terminating_condition",
+          "line": 218,
+          "condition": "($globalvars['rank'][14] == 0)",
+          "terminations": [
+            {
+              "kind": "redirect",
+              "line": 219,
+              "code": "header(\"Location: index.php?do=permissiondenied\");",
+              "denial_text": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "etc.php:LCP23",
+      "path": "etc.php",
+      "expression": "$_SESSION['username']",
+      "aliases": [
+        "$_SESSION['username']"
+      ],
+      "database_relations": [
+        {
+          "table": "",
+          "field": "i",
+          "line": 135
+        }
+      ],
+      "sources": [
+        "database"
+      ],
+      "locations": [
+        {
+          "source": "database",
+          "line": 21,
+          "condition": "$_SESSION['username']"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ],
+      "validation_evidence": [
+        {
+          "kind": "php_session_identity_key",
+          "key": "username"
+        }
+      ]
+    },
+    {
+      "id": "inc/auth.php:LCP25",
+      "path": "inc/auth.php",
+      "expression": "$_SESSION['username']",
+      "aliases": [
+        "$_SESSION['username']",
+        "$user_fetch['user_name']"
+      ],
+      "database_relations": [
+        {
+          "table": "",
+          "field": "i",
+          "line": 135
+        }
+      ],
+      "sources": [
+        "database"
+      ],
+      "locations": [
+        {
+          "source": "database",
+          "line": 25,
+          "condition": "$_SESSION['username']"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ],
+      "validation_evidence": [
+        {
+          "kind": "php_session_identity_key",
+          "key": "username"
+        }
+      ]
+    },
+    {
+      "id": "inc/auth.php:LCP26",
+      "path": "inc/auth.php",
+      "expression": "$_SESSION['userid']",
+      "aliases": [
+        "$_SESSION['userID']",
+        "$user_fetch['id']"
+      ],
+      "database_relations": [
+        {
+          "table": "",
+          "field": "",
+          "line": 99
+        }
+      ],
+      "sources": [
+        "database"
+      ],
+      "locations": [
+        {
+          "source": "database",
+          "line": 26,
+          "condition": "$_SESSION['userID']"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ],
+      "canonicalized_from": "$_SESSION['userID']",
+      "validation_evidence": [
+        {
+          "kind": "php_session_identity_key",
+          "key": "userid"
+        }
+      ]
+    },
+    {
+      "id": "inc/auth.php:LCP28",
+      "path": "inc/auth.php",
+      "expression": "$_SESSION['auth']",
+      "aliases": [
+        "$_SESSION['auth']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 11,
+          "condition": "($_COOKIE['cookie_auth'] && !$_SESSION['auth'])"
+        },
+        {
+          "source": "conditional",
+          "line": 32,
+          "condition": "(@$_SESSION['auth'] != \"yes\")"
+        }
+      ],
+      "condition_indexes": [
+        2,
+        4
+      ],
+      "validation_evidence": [
+        {
+          "kind": "terminating_condition",
+          "line": 32,
+          "condition": "(@$_SESSION['auth'] != \"yes\")",
+          "terminations": [
+            {
+              "kind": "redirect",
+              "line": 33,
+              "code": "header(\"Location: login.php\");",
+              "denial_text": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "inc/auth.php:LCP30",
+      "path": "inc/auth.php",
+      "expression": "$_SESSION['path']",
+      "aliases": [
+        "$_SESSION['path']",
+        "$globalvars['path_to']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 37,
+          "condition": "(@$_SESSION['path'] != $globalvars['path_to'])"
+        }
+      ],
+      "condition_indexes": [
+        5
+      ],
+      "validation_evidence": [
+        {
+          "kind": "terminating_condition",
+          "line": 37,
+          "condition": "(@$_SESSION['path'] != $globalvars['path_to'])",
+          "terminations": [
+            {
+              "kind": "redirect",
+              "line": 38,
+              "code": "header(\"Location: login.php\");",
+              "denial_text": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "inc/function.php:LCP39",
+      "path": "inc/function.php",
+      "expression": "$_SESSION['username']",
+      "aliases": [
+        "$_SESSION['username']"
+      ],
+      "database_relations": [
+        {
+          "table": "",
+          "field": "i",
+          "line": 135
+        }
+      ],
+      "sources": [
+        "database"
+      ],
+      "locations": [
+        {
+          "source": "database",
+          "line": 126,
+          "condition": "$_SESSION['username']"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ],
+      "validation_evidence": [
+        {
+          "kind": "php_session_identity_key",
+          "key": "username"
+        }
+      ]
+    },
+    {
+      "id": "inc/function.php:LCP41",
+      "path": "inc/function.php",
+      "expression": "$_SESSION['username']",
+      "aliases": [
+        "$_SESSION['username']"
+      ],
+      "database_relations": [
+        {
+          "table": "",
+          "field": "i",
+          "line": 135
+        }
+      ],
+      "sources": [
+        "database"
+      ],
+      "locations": [
+        {
+          "source": "database",
+          "line": 135,
+          "condition": "$_SESSION['username']"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ],
+      "validation_evidence": [
+        {
+          "kind": "php_session_identity_key",
+          "key": "username"
+        }
+      ]
+    },
+    {
+      "id": "inc/function.php:LCP45",
+      "path": "inc/function.php",
+      "expression": "$_SESSION['userid']",
+      "aliases": [
+        "$_SESSION[userID]"
+      ],
+      "database_relations": [
+        {
+          "table": "",
+          "field": "",
+          "line": 190
+        }
+      ],
+      "sources": [
+        "database"
+      ],
+      "locations": [
+        {
+          "source": "database",
+          "line": 190,
+          "condition": "$_SESSION[userID]"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ],
+      "canonicalized_from": "$_SESSION[userID]",
+      "validation_evidence": [
+        {
+          "kind": "php_session_identity_key",
+          "key": "userid"
+        }
+      ]
+    },
+    {
+      "id": "inc/function.php:LCP60",
+      "path": "inc/function.php",
+      "expression": "$_SESSION['username']",
+      "aliases": [
+        "$_SESSION['username']"
+      ],
+      "database_relations": [
+        {
+          "table": "",
+          "field": "i",
+          "line": 135
+        }
+      ],
+      "sources": [
+        "database"
+      ],
+      "locations": [
+        {
+          "source": "database",
+          "line": 541,
+          "condition": "$_SESSION['username']"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ],
+      "validation_evidence": [
+        {
+          "kind": "php_session_identity_key",
+          "key": "username"
+        }
+      ]
+    },
+    {
+      "id": "inc/function.php:LCP61",
+      "path": "inc/function.php",
+      "expression": "$_SESSION['username']",
+      "aliases": [
+        "$_SESSION['username']"
+      ],
+      "database_relations": [
+        {
+          "table": "",
+          "field": "i",
+          "line": 135
+        }
+      ],
+      "sources": [
+        "database"
+      ],
+      "locations": [
+        {
+          "source": "database",
+          "line": 574,
+          "condition": "$_SESSION['username']"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ],
+      "validation_evidence": [
+        {
+          "kind": "php_session_identity_key",
+          "key": "username"
+        }
+      ]
+    },
+    {
+      "id": "inc/function.php:LCP74",
+      "path": "inc/function.php",
+      "expression": "$_SESSION['username']",
+      "aliases": [
+        "$_SESSION['username']"
+      ],
+      "database_relations": [
+        {
+          "table": "",
+          "field": "i",
+          "line": 135
+        }
+      ],
+      "sources": [
+        "database"
+      ],
+      "locations": [
+        {
+          "source": "database",
+          "line": 766,
+          "condition": "$_SESSION['username']"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ],
+      "validation_evidence": [
+        {
+          "kind": "php_session_identity_key",
+          "key": "username"
+        }
+      ]
+    },
+    {
+      "id": "inc/function.php:LCP75",
+      "path": "inc/function.php",
+      "expression": "$_SESSION['username']",
+      "aliases": [
+        "$_SESSION['username']"
+      ],
+      "database_relations": [
+        {
+          "table": "",
+          "field": "i",
+          "line": 135
+        }
+      ],
+      "sources": [
+        "database"
+      ],
+      "locations": [
+        {
+          "source": "database",
+          "line": 798,
+          "condition": "$_SESSION['username']"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ],
+      "validation_evidence": [
+        {
+          "kind": "php_session_identity_key",
+          "key": "username"
+        }
+      ]
+    },
+    {
+      "id": "inc/function.php:LCP78",
+      "path": "inc/function.php",
+      "expression": "$_SESSION['username']",
+      "aliases": [
+        "$_SESSION['username']"
+      ],
+      "database_relations": [
+        {
+          "table": "",
+          "field": "i",
+          "line": 135
+        }
+      ],
+      "sources": [
+        "database"
+      ],
+      "locations": [
+        {
+          "source": "database",
+          "line": 1005,
+          "condition": "$_SESSION['username']"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ],
+      "validation_evidence": [
+        {
+          "kind": "php_session_identity_key",
+          "key": "username"
+        }
+      ]
+    },
+    {
+      "id": "inc/function.php:LCP79",
+      "path": "inc/function.php",
+      "expression": "$_SESSION['username']",
+      "aliases": [
+        "$_SESSION['username']"
+      ],
+      "database_relations": [
+        {
+          "table": "",
+          "field": "i",
+          "line": 135
+        }
+      ],
+      "sources": [
+        "database"
+      ],
+      "locations": [
+        {
+          "source": "database",
+          "line": 1023,
+          "condition": "$_SESSION['username']"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ],
+      "validation_evidence": [
+        {
+          "kind": "php_session_identity_key",
+          "key": "username"
+        }
+      ]
+    },
+    {
+      "id": "inc/function.php:LCP80",
+      "path": "inc/function.php",
+      "expression": "$_SESSION['username']",
+      "aliases": [
+        "$_SESSION['username']"
+      ],
+      "database_relations": [
+        {
+          "table": "",
+          "field": "i",
+          "line": 135
+        }
+      ],
+      "sources": [
+        "database"
+      ],
+      "locations": [
+        {
+          "source": "database",
+          "line": 1091,
+          "condition": "$_SESSION['username']"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ],
+      "validation_evidence": [
+        {
+          "kind": "php_session_identity_key",
+          "key": "username"
+        }
+      ]
+    },
+    {
+      "id": "inc/function.php:LCP82",
+      "path": "inc/function.php",
+      "expression": "$_SESSION['username']",
+      "aliases": [
+        "$_SESSION['username']"
+      ],
+      "database_relations": [
+        {
+          "table": "",
+          "field": "i",
+          "line": 135
+        }
+      ],
+      "sources": [
+        "database"
+      ],
+      "locations": [
+        {
+          "source": "database",
+          "line": 1160,
+          "condition": "$_SESSION['username']"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ],
+      "validation_evidence": [
+        {
+          "kind": "php_session_identity_key",
+          "key": "username"
+        }
+      ]
+    },
+    {
+      "id": "inc/function.php:LCP83",
+      "path": "inc/function.php",
+      "expression": "$_SESSION['username']",
+      "aliases": [
+        "$_SESSION['username']"
+      ],
+      "database_relations": [
+        {
+          "table": "",
+          "field": "i",
+          "line": 135
+        }
+      ],
+      "sources": [
+        "database"
+      ],
+      "locations": [
+        {
+          "source": "database",
+          "line": 1184,
+          "condition": "$_SESSION['username']"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ],
+      "validation_evidence": [
+        {
+          "kind": "php_session_identity_key",
+          "key": "username"
+        }
+      ]
+    },
+    {
+      "id": "inc/function.php:LCP84",
+      "path": "inc/function.php",
+      "expression": "$_SESSION['username']",
+      "aliases": [
+        "$_SESSION['username']"
+      ],
+      "database_relations": [
+        {
+          "table": "",
+          "field": "i",
+          "line": 135
+        }
+      ],
+      "sources": [
+        "database"
+      ],
+      "locations": [
+        {
+          "source": "database",
+          "line": 1194,
+          "condition": "$_SESSION['username']"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ],
+      "validation_evidence": [
+        {
+          "kind": "php_session_identity_key",
+          "key": "username"
+        }
+      ]
+    },
+    {
+      "id": "inc/function.php:LCP86",
+      "path": "inc/function.php",
+      "expression": "$_SESSION['username']",
+      "aliases": [
+        "$_SESSION['username']"
+      ],
+      "database_relations": [
+        {
+          "table": "",
+          "field": "i",
+          "line": 135
+        }
+      ],
+      "sources": [
+        "database"
+      ],
+      "locations": [
+        {
+          "source": "database",
+          "line": 1221,
+          "condition": "$_SESSION['username']"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ],
+      "validation_evidence": [
+        {
+          "kind": "php_session_identity_key",
+          "key": "username"
+        }
+      ]
+    },
+    {
+      "id": "inc/page_desc.php:LCP92",
+      "path": "inc/page_desc.php",
+      "expression": "$_SESSION['username']",
+      "aliases": [
+        "$_SESSION['username']",
+        "$page_desc['index']"
+      ],
+      "database_relations": [
+        {
+          "table": "",
+          "field": "i",
+          "line": 135
+        }
+      ],
+      "sources": [
+        "database"
+      ],
+      "locations": [
+        {
+          "source": "database",
+          "line": 14,
+          "condition": "$_SESSION['username']"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ],
+      "validation_evidence": [
+        {
+          "kind": "php_session_identity_key",
+          "key": "username"
+        }
+      ]
+    },
+    {
+      "id": "inc/themecontrol.php:LCP93",
+      "path": "inc/themecontrol.php",
+      "expression": "$_SESSION['username']",
+      "aliases": [
+        "$_SESSION['username']"
+      ],
+      "database_relations": [
+        {
+          "table": "",
+          "field": "i",
+          "line": 135
+        }
+      ],
+      "sources": [
+        "database"
+      ],
+      "locations": [
+        {
+          "source": "database",
+          "line": 61,
+          "condition": "$_SESSION['username']"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ],
+      "validation_evidence": [
+        {
+          "kind": "php_session_identity_key",
+          "key": "username"
+        }
+      ]
+    },
+    {
+      "id": "login.php:LCP120",
+      "path": "login.php",
+      "expression": "$_SESSION['username']",
+      "aliases": [
+        "$_SESSION['username']",
+        "$fdata['user_name']"
+      ],
+      "database_relations": [
+        {
+          "table": "",
+          "field": "i",
+          "line": 135
+        }
+      ],
+      "sources": [
+        "database"
+      ],
+      "locations": [
+        {
+          "source": "database",
+          "line": 88,
+          "condition": "$_SESSION['username']"
+        },
+        {
+          "source": "database",
+          "line": 120,
+          "condition": "$_SESSION['username']"
+        },
+        {
+          "source": "database",
+          "line": 127,
+          "condition": "$_SESSION['username']"
+        }
+      ],
+      "condition_indexes": [
+        0,
+        2,
+        3
+      ],
+      "validation_evidence": [
+        {
+          "kind": "php_session_identity_key",
+          "key": "username"
+        },
+        {
+          "kind": "php_session_identity_key",
+          "key": "username"
+        },
+        {
+          "kind": "php_session_identity_key",
+          "key": "username"
+        }
+      ]
+    },
+    {
+      "id": "login.php:LCP121",
+      "path": "login.php",
+      "expression": "$_SESSION['userid']",
+      "aliases": [
+        "$_SESSION['userID']",
+        "$fdata['id']"
+      ],
+      "database_relations": [
+        {
+          "table": "",
+          "field": "",
+          "line": 99
+        }
+      ],
+      "sources": [
+        "database"
+      ],
+      "locations": [
+        {
+          "source": "database",
+          "line": 89,
+          "condition": "$_SESSION['userID']"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ],
+      "canonicalized_from": "$_SESSION['userID']",
+      "validation_evidence": [
+        {
+          "kind": "php_session_identity_key",
+          "key": "userid"
+        }
+      ]
+    },
+    {
+      "id": "login.php:LCP124",
+      "path": "login.php",
+      "expression": "$lnumcheck",
+      "aliases": [
+        "$lnumcheck"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 49,
+          "condition": "($lnumcheck == 0)"
+        }
+      ],
+      "condition_indexes": [
+        8
+      ],
+      "validation_evidence": [
+        {
+          "kind": "terminating_condition",
+          "line": 49,
+          "condition": "($lnumcheck == 0)",
+          "terminations": [
+            {
+              "kind": "configured_denial",
+              "line": 50,
+              "code": "$content = '<div id=\"login_error\" class=\"warning\">\r\n\t\t\t\t<h3>Login failed</h3>\r\n\t\t\t\t<p>We could not find a user entry with that username and password. If you have forgotten your password, use the recovery tool. Cookies must be enabled to login to the system!</p>\r\n\t\t</div>\r\n\t\t\r\n\t\t\t\t<div id=\"login\">\r\n\t\t\t<form id=\"login_form\" action=\"?do=p\" method=\"post\">\r\n\t\t\t\t<h2>User login</h2>\r\n\t\t\t\t<label for=\"username\">Username</label> <input type=\"text\" name=\"username\" id=\"username\" value=\"' . $loginvar['username'] . '\" /><br />\r\n\t\t\t\t<label for=\"password\">Password</label> <input type=\"password\" name=\"password\" id=\"password\" class=\"outline\" /><br />\r\n\r\n\t\t\t\t<label for=\"remember\">Remember me</label> <input type=\"checkbox\" name=\"remember\" id=\"remember\">\r\n\t\t\t\t<div id=\"login_submit\">\r\n\t\t\t\t\t<input type=\"submit\" id=\"submit\" value=\"Login\" />\r\n\t\t\t\t</div>\r\n\t\t\t</form>\r\n\t\t\t<script type=\"text/javascript\"> \r\n\t\t\t\tdocument.getElementById(\\'password\\').focus(); \r\n\t\t\t</script> \r\n\t\t</div>';",
+              "denial_text": false
+            },
+            {
+              "kind": "configured_denial",
+              "line": 123,
+              "code": "header(\"Location: index.php\");",
+              "denial_text": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "login.php:LCP126",
+      "path": "login.php",
+      "expression": "$rdata['permissions'][8]",
+      "aliases": [
+        "$rdata['permissions'][8]"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 113,
+          "condition": "($rdata['permissions'][8] == 0)"
+        }
+      ],
+      "condition_indexes": [
+        10
+      ],
+      "validation_evidence": [
+        {
+          "kind": "terminating_condition",
+          "line": 113,
+          "condition": "($rdata['permissions'][8] == 0)",
+          "terminations": [
+            {
+              "kind": "redirect",
+              "line": 115,
+              "code": "header(\"Location: login.php?m=nologin\");",
+              "denial_text": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "manage.php:LCP127",
+      "path": "manage.php",
+      "expression": "$_SESSION['username']",
+      "aliases": [
+        "$_SESSION['username']"
+      ],
+      "database_relations": [
+        {
+          "table": "",
+          "field": "i",
+          "line": 135
+        }
+      ],
+      "sources": [
+        "database"
+      ],
+      "locations": [
+        {
+          "source": "database",
+          "line": 82,
+          "condition": "$_SESSION['username']"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ],
+      "validation_evidence": [
+        {
+          "kind": "php_session_identity_key",
+          "key": "username"
+        }
+      ]
+    },
+    {
+      "id": "manage.php:LCP133",
+      "path": "manage.php",
+      "expression": "$globalvars['rank'][16]",
+      "aliases": [
+        "$globalvars['rank'][16]"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 64,
+          "condition": "($globalvars['rank'][16] == 0)"
+        }
+      ],
+      "condition_indexes": [
+        8
+      ],
+      "validation_evidence": [
+        {
+          "kind": "terminating_condition",
+          "line": 64,
+          "condition": "($globalvars['rank'][16] == 0)",
+          "terminations": [
+            {
+              "kind": "redirect",
+              "line": 65,
+              "code": "header(\"Location: index.php?do=permissiondenied\");",
+              "denial_text": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "preferences.php:LCP138",
+      "path": "preferences.php",
+      "expression": "$_SESSION['username']",
+      "aliases": [
+        "$_SESSION['username']"
+      ],
+      "database_relations": [
+        {
+          "table": "",
+          "field": "i",
+          "line": 135
+        }
+      ],
+      "sources": [
+        "database"
+      ],
+      "locations": [
+        {
+          "source": "database",
+          "line": 77,
+          "condition": "$_SESSION['username']"
+        },
+        {
+          "source": "database",
+          "line": 92,
+          "condition": "$_SESSION['username']"
+        },
+        {
+          "source": "database",
+          "line": 160,
+          "condition": "$_SESSION['username']"
+        },
+        {
+          "source": "database",
+          "line": 246,
+          "condition": "$_SESSION['username']"
+        },
+        {
+          "source": "database",
+          "line": 341,
+          "condition": "$_SESSION['username']"
+        },
+        {
+          "source": "database",
+          "line": 514,
+          "condition": "$_SESSION['username']"
+        },
+        {
+          "source": "database",
+          "line": 537,
+          "condition": "$_SESSION['username']"
+        },
+        {
+          "source": "database",
+          "line": 574,
+          "condition": "$_SESSION['username']"
+        },
+        {
+          "source": "database",
+          "line": 585,
+          "condition": "$_SESSION['username']"
+        },
+        {
+          "source": "database",
+          "line": 763,
+          "condition": "$_SESSION['username']"
+        },
+        {
+          "source": "database",
+          "line": 797,
+          "condition": "$_SESSION['username']"
+        },
+        {
+          "source": "database",
+          "line": 851,
+          "condition": "$_SESSION['username']"
+        },
+        {
+          "source": "database",
+          "line": 922,
+          "condition": "$_SESSION['username']"
+        },
+        {
+          "source": "database",
+          "line": 957,
+          "condition": "$_SESSION['username']"
+        },
+        {
+          "source": "database",
+          "line": 985,
+          "condition": "$_SESSION['username']"
+        },
+        {
+          "source": "database",
+          "line": 1022,
+          "condition": "$_SESSION['username']"
+        }
+      ],
+      "condition_indexes": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "validation_evidence": [
+        {
+          "kind": "php_session_identity_key",
+          "key": "username"
+        },
+        {
+          "kind": "php_session_identity_key",
+          "key": "username"
+        },
+        {
+          "kind": "php_session_identity_key",
+          "key": "username"
+        },
+        {
+          "kind": "php_session_identity_key",
+          "key": "username"
+        },
+        {
+          "kind": "php_session_identity_key",
+          "key": "username"
+        },
+        {
+          "kind": "php_session_identity_key",
+          "key": "username"
+        },
+        {
+          "kind": "php_session_identity_key",
+          "key": "username"
+        },
+        {
+          "kind": "php_session_identity_key",
+          "key": "username"
+        },
+        {
+          "kind": "php_session_identity_key",
+          "key": "username"
+        },
+        {
+          "kind": "php_session_identity_key",
+          "key": "username"
+        },
+        {
+          "kind": "php_session_identity_key",
+          "key": "username"
+        },
+        {
+          "kind": "php_session_identity_key",
+          "key": "username"
+        },
+        {
+          "kind": "php_session_identity_key",
+          "key": "username"
+        },
+        {
+          "kind": "php_session_identity_key",
+          "key": "username"
+        },
+        {
+          "kind": "php_session_identity_key",
+          "key": "username"
+        },
+        {
+          "kind": "php_session_identity_key",
+          "key": "username"
+        }
+      ]
+    },
+    {
+      "id": "preferences.php:LCP139",
+      "path": "preferences.php",
+      "expression": "$globalvars['rank'][6]",
+      "aliases": [
+        "$globalvars['rank'][6]"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 16,
+          "condition": "($globalvars['rank'][6] == 0)"
+        }
+      ],
+      "condition_indexes": [
+        16
+      ],
+      "validation_evidence": [
+        {
+          "kind": "terminating_condition",
+          "line": 16,
+          "condition": "($globalvars['rank'][6] == 0)",
+          "terminations": [
+            {
+              "kind": "redirect",
+              "line": 17,
+              "code": "header(\"Location: index.php?do=permissiondenied\");",
+              "denial_text": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "user.php:LCP214",
+      "path": "user.php",
+      "expression": "$_SESSION['username']",
+      "aliases": [
+        "$_SESSION['username']"
+      ],
+      "database_relations": [
+        {
+          "table": "",
+          "field": "i",
+          "line": 135
+        }
+      ],
+      "sources": [
+        "database"
+      ],
+      "locations": [
+        {
+          "source": "database",
+          "line": 400,
+          "condition": "$_SESSION['username']"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ],
+      "validation_evidence": [
+        {
+          "kind": "php_session_identity_key",
+          "key": "username"
+        }
+      ]
+    },
+    {
+      "id": "user.php:LCP218",
+      "path": "user.php",
+      "expression": "$globalvars['rank'][18]",
+      "aliases": [
+        "$globalvars['rank'][18]"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 90,
+          "condition": "($globalvars['rank'][18] == 0)"
+        },
+        {
+          "source": "conditional",
+          "line": 100,
+          "condition": "($globalvars['rank'][18] == 0)"
+        }
+      ],
+      "condition_indexes": [
+        5,
+        7
+      ],
+      "validation_evidence": [
+        {
+          "kind": "terminating_condition",
+          "line": 90,
+          "condition": "($globalvars['rank'][18] == 0)",
+          "terminations": [
+            {
+              "kind": "redirect",
+              "line": 91,
+              "code": "header(\"Location: index.php?do=permissiondenied\");",
+              "denial_text": false
+            }
+          ]
+        },
+        {
+          "kind": "terminating_condition",
+          "line": 100,
+          "condition": "($globalvars['rank'][18] == 0)",
+          "terminations": [
+            {
+              "kind": "redirect",
+              "line": 101,
+              "code": "header(\"Location: index.php?do=permissiondenied\");",
+              "denial_text": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "user.php:LCP226",
+      "path": "user.php",
+      "expression": "$globalvars['rank'][22]",
+      "aliases": [
+        "$globalvars['rank'][22]"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 171,
+          "condition": "($globalvars['rank'][22] == 0)"
+        }
+      ],
+      "condition_indexes": [
+        16
+      ],
+      "validation_evidence": [
+        {
+          "kind": "terminating_condition",
+          "line": 171,
+          "condition": "($globalvars['rank'][22] == 0)",
+          "terminations": [
+            {
+              "kind": "redirect",
+              "line": 172,
+              "code": "header(\"Location: index.php?do=permissiondenied\");",
+              "denial_text": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "user.php:LCP227",
+      "path": "user.php",
+      "expression": "$globalvars['rank'][20]",
+      "aliases": [
+        "$globalvars['rank'][20]"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 189,
+          "condition": "($globalvars['rank'][20] == 0)"
+        },
+        {
+          "source": "conditional",
+          "line": 208,
+          "condition": "($globalvars['rank'][20] == 0)"
+        }
+      ],
+      "condition_indexes": [
+        19,
+        22
+      ],
+      "validation_evidence": [
+        {
+          "kind": "terminating_condition",
+          "line": 189,
+          "condition": "($globalvars['rank'][20] == 0)",
+          "terminations": [
+            {
+              "kind": "redirect",
+              "line": 190,
+              "code": "header(\"Location: index.php?do=permissiondenied\");",
+              "denial_text": false
+            }
+          ]
+        },
+        {
+          "kind": "terminating_condition",
+          "line": 208,
+          "condition": "($globalvars['rank'][20] == 0)",
+          "terminations": [
+            {
+              "kind": "redirect",
+              "line": 209,
+              "code": "header(\"Location: index.php?do=permissiondenied\");",
+              "denial_text": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "user.php:LCP230",
+      "path": "user.php",
+      "expression": "$globalvars['rank'][2]",
+      "aliases": [
+        "$globalvars['rank'][2]"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 280,
+          "condition": "($globalvars['rank'][2] == 0)"
+        },
+        {
+          "source": "conditional",
+          "line": 328,
+          "condition": "($globalvars['rank'][2] == 0)"
+        },
+        {
+          "source": "conditional",
+          "line": 404,
+          "condition": "($globalvars['rank'][2] == 0)"
+        },
+        {
+          "source": "conditional",
+          "line": 451,
+          "condition": "($globalvars['rank'][2] == 0)"
+        }
+      ],
+      "condition_indexes": [
+        32,
+        34,
+        43,
+        48
+      ],
+      "validation_evidence": [
+        {
+          "kind": "terminating_condition",
+          "line": 280,
+          "condition": "($globalvars['rank'][2] == 0)",
+          "terminations": [
+            {
+              "kind": "redirect",
+              "line": 281,
+              "code": "header(\"Location: index.php?do=permissiondenied\");",
+              "denial_text": false
+            }
+          ]
+        },
+        {
+          "kind": "terminating_condition",
+          "line": 328,
+          "condition": "($globalvars['rank'][2] == 0)",
+          "terminations": [
+            {
+              "kind": "redirect",
+              "line": 329,
+              "code": "header(\"Location: index.php?do=permissiondenied\");",
+              "denial_text": false
+            }
+          ]
+        },
+        {
+          "kind": "terminating_condition",
+          "line": 404,
+          "condition": "($globalvars['rank'][2] == 0)",
+          "terminations": [
+            {
+              "kind": "redirect",
+              "line": 405,
+              "code": "header(\"Location: index.php?do=permissiondenied\");",
+              "denial_text": false
+            }
+          ]
+        },
+        {
+          "kind": "terminating_condition",
+          "line": 451,
+          "condition": "($globalvars['rank'][2] == 0)",
+          "terminations": [
+            {
+              "kind": "redirect",
+              "line": 452,
+              "code": "header(\"Location: index.php?do=permissiondenied\");",
+              "denial_text": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "user.php:LCP231",
+      "path": "user.php",
+      "expression": "$globalvars['rank'][0]",
+      "aliases": [
+        "$globalvars['rank'][0]"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 345,
+          "condition": "($globalvars['rank'][0] == 0)"
+        },
+        {
+          "source": "conditional",
+          "line": 355,
+          "condition": "($globalvars['rank'][0] == 0)"
+        }
+      ],
+      "condition_indexes": [
+        37,
+        39
+      ],
+      "validation_evidence": [
+        {
+          "kind": "terminating_condition",
+          "line": 345,
+          "condition": "($globalvars['rank'][0] == 0)",
+          "terminations": [
+            {
+              "kind": "redirect",
+              "line": 346,
+              "code": "header(\"Location: index.php?do=permissiondenied\");",
+              "denial_text": false
+            }
+          ]
+        },
+        {
+          "kind": "terminating_condition",
+          "line": 355,
+          "condition": "($globalvars['rank'][0] == 0)",
+          "terminations": [
+            {
+              "kind": "redirect",
+              "line": 356,
+              "code": "header(\"Location: index.php?do=permissiondenied\");",
+              "denial_text": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "user.php:LCP237",
+      "path": "user.php",
+      "expression": "$globalvars['rank'][4]",
+      "aliases": [
+        "$globalvars['rank'][4]"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 503,
+          "condition": "($globalvars['rank'][4] == 0)"
+        }
+      ],
+      "condition_indexes": [
+        52
+      ],
+      "validation_evidence": [
+        {
+          "kind": "terminating_condition",
+          "line": 503,
+          "condition": "($globalvars['rank'][4] == 0)",
+          "terminations": [
+            {
+              "kind": "redirect",
+              "line": 504,
+              "code": "header(\"Location: index.php?do=permissiondenied\");",
+              "denial_text": false
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

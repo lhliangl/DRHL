@@ -1,0 +1,28 @@
+{
+  "status": "completed",
+  "started_at": "2026-09-07T11:39:34.650605+00:00",
+  "config": "D:\\project\\python\\DRHL\\configs\\wackopicko.json",
+  "artifacts": {
+    "dynamic_graph": "D:\\project\\python\\DRHL\\runs\\wackopicko\\graphs\\dynamic.json",
+    "static_graph": "D:\\project\\python\\DRHL\\runs\\wackopicko\\graphs\\static.json",
+    "candidate_parameters": "D:\\project\\python\\DRHL\\runs\\wackopicko\\source\\candidate_parameters.json",
+    "candidate_functions": "D:\\project\\python\\DRHL\\runs\\wackopicko\\source\\candidate_functions.json",
+    "access_control_parameters": "D:\\project\\python\\DRHL\\runs\\wackopicko\\source\\parameters.json",
+    "access_control_functions": "D:\\project\\python\\DRHL\\runs\\wackopicko\\source\\functions.json",
+    "access_control_snippets": "D:\\project\\python\\DRHL\\runs\\wackopicko\\source\\snippets.json",
+    "fused_graph": "D:\\project\\python\\DRHL\\runs\\wackopicko\\graphs\\fused.json",
+    "graph_summary": "D:\\project\\python\\DRHL\\runs\\wackopicko\\graphs\\summary.json",
+    "graph_summary_csv": "D:\\project\\python\\DRHL\\runs\\wackopicko\\graphs\\summary.csv",
+    "attack_vectors": "D:\\project\\python\\DRHL\\runs\\wackopicko\\analysis\\vectors.json",
+    "findings": "D:\\project\\python\\DRHL\\runs\\wackopicko\\analysis\\findings.json",
+    "repairs": "D:\\project\\python\\DRHL\\runs\\wackopicko\\repair\\manifest.json",
+    "repair_report": "D:\\project\\python\\DRHL\\runs\\wackopicko\\repair\\repair_report.md",
+    "metrics_json": "D:\\project\\python\\DRHL\\runs\\wackopicko\\metrics\\summary.json",
+    "metrics_csv": "D:\\project\\python\\DRHL\\runs\\wackopicko\\metrics\\summary.csv",
+    "llm_access_control_snippets": "D:\\project\\python\\DRHL\\runs\\wackopicko\\source\\llm_snippets.json"
+  },
+  "finished_at": "2026-09-07T11:55:36.094922+00:00",
+  "repair_only_finished_at": "2026-09-09T13:27:56.782074+00:00",
+  "repair_rerun_started_at": "2026-09-12T08:39:08.086133+00:00",
+  "repair_rerun_finished_at": "2026-09-12T08:41:52.823403+00:00"
+}

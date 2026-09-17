@@ -1,0 +1,2057 @@
+{
+  "parameters": [
+    {
+      "id": "forum/editmessage.jsp:LCP1",
+      "path": "forum/editmessage.jsp",
+      "expression": "message",
+      "aliases": [
+        "message",
+        "__drhl_expr_15"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 19,
+          "condition": "(message.indexOf(\"<!-- begin --!>\") != -1 )"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "forum/editmessage.jsp:LCP2",
+      "path": "forum/editmessage.jsp",
+      "expression": "sessionUsername",
+      "aliases": [
+        "sessionUsername",
+        "username"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 49,
+          "condition": "( sessionUsername != null)"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "forum/forum.jsp:LCP3",
+      "path": "forum/forum.jsp",
+      "expression": "sessionUsername",
+      "aliases": [
+        "sessionUsername",
+        "username"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 21,
+          "condition": "( sessionUsername != null)"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "forum/forum.jsp:LCP4",
+      "path": "forum/forum.jsp",
+      "expression": "sessionType",
+      "aliases": [
+        "sessionType",
+        "type"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 51,
+          "condition": "(sessionType.equals(\"Admin\"))"
+        },
+        {
+          "source": "conditional",
+          "line": 95,
+          "condition": "(sessionType.equals(\"Admin\"))"
+        },
+        {
+          "source": "conditional",
+          "line": 128,
+          "condition": "(sessionType.equals(\"Admin\"))"
+        }
+      ],
+      "condition_indexes": [
+        1,
+        2,
+        4
+      ]
+    },
+    {
+      "id": "forum/forum.jsp:LCP5",
+      "path": "forum/forum.jsp",
+      "expression": "lastforum_id",
+      "aliases": [
+        "lastforum_id",
+        "__drhl_expr_8"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 103,
+          "condition": "(lastforum_id == null)"
+        }
+      ],
+      "condition_indexes": [
+        3
+      ]
+    },
+    {
+      "id": "forum/include/body.jsp:LCP6",
+      "path": "forum/include/body.jsp",
+      "expression": "sessionUsername",
+      "aliases": [
+        "sessionUsername",
+        "__drhl_expr_0",
+        "username"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 19,
+          "condition": "(sessionUsername != null)"
+        },
+        {
+          "source": "conditional",
+          "line": 30,
+          "condition": "(sessionUsername != null)"
+        }
+      ],
+      "condition_indexes": [
+        0,
+        1
+      ]
+    },
+    {
+      "id": "forum/index.jsp:LCP7",
+      "path": "forum/index.jsp",
+      "expression": "requestPage",
+      "aliases": [
+        "requestPage",
+        "page"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 2,
+          "condition": "(requestPage == null)"
+        },
+        {
+          "source": "conditional",
+          "line": 7,
+          "condition": "(requestPage.equals(\"thread\"))"
+        },
+        {
+          "source": "conditional",
+          "line": 12,
+          "condition": "(requestPage.equals(\"message\"))"
+        },
+        {
+          "source": "conditional",
+          "line": 22,
+          "condition": "(requestPage.equals(\"editmessage\"))"
+        },
+        {
+          "source": "conditional",
+          "line": 34,
+          "condition": "(requestPage.equals(\"profile\"))"
+        }
+      ],
+      "condition_indexes": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "id": "forum/info.jsp:LCP8",
+      "path": "forum/info.jsp",
+      "expression": "action",
+      "aliases": [
+        "action"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 18,
+          "condition": "(action.equals(\"regcomplete\"))"
+        },
+        {
+          "source": "conditional",
+          "line": 22,
+          "condition": "(action.equals(\"wrongpass\"))"
+        },
+        {
+          "source": "conditional",
+          "line": 26,
+          "condition": "(action.equals(\"userexists\"))"
+        }
+      ],
+      "condition_indexes": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "id": "forum/message.jsp:LCP9",
+      "path": "forum/message.jsp",
+      "expression": "sessionUsername",
+      "aliases": [
+        "sessionUsername",
+        "__drhl_expr_22",
+        "username"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 24,
+          "condition": "( sessionUsername != null)"
+        },
+        {
+          "source": "conditional",
+          "line": 69,
+          "condition": "(sessionUsername.equals(user))"
+        }
+      ],
+      "condition_indexes": [
+        0,
+        2
+      ]
+    },
+    {
+      "id": "forum/message.jsp:LCP10",
+      "path": "forum/message.jsp",
+      "expression": "sessionType",
+      "aliases": [
+        "sessionType",
+        "type"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 62,
+          "condition": "(sessionType.equals(\"Admin\"))"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "forum/message.jsp:LCP11",
+      "path": "forum/message.jsp",
+      "expression": "user",
+      "aliases": [
+        "user"
+      ],
+      "database_relations": [
+        {
+          "table": "forum_users",
+          "field": "user_name",
+          "line": 86
+        },
+        {
+          "table": "forum_message",
+          "field": "user",
+          "line": 86
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 69,
+          "condition": "(sessionUsername.equals(user))"
+        }
+      ],
+      "condition_indexes": [
+        2
+      ]
+    },
+    {
+      "id": "forum/message.jsp:LCP12",
+      "path": "forum/message.jsp",
+      "expression": "avatar",
+      "aliases": [
+        "avatar",
+        "__drhl_expr_13"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 86,
+          "condition": "(avatar == null)"
+        }
+      ],
+      "condition_indexes": [
+        3
+      ]
+    },
+    {
+      "id": "forum/message.jsp:LCP13",
+      "path": "forum/message.jsp",
+      "expression": "member_title",
+      "aliases": [
+        "member_title",
+        "__drhl_expr_12"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 86,
+          "condition": "(member_title == null)"
+        }
+      ],
+      "condition_indexes": [
+        4
+      ]
+    },
+    {
+      "id": "forum/message.jsp:LCP14",
+      "path": "forum/message.jsp",
+      "expression": "signature",
+      "aliases": [
+        "signature",
+        "__drhl_expr_17"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 86,
+          "condition": "(signature == null)"
+        }
+      ],
+      "condition_indexes": [
+        5
+      ]
+    },
+    {
+      "id": "forum/profile.jsp:LCP15",
+      "path": "forum/profile.jsp",
+      "expression": "avatar",
+      "aliases": [
+        "avatar",
+        "__drhl_expr_1",
+        "__drhl_expr_2"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 15,
+          "condition": "(avatar == null)"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "forum/profile.jsp:LCP16",
+      "path": "forum/profile.jsp",
+      "expression": "member_title",
+      "aliases": [
+        "member_title",
+        "__drhl_expr_3"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 15,
+          "condition": "(member_title == null)"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "forum/profile.jsp:LCP17",
+      "path": "forum/profile.jsp",
+      "expression": "signature",
+      "aliases": [
+        "signature",
+        "__drhl_expr_4"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 15,
+          "condition": "(signature == null)"
+        }
+      ],
+      "condition_indexes": [
+        2
+      ]
+    },
+    {
+      "id": "forum/profile.jsp:LCP18",
+      "path": "forum/profile.jsp",
+      "expression": "sessionUsername",
+      "aliases": [
+        "sessionUsername",
+        "username"
+      ],
+      "database_relations": [
+        {
+          "table": "forum_users",
+          "field": "user_name",
+          "line": 15
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 51,
+          "condition": "( sessionUsername != null)"
+        }
+      ],
+      "condition_indexes": [
+        3
+      ]
+    },
+    {
+      "id": "forum/thread.jsp:LCP19",
+      "path": "forum/thread.jsp",
+      "expression": "sessionUsername",
+      "aliases": [
+        "sessionUsername",
+        "__drhl_expr_16",
+        "username"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 21,
+          "condition": "( sessionUsername != null)"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "forum/thread.jsp:LCP20",
+      "path": "forum/thread.jsp",
+      "expression": "sessionType",
+      "aliases": [
+        "sessionType",
+        "type"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 61,
+          "condition": "(sessionType.equals(\"Admin\"))"
+        },
+        {
+          "source": "conditional",
+          "line": 115,
+          "condition": "(sessionType.equals(\"Admin\"))"
+        }
+      ],
+      "condition_indexes": [
+        1,
+        2
+      ]
+    },
+    {
+      "id": "forum/thread.jsp:LCP21",
+      "path": "forum/thread.jsp",
+      "expression": "lastThread_id",
+      "aliases": [
+        "lastThread_id",
+        "__drhl_expr_15"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 124,
+          "condition": "(lastThread_id == null)"
+        }
+      ],
+      "condition_indexes": [
+        3
+      ]
+    },
+    {
+      "id": "WEB-INF/classes/forum/AddForum.java:LCP22",
+      "path": "WEB-INF/classes/forum/AddForum.java",
+      "expression": "title",
+      "aliases": [
+        "title"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 26,
+          "condition": "(title.equals(\"\"))"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "WEB-INF/classes/forum/AddThread.java:LCP23",
+      "path": "WEB-INF/classes/forum/AddThread.java",
+      "expression": "title",
+      "aliases": [
+        "title"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 28,
+          "condition": "(title.equals(\"\"))"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "WEB-INF/classes/forum/AddUser.java:LCP24",
+      "path": "WEB-INF/classes/forum/AddUser.java",
+      "expression": "DBUsername",
+      "aliases": [
+        "DBUsername"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 40,
+          "condition": "(DBUsername == null)"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "WEB-INF/classes/forum/AddUser.java:LCP25",
+      "path": "WEB-INF/classes/forum/AddUser.java",
+      "expression": "RegPass",
+      "aliases": [
+        "RegPass",
+        "password"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 42,
+          "condition": "(RegPass.equals(RegPass2))"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "WEB-INF/classes/forum/AddUser.java:LCP26",
+      "path": "WEB-INF/classes/forum/AddUser.java",
+      "expression": "RegPass2",
+      "aliases": [
+        "RegPass2",
+        "password2"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 42,
+          "condition": "(RegPass.equals(RegPass2))"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "WEB-INF/classes/forum/ChangeMessage.java:LCP27",
+      "path": "WEB-INF/classes/forum/ChangeMessage.java",
+      "expression": "sessionType",
+      "aliases": [
+        "sessionType",
+        "type"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 41,
+          "condition": "(sessionType.equals(\"Admin\"))"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "WEB-INF/classes/forum/ChangeProfile.java:LCP28",
+      "path": "WEB-INF/classes/forum/ChangeProfile.java",
+      "expression": "link_avatar",
+      "aliases": [
+        "link_avatar",
+        "avatar",
+        "avatar_list"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 35,
+          "condition": "(link_avatar.equals(\"http://\"))"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "WEB-INF/classes/forum/Cookies.java:LCP29",
+      "path": "WEB-INF/classes/forum/Cookies.java",
+      "expression": "cookies",
+      "aliases": [
+        "cookies"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 13,
+          "condition": "(!cookies.equals(null))"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "WEB-INF/classes/forum/Cookies.java:LCP30",
+      "path": "WEB-INF/classes/forum/Cookies.java",
+      "expression": "cookieName",
+      "aliases": [
+        "cookieName"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 17,
+          "condition": "(cookieName.equals(cookie.getName()))"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "WEB-INF/classes/forum/Cookies.java:LCP31",
+      "path": "WEB-INF/classes/forum/Cookies.java",
+      "expression": "cookie",
+      "aliases": [
+        "cookie",
+        "cookies[i]"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 17,
+          "condition": "(cookieName.equals(cookie.getName()))"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "WEB-INF/classes/forum/DeleteForum.java:LCP32",
+      "path": "WEB-INF/classes/forum/DeleteForum.java",
+      "expression": "sessionType",
+      "aliases": [
+        "sessionType",
+        "type"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 27,
+          "condition": "(sessionType.equals(\"Admin\"))"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "WEB-INF/classes/forum/DeleteReply.java:LCP33",
+      "path": "WEB-INF/classes/forum/DeleteReply.java",
+      "expression": "sessionType",
+      "aliases": [
+        "sessionType",
+        "type"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 29,
+          "condition": "(sessionType.equals(\"Admin\"))"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "WEB-INF/classes/forum/DeleteThread.java:LCP34",
+      "path": "WEB-INF/classes/forum/DeleteThread.java",
+      "expression": "sessionType",
+      "aliases": [
+        "sessionType",
+        "type"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 27,
+          "condition": "(sessionType.equals(\"Admin\"))"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "WEB-INF/classes/forum/Filter.java:LCP35",
+      "path": "WEB-INF/classes/forum/Filter.java",
+      "expression": "string",
+      "aliases": [
+        "string"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 19,
+          "condition": "(string == null || string.length() < 1)"
+        },
+        {
+          "source": "conditional",
+          "line": 49,
+          "condition": "(string == null || string.length() < 1)"
+        },
+        {
+          "source": "conditional",
+          "line": 69,
+          "condition": "(string == null || string.length() < 1)"
+        },
+        {
+          "source": "conditional",
+          "line": 106,
+          "condition": "(string == null || string.length() < 1)"
+        },
+        {
+          "source": "conditional",
+          "line": 141,
+          "condition": "(string == null || string.length() < 1)"
+        }
+      ],
+      "condition_indexes": [
+        0,
+        4,
+        6,
+        11,
+        16
+      ]
+    },
+    {
+      "id": "WEB-INF/classes/forum/Filter.java:LCP36",
+      "path": "WEB-INF/classes/forum/Filter.java",
+      "expression": "c",
+      "aliases": [
+        "c"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 29,
+          "condition": "(c == '>')"
+        },
+        {
+          "source": "conditional",
+          "line": 33,
+          "condition": "(c == '<')"
+        },
+        {
+          "source": "conditional",
+          "line": 37,
+          "condition": "(c == '&')"
+        }
+      ],
+      "condition_indexes": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "id": "WEB-INF/classes/forum/Filter.java:LCP37",
+      "path": "WEB-INF/classes/forum/Filter.java",
+      "expression": "source",
+      "aliases": [
+        "source"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 58,
+          "condition": "(source.charAt(i) == '\\n')"
+        },
+        {
+          "source": "conditional",
+          "line": 80,
+          "condition": "(source.charAt(i) == '[' && source.charAt(i+2) == ']')"
+        },
+        {
+          "source": "conditional",
+          "line": 84,
+          "condition": "(source.charAt(i+1) == charArray[j])"
+        },
+        {
+          "source": "conditional",
+          "line": 90,
+          "condition": "(source.charAt(i) == '[' &&  source.charAt(i+1) == '/' && source.charAt(i+3) == ']')"
+        },
+        {
+          "source": "conditional",
+          "line": 94,
+          "condition": "(source.charAt(i+2) == charArray[j])"
+        },
+        {
+          "source": "conditional",
+          "line": 115,
+          "condition": "(source.charAt(i) == '[')"
+        },
+        {
+          "source": "conditional",
+          "line": 119,
+          "condition": "(source.charAt(j) == ']')"
+        },
+        {
+          "source": "conditional",
+          "line": 150,
+          "condition": "(source.charAt(i) == '[')"
+        },
+        {
+          "source": "conditional",
+          "line": 154,
+          "condition": "(source.charAt(j) == ']')"
+        }
+      ],
+      "condition_indexes": [
+        5,
+        7,
+        8,
+        9,
+        10,
+        12,
+        13,
+        17,
+        18
+      ]
+    },
+    {
+      "id": "WEB-INF/classes/forum/Filter.java:LCP38",
+      "path": "WEB-INF/classes/forum/Filter.java",
+      "expression": "i",
+      "aliases": [
+        "i"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 58,
+          "condition": "(source.charAt(i) == '\\n')"
+        },
+        {
+          "source": "conditional",
+          "line": 80,
+          "condition": "(source.charAt(i) == '[' && source.charAt(i+2) == ']')"
+        },
+        {
+          "source": "conditional",
+          "line": 84,
+          "condition": "(source.charAt(i+1) == charArray[j])"
+        },
+        {
+          "source": "conditional",
+          "line": 90,
+          "condition": "(source.charAt(i) == '[' &&  source.charAt(i+1) == '/' && source.charAt(i+3) == ']')"
+        },
+        {
+          "source": "conditional",
+          "line": 94,
+          "condition": "(source.charAt(i+2) == charArray[j])"
+        },
+        {
+          "source": "conditional",
+          "line": 115,
+          "condition": "(source.charAt(i) == '[')"
+        },
+        {
+          "source": "conditional",
+          "line": 150,
+          "condition": "(source.charAt(i) == '[')"
+        },
+        {
+          "source": "conditional",
+          "line": 178,
+          "condition": "(buffer.charAt(i) == ':')"
+        }
+      ],
+      "condition_indexes": [
+        5,
+        7,
+        8,
+        9,
+        10,
+        12,
+        17,
+        21
+      ]
+    },
+    {
+      "id": "WEB-INF/classes/forum/Filter.java:LCP39",
+      "path": "WEB-INF/classes/forum/Filter.java",
+      "expression": "charArray[j]",
+      "aliases": [
+        "charArray[j]"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 84,
+          "condition": "(source.charAt(i+1) == charArray[j])"
+        },
+        {
+          "source": "conditional",
+          "line": 94,
+          "condition": "(source.charAt(i+2) == charArray[j])"
+        }
+      ],
+      "condition_indexes": [
+        8,
+        10
+      ]
+    },
+    {
+      "id": "WEB-INF/classes/forum/Filter.java:LCP40",
+      "path": "WEB-INF/classes/forum/Filter.java",
+      "expression": "j",
+      "aliases": [
+        "j"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 119,
+          "condition": "(source.charAt(j) == ']')"
+        },
+        {
+          "source": "conditional",
+          "line": 154,
+          "condition": "(source.charAt(j) == ']')"
+        },
+        {
+          "source": "conditional",
+          "line": 180,
+          "condition": "(buffer.charAt(j) == ':')"
+        }
+      ],
+      "condition_indexes": [
+        13,
+        18,
+        22
+      ]
+    },
+    {
+      "id": "WEB-INF/classes/forum/Filter.java:LCP41",
+      "path": "WEB-INF/classes/forum/Filter.java",
+      "expression": "subString",
+      "aliases": [
+        "subString"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 122,
+          "condition": "(subString.equals(\"IMG\") || subString.equals(\"img\"))"
+        },
+        {
+          "source": "conditional",
+          "line": 125,
+          "condition": "(subString.equals(\"/IMG\") || subString.equals(\"/img\"))"
+        },
+        {
+          "source": "conditional",
+          "line": 157,
+          "condition": "(subString.equals(\"URL=\") || subString.equals(\"url=\"))"
+        },
+        {
+          "source": "conditional",
+          "line": 161,
+          "condition": "(subString.equals(\"/URL\") || subString.equals(\"/URL\"))"
+        },
+        {
+          "source": "conditional",
+          "line": 182,
+          "condition": "(subString.equals(\"mellow\"))"
+        },
+        {
+          "source": "conditional",
+          "line": 184,
+          "condition": "(subString.equals(\"huh\"))"
+        },
+        {
+          "source": "conditional",
+          "line": 186,
+          "condition": "(subString.equals(\"rolleyes\"))"
+        },
+        {
+          "source": "conditional",
+          "line": 188,
+          "condition": "(subString.equals(\"lol\"))"
+        },
+        {
+          "source": "conditional",
+          "line": 190,
+          "condition": "(subString.equals(\"wub\"))"
+        },
+        {
+          "source": "conditional",
+          "line": 192,
+          "condition": "(subString.equals(\"angry\"))"
+        },
+        {
+          "source": "conditional",
+          "line": 194,
+          "condition": "(subString.equals(\"unsure\"))"
+        },
+        {
+          "source": "conditional",
+          "line": 196,
+          "condition": "(subString.equals(\"wacko\"))"
+        },
+        {
+          "source": "conditional",
+          "line": 198,
+          "condition": "(subString.equals(\"blink\"))"
+        },
+        {
+          "source": "conditional",
+          "line": 200,
+          "condition": "(subString.equals(\"ph34r\"))"
+        },
+        {
+          "source": "conditional",
+          "line": 202,
+          "condition": "(subString.equals(\"bounce\"))"
+        },
+        {
+          "source": "conditional",
+          "line": 204,
+          "condition": "(subString.equals(\"fuck\"))"
+        },
+        {
+          "source": "conditional",
+          "line": 206,
+          "condition": "(subString.equals(\"scream\"))"
+        },
+        {
+          "source": "conditional",
+          "line": 208,
+          "condition": "(subString.equals(\"silly\"))"
+        },
+        {
+          "source": "conditional",
+          "line": 210,
+          "condition": "(subString.equals(\"frusty\"))"
+        },
+        {
+          "source": "conditional",
+          "line": 212,
+          "condition": "(subString.equals(\"kwijl\"))"
+        },
+        {
+          "source": "conditional",
+          "line": 214,
+          "condition": "(subString.equals(\"puke\"))"
+        },
+        {
+          "source": "conditional",
+          "line": 216,
+          "condition": "(subString.equals(\"bid\"))"
+        },
+        {
+          "source": "conditional",
+          "line": 218,
+          "condition": "(subString.equals(\"hammer\"))"
+        },
+        {
+          "source": "conditional",
+          "line": 220,
+          "condition": "(subString.equals(\"good\"))"
+        }
+      ],
+      "condition_indexes": [
+        14,
+        15,
+        19,
+        20,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42
+      ]
+    },
+    {
+      "id": "WEB-INF/classes/forum/Filter.java:LCP42",
+      "path": "WEB-INF/classes/forum/Filter.java",
+      "expression": "buffer",
+      "aliases": [
+        "buffer"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 178,
+          "condition": "(buffer.charAt(i) == ':')"
+        },
+        {
+          "source": "conditional",
+          "line": 180,
+          "condition": "(buffer.charAt(j) == ':')"
+        }
+      ],
+      "condition_indexes": [
+        21,
+        22
+      ]
+    },
+    {
+      "id": "WEB-INF/classes/forum/FilterBack.java:LCP43",
+      "path": "WEB-INF/classes/forum/FilterBack.java",
+      "expression": "string",
+      "aliases": [
+        "string"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 20,
+          "condition": "(string == null || string.length() < 1)"
+        },
+        {
+          "source": "conditional",
+          "line": 42,
+          "condition": "(string == null || string.length() < 1)"
+        },
+        {
+          "source": "conditional",
+          "line": 79,
+          "condition": "(string == null || string.length() < 1)"
+        },
+        {
+          "source": "conditional",
+          "line": 112,
+          "condition": "(string == null || string.length() < 1)"
+        }
+      ],
+      "condition_indexes": [
+        0,
+        3,
+        8,
+        12
+      ]
+    },
+    {
+      "id": "WEB-INF/classes/forum/FilterBack.java:LCP44",
+      "path": "WEB-INF/classes/forum/FilterBack.java",
+      "expression": "source",
+      "aliases": [
+        "source"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 29,
+          "condition": "(source.charAt(i) == '<')"
+        },
+        {
+          "source": "conditional",
+          "line": 31,
+          "condition": "(source.charAt(i+1) == 'b' && source.charAt(i+2) =='r' && source.charAt(i+3) =='>')"
+        },
+        {
+          "source": "conditional",
+          "line": 53,
+          "condition": "(source.charAt(i) == '<' && source.charAt(i+2) == '>')"
+        },
+        {
+          "source": "conditional",
+          "line": 57,
+          "condition": "(source.charAt(i+1) == charArray[j])"
+        },
+        {
+          "source": "conditional",
+          "line": 63,
+          "condition": "(source.charAt(i) == '<' &&  source.charAt(i+1) == '/' && source.charAt(i+3) == '>')"
+        },
+        {
+          "source": "conditional",
+          "line": 67,
+          "condition": "(source.charAt(i+2) == charArray[j])"
+        },
+        {
+          "source": "conditional",
+          "line": 88,
+          "condition": "(source.charAt(i) == '<')"
+        },
+        {
+          "source": "conditional",
+          "line": 92,
+          "condition": "(source.charAt(j) == '>')"
+        },
+        {
+          "source": "conditional",
+          "line": 121,
+          "condition": "(source.charAt(i) == '<')"
+        },
+        {
+          "source": "conditional",
+          "line": 125,
+          "condition": "(source.charAt(j) == '>')"
+        },
+        {
+          "source": "conditional",
+          "line": 128,
+          "condition": "(source.substring(i+1,i+8).equals(\"a href=\"))"
+        },
+        {
+          "source": "conditional",
+          "line": 134,
+          "condition": "(source.substring(i+1,j).equals(\"/a\"))"
+        },
+        {
+          "source": "conditional",
+          "line": 155,
+          "condition": "(source.charAt(i) == '<')"
+        },
+        {
+          "source": "conditional",
+          "line": 157,
+          "condition": "(source.charAt(j) == '>')"
+        }
+      ],
+      "condition_indexes": [
+        1,
+        2,
+        4,
+        5,
+        6,
+        7,
+        9,
+        10,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18
+      ]
+    },
+    {
+      "id": "WEB-INF/classes/forum/FilterBack.java:LCP45",
+      "path": "WEB-INF/classes/forum/FilterBack.java",
+      "expression": "i",
+      "aliases": [
+        "i"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 29,
+          "condition": "(source.charAt(i) == '<')"
+        },
+        {
+          "source": "conditional",
+          "line": 31,
+          "condition": "(source.charAt(i+1) == 'b' && source.charAt(i+2) =='r' && source.charAt(i+3) =='>')"
+        },
+        {
+          "source": "conditional",
+          "line": 53,
+          "condition": "(source.charAt(i) == '<' && source.charAt(i+2) == '>')"
+        },
+        {
+          "source": "conditional",
+          "line": 57,
+          "condition": "(source.charAt(i+1) == charArray[j])"
+        },
+        {
+          "source": "conditional",
+          "line": 63,
+          "condition": "(source.charAt(i) == '<' &&  source.charAt(i+1) == '/' && source.charAt(i+3) == '>')"
+        },
+        {
+          "source": "conditional",
+          "line": 67,
+          "condition": "(source.charAt(i+2) == charArray[j])"
+        },
+        {
+          "source": "conditional",
+          "line": 88,
+          "condition": "(source.charAt(i) == '<')"
+        },
+        {
+          "source": "conditional",
+          "line": 121,
+          "condition": "(source.charAt(i) == '<')"
+        },
+        {
+          "source": "conditional",
+          "line": 128,
+          "condition": "(source.substring(i+1,i+8).equals(\"a href=\"))"
+        },
+        {
+          "source": "conditional",
+          "line": 134,
+          "condition": "(source.substring(i+1,j).equals(\"/a\"))"
+        },
+        {
+          "source": "conditional",
+          "line": 155,
+          "condition": "(source.charAt(i) == '<')"
+        }
+      ],
+      "condition_indexes": [
+        1,
+        2,
+        4,
+        5,
+        6,
+        7,
+        9,
+        13,
+        15,
+        16,
+        17
+      ]
+    },
+    {
+      "id": "WEB-INF/classes/forum/FilterBack.java:LCP46",
+      "path": "WEB-INF/classes/forum/FilterBack.java",
+      "expression": "charArray[j]",
+      "aliases": [
+        "charArray[j]"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 57,
+          "condition": "(source.charAt(i+1) == charArray[j])"
+        },
+        {
+          "source": "conditional",
+          "line": 67,
+          "condition": "(source.charAt(i+2) == charArray[j])"
+        }
+      ],
+      "condition_indexes": [
+        5,
+        7
+      ]
+    },
+    {
+      "id": "WEB-INF/classes/forum/FilterBack.java:LCP47",
+      "path": "WEB-INF/classes/forum/FilterBack.java",
+      "expression": "j",
+      "aliases": [
+        "j"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 92,
+          "condition": "(source.charAt(j) == '>')"
+        },
+        {
+          "source": "conditional",
+          "line": 125,
+          "condition": "(source.charAt(j) == '>')"
+        },
+        {
+          "source": "conditional",
+          "line": 134,
+          "condition": "(source.substring(i+1,j).equals(\"/a\"))"
+        },
+        {
+          "source": "conditional",
+          "line": 157,
+          "condition": "(source.charAt(j) == '>')"
+        }
+      ],
+      "condition_indexes": [
+        10,
+        14,
+        16,
+        18
+      ]
+    },
+    {
+      "id": "WEB-INF/classes/forum/FilterBack.java:LCP48",
+      "path": "WEB-INF/classes/forum/FilterBack.java",
+      "expression": "subString",
+      "aliases": [
+        "subString"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 95,
+          "condition": "(subString.equals(\"img src=\"))"
+        },
+        {
+          "source": "conditional",
+          "line": 159,
+          "condition": "(subString.equals(\"img src=./emoticons/mellow.gif border=0\"))"
+        },
+        {
+          "source": "conditional",
+          "line": 161,
+          "condition": "(subString.equals(\"img src=./emoticons/huh.gif border=0\"))"
+        },
+        {
+          "source": "conditional",
+          "line": 163,
+          "condition": "(subString.equals(\"img src=./emoticons/rolleyes.gif border=0\"))"
+        },
+        {
+          "source": "conditional",
+          "line": 165,
+          "condition": "(subString.equals(\"img src=./emoticons/lol.gif border=0\"))"
+        },
+        {
+          "source": "conditional",
+          "line": 167,
+          "condition": "(subString.equals(\"img src=./emoticons/wub.gif border=0\"))"
+        },
+        {
+          "source": "conditional",
+          "line": 169,
+          "condition": "(subString.equals(\"img src=./emoticons/angry.gif border=0\"))"
+        },
+        {
+          "source": "conditional",
+          "line": 171,
+          "condition": "(subString.equals(\"img src=./emoticons/unsure.gif border=0\"))"
+        },
+        {
+          "source": "conditional",
+          "line": 173,
+          "condition": "(subString.equals(\"img src=./emoticons/wacko.gif border=0\"))"
+        },
+        {
+          "source": "conditional",
+          "line": 175,
+          "condition": "(subString.equals(\"img src=./emoticons/blink.gif border=0\"))"
+        },
+        {
+          "source": "conditional",
+          "line": 177,
+          "condition": "(subString.equals(\"img src=./emoticons/ph34r.gif border=0\"))"
+        },
+        {
+          "source": "conditional",
+          "line": 179,
+          "condition": "(subString.equals(\"img src=./emoticons/bounce.gif border=0\"))"
+        },
+        {
+          "source": "conditional",
+          "line": 181,
+          "condition": "(subString.equals(\"img src=./emoticons/fuck.gif border=0\"))"
+        },
+        {
+          "source": "conditional",
+          "line": 183,
+          "condition": "(subString.equals(\"img src=./emoticons/scream.gif border=0\"))"
+        },
+        {
+          "source": "conditional",
+          "line": 185,
+          "condition": "(subString.equals(\"img src=./emoticons/silly.gif border=0\"))"
+        },
+        {
+          "source": "conditional",
+          "line": 187,
+          "condition": "(subString.equals(\"img src=./emoticons/frusty.gif border=0\"))"
+        },
+        {
+          "source": "conditional",
+          "line": 189,
+          "condition": "(subString.equals(\"img src=./emoticons/kwijl.gif border=0\"))"
+        },
+        {
+          "source": "conditional",
+          "line": 191,
+          "condition": "(subString.equals(\"img src=./emoticons/puke.gif border=0\"))"
+        },
+        {
+          "source": "conditional",
+          "line": 193,
+          "condition": "(subString.equals(\"img src=./emoticons/bid.gif border=0\"))"
+        },
+        {
+          "source": "conditional",
+          "line": 195,
+          "condition": "(subString.equals(\"img src=./emoticons/hammer.gif border=0\"))"
+        },
+        {
+          "source": "conditional",
+          "line": 197,
+          "condition": "(subString.equals(\"img src=./emoticons/good.gif border=0\"))"
+        }
+      ],
+      "condition_indexes": [
+        11,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38
+      ]
+    },
+    {
+      "id": "WEB-INF/classes/forum/FilterBack.java:LCP49",
+      "path": "WEB-INF/classes/forum/FilterBack.java",
+      "expression": "source.substring(i+1,i+8)",
+      "aliases": [
+        "source.substring(i+1,i+8)"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 128,
+          "condition": "(source.substring(i+1,i+8).equals(\"a href=\"))"
+        }
+      ],
+      "condition_indexes": [
+        15
+      ]
+    },
+    {
+      "id": "WEB-INF/classes/forum/FilterBack.java:LCP50",
+      "path": "WEB-INF/classes/forum/FilterBack.java",
+      "expression": "source.substring(i+1,j)",
+      "aliases": [
+        "source.substring(i+1,j)"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 134,
+          "condition": "(source.substring(i+1,j).equals(\"/a\"))"
+        }
+      ],
+      "condition_indexes": [
+        16
+      ]
+    },
+    {
+      "id": "WEB-INF/classes/forum/Login.java:LCP51",
+      "path": "WEB-INF/classes/forum/Login.java",
+      "expression": "password2",
+      "aliases": [
+        "password2"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 53,
+          "condition": "(password2.equals(password))"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "WEB-INF/classes/forum/Login.java:LCP52",
+      "path": "WEB-INF/classes/forum/Login.java",
+      "expression": "password",
+      "aliases": [
+        "password",
+        "loginPass"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 53,
+          "condition": "(password2.equals(password))"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "WEB-INF/classes/forum/Utilities.java:LCP53",
+      "path": "WEB-INF/classes/forum/Utilities.java",
+      "expression": "Integer",
+      "aliases": [
+        "Integer"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 77,
+          "condition": "(!((Integer.parseInt(replies)+1) < (Integer.parseInt(Variable.getMessagePerPage()) + 1)))"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "WEB-INF/classes/forum/Utilities.java:LCP54",
+      "path": "WEB-INF/classes/forum/Utilities.java",
+      "expression": "replies",
+      "aliases": [
+        "replies"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 77,
+          "condition": "(!((Integer.parseInt(replies)+1) < (Integer.parseInt(Variable.getMessagePerPage()) + 1)))"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "WEB-INF/classes/forum/Utilities.java:LCP55",
+      "path": "WEB-INF/classes/forum/Utilities.java",
+      "expression": "Variable",
+      "aliases": [
+        "Variable"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 77,
+          "condition": "(!((Integer.parseInt(replies)+1) < (Integer.parseInt(Variable.getMessagePerPage()) + 1)))"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "WEB-INF/classes/forum/Utilities.java:LCP56",
+      "path": "WEB-INF/classes/forum/Utilities.java",
+      "expression": "pages",
+      "aliases": [
+        "pages"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 79,
+          "condition": "(pages)"
+        },
+        {
+          "source": "conditional",
+          "line": 87,
+          "condition": "(pages)"
+        }
+      ],
+      "condition_indexes": [
+        1,
+        2
+      ]
+    },
+    {
+      "id": "WEB-INF/classes/forum/Utilities.java:LCP57",
+      "path": "WEB-INF/classes/forum/Utilities.java",
+      "expression": "forumInfo",
+      "aliases": [
+        "forumInfo"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 150,
+          "condition": "(forumInfo.equals(null))"
+        }
+      ],
+      "condition_indexes": [
+        3
+      ]
+    },
+    {
+      "id": "WEB-INF/classes/forum/Utilities.java:LCP58",
+      "path": "WEB-INF/classes/forum/Utilities.java",
+      "expression": "date_time",
+      "aliases": [
+        "date_time"
+      ],
+      "database_relations": [
+        {
+          "table": "forum_message",
+          "field": "date_time",
+          "line": 178
+        },
+        {
+          "table": "forum_message",
+          "field": "date_time",
+          "line": 237
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 199,
+          "condition": "(date_time == null)"
+        },
+        {
+          "source": "conditional",
+          "line": 247,
+          "condition": "(date_time == null)"
+        }
+      ],
+      "condition_indexes": [
+        4,
+        7
+      ]
+    },
+    {
+      "id": "WEB-INF/classes/forum/Utilities.java:LCP59",
+      "path": "WEB-INF/classes/forum/Utilities.java",
+      "expression": "user",
+      "aliases": [
+        "user"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 202,
+          "condition": "(user == null)"
+        },
+        {
+          "source": "conditional",
+          "line": 250,
+          "condition": "(user == null)"
+        }
+      ],
+      "condition_indexes": [
+        5,
+        8
+      ]
+    },
+    {
+      "id": "WEB-INF/classes/forum/Utilities.java:LCP60",
+      "path": "WEB-INF/classes/forum/Utilities.java",
+      "expression": "title",
+      "aliases": [
+        "title"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 205,
+          "condition": "(title == null)"
+        }
+      ],
+      "condition_indexes": [
+        6
+      ]
+    }
+  ]
+}

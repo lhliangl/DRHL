@@ -1,0 +1,41 @@
+{
+  "parameters": [
+    {
+      "id": "dvwa/includes/dvwaPage.inc.php:LCP13",
+      "path": "dvwa/includes/dvwaPage.inc.php",
+      "expression": "dvwaisloggedin",
+      "aliases": [
+        "dvwaisloggedin"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 134,
+          "condition": "( !dvwaIsLoggedIn())"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ],
+      "validation_evidence": [
+        {
+          "kind": "terminating_condition",
+          "line": 134,
+          "condition": "( !dvwaIsLoggedIn())",
+          "terminations": [
+            {
+              "kind": "redirect",
+              "line": 135,
+              "code": "dvwaRedirect( DVWA_WEB_PAGE_TO_ROOT . 'login.php' );",
+              "denial_text": false
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "status": "completed",
+  "started_at": "2026-07-17T09:19:13.577312+00:00",
+  "config": "D:\\project\\python\\DRHL\\configs\\scarf.json",
+  "artifacts": {
+    "dynamic_graph": "D:\\project\\python\\DRHL\\runs\\scarf\\graphs\\dynamic.json",
+    "static_graph": "D:\\project\\python\\DRHL\\runs\\scarf\\graphs\\static.json",
+    "candidate_parameters": "D:\\project\\python\\DRHL\\runs\\scarf\\source\\candidate_parameters.json",
+    "candidate_functions": "D:\\project\\python\\DRHL\\runs\\scarf\\source\\candidate_functions.json",
+    "access_control_parameters": "D:\\project\\python\\DRHL\\runs\\scarf\\source\\parameters.json",
+    "access_control_functions": "D:\\project\\python\\DRHL\\runs\\scarf\\source\\functions.json",
+    "access_control_snippets": "D:\\project\\python\\DRHL\\runs\\scarf\\source\\snippets.json",
+    "fused_graph": "D:\\project\\python\\DRHL\\runs\\scarf\\graphs\\fused.json",
+    "graph_summary": "D:\\project\\python\\DRHL\\runs\\scarf\\graphs\\summary.json",
+    "graph_summary_csv": "D:\\project\\python\\DRHL\\runs\\scarf\\graphs\\summary.csv",
+    "attack_vectors": "D:\\project\\python\\DRHL\\runs\\scarf\\analysis\\vectors.json",
+    "findings": "D:\\project\\python\\DRHL\\runs\\scarf\\analysis\\findings.json",
+    "repairs": "D:\\project\\python\\DRHL\\runs\\scarf\\repair\\manifest.json",
+    "repair_report": "D:\\project\\python\\DRHL\\runs\\scarf\\repair\\repair_report.md",
+    "metrics_json": "D:\\project\\python\\DRHL\\runs\\scarf\\metrics\\summary.json",
+    "metrics_csv": "D:\\project\\python\\DRHL\\runs\\scarf\\metrics\\summary.csv",
+    "llm_access_control_snippets": "D:\\project\\python\\DRHL\\runs\\scarf\\source\\llm_snippets.json"
+  },
+  "finished_at": "2026-07-17T09:21:56.551473+00:00",
+  "repair_rerun_started_at": "2026-09-13T01:19:59.914685+00:00",
+  "repair_rerun_finished_at": "2026-09-13T01:22:48.102533+00:00"
+}

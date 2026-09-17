@@ -1,0 +1,173 @@
+{
+  "role": "admin",
+  "kind": "admin",
+  "nodes": [
+    "admin/index.php",
+    "admin/phpinfo.php",
+    "admin/phpinfo.php?=p1",
+    "admin/settings.php",
+    "credits.php",
+    "index.php",
+    "password_change.php",
+    "portal.php",
+    "reset.php",
+    "security_level_set.php",
+    "user_extra.php"
+  ],
+  "edges": [
+    {
+      "from": "admin/phpinfo.php",
+      "to": "admin/phpinfo.php?=p1"
+    },
+    {
+      "from": "credits.php",
+      "to": "credits.php"
+    },
+    {
+      "from": "credits.php",
+      "to": "portal.php"
+    },
+    {
+      "from": "credits.php",
+      "to": "reset.php"
+    },
+    {
+      "from": "index.php",
+      "to": "portal.php"
+    },
+    {
+      "from": "password_change.php",
+      "to": "password_change.php"
+    },
+    {
+      "from": "password_change.php",
+      "to": "portal.php"
+    },
+    {
+      "from": "portal.php",
+      "to": "portal.php"
+    },
+    {
+      "from": "reset.php",
+      "to": "portal.php"
+    },
+    {
+      "from": "reset.php",
+      "to": "reset.php"
+    },
+    {
+      "from": "reset.php",
+      "to": "security_level_set.php"
+    },
+    {
+      "from": "security_level_set.php",
+      "to": "portal.php"
+    },
+    {
+      "from": "security_level_set.php",
+      "to": "security_level_set.php"
+    },
+    {
+      "from": "security_level_set.php",
+      "to": "user_extra.php"
+    },
+    {
+      "from": "user_extra.php",
+      "to": "password_change.php"
+    },
+    {
+      "from": "user_extra.php",
+      "to": "portal.php"
+    },
+    {
+      "from": "user_extra.php",
+      "to": "user_extra.php"
+    }
+  ],
+  "requests": {
+    "admin/settings.php": {
+      "method": "GET",
+      "params": {},
+      "referer": null
+    },
+    "login.php": {
+      "method": "POST",
+      "params": {
+        "form": "submit",
+        "login": "bee",
+        "password": "bug",
+        "security_level": "0"
+      },
+      "referer": null
+    },
+    "images/favicon.ico": {
+      "method": "GET",
+      "params": {},
+      "referer": null
+    },
+    "portal.php": {
+      "method": "POST",
+      "params": {
+        "bug": "0"
+      },
+      "referer": "portal.php"
+    },
+    "admin/phpinfo.php": {
+      "method": "GET",
+      "params": {},
+      "referer": null
+    },
+    "admin/phpinfo.php?=p1": {
+      "method": "GET",
+      "params": {
+        "": "PHPB8B5F2A0-3C92-11d3-A3A9-4C7B08C10000"
+      },
+      "referer": "admin/phpinfo.php"
+    },
+    "admin/index.php": {
+      "method": "GET",
+      "params": {},
+      "referer": null
+    },
+    "credits.php": {
+      "method": "POST",
+      "params": {
+        "bug": "0"
+      },
+      "referer": "credits.php"
+    },
+    "reset.php": {
+      "method": "POST",
+      "params": {
+        "bug": "0"
+      },
+      "referer": "reset.php"
+    },
+    "security_level_set.php": {
+      "method": "POST",
+      "params": {
+        "bug": "0"
+      },
+      "referer": "security_level_set.php"
+    },
+    "user_extra.php": {
+      "method": "POST",
+      "params": {
+        "bug": "0"
+      },
+      "referer": "user_extra.php"
+    },
+    "password_change.php": {
+      "method": "POST",
+      "params": {
+        "bug": "0"
+      },
+      "referer": "password_change.php"
+    },
+    "index.php": {
+      "method": "GET",
+      "params": {},
+      "referer": null
+    }
+  }
+}

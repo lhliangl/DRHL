@@ -1,0 +1,148 @@
+{
+  "summary": {
+    "vulnerable": 7,
+    "not_vulnerable": 3
+  },
+  "findings": [
+    {
+      "category": "admin_only",
+      "page": "admin/addnews.jsp",
+      "actor": "visitor",
+      "status": "vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 200 without redirect or denial marker"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/addnews2.jsp",
+      "actor": "visitor",
+      "status": "vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 200 without redirect or denial marker"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/adduser.jsp",
+      "actor": "visitor",
+      "status": "vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 200 without redirect or denial marker"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/adduser2.jsp",
+      "actor": "visitor",
+      "status": "vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 200 without redirect or denial marker"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/admin.jsp",
+      "actor": "visitor",
+      "status": "vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 200 without redirect or denial marker"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/delnews.jsp",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 404,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 404; attack did not receive a normal resource page"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/deluser.jsp",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 404,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 404; attack did not receive a normal resource page"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/editnews.jsp",
+      "actor": "visitor",
+      "status": "vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 200 without redirect or denial marker"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/editnews2.jsp?body=p1&headline=AokwZT",
+      "actor": "visitor",
+      "status": "vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 200 without redirect or denial marker"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/edituser.jsp",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 404,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 404; attack did not receive a normal resource page"
+      ],
+      "error": null
+    }
+  ]
+}

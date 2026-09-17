@@ -1,0 +1,24 @@
+{
+  "functions": [
+    {
+      "id": "admin/common.php:LCF4",
+      "path": "admin/common.php",
+      "name": "checkUser",
+      "parameters": [],
+      "body": "{\r\n\tif ((!isset($_SESSION['validUser'])) || ($_SESSION['validUser'] != true)){\r\n\t\theader('Location: login.php');\r\n\t}\r\n}",
+      "start_line": 71,
+      "end_line": 75,
+      "conditions": [
+        "((!isset($_SESSION['validUser'])) || ($_SESSION['validUser'] != true))"
+      ],
+      "code": "function checkUser(){\r\n\tif ((!isset($_SESSION['validUser'])) || ($_SESSION['validUser'] != true)){\r\n\t\theader('Location: login.php');\r\n\t}\r\n}",
+      "parameter_ids": [
+        "admin/common.php:LCP14"
+      ],
+      "validation_evidence": [
+        "validated_parameter_condition",
+        "same_branch_termination"
+      ]
+    }
+  ]
+}

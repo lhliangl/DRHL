@@ -1,0 +1,16 @@
+{
+  "graphs": {
+    "dynamic": {
+      "nodes": 18,
+      "edges": 28
+    },
+    "static": {
+      "nodes": 41,
+      "edges": 11
+    },
+    "fused": {
+      "nodes": 50,
+      "edges": 28
+    }
+  }
+}

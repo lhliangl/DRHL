@@ -1,0 +1,388 @@
+{
+  "snippets": [
+    {
+      "path": "addsession.php",
+      "kind": "guard_call",
+      "start_line": 3,
+      "end_line": 3,
+      "function": "require_admin",
+      "code": "require_admin()",
+      "parameter_ids": [
+        "functions.php:LCP54"
+      ],
+      "function_ids": [
+        "functions.php:LCF9"
+      ]
+    },
+    {
+      "path": "comments.php",
+      "kind": "guard_call",
+      "start_line": 46,
+      "end_line": 46,
+      "function": "require_admin",
+      "code": "require_admin()",
+      "parameter_ids": [
+        "functions.php:LCP54"
+      ],
+      "function_ids": [
+        "functions.php:LCF9"
+      ]
+    },
+    {
+      "path": "comments.php",
+      "kind": "guard_call",
+      "start_line": 137,
+      "end_line": 137,
+      "function": "is_admin",
+      "code": "is_admin()",
+      "parameter_ids": [
+        "functions.php:LCP54"
+      ],
+      "function_ids": [
+        "functions.php:LCF3"
+      ]
+    },
+    {
+      "path": "editpaper.php",
+      "kind": "guard_call",
+      "start_line": 3,
+      "end_line": 3,
+      "function": "require_admin",
+      "code": "require_admin()",
+      "parameter_ids": [
+        "functions.php:LCP54"
+      ],
+      "function_ids": [
+        "functions.php:LCF9"
+      ]
+    },
+    {
+      "path": "editpaper.php",
+      "kind": "guard_call",
+      "start_line": 180,
+      "end_line": 180,
+      "function": "is_admin",
+      "code": "is_admin()",
+      "parameter_ids": [
+        "functions.php:LCP54"
+      ],
+      "function_ids": [
+        "functions.php:LCF3"
+      ]
+    },
+    {
+      "path": "editsession.php",
+      "kind": "guard_call",
+      "start_line": 9,
+      "end_line": 9,
+      "function": "require_admin",
+      "code": "require_admin()",
+      "parameter_ids": [
+        "functions.php:LCP54"
+      ],
+      "function_ids": [
+        "functions.php:LCF9"
+      ]
+    },
+    {
+      "path": "functions.php",
+      "kind": "validation_function",
+      "start_line": 15,
+      "end_line": 18,
+      "function": "is_admin",
+      "code": "function is_admin() {\r\n\tif ($_SESSION['privilege'] == 'admin') return TRUE;\r\n\telse return FALSE;\r\n}",
+      "parameter_ids": [
+        "functions.php:LCP54"
+      ],
+      "function_ids": [
+        "functions.php:LCF3"
+      ]
+    },
+    {
+      "path": "functions.php",
+      "kind": "conditional",
+      "start_line": 16,
+      "end_line": 17,
+      "condition": "($_SESSION['privilege'] == 'admin')",
+      "terminations": [
+        {
+          "kind": "configured_denial",
+          "line": 16,
+          "code": "return TRUE;",
+          "denial_text": false
+        },
+        {
+          "kind": "configured_denial",
+          "line": 17,
+          "code": "return FALSE;",
+          "denial_text": false
+        }
+      ],
+      "code": "if ($_SESSION['privilege'] == 'admin') return TRUE;\r\n\telse return FALSE;",
+      "parameter_ids": [
+        "functions.php:LCP54"
+      ],
+      "function_ids": [
+        "functions.php:LCF3"
+      ],
+      "if_framework": "if ($_SESSION['privilege'] == 'admin') {\n    return TRUE;\n    return FALSE;\n}"
+    },
+    {
+      "path": "functions.php",
+      "kind": "semantic_source",
+      "start_line": 54,
+      "end_line": 54,
+      "code": "return $_SESSION['user_id'];",
+      "semantic_evidence": [
+        {
+          "kind": "php_session_identity_key",
+          "key": "user_id"
+        }
+      ],
+      "parameter_ids": [
+        "functions.php:LCP58"
+      ],
+      "function_ids": []
+    },
+    {
+      "path": "functions.php",
+      "kind": "validation_function",
+      "start_line": 65,
+      "end_line": 69,
+      "function": "require_admin",
+      "code": "function require_admin() {\r\n\tif (!is_admin()) {\r\n\t        die (\"You don't have access to view this page, sorry. Please try going to the <a href='index.php'>index page</a> to view the site.\");\r\n\t}\r\n}",
+      "parameter_ids": [
+        "functions.php:LCP54"
+      ],
+      "function_ids": [
+        "functions.php:LCF9"
+      ]
+    },
+    {
+      "path": "functions.php",
+      "kind": "guard_call",
+      "start_line": 66,
+      "end_line": 66,
+      "function": "is_admin",
+      "code": "is_admin()",
+      "parameter_ids": [
+        "functions.php:LCP54"
+      ],
+      "function_ids": [
+        "functions.php:LCF3"
+      ]
+    },
+    {
+      "path": "generaloptions.php",
+      "kind": "conditional",
+      "start_line": 25,
+      "end_line": 26,
+      "condition": "(is_numeric($id) && count($temp) == 2)",
+      "terminations": [],
+      "code": "if (is_numeric($id) && count($temp) == 2)\r\n\t\t\t$data[(int) $id][$type] = $value;",
+      "parameter_ids": [
+        "generaloptions.php:LCP70"
+      ],
+      "function_ids": []
+    },
+    {
+      "path": "generaloptions.php",
+      "kind": "database_operation",
+      "start_line": 36,
+      "end_line": 36,
+      "code": "query(\"UPDATE users SET \" . implode_with_keys(\",\", $values, \"'\") . \" WHERE user_id='$id'\");",
+      "database_relations": [
+        {
+          "table": "users",
+          "field": "user_id",
+          "line": 36
+        }
+      ],
+      "related_conditions": [
+        {
+          "start_line": 25,
+          "end_line": 26,
+          "condition": "(is_numeric($id) && count($temp) == 2)"
+        }
+      ],
+      "parameter_ids": [
+        "generaloptions.php:LCP70"
+      ],
+      "function_ids": []
+    },
+    {
+      "path": "header.php",
+      "kind": "guard_call",
+      "start_line": 44,
+      "end_line": 44,
+      "function": "is_admin",
+      "code": "is_admin()",
+      "parameter_ids": [
+        "functions.php:LCP54"
+      ],
+      "function_ids": [
+        "functions.php:LCF3"
+      ]
+    },
+    {
+      "path": "login.php",
+      "kind": "semantic_source",
+      "start_line": 1,
+      "end_line": 40,
+      "code": "<?php include_once(\"functions.php\"); \r\nif (isset($_GET[\"logout\"])) {\r\n\tsession_start();\r\n\tunset($_SESSION['email']);\r\n\tunset($_SESSION['privlege']);\r\n\tunset($_SESSION['user_id']);\r\n\tsession_destroy();\r\n        header(\"Location: index.php\");\r\n} else if (isset($_POST[\"email\"])) {\r\n\t$result = query(\"SELECT * FROM users WHERE email='\" . mysql_real_escape_string($_POST['email']) . \"' AND password='\" . mysql_real_escape_string(md5($_POST['password'])) . \"'\");\r\n\tif (mysql_num_rows($result) == 0) {\r\n\t\tinclude_once(\"header.php\");\r\n\t\tprint \"You have entered an email address and/or password that is invalid. Please go <a href='javascript:back()'>back</a> to the main page.\";\r\n\t} else if (mysql_num_rows($result) == 1) {\r\n\t\t$row = mysql_fetch_assoc($result);\r\n\t\tsession_start();\r\n\t\t$_SESSION['email'] = $row['email'];\r\n\t\t$_SESSION['privilege'] = $row['privilege'];\r\n\t\t$_SESSION['user_id'] = $row['user_id'];\r\n\t\tlogToFile($row['email'] . \" logged in\");\r\n\t\tif (isset($_GET['referer']))\r\n\t\t\theader(\"Location: $_GET[referer]\");\r\n\t\telse\r\n\t\t\theader(\"Location: index.php\");\r\n\t}\r\n} else { include(\"header.php\");\r\n?>\r\n<form action='login.php' method='POST'>\r\n<table>\r\n<tr><td>Email Address:</td><td><input name='email'></td></tr>\r\n<tr><td>Password:</td><td><input name='password' type='password'></td></tr>\r\n<tr><td>&nbsp</td><td><input type='submit' value='Login'></td></tr>\r\n</table>\r\n</form>\r\n<a href='register.php'>Register</a> <a href='forgot.php'>Forgot your password</a> \r\n<?php \r\n}\r\ninclude_once(\"footer.php\");\r\n?>",
+      "semantic_evidence": [
+        {
+          "kind": "php_session_identity_key",
+          "key": "user_id"
+        }
+      ],
+      "parameter_ids": [
+        "login.php:LCP86"
+      ],
+      "function_ids": []
+    },
+    {
+      "path": "login.php",
+      "kind": "semantic_source",
+      "start_line": 19,
+      "end_line": 19,
+      "code": "$_SESSION['user_id'] = $row['user_id'];",
+      "semantic_evidence": [
+        {
+          "kind": "php_session_identity_key",
+          "key": "user_id"
+        }
+      ],
+      "parameter_ids": [
+        "login.php:LCP86"
+      ],
+      "function_ids": []
+    },
+    {
+      "path": "register.php",
+      "kind": "guard_call",
+      "start_line": 11,
+      "end_line": 11,
+      "function": "is_admin",
+      "code": "is_admin()",
+      "parameter_ids": [
+        "functions.php:LCP54"
+      ],
+      "function_ids": [
+        "functions.php:LCF3"
+      ]
+    },
+    {
+      "path": "register.php",
+      "kind": "guard_call",
+      "start_line": 12,
+      "end_line": 12,
+      "function": "is_admin",
+      "code": "is_admin()",
+      "parameter_ids": [
+        "functions.php:LCP54"
+      ],
+      "function_ids": [
+        "functions.php:LCF3"
+      ]
+    },
+    {
+      "path": "register.php",
+      "kind": "guard_call",
+      "start_line": 27,
+      "end_line": 27,
+      "function": "is_admin",
+      "code": "is_admin()",
+      "parameter_ids": [
+        "functions.php:LCP54"
+      ],
+      "function_ids": [
+        "functions.php:LCF3"
+      ]
+    },
+    {
+      "path": "register.php",
+      "kind": "guard_call",
+      "start_line": 39,
+      "end_line": 39,
+      "function": "is_admin",
+      "code": "is_admin()",
+      "parameter_ids": [
+        "functions.php:LCP54"
+      ],
+      "function_ids": [
+        "functions.php:LCF3"
+      ]
+    },
+    {
+      "path": "showpaper.php",
+      "kind": "guard_call",
+      "start_line": 15,
+      "end_line": 15,
+      "function": "is_admin",
+      "code": "is_admin()",
+      "parameter_ids": [
+        "functions.php:LCP54"
+      ],
+      "function_ids": [
+        "functions.php:LCF3"
+      ]
+    },
+    {
+      "path": "showpaper.php",
+      "kind": "guard_call",
+      "start_line": 32,
+      "end_line": 32,
+      "function": "is_admin",
+      "code": "is_admin()",
+      "parameter_ids": [
+        "functions.php:LCP54"
+      ],
+      "function_ids": [
+        "functions.php:LCF3"
+      ]
+    },
+    {
+      "path": "showsessions.php",
+      "kind": "guard_call",
+      "start_line": 5,
+      "end_line": 5,
+      "function": "is_admin",
+      "code": "is_admin()",
+      "parameter_ids": [
+        "functions.php:LCP54"
+      ],
+      "function_ids": [
+        "functions.php:LCF3"
+      ]
+    },
+    {
+      "path": "showsessions.php",
+      "kind": "guard_call",
+      "start_line": 28,
+      "end_line": 28,
+      "function": "is_admin",
+      "code": "is_admin()",
+      "parameter_ids": [
+        "functions.php:LCP54"
+      ],
+      "function_ids": [
+        "functions.php:LCF3"
+      ]
+    },
+    {
+      "path": "showsessions.php",
+      "kind": "guard_call",
+      "start_line": 43,
+      "end_line": 43,
+      "function": "is_admin",
+      "code": "is_admin()",
+      "parameter_ids": [
+        "functions.php:LCP54"
+      ],
+      "function_ids": [
+        "functions.php:LCF3"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,181 @@
+{
+  "parameters": [
+    {
+      "id": "admin/addnews2.jsp:LCP1",
+      "path": "admin/addnews2.jsp",
+      "expression": "SQLStatus",
+      "aliases": [
+        "SQLStatus"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 10,
+          "condition": "(SQLStatus != 0)"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "admin/adduser2.jsp:LCP2",
+      "path": "admin/adduser2.jsp",
+      "expression": "SQLStatus",
+      "aliases": [
+        "SQLStatus"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 10,
+          "condition": "(SQLStatus != 0)"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "admin/auth.jsp:LCP3",
+      "path": "admin/auth.jsp",
+      "expression": "drhlLoggedIn",
+      "aliases": [
+        "drhlLoggedIn",
+        "isLoggedIn"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 2,
+          "condition": "(drhlLoggedIn == null || !drhlLoggedIn.equals(\"true\"))"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "admin/editnews.jsp:LCP4",
+      "path": "admin/editnews.jsp",
+      "expression": "myResultSet",
+      "aliases": [
+        "myResultSet"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 10,
+          "condition": "(myResultSet != null)"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "admin/editnews2.jsp:LCP5",
+      "path": "admin/editnews2.jsp",
+      "expression": "SQLStatus",
+      "aliases": [
+        "SQLStatus"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 11,
+          "condition": "(SQLStatus != 0)"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "admin/index2.jsp:LCP6",
+      "path": "admin/index2.jsp",
+      "expression": "username",
+      "aliases": [
+        "username"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 11,
+          "condition": "(username.equals (\"admin\") && password.equals (\"admin\"))"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "admin/index2.jsp:LCP7",
+      "path": "admin/index2.jsp",
+      "expression": "password",
+      "aliases": [
+        "password"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 11,
+          "condition": "(username.equals (\"admin\") && password.equals (\"admin\"))"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "index.jsp:LCP8",
+      "path": "index.jsp",
+      "expression": "myResultSet",
+      "aliases": [
+        "myResultSet"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 15,
+          "condition": "(myResultSet != null)"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    }
+  ]
+}

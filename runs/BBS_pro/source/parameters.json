@@ -1,0 +1,41 @@
+{
+  "parameters": [
+    {
+      "id": "app01/views.py:LCP1",
+      "path": "app01/views.py",
+      "expression": "user",
+      "aliases": [
+        "user",
+        "request.user"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 22,
+          "condition": "user is not None"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ],
+      "validation_evidence": [
+        {
+          "kind": "terminating_condition",
+          "line": 22,
+          "condition": "user is not None",
+          "terminations": [
+            {
+              "kind": "configured_denial",
+              "line": 27,
+              "code": "return render_to_response('login.html', {'login_err': 'Wrong username or password.'})"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

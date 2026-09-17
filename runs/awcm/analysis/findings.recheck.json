@@ -1,0 +1,702 @@
+{
+  "summary": {
+    "vulnerable": 5,
+    "not_vulnerable": 40
+  },
+  "findings": [
+    {
+      "category": "static_only",
+      "page": "control/db_backup.php",
+      "actor": "visitor",
+      "status": "vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-read",
+        "static page was directly accessible to a visitor and no denial marker was observed"
+      ],
+      "error": null
+    },
+    {
+      "category": "static_only",
+      "page": "control/security.php",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-read",
+        "static page response body was empty; treated as not vulnerable"
+      ],
+      "error": null
+    },
+    {
+      "category": "static_only",
+      "page": "cookie_gen.php",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-read",
+        "static page response body was empty; treated as not vulnerable"
+      ],
+      "error": null
+    },
+    {
+      "category": "static_only",
+      "page": "install/index.php",
+      "actor": "visitor",
+      "status": "vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-read",
+        "static page was directly accessible to a visitor and no denial marker was observed"
+      ],
+      "error": null
+    },
+    {
+      "category": "static_only",
+      "page": "languages/ar.php",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-read",
+        "static page response body was empty; treated as not vulnerable"
+      ],
+      "error": null
+    },
+    {
+      "category": "static_only",
+      "page": "languages/en.php",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-read",
+        "static page response body was empty; treated as not vulnerable"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "includes/avatar.php?h=p1&id=p1&w=p1",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": null,
+      "evidence": [
+        "oracle=response-read",
+        "GET read response oracle is limited to configured page patterns"
+      ],
+      "error": null
+    },
+    {
+      "category": "horizontal",
+      "page": "includes/avatar.php?h=p1&id=p1&w=p1",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": null,
+      "evidence": [
+        "oracle=response-read",
+        "GET read response oracle is limited to configured page patterns",
+        "horizontal override: id=1"
+      ],
+      "error": null
+    },
+    {
+      "category": "horizontal",
+      "page": "includes/avatar.php?h=p1&id=p1&w=p1",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": null,
+      "evidence": [
+        "oracle=response-read",
+        "GET read response oracle is limited to configured page patterns",
+        "horizontal override: id=3"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "m_cp_avatar.php?KeepThis=true&TB_iframe=true&height=p1&width=p1",
+      "actor": "visitor",
+      "status": "vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-read",
+        "attack response was accessible and no denial marker was observed"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "m_cp_avatar.php?do=",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "medium",
+      "method": "POST",
+      "http_status": 200,
+      "evidence": [
+        "oracle=database-marker",
+        "operation=write",
+        "marker=DRHL_f9dd0c090aa84f4d9f9bb650862e66cf",
+        "database_changed=true",
+        "marker_found=false",
+        "database changed, but the injected marker was not found; vulnerability not confirmed"
+      ],
+      "error": null
+    },
+    {
+      "category": "horizontal",
+      "page": "member.php?id=p1",
+      "actor": "user1",
+      "status": "vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-read",
+        "attack response was accessible and no denial marker was observed",
+        "horizontal override: id=1"
+      ],
+      "error": null
+    },
+    {
+      "category": "horizontal",
+      "page": "member.php?id=p1",
+      "actor": "user1",
+      "status": "vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-read",
+        "attack response was accessible and no denial marker was observed",
+        "horizontal override: id=3"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "member_cp.php",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": null,
+      "evidence": [
+        "oracle=response-read",
+        "GET read response oracle is limited to configured page patterns"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "member_cp.php?do=",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "none",
+      "method": "POST",
+      "http_status": null,
+      "evidence": [
+        "oracle=database-marker",
+        "no safe writable payload field or configured state-change probe was found"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "member_cp_pm.php",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": null,
+      "evidence": [
+        "oracle=response-read",
+        "GET read response oracle is limited to configured page patterns"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "member_cp_pm.php?new=",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": null,
+      "evidence": [
+        "oracle=response-read",
+        "GET read response oracle is limited to configured page patterns"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "member_cp_pm.php?new=&send=p1",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "medium",
+      "method": "POST",
+      "http_status": 200,
+      "evidence": [
+        "oracle=database-marker",
+        "operation=write",
+        "marker=DRHL_08010c4cf75f4d4c8f4ac6d064dc1f48",
+        "database_changed=true",
+        "marker_found=false",
+        "database changed, but the injected marker was not found; vulnerability not confirmed"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "member_cp_pm.php?v=p1",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": null,
+      "evidence": [
+        "oracle=response-read",
+        "GET read response oracle is limited to configured page patterns"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "send_flash.php",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": null,
+      "evidence": [
+        "oracle=response-read",
+        "GET read response oracle is limited to configured page patterns"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "send_flash.php",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": null,
+      "evidence": [
+        "oracle=response-read",
+        "GET read response oracle is limited to configured page patterns"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "send_flash.php",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": null,
+      "evidence": [
+        "oracle=response-read",
+        "GET read response oracle is limited to configured page patterns"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "send_flash.php?do=",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "medium",
+      "method": "POST",
+      "http_status": 200,
+      "evidence": [
+        "oracle=database-marker",
+        "operation=write",
+        "marker=DRHL_8f9a1fde5a434c7e8b859aba7cdf898c",
+        "database_changed=true",
+        "marker_found=false",
+        "database changed, but the injected marker was not found; vulnerability not confirmed"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "send_flash.php?do=",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "medium",
+      "method": "POST",
+      "http_status": 200,
+      "evidence": [
+        "oracle=database-marker",
+        "operation=write",
+        "marker=DRHL_ea13c4bce9d540dd92aec36eb0689c51",
+        "database_changed=true",
+        "marker_found=false",
+        "database changed, but the injected marker was not found; vulnerability not confirmed"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "send_flash.php?do=",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "medium",
+      "method": "POST",
+      "http_status": 200,
+      "evidence": [
+        "oracle=database-marker",
+        "operation=write",
+        "marker=DRHL_2c2d53e0baab4c9ba82c1c8f4ea0926b",
+        "database_changed=true",
+        "marker_found=false",
+        "database changed, but the injected marker was not found; vulnerability not confirmed"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "send_image.php?KeepThis=true&TB_iframe=true&height=p1&width=p1",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": null,
+      "evidence": [
+        "oracle=response-read",
+        "GET read response oracle is limited to configured page patterns"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "send_image.php?KeepThis=true&TB_iframe=true&height=p1&width=p1",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": null,
+      "evidence": [
+        "oracle=response-read",
+        "GET read response oracle is limited to configured page patterns"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "send_image.php?KeepThis=true&TB_iframe=true&height=p1&width=p1",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": null,
+      "evidence": [
+        "oracle=response-read",
+        "GET read response oracle is limited to configured page patterns"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "send_image.php?do=",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "medium",
+      "method": "POST",
+      "http_status": 200,
+      "evidence": [
+        "oracle=database-marker",
+        "operation=write",
+        "marker=DRHL_4c55db5f3e754efe9fba1289c627bd03",
+        "database_changed=true",
+        "marker_found=false",
+        "database changed, but the injected marker was not found; vulnerability not confirmed"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "send_image.php?do=",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "medium",
+      "method": "POST",
+      "http_status": 200,
+      "evidence": [
+        "oracle=database-marker",
+        "operation=write",
+        "marker=DRHL_a9d35715cd7c4db5ba4203b49d84eb31",
+        "database_changed=true",
+        "marker_found=false",
+        "database changed, but the injected marker was not found; vulnerability not confirmed"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "send_image.php?do=",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "medium",
+      "method": "POST",
+      "http_status": 200,
+      "evidence": [
+        "oracle=database-marker",
+        "operation=write",
+        "marker=DRHL_d61edf303a394a028ee9bc77352c9df4",
+        "database_changed=true",
+        "marker_found=false",
+        "database changed, but the injected marker was not found; vulnerability not confirmed"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "send_lesson.php",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": null,
+      "evidence": [
+        "oracle=response-read",
+        "GET read response oracle is limited to configured page patterns"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "send_lesson.php?do=",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "medium",
+      "method": "POST",
+      "http_status": 200,
+      "evidence": [
+        "oracle=database-marker",
+        "operation=write",
+        "marker=DRHL_50d7899e338e40cdb476d3f77e4ccc6e",
+        "database_changed=true",
+        "marker_found=false",
+        "database changed, but the injected marker was not found; vulnerability not confirmed"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "send_news.php",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": null,
+      "evidence": [
+        "oracle=response-read",
+        "GET read response oracle is limited to configured page patterns"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "send_news.php?do=",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "medium",
+      "method": "POST",
+      "http_status": 200,
+      "evidence": [
+        "oracle=database-marker",
+        "operation=write",
+        "marker=DRHL_918e86c410624a409b4f312c7a2e6938",
+        "database_changed=true",
+        "marker_found=false",
+        "database changed, but the injected marker was not found; vulnerability not confirmed"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "send_pro.php",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": null,
+      "evidence": [
+        "oracle=response-read",
+        "GET read response oracle is limited to configured page patterns"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "send_pro.php?do=",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "medium",
+      "method": "POST",
+      "http_status": 200,
+      "evidence": [
+        "oracle=database-marker",
+        "operation=write",
+        "marker=DRHL_7d5ac72262b141a0acd2547f63bde000",
+        "database_changed=true",
+        "marker_found=false",
+        "database changed, but the injected marker was not found; vulnerability not confirmed"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "send_topic.php",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": null,
+      "evidence": [
+        "oracle=response-read",
+        "GET read response oracle is limited to configured page patterns"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "send_topic.php?do=",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "medium",
+      "method": "POST",
+      "http_status": 200,
+      "evidence": [
+        "oracle=database-marker",
+        "operation=write",
+        "marker=DRHL_e53ab940e77f40c383df521ee6131d82",
+        "database_changed=true",
+        "marker_found=false",
+        "database changed, but the injected marker was not found; vulnerability not confirmed"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "send_video.php",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": null,
+      "evidence": [
+        "oracle=response-read",
+        "GET read response oracle is limited to configured page patterns"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "send_video.php",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": null,
+      "evidence": [
+        "oracle=response-read",
+        "GET read response oracle is limited to configured page patterns"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "send_video.php",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": null,
+      "evidence": [
+        "oracle=response-read",
+        "GET read response oracle is limited to configured page patterns"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "send_video.php?do=",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "medium",
+      "method": "POST",
+      "http_status": 200,
+      "evidence": [
+        "oracle=database-marker",
+        "operation=write",
+        "marker=DRHL_e1d8c46d16764b94b623c507fb298551",
+        "database_changed=true",
+        "marker_found=false",
+        "database changed, but the injected marker was not found; vulnerability not confirmed"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "send_video.php?do=",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "medium",
+      "method": "POST",
+      "http_status": 200,
+      "evidence": [
+        "oracle=database-marker",
+        "operation=write",
+        "marker=DRHL_0b324fa6e7e042d98f1f2c416cf65d42",
+        "database_changed=true",
+        "marker_found=false",
+        "database changed, but the injected marker was not found; vulnerability not confirmed"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "send_video.php?do=",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "medium",
+      "method": "POST",
+      "http_status": 200,
+      "evidence": [
+        "oracle=database-marker",
+        "operation=write",
+        "marker=DRHL_fefe5f461cf84fd6a2564a85557b4f27",
+        "database_changed=true",
+        "marker_found=false",
+        "database changed, but the injected marker was not found; vulnerability not confirmed"
+      ],
+      "error": null
+    }
+  ]
+}

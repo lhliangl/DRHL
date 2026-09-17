@@ -1,0 +1,285 @@
+{
+  "snippets": [
+    {
+      "path": "WEB-INF/classes/forum/ChangeMessage.java",
+      "kind": "conditional",
+      "start_line": 41,
+      "end_line": 53,
+      "condition": "(sessionType.equals(\"Admin\"))",
+      "terminations": [],
+      "code": "if(sessionType.equals(\"Admin\")){\r\n\r\n\t\t\t\tdb.query(\r\n\t\t\t\t\t\"UPDATE forum_message \" +\r\n            \t\t\"SET message =\\\"\" + message + \"\\\"\" +\r\n            \t\t\"WHERE forum_id=\\\"\" + forum_id + \"\\\" AND thread_id =\\\"\" + reqThread_id + \"\\\" AND reply_id=\\\"\" + reqReply_id + \"\\\"\");\t\r\n\t\t\t}else{\r\n\r\n\t\t\t\tdb.query(\r\n\t\t\t\t\t\"UPDATE forum_message \" +\r\n            \t\t\"SET message =\\\"\" + message + \"\\\"\" +\r\n            \t\t\"WHERE forum_id=\\\"\" + forum_id + \"\\\" AND thread_id =\\\"\" + reqThread_id + \"\\\" AND reply_id=\\\"\" + reqReply_id + \"\\\" AND user=\\\"\"+ sessionUsername + \"\\\"\");\r\n\t\t\t}",
+      "parameter_ids": [
+        "WEB-INF/classes/forum/ChangeMessage.java:LCP27"
+      ],
+      "function_ids": [],
+      "semantic_evidence": [
+        {
+          "kind": "java_jsp_session_admin_role",
+          "line": 41,
+          "condition": "(sessionType.equals(\"Admin\"))"
+        }
+      ]
+    },
+    {
+      "path": "WEB-INF/classes/forum/DeleteForum.java",
+      "kind": "conditional",
+      "start_line": 27,
+      "end_line": 39,
+      "condition": "(sessionType.equals(\"Admin\"))",
+      "terminations": [],
+      "code": "if(sessionType.equals(\"Admin\")){\r\n\r\n                    \tdb.connect();\r\n\r\n                    \r\n                    \tdb.query(\"DELETE FROM forum_message WHERE forum_id=\\\"\" + forum_id + \"\\\"\");\r\n\r\n                    \tdb.query(\"DELETE FROM forum_forums WHERE forum_id=\\\"\" + forum_id + \"\\\"\");\r\n\t\t\t\t\t \t\t\t\t\t \r\n                    \tdb.close();\r\n           \t\t\r\n\t              \t\tresponse.sendRedirect(Variable.getForumPath() + \"index.jsp\");\r\n    \t\t\t\t}",
+      "parameter_ids": [
+        "WEB-INF/classes/forum/DeleteForum.java:LCP32"
+      ],
+      "function_ids": [],
+      "semantic_evidence": [
+        {
+          "kind": "java_jsp_session_admin_role",
+          "line": 27,
+          "condition": "(sessionType.equals(\"Admin\"))"
+        }
+      ]
+    },
+    {
+      "path": "WEB-INF/classes/forum/DeleteReply.java",
+      "kind": "conditional",
+      "start_line": 29,
+      "end_line": 39,
+      "condition": "(sessionType.equals(\"Admin\"))",
+      "terminations": [],
+      "code": "if(sessionType.equals(\"Admin\")){\r\n                  \t                    \r\n\t                    db.connect();\r\n\r\n                    \r\n    \t                db.query(\"DELETE FROM forum_message WHERE forum_id=\\\"\" + forum_id + \"\\\" AND thread_id=\\\"\"+ thread_id + \"\\\" AND reply_id=\\\"\" + reply_id + \"\\\"\");\r\n\t\t\t\t\t \t\t\t\t\t \r\n        \t            db.close();\r\n           \t\t\r\n            \t  \t\tresponse.sendRedirect(Variable.getForumPath() + \"index.jsp?page=message&forum_id=\" + forum_id + \"&thread_id=\" + thread_id + \"&start=\" + start);\r\n              \t\t}",
+      "parameter_ids": [
+        "WEB-INF/classes/forum/DeleteReply.java:LCP33"
+      ],
+      "function_ids": [],
+      "semantic_evidence": [
+        {
+          "kind": "java_jsp_session_admin_role",
+          "line": 29,
+          "condition": "(sessionType.equals(\"Admin\"))"
+        }
+      ]
+    },
+    {
+      "path": "WEB-INF/classes/forum/DeleteThread.java",
+      "kind": "conditional",
+      "start_line": 27,
+      "end_line": 39,
+      "condition": "(sessionType.equals(\"Admin\"))",
+      "terminations": [],
+      "code": "if(sessionType.equals(\"Admin\")){\r\n        \r\n                    \tdb.connect();\r\n\r\n                    \r\n                    \tdb.query(\"DELETE FROM forum_message WHERE forum_id=\\\"\" + forum_id + \"\\\" AND thread_id=\\\"\" + thread_id + \"\\\"\");\r\n\r\n\t\t\t\t\t \tdb.query(\"DELETE FROM forum_threads WHERE forum_id=\\\"\" + forum_id + \"\\\" AND thread_id=\\\"\" + thread_id + \"\\\"\");\t\r\n\t\t\t\t\t \t\t\t\t\t \r\n                    \tdb.close();\r\n           \t\t\r\n\t              \t\tresponse.sendRedirect(Variable.getForumPath() + \"index.jsp?page=thread&forum_id=\"+forum_id);\r\n    \t\t\t\t}",
+      "parameter_ids": [
+        "WEB-INF/classes/forum/DeleteThread.java:LCP34"
+      ],
+      "function_ids": [],
+      "semantic_evidence": [
+        {
+          "kind": "java_jsp_session_admin_role",
+          "line": 27,
+          "condition": "(sessionType.equals(\"Admin\"))"
+        }
+      ]
+    },
+    {
+      "path": "forum/forum.jsp",
+      "kind": "conditional",
+      "start_line": 51,
+      "end_line": 57,
+      "condition": "(sessionType.equals(\"Admin\"))",
+      "terminations": [],
+      "code": "<% if(sessionType.equals(\"Admin\")){ %>\r\n\t\t<jsp:include page=\"./include/table_title.jsp\" flush=\"true\">\r\n\t\t\t<jsp:param name=\"title\" value=\"Delete Forum\" /> \r\n\t\t\t<jsp:param name=\"colspan\" value=\"1\" /> \r\n\t\t\t<jsp:param name=\"align\" value=\"middle\" /> \r\n\t\t</jsp:include>\r\n\t<% } %>",
+      "parameter_ids": [
+        "forum/forum.jsp:LCP4"
+      ],
+      "function_ids": [],
+      "semantic_evidence": [
+        {
+          "kind": "java_jsp_session_admin_role",
+          "line": 51,
+          "condition": "(sessionType.equals(\"Admin\"))"
+        }
+      ]
+    },
+    {
+      "path": "forum/forum.jsp",
+      "kind": "conditional",
+      "start_line": 95,
+      "end_line": 100,
+      "condition": "(sessionType.equals(\"Admin\"))",
+      "terminations": [],
+      "code": "<% if(sessionType.equals(\"Admin\")){ %>\r\n\t\t\t<jsp:include page=\"./include/table_body.jsp\" flush=\"true\">\r\n\t\t\t\t<jsp:param name=\"width\" value=\"0\" /> \r\n\t\t\t</jsp:include>\r\n\t\t\t<a href=\"../servlet/forum.DeleteForum?forum_id=<%= forum_id %>\" class=\"forumDelete\">Delete</a>\r\n\t\t<% } %>",
+      "parameter_ids": [
+        "forum/forum.jsp:LCP4"
+      ],
+      "function_ids": [],
+      "semantic_evidence": [
+        {
+          "kind": "java_jsp_session_admin_role",
+          "line": 95,
+          "condition": "(sessionType.equals(\"Admin\"))"
+        }
+      ]
+    },
+    {
+      "path": "forum/forum.jsp",
+      "kind": "conditional",
+      "start_line": 128,
+      "end_line": 151,
+      "condition": "(sessionType.equals(\"Admin\"))",
+      "terminations": [],
+      "code": "<% if(sessionType.equals(\"Admin\")){ %>\t\t\t\t\t\r\n\t\t\t\t\t\r\n\t\t<jsp:include page=\"./include/table_start.jsp\" flush=\"true\" /> \r\n\t\t<jsp:include page=\"./include/table_title.jsp\" flush=\"true\">\r\n\t\t\t<jsp:param name=\"title\" value=\"Add Forum\" /> \r\n\t\t\t<jsp:param name=\"colspan\" value=\"2\" /> \r\n\t\t\t<jsp:param name=\"align\" value=\"left\" /> \r\n\t\t</jsp:include>\t\t\t\t\t\t\r\n\t\t<jsp:include page=\"./include/table_start_body.jsp\" flush=\"true\" />\r\n\t\t<jsp:include page=\"./include/table_body.jsp\" flush=\"true\">\r\n\t\t\t<jsp:param name=\"width\" value=\"200\" /> \r\n\t\t</jsp:include>\r\n\t\t<form action=\"../servlet/forum.AddForum\" method=POST name=form>\r\n\t\t<input type=\"hidden\" name=\"lastforum_id\" value=\"<%= lastforum_id %>\"><br>\r\n\t\tTitle:<br>\r\n\t\t<input type=\"text\" name=\"title\" size=\"62\" maxlength=\"60\"><br>\r\n\t\tForum Information:<br>\r\n\t\t<textarea name=\"forum_info\" cols=\"47\" rows=\"10\" maxlength=\"500\"></textarea><br>\r\n\t\t<input type=\"submit\" value=\"Add Forum\"><br>\r\n\t\t</form>\r\n\t\t<br>\r\n\t\t<jsp:include page=\"./include/table_close_body.jsp\" flush=\"true\" />\t\t\t\t \r\n\t\t<jsp:include page=\"./include/table_close.jsp\" flush=\"true\" />\r\n\t<% } %>",
+      "parameter_ids": [
+        "forum/forum.jsp:LCP4"
+      ],
+      "function_ids": [],
+      "semantic_evidence": [
+        {
+          "kind": "java_jsp_session_admin_role",
+          "line": 128,
+          "condition": "(sessionType.equals(\"Admin\"))"
+        }
+      ]
+    },
+    {
+      "path": "forum/message.jsp",
+      "kind": "conditional",
+      "start_line": 62,
+      "end_line": 82,
+      "condition": "(sessionType.equals(\"Admin\"))",
+      "terminations": [],
+      "code": "<% if(sessionType.equals(\"Admin\")){ %>\r\n\t\t<jsp:include page=\"./include/table_title.jsp\" flush=\"true\">\r\n\t\t\t<jsp:param name=\"title\" value=\"<%= titleAdmin %>\" /> \r\n\t\t\t<jsp:param name=\"colspan\" value=\"2\" /> \r\n\t\t\t<jsp:param name=\"align\" value=\"middle\" /> \r\n\t\t</jsp:include>\r\n\t<% }else{ %>\r\n\t\t<% if(sessionUsername.equals(user)){ %>\r\n\t\t\t\t<jsp:include page=\"./include/table_title.jsp\" flush=\"true\">\r\n\t\t\t\t\t<jsp:param name=\"title\" value=\"<%= titleUser %>\" /> \r\n\t\t\t\t\t<jsp:param name=\"colspan\" value=\"2\" /> \r\n\t\t\t\t\t<jsp:param name=\"align\" value=\"middle\" /> \r\n\t\t\t\t</jsp:include>\r\n\t\t<% }else{ %>\t\t\r\n\t\t\t\t<jsp:include page=\"./include/table_title.jsp\" flush=\"true\">\r\n\t\t\t\t\t<jsp:param name=\"title\" value=\"<%= titleOther %>\" /> \r\n\t\t\t\t\t<jsp:param name=\"colspan\" value=\"2\" /> \r\n\t\t\t\t\t<jsp:param name=\"align\" value=\"middle\" /> \r\n\t\t\t\t</jsp:include>\t\t\t        \r\n\t\t<% } %>\r\n\t<% } %>",
+      "parameter_ids": [
+        "forum/message.jsp:LCP10"
+      ],
+      "function_ids": [],
+      "semantic_evidence": [
+        {
+          "kind": "java_jsp_session_admin_role",
+          "line": 62,
+          "condition": "(sessionType.equals(\"Admin\"))"
+        }
+      ]
+    },
+    {
+      "path": "forum/message.jsp",
+      "kind": "conditional",
+      "start_line": 69,
+      "end_line": 81,
+      "condition": "(sessionUsername.equals(user))",
+      "terminations": [],
+      "code": "<% if(sessionUsername.equals(user)){ %>\r\n\t\t\t\t<jsp:include page=\"./include/table_title.jsp\" flush=\"true\">\r\n\t\t\t\t\t<jsp:param name=\"title\" value=\"<%= titleUser %>\" /> \r\n\t\t\t\t\t<jsp:param name=\"colspan\" value=\"2\" /> \r\n\t\t\t\t\t<jsp:param name=\"align\" value=\"middle\" /> \r\n\t\t\t\t</jsp:include>\r\n\t\t<% }else{ %>\t\t\r\n\t\t\t\t<jsp:include page=\"./include/table_title.jsp\" flush=\"true\">\r\n\t\t\t\t\t<jsp:param name=\"title\" value=\"<%= titleOther %>\" /> \r\n\t\t\t\t\t<jsp:param name=\"colspan\" value=\"2\" /> \r\n\t\t\t\t\t<jsp:param name=\"align\" value=\"middle\" /> \r\n\t\t\t\t</jsp:include>\t\t\t        \r\n\t\t<% } %>",
+      "parameter_ids": [
+        "forum/message.jsp:LCP11"
+      ],
+      "function_ids": []
+    },
+    {
+      "path": "forum/message.jsp",
+      "kind": "database_operation",
+      "start_line": 86,
+      "end_line": 122,
+      "code": "<%    \t\t\t\t\r\n\t\tResultSet rs2 = db.selectQuery(\r\n\t\t\t\"SELECT * FROM forum_users WHERE user_name =\\\"\" + user + \"\\\"\");\r\n\t\t\t\r\n\t\tString group = null;\r\n\t\tString avatar = null;\r\n\t\tString member_title = null;\r\n\t\tString signature = null;\t\r\n\t\twhile(rs2.next()){\r\n\t\t\tgroup = rs2.getString(\"type\");\r\n\t\t\tavatar = rs2.getString(\"avatar\");\r\n\t\t\tmember_title = rs2.getString(\"member_title\");\r\n\t\t\tsignature = rs2.getString(\"signature\");\r\n\t\t}\r\n\t\t\t\t\r\n\t\tResultSet rs3 = db.selectQuery(\r\n\t\t\t\"SELECT count(*) count FROM forum_message WHERE user =\\\"\" + user + \"\\\"\");\r\n\t\t\r\n\t\twhile(rs3.next()){\r\n\t\t\tString messageCount = rs3.getString(\"count\");\r\n\t\t\t\t\t\t\t\t\t\r\n\t\t\tif(avatar == null){\r\n\t\t\t\tavatar = \"<br>\";\r\n\t\t\t}else{\r\n\t\t\t\tavatar = \"<img src=\\\"\" + avatar + \"\\\" width=\\\"65\\\" height=\\\"65\\\"><br>\";\t\t\t\t\t\t\t\t\r\n\t\t\t}\t\t\t\t\t\t\r\n\t\t\tif(member_title == null){\r\n\t\t\t\tmember_title = \"\";\r\n\t\t\t}else{\r\n\t\t\t\tmember_title = member_title + \"<br>\";\r\n\t\t\t}\t\t\t\t\t\t\r\n\t\t\tif(signature == null){\r\n\t\t\t\tsignature = \"\";\r\n\t\t\t}else{\r\n\t\t\t\tsignature =\t\"<br><br>--------<br>\" + signature;\r\n\t\t\t}\r\n\t%>",
+      "database_relations": [
+        {
+          "table": "forum_users",
+          "field": "user_name",
+          "line": 86
+        },
+        {
+          "table": "forum_message",
+          "field": "user",
+          "line": 86
+        }
+      ],
+      "related_conditions": [
+        {
+          "start_line": 69,
+          "end_line": 81,
+          "condition": "(sessionUsername.equals(user))"
+        }
+      ],
+      "parameter_ids": [
+        "forum/message.jsp:LCP11"
+      ],
+      "function_ids": []
+    },
+    {
+      "path": "forum/profile.jsp",
+      "kind": "database_operation",
+      "start_line": 15,
+      "end_line": 46,
+      "code": "<%\r\n\r\nDBConnectie db = new DBConnectie(Variable.getDb(),Variable.getDbLogin(),Variable.getDbPassword());\r\n\r\ndb.connect();\r\n\r\nResultSet rs = db.selectQuery(\r\n\t\"SELECT * FROM forum_users \" +\r\n    \"WHERE user_name =\\\"\" + sessionUsername + \"\\\"\");\r\n                    \t\r\nString avatar = \"no Avatar\";\r\nString member_title = \"no Custom member title\";\r\nString signature = \"no Signature\";\r\n\t\t\t\t\t\r\nwhile(rs.next()){\r\n\tavatar = rs.getString(\"avatar\");\r\n\tmember_title = rs.getString(\"member_title\");\r\n\tsignature = rs.getString(\"signature\");\r\n}\r\n\t\t\t\r\nif(avatar == null){\r\n\tavatar = \"\";\r\n}\r\nif(member_title == null){\r\n\tmember_title = \"\";\r\n}\r\nif(signature == null){\r\n\tsignature = \"\";\r\n}\r\n\r\ndb.close();\r\n%>",
+      "database_relations": [
+        {
+          "table": "forum_users",
+          "field": "user_name",
+          "line": 15
+        }
+      ],
+      "related_conditions": [
+        {
+          "start_line": 51,
+          "end_line": 134,
+          "condition": "( sessionUsername != null)"
+        }
+      ],
+      "parameter_ids": [
+        "forum/profile.jsp:LCP18"
+      ],
+      "function_ids": []
+    },
+    {
+      "path": "forum/profile.jsp",
+      "kind": "conditional",
+      "start_line": 51,
+      "end_line": 134,
+      "condition": "( sessionUsername != null)",
+      "terminations": [],
+      "code": "<% if( sessionUsername != null){%>\r\n\t<table width=\"100%\" height=\"20\" border=\"0\" cellpadding=\"1\" cellspacing=\"1\">\r\n\t\t<tr> \r\n\t\t\t<td height=\"20\" valign=\"top\" class=\"pathBar\">\r\n\t\t\t\t<a href=\"./index.jsp\" class=\"pathBarLink\"><%= Variable.getForumName() %></a>\r\n\t\t\t\t<span class=\"pathBarSeperator\"> > </span>\r\n\t\t\t\t<a href=\"./index.jsp?page=profile\" class=\"pathBarLink\">Profile</a>\r\n\t\t\t</td>\r\n\t\t</tr>\r\n\t</table>   \r\n\t<jsp:include page=\"./include/table_start.jsp\" flush=\"true\" />        \r\n\t<jsp:include page=\"./include/table_title.jsp\" flush=\"true\">\r\n\t\t<jsp:param name=\"title\" value=\"Your Profile\" /> \r\n\t\t<jsp:param name=\"colspan\" value=\"2\" /> \r\n\t\t<jsp:param name=\"align\" value=\"left\" /> \r\n\t</jsp:include>\t    \r\n\t<jsp:include page=\"./include/table_start_body.jsp\" flush=\"true\" />\r\n\t<jsp:include page=\"./include/table_body.jsp\" flush=\"true\">\r\n\t\t<jsp:param name=\"width\" value=\"0\" /> \r\n\t</jsp:include>\r\n\t<b>Change Avatar:</b>\r\n\t<form action=\"../servlet/forum.ChangeProfile\" method=\"POST\" name=\"profile\">\r\n\r\n\t<jsp:include page=\"./include/avatars.jsp\" flush=\"true\" />\r\n\t<img src=\"<%= avatar %>\" name=\"img\" width=\"65\" height=\"65\" border=\"0\" hspace=\"15\">\r\n\t<br>\r\n\t<br>\r\n\t<b>Link to avatar</b>\r\n\t<br>\r\n\tThe following file types are allowed:\r\n\t<br>\r\n\t<i>.gif .jpeg .jpg .png</i>\r\n\t<br>\r\n\t<input type=\"text\" name=\"link_avatar\" value=\"<%= avatar %>\" size=\"30\">\r\n\t<jsp:include page=\"./include/table_body.jsp\" flush=\"true\">\r\n\t\t<jsp:param name=\"width\" value=\"0\" /> \r\n\t</jsp:include>\r\n\t<b>Custom member title:</b>\r\n\t<br>\r\n\t<input type=\"text\" name=\"member_title\" value=\"<%= member_title %>\" maxlenght=\"30\" size=\"30\">\r\n\t<br>\r\n\t<br>\r\n\t<b>Signature:</b>\r\n\t<br>\r\n\t<textarea name=\"signature\" maxlenght=\"1000\" cols=\"23\" rows=\"5\"><%= signature %></textarea>\r\n\t<br>\r\n\t<jsp:include page=\"./include/table_close_body.jsp\" flush=\"true\" />\t\t\r\n\t<jsp:include page=\"./include/table_start_body.jsp\" flush=\"true\" />\r\n\t<jsp:include page=\"./include/table_body.jsp\" flush=\"true\">\r\n\t\t<jsp:param name=\"width\" value=\"0\" /> \r\n\t</jsp:include>\r\n\t<input type=\"submit\" value=\"Change\">\r\n\t</form>\r\n\t<jsp:include page=\"./include/table_body.jsp\" flush=\"true\">\r\n\t\t<jsp:param name=\"width\" value=\"0\" /> \r\n\t</jsp:include>\r\n\t<jsp:include page=\"./include/table_close_body.jsp\" flush=\"true\" />\t\r\n\t<jsp:include page=\"./include/table_start_title.jsp\" flush=\"true\" />\r\n\t<jsp:include page=\"./include/table_title.jsp\" flush=\"true\">\r\n\t\t<jsp:param name=\"title\" value=\"<a href=javascript:history.go(-1);>back</a>\" /> \r\n\t\t<jsp:param name=\"colspan\" value=\"2\" /> \r\n\t\t<jsp:param name=\"align\" value=\"left\" /> \r\n\t</jsp:include>\r\n\t<jsp:include page=\"./include/table_close.jsp\" flush=\"true\" />\r\n\r\n<% }else { %>\r\n\t<br>\r\n\t<jsp:include page=\"./include/table_start.jsp\" flush=\"true\" /> \r\n\t<jsp:include page=\"./include/table_title.jsp\" flush=\"true\">\r\n\t\t<jsp:param name=\"title\" value=\"Error\" /> \r\n\t\t<jsp:param name=\"colspan\" value=\"1\" /> \r\n\t\t<jsp:param name=\"align\" value=\"left\" /> \r\n\t</jsp:include>\t\t\t\t\t\t\r\n\t<jsp:include page=\"./include/table_start_body.jsp\" flush=\"true\" />\r\n\t<jsp:include page=\"./include/table_body.jsp\" flush=\"true\">\r\n\t\t<jsp:param name=\"width\" value=\"200\" /> \r\n\t</jsp:include>\r\n\tYou have to login first !\r\n\t<br>\r\n\t<br>\r\n\t<a href=\"./register.jsp\">Register</a>\r\n\t<jsp:include page=\"./include/table_close_body.jsp\" flush=\"true\" />\t\t\t\t \r\n\t<jsp:include page=\"./include/table_close.jsp\" flush=\"true\" />\r\n<% } %>",
+      "parameter_ids": [
+        "forum/profile.jsp:LCP18"
+      ],
+      "function_ids": []
+    },
+    {
+      "path": "forum/thread.jsp",
+      "kind": "conditional",
+      "start_line": 61,
+      "end_line": 67,
+      "condition": "(sessionType.equals(\"Admin\"))",
+      "terminations": [],
+      "code": "<% if(sessionType.equals(\"Admin\")){ %>\r\n\t\t<jsp:include page=\"./include/table_title.jsp\" flush=\"true\">\r\n\t\t\t<jsp:param name=\"title\" value=\"Delete Message\" /> \r\n\t\t\t<jsp:param name=\"colspan\" value=\"1\" /> \r\n\t\t\t<jsp:param name=\"align\" value=\"middle\" /> \r\n\t\t</jsp:include>\r\n\t<% } %>",
+      "parameter_ids": [
+        "forum/thread.jsp:LCP20"
+      ],
+      "function_ids": [],
+      "semantic_evidence": [
+        {
+          "kind": "java_jsp_session_admin_role",
+          "line": 61,
+          "condition": "(sessionType.equals(\"Admin\"))"
+        }
+      ]
+    },
+    {
+      "path": "forum/thread.jsp",
+      "kind": "conditional",
+      "start_line": 115,
+      "end_line": 120,
+      "condition": "(sessionType.equals(\"Admin\"))",
+      "terminations": [],
+      "code": "<% if(sessionType.equals(\"Admin\")){ %>\r\n\t\t\t\t<jsp:include page=\"./include/table_body.jsp\" flush=\"true\">\r\n\t\t\t\t\t<jsp:param name=\"width\" value=\"0\" /> \r\n\t\t\t\t</jsp:include>\r\n\t\t\t\t<a href=\"../servlet/forum.DeleteThread?forum_id=<%= forum_id %>&thread_id=<%= thread_id %>\">Delete</a>\r\n\t\t\t<% } %>",
+      "parameter_ids": [
+        "forum/thread.jsp:LCP20"
+      ],
+      "function_ids": [],
+      "semantic_evidence": [
+        {
+          "kind": "java_jsp_session_admin_role",
+          "line": 115,
+          "condition": "(sessionType.equals(\"Admin\"))"
+        }
+      ]
+    }
+  ]
+}

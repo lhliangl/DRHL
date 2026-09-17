@@ -1,0 +1,300 @@
+{
+  "nodes": [
+    "WEB-INF/ajaxEntryList.jsp",
+    "WEB-INF/error.jsp",
+    "WEB-INF/jwaBlogger.jsp",
+    "WEB-INF/templates/jwaBlogger.jsp",
+    "WEB-INF/templates/jwaBlogger2.jsp",
+    "WEB-INF/templates/jwaBloggerRS.jsp",
+    "WEB-INF/templates/simpleBlogger.jsp",
+    "index.jsp",
+    "java/jwaBlogger/src/jwaBlogger/BlogEntry.java",
+    "java/jwaBlogger/src/jwaBlogger/BlogEntryComment.java",
+    "java/jwaBlogger/src/jwaBlogger/BlogEntryText.java",
+    "java/jwaBlogger/src/jwaBlogger/BlogManager.java",
+    "java/jwaBlogger/src/jwaBlogger/CloudEntry.java",
+    "java/jwaBlogger/src/jwaBlogger/CountIterator.java",
+    "java/jwaBlogger/src/jwaBlogger/CountListIterator.java",
+    "java/jwaBlogger/src/jwaBlogger/HtmlValidator.java",
+    "java/jwaBlogger/src/jwaBlogger/JerichoParser.java",
+    "java/jwaBlogger/src/jwaBlogger/User.java",
+    "java/jwaBlogger/src/jwaBlogger/WebAppInterface.java",
+    "java/jwaBlogger/src/jwaBlogger/instrumented/jwaBlogger/BlogEntry.java",
+    "java/jwaBlogger/src/jwaBlogger/instrumented/jwaBlogger/BlogEntryComment.java",
+    "java/jwaBlogger/src/jwaBlogger/instrumented/jwaBlogger/BlogEntryText.java",
+    "java/jwaBlogger/src/jwaBlogger/instrumented/jwaBlogger/BlogManager.java",
+    "java/jwaBlogger/src/jwaBlogger/instrumented/jwaBlogger/CloudEntry.java",
+    "java/jwaBlogger/src/jwaBlogger/instrumented/jwaBlogger/CountIterator.java",
+    "java/jwaBlogger/src/jwaBlogger/instrumented/jwaBlogger/CountListIterator.java",
+    "java/jwaBlogger/src/jwaBlogger/instrumented/jwaBlogger/HtmlValidator.java",
+    "java/jwaBlogger/src/jwaBlogger/instrumented/jwaBlogger/JerichoParser.java",
+    "java/jwaBlogger/src/jwaBlogger/instrumented/jwaBlogger/User.java",
+    "java/jwaBlogger/src/jwaBlogger/instrumented/jwaBlogger/WebAppInterface.java",
+    "java/jwaBlogger/src/jwaBlogger/instrumented/jwaBlogger/webApp/AppUtils.java",
+    "java/jwaBlogger/src/jwaBlogger/instrumented/jwaBlogger/webApp/Blogger.java",
+    "java/jwaBlogger/src/jwaBlogger/webApp/AppUtils.java",
+    "java/jwaBlogger/src/jwaBlogger/webApp/Blogger.java"
+  ],
+  "edges": [
+    {
+      "from": "java/jwaBlogger/src/jwaBlogger/WebAppInterface.java",
+      "to": "java/jwaBlogger/src/jwaBlogger/BlogEntry.java"
+    },
+    {
+      "from": "java/jwaBlogger/src/jwaBlogger/WebAppInterface.java",
+      "to": "java/jwaBlogger/src/jwaBlogger/BlogEntryComment.java"
+    },
+    {
+      "from": "java/jwaBlogger/src/jwaBlogger/WebAppInterface.java",
+      "to": "java/jwaBlogger/src/jwaBlogger/BlogEntryText.java"
+    },
+    {
+      "from": "java/jwaBlogger/src/jwaBlogger/WebAppInterface.java",
+      "to": "java/jwaBlogger/src/jwaBlogger/BlogManager.java"
+    },
+    {
+      "from": "java/jwaBlogger/src/jwaBlogger/WebAppInterface.java",
+      "to": "java/jwaBlogger/src/jwaBlogger/CountIterator.java"
+    },
+    {
+      "from": "java/jwaBlogger/src/jwaBlogger/WebAppInterface.java",
+      "to": "java/jwaBlogger/src/jwaBlogger/CountListIterator.java"
+    },
+    {
+      "from": "java/jwaBlogger/src/jwaBlogger/WebAppInterface.java",
+      "to": "java/jwaBlogger/src/jwaBlogger/User.java"
+    },
+    {
+      "from": "java/jwaBlogger/src/jwaBlogger/WebAppInterface.java",
+      "to": "java/jwaBlogger/src/jwaBlogger/instrumented/jwaBlogger/BlogEntry.java"
+    },
+    {
+      "from": "java/jwaBlogger/src/jwaBlogger/WebAppInterface.java",
+      "to": "java/jwaBlogger/src/jwaBlogger/instrumented/jwaBlogger/BlogEntryComment.java"
+    },
+    {
+      "from": "java/jwaBlogger/src/jwaBlogger/WebAppInterface.java",
+      "to": "java/jwaBlogger/src/jwaBlogger/instrumented/jwaBlogger/BlogEntryText.java"
+    },
+    {
+      "from": "java/jwaBlogger/src/jwaBlogger/WebAppInterface.java",
+      "to": "java/jwaBlogger/src/jwaBlogger/instrumented/jwaBlogger/BlogManager.java"
+    },
+    {
+      "from": "java/jwaBlogger/src/jwaBlogger/WebAppInterface.java",
+      "to": "java/jwaBlogger/src/jwaBlogger/instrumented/jwaBlogger/CountIterator.java"
+    },
+    {
+      "from": "java/jwaBlogger/src/jwaBlogger/WebAppInterface.java",
+      "to": "java/jwaBlogger/src/jwaBlogger/instrumented/jwaBlogger/CountListIterator.java"
+    },
+    {
+      "from": "java/jwaBlogger/src/jwaBlogger/WebAppInterface.java",
+      "to": "java/jwaBlogger/src/jwaBlogger/instrumented/jwaBlogger/User.java"
+    },
+    {
+      "from": "java/jwaBlogger/src/jwaBlogger/instrumented/jwaBlogger/WebAppInterface.java",
+      "to": "java/jwaBlogger/src/jwaBlogger/BlogEntry.java"
+    },
+    {
+      "from": "java/jwaBlogger/src/jwaBlogger/instrumented/jwaBlogger/WebAppInterface.java",
+      "to": "java/jwaBlogger/src/jwaBlogger/BlogEntryComment.java"
+    },
+    {
+      "from": "java/jwaBlogger/src/jwaBlogger/instrumented/jwaBlogger/WebAppInterface.java",
+      "to": "java/jwaBlogger/src/jwaBlogger/BlogEntryText.java"
+    },
+    {
+      "from": "java/jwaBlogger/src/jwaBlogger/instrumented/jwaBlogger/WebAppInterface.java",
+      "to": "java/jwaBlogger/src/jwaBlogger/BlogManager.java"
+    },
+    {
+      "from": "java/jwaBlogger/src/jwaBlogger/instrumented/jwaBlogger/WebAppInterface.java",
+      "to": "java/jwaBlogger/src/jwaBlogger/CountIterator.java"
+    },
+    {
+      "from": "java/jwaBlogger/src/jwaBlogger/instrumented/jwaBlogger/WebAppInterface.java",
+      "to": "java/jwaBlogger/src/jwaBlogger/CountListIterator.java"
+    },
+    {
+      "from": "java/jwaBlogger/src/jwaBlogger/instrumented/jwaBlogger/WebAppInterface.java",
+      "to": "java/jwaBlogger/src/jwaBlogger/User.java"
+    },
+    {
+      "from": "java/jwaBlogger/src/jwaBlogger/instrumented/jwaBlogger/WebAppInterface.java",
+      "to": "java/jwaBlogger/src/jwaBlogger/instrumented/jwaBlogger/BlogEntry.java"
+    },
+    {
+      "from": "java/jwaBlogger/src/jwaBlogger/instrumented/jwaBlogger/WebAppInterface.java",
+      "to": "java/jwaBlogger/src/jwaBlogger/instrumented/jwaBlogger/BlogEntryComment.java"
+    },
+    {
+      "from": "java/jwaBlogger/src/jwaBlogger/instrumented/jwaBlogger/WebAppInterface.java",
+      "to": "java/jwaBlogger/src/jwaBlogger/instrumented/jwaBlogger/BlogEntryText.java"
+    },
+    {
+      "from": "java/jwaBlogger/src/jwaBlogger/instrumented/jwaBlogger/WebAppInterface.java",
+      "to": "java/jwaBlogger/src/jwaBlogger/instrumented/jwaBlogger/BlogManager.java"
+    },
+    {
+      "from": "java/jwaBlogger/src/jwaBlogger/instrumented/jwaBlogger/WebAppInterface.java",
+      "to": "java/jwaBlogger/src/jwaBlogger/instrumented/jwaBlogger/CountIterator.java"
+    },
+    {
+      "from": "java/jwaBlogger/src/jwaBlogger/instrumented/jwaBlogger/WebAppInterface.java",
+      "to": "java/jwaBlogger/src/jwaBlogger/instrumented/jwaBlogger/CountListIterator.java"
+    },
+    {
+      "from": "java/jwaBlogger/src/jwaBlogger/instrumented/jwaBlogger/WebAppInterface.java",
+      "to": "java/jwaBlogger/src/jwaBlogger/instrumented/jwaBlogger/User.java"
+    },
+    {
+      "from": "java/jwaBlogger/src/jwaBlogger/instrumented/jwaBlogger/webApp/AppUtils.java",
+      "to": "java/jwaBlogger/src/jwaBlogger/BlogManager.java"
+    },
+    {
+      "from": "java/jwaBlogger/src/jwaBlogger/instrumented/jwaBlogger/webApp/AppUtils.java",
+      "to": "java/jwaBlogger/src/jwaBlogger/instrumented/jwaBlogger/BlogManager.java"
+    },
+    {
+      "from": "java/jwaBlogger/src/jwaBlogger/instrumented/jwaBlogger/webApp/Blogger.java",
+      "to": "java/jwaBlogger/src/jwaBlogger/BlogEntry.java"
+    },
+    {
+      "from": "java/jwaBlogger/src/jwaBlogger/instrumented/jwaBlogger/webApp/Blogger.java",
+      "to": "java/jwaBlogger/src/jwaBlogger/BlogEntryComment.java"
+    },
+    {
+      "from": "java/jwaBlogger/src/jwaBlogger/instrumented/jwaBlogger/webApp/Blogger.java",
+      "to": "java/jwaBlogger/src/jwaBlogger/BlogManager.java"
+    },
+    {
+      "from": "java/jwaBlogger/src/jwaBlogger/instrumented/jwaBlogger/webApp/Blogger.java",
+      "to": "java/jwaBlogger/src/jwaBlogger/User.java"
+    },
+    {
+      "from": "java/jwaBlogger/src/jwaBlogger/instrumented/jwaBlogger/webApp/Blogger.java",
+      "to": "java/jwaBlogger/src/jwaBlogger/WebAppInterface.java"
+    },
+    {
+      "from": "java/jwaBlogger/src/jwaBlogger/instrumented/jwaBlogger/webApp/Blogger.java",
+      "to": "java/jwaBlogger/src/jwaBlogger/instrumented/jwaBlogger/BlogEntry.java"
+    },
+    {
+      "from": "java/jwaBlogger/src/jwaBlogger/instrumented/jwaBlogger/webApp/Blogger.java",
+      "to": "java/jwaBlogger/src/jwaBlogger/instrumented/jwaBlogger/BlogEntryComment.java"
+    },
+    {
+      "from": "java/jwaBlogger/src/jwaBlogger/instrumented/jwaBlogger/webApp/Blogger.java",
+      "to": "java/jwaBlogger/src/jwaBlogger/instrumented/jwaBlogger/BlogManager.java"
+    },
+    {
+      "from": "java/jwaBlogger/src/jwaBlogger/instrumented/jwaBlogger/webApp/Blogger.java",
+      "to": "java/jwaBlogger/src/jwaBlogger/instrumented/jwaBlogger/User.java"
+    },
+    {
+      "from": "java/jwaBlogger/src/jwaBlogger/instrumented/jwaBlogger/webApp/Blogger.java",
+      "to": "java/jwaBlogger/src/jwaBlogger/instrumented/jwaBlogger/WebAppInterface.java"
+    },
+    {
+      "from": "java/jwaBlogger/src/jwaBlogger/webApp/AppUtils.java",
+      "to": "java/jwaBlogger/src/jwaBlogger/BlogManager.java"
+    },
+    {
+      "from": "java/jwaBlogger/src/jwaBlogger/webApp/AppUtils.java",
+      "to": "java/jwaBlogger/src/jwaBlogger/instrumented/jwaBlogger/BlogManager.java"
+    },
+    {
+      "from": "java/jwaBlogger/src/jwaBlogger/webApp/Blogger.java",
+      "to": "java/jwaBlogger/src/jwaBlogger/BlogEntry.java"
+    },
+    {
+      "from": "java/jwaBlogger/src/jwaBlogger/webApp/Blogger.java",
+      "to": "java/jwaBlogger/src/jwaBlogger/BlogEntryComment.java"
+    },
+    {
+      "from": "java/jwaBlogger/src/jwaBlogger/webApp/Blogger.java",
+      "to": "java/jwaBlogger/src/jwaBlogger/BlogManager.java"
+    },
+    {
+      "from": "java/jwaBlogger/src/jwaBlogger/webApp/Blogger.java",
+      "to": "java/jwaBlogger/src/jwaBlogger/User.java"
+    },
+    {
+      "from": "java/jwaBlogger/src/jwaBlogger/webApp/Blogger.java",
+      "to": "java/jwaBlogger/src/jwaBlogger/WebAppInterface.java"
+    },
+    {
+      "from": "java/jwaBlogger/src/jwaBlogger/webApp/Blogger.java",
+      "to": "java/jwaBlogger/src/jwaBlogger/instrumented/jwaBlogger/BlogEntry.java"
+    },
+    {
+      "from": "java/jwaBlogger/src/jwaBlogger/webApp/Blogger.java",
+      "to": "java/jwaBlogger/src/jwaBlogger/instrumented/jwaBlogger/BlogEntryComment.java"
+    },
+    {
+      "from": "java/jwaBlogger/src/jwaBlogger/webApp/Blogger.java",
+      "to": "java/jwaBlogger/src/jwaBlogger/instrumented/jwaBlogger/BlogManager.java"
+    },
+    {
+      "from": "java/jwaBlogger/src/jwaBlogger/webApp/Blogger.java",
+      "to": "java/jwaBlogger/src/jwaBlogger/instrumented/jwaBlogger/User.java"
+    },
+    {
+      "from": "java/jwaBlogger/src/jwaBlogger/webApp/Blogger.java",
+      "to": "java/jwaBlogger/src/jwaBlogger/instrumented/jwaBlogger/WebAppInterface.java"
+    }
+  ],
+  "url_to_source": {
+    "WEB-INF/ajaxEntryList.jsp": "WEB-INF/ajaxEntryList.jsp",
+    "WEB-INF/error.jsp": "WEB-INF/error.jsp",
+    "WEB-INF/jwaBlogger.jsp": "WEB-INF/jwaBlogger.jsp",
+    "WEB-INF/templates/jwaBlogger.jsp": "WEB-INF/templates/jwaBlogger.jsp",
+    "WEB-INF/templates/jwaBlogger2.jsp": "WEB-INF/templates/jwaBlogger2.jsp",
+    "WEB-INF/templates/jwaBloggerRS.jsp": "WEB-INF/templates/jwaBloggerRS.jsp",
+    "WEB-INF/templates/simpleBlogger.jsp": "WEB-INF/templates/simpleBlogger.jsp",
+    "index.jsp": "index.jsp"
+  },
+  "classifications": {
+    "observed": [],
+    "internal_reachable": [],
+    "public_unobserved": [
+      "WEB-INF/ajaxEntryList.jsp",
+      "WEB-INF/error.jsp",
+      "WEB-INF/jwaBlogger.jsp",
+      "WEB-INF/templates/jwaBlogger.jsp",
+      "WEB-INF/templates/jwaBlogger2.jsp",
+      "WEB-INF/templates/jwaBloggerRS.jsp",
+      "WEB-INF/templates/simpleBlogger.jsp",
+      "index.jsp"
+    ],
+    "support_unreachable": [
+      "java/jwaBlogger/src/jwaBlogger/BlogEntry.java",
+      "java/jwaBlogger/src/jwaBlogger/BlogEntryComment.java",
+      "java/jwaBlogger/src/jwaBlogger/BlogEntryText.java",
+      "java/jwaBlogger/src/jwaBlogger/BlogManager.java",
+      "java/jwaBlogger/src/jwaBlogger/CloudEntry.java",
+      "java/jwaBlogger/src/jwaBlogger/CountIterator.java",
+      "java/jwaBlogger/src/jwaBlogger/CountListIterator.java",
+      "java/jwaBlogger/src/jwaBlogger/HtmlValidator.java",
+      "java/jwaBlogger/src/jwaBlogger/JerichoParser.java",
+      "java/jwaBlogger/src/jwaBlogger/User.java",
+      "java/jwaBlogger/src/jwaBlogger/WebAppInterface.java",
+      "java/jwaBlogger/src/jwaBlogger/instrumented/jwaBlogger/BlogEntry.java",
+      "java/jwaBlogger/src/jwaBlogger/instrumented/jwaBlogger/BlogEntryComment.java",
+      "java/jwaBlogger/src/jwaBlogger/instrumented/jwaBlogger/BlogEntryText.java",
+      "java/jwaBlogger/src/jwaBlogger/instrumented/jwaBlogger/BlogManager.java",
+      "java/jwaBlogger/src/jwaBlogger/instrumented/jwaBlogger/CloudEntry.java",
+      "java/jwaBlogger/src/jwaBlogger/instrumented/jwaBlogger/CountIterator.java",
+      "java/jwaBlogger/src/jwaBlogger/instrumented/jwaBlogger/CountListIterator.java",
+      "java/jwaBlogger/src/jwaBlogger/instrumented/jwaBlogger/HtmlValidator.java",
+      "java/jwaBlogger/src/jwaBlogger/instrumented/jwaBlogger/JerichoParser.java",
+      "java/jwaBlogger/src/jwaBlogger/instrumented/jwaBlogger/User.java",
+      "java/jwaBlogger/src/jwaBlogger/instrumented/jwaBlogger/WebAppInterface.java",
+      "java/jwaBlogger/src/jwaBlogger/instrumented/jwaBlogger/webApp/AppUtils.java",
+      "java/jwaBlogger/src/jwaBlogger/instrumented/jwaBlogger/webApp/Blogger.java",
+      "java/jwaBlogger/src/jwaBlogger/webApp/AppUtils.java",
+      "java/jwaBlogger/src/jwaBlogger/webApp/Blogger.java"
+    ]
+  }
+}

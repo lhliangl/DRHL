@@ -1,0 +1,28 @@
+{
+  "status": "completed",
+  "started_at": "2026-09-10T02:53:17.686676+00:00",
+  "config": "D:\\project\\python\\DRHL\\configs\\jsforum.json",
+  "artifacts": {
+    "dynamic_graph": "D:\\project\\python\\DRHL\\runs\\jsforum\\graphs\\dynamic.json",
+    "static_graph": "D:\\project\\python\\DRHL\\runs\\jsforum\\graphs\\static.json",
+    "candidate_parameters": "D:\\project\\python\\DRHL\\runs\\jsforum\\source\\candidate_parameters.json",
+    "candidate_functions": "D:\\project\\python\\DRHL\\runs\\jsforum\\source\\candidate_functions.json",
+    "access_control_parameters": "D:\\project\\python\\DRHL\\runs\\jsforum\\source\\parameters.json",
+    "access_control_functions": "D:\\project\\python\\DRHL\\runs\\jsforum\\source\\functions.json",
+    "access_control_snippets": "D:\\project\\python\\DRHL\\runs\\jsforum\\source\\snippets.json",
+    "llm_access_control_snippets": "D:\\project\\python\\DRHL\\runs\\jsforum\\source\\llm_snippets.json",
+    "fused_graph": "D:\\project\\python\\DRHL\\runs\\jsforum\\graphs\\fused.json",
+    "graph_summary": "D:\\project\\python\\DRHL\\runs\\jsforum\\graphs\\summary.json",
+    "graph_summary_csv": "D:\\project\\python\\DRHL\\runs\\jsforum\\graphs\\summary.csv",
+    "attack_vectors": "D:\\project\\python\\DRHL\\runs\\jsforum\\analysis\\vectors.json",
+    "findings": "D:\\project\\python\\DRHL\\runs\\jsforum\\analysis\\findings.json",
+    "repairs": "D:\\project\\python\\DRHL\\runs\\jsforum\\repair\\manifest.json",
+    "repair_report": "D:\\project\\python\\DRHL\\runs\\jsforum\\repair\\repair_report.md",
+    "metrics_json": "D:\\project\\python\\DRHL\\runs\\jsforum\\metrics\\summary.json",
+    "metrics_csv": "D:\\project\\python\\DRHL\\runs\\jsforum\\metrics\\summary.csv"
+  },
+  "finished_at": "2026-09-10T02:54:15.647857+00:00",
+  "repair_only_finished_at": "2026-09-11T08:26:36.563291+00:00",
+  "repair_rerun_started_at": "2026-09-13T02:12:23.933360+00:00",
+  "repair_rerun_finished_at": "2026-09-13T02:24:24.174295+00:00"
+}

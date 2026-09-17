@@ -1,0 +1,874 @@
+{
+  "nodes": [
+    "addsession.php",
+    "comments.php",
+    "comments.php?comment_id=p1",
+    "editpaper.php",
+    "editpaper.php?paper_id=p1",
+    "editsession.php?action=confirmdelete&session_id=p1",
+    "editsession.php?action=delete&session_id=p1",
+    "editsession.php?session_id=p1",
+    "forgot.php",
+    "generaloptions.php",
+    "getpaper.php?paper_id=p1",
+    "index.php",
+    "login.php",
+    "login.php?referer=p1",
+    "register.php",
+    "showpaper.php?paper_id=p1",
+    "showsessions.php",
+    "useroptions.php"
+  ],
+  "edges": [
+    {
+      "from": "addsession.php",
+      "to": "addsession.php"
+    },
+    {
+      "from": "addsession.php",
+      "to": "editpaper.php"
+    },
+    {
+      "from": "comments.php",
+      "to": "comments.php?comment_id=p1"
+    },
+    {
+      "from": "comments.php?comment_id=p1",
+      "to": "register.php"
+    },
+    {
+      "from": "editpaper.php",
+      "to": "editpaper.php"
+    },
+    {
+      "from": "editpaper.php?paper_id=p1",
+      "to": "editpaper.php?paper_id=p1"
+    },
+    {
+      "from": "editsession.php?action=delete&session_id=p1",
+      "to": "editsession.php?action=confirmdelete&session_id=p1"
+    },
+    {
+      "from": "editsession.php?action=delete&session_id=p1",
+      "to": "editsession.php?session_id=p1"
+    },
+    {
+      "from": "editsession.php?session_id=p1",
+      "to": "editsession.php?session_id=p1"
+    },
+    {
+      "from": "forgot.php",
+      "to": "forgot.php"
+    },
+    {
+      "from": "generaloptions.php",
+      "to": "comments.php"
+    },
+    {
+      "from": "generaloptions.php",
+      "to": "generaloptions.php"
+    },
+    {
+      "from": "getpaper.php?paper_id=p1",
+      "to": "forgot.php"
+    },
+    {
+      "from": "getpaper.php?paper_id=p1",
+      "to": "showsessions.php"
+    },
+    {
+      "from": "index.php",
+      "to": "editsession.php?action=delete&session_id=p1"
+    },
+    {
+      "from": "index.php",
+      "to": "showpaper.php?paper_id=p1"
+    },
+    {
+      "from": "login.php",
+      "to": "addsession.php"
+    },
+    {
+      "from": "login.php",
+      "to": "forgot.php"
+    },
+    {
+      "from": "login.php",
+      "to": "login.php"
+    },
+    {
+      "from": "login.php",
+      "to": "login.php?referer=p1"
+    },
+    {
+      "from": "login.php?referer=p1",
+      "to": "forgot.php"
+    },
+    {
+      "from": "login.php?referer=p1",
+      "to": "login.php"
+    },
+    {
+      "from": "login.php?referer=p1",
+      "to": "register.php"
+    },
+    {
+      "from": "register.php",
+      "to": "login.php"
+    },
+    {
+      "from": "register.php",
+      "to": "register.php"
+    },
+    {
+      "from": "register.php",
+      "to": "showsessions.php"
+    },
+    {
+      "from": "showpaper.php?paper_id=p1",
+      "to": "editpaper.php?paper_id=p1"
+    },
+    {
+      "from": "showpaper.php?paper_id=p1",
+      "to": "getpaper.php?paper_id=p1"
+    },
+    {
+      "from": "showpaper.php?paper_id=p1",
+      "to": "login.php"
+    },
+    {
+      "from": "showpaper.php?paper_id=p1",
+      "to": "showpaper.php?paper_id=p1"
+    },
+    {
+      "from": "showpaper.php?paper_id=p1",
+      "to": "useroptions.php"
+    },
+    {
+      "from": "useroptions.php",
+      "to": "generaloptions.php"
+    },
+    {
+      "from": "useroptions.php",
+      "to": "showsessions.php"
+    },
+    {
+      "from": "useroptions.php",
+      "to": "useroptions.php"
+    }
+  ],
+  "access": {
+    "addsession.php": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "POST",
+          "params": {
+            "name": "text_8d97f530",
+            "chair": "250",
+            "month": "0",
+            "day": "0",
+            "year": "value_e3d88d1b",
+            "starthour": "-1",
+            "startminute": "-1",
+            "endhour": "-1",
+            "endminute": "-1",
+            "submit": "Add Session"
+          },
+          "referer": "addsession.php"
+        }
+      ]
+    },
+    "comments.php": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {},
+          "referer": "generaloptions.php"
+        }
+      ]
+    },
+    "comments.php?comment_id=p1": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {
+            "comment_id": "215"
+          },
+          "referer": "comments.php"
+        }
+      ]
+    },
+    "editpaper.php": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "POST",
+          "params": {
+            "title": "text_ea1fbc3c",
+            "abstract": "value_d493d6b7",
+            "authors[]": "250",
+            "MAX_FILE_SIZE": "100000000",
+            "session": "111",
+            "submit": "Add Paper"
+          },
+          "referer": "editpaper.php"
+        }
+      ]
+    },
+    "editpaper.php?paper_id=p1": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "POST",
+          "params": {
+            "title": "sad",
+            "abstract": "zxc",
+            "authors[]": "250",
+            "MAX_FILE_SIZE": "100000000",
+            "session": "106",
+            "submit": "Save Changes",
+            "paper_id": "122"
+          },
+          "referer": "editpaper.php?paper_id=p1"
+        }
+      ]
+    },
+    "editsession.php?action=confirmdelete&session_id=p1": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {
+            "session_id": "106",
+            "action": "confirmdelete"
+          },
+          "referer": "editsession.php?action=delete&session_id=p1"
+        }
+      ]
+    },
+    "editsession.php?action=delete&session_id=p1": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {
+            "session_id": "106",
+            "action": "delete"
+          },
+          "referer": "index.php"
+        }
+      ]
+    },
+    "editsession.php?session_id=p1": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "POST",
+          "params": {
+            "name": "b4XeAS",
+            "chair": "250",
+            "month": "12",
+            "day": "31",
+            "year": "2000",
+            "starthour": "22",
+            "startminute": "-1",
+            "endhour": "22",
+            "endminute": "-1",
+            "120": "1",
+            "92": "2",
+            "121": "1",
+            "122": "1",
+            "submit": "Save Session"
+          },
+          "referer": "editsession.php?session_id=p1"
+        }
+      ]
+    },
+    "forgot.php": {
+      "roles": [
+        "admin",
+        "visitor"
+      ],
+      "kinds": [
+        "admin",
+        "visitor"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "POST",
+          "params": {
+            "email": "drhl_aa92a48e@example.test"
+          },
+          "referer": "forgot.php"
+        },
+        {
+          "role": "visitor",
+          "kind": "visitor",
+          "method": "POST",
+          "params": {
+            "email": "drhl_aa92a48e@example.test"
+          },
+          "referer": "forgot.php"
+        }
+      ]
+    },
+    "generaloptions.php": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "POST",
+          "params": {
+            "250_email": "sUtK5cZF@qq.com",
+            "250_firstname": "NtISmy",
+            "250_lastname": "FzCDUQ",
+            "250_affiliation": "CUHw0H",
+            "250_privilege": "user",
+            "250_showemail": "on",
+            "130_email": "1592108346@qq.com",
+            "130_firstname": "ZK9lgV",
+            "130_lastname": "JRMNgH",
+            "130_affiliation": "7SUetl",
+            "130_privilege": "user",
+            "130_showemail": "on",
+            "142_email": "1629081457@qq.com",
+            "142_firstname": "kns1JH",
+            "142_lastname": "K5ArIu",
+            "142_affiliation": "mZfiIg",
+            "142_privilege": "user",
+            "142_showemail": "on",
+            "136_email": "1085936217@qq.com",
+            "136_firstname": "obkBYH",
+            "136_lastname": "L7oZUu",
+            "136_affiliation": "tbsdHW",
+            "136_privilege": "user",
+            "136_showemail": "on",
+            "135_email": "1895034162@qq.com",
+            "135_firstname": "AvH6lU",
+            "135_lastname": "LpjCax",
+            "135_affiliation": "zegAGi",
+            "135_privilege": "user",
+            "135_showemail": "on",
+            "247_email": "8219307645@qq.com",
+            "247_firstname": "7Mmvcp",
+            "247_lastname": "lPm64f",
+            "247_affiliation": "f70Oa9",
+            "247_privilege": "user",
+            "247_showemail": "on",
+            "232_email": "admin1@qq.com",
+            "232_firstname": "EJ5w2T",
+            "232_lastname": "OpXet7",
+            "232_affiliation": "qEMany",
+            "232_privilege": "admin",
+            "232_showemail": "on",
+            "235_email": "3967452180@qq.com",
+            "235_firstname": "bP3B67",
+            "235_lastname": "p3cE06",
+            "235_affiliation": "8SeV7p",
+            "235_privilege": "user",
+            "235_showemail": "on",
+            "188_email": "5136908427@qq.com",
+            "188_firstname": "YRCcOn",
+            "188_lastname": "pYIe2x",
+            "188_affiliation": "zRf4UE",
+            "188_privilege": "user",
+            "188_showemail": "on",
+            "241_email": "user2@qq.com",
+            "241_firstname": "ZM0nos",
+            "241_lastname": "qDpUGk",
+            "241_affiliation": "SWGkTI",
+            "241_privilege": "user",
+            "241_showemail": "on",
+            "242_email": "0135924678@qq.com",
+            "242_firstname": "paZPKn",
+            "242_lastname": "QFdPmT",
+            "242_affiliation": "IQxvOF",
+            "242_privilege": "user",
+            "242_showemail": "on",
+            "210_email": "5412963780@qq.com",
+            "210_firstname": "1MUIG9",
+            "210_lastname": "Qs6vV1",
+            "210_affiliation": "L8VgEq",
+            "210_privilege": "user",
+            "210_showemail": "on",
+            "182_email": "9642031857@qq.com",
+            "182_firstname": "Ouy4pC",
+            "182_lastname": "rJDsFq",
+            "182_affiliation": "mNUHDl",
+            "182_privilege": "user",
+            "182_showemail": "on",
+            "243_email": "4130582976@qq.com",
+            "243_firstname": "znKDCh",
+            "243_lastname": "SdwICh",
+            "243_affiliation": "aZedWN",
+            "243_privilege": "user",
+            "243_showemail": "on",
+            "233_email": "5023698174@qq.com",
+            "233_firstname": "JwTSLY",
+            "233_lastname": "SlYPjI",
+            "233_affiliation": "DPdyTw",
+            "233_privilege": "user",
+            "233_showemail": "on",
+            "245_email": "user1@qq.com",
+            "245_firstname": "vcl9KE",
+            "245_lastname": "Sq1pUy",
+            "245_affiliation": "2hSbiq",
+            "245_privilege": "user",
+            "245_showemail": "on",
+            "183_email": "7204518639@qq.com",
+            "183_firstname": "xjtzDh",
+            "183_lastname": "VFQp23",
+            "183_affiliation": "XxhMcO",
+            "183_privilege": "user",
+            "183_showemail": "on",
+            "140_email": "1085623791@qq.com",
+            "140_firstname": "Uij4H8",
+            "140_lastname": "VR8Kbh",
+            "140_affiliation": "Wq6miw",
+            "140_privilege": "user",
+            "140_showemail": "on",
+            "244_email": "4082917365@qq.com",
+            "244_firstname": "AVhlZU",
+            "244_lastname": "XaAqyP",
+            "244_affiliation": "goXsh8",
+            "244_privilege": "user",
+            "244_showemail": "on",
+            "249_email": "C4hjPNbe@qq.com",
+            "249_firstname": "6RuF6m",
+            "249_lastname": "xIHgIM",
+            "249_affiliation": "yJ0Q50",
+            "249_privilege": "user",
+            "249_showemail": "on",
+            "216_email": "zaproxy@example.com",
+            "216_firstname": "ZAP",
+            "216_lastname": "ZAP",
+            "216_affiliation": "ZAP",
+            "216_privilege": "user",
+            "216_showemail": "on",
+            "184_email": "9781620345@qq.com",
+            "184_firstname": "8xPpeY",
+            "184_lastname": "zDmT1Z",
+            "184_affiliation": "85La9f",
+            "184_privilege": "user",
+            "184_showemail": "on",
+            "159_email": "1095214786@qq.com",
+            "159_firstname": "6oBtch",
+            "159_lastname": "zO8uPY",
+            "159_affiliation": "oznBCh",
+            "159_privilege": "user",
+            "159_showemail": "on",
+            "237_email": "8361947250@qq.com",
+            "237_firstname": "Xgjpao",
+            "237_lastname": "zQlRxK",
+            "237_affiliation": "UbyR63",
+            "237_privilege": "user",
+            "237_showemail": "on",
+            "usersubmit": "Save Changes to Users"
+          },
+          "referer": "generaloptions.php"
+        }
+      ]
+    },
+    "getpaper.php?paper_id=p1": {
+      "roles": [
+        "admin",
+        "user1",
+        "user2",
+        "visitor"
+      ],
+      "kinds": [
+        "admin",
+        "user",
+        "visitor"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {
+            "paper_id": "122"
+          },
+          "referer": "showpaper.php?paper_id=p1"
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "paper_id": "122"
+          },
+          "referer": "showpaper.php?paper_id=p1"
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "paper_id": "122"
+          },
+          "referer": "showpaper.php?paper_id=p1"
+        },
+        {
+          "role": "visitor",
+          "kind": "visitor",
+          "method": "GET",
+          "params": {
+            "paper_id": "122"
+          },
+          "referer": "showpaper.php?paper_id=p1"
+        }
+      ]
+    },
+    "index.php": {
+      "roles": [
+        "admin",
+        "user1",
+        "user2",
+        "visitor"
+      ],
+      "kinds": [
+        "admin",
+        "user",
+        "visitor"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {},
+          "referer": null
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "GET",
+          "params": {},
+          "referer": null
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "GET",
+          "params": {},
+          "referer": null
+        },
+        {
+          "role": "visitor",
+          "kind": "visitor",
+          "method": "GET",
+          "params": {},
+          "referer": null
+        }
+      ]
+    },
+    "login.php": {
+      "roles": [
+        "admin",
+        "visitor"
+      ],
+      "kinds": [
+        "admin",
+        "visitor"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "POST",
+          "params": {
+            "email": "drhl_779d2765@example.test",
+            "password": "12345678"
+          },
+          "referer": "login.php"
+        },
+        {
+          "role": "visitor",
+          "kind": "visitor",
+          "method": "POST",
+          "params": {
+            "email": "drhl_779d2765@example.test",
+            "password": "12345678"
+          },
+          "referer": "login.php?referer=p1"
+        }
+      ]
+    },
+    "login.php?referer=p1": {
+      "roles": [
+        "visitor"
+      ],
+      "kinds": [
+        "visitor"
+      ],
+      "requests": [
+        {
+          "role": "visitor",
+          "kind": "visitor",
+          "method": "GET",
+          "params": {
+            "referer": "/scarf/login.php"
+          },
+          "referer": "login.php"
+        }
+      ]
+    },
+    "register.php": {
+      "roles": [
+        "admin",
+        "visitor"
+      ],
+      "kinds": [
+        "admin",
+        "visitor"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "POST",
+          "params": {
+            "email": "drhl_453eef81@example.test",
+            "firstname": "text_e981ba58",
+            "lastname": "text_921b3966",
+            "affiliation": "org_417c4edf"
+          },
+          "referer": "register.php"
+        },
+        {
+          "role": "visitor",
+          "kind": "visitor",
+          "method": "POST",
+          "params": {
+            "email": "drhl_453eef81@example.test",
+            "email2": "drhl_e3bed029@example.test",
+            "firstname": "text_e981ba58",
+            "lastname": "text_921b3966",
+            "affiliation": "org_417c4edf"
+          },
+          "referer": "register.php"
+        }
+      ]
+    },
+    "showpaper.php?paper_id=p1": {
+      "roles": [
+        "admin",
+        "user1",
+        "user2",
+        "visitor"
+      ],
+      "kinds": [
+        "admin",
+        "user",
+        "visitor"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "POST",
+          "params": {
+            "comment": "comment_8c41fb83",
+            "submit": "Leave a Comment"
+          },
+          "referer": "showpaper.php?paper_id=p1"
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "POST",
+          "params": {
+            "comment": "comment_8c41fb83",
+            "submit": "Leave a Comment"
+          },
+          "referer": "showpaper.php?paper_id=p1"
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "POST",
+          "params": {
+            "comment": "comment_8c41fb83",
+            "submit": "Leave a Comment"
+          },
+          "referer": "showpaper.php?paper_id=p1"
+        },
+        {
+          "role": "visitor",
+          "kind": "visitor",
+          "method": "GET",
+          "params": {
+            "paper_id": "122"
+          },
+          "referer": "index.php"
+        }
+      ]
+    },
+    "showsessions.php": {
+      "roles": [
+        "user1",
+        "user2",
+        "visitor"
+      ],
+      "kinds": [
+        "user",
+        "visitor"
+      ],
+      "requests": [
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "GET",
+          "params": {},
+          "referer": "useroptions.php"
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "GET",
+          "params": {},
+          "referer": "useroptions.php"
+        },
+        {
+          "role": "visitor",
+          "kind": "visitor",
+          "method": "GET",
+          "params": {},
+          "referer": "register.php"
+        }
+      ]
+    },
+    "useroptions.php": {
+      "roles": [
+        "admin",
+        "user1",
+        "user2"
+      ],
+      "kinds": [
+        "admin",
+        "user"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "POST",
+          "params": {
+            "email": "admin1@qq.com",
+            "email2": "drhl_b67d0476@example.test",
+            "firstname": "EJ5w2T",
+            "lastname": "OpXet7",
+            "showemail": "on",
+            "affiliation": "qEMany",
+            "password": "12345678",
+            "password2": "12345678",
+            "submit": "Save changes"
+          },
+          "referer": "useroptions.php"
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "POST",
+          "params": {
+            "email": "user1@qq.com",
+            "email2": "drhl_b67d0476@example.test",
+            "firstname": "vcl9KE",
+            "lastname": "Sq1pUy",
+            "showemail": "on",
+            "affiliation": "2hSbiq",
+            "password": "12345678",
+            "password2": "12345678",
+            "submit": "Save changes"
+          },
+          "referer": "useroptions.php"
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "POST",
+          "params": {
+            "email": "user2@qq.com",
+            "email2": "drhl_b67d0476@example.test",
+            "firstname": "ZM0nos",
+            "lastname": "qDpUGk",
+            "showemail": "on",
+            "affiliation": "SWGkTI",
+            "password": "12345678",
+            "password2": "12345678",
+            "submit": "Save changes"
+          },
+          "referer": "useroptions.php"
+        }
+      ]
+    }
+  }
+}

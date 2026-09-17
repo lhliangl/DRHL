@@ -1,0 +1,1221 @@
+{
+  "nodes": [
+    "blogger",
+    "blogger/entries?c=activity",
+    "blogger/entries?c=fresh",
+    "blogger/entries?c=popular",
+    "blogger/entries?c=rising",
+    "blogger/entries?c=search",
+    "blogger/entries?c=voting",
+    "blogger/login",
+    "blogger/register",
+    "blogger/saveComment",
+    "blogger/saveEntry",
+    "blogger/search",
+    "blogger/search?article=p1&author=p1&description=p1&searchString=p1&tags=p1&title=p1",
+    "blogger/search?author=p1&searchString=p1",
+    "blogger/search?searchString=p1&tags=p1",
+    "blogger/viewEntry/5444/drhl_test_entry.html",
+    "blogger/viewEntry/5444/drhl_test_entry.html?c=entry",
+    "blogger?c=entry",
+    "blogger?c=register"
+  ],
+  "edges": [
+    {
+      "from": "blogger",
+      "to": "blogger/login"
+    },
+    {
+      "from": "blogger",
+      "to": "blogger/search"
+    },
+    {
+      "from": "blogger",
+      "to": "blogger/search?searchString=p1&tags=p1"
+    },
+    {
+      "from": "blogger/entries?c=activity",
+      "to": "blogger/entries?c=voting"
+    },
+    {
+      "from": "blogger/entries?c=activity",
+      "to": "blogger/login"
+    },
+    {
+      "from": "blogger/entries?c=activity",
+      "to": "blogger/search"
+    },
+    {
+      "from": "blogger/entries?c=fresh",
+      "to": "blogger/login"
+    },
+    {
+      "from": "blogger/entries?c=fresh",
+      "to": "blogger/search"
+    },
+    {
+      "from": "blogger/entries?c=fresh",
+      "to": "blogger?c=register"
+    },
+    {
+      "from": "blogger/entries?c=popular",
+      "to": "blogger/entries?c=rising"
+    },
+    {
+      "from": "blogger/entries?c=popular",
+      "to": "blogger/login"
+    },
+    {
+      "from": "blogger/entries?c=popular",
+      "to": "blogger/search"
+    },
+    {
+      "from": "blogger/entries?c=rising",
+      "to": "blogger/entries?c=fresh"
+    },
+    {
+      "from": "blogger/entries?c=rising",
+      "to": "blogger/login"
+    },
+    {
+      "from": "blogger/entries?c=rising",
+      "to": "blogger/search"
+    },
+    {
+      "from": "blogger/entries?c=search",
+      "to": "blogger/login"
+    },
+    {
+      "from": "blogger/entries?c=search",
+      "to": "blogger/search"
+    },
+    {
+      "from": "blogger/entries?c=voting",
+      "to": "blogger/entries?c=popular"
+    },
+    {
+      "from": "blogger/entries?c=voting",
+      "to": "blogger/login"
+    },
+    {
+      "from": "blogger/entries?c=voting",
+      "to": "blogger/search"
+    },
+    {
+      "from": "blogger/register",
+      "to": "blogger/login"
+    },
+    {
+      "from": "blogger/register",
+      "to": "blogger/register"
+    },
+    {
+      "from": "blogger/register",
+      "to": "blogger/search"
+    },
+    {
+      "from": "blogger/saveComment",
+      "to": "blogger/saveComment"
+    },
+    {
+      "from": "blogger/saveComment",
+      "to": "blogger/search"
+    },
+    {
+      "from": "blogger/saveComment",
+      "to": "blogger/viewEntry/5444/drhl_test_entry.html"
+    },
+    {
+      "from": "blogger/saveEntry",
+      "to": "blogger/entries?c=activity"
+    },
+    {
+      "from": "blogger/saveEntry",
+      "to": "blogger/saveComment"
+    },
+    {
+      "from": "blogger/saveEntry",
+      "to": "blogger/saveEntry"
+    },
+    {
+      "from": "blogger/saveEntry",
+      "to": "blogger/search"
+    },
+    {
+      "from": "blogger/saveEntry",
+      "to": "blogger?c=entry"
+    },
+    {
+      "from": "blogger/search",
+      "to": "blogger"
+    },
+    {
+      "from": "blogger/search",
+      "to": "blogger/entries?c=search"
+    },
+    {
+      "from": "blogger/search",
+      "to": "blogger/search?article=p1&author=p1&description=p1&searchString=p1&tags=p1&title=p1"
+    },
+    {
+      "from": "blogger/search",
+      "to": "blogger/viewEntry/5444/drhl_test_entry.html"
+    },
+    {
+      "from": "blogger/search",
+      "to": "blogger?c=entry"
+    },
+    {
+      "from": "blogger/search?article=p1&author=p1&description=p1&searchString=p1&tags=p1&title=p1",
+      "to": "blogger/login"
+    },
+    {
+      "from": "blogger/search?article=p1&author=p1&description=p1&searchString=p1&tags=p1&title=p1",
+      "to": "blogger/search"
+    },
+    {
+      "from": "blogger/search?author=p1&searchString=p1",
+      "to": "blogger/search"
+    },
+    {
+      "from": "blogger/search?author=p1&searchString=p1",
+      "to": "blogger/search?searchString=p1&tags=p1"
+    },
+    {
+      "from": "blogger/search?searchString=p1&tags=p1",
+      "to": "blogger/entries?c=activity"
+    },
+    {
+      "from": "blogger/search?searchString=p1&tags=p1",
+      "to": "blogger/entries?c=search"
+    },
+    {
+      "from": "blogger/search?searchString=p1&tags=p1",
+      "to": "blogger/login"
+    },
+    {
+      "from": "blogger/search?searchString=p1&tags=p1",
+      "to": "blogger/search"
+    },
+    {
+      "from": "blogger/search?searchString=p1&tags=p1",
+      "to": "blogger?c=entry"
+    },
+    {
+      "from": "blogger/search?searchString=p1&tags=p1",
+      "to": "blogger?c=register"
+    },
+    {
+      "from": "blogger/viewEntry/5444/drhl_test_entry.html",
+      "to": "blogger/saveComment"
+    },
+    {
+      "from": "blogger/viewEntry/5444/drhl_test_entry.html",
+      "to": "blogger/search"
+    },
+    {
+      "from": "blogger/viewEntry/5444/drhl_test_entry.html",
+      "to": "blogger/viewEntry/5444/drhl_test_entry.html?c=entry"
+    },
+    {
+      "from": "blogger/viewEntry/5444/drhl_test_entry.html?c=entry",
+      "to": "blogger/saveEntry"
+    },
+    {
+      "from": "blogger/viewEntry/5444/drhl_test_entry.html?c=entry",
+      "to": "blogger/search"
+    },
+    {
+      "from": "blogger?c=entry",
+      "to": "blogger/saveEntry"
+    },
+    {
+      "from": "blogger?c=entry",
+      "to": "blogger/search"
+    },
+    {
+      "from": "blogger?c=entry",
+      "to": "blogger/viewEntry/5444/drhl_test_entry.html?c=entry"
+    },
+    {
+      "from": "blogger?c=register",
+      "to": "blogger/entries?c=activity"
+    },
+    {
+      "from": "blogger?c=register",
+      "to": "blogger/login"
+    },
+    {
+      "from": "blogger?c=register",
+      "to": "blogger/register"
+    },
+    {
+      "from": "blogger?c=register",
+      "to": "blogger/search"
+    },
+    {
+      "from": "blogger?c=register",
+      "to": "blogger/viewEntry/5444/drhl_test_entry.html"
+    }
+  ],
+  "access": {
+    "blogger": {
+      "roles": [
+        "admin",
+        "user1",
+        "user2",
+        "visitor"
+      ],
+      "kinds": [
+        "admin",
+        "user",
+        "visitor"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {},
+          "referer": null
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "GET",
+          "params": {},
+          "referer": null
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "GET",
+          "params": {},
+          "referer": null
+        },
+        {
+          "role": "visitor",
+          "kind": "visitor",
+          "method": "GET",
+          "params": {},
+          "referer": null
+        }
+      ]
+    },
+    "blogger/entries?c=activity": {
+      "roles": [
+        "admin",
+        "user1",
+        "user2",
+        "visitor"
+      ],
+      "kinds": [
+        "admin",
+        "user",
+        "visitor"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {
+            "c": "activity"
+          },
+          "referer": "blogger/saveEntry"
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "c": "activity"
+          },
+          "referer": "blogger/search?searchString=p1&tags=p1"
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "c": "activity"
+          },
+          "referer": "blogger/search?searchString=p1&tags=p1"
+        },
+        {
+          "role": "visitor",
+          "kind": "visitor",
+          "method": "GET",
+          "params": {
+            "c": "activity"
+          },
+          "referer": "blogger?c=register"
+        }
+      ]
+    },
+    "blogger/entries?c=fresh": {
+      "roles": [
+        "admin",
+        "user1",
+        "user2",
+        "visitor"
+      ],
+      "kinds": [
+        "admin",
+        "user",
+        "visitor"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {
+            "c": "fresh"
+          },
+          "referer": "blogger/entries?c=rising"
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "c": "fresh"
+          },
+          "referer": "blogger/entries?c=rising"
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "c": "fresh"
+          },
+          "referer": "blogger/entries?c=rising"
+        },
+        {
+          "role": "visitor",
+          "kind": "visitor",
+          "method": "GET",
+          "params": {
+            "c": "fresh"
+          },
+          "referer": "blogger/entries?c=rising"
+        }
+      ]
+    },
+    "blogger/entries?c=popular": {
+      "roles": [
+        "admin",
+        "user1",
+        "user2",
+        "visitor"
+      ],
+      "kinds": [
+        "admin",
+        "user",
+        "visitor"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {
+            "c": "popular"
+          },
+          "referer": "blogger/entries?c=voting"
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "c": "popular"
+          },
+          "referer": "blogger/entries?c=voting"
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "c": "popular"
+          },
+          "referer": "blogger/entries?c=voting"
+        },
+        {
+          "role": "visitor",
+          "kind": "visitor",
+          "method": "GET",
+          "params": {
+            "c": "popular"
+          },
+          "referer": "blogger/entries?c=voting"
+        }
+      ]
+    },
+    "blogger/entries?c=rising": {
+      "roles": [
+        "admin",
+        "user1",
+        "user2",
+        "visitor"
+      ],
+      "kinds": [
+        "admin",
+        "user",
+        "visitor"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {
+            "c": "rising"
+          },
+          "referer": "blogger/entries?c=popular"
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "c": "rising"
+          },
+          "referer": "blogger/entries?c=popular"
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "c": "rising"
+          },
+          "referer": "blogger/entries?c=popular"
+        },
+        {
+          "role": "visitor",
+          "kind": "visitor",
+          "method": "GET",
+          "params": {
+            "c": "rising"
+          },
+          "referer": "blogger/entries?c=popular"
+        }
+      ]
+    },
+    "blogger/entries?c=search": {
+      "roles": [
+        "admin",
+        "user1",
+        "user2",
+        "visitor"
+      ],
+      "kinds": [
+        "admin",
+        "user",
+        "visitor"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {
+            "c": "search",
+            "pageSize": "10",
+            "page": "2"
+          },
+          "referer": "blogger/search?searchString=p1&tags=p1"
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "c": "search",
+            "pageSize": "10",
+            "page": "2"
+          },
+          "referer": "blogger/search?searchString=p1&tags=p1"
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "c": "search",
+            "pageSize": "10",
+            "page": "2"
+          },
+          "referer": "blogger/search?searchString=p1&tags=p1"
+        },
+        {
+          "role": "visitor",
+          "kind": "visitor",
+          "method": "GET",
+          "params": {
+            "c": "search",
+            "pageSize": "10",
+            "page": "2"
+          },
+          "referer": "blogger/search?searchString=p1&tags=p1"
+        }
+      ]
+    },
+    "blogger/entries?c=voting": {
+      "roles": [
+        "admin",
+        "user1",
+        "user2",
+        "visitor"
+      ],
+      "kinds": [
+        "admin",
+        "user",
+        "visitor"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {
+            "c": "voting"
+          },
+          "referer": "blogger/entries?c=activity"
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "c": "voting"
+          },
+          "referer": "blogger/entries?c=activity"
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "c": "voting"
+          },
+          "referer": "blogger/entries?c=activity"
+        },
+        {
+          "role": "visitor",
+          "kind": "visitor",
+          "method": "GET",
+          "params": {
+            "c": "voting"
+          },
+          "referer": "blogger/entries?c=activity"
+        }
+      ]
+    },
+    "blogger/login": {
+      "roles": [
+        "visitor"
+      ],
+      "kinds": [
+        "visitor"
+      ],
+      "requests": [
+        {
+          "role": "visitor",
+          "kind": "visitor",
+          "method": "POST",
+          "params": {
+            "username": "admin",
+            "password": "admin"
+          },
+          "referer": "blogger"
+        }
+      ]
+    },
+    "blogger/register": {
+      "roles": [
+        "admin",
+        "user1",
+        "user2",
+        "visitor"
+      ],
+      "kinds": [
+        "admin",
+        "user",
+        "visitor"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "POST",
+          "params": {
+            "username": "admin",
+            "password": "admin",
+            "password2": "admin",
+            "firstName": "admin",
+            "lastName": "admin",
+            "email": "admin@localhost.com"
+          },
+          "referer": "blogger?c=register"
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "POST",
+          "params": {
+            "username": "user1",
+            "password": "admin",
+            "password2": "admin",
+            "firstName": "l",
+            "lastName": "hl",
+            "email": "user1@localhost.com"
+          },
+          "referer": "blogger?c=register"
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "POST",
+          "params": {
+            "username": "user2",
+            "password": "admin",
+            "password2": "admin",
+            "firstName": "zhang",
+            "lastName": "san",
+            "email": "user2@localhost.com"
+          },
+          "referer": "blogger?c=register"
+        },
+        {
+          "role": "visitor",
+          "kind": "visitor",
+          "method": "POST",
+          "params": {
+            "username": "admin",
+            "password": "admin",
+            "password2": "admin",
+            "firstName": "DRHL",
+            "lastName": "Tester",
+            "email": "drhl@example.test"
+          },
+          "referer": "blogger?c=register"
+        }
+      ]
+    },
+    "blogger/saveComment": {
+      "roles": [
+        "admin",
+        "user1",
+        "user2"
+      ],
+      "kinds": [
+        "admin",
+        "user"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "POST",
+          "params": {
+            "blogEntryId": "5444",
+            "internalName": "drhl_test_entry",
+            "author": "admin",
+            "commentText": "DRHL generated comment for access-control testing.",
+            "captchaId": "10",
+            "captchaAnswer": "test"
+          },
+          "referer": "blogger/viewEntry/5444/drhl_test_entry.html"
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "POST",
+          "params": {
+            "blogEntryId": "5444",
+            "internalName": "drhl_test_entry",
+            "author": "user1",
+            "commentText": "DRHL generated comment for access-control testing.",
+            "captchaId": "0",
+            "captchaAnswer": "test"
+          },
+          "referer": "blogger/viewEntry/5444/drhl_test_entry.html"
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "POST",
+          "params": {
+            "blogEntryId": "5444",
+            "internalName": "drhl_test_entry",
+            "author": "user2",
+            "commentText": "DRHL generated comment for access-control testing.",
+            "captchaId": "5",
+            "captchaAnswer": "test"
+          },
+          "referer": "blogger/viewEntry/5444/drhl_test_entry.html"
+        }
+      ]
+    },
+    "blogger/saveEntry": {
+      "roles": [
+        "admin",
+        "user1",
+        "user2"
+      ],
+      "kinds": [
+        "admin",
+        "user"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "POST",
+          "params": {
+            "blogEntryId": "5444",
+            "title": "DRHL Test Entry",
+            "tags": "drhl security",
+            "description": "DRHL generated entry for access-control testing.",
+            "externalUrl": "http://",
+            "blogText": "DRHL generated blog body for access-control testing.",
+            "isVisible": "true",
+            "hasComments": "true",
+            "hasAnonymousComments": "true",
+            "save": "Save Entry"
+          },
+          "referer": "blogger/viewEntry/5444/drhl_test_entry.html?c=entry"
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "POST",
+          "params": {
+            "blogEntryId": "5444",
+            "title": "DRHL Test Entry",
+            "tags": "drhl security",
+            "description": "DRHL generated entry for access-control testing.",
+            "externalUrl": "http://",
+            "blogText": "DRHL generated blog body for access-control testing.",
+            "isVisible": "true",
+            "hasComments": "true",
+            "hasAnonymousComments": "true",
+            "save": "Save Entry"
+          },
+          "referer": "blogger/viewEntry/5444/drhl_test_entry.html?c=entry"
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "POST",
+          "params": {
+            "blogEntryId": "1",
+            "title": "DRHL Test Entry",
+            "tags": "drhl security",
+            "description": "DRHL generated entry for access-control testing.",
+            "externalUrl": "http://",
+            "blogText": "DRHL generated blog body for access-control testing.",
+            "isVisible": "true",
+            "save": "Save Entry"
+          },
+          "referer": "blogger?c=entry"
+        }
+      ]
+    },
+    "blogger/search": {
+      "roles": [
+        "admin",
+        "user1",
+        "user2",
+        "visitor"
+      ],
+      "kinds": [
+        "admin",
+        "user",
+        "visitor"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {
+            "searchString": "value_51186217",
+            "tags": "y",
+            "title": "y",
+            "author": "y",
+            "description": "y",
+            "article": "y"
+          },
+          "referer": "blogger"
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "searchString": "value_51186217",
+            "tags": "y",
+            "title": "y",
+            "author": "y",
+            "description": "y",
+            "article": "y"
+          },
+          "referer": "blogger"
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "searchString": "value_51186217"
+          },
+          "referer": "blogger"
+        },
+        {
+          "role": "visitor",
+          "kind": "visitor",
+          "method": "GET",
+          "params": {
+            "searchString": "value_51186217",
+            "tags": "y",
+            "title": "y",
+            "author": "y",
+            "description": "y",
+            "article": "y"
+          },
+          "referer": "blogger/entries?c=search"
+        }
+      ]
+    },
+    "blogger/search?article=p1&author=p1&description=p1&searchString=p1&tags=p1&title=p1": {
+      "roles": [
+        "admin",
+        "user1",
+        "user2",
+        "visitor"
+      ],
+      "kinds": [
+        "admin",
+        "user",
+        "visitor"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {
+            "searchString": "'admin'",
+            "tags": "y",
+            "title": "y",
+            "author": "y",
+            "description": "y",
+            "article": "y"
+          },
+          "referer": "blogger/search?author=p1&searchString=p1"
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "searchString": "'user1'",
+            "tags": "y",
+            "title": "y",
+            "author": "y",
+            "description": "y",
+            "article": "y"
+          },
+          "referer": "blogger/search?author=p1&searchString=p1"
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "searchString": "'user2'",
+            "tags": "y",
+            "title": "y",
+            "author": "y",
+            "description": "y",
+            "article": "y"
+          },
+          "referer": "blogger/search?author=p1&searchString=p1"
+        },
+        {
+          "role": "visitor",
+          "kind": "visitor",
+          "method": "GET",
+          "params": {
+            "searchString": "value_51186217",
+            "tags": "y",
+            "title": "y",
+            "author": "y",
+            "description": "y",
+            "article": "y"
+          },
+          "referer": "blogger"
+        }
+      ]
+    },
+    "blogger/search?author=p1&searchString=p1": {
+      "roles": [
+        "admin",
+        "user1",
+        "user2"
+      ],
+      "kinds": [
+        "admin",
+        "user"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {
+            "searchString": "'admin'",
+            "author": "y"
+          },
+          "referer": null
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "searchString": "'user1'",
+            "author": "y"
+          },
+          "referer": null
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "searchString": "'user2'",
+            "author": "y"
+          },
+          "referer": null
+        }
+      ]
+    },
+    "blogger/search?searchString=p1&tags=p1": {
+      "roles": [
+        "admin",
+        "user1",
+        "user2",
+        "visitor"
+      ],
+      "kinds": [
+        "admin",
+        "user",
+        "visitor"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {
+            "searchString": "'Software Sensation'",
+            "tags": "y"
+          },
+          "referer": "blogger/search?author=p1&searchString=p1"
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "searchString": "'Software Sensation'",
+            "tags": "y"
+          },
+          "referer": "blogger/search?author=p1&searchString=p1"
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "searchString": "'Software Sensation'",
+            "tags": "y"
+          },
+          "referer": "blogger/search?author=p1&searchString=p1"
+        },
+        {
+          "role": "visitor",
+          "kind": "visitor",
+          "method": "GET",
+          "params": {
+            "searchString": "'Software Sensation'",
+            "tags": "y"
+          },
+          "referer": "blogger"
+        }
+      ]
+    },
+    "blogger/viewEntry/5444/drhl_test_entry.html": {
+      "roles": [
+        "admin",
+        "user1",
+        "user2"
+      ],
+      "kinds": [
+        "admin",
+        "user"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {},
+          "referer": "blogger?c=register"
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "GET",
+          "params": {},
+          "referer": "blogger?c=register"
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "GET",
+          "params": {},
+          "referer": "blogger?c=register"
+        }
+      ]
+    },
+    "blogger/viewEntry/5444/drhl_test_entry.html?c=entry": {
+      "roles": [
+        "admin",
+        "user1"
+      ],
+      "kinds": [
+        "admin",
+        "user"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {
+            "c": "entry"
+          },
+          "referer": "blogger/viewEntry/5444/drhl_test_entry.html"
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "c": "entry"
+          },
+          "referer": "blogger?c=entry"
+        }
+      ]
+    },
+    "blogger?c=entry": {
+      "roles": [
+        "admin",
+        "user1",
+        "user2"
+      ],
+      "kinds": [
+        "admin",
+        "user"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {
+            "c": "entry"
+          },
+          "referer": "blogger/search?searchString=p1&tags=p1"
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "c": "entry"
+          },
+          "referer": null
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "c": "entry"
+          },
+          "referer": null
+        }
+      ]
+    },
+    "blogger?c=register": {
+      "roles": [
+        "admin",
+        "user1",
+        "user2",
+        "visitor"
+      ],
+      "kinds": [
+        "admin",
+        "user",
+        "visitor"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {
+            "c": "register"
+          },
+          "referer": "blogger/entries?c=fresh"
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "c": "register"
+          },
+          "referer": "blogger/entries?c=fresh"
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "c": "register"
+          },
+          "referer": "blogger/entries?c=fresh"
+        },
+        {
+          "role": "visitor",
+          "kind": "visitor",
+          "method": "GET",
+          "params": {
+            "c": "register"
+          },
+          "referer": "blogger/search?searchString=p1&tags=p1"
+        }
+      ]
+    }
+  }
+}

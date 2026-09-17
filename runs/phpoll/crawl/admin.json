@@ -1,0 +1,175 @@
+{
+  "role": "admin",
+  "kind": "admin",
+  "nodes": [
+    "admin/band_editor.php",
+    "admin/config_editor.php",
+    "admin/index.php",
+    "admin/modifica_band.php",
+    "admin/modifica_configurazione.php",
+    "admin/modifica_votanti.php",
+    "admin/risultati_config.php",
+    "admin/votanti.php",
+    "cookies/elabora_voto_mail.php",
+    "phpoll.php",
+    "risultati.php"
+  ],
+  "edges": [
+    {
+      "from": "admin/band_editor.php",
+      "to": "admin/config_editor.php"
+    },
+    {
+      "from": "admin/band_editor.php",
+      "to": "admin/modifica_band.php"
+    },
+    {
+      "from": "admin/config_editor.php",
+      "to": "admin/modifica_configurazione.php"
+    },
+    {
+      "from": "admin/modifica_band.php",
+      "to": "admin/band_editor.php"
+    },
+    {
+      "from": "admin/modifica_configurazione.php",
+      "to": "admin/config_editor.php"
+    },
+    {
+      "from": "admin/modifica_votanti.php",
+      "to": "admin/votanti.php"
+    },
+    {
+      "from": "admin/risultati_config.php",
+      "to": "admin/votanti.php"
+    },
+    {
+      "from": "admin/votanti.php",
+      "to": "admin/band_editor.php"
+    },
+    {
+      "from": "admin/votanti.php",
+      "to": "admin/modifica_votanti.php"
+    },
+    {
+      "from": "admin/votanti.php",
+      "to": "admin/votanti.php"
+    },
+    {
+      "from": "cookies/elabora_voto_mail.php",
+      "to": "risultati.php"
+    },
+    {
+      "from": "phpoll.php",
+      "to": "cookies/elabora_voto_mail.php"
+    }
+  ],
+  "requests": {
+    "admin/risultati_config.php": {
+      "method": "GET",
+      "params": {
+        "language": "2"
+      },
+      "referer": null
+    },
+    "admin/config_editor.php": {
+      "method": "GET",
+      "params": {},
+      "referer": null
+    },
+    "admin/elabora_cookie.php": {
+      "method": "POST",
+      "params": {
+        "log": "admin3",
+        "pw": "123456"
+      },
+      "referer": null
+    },
+    "admin/votanti.php": {
+      "method": "POST",
+      "params": {
+        "indietro_di": "day",
+        "candidate": "--- ALL ---"
+      },
+      "referer": "admin/votanti.php"
+    },
+    "admin/modifica_votanti.php": {
+      "method": "POST",
+      "params": {
+        "checkall": "on"
+      },
+      "referer": "admin/votanti.php"
+    },
+    "admin/band_editor.php": {
+      "method": "GET",
+      "params": {
+        "language": "2"
+      },
+      "referer": "admin/votanti.php"
+    },
+    "admin/modifica_band.php": {
+      "method": "POST",
+      "params": {
+        "nome_band_0": "value_7720ffa9",
+        "voti_0": "0",
+        "check_0": "on",
+        "id_0": "67"
+      },
+      "referer": "admin/band_editor.php"
+    },
+    "admin/modifica_configurazione.php": {
+      "method": "POST",
+      "params": {
+        "titolo_posizione": "khVdupYw",
+        "titolo_tipologia": "PcPlI7Kk",
+        "titolo_punteggio": "Q226OhVz",
+        "max_voti": "0",
+        "risultati_pixel": "1",
+        "barra1": "#000A1A",
+        "barra2": "#0EFC0C",
+        "barra3": "#040C00",
+        "barra4": "#55010E",
+        "intervallo_tempo": "0",
+        "percorso_link": "W2LyZv8a",
+        "oggetto_email": "eAtkck4c",
+        "testo_email": "jdwauiqddgIV7hFsEKJgwXqHeJ3qYrn1abFykI",
+        "domini": "m9MhKNOx",
+        "testo_submit": "eeN5lMQV",
+        "valid_email": "Rjfuo6ik",
+        "messaggio_conferma_mail": "esnaFXi2",
+        "messaggio_domini": "s2AJYwcN",
+        "messaggio_ip": "azcnQuju",
+        "messaggio_giavotato": "EZUSbRM1",
+        "messaggio_sgamo": "Cx293jNv",
+        "login": "admin3",
+        "password": "123456",
+        "old_login": "admin3",
+        "old_password": "123456"
+      },
+      "referer": "admin/config_editor.php"
+    },
+    "admin/index.php": {
+      "method": "GET",
+      "params": {},
+      "referer": null
+    },
+    "phpoll.php": {
+      "method": "GET",
+      "params": {},
+      "referer": null
+    },
+    "cookies/elabora_voto_mail.php": {
+      "method": "POST",
+      "params": {
+        "email": "drhl_6be992bf@example.test",
+        "submit_voto": "eeN5lMQV"
+      },
+      "referer": "phpoll.php"
+    },
+    "risultati.php": {
+      "method": "GET",
+      "params": {},
+      "referer": "phpoll.php"
+    }
+  }
+}

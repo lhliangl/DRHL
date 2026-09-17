@@ -1,0 +1,331 @@
+{
+  "parameters": [
+    {
+      "id": "forum/forum.jsp:LCP4",
+      "path": "forum/forum.jsp",
+      "expression": "sessionType",
+      "aliases": [
+        "sessionType",
+        "type"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 51,
+          "condition": "(sessionType.equals(\"Admin\"))"
+        },
+        {
+          "source": "conditional",
+          "line": 95,
+          "condition": "(sessionType.equals(\"Admin\"))"
+        },
+        {
+          "source": "conditional",
+          "line": 128,
+          "condition": "(sessionType.equals(\"Admin\"))"
+        }
+      ],
+      "condition_indexes": [
+        1,
+        2,
+        4
+      ],
+      "validation_evidence": [
+        {
+          "kind": "java_jsp_session_admin_role",
+          "line": 51,
+          "condition": "(sessionType.equals(\"Admin\"))"
+        },
+        {
+          "kind": "java_jsp_session_admin_role",
+          "line": 95,
+          "condition": "(sessionType.equals(\"Admin\"))"
+        },
+        {
+          "kind": "java_jsp_session_admin_role",
+          "line": 128,
+          "condition": "(sessionType.equals(\"Admin\"))"
+        }
+      ]
+    },
+    {
+      "id": "forum/message.jsp:LCP10",
+      "path": "forum/message.jsp",
+      "expression": "sessionType",
+      "aliases": [
+        "sessionType",
+        "type"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 62,
+          "condition": "(sessionType.equals(\"Admin\"))"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ],
+      "validation_evidence": [
+        {
+          "kind": "java_jsp_session_admin_role",
+          "line": 62,
+          "condition": "(sessionType.equals(\"Admin\"))"
+        }
+      ]
+    },
+    {
+      "id": "forum/message.jsp:LCP11",
+      "path": "forum/message.jsp",
+      "expression": "user",
+      "aliases": [
+        "user"
+      ],
+      "database_relations": [
+        {
+          "table": "forum_users",
+          "field": "user_name",
+          "line": 86
+        },
+        {
+          "table": "forum_message",
+          "field": "user",
+          "line": 86
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 69,
+          "condition": "(sessionUsername.equals(user))"
+        }
+      ],
+      "condition_indexes": [
+        2
+      ],
+      "validation_evidence": [
+        {
+          "kind": "database_field",
+          "table": "forum_users",
+          "field": "user_name",
+          "line": 86
+        },
+        {
+          "kind": "database_field",
+          "table": "forum_message",
+          "field": "user",
+          "line": 86
+        }
+      ]
+    },
+    {
+      "id": "forum/profile.jsp:LCP18",
+      "path": "forum/profile.jsp",
+      "expression": "sessionUsername",
+      "aliases": [
+        "sessionUsername",
+        "username"
+      ],
+      "database_relations": [
+        {
+          "table": "forum_users",
+          "field": "user_name",
+          "line": 15
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 51,
+          "condition": "( sessionUsername != null)"
+        }
+      ],
+      "condition_indexes": [
+        3
+      ],
+      "validation_evidence": [
+        {
+          "kind": "database_field",
+          "table": "forum_users",
+          "field": "user_name",
+          "line": 15
+        }
+      ]
+    },
+    {
+      "id": "forum/thread.jsp:LCP20",
+      "path": "forum/thread.jsp",
+      "expression": "sessionType",
+      "aliases": [
+        "sessionType",
+        "type"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 61,
+          "condition": "(sessionType.equals(\"Admin\"))"
+        },
+        {
+          "source": "conditional",
+          "line": 115,
+          "condition": "(sessionType.equals(\"Admin\"))"
+        }
+      ],
+      "condition_indexes": [
+        1,
+        2
+      ],
+      "validation_evidence": [
+        {
+          "kind": "java_jsp_session_admin_role",
+          "line": 61,
+          "condition": "(sessionType.equals(\"Admin\"))"
+        },
+        {
+          "kind": "java_jsp_session_admin_role",
+          "line": 115,
+          "condition": "(sessionType.equals(\"Admin\"))"
+        }
+      ]
+    },
+    {
+      "id": "WEB-INF/classes/forum/ChangeMessage.java:LCP27",
+      "path": "WEB-INF/classes/forum/ChangeMessage.java",
+      "expression": "sessionType",
+      "aliases": [
+        "sessionType",
+        "type"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 41,
+          "condition": "(sessionType.equals(\"Admin\"))"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ],
+      "validation_evidence": [
+        {
+          "kind": "java_jsp_session_admin_role",
+          "line": 41,
+          "condition": "(sessionType.equals(\"Admin\"))"
+        }
+      ]
+    },
+    {
+      "id": "WEB-INF/classes/forum/DeleteForum.java:LCP32",
+      "path": "WEB-INF/classes/forum/DeleteForum.java",
+      "expression": "sessionType",
+      "aliases": [
+        "sessionType",
+        "type"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 27,
+          "condition": "(sessionType.equals(\"Admin\"))"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ],
+      "validation_evidence": [
+        {
+          "kind": "java_jsp_session_admin_role",
+          "line": 27,
+          "condition": "(sessionType.equals(\"Admin\"))"
+        }
+      ]
+    },
+    {
+      "id": "WEB-INF/classes/forum/DeleteReply.java:LCP33",
+      "path": "WEB-INF/classes/forum/DeleteReply.java",
+      "expression": "sessionType",
+      "aliases": [
+        "sessionType",
+        "type"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 29,
+          "condition": "(sessionType.equals(\"Admin\"))"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ],
+      "validation_evidence": [
+        {
+          "kind": "java_jsp_session_admin_role",
+          "line": 29,
+          "condition": "(sessionType.equals(\"Admin\"))"
+        }
+      ]
+    },
+    {
+      "id": "WEB-INF/classes/forum/DeleteThread.java:LCP34",
+      "path": "WEB-INF/classes/forum/DeleteThread.java",
+      "expression": "sessionType",
+      "aliases": [
+        "sessionType",
+        "type"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 27,
+          "condition": "(sessionType.equals(\"Admin\"))"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ],
+      "validation_evidence": [
+        {
+          "kind": "java_jsp_session_admin_role",
+          "line": 27,
+          "condition": "(sessionType.equals(\"Admin\"))"
+        }
+      ]
+    }
+  ]
+}

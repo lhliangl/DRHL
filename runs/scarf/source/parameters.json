@@ -1,0 +1,157 @@
+{
+  "parameters": [
+    {
+      "id": "functions.php:LCP54",
+      "path": "functions.php",
+      "expression": "$_SESSION['privilege']",
+      "aliases": [
+        "$_SESSION['privilege']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 16,
+          "condition": "($_SESSION['privilege'] == 'admin')"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ],
+      "validation_evidence": [
+        {
+          "kind": "terminating_condition",
+          "line": 16,
+          "condition": "($_SESSION['privilege'] == 'admin')",
+          "terminations": [
+            {
+              "kind": "configured_denial",
+              "line": 16,
+              "code": "return TRUE;",
+              "denial_text": false
+            },
+            {
+              "kind": "configured_denial",
+              "line": 17,
+              "code": "return FALSE;",
+              "denial_text": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "functions.php:LCP58",
+      "path": "functions.php",
+      "expression": "$_SESSION['user_id']",
+      "aliases": [
+        "$_SESSION['user_id']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "database"
+      ],
+      "locations": [
+        {
+          "source": "database",
+          "line": 54,
+          "condition": "$_SESSION['user_id']"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ],
+      "validation_evidence": [
+        {
+          "kind": "php_session_identity_key",
+          "key": "user_id"
+        }
+      ]
+    },
+    {
+      "id": "generaloptions.php:LCP70",
+      "path": "generaloptions.php",
+      "expression": "$id",
+      "aliases": [
+        "$id",
+        "$row['user_id']",
+        "$temp[0]"
+      ],
+      "database_relations": [
+        {
+          "table": "users",
+          "field": "user_id",
+          "line": 36
+        },
+        {
+          "table": "",
+          "field": "name",
+          "line": 87
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 25,
+          "condition": "(is_numeric($id) && count($temp) == 2)"
+        }
+      ],
+      "condition_indexes": [
+        4
+      ],
+      "validation_evidence": [
+        {
+          "kind": "database_field",
+          "table": "users",
+          "field": "user_id",
+          "line": 36
+        }
+      ]
+    },
+    {
+      "id": "login.php:LCP86",
+      "path": "login.php",
+      "expression": "$_SESSION['user_id']",
+      "aliases": [
+        "$_SESSION['user_id']",
+        "$row['user_id']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "database"
+      ],
+      "locations": [
+        {
+          "source": "database",
+          "line": 1,
+          "condition": "$_SESSION['user_id']"
+        },
+        {
+          "source": "database",
+          "line": 19,
+          "condition": "$_SESSION['user_id']"
+        }
+      ],
+      "condition_indexes": [
+        0,
+        1
+      ],
+      "validation_evidence": [
+        {
+          "kind": "php_session_identity_key",
+          "key": "user_id"
+        },
+        {
+          "kind": "php_session_identity_key",
+          "key": "user_id"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,110 @@
+{
+  "functions": [
+    {
+      "id": "accounts/decorators.py:LCF2",
+      "path": "accounts/decorators.py",
+      "name": "student_required",
+      "parameters": [
+        "function=None",
+        "redirect_field_name=REDIRECT_FIELD_NAME",
+        "login_url=Http404"
+      ],
+      "body": "\"\"\"\n    Decorator for views that checks that the logged in user is a student,\n    redirects to the log-in page if necessary.\n    \"\"\"\n    actual_decorator = user_passes_test(\n        lambda u: u.is_active and u.is_student or u.is_superuser,\n        login_url=login_url,\n        redirect_field_name=redirect_field_name\n    )\n    if function:\n        return actual_decorator(function)\n    return actual_decorator",
+      "start_line": 6,
+      "end_line": 18,
+      "conditions": [
+        "u.is_active and u.is_student or u.is_superuser"
+      ],
+      "code": "def student_required(function=None, redirect_field_name=REDIRECT_FIELD_NAME, login_url=Http404):\n    \"\"\"\n    Decorator for views that checks that the logged in user is a student,\n    redirects to the log-in page if necessary.\n    \"\"\"\n    actual_decorator = user_passes_test(\n        lambda u: u.is_active and u.is_student or u.is_superuser,\n        login_url=login_url,\n        redirect_field_name=redirect_field_name\n    )\n    if function:\n        return actual_decorator(function)\n    return actual_decorator",
+      "parameter_ids": [
+        "accounts/decorators.py:LCP2",
+        "accounts/decorators.py:LCP3",
+        "accounts/decorators.py:LCP4",
+        "accounts/decorators.py:LCP5"
+      ],
+      "validation_evidence": [
+        "validated_parameter_condition",
+        "same_branch_termination"
+      ]
+    },
+    {
+      "id": "accounts/decorators.py:LCF3",
+      "path": "accounts/decorators.py",
+      "name": "lecturer_required",
+      "parameters": [
+        "function=None",
+        "redirect_field_name=REDIRECT_FIELD_NAME",
+        "login_url=Http404"
+      ],
+      "body": "\"\"\"\n    Decorator for views that checks that the logged in user is a teacher,\n    redirects to the log-in page if necessary.\n    \"\"\"\n    actual_decorator = user_passes_test(\n        lambda u: u.is_active and u.is_lecturer or u.is_superuser,\n        login_url=login_url,\n        redirect_field_name=redirect_field_name\n    )\n    if function:\n        return actual_decorator(function)\n    return actual_decorator",
+      "start_line": 21,
+      "end_line": 33,
+      "conditions": [
+        "u.is_active and u.is_lecturer or u.is_superuser"
+      ],
+      "code": "def lecturer_required(function=None, redirect_field_name=REDIRECT_FIELD_NAME, login_url=Http404):\n    \"\"\"\n    Decorator for views that checks that the logged in user is a teacher,\n    redirects to the log-in page if necessary.\n    \"\"\"\n    actual_decorator = user_passes_test(\n        lambda u: u.is_active and u.is_lecturer or u.is_superuser,\n        login_url=login_url,\n        redirect_field_name=redirect_field_name\n    )\n    if function:\n        return actual_decorator(function)\n    return actual_decorator",
+      "parameter_ids": [
+        "accounts/decorators.py:LCP2",
+        "accounts/decorators.py:LCP3",
+        "accounts/decorators.py:LCP7",
+        "accounts/decorators.py:LCP5"
+      ],
+      "validation_evidence": [
+        "validated_parameter_condition",
+        "same_branch_termination"
+      ]
+    },
+    {
+      "id": "accounts/decorators.py:LCF4",
+      "path": "accounts/decorators.py",
+      "name": "admin_required",
+      "parameters": [
+        "function=None",
+        "redirect_field_name=REDIRECT_FIELD_NAME",
+        "login_url=Http404"
+      ],
+      "body": "\"\"\"\n    Decorator for views that checks that the logged in user is a teacher,\n    redirects to the log-in page if necessary.\n    \"\"\"\n    actual_decorator = user_passes_test(\n        lambda u: u.is_active and u.is_superuser,\n        login_url=login_url,\n        redirect_field_name=redirect_field_name\n    )\n    if function:\n        return actual_decorator(function)\n    return actual_decorator",
+      "start_line": 36,
+      "end_line": 48,
+      "conditions": [
+        "u.is_active and u.is_superuser"
+      ],
+      "code": "def admin_required(function=None, redirect_field_name=REDIRECT_FIELD_NAME, login_url=Http404):\n    \"\"\"\n    Decorator for views that checks that the logged in user is a teacher,\n    redirects to the log-in page if necessary.\n    \"\"\"\n    actual_decorator = user_passes_test(\n        lambda u: u.is_active and u.is_superuser,\n        login_url=login_url,\n        redirect_field_name=redirect_field_name\n    )\n    if function:\n        return actual_decorator(function)\n    return actual_decorator",
+      "parameter_ids": [
+        "accounts/decorators.py:LCP2",
+        "accounts/decorators.py:LCP3",
+        "accounts/decorators.py:LCP5"
+      ],
+      "validation_evidence": [
+        "validated_parameter_condition",
+        "same_branch_termination"
+      ]
+    },
+    {
+      "id": "quiz/views.py:LCF191",
+      "path": "quiz/views.py",
+      "name": "dispatch",
+      "parameters": [
+        "self",
+        "request",
+        "*args",
+        "**kwargs"
+      ],
+      "body": "self.quiz = get_object_or_404(Quiz, slug=self.kwargs['slug'])\n        self.course = get_object_or_404(Course, pk=self.kwargs['pk'])\n        quizQuestions = Question.objects.filter(quiz=self.quiz).count()\n        course = get_object_or_404(Course, pk=self.kwargs['pk'])\n\n        if quizQuestions <= 0:\n            messages.warning(request, f'Question set of the quiz is empty. try later!')\n            return redirect('quiz_index', self.course.slug)\n\n        if self.quiz.draft and not request.user.has_perm('quiz.change_quiz'):\n            raise PermissionDenied\n\n        self.sitting = Sitting.objects.user_sitting(request.user, self.quiz, self.course)\n\n        if self.sitting is False:\n            # return render(request, self.single_complete_template_name)\n            messages.info(request, f'You have already sat this exam and only one sitting is permitted')\n            return redirect('quiz_index', self.course.slug)\n\n        return super(QuizTake, self).dispatch(request, *args, **kwargs)",
+      "start_line": 216,
+      "end_line": 236,
+      "conditions": [
+        "self.quiz.draft and not request.user.has_perm('quiz.change_quiz')"
+      ],
+      "code": "def dispatch(self, request, *args, **kwargs):\n        self.quiz = get_object_or_404(Quiz, slug=self.kwargs['slug'])\n        self.course = get_object_or_404(Course, pk=self.kwargs['pk'])\n        quizQuestions = Question.objects.filter(quiz=self.quiz).count()\n        course = get_object_or_404(Course, pk=self.kwargs['pk'])\n\n        if quizQuestions <= 0:\n            messages.warning(request, f'Question set of the quiz is empty. try later!')\n            return redirect('quiz_index', self.course.slug)\n\n        if self.quiz.draft and not request.user.has_perm('quiz.change_quiz'):\n            raise PermissionDenied\n\n        self.sitting = Sitting.objects.user_sitting(request.user, self.quiz, self.course)\n\n        if self.sitting is False:\n            # return render(request, self.single_complete_template_name)\n            messages.info(request, f'You have already sat this exam and only one sitting is permitted')\n            return redirect('quiz_index', self.course.slug)\n\n        return super(QuizTake, self).dispatch(request, *args, **kwargs)",
+      "parameter_ids": [
+        "quiz/views.py:LCP112",
+        "quiz/views.py:LCP113"
+      ],
+      "validation_evidence": [
+        "validated_parameter_condition",
+        "same_branch_termination"
+      ]
+    }
+  ]
+}

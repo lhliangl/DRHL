@@ -1,0 +1,335 @@
+{
+  "role": "user1",
+  "kind": "user",
+  "nodes": [
+    "blogger",
+    "blogger/entries?c=activity",
+    "blogger/entries?c=fresh",
+    "blogger/entries?c=popular",
+    "blogger/entries?c=rising",
+    "blogger/entries?c=search",
+    "blogger/entries?c=voting",
+    "blogger/register",
+    "blogger/saveComment",
+    "blogger/saveEntry",
+    "blogger/search",
+    "blogger/search?article=p1&author=p1&description=p1&searchString=p1&tags=p1&title=p1",
+    "blogger/search?author=p1&searchString=p1",
+    "blogger/search?searchString=p1&tags=p1",
+    "blogger/viewEntry/5444/drhl_test_entry.html",
+    "blogger/viewEntry/5444/drhl_test_entry.html?c=entry",
+    "blogger?c=entry",
+    "blogger?c=register"
+  ],
+  "edges": [
+    {
+      "from": "blogger",
+      "to": "blogger/search"
+    },
+    {
+      "from": "blogger/entries?c=activity",
+      "to": "blogger/entries?c=voting"
+    },
+    {
+      "from": "blogger/entries?c=activity",
+      "to": "blogger/search"
+    },
+    {
+      "from": "blogger/entries?c=fresh",
+      "to": "blogger/search"
+    },
+    {
+      "from": "blogger/entries?c=fresh",
+      "to": "blogger?c=register"
+    },
+    {
+      "from": "blogger/entries?c=popular",
+      "to": "blogger/entries?c=rising"
+    },
+    {
+      "from": "blogger/entries?c=popular",
+      "to": "blogger/search"
+    },
+    {
+      "from": "blogger/entries?c=rising",
+      "to": "blogger/entries?c=fresh"
+    },
+    {
+      "from": "blogger/entries?c=rising",
+      "to": "blogger/search"
+    },
+    {
+      "from": "blogger/entries?c=search",
+      "to": "blogger/search"
+    },
+    {
+      "from": "blogger/entries?c=voting",
+      "to": "blogger/entries?c=popular"
+    },
+    {
+      "from": "blogger/entries?c=voting",
+      "to": "blogger/search"
+    },
+    {
+      "from": "blogger/register",
+      "to": "blogger/register"
+    },
+    {
+      "from": "blogger/register",
+      "to": "blogger/search"
+    },
+    {
+      "from": "blogger/saveComment",
+      "to": "blogger/saveComment"
+    },
+    {
+      "from": "blogger/saveComment",
+      "to": "blogger/search"
+    },
+    {
+      "from": "blogger/saveEntry",
+      "to": "blogger/saveComment"
+    },
+    {
+      "from": "blogger/saveEntry",
+      "to": "blogger/saveEntry"
+    },
+    {
+      "from": "blogger/saveEntry",
+      "to": "blogger/search"
+    },
+    {
+      "from": "blogger/search",
+      "to": "blogger/search?article=p1&author=p1&description=p1&searchString=p1&tags=p1&title=p1"
+    },
+    {
+      "from": "blogger/search?article=p1&author=p1&description=p1&searchString=p1&tags=p1&title=p1",
+      "to": "blogger/search"
+    },
+    {
+      "from": "blogger/search?author=p1&searchString=p1",
+      "to": "blogger/search"
+    },
+    {
+      "from": "blogger/search?author=p1&searchString=p1",
+      "to": "blogger/search?searchString=p1&tags=p1"
+    },
+    {
+      "from": "blogger/search?searchString=p1&tags=p1",
+      "to": "blogger/entries?c=activity"
+    },
+    {
+      "from": "blogger/search?searchString=p1&tags=p1",
+      "to": "blogger/entries?c=search"
+    },
+    {
+      "from": "blogger/search?searchString=p1&tags=p1",
+      "to": "blogger/search"
+    },
+    {
+      "from": "blogger/viewEntry/5444/drhl_test_entry.html",
+      "to": "blogger/saveComment"
+    },
+    {
+      "from": "blogger/viewEntry/5444/drhl_test_entry.html",
+      "to": "blogger/search"
+    },
+    {
+      "from": "blogger/viewEntry/5444/drhl_test_entry.html?c=entry",
+      "to": "blogger/saveEntry"
+    },
+    {
+      "from": "blogger/viewEntry/5444/drhl_test_entry.html?c=entry",
+      "to": "blogger/search"
+    },
+    {
+      "from": "blogger?c=entry",
+      "to": "blogger/saveEntry"
+    },
+    {
+      "from": "blogger?c=entry",
+      "to": "blogger/search"
+    },
+    {
+      "from": "blogger?c=entry",
+      "to": "blogger/viewEntry/5444/drhl_test_entry.html?c=entry"
+    },
+    {
+      "from": "blogger?c=register",
+      "to": "blogger/register"
+    },
+    {
+      "from": "blogger?c=register",
+      "to": "blogger/search"
+    },
+    {
+      "from": "blogger?c=register",
+      "to": "blogger/viewEntry/5444/drhl_test_entry.html"
+    }
+  ],
+  "requests": {
+    "blogger/search?author=p1&searchString=p1": {
+      "method": "GET",
+      "params": {
+        "searchString": "'user1'",
+        "author": "y"
+      },
+      "referer": null
+    },
+    "blogger": {
+      "method": "GET",
+      "params": {},
+      "referer": null
+    },
+    "blogger/login": {
+      "method": "POST",
+      "params": {
+        "password": "123456",
+        "username": "user1"
+      },
+      "referer": null
+    },
+    "blogger/search": {
+      "method": "GET",
+      "params": {
+        "searchString": "value_51186217",
+        "tags": "y",
+        "title": "y",
+        "author": "y",
+        "description": "y",
+        "article": "y"
+      },
+      "referer": "blogger"
+    },
+    "blogger/search?article=p1&author=p1&description=p1&searchString=p1&tags=p1&title=p1": {
+      "method": "GET",
+      "params": {
+        "searchString": "'user1'",
+        "tags": "y",
+        "title": "y",
+        "author": "y",
+        "description": "y",
+        "article": "y"
+      },
+      "referer": "blogger/search?author=p1&searchString=p1"
+    },
+    "blogger/search?searchString=p1&tags=p1": {
+      "method": "GET",
+      "params": {
+        "searchString": "'Software Sensation'",
+        "tags": "y"
+      },
+      "referer": "blogger/search?author=p1&searchString=p1"
+    },
+    "blogger/entries?c=activity": {
+      "method": "GET",
+      "params": {
+        "c": "activity"
+      },
+      "referer": "blogger/search?searchString=p1&tags=p1"
+    },
+    "blogger/entries?c=voting": {
+      "method": "GET",
+      "params": {
+        "c": "voting"
+      },
+      "referer": "blogger/entries?c=activity"
+    },
+    "blogger/entries?c=popular": {
+      "method": "GET",
+      "params": {
+        "c": "popular"
+      },
+      "referer": "blogger/entries?c=voting"
+    },
+    "blogger/entries?c=rising": {
+      "method": "GET",
+      "params": {
+        "c": "rising"
+      },
+      "referer": "blogger/entries?c=popular"
+    },
+    "blogger/entries?c=fresh": {
+      "method": "GET",
+      "params": {
+        "c": "fresh"
+      },
+      "referer": "blogger/entries?c=rising"
+    },
+    "blogger?c=register": {
+      "method": "GET",
+      "params": {
+        "c": "register"
+      },
+      "referer": "blogger/entries?c=fresh"
+    },
+    "blogger/register": {
+      "method": "POST",
+      "params": {
+        "username": "user1",
+        "password": "admin",
+        "password2": "admin",
+        "firstName": "l",
+        "lastName": "hl",
+        "email": "user1@localhost.com"
+      },
+      "referer": "blogger?c=register"
+    },
+    "blogger/viewEntry/5444/drhl_test_entry.html": {
+      "method": "GET",
+      "params": {},
+      "referer": "blogger?c=register"
+    },
+    "blogger/saveComment": {
+      "method": "POST",
+      "params": {
+        "blogEntryId": "5444",
+        "internalName": "drhl_test_entry",
+        "author": "user1",
+        "commentText": "DRHL generated comment for access-control testing.",
+        "captchaId": "0",
+        "captchaAnswer": "test"
+      },
+      "referer": "blogger/viewEntry/5444/drhl_test_entry.html"
+    },
+    "blogger/entries?c=search": {
+      "method": "GET",
+      "params": {
+        "c": "search",
+        "pageSize": "10",
+        "page": "2"
+      },
+      "referer": "blogger/search?searchString=p1&tags=p1"
+    },
+    "blogger?c=entry": {
+      "method": "GET",
+      "params": {
+        "c": "entry"
+      },
+      "referer": null
+    },
+    "blogger/saveEntry": {
+      "method": "POST",
+      "params": {
+        "blogEntryId": "5444",
+        "title": "DRHL Test Entry",
+        "tags": "drhl security",
+        "description": "DRHL generated entry for access-control testing.",
+        "externalUrl": "http://",
+        "blogText": "DRHL generated blog body for access-control testing.",
+        "isVisible": "true",
+        "hasComments": "true",
+        "hasAnonymousComments": "true",
+        "save": "Save Entry"
+      },
+      "referer": "blogger/viewEntry/5444/drhl_test_entry.html?c=entry"
+    },
+    "blogger/viewEntry/5444/drhl_test_entry.html?c=entry": {
+      "method": "GET",
+      "params": {
+        "c": "entry"
+      },
+      "referer": "blogger?c=entry"
+    }
+  }
+}

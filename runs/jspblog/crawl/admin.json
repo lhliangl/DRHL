@@ -1,0 +1,375 @@
+{
+  "role": "admin",
+  "kind": "admin",
+  "nodes": [
+    "admin/addnews.jsp",
+    "admin/addnews2.jsp",
+    "admin/adduser.jsp",
+    "admin/adduser2.jsp",
+    "admin/admin.jsp",
+    "admin/delnews.jsp",
+    "admin/deluser.jsp",
+    "admin/editnews.jsp",
+    "admin/editnews2.jsp",
+    "admin/editnews2.jsp?body=p1&headline=AokwZT",
+    "admin/editnews2.jsp?body=p1&headline=DRHL+Test+News",
+    "admin/editnews2.jsp?body=p1&headline=GwbCTc",
+    "admin/editnews2.jsp?body=p1&headline=JNROku",
+    "admin/editnews2.jsp?body=p1&headline=Java",
+    "admin/editnews2.jsp?body=p1&headline=QvfSPO",
+    "admin/editnews2.jsp?body=p1&headline=The+First+New",
+    "admin/editnews2.jsp?body=p1&headline=ZAP",
+    "admin/editnews2.jsp?body=p1&headline=daweadew",
+    "admin/editnews2.jsp?body=p1&headline=ghj",
+    "admin/editnews2.jsp?body=p1&headline=hzCQPk",
+    "admin/editnews2.jsp?body=p1&headline=k6Hwta",
+    "admin/editnews2.jsp?body=p1&headline=qbSfOd",
+    "admin/editnews2.jsp?body=p1&headline=vbndfg",
+    "admin/editnews2.jsp?body=p1&headline=vbnvbn",
+    "admin/editnews2.jsp?body=p1&headline=z7BjqL",
+    "admin/edituser.jsp",
+    "admin/index.jsp",
+    "admin/index2.jsp",
+    "admin/index2.jsp?Submit=p1&password=p1&username=p1",
+    "index.jsp"
+  ],
+  "edges": [
+    {
+      "from": "admin/addnews.jsp",
+      "to": "admin/addnews2.jsp"
+    },
+    {
+      "from": "admin/addnews2.jsp",
+      "to": "admin/addnews2.jsp"
+    },
+    {
+      "from": "admin/adduser.jsp",
+      "to": "admin/adduser2.jsp"
+    },
+    {
+      "from": "admin/adduser2.jsp",
+      "to": "admin/adduser2.jsp"
+    },
+    {
+      "from": "admin/editnews.jsp",
+      "to": "admin/addnews.jsp"
+    },
+    {
+      "from": "admin/editnews.jsp",
+      "to": "admin/editnews2.jsp"
+    },
+    {
+      "from": "admin/editnews2.jsp",
+      "to": "admin/editnews2.jsp?body=p1&headline=AokwZT"
+    },
+    {
+      "from": "admin/editnews2.jsp",
+      "to": "admin/editnews2.jsp?body=p1&headline=DRHL+Test+News"
+    },
+    {
+      "from": "admin/editnews2.jsp",
+      "to": "admin/editnews2.jsp?body=p1&headline=GwbCTc"
+    },
+    {
+      "from": "admin/editnews2.jsp",
+      "to": "admin/editnews2.jsp?body=p1&headline=JNROku"
+    },
+    {
+      "from": "admin/editnews2.jsp",
+      "to": "admin/editnews2.jsp?body=p1&headline=Java"
+    },
+    {
+      "from": "admin/editnews2.jsp",
+      "to": "admin/editnews2.jsp?body=p1&headline=QvfSPO"
+    },
+    {
+      "from": "admin/editnews2.jsp",
+      "to": "admin/editnews2.jsp?body=p1&headline=The+First+New"
+    },
+    {
+      "from": "admin/editnews2.jsp",
+      "to": "admin/editnews2.jsp?body=p1&headline=ZAP"
+    },
+    {
+      "from": "admin/editnews2.jsp",
+      "to": "admin/editnews2.jsp?body=p1&headline=daweadew"
+    },
+    {
+      "from": "admin/editnews2.jsp",
+      "to": "admin/editnews2.jsp?body=p1&headline=ghj"
+    },
+    {
+      "from": "admin/editnews2.jsp",
+      "to": "admin/editnews2.jsp?body=p1&headline=hzCQPk"
+    },
+    {
+      "from": "admin/editnews2.jsp",
+      "to": "admin/editnews2.jsp?body=p1&headline=k6Hwta"
+    },
+    {
+      "from": "admin/editnews2.jsp",
+      "to": "admin/editnews2.jsp?body=p1&headline=qbSfOd"
+    },
+    {
+      "from": "admin/editnews2.jsp",
+      "to": "admin/editnews2.jsp?body=p1&headline=vbndfg"
+    },
+    {
+      "from": "admin/editnews2.jsp",
+      "to": "admin/editnews2.jsp?body=p1&headline=vbnvbn"
+    },
+    {
+      "from": "admin/editnews2.jsp",
+      "to": "admin/editnews2.jsp?body=p1&headline=z7BjqL"
+    },
+    {
+      "from": "admin/index.jsp",
+      "to": "admin/adduser.jsp"
+    },
+    {
+      "from": "admin/index.jsp",
+      "to": "admin/delnews.jsp"
+    },
+    {
+      "from": "admin/index.jsp",
+      "to": "admin/deluser.jsp"
+    },
+    {
+      "from": "admin/index.jsp",
+      "to": "admin/editnews.jsp"
+    },
+    {
+      "from": "admin/index.jsp",
+      "to": "admin/edituser.jsp"
+    },
+    {
+      "from": "admin/index.jsp",
+      "to": "admin/index2.jsp"
+    },
+    {
+      "from": "admin/index2.jsp",
+      "to": "admin/index2.jsp?Submit=p1&password=p1&username=p1"
+    }
+  ],
+  "requests": {
+    "admin/index.jsp": {
+      "method": "GET",
+      "params": {},
+      "referer": null
+    },
+    "admin/index2.jsp": {
+      "method": "GET",
+      "params": {
+        "username": "admin",
+        "password": "admin",
+        "Submit": "Submit"
+      },
+      "referer": "admin/index.jsp"
+    },
+    "admin/index2.jsp?Submit=p1&password=p1&username=p1": {
+      "method": "GET",
+      "params": {
+        "username": "admin",
+        "password": "admin",
+        "Submit": "Submit"
+      },
+      "referer": "admin/index.jsp"
+    },
+    "admin/deluser.jsp": {
+      "method": "GET",
+      "params": {},
+      "referer": "admin/index.jsp"
+    },
+    "admin/edituser.jsp": {
+      "method": "GET",
+      "params": {},
+      "referer": "admin/index.jsp"
+    },
+    "admin/adduser.jsp": {
+      "method": "GET",
+      "params": {},
+      "referer": "admin/index.jsp"
+    },
+    "admin/adduser2.jsp": {
+      "method": "POST",
+      "params": {
+        "author": "drhl@example.test",
+        "name": "DRHL Tester",
+        "submit": "Add"
+      },
+      "referer": "admin/adduser.jsp"
+    },
+    "admin/delnews.jsp": {
+      "method": "GET",
+      "params": {},
+      "referer": "admin/index.jsp"
+    },
+    "admin/editnews.jsp": {
+      "method": "GET",
+      "params": {},
+      "referer": "admin/index.jsp"
+    },
+    "admin/editnews2.jsp": {
+      "method": "GET",
+      "params": {
+        "headline": "qbSfOd",
+        "body": "DRHL generated body for access-control testing."
+      },
+      "referer": "admin/editnews.jsp"
+    },
+    "admin/editnews2.jsp?body=p1&headline=Java": {
+      "method": "GET",
+      "params": {
+        "headline": "Java",
+        "body": "DRHL generated body for access-control testing."
+      },
+      "referer": "admin/editnews.jsp"
+    },
+    "admin/editnews2.jsp?body=p1&headline=vbnvbn": {
+      "method": "GET",
+      "params": {
+        "headline": "vbnvbn",
+        "body": "DRHL generated body for access-control testing."
+      },
+      "referer": "admin/editnews.jsp"
+    },
+    "admin/editnews2.jsp?body=p1&headline=vbndfg": {
+      "method": "GET",
+      "params": {
+        "headline": "vbndfg",
+        "body": "DRHL generated body for access-control testing."
+      },
+      "referer": "admin/editnews.jsp"
+    },
+    "admin/editnews2.jsp?body=p1&headline=z7BjqL": {
+      "method": "GET",
+      "params": {
+        "headline": "z7BjqL",
+        "body": "DRHL generated body for access-control testing."
+      },
+      "referer": "admin/editnews.jsp"
+    },
+    "admin/editnews2.jsp?body=p1&headline=k6Hwta": {
+      "method": "GET",
+      "params": {
+        "headline": "k6Hwta",
+        "body": "DRHL generated body for access-control testing."
+      },
+      "referer": "admin/editnews.jsp"
+    },
+    "admin/editnews2.jsp?body=p1&headline=hzCQPk": {
+      "method": "GET",
+      "params": {
+        "headline": "hzCQPk",
+        "body": "DRHL generated body for access-control testing."
+      },
+      "referer": "admin/editnews.jsp"
+    },
+    "admin/editnews2.jsp?body=p1&headline=ZAP": {
+      "method": "GET",
+      "params": {
+        "headline": "ZAP",
+        "body": "DRHL generated body for access-control testing."
+      },
+      "referer": "admin/editnews.jsp"
+    },
+    "admin/editnews2.jsp?body=p1&headline=ghj": {
+      "method": "GET",
+      "params": {
+        "headline": "ghj",
+        "body": "DRHL generated body for access-control testing."
+      },
+      "referer": "admin/editnews.jsp"
+    },
+    "admin/editnews2.jsp?body=p1&headline=GwbCTc": {
+      "method": "GET",
+      "params": {
+        "headline": "GwbCTc",
+        "body": "DRHL generated body for access-control testing."
+      },
+      "referer": "admin/editnews.jsp"
+    },
+    "admin/editnews2.jsp?body=p1&headline=The+First+New": {
+      "method": "GET",
+      "params": {
+        "headline": "The First New",
+        "body": "DRHL generated body for access-control testing."
+      },
+      "referer": "admin/editnews.jsp"
+    },
+    "admin/editnews2.jsp?body=p1&headline=daweadew": {
+      "method": "GET",
+      "params": {
+        "headline": "daweadew",
+        "body": "DRHL generated body for access-control testing."
+      },
+      "referer": "admin/editnews.jsp"
+    },
+    "admin/editnews2.jsp?body=p1&headline=DRHL+Test+News": {
+      "method": "GET",
+      "params": {
+        "headline": "DRHL Test News",
+        "body": "DRHL generated body for access-control testing."
+      },
+      "referer": "admin/editnews.jsp"
+    },
+    "admin/editnews2.jsp?body=p1&headline=JNROku": {
+      "method": "GET",
+      "params": {
+        "headline": "JNROku",
+        "body": "DRHL generated body for access-control testing."
+      },
+      "referer": "admin/editnews.jsp"
+    },
+    "admin/editnews2.jsp?body=p1&headline=QvfSPO": {
+      "method": "GET",
+      "params": {
+        "headline": "QvfSPO",
+        "body": "DRHL generated body for access-control testing."
+      },
+      "referer": "admin/editnews.jsp"
+    },
+    "admin/editnews2.jsp?body=p1&headline=AokwZT": {
+      "method": "GET",
+      "params": {
+        "headline": "AokwZT",
+        "body": "DRHL generated body for access-control testing."
+      },
+      "referer": "admin/editnews.jsp"
+    },
+    "admin/editnews2.jsp?body=p1&headline=qbSfOd": {
+      "method": "GET",
+      "params": {
+        "headline": "qbSfOd",
+        "body": "DRHL generated body for access-control testing."
+      },
+      "referer": "admin/editnews.jsp"
+    },
+    "admin/addnews.jsp": {
+      "method": "GET",
+      "params": {},
+      "referer": "admin/editnews.jsp"
+    },
+    "admin/addnews2.jsp": {
+      "method": "POST",
+      "params": {
+        "author": "drhl@example.test",
+        "headline": "DRHL Test News",
+        "date": "Wed Jul 01 21:05:20 CST 2026",
+        "body": "DRHL generated body for access-control testing.",
+        "submit": "Add"
+      },
+      "referer": "admin/addnews.jsp"
+    },
+    "admin/admin.jsp": {
+      "method": "GET",
+      "params": {},
+      "referer": null
+    },
+    "index.jsp": {
+      "method": "GET",
+      "params": {},
+      "referer": null
+    }
+  }
+}

@@ -1,0 +1,860 @@
+{
+  "functions": [
+    {
+      "id": "WEB-INF/classes/forum/AddForum.java:LCF1",
+      "path": "WEB-INF/classes/forum/AddForum.java",
+      "name": "doPost",
+      "parameters": [
+        "HttpServletRequest request",
+        "HttpServletResponse response"
+      ],
+      "body": "{\r\n        \tPrintWriter out = response.getWriter();\r\n        \t    try{    \r\n                \t\r\n                    int lastforum_id = Integer.parseInt(request.getParameter(\"lastforum_id\"));\r\n\t\t\t\t\tString forum_id = Integer.toString(lastforum_id + 1);\r\n\t\t\t\t\t\r\n\t\t\t\t\tString title = request.getParameter(\"title\");\r\n\t\t\t\t\tif(title.equals(\"\")){\r\n\t\t\t\t\t\ttitle = \"No title\";\r\n\t\t\t\t\t}else{\r\n\t\t\t\t\t\ttitle = Filter.filterAll(title);\r\n\t\t\t\t\t}\r\n\t\t\t\t\t\r\n\t\t\t\t\tString forum_info = request.getParameter(\"forum_info\");\r\n\t\t\t\t\tforum_info = Filter.filterAll(forum_info);\r\n                                                            \r\n                   \tdb.connect();\r\n\r\n\t\t\t\t\t\r\n                    db.query(\r\n                    \t\"INSERT INTO forum_forums(forum_id,title,forum_info) \"+\r\n                    \t\"VALUES(\\\"\" + forum_id +\r\n                    \t\"\\\",\\\"\" + title + \r\n                    \t\"\\\",\\\"\" + forum_info + \"\\\")\");\r\n\t\t\t\t\t \t\t\t\t\t \r\n                    db.close();\r\n              \t\tresponse.sendRedirect(Variable.getForumPath() + \"index.jsp\");\r\n              \t\t\r\n                }catch(Exception e){}\r\n                \r\n             \r\n        }",
+      "start_line": 17,
+      "end_line": 50,
+      "code": "public void doPost (HttpServletRequest request, HttpServletResponse response)\r\n        throws ServletException, IOException{\r\n        \tPrintWriter out = response.getWriter();\r\n        \t    try{    \r\n                \t\r\n                    int lastforum_id = Integer.parseInt(request.getParameter(\"lastforum_id\"));\r\n\t\t\t\t\tString forum_id = Integer.toString(lastforum_id + 1);\r\n\t\t\t\t\t\r\n\t\t\t\t\tString title = request.getParameter(\"title\");\r\n\t\t\t\t\tif(title.equals(\"\")){\r\n\t\t\t\t\t\ttitle = \"No title\";\r\n\t\t\t\t\t}else{\r\n\t\t\t\t\t\ttitle = Filter.filterAll(title);\r\n\t\t\t\t\t}\r\n\t\t\t\t\t\r\n\t\t\t\t\tString forum_info = request.getParameter(\"forum_info\");\r\n\t\t\t\t\tforum_info = Filter.filterAll(forum_info);\r\n                                                            \r\n                   \tdb.connect();\r\n\r\n\t\t\t\t\t\r\n                    db.query(\r\n                    \t\"INSERT INTO forum_forums(forum_id,title,forum_info) \"+\r\n                    \t\"VALUES(\\\"\" + forum_id +\r\n                    \t\"\\\",\\\"\" + title + \r\n                    \t\"\\\",\\\"\" + forum_info + \"\\\")\");\r\n\t\t\t\t\t \t\t\t\t\t \r\n                    db.close();\r\n              \t\tresponse.sendRedirect(Variable.getForumPath() + \"index.jsp\");\r\n              \t\t\r\n                }catch(Exception e){}\r\n                \r\n             \r\n        }"
+    },
+    {
+      "id": "WEB-INF/classes/forum/AddForum.java:LCF2",
+      "path": "WEB-INF/classes/forum/AddForum.java",
+      "name": "doGet",
+      "parameters": [
+        "HttpServletRequest request",
+        "HttpServletResponse response"
+      ],
+      "body": "{ \r\n                doPost(request, response);\r\n        }",
+      "start_line": 51,
+      "end_line": 54,
+      "code": "public void doGet (HttpServletRequest request, HttpServletResponse response)//{\r\n        throws ServletException, IOException{ \r\n                doPost(request, response);\r\n        }"
+    },
+    {
+      "id": "WEB-INF/classes/forum/AddReply.java:LCF3",
+      "path": "WEB-INF/classes/forum/AddReply.java",
+      "name": "doPost",
+      "parameters": [
+        "HttpServletRequest request",
+        "HttpServletResponse response"
+      ],
+      "body": "{\r\n        \tPrintWriter out = response.getWriter();\r\n        \t    try{    \r\n     \t\t\t\tString start = request.getParameter(\"start\");\r\n                    String forum_id = request.getParameter(\"forum_id\");\r\n                    int lastReply_id = Integer.parseInt(request.getParameter(\"lastReply_id\"));\r\n\t\t\t\t\tString reply_id = Integer.toString(lastReply_id + 1);\r\n\t\t\t\r\n\t\t\t\t\tString thread_id = request.getParameter(\"thread_id\");\r\n\t\t\t\t\tString message = request.getParameter(\"message\");\r\n\t\t\t\t\tmessage = Filter.filterAll(message);\r\n\t\t\t\t\t\r\n\t\t\t\t\t\r\n\t\t\t\t\tString user = request.getParameter(\"user\");\r\n                    \r\n                    db.connect();\r\n\r\n\r\n                    db.query(\r\n                    \t\"INSERT INTO forum_message(forum_id,thread_id,reply_id,message,user,date_time) \"+\r\n                    \t\"VALUES(\\\"\" + forum_id + \r\n                    \t\"\\\",\\\"\" + thread_id +\r\n                    \t\"\\\",\\\"\" + reply_id +\r\n                    \t\"\\\",\\\"\" + message + \r\n                    \t\"\\\",\\\"\" + user +\r\n                    \t\"\\\",SYSDATE())\");\r\n                    \t\t\t\t\t \r\n                    db.close();\r\n           \t\t\r\n              \t\tresponse.sendRedirect(Variable.getForumPath() + \"index.jsp?page=message&forum_id=\"+ forum_id +\"&thread_id=\" + thread_id +\"&start=\" + start);\r\n              \t\t\r\n                }catch(Exception e){}\r\n                \r\n             \r\n        }",
+      "start_line": 15,
+      "end_line": 50,
+      "code": "public void doPost (HttpServletRequest request, HttpServletResponse response)\r\n        throws ServletException, IOException{\r\n        \tPrintWriter out = response.getWriter();\r\n        \t    try{    \r\n     \t\t\t\tString start = request.getParameter(\"start\");\r\n                    String forum_id = request.getParameter(\"forum_id\");\r\n                    int lastReply_id = Integer.parseInt(request.getParameter(\"lastReply_id\"));\r\n\t\t\t\t\tString reply_id = Integer.toString(lastReply_id + 1);\r\n\t\t\t\r\n\t\t\t\t\tString thread_id = request.getParameter(\"thread_id\");\r\n\t\t\t\t\tString message = request.getParameter(\"message\");\r\n\t\t\t\t\tmessage = Filter.filterAll(message);\r\n\t\t\t\t\t\r\n\t\t\t\t\t\r\n\t\t\t\t\tString user = request.getParameter(\"user\");\r\n                    \r\n                    db.connect();\r\n\r\n\r\n                    db.query(\r\n                    \t\"INSERT INTO forum_message(forum_id,thread_id,reply_id,message,user,date_time) \"+\r\n                    \t\"VALUES(\\\"\" + forum_id + \r\n                    \t\"\\\",\\\"\" + thread_id +\r\n                    \t\"\\\",\\\"\" + reply_id +\r\n                    \t\"\\\",\\\"\" + message + \r\n                    \t\"\\\",\\\"\" + user +\r\n                    \t\"\\\",SYSDATE())\");\r\n                    \t\t\t\t\t \r\n                    db.close();\r\n           \t\t\r\n              \t\tresponse.sendRedirect(Variable.getForumPath() + \"index.jsp?page=message&forum_id=\"+ forum_id +\"&thread_id=\" + thread_id +\"&start=\" + start);\r\n              \t\t\r\n                }catch(Exception e){}\r\n                \r\n             \r\n        }"
+    },
+    {
+      "id": "WEB-INF/classes/forum/AddReply.java:LCF4",
+      "path": "WEB-INF/classes/forum/AddReply.java",
+      "name": "doGet",
+      "parameters": [
+        "HttpServletRequest request",
+        "HttpServletResponse response"
+      ],
+      "body": "{ \r\n                doPost(request, response);\r\n        }",
+      "start_line": 51,
+      "end_line": 54,
+      "code": "public void doGet (HttpServletRequest request, HttpServletResponse response)\r\n        throws ServletException, IOException{ \r\n                doPost(request, response);\r\n        }"
+    },
+    {
+      "id": "WEB-INF/classes/forum/AddThread.java:LCF5",
+      "path": "WEB-INF/classes/forum/AddThread.java",
+      "name": "doPost",
+      "parameters": [
+        "HttpServletRequest request",
+        "HttpServletResponse response"
+      ],
+      "body": "{\r\n        \tPrintWriter out = response.getWriter();\r\n        \t    try{    \r\n                \tString forum_id = request.getParameter(\"forum_id\");\r\n                    int lastThread_id = Integer.parseInt(request.getParameter(\"lastThread_id\"));\r\n\t\t\t\t\tString thread_id = Integer.toString(lastThread_id + 1);\r\n\t\t\t\t\t\r\n\t\t\t\t\tString title = request.getParameter(\"title\");\r\n\t\t\t\t\t\r\n\t\t\t\t\t\r\n\t\t\t\t\tif(title.equals(\"\")){\r\n\t\t\t\t\t\ttitle = \"No title\";\r\n\t\t\t\t\t}else{\r\n\t\t\t\t\t\ttitle = Filter.filterAll(title);\r\n\t\t\t\t\t}\r\n\t\t\t\t\t\r\n\t\t\t\t\tString message = request.getParameter(\"message\");\r\n\t\t\t\t\tmessage = Filter.filterAll(message);\r\n\t\t\t\t\tString user = request.getParameter(\"user\");\r\n                                   \r\n                    db.connect();\r\n\r\n                    \r\n                    db.query(\r\n\t\t\t\t\t\t\t\t\"INSERT INTO forum_threads (forum_id, thread_id, title, views) \" +\r\n\t\t\t\t\t\t\t\t\"VALUES (\\\"\" + forum_id + \"\\\", \\\"\" + thread_id + \"\\\", \\\"\" + title + \"\\\", 0)\"\r\n\t\t\t\t\t\t\t);\r\n\r\n\r\n                    db.query(\r\n                    \t\"INSERT INTO forum_message(forum_id,thread_id,reply_id,message,user,date_time) \"+\r\n                    \t\"VALUES(\\\"\" + forum_id + \r\n                    \t\"\\\",\\\"\" + thread_id + \r\n                    \t\"\\\",\\\"0\" +\r\n                    \t\"\\\",\\\"\" + message + \r\n                    \t\"\\\",\\\"\" + user +\r\n                    \t\"\\\",SYSDATE())\");\r\n\t\t\t\t\t \t\t\t\t\t \r\n                    db.close();\r\n           \t\t\r\n              \t\tresponse.sendRedirect(Variable.getForumPath() + \"index.jsp?page=thread&forum_id=\" + forum_id);\r\n              \t\t\r\n              \t\r\n                }catch(Exception e){}\r\n                \r\n             \r\n        }",
+      "start_line": 17,
+      "end_line": 64,
+      "code": "public void doPost (HttpServletRequest request, HttpServletResponse response)\r\n        throws ServletException, IOException{\r\n        \tPrintWriter out = response.getWriter();\r\n        \t    try{    \r\n                \tString forum_id = request.getParameter(\"forum_id\");\r\n                    int lastThread_id = Integer.parseInt(request.getParameter(\"lastThread_id\"));\r\n\t\t\t\t\tString thread_id = Integer.toString(lastThread_id + 1);\r\n\t\t\t\t\t\r\n\t\t\t\t\tString title = request.getParameter(\"title\");\r\n\t\t\t\t\t\r\n\t\t\t\t\t\r\n\t\t\t\t\tif(title.equals(\"\")){\r\n\t\t\t\t\t\ttitle = \"No title\";\r\n\t\t\t\t\t}else{\r\n\t\t\t\t\t\ttitle = Filter.filterAll(title);\r\n\t\t\t\t\t}\r\n\t\t\t\t\t\r\n\t\t\t\t\tString message = request.getParameter(\"message\");\r\n\t\t\t\t\tmessage = Filter.filterAll(message);\r\n\t\t\t\t\tString user = request.getParameter(\"user\");\r\n                                   \r\n                    db.connect();\r\n\r\n                    \r\n                    db.query(\r\n\t\t\t\t\t\t\t\t\"INSERT INTO forum_threads (forum_id, thread_id, title, views) \" +\r\n\t\t\t\t\t\t\t\t\"VALUES (\\\"\" + forum_id + \"\\\", \\\"\" + thread_id + \"\\\", \\\"\" + title + \"\\\", 0)\"\r\n\t\t\t\t\t\t\t);\r\n\r\n\r\n                    db.query(\r\n                    \t\"INSERT INTO forum_message(forum_id,thread_id,reply_id,message,user,date_time) \"+\r\n                    \t\"VALUES(\\\"\" + forum_id + \r\n                    \t\"\\\",\\\"\" + thread_id + \r\n                    \t\"\\\",\\\"0\" +\r\n                    \t\"\\\",\\\"\" + message + \r\n                    \t\"\\\",\\\"\" + user +\r\n                    \t\"\\\",SYSDATE())\");\r\n\t\t\t\t\t \t\t\t\t\t \r\n                    db.close();\r\n           \t\t\r\n              \t\tresponse.sendRedirect(Variable.getForumPath() + \"index.jsp?page=thread&forum_id=\" + forum_id);\r\n              \t\t\r\n              \t\r\n                }catch(Exception e){}\r\n                \r\n             \r\n        }"
+    },
+    {
+      "id": "WEB-INF/classes/forum/AddThread.java:LCF6",
+      "path": "WEB-INF/classes/forum/AddThread.java",
+      "name": "doGet",
+      "parameters": [
+        "HttpServletRequest request",
+        "HttpServletResponse response"
+      ],
+      "body": "{ \r\n                doPost(request, response);\r\n        }",
+      "start_line": 65,
+      "end_line": 68,
+      "code": "public void doGet (HttpServletRequest request, HttpServletResponse response)//{\r\n        throws ServletException, IOException{ \r\n                doPost(request, response);\r\n        }"
+    },
+    {
+      "id": "WEB-INF/classes/forum/AddUser.java:LCF7",
+      "path": "WEB-INF/classes/forum/AddUser.java",
+      "name": "doPost",
+      "parameters": [
+        "HttpServletRequest request",
+        "HttpServletResponse response"
+      ],
+      "body": "{\r\n        \t\tPrintWriter out = response.getWriter();\r\n        \t    try{    \r\n                \t//Cookie[] cookies = request.getCookies();\r\n\t\t\t\t\t//String username = Cookies.getCookies(cookies,\"username\",\"null\");\r\n\t\t\t\t\t//String password = Cookies.getCookies(cookies,\"password\",\"null\");\r\n\t\t\t\t\t//String type = Cookies.getCookies(cookies,\"type\",\"null\");\r\n                \t\r\n                    String RegUser = request.getParameter(\"user\");\r\n                    String RegEmail = request.getParameter(\"email\");\r\n                    String RegPass = request.getParameter(\"password\");\r\n                    String RegPass2 = request.getParameter(\"password2\");\r\n                    \t\t\t\t\t\r\n\t\t\t\t\tdb.connect();\r\n\t\t\t\t\tResultSet rs = db.selectQuery(\r\n\t\t\t\t\t\t\"SELECT * \"+\r\n\t\t\t\t\t\t\"FROM forum_users \"+\r\n\t\t\t\t\t\t\"WHERE user_name=\\\"\"+ RegUser + \"\\\"\");\r\n\t\t\t\t\t\t\r\n\t\t\t\t\tString DBUsername = null;\r\n\t\t\t\t\twhile(rs.next()){\r\n\t\t\t\t\t\tDBUsername = rs.getString(\"user_name\");\t\r\n\t\t\t\t\t}\r\n\t\t\t\t\t\t\r\n\t\t\t\t\tif(DBUsername == null){\r\n\t\t\t\t\t\r\n                    \tif(RegPass.equals(RegPass2)){\r\n\r\n                    \t\r\n                    \t\tdb.query(\r\n\t\t\t\t\t\t\t\t\t\t\"INSERT INTO forum_users (user_name, password, email, registerdate, TYPE, avatar, member_title, signature) \" +\r\n\t\t\t\t\t\t\t\t\t\t\"VALUES (\\\"\" + RegUser + \"\\\", password(\\\"\" + RegPass + \"\\\"), \\\"\" + RegEmail + \"\\\", NOW(), \" +\r\n\t\t\t\t\t\t\t\t\t\t\"\\\"user\\\", \\\"default_avatar.png\\\", \\\"New Member\\\", \\\"\\\")\"\r\n\t\t\t\t\t\t\t\t\t);\r\n\t\t\t\t\t\t\tdb.close();\r\n\t\t\t\t\t\t\tresponse.sendRedirect(Variable.getForumPath() + \"info.jsp?action=regcomplete\");\r\n\t\t\t\t\t\t}else{\r\n\t\t\t\t\t\t    response.sendRedirect(Variable.getForumPath() + \"info.jsp?action=wrongpass\");\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}else{\r\n\t\t\t\t\t\tresponse.sendRedirect(Variable.getForumPath() + \"info.jsp?action=userexists\");\r\n                    }\r\n                }catch(Exception e){}\r\n                \r\n             \r\n        }",
+      "start_line": 15,
+      "end_line": 61,
+      "code": "public void doPost (HttpServletRequest request, HttpServletResponse response)\r\n        throws ServletException, IOException{\r\n        \t\tPrintWriter out = response.getWriter();\r\n        \t    try{    \r\n                \t//Cookie[] cookies = request.getCookies();\r\n\t\t\t\t\t//String username = Cookies.getCookies(cookies,\"username\",\"null\");\r\n\t\t\t\t\t//String password = Cookies.getCookies(cookies,\"password\",\"null\");\r\n\t\t\t\t\t//String type = Cookies.getCookies(cookies,\"type\",\"null\");\r\n                \t\r\n                    String RegUser = request.getParameter(\"user\");\r\n                    String RegEmail = request.getParameter(\"email\");\r\n                    String RegPass = request.getParameter(\"password\");\r\n                    String RegPass2 = request.getParameter(\"password2\");\r\n                    \t\t\t\t\t\r\n\t\t\t\t\tdb.connect();\r\n\t\t\t\t\tResultSet rs = db.selectQuery(\r\n\t\t\t\t\t\t\"SELECT * \"+\r\n\t\t\t\t\t\t\"FROM forum_users \"+\r\n\t\t\t\t\t\t\"WHERE user_name=\\\"\"+ RegUser + \"\\\"\");\r\n\t\t\t\t\t\t\r\n\t\t\t\t\tString DBUsername = null;\r\n\t\t\t\t\twhile(rs.next()){\r\n\t\t\t\t\t\tDBUsername = rs.getString(\"user_name\");\t\r\n\t\t\t\t\t}\r\n\t\t\t\t\t\t\r\n\t\t\t\t\tif(DBUsername == null){\r\n\t\t\t\t\t\r\n                    \tif(RegPass.equals(RegPass2)){\r\n\r\n                    \t\r\n                    \t\tdb.query(\r\n\t\t\t\t\t\t\t\t\t\t\"INSERT INTO forum_users (user_name, password, email, registerdate, TYPE, avatar, member_title, signature) \" +\r\n\t\t\t\t\t\t\t\t\t\t\"VALUES (\\\"\" + RegUser + \"\\\", password(\\\"\" + RegPass + \"\\\"), \\\"\" + RegEmail + \"\\\", NOW(), \" +\r\n\t\t\t\t\t\t\t\t\t\t\"\\\"user\\\", \\\"default_avatar.png\\\", \\\"New Member\\\", \\\"\\\")\"\r\n\t\t\t\t\t\t\t\t\t);\r\n\t\t\t\t\t\t\tdb.close();\r\n\t\t\t\t\t\t\tresponse.sendRedirect(Variable.getForumPath() + \"info.jsp?action=regcomplete\");\r\n\t\t\t\t\t\t}else{\r\n\t\t\t\t\t\t    response.sendRedirect(Variable.getForumPath() + \"info.jsp?action=wrongpass\");\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}else{\r\n\t\t\t\t\t\tresponse.sendRedirect(Variable.getForumPath() + \"info.jsp?action=userexists\");\r\n                    }\r\n                }catch(Exception e){}\r\n                \r\n             \r\n        }"
+    },
+    {
+      "id": "WEB-INF/classes/forum/AddUser.java:LCF8",
+      "path": "WEB-INF/classes/forum/AddUser.java",
+      "name": "doGet",
+      "parameters": [
+        "HttpServletRequest request",
+        "HttpServletResponse response"
+      ],
+      "body": "{\r\n                doPost(request, response);\r\n        }",
+      "start_line": 62,
+      "end_line": 65,
+      "code": "public void doGet (HttpServletRequest request, HttpServletResponse response)\r\n\t\tthrows ServletException, IOException{\r\n                doPost(request, response);\r\n        }"
+    },
+    {
+      "id": "WEB-INF/classes/forum/ChangeMessage.java:LCF9",
+      "path": "WEB-INF/classes/forum/ChangeMessage.java",
+      "name": "doPost",
+      "parameters": [
+        "HttpServletRequest request",
+        "HttpServletResponse response"
+      ],
+      "body": "{\r\n \t\t\r\n \t\tPrintWriter out = response.getWriter();\r\n \t\t\r\n \t\ttry{\r\n\t\t\t\r\n\t\t\tHttpSession session = request.getSession(true);\r\n\t\t\tString sessionUsername = (String)session.getAttribute(\"username\");\r\n\t\t\tString sessionType = (String)session.getAttribute(\"type\");\r\n\t\t\t\t\t\t\r\n\t\t\tString forum_id = request.getParameter(\"forum_id\");\r\n\t\t\tString start = request.getParameter(\"start\");\r\n\t\t\tString reqThread_id = request.getParameter(\"thread_id\");\r\n\t\t\tString reqReply_id = request.getParameter(\"reply_id\");\r\n\t\t\tString message = request.getParameter(\"message\");\r\n\t\t\tmessage = Filter.filterAll(message);\r\n\t\t\t\t\t\t\r\n\t\t\tint changeDifference = (((100 * message.length()) / Utilities.getMessageLength(forum_id,reqThread_id,reqReply_id)));\r\n\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\tjava.util.Date date_time = new java.util.Date();\r\n\t\t\t\r\n\t\t\t\r\n\t\t\tmessage += \"<!-- begin --!><BR><BR><I>Edited by \" + sessionUsername + \" - \" + date_time + \" (\" + changeDifference + \"%)</I><!-- end --!>\";\r\n\r\n\t\t\tdb.connect();\r\n\t\t\t\r\n\t\t\tif(sessionType.equals(\"Admin\")){\r\n\r\n\t\t\t\tdb.query(\r\n\t\t\t\t\t\"UPDATE forum_message \" +\r\n            \t\t\"SET message =\\\"\" + message + \"\\\"\" +\r\n            \t\t\"WHERE forum_id=\\\"\" + forum_id + \"\\\" AND thread_id =\\\"\" + reqThread_id + \"\\\" AND reply_id=\\\"\" + reqReply_id + \"\\\"\");\t\r\n\t\t\t}else{\r\n\r\n\t\t\t\tdb.query(\r\n\t\t\t\t\t\"UPDATE forum_message \" +\r\n            \t\t\"SET message =\\\"\" + message + \"\\\"\" +\r\n            \t\t\"WHERE forum_id=\\\"\" + forum_id + \"\\\" AND thread_id =\\\"\" + reqThread_id + \"\\\" AND reply_id=\\\"\" + reqReply_id + \"\\\" AND user=\\\"\"+ sessionUsername + \"\\\"\");\r\n\t\t\t}\r\n\t\t\t\r\n\t\t\tresponse.sendRedirect(Variable.getForumPath() + \"index.jsp?page=message&forum_id=\" + forum_id + \"&thread_id=\" + reqThread_id +\"&start=\" + start);\r\n\t\t\t\t\r\n            db.close();\r\n    \t}catch(Exception e){}\r\n\t}",
+      "start_line": 13,
+      "end_line": 59,
+      "code": "public void doPost(HttpServletRequest request, HttpServletResponse response)\r\n \tthrows ServletException, IOException{\r\n \t\t\r\n \t\tPrintWriter out = response.getWriter();\r\n \t\t\r\n \t\ttry{\r\n\t\t\t\r\n\t\t\tHttpSession session = request.getSession(true);\r\n\t\t\tString sessionUsername = (String)session.getAttribute(\"username\");\r\n\t\t\tString sessionType = (String)session.getAttribute(\"type\");\r\n\t\t\t\t\t\t\r\n\t\t\tString forum_id = request.getParameter(\"forum_id\");\r\n\t\t\tString start = request.getParameter(\"start\");\r\n\t\t\tString reqThread_id = request.getParameter(\"thread_id\");\r\n\t\t\tString reqReply_id = request.getParameter(\"reply_id\");\r\n\t\t\tString message = request.getParameter(\"message\");\r\n\t\t\tmessage = Filter.filterAll(message);\r\n\t\t\t\t\t\t\r\n\t\t\tint changeDifference = (((100 * message.length()) / Utilities.getMessageLength(forum_id,reqThread_id,reqReply_id)));\r\n\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\tjava.util.Date date_time = new java.util.Date();\r\n\t\t\t\r\n\t\t\t\r\n\t\t\tmessage += \"<!-- begin --!><BR><BR><I>Edited by \" + sessionUsername + \" - \" + date_time + \" (\" + changeDifference + \"%)</I><!-- end --!>\";\r\n\r\n\t\t\tdb.connect();\r\n\t\t\t\r\n\t\t\tif(sessionType.equals(\"Admin\")){\r\n\r\n\t\t\t\tdb.query(\r\n\t\t\t\t\t\"UPDATE forum_message \" +\r\n            \t\t\"SET message =\\\"\" + message + \"\\\"\" +\r\n            \t\t\"WHERE forum_id=\\\"\" + forum_id + \"\\\" AND thread_id =\\\"\" + reqThread_id + \"\\\" AND reply_id=\\\"\" + reqReply_id + \"\\\"\");\t\r\n\t\t\t}else{\r\n\r\n\t\t\t\tdb.query(\r\n\t\t\t\t\t\"UPDATE forum_message \" +\r\n            \t\t\"SET message =\\\"\" + message + \"\\\"\" +\r\n            \t\t\"WHERE forum_id=\\\"\" + forum_id + \"\\\" AND thread_id =\\\"\" + reqThread_id + \"\\\" AND reply_id=\\\"\" + reqReply_id + \"\\\" AND user=\\\"\"+ sessionUsername + \"\\\"\");\r\n\t\t\t}\r\n\t\t\t\r\n\t\t\tresponse.sendRedirect(Variable.getForumPath() + \"index.jsp?page=message&forum_id=\" + forum_id + \"&thread_id=\" + reqThread_id +\"&start=\" + start);\r\n\t\t\t\t\r\n            db.close();\r\n    \t}catch(Exception e){}\r\n\t}"
+    },
+    {
+      "id": "WEB-INF/classes/forum/ChangeProfile.java:LCF10",
+      "path": "WEB-INF/classes/forum/ChangeProfile.java",
+      "name": "doPost",
+      "parameters": [
+        "HttpServletRequest request",
+        "HttpServletResponse response"
+      ],
+      "body": "{\r\n        \tPrintWriter out = response.getWriter();\r\n        \t    try{ \r\n\t\t\t\t\t\r\n\t\t\t\t\tHttpSession session = request.getSession(true);\r\n\t\t\t\t\tString sessionUsername = (String)session.getAttribute(\"username\");\r\n\t\t\t\t\tString sessionType = (String)session.getAttribute(\"type\");\r\n\t\t\t\t\t\r\n\t\t\t\t\tString avatar_list = request.getParameter(\"avatar_list\");\r\n\t\t\t\t\tString link_avatar = request.getParameter(\"link_avatar\");\r\n                    String member_title = request.getParameter(\"member_title\");\r\n                    String signature = request.getParameter(\"signature\");\r\n                    \r\n                    member_title = Filter.filterAll(member_title);\r\n                    signature = Filter.filterAll(signature);\r\n                    \r\n                    String avatar = null;\r\n                    if(link_avatar.equals(\"http://\")){\r\n                    \tavatar = avatar_list;\r\n                    }else{\r\n                    \tavatar = link_avatar;\r\n                    }\r\n                    \t                  \r\n\t                db.connect();\r\n\r\n                    \r\n                    db.query(\"INSERT INTO forum_users(user_name) VALUES(\\\"\" + sessionUsername + \"\\\")\");\r\n\r\n    \t            db.query(\"UPDATE forum_users SET type = \\\"\" + sessionType + \"\\\" WHERE user_name =\\\"\" + sessionUsername + \"\\\"\");\r\n\r\n    \t            db.query(\"UPDATE forum_users SET avatar = \\\"\" + avatar + \"\\\" WHERE user_name =\\\"\" + sessionUsername + \"\\\"\");\r\n\r\n\t\t\t\t\tdb.query(\"UPDATE forum_users SET member_title = \\\"\" + member_title + \"\\\" WHERE user_name =\\\"\" + sessionUsername + \"\\\"\");\r\n\r\n\t\t\t\t\tdb.query(\"UPDATE forum_users SET signature = \\\"\" + signature + \"\\\" WHERE user_name =\\\"\" + sessionUsername + \"\\\"\");\r\n        \t        \r\n        \t        response.sendRedirect(Variable.getForumPath() + \"index.jsp?page=profile\");\r\n        \t        db.close();\r\n              \t\r\n                }catch(Exception e){}\r\n                \r\n             \r\n        }",
+      "start_line": 17,
+      "end_line": 60,
+      "code": "public void doPost (HttpServletRequest request, HttpServletResponse response)\r\n        throws ServletException, IOException{\r\n        \tPrintWriter out = response.getWriter();\r\n        \t    try{ \r\n\t\t\t\t\t\r\n\t\t\t\t\tHttpSession session = request.getSession(true);\r\n\t\t\t\t\tString sessionUsername = (String)session.getAttribute(\"username\");\r\n\t\t\t\t\tString sessionType = (String)session.getAttribute(\"type\");\r\n\t\t\t\t\t\r\n\t\t\t\t\tString avatar_list = request.getParameter(\"avatar_list\");\r\n\t\t\t\t\tString link_avatar = request.getParameter(\"link_avatar\");\r\n                    String member_title = request.getParameter(\"member_title\");\r\n                    String signature = request.getParameter(\"signature\");\r\n                    \r\n                    member_title = Filter.filterAll(member_title);\r\n                    signature = Filter.filterAll(signature);\r\n                    \r\n                    String avatar = null;\r\n                    if(link_avatar.equals(\"http://\")){\r\n                    \tavatar = avatar_list;\r\n                    }else{\r\n                    \tavatar = link_avatar;\r\n                    }\r\n                    \t                  \r\n\t                db.connect();\r\n\r\n                    \r\n                    db.query(\"INSERT INTO forum_users(user_name) VALUES(\\\"\" + sessionUsername + \"\\\")\");\r\n\r\n    \t            db.query(\"UPDATE forum_users SET type = \\\"\" + sessionType + \"\\\" WHERE user_name =\\\"\" + sessionUsername + \"\\\"\");\r\n\r\n    \t            db.query(\"UPDATE forum_users SET avatar = \\\"\" + avatar + \"\\\" WHERE user_name =\\\"\" + sessionUsername + \"\\\"\");\r\n\r\n\t\t\t\t\tdb.query(\"UPDATE forum_users SET member_title = \\\"\" + member_title + \"\\\" WHERE user_name =\\\"\" + sessionUsername + \"\\\"\");\r\n\r\n\t\t\t\t\tdb.query(\"UPDATE forum_users SET signature = \\\"\" + signature + \"\\\" WHERE user_name =\\\"\" + sessionUsername + \"\\\"\");\r\n        \t        \r\n        \t        response.sendRedirect(Variable.getForumPath() + \"index.jsp?page=profile\");\r\n        \t        db.close();\r\n              \t\r\n                }catch(Exception e){}\r\n                \r\n             \r\n        }"
+    },
+    {
+      "id": "WEB-INF/classes/forum/ChangeProfile.java:LCF11",
+      "path": "WEB-INF/classes/forum/ChangeProfile.java",
+      "name": "doGet",
+      "parameters": [
+        "HttpServletRequest request",
+        "HttpServletResponse response"
+      ],
+      "body": "{ \r\n                doPost(request, response);\r\n        }",
+      "start_line": 61,
+      "end_line": 64,
+      "code": "public void doGet (HttpServletRequest request, HttpServletResponse response)\r\n        throws ServletException, IOException{ \r\n                doPost(request, response);\r\n        }"
+    },
+    {
+      "id": "WEB-INF/classes/forum/Cookies.java:LCF12",
+      "path": "WEB-INF/classes/forum/Cookies.java",
+      "name": "getCookies",
+      "parameters": [
+        "Cookie[] cookies",
+        "String cookieName",
+        "String defaultValue"
+      ],
+      "body": "{\r\n\t\t\t\t\t\t\r\n\t\tif (!cookies.equals(null)){ \r\n\t\t\tCookie cookie;\r\n\t\t\tfor(int i=0;i<cookies.length;i++){\r\n\t\t\t\tcookie = cookies[i];\r\n\t\t\t\tif(cookieName.equals(cookie.getName())){\r\n\t\t\t\t\treturn cookie.getValue();\r\n\t\t\t\t}\t\t\t\r\n\t\t\t}\r\n\t\t}\r\n\t\t\treturn(defaultValue);\r\n\t}",
+      "start_line": 9,
+      "end_line": 23,
+      "code": "public static String getCookies(Cookie[] cookies,\r\n\t\t\t\t\t\t\t\t\t  String cookieName,\r\n\t\t\t\t\t\t\t\t\t  String defaultValue){\r\n\t\t\t\t\t\t\r\n\t\tif (!cookies.equals(null)){ \r\n\t\t\tCookie cookie;\r\n\t\t\tfor(int i=0;i<cookies.length;i++){\r\n\t\t\t\tcookie = cookies[i];\r\n\t\t\t\tif(cookieName.equals(cookie.getName())){\r\n\t\t\t\t\treturn cookie.getValue();\r\n\t\t\t\t}\t\t\t\r\n\t\t\t}\r\n\t\t}\r\n\t\t\treturn(defaultValue);\r\n\t}"
+    },
+    {
+      "id": "WEB-INF/classes/forum/DBConnectie.java:LCF13",
+      "path": "WEB-INF/classes/forum/DBConnectie.java",
+      "name": "DBConnectie",
+      "parameters": [
+        "String DBName",
+        "String DBUser",
+        "String DBPass"
+      ],
+      "body": "{\r\n    \tthis.DBName = DBName;\r\n        this.DBUser = DBUser;\r\n        this.DBPass = DBPass;\r\n        try {\r\n        \tClass.forName(\"com.mysql.jdbc.Driver\");\r\n        }catch(Exception e){}\r\n    }",
+      "start_line": 18,
+      "end_line": 25,
+      "code": "public DBConnectie(String DBName, String DBUser, String DBPass){\r\n    \tthis.DBName = DBName;\r\n        this.DBUser = DBUser;\r\n        this.DBPass = DBPass;\r\n        try {\r\n        \tClass.forName(\"com.mysql.jdbc.Driver\");\r\n        }catch(Exception e){}\r\n    }"
+    },
+    {
+      "id": "WEB-INF/classes/forum/DBConnectie.java:LCF14",
+      "path": "WEB-INF/classes/forum/DBConnectie.java",
+      "name": "connect",
+      "parameters": [],
+      "body": "{\r\n    \ttry {\r\n        \tconn = DriverManager.getConnection(\"jdbc:mysql://localhost/\" + DBName + \"?user=\" + DBUser + \"&password=\" + DBPass);\r\n        }catch(Exception e){}\r\n    }",
+      "start_line": 27,
+      "end_line": 31,
+      "code": "public void connect() {\r\n    \ttry {\r\n        \tconn = DriverManager.getConnection(\"jdbc:mysql://localhost/\" + DBName + \"?user=\" + DBUser + \"&password=\" + DBPass);\r\n        }catch(Exception e){}\r\n    }"
+    },
+    {
+      "id": "WEB-INF/classes/forum/DBConnectie.java:LCF15",
+      "path": "WEB-INF/classes/forum/DBConnectie.java",
+      "name": "selectQuery",
+      "parameters": [
+        "String SQLQuery"
+      ],
+      "body": "{\r\n    \tthis.SQLQuery = SQLQuery;\r\n\r\n        try {\r\n        \tstmt = conn.createStatement();\r\n            result = stmt.executeQuery( SQLQuery );\r\n        }\r\n        catch( Exception e ){}\r\n    \treturn result;\r\n    }",
+      "start_line": 33,
+      "end_line": 42,
+      "code": "public ResultSet selectQuery(String SQLQuery){\r\n    \tthis.SQLQuery = SQLQuery;\r\n\r\n        try {\r\n        \tstmt = conn.createStatement();\r\n            result = stmt.executeQuery( SQLQuery );\r\n        }\r\n        catch( Exception e ){}\r\n    \treturn result;\r\n    }"
+    },
+    {
+      "id": "WEB-INF/classes/forum/DBConnectie.java:LCF16",
+      "path": "WEB-INF/classes/forum/DBConnectie.java",
+      "name": "query",
+      "parameters": [
+        "String SQLQuery"
+      ],
+      "body": "{\r\n    \tthis.SQLQuery = SQLQuery;\r\n        try {\r\n        \tstmt = conn.createStatement();\r\n            stmt.executeUpdate( SQLQuery );\r\n        }\r\n        catch( Exception e ){}\r\n    }",
+      "start_line": 44,
+      "end_line": 51,
+      "code": "public void query(String SQLQuery){\r\n    \tthis.SQLQuery = SQLQuery;\r\n        try {\r\n        \tstmt = conn.createStatement();\r\n            stmt.executeUpdate( SQLQuery );\r\n        }\r\n        catch( Exception e ){}\r\n    }"
+    },
+    {
+      "id": "WEB-INF/classes/forum/DBConnectie.java:LCF17",
+      "path": "WEB-INF/classes/forum/DBConnectie.java",
+      "name": "close",
+      "parameters": [],
+      "body": "{\r\n    \ttry {\r\n        \tstmt.close();\r\n            conn.close();\r\n        }\r\n        catch(Exception e){}\r\n    }",
+      "start_line": 53,
+      "end_line": 59,
+      "code": "public void close(){\r\n    \ttry {\r\n        \tstmt.close();\r\n            conn.close();\r\n        }\r\n        catch(Exception e){}\r\n    }"
+    },
+    {
+      "id": "WEB-INF/classes/forum/DeleteForum.java:LCF18",
+      "path": "WEB-INF/classes/forum/DeleteForum.java",
+      "name": "doPost",
+      "parameters": [
+        "HttpServletRequest request",
+        "HttpServletResponse response"
+      ],
+      "body": "{\r\n\t\t\tPrintWriter out = response.getWriter();\r\n        \t    try{    \r\n\t\t\t\t\t\r\n\t\t\t\t\tHttpSession session = request.getSession(true);\r\n\t\t\t\t\tString sessionType = (String)session.getAttribute(\"type\");\r\n\t\t\t\t\t\r\n\t\t\t\t\tString forum_id = request.getParameter(\"forum_id\");\r\n\t\t\t\t\t\r\n\t\t\t\t\tif(sessionType.equals(\"Admin\")){\r\n\r\n                    \tdb.connect();\r\n\r\n                    \r\n                    \tdb.query(\"DELETE FROM forum_message WHERE forum_id=\\\"\" + forum_id + \"\\\"\");\r\n\r\n                    \tdb.query(\"DELETE FROM forum_forums WHERE forum_id=\\\"\" + forum_id + \"\\\"\");\r\n\t\t\t\t\t \t\t\t\t\t \r\n                    \tdb.close();\r\n           \t\t\r\n\t              \t\tresponse.sendRedirect(Variable.getForumPath() + \"index.jsp\");\r\n    \t\t\t\t}          \t\t\r\n              \t\r\n                }catch(Exception e){}\r\n                \r\n             \r\n        }",
+      "start_line": 17,
+      "end_line": 44,
+      "code": "public void doPost (HttpServletRequest request, HttpServletResponse response)\r\n        throws ServletException, IOException{\r\n\t\t\tPrintWriter out = response.getWriter();\r\n        \t    try{    \r\n\t\t\t\t\t\r\n\t\t\t\t\tHttpSession session = request.getSession(true);\r\n\t\t\t\t\tString sessionType = (String)session.getAttribute(\"type\");\r\n\t\t\t\t\t\r\n\t\t\t\t\tString forum_id = request.getParameter(\"forum_id\");\r\n\t\t\t\t\t\r\n\t\t\t\t\tif(sessionType.equals(\"Admin\")){\r\n\r\n                    \tdb.connect();\r\n\r\n                    \r\n                    \tdb.query(\"DELETE FROM forum_message WHERE forum_id=\\\"\" + forum_id + \"\\\"\");\r\n\r\n                    \tdb.query(\"DELETE FROM forum_forums WHERE forum_id=\\\"\" + forum_id + \"\\\"\");\r\n\t\t\t\t\t \t\t\t\t\t \r\n                    \tdb.close();\r\n           \t\t\r\n\t              \t\tresponse.sendRedirect(Variable.getForumPath() + \"index.jsp\");\r\n    \t\t\t\t}          \t\t\r\n              \t\r\n                }catch(Exception e){}\r\n                \r\n             \r\n        }"
+    },
+    {
+      "id": "WEB-INF/classes/forum/DeleteForum.java:LCF19",
+      "path": "WEB-INF/classes/forum/DeleteForum.java",
+      "name": "doGet",
+      "parameters": [
+        "HttpServletRequest request",
+        "HttpServletResponse response"
+      ],
+      "body": "{ \r\n                doPost(request, response);\r\n        }",
+      "start_line": 45,
+      "end_line": 48,
+      "code": "public void doGet (HttpServletRequest request, HttpServletResponse response)\r\n        throws ServletException, IOException{ \r\n                doPost(request, response);\r\n        }"
+    },
+    {
+      "id": "WEB-INF/classes/forum/DeleteReply.java:LCF20",
+      "path": "WEB-INF/classes/forum/DeleteReply.java",
+      "name": "doPost",
+      "parameters": [
+        "HttpServletRequest request",
+        "HttpServletResponse response"
+      ],
+      "body": "{\r\n\t\t\tPrintWriter out = response.getWriter();\r\n        \t    try{ \r\n\t\t\t\t\tHttpSession session = request.getSession(true);\r\n\t\t\t\t\tString sessionType = (String)session.getAttribute(\"type\");\r\n\t\t\t\t\r\n\t\t\t\t\tString forum_id = request.getParameter(\"forum_id\");\r\n\t\t\t\t\tString thread_id = request.getParameter(\"thread_id\");\r\n\t\t\t\t\tString reply_id = request.getParameter(\"reply_id\");\r\n                    String start = request.getParameter(\"start\");\r\n\t\t\t\t\r\n\t\t\t\t\tif(sessionType.equals(\"Admin\")){\r\n                  \t                    \r\n\t                    db.connect();\r\n\r\n                    \r\n    \t                db.query(\"DELETE FROM forum_message WHERE forum_id=\\\"\" + forum_id + \"\\\" AND thread_id=\\\"\"+ thread_id + \"\\\" AND reply_id=\\\"\" + reply_id + \"\\\"\");\r\n\t\t\t\t\t \t\t\t\t\t \r\n        \t            db.close();\r\n           \t\t\r\n            \t  \t\tresponse.sendRedirect(Variable.getForumPath() + \"index.jsp?page=message&forum_id=\" + forum_id + \"&thread_id=\" + thread_id + \"&start=\" + start);\r\n              \t\t}\t\r\n              \t\r\n                }catch(Exception e){}\r\n                \r\n             \r\n        }",
+      "start_line": 17,
+      "end_line": 44,
+      "code": "public void doPost (HttpServletRequest request, HttpServletResponse response)\r\n        throws ServletException, IOException{\r\n\t\t\tPrintWriter out = response.getWriter();\r\n        \t    try{ \r\n\t\t\t\t\tHttpSession session = request.getSession(true);\r\n\t\t\t\t\tString sessionType = (String)session.getAttribute(\"type\");\r\n\t\t\t\t\r\n\t\t\t\t\tString forum_id = request.getParameter(\"forum_id\");\r\n\t\t\t\t\tString thread_id = request.getParameter(\"thread_id\");\r\n\t\t\t\t\tString reply_id = request.getParameter(\"reply_id\");\r\n                    String start = request.getParameter(\"start\");\r\n\t\t\t\t\r\n\t\t\t\t\tif(sessionType.equals(\"Admin\")){\r\n                  \t                    \r\n\t                    db.connect();\r\n\r\n                    \r\n    \t                db.query(\"DELETE FROM forum_message WHERE forum_id=\\\"\" + forum_id + \"\\\" AND thread_id=\\\"\"+ thread_id + \"\\\" AND reply_id=\\\"\" + reply_id + \"\\\"\");\r\n\t\t\t\t\t \t\t\t\t\t \r\n        \t            db.close();\r\n           \t\t\r\n            \t  \t\tresponse.sendRedirect(Variable.getForumPath() + \"index.jsp?page=message&forum_id=\" + forum_id + \"&thread_id=\" + thread_id + \"&start=\" + start);\r\n              \t\t}\t\r\n              \t\r\n                }catch(Exception e){}\r\n                \r\n             \r\n        }"
+    },
+    {
+      "id": "WEB-INF/classes/forum/DeleteReply.java:LCF21",
+      "path": "WEB-INF/classes/forum/DeleteReply.java",
+      "name": "doGet",
+      "parameters": [
+        "HttpServletRequest request",
+        "HttpServletResponse response"
+      ],
+      "body": "{ \r\n                doPost(request, response);\r\n        }",
+      "start_line": 45,
+      "end_line": 48,
+      "code": "public void doGet (HttpServletRequest request, HttpServletResponse response)\r\n        throws ServletException, IOException{ \r\n                doPost(request, response);\r\n        }"
+    },
+    {
+      "id": "WEB-INF/classes/forum/DeleteThread.java:LCF22",
+      "path": "WEB-INF/classes/forum/DeleteThread.java",
+      "name": "doPost",
+      "parameters": [
+        "HttpServletRequest request",
+        "HttpServletResponse response"
+      ],
+      "body": "{\r\n\t\t\tPrintWriter out = response.getWriter();\r\n        \t    try{    \r\n\t\t\t\t\t\r\n\t\t\t\t\tHttpSession session = request.getSession(true);\r\n\t\t\t\t\tString sessionType = (String)session.getAttribute(\"type\");\r\n\t\t\t\t\tString forum_id = request.getParameter(\"forum_id\");\r\n\t\t\t\t\tString thread_id = request.getParameter(\"thread_id\");\r\n\t\t\t\t\r\n\t\t\t\t\tif(sessionType.equals(\"Admin\")){\r\n        \r\n                    \tdb.connect();\r\n\r\n                    \r\n                    \tdb.query(\"DELETE FROM forum_message WHERE forum_id=\\\"\" + forum_id + \"\\\" AND thread_id=\\\"\" + thread_id + \"\\\"\");\r\n\r\n\t\t\t\t\t \tdb.query(\"DELETE FROM forum_threads WHERE forum_id=\\\"\" + forum_id + \"\\\" AND thread_id=\\\"\" + thread_id + \"\\\"\");\t\r\n\t\t\t\t\t \t\t\t\t\t \r\n                    \tdb.close();\r\n           \t\t\r\n\t              \t\tresponse.sendRedirect(Variable.getForumPath() + \"index.jsp?page=thread&forum_id=\"+forum_id);\r\n    \t\t\t\t}          \t\t\r\n              \t\r\n                }catch(Exception e){}\r\n                \r\n             \r\n        }",
+      "start_line": 17,
+      "end_line": 44,
+      "code": "public void doPost (HttpServletRequest request, HttpServletResponse response)\r\n        throws ServletException, IOException{\r\n\t\t\tPrintWriter out = response.getWriter();\r\n        \t    try{    \r\n\t\t\t\t\t\r\n\t\t\t\t\tHttpSession session = request.getSession(true);\r\n\t\t\t\t\tString sessionType = (String)session.getAttribute(\"type\");\r\n\t\t\t\t\tString forum_id = request.getParameter(\"forum_id\");\r\n\t\t\t\t\tString thread_id = request.getParameter(\"thread_id\");\r\n\t\t\t\t\r\n\t\t\t\t\tif(sessionType.equals(\"Admin\")){\r\n        \r\n                    \tdb.connect();\r\n\r\n                    \r\n                    \tdb.query(\"DELETE FROM forum_message WHERE forum_id=\\\"\" + forum_id + \"\\\" AND thread_id=\\\"\" + thread_id + \"\\\"\");\r\n\r\n\t\t\t\t\t \tdb.query(\"DELETE FROM forum_threads WHERE forum_id=\\\"\" + forum_id + \"\\\" AND thread_id=\\\"\" + thread_id + \"\\\"\");\t\r\n\t\t\t\t\t \t\t\t\t\t \r\n                    \tdb.close();\r\n           \t\t\r\n\t              \t\tresponse.sendRedirect(Variable.getForumPath() + \"index.jsp?page=thread&forum_id=\"+forum_id);\r\n    \t\t\t\t}          \t\t\r\n              \t\r\n                }catch(Exception e){}\r\n                \r\n             \r\n        }"
+    },
+    {
+      "id": "WEB-INF/classes/forum/DeleteThread.java:LCF23",
+      "path": "WEB-INF/classes/forum/DeleteThread.java",
+      "name": "doGet",
+      "parameters": [
+        "HttpServletRequest request",
+        "HttpServletResponse response"
+      ],
+      "body": "{ \r\n                doPost(request, response);\r\n        }",
+      "start_line": 45,
+      "end_line": 48,
+      "code": "public void doGet (HttpServletRequest request, HttpServletResponse response)\r\n        throws ServletException, IOException{ \r\n                doPost(request, response);\r\n        }"
+    },
+    {
+      "id": "WEB-INF/classes/forum/Filter.java:LCF24",
+      "path": "WEB-INF/classes/forum/Filter.java",
+      "name": "filterAll",
+      "parameters": [
+        "String string"
+      ],
+      "body": "{\r\n\t\tstring = filterHtmlTag( string );\r\n\t\tstring = filterBreaks( string );\r\n\t\tstring = filterTextStyle( string );\r\n\t\tstring = filterImage( string );\r\n\t\tstring = filterURL( string );\r\n\t\tstring = filterEmoticons( string );\r\n\t\treturn string;\r\n\t}",
+      "start_line": 6,
+      "end_line": 15,
+      "code": "public static String filterAll(String string)\r\n    {\r\n\t\tstring = filterHtmlTag( string );\r\n\t\tstring = filterBreaks( string );\r\n\t\tstring = filterTextStyle( string );\r\n\t\tstring = filterImage( string );\r\n\t\tstring = filterURL( string );\r\n\t\tstring = filterEmoticons( string );\r\n\t\treturn string;\r\n\t}"
+    },
+    {
+      "id": "WEB-INF/classes/forum/Filter.java:LCF25",
+      "path": "WEB-INF/classes/forum/Filter.java",
+      "name": "filterHtmlTag",
+      "parameters": [
+        "String string"
+      ],
+      "body": "{\r\n        if(string == null || string.length() < 1)\r\n        {\r\n            return string;\r\n        }\r\n        \r\n        StringBuffer source = new StringBuffer(string);\r\n        \r\n        for(int i = 0; i < source.length(); i++)\r\n        {\r\n            char c = source.charAt(i);\r\n            if(c == '>')\r\n            {\r\n                source.replace(i,i+1,\"&gt;\");\r\n            } \r\n            else if(c == '<')\r\n            {\r\n                source.replace(i,i+1,\"&lt;\");\r\n            } \r\n            else if(c == '&')\r\n            {\r\n                source.replace(i,i+1,\"&#38;\");\r\n            }\r\n        }\r\n\r\n        \r\n        return source.toString();\r\n    }",
+      "start_line": 17,
+      "end_line": 45,
+      "code": "public static String filterHtmlTag(String string)\r\n    {\r\n        if(string == null || string.length() < 1)\r\n        {\r\n            return string;\r\n        }\r\n        \r\n        StringBuffer source = new StringBuffer(string);\r\n        \r\n        for(int i = 0; i < source.length(); i++)\r\n        {\r\n            char c = source.charAt(i);\r\n            if(c == '>')\r\n            {\r\n                source.replace(i,i+1,\"&gt;\");\r\n            } \r\n            else if(c == '<')\r\n            {\r\n                source.replace(i,i+1,\"&lt;\");\r\n            } \r\n            else if(c == '&')\r\n            {\r\n                source.replace(i,i+1,\"&#38;\");\r\n            }\r\n        }\r\n\r\n        \r\n        return source.toString();\r\n    }"
+    },
+    {
+      "id": "WEB-INF/classes/forum/Filter.java:LCF26",
+      "path": "WEB-INF/classes/forum/Filter.java",
+      "name": "filterBreaks",
+      "parameters": [
+        "String string"
+      ],
+      "body": "{\r\n        if(string == null || string.length() < 1)\r\n        {\r\n            return string;\r\n        }\r\n        \r\n        StringBuffer source = new StringBuffer(string);\r\n        \r\n        for(int i = 0; i < source.length(); i++)\r\n        {\r\n            if(source.charAt(i) == '\\n')\r\n            {\r\n                source.replace(i,i+1,\"<br>\"); \r\n            } \r\n\t\t}\r\n        \r\n        return source.toString();\r\n    }",
+      "start_line": 47,
+      "end_line": 65,
+      "code": "public static String filterBreaks(String string)\r\n    {\r\n        if(string == null || string.length() < 1)\r\n        {\r\n            return string;\r\n        }\r\n        \r\n        StringBuffer source = new StringBuffer(string);\r\n        \r\n        for(int i = 0; i < source.length(); i++)\r\n        {\r\n            if(source.charAt(i) == '\\n')\r\n            {\r\n                source.replace(i,i+1,\"<br>\"); \r\n            } \r\n\t\t}\r\n        \r\n        return source.toString();\r\n    }"
+    },
+    {
+      "id": "WEB-INF/classes/forum/Filter.java:LCF27",
+      "path": "WEB-INF/classes/forum/Filter.java",
+      "name": "filterTextStyle",
+      "parameters": [
+        "String string"
+      ],
+      "body": "{\r\n        if(string == null || string.length() < 1)\r\n        {\r\n            return string;\r\n        }\r\n\r\n        StringBuffer source = new StringBuffer(string);\r\n        \r\n        char charArray[] = {'B','b','I','i','U','u','S','s'};\r\n        \r\n        for(int i = 0; i < source.length(); i++)\r\n        {\r\n            if(source.charAt(i) == '[' && source.charAt(i+2) == ']')\r\n            {\r\n                for(int j = 0; j < charArray.length; j++)\r\n            \t{\r\n\t                if(source.charAt(i+1) == charArray[j])\r\n\t                {\r\n\t                \tsource.replace(i,i+3,\"<\"+ charArray[j] +\">\"); \r\n\t                }\r\n\t            }\r\n            }\r\n            else if(source.charAt(i) == '[' &&  source.charAt(i+1) == '/' && source.charAt(i+3) == ']')\r\n            {\r\n            \tfor(int j = 0; j < charArray.length; j++)\r\n            \t{\r\n\t            \tif(source.charAt(i+2) == charArray[j])\r\n\t            \t{\r\n\t                \tsource.replace(i,i+4,\"</\"+ charArray[j] +\">\"); \r\n\t                }\r\n\t            }\r\n            }\r\n\t\t}\r\n\t\treturn  source.toString();\r\n\t}",
+      "start_line": 67,
+      "end_line": 102,
+      "code": "public static String filterTextStyle(String string)\r\n\t{\r\n        if(string == null || string.length() < 1)\r\n        {\r\n            return string;\r\n        }\r\n\r\n        StringBuffer source = new StringBuffer(string);\r\n        \r\n        char charArray[] = {'B','b','I','i','U','u','S','s'};\r\n        \r\n        for(int i = 0; i < source.length(); i++)\r\n        {\r\n            if(source.charAt(i) == '[' && source.charAt(i+2) == ']')\r\n            {\r\n                for(int j = 0; j < charArray.length; j++)\r\n            \t{\r\n\t                if(source.charAt(i+1) == charArray[j])\r\n\t                {\r\n\t                \tsource.replace(i,i+3,\"<\"+ charArray[j] +\">\"); \r\n\t                }\r\n\t            }\r\n            }\r\n            else if(source.charAt(i) == '[' &&  source.charAt(i+1) == '/' && source.charAt(i+3) == ']')\r\n            {\r\n            \tfor(int j = 0; j < charArray.length; j++)\r\n            \t{\r\n\t            \tif(source.charAt(i+2) == charArray[j])\r\n\t            \t{\r\n\t                \tsource.replace(i,i+4,\"</\"+ charArray[j] +\">\"); \r\n\t                }\r\n\t            }\r\n            }\r\n\t\t}\r\n\t\treturn  source.toString();\r\n\t}"
+    },
+    {
+      "id": "WEB-INF/classes/forum/Filter.java:LCF28",
+      "path": "WEB-INF/classes/forum/Filter.java",
+      "name": "filterImage",
+      "parameters": [
+        "String string"
+      ],
+      "body": "{\r\n        if(string == null || string.length() < 1)\r\n        {\r\n            return string;\r\n        }\r\n        \r\n\t\tStringBuffer source = new StringBuffer( string );\r\n    \r\n        for(int i = 0; i < source.length(); i++)\r\n        {\r\n            if(source.charAt(i) == '[')\r\n            {\r\n            \tfor( int j = i+1;j < (source.length());j++)\r\n            \t{\r\n            \t\tif(source.charAt(j) == ']')\r\n            \t\t{\r\n            \t\t\tString subString = source.substring(i+1,j);\r\n\t\t\t\t\t\tif(subString.equals(\"IMG\") || subString.equals(\"img\"))\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tsource.replace(i,j+1,\"<img src=\");\r\n\t\t\t\t\t\t}else if(subString.equals(\"/IMG\") || subString.equals(\"/img\"))\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tsource.replace(i,j+1,\">\");\t\r\n\t\t\t\t\t\t} \r\n            \t\t}\t\r\n            \t}\r\n\r\n            }\r\n        }\r\n\r\n\r\n\t\treturn  source.toString();\r\n\t}",
+      "start_line": 104,
+      "end_line": 137,
+      "code": "public static String filterImage(String string)\r\n\t{\r\n        if(string == null || string.length() < 1)\r\n        {\r\n            return string;\r\n        }\r\n        \r\n\t\tStringBuffer source = new StringBuffer( string );\r\n    \r\n        for(int i = 0; i < source.length(); i++)\r\n        {\r\n            if(source.charAt(i) == '[')\r\n            {\r\n            \tfor( int j = i+1;j < (source.length());j++)\r\n            \t{\r\n            \t\tif(source.charAt(j) == ']')\r\n            \t\t{\r\n            \t\t\tString subString = source.substring(i+1,j);\r\n\t\t\t\t\t\tif(subString.equals(\"IMG\") || subString.equals(\"img\"))\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tsource.replace(i,j+1,\"<img src=\");\r\n\t\t\t\t\t\t}else if(subString.equals(\"/IMG\") || subString.equals(\"/img\"))\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tsource.replace(i,j+1,\">\");\t\r\n\t\t\t\t\t\t} \r\n            \t\t}\t\r\n            \t}\r\n\r\n            }\r\n        }\r\n\r\n\r\n\t\treturn  source.toString();\r\n\t}"
+    },
+    {
+      "id": "WEB-INF/classes/forum/Filter.java:LCF29",
+      "path": "WEB-INF/classes/forum/Filter.java",
+      "name": "filterURL",
+      "parameters": [
+        "String string"
+      ],
+      "body": "{\r\n        if(string == null || string.length() < 1)\r\n        {\r\n            return string;\r\n        }\r\n        \r\n\t\tStringBuffer source = new StringBuffer( string );\r\n    \r\n        for(int i = 0; i < source.length(); i++)\r\n        {\r\n            if(source.charAt(i) == '[')\r\n            {\r\n            \tfor( int j = i+1;j < (source.length());j++)\r\n            \t{\r\n            \t\tif(source.charAt(j) == ']')\r\n            \t\t{\r\n            \t\t\tString subString = source.substring(i+1,i+5);\r\n\t\t\t\t\t\tif(subString.equals(\"URL=\") || subString.equals(\"url=\"))\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tsource.replace(i,5,\"<a href=\");\r\n\t\t\t\t\t\t\tsource.replace(j+3,j+4,\" target=new>\");\r\n\t\t\t\t\t\t}else if(subString.equals(\"/URL\") || subString.equals(\"/URL\"))\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tsource.replace(i,j+1,\"</a>\");\t\r\n\t\t\t\t\t\t} \r\n            \t\t}\t\r\n            \t}\r\n\r\n            }\r\n        }\r\n\t\treturn  source.toString();\r\n\t}",
+      "start_line": 139,
+      "end_line": 171,
+      "code": "public static String filterURL(String string)\r\n\t{\r\n        if(string == null || string.length() < 1)\r\n        {\r\n            return string;\r\n        }\r\n        \r\n\t\tStringBuffer source = new StringBuffer( string );\r\n    \r\n        for(int i = 0; i < source.length(); i++)\r\n        {\r\n            if(source.charAt(i) == '[')\r\n            {\r\n            \tfor( int j = i+1;j < (source.length());j++)\r\n            \t{\r\n            \t\tif(source.charAt(j) == ']')\r\n            \t\t{\r\n            \t\t\tString subString = source.substring(i+1,i+5);\r\n\t\t\t\t\t\tif(subString.equals(\"URL=\") || subString.equals(\"url=\"))\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tsource.replace(i,5,\"<a href=\");\r\n\t\t\t\t\t\t\tsource.replace(j+3,j+4,\" target=new>\");\r\n\t\t\t\t\t\t}else if(subString.equals(\"/URL\") || subString.equals(\"/URL\"))\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tsource.replace(i,j+1,\"</a>\");\t\r\n\t\t\t\t\t\t} \r\n            \t\t}\t\r\n            \t}\r\n\r\n            }\r\n        }\r\n\t\treturn  source.toString();\r\n\t}"
+    },
+    {
+      "id": "WEB-INF/classes/forum/Filter.java:LCF30",
+      "path": "WEB-INF/classes/forum/Filter.java",
+      "name": "filterEmoticons",
+      "parameters": [
+        "String string"
+      ],
+      "body": "{\r\n        StringBuffer buffer = new StringBuffer( string );\r\n    \r\n        for(int i = 0; i < buffer.length(); i++){          \r\n         \tif(buffer.charAt(i) == ':'){\r\n        \t\tfor( int j = i+1;j < (buffer.length());j++){        \t\t\t\r\n        \t\t\tif(buffer.charAt(j) == ':'){\r\n        \t\t\t\tString subString = buffer.substring(i+1,j);\r\n\t\t\t\t\t\tif(subString.equals(\"mellow\")){\r\n\t\t\t\t\t\t\tbuffer.replace(i,j+1,\"<img src=./emoticons/mellow.gif border=0>\");\r\n\t\t\t\t\t\t}else if(subString.equals(\"huh\")){\r\n\t\t\t\t\t\t\tbuffer.replace(i,j+1,\"<img src=./emoticons/huh.gif border=0>\");\r\n\t\t\t\t\t\t}else if(subString.equals(\"rolleyes\")){\r\n\t\t\t\t\t\t\tbuffer.replace(i,j+1,\"<img src=./emoticons/rolleyes.gif border=0>\");\r\n\t\t\t\t\t\t}else if(subString.equals(\"lol\")){\r\n\t\t\t\t\t\t\tbuffer.replace(i,j+1,\"<img src=./emoticons/lol.gif border=0>\");\r\n\t\t\t\t\t\t}else if(subString.equals(\"wub\")){\r\n\t\t\t\t\t\t\tbuffer.replace(i,j+1,\"<img src=./emoticons/wub.gif border=0>\");\r\n\t\t\t\t\t\t}else if(subString.equals(\"angry\")){\r\n\t\t\t\t\t\t\tbuffer.replace(i,j+1,\"<img src=./emoticons/angry.gif border=0>\");\r\n\t\t\t\t\t\t}else if(subString.equals(\"unsure\")){\r\n\t\t\t\t\t\t\tbuffer.replace(i,j+1,\"<img src=./emoticons/unsure.gif border=0>\");\r\n\t\t\t\t\t\t}else if(subString.equals(\"wacko\")){\r\n\t\t\t\t\t\t\tbuffer.replace(i,j+1,\"<img src=./emoticons/wacko.gif border=0>\");\r\n\t\t\t\t\t\t}else if(subString.equals(\"blink\")){\r\n\t\t\t\t\t\t\tbuffer.replace(i,j+1,\"<img src=./emoticons/blink.gif border=0>\");\r\n\t\t\t\t\t\t}else if(subString.equals(\"ph34r\")){\r\n\t\t\t\t\t\t\tbuffer.replace(i,j+1,\"<img src=./emoticons/ph34r.gif border=0>\");\r\n\t\t\t\t\t\t}else if(subString.equals(\"bounce\")){\r\n\t\t\t\t\t\t\tbuffer.replace(i,j+1,\"<img src=./emoticons/bounce.gif border=0>\");\r\n\t\t\t\t\t\t}else if(subString.equals(\"fuck\")){\r\n\t\t\t\t\t\t\tbuffer.replace(i,j+1,\"<img src=./emoticons/fuck.gif border=0>\");\r\n\t\t\t\t\t\t}else if(subString.equals(\"scream\")){\r\n\t\t\t\t\t\t\tbuffer.replace(i,j+1,\"<img src=./emoticons/scream.gif border=0>\");\r\n\t\t\t\t\t\t}else if(subString.equals(\"silly\")){\r\n\t\t\t\t\t\t\tbuffer.replace(i,j+1,\"<img src=./emoticons/silly.gif border=0>\");\r\n\t\t\t\t\t\t}else if(subString.equals(\"frusty\")){\r\n\t\t\t\t\t\t\tbuffer.replace(i,j+1,\"<img src=./emoticons/frusty.gif border=0>\");\r\n\t\t\t\t\t\t}else if(subString.equals(\"kwijl\")){\r\n\t\t\t\t\t\t\tbuffer.replace(i,j+1,\"<img src=./emoticons/kwijl.gif border=0>\");\r\n\t\t\t\t\t\t}else if(subString.equals(\"puke\")){\r\n\t\t\t\t\t\t\tbuffer.replace(i,j+1,\"<img src=./emoticons/puke.gif border=0>\");\r\n\t\t\t\t\t\t}else if(subString.equals(\"bid\")){\r\n\t\t\t\t\t\t\tbuffer.replace(i,j+1,\"<img src=./emoticons/bid.gif border=0>\");\r\n\t\t\t\t\t\t}else if(subString.equals(\"hammer\")){\r\n\t\t\t\t\t\t\tbuffer.replace(i,j+1,\"<img src=./emoticons/hammer.gif border=0>\");\r\n\t\t\t\t\t\t}else if(subString.equals(\"good\")){\r\n\t\t\t\t\t\t\tbuffer.replace(i,j+1,\"<img src=./emoticons/good.gif border=0>\");\t\t\t\t\t\t\t\t\t\t\t\t\t\t\r\n        \t\t\t\t}\r\n        \t\t\t}\r\n        \t\t}\r\n\t\t\t}   \t\r\n    \t}\r\n    \treturn buffer.toString();\r\n    }",
+      "start_line": 173,
+      "end_line": 228,
+      "code": "public static String filterEmoticons(String string)\r\n    {\r\n        StringBuffer buffer = new StringBuffer( string );\r\n    \r\n        for(int i = 0; i < buffer.length(); i++){          \r\n         \tif(buffer.charAt(i) == ':'){\r\n        \t\tfor( int j = i+1;j < (buffer.length());j++){        \t\t\t\r\n        \t\t\tif(buffer.charAt(j) == ':'){\r\n        \t\t\t\tString subString = buffer.substring(i+1,j);\r\n\t\t\t\t\t\tif(subString.equals(\"mellow\")){\r\n\t\t\t\t\t\t\tbuffer.replace(i,j+1,\"<img src=./emoticons/mellow.gif border=0>\");\r\n\t\t\t\t\t\t}else if(subString.equals(\"huh\")){\r\n\t\t\t\t\t\t\tbuffer.replace(i,j+1,\"<img src=./emoticons/huh.gif border=0>\");\r\n\t\t\t\t\t\t}else if(subString.equals(\"rolleyes\")){\r\n\t\t\t\t\t\t\tbuffer.replace(i,j+1,\"<img src=./emoticons/rolleyes.gif border=0>\");\r\n\t\t\t\t\t\t}else if(subString.equals(\"lol\")){\r\n\t\t\t\t\t\t\tbuffer.replace(i,j+1,\"<img src=./emoticons/lol.gif border=0>\");\r\n\t\t\t\t\t\t}else if(subString.equals(\"wub\")){\r\n\t\t\t\t\t\t\tbuffer.replace(i,j+1,\"<img src=./emoticons/wub.gif border=0>\");\r\n\t\t\t\t\t\t}else if(subString.equals(\"angry\")){\r\n\t\t\t\t\t\t\tbuffer.replace(i,j+1,\"<img src=./emoticons/angry.gif border=0>\");\r\n\t\t\t\t\t\t}else if(subString.equals(\"unsure\")){\r\n\t\t\t\t\t\t\tbuffer.replace(i,j+1,\"<img src=./emoticons/unsure.gif border=0>\");\r\n\t\t\t\t\t\t}else if(subString.equals(\"wacko\")){\r\n\t\t\t\t\t\t\tbuffer.replace(i,j+1,\"<img src=./emoticons/wacko.gif border=0>\");\r\n\t\t\t\t\t\t}else if(subString.equals(\"blink\")){\r\n\t\t\t\t\t\t\tbuffer.replace(i,j+1,\"<img src=./emoticons/blink.gif border=0>\");\r\n\t\t\t\t\t\t}else if(subString.equals(\"ph34r\")){\r\n\t\t\t\t\t\t\tbuffer.replace(i,j+1,\"<img src=./emoticons/ph34r.gif border=0>\");\r\n\t\t\t\t\t\t}else if(subString.equals(\"bounce\")){\r\n\t\t\t\t\t\t\tbuffer.replace(i,j+1,\"<img src=./emoticons/bounce.gif border=0>\");\r\n\t\t\t\t\t\t}else if(subString.equals(\"fuck\")){\r\n\t\t\t\t\t\t\tbuffer.replace(i,j+1,\"<img src=./emoticons/fuck.gif border=0>\");\r\n\t\t\t\t\t\t}else if(subString.equals(\"scream\")){\r\n\t\t\t\t\t\t\tbuffer.replace(i,j+1,\"<img src=./emoticons/scream.gif border=0>\");\r\n\t\t\t\t\t\t}else if(subString.equals(\"silly\")){\r\n\t\t\t\t\t\t\tbuffer.replace(i,j+1,\"<img src=./emoticons/silly.gif border=0>\");\r\n\t\t\t\t\t\t}else if(subString.equals(\"frusty\")){\r\n\t\t\t\t\t\t\tbuffer.replace(i,j+1,\"<img src=./emoticons/frusty.gif border=0>\");\r\n\t\t\t\t\t\t}else if(subString.equals(\"kwijl\")){\r\n\t\t\t\t\t\t\tbuffer.replace(i,j+1,\"<img src=./emoticons/kwijl.gif border=0>\");\r\n\t\t\t\t\t\t}else if(subString.equals(\"puke\")){\r\n\t\t\t\t\t\t\tbuffer.replace(i,j+1,\"<img src=./emoticons/puke.gif border=0>\");\r\n\t\t\t\t\t\t}else if(subString.equals(\"bid\")){\r\n\t\t\t\t\t\t\tbuffer.replace(i,j+1,\"<img src=./emoticons/bid.gif border=0>\");\r\n\t\t\t\t\t\t}else if(subString.equals(\"hammer\")){\r\n\t\t\t\t\t\t\tbuffer.replace(i,j+1,\"<img src=./emoticons/hammer.gif border=0>\");\r\n\t\t\t\t\t\t}else if(subString.equals(\"good\")){\r\n\t\t\t\t\t\t\tbuffer.replace(i,j+1,\"<img src=./emoticons/good.gif border=0>\");\t\t\t\t\t\t\t\t\t\t\t\t\t\t\r\n        \t\t\t\t}\r\n        \t\t\t}\r\n        \t\t}\r\n\t\t\t}   \t\r\n    \t}\r\n    \treturn buffer.toString();\r\n    }"
+    },
+    {
+      "id": "WEB-INF/classes/forum/FilterBack.java:LCF31",
+      "path": "WEB-INF/classes/forum/FilterBack.java",
+      "name": "filterAll",
+      "parameters": [
+        "String string"
+      ],
+      "body": "{\t\r\n\t\tstring = filterBreak(string);\r\n\t\tstring = filterTextStyle(string);\r\n\t\t//string = filterImage(string);\r\n\t\t//string = filterURL(string);\r\n\t\tstring = filterEmoticons(string);\r\n\t\t\r\n\t\treturn string;\r\n\t}",
+      "start_line": 7,
+      "end_line": 16,
+      "code": "public static String filterAll(String string)\r\n    {\t\r\n\t\tstring = filterBreak(string);\r\n\t\tstring = filterTextStyle(string);\r\n\t\t//string = filterImage(string);\r\n\t\t//string = filterURL(string);\r\n\t\tstring = filterEmoticons(string);\r\n\t\t\r\n\t\treturn string;\r\n\t}"
+    },
+    {
+      "id": "WEB-INF/classes/forum/FilterBack.java:LCF32",
+      "path": "WEB-INF/classes/forum/FilterBack.java",
+      "name": "filterBreak",
+      "parameters": [
+        "String string"
+      ],
+      "body": "{\r\n\t\tif(string == null || string.length() < 1)\r\n        {\r\n            return string;\r\n        }\r\n        \r\n        StringBuffer source = new StringBuffer(string);\r\n        \r\n        for(int i = 0; i < source.length(); i++)\r\n        {\r\n            if(source.charAt(i) == '<')\r\n            {\r\n            \tif(source.charAt(i+1) == 'b' && source.charAt(i+2) =='r' && source.charAt(i+3) =='>')\r\n            \t{\t\r\n                \tsource.replace(i,i+4,\"\\n\");\r\n                }\r\n            } \r\n        }\r\n        return source.toString();\r\n\t}",
+      "start_line": 18,
+      "end_line": 38,
+      "code": "public static String filterBreak(String string)\r\n    {\r\n\t\tif(string == null || string.length() < 1)\r\n        {\r\n            return string;\r\n        }\r\n        \r\n        StringBuffer source = new StringBuffer(string);\r\n        \r\n        for(int i = 0; i < source.length(); i++)\r\n        {\r\n            if(source.charAt(i) == '<')\r\n            {\r\n            \tif(source.charAt(i+1) == 'b' && source.charAt(i+2) =='r' && source.charAt(i+3) =='>')\r\n            \t{\t\r\n                \tsource.replace(i,i+4,\"\\n\");\r\n                }\r\n            } \r\n        }\r\n        return source.toString();\r\n\t}"
+    },
+    {
+      "id": "WEB-INF/classes/forum/FilterBack.java:LCF33",
+      "path": "WEB-INF/classes/forum/FilterBack.java",
+      "name": "filterTextStyle",
+      "parameters": [
+        "String string"
+      ],
+      "body": "{\r\n        if(string == null || string.length() < 1)\r\n        {\r\n            return string;\r\n        }\r\n\r\n        StringBuffer source = new StringBuffer(string);\r\n        \r\n        char charArray[] = {'B','b','I','i','U','u','S','s'};\r\n        \r\n        for(int i = 0; i < source.length(); i++)\r\n        {\r\n            if(source.charAt(i) == '<' && source.charAt(i+2) == '>')\r\n            {\r\n                for(int j = 0; j < charArray.length; j++)\r\n            \t{\r\n\t                if(source.charAt(i+1) == charArray[j])\r\n\t                {\r\n\t                \tsource.replace(i,i+3,\"[\"+ charArray[j] +\"]\"); \r\n\t                }\r\n\t            }\r\n            }\r\n            else if(source.charAt(i) == '<' &&  source.charAt(i+1) == '/' && source.charAt(i+3) == '>')\r\n            {\r\n            \tfor(int j = 0; j < charArray.length; j++)\r\n            \t{\r\n\t            \tif(source.charAt(i+2) == charArray[j])\r\n\t            \t{\r\n\t                \tsource.replace(i,i+4,\"[/\"+ charArray[j] +\"]\"); \r\n\t                }\r\n\t            }\r\n            }\r\n\t\t}\r\n\t\treturn source.toString();\r\n\t}",
+      "start_line": 40,
+      "end_line": 75,
+      "code": "public static String filterTextStyle(String string)\r\n\t{\r\n        if(string == null || string.length() < 1)\r\n        {\r\n            return string;\r\n        }\r\n\r\n        StringBuffer source = new StringBuffer(string);\r\n        \r\n        char charArray[] = {'B','b','I','i','U','u','S','s'};\r\n        \r\n        for(int i = 0; i < source.length(); i++)\r\n        {\r\n            if(source.charAt(i) == '<' && source.charAt(i+2) == '>')\r\n            {\r\n                for(int j = 0; j < charArray.length; j++)\r\n            \t{\r\n\t                if(source.charAt(i+1) == charArray[j])\r\n\t                {\r\n\t                \tsource.replace(i,i+3,\"[\"+ charArray[j] +\"]\"); \r\n\t                }\r\n\t            }\r\n            }\r\n            else if(source.charAt(i) == '<' &&  source.charAt(i+1) == '/' && source.charAt(i+3) == '>')\r\n            {\r\n            \tfor(int j = 0; j < charArray.length; j++)\r\n            \t{\r\n\t            \tif(source.charAt(i+2) == charArray[j])\r\n\t            \t{\r\n\t                \tsource.replace(i,i+4,\"[/\"+ charArray[j] +\"]\"); \r\n\t                }\r\n\t            }\r\n            }\r\n\t\t}\r\n\t\treturn source.toString();\r\n\t}"
+    },
+    {
+      "id": "WEB-INF/classes/forum/FilterBack.java:LCF34",
+      "path": "WEB-INF/classes/forum/FilterBack.java",
+      "name": "filterImage",
+      "parameters": [
+        "String string"
+      ],
+      "body": "{\r\n        if(string == null || string.length() < 1)\r\n        {\r\n            return string;\r\n        }\r\n        \r\n\t\tStringBuffer source = new StringBuffer( string );\r\n    \r\n        for(int i = 0; i < source.length(); i++)\r\n        {\r\n            if(source.charAt(i) == '<')\r\n            {\r\n            \tfor( int j = i+1;j < (source.length());j++)\r\n            \t{\r\n            \t\tif(source.charAt(j) == '>')\r\n            \t\t{\r\n            \t\t\tString subString = source.substring(i+1,i+8);\r\n\t\t\t\t\t\tif(subString.equals(\"img src=\"))\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tsource.replace(i,j+1,\"[IMG]\");\r\n\t\t\t\t\t\t\tsource.replace(j,j+1,\"[/IMG]\");\r\n\t\t\t\t\t\t}\r\n            \t\t}\t\r\n            \t}\r\n\r\n            }\r\n        }\r\n\r\n\r\n\t\treturn  source.toString();\r\n\t}",
+      "start_line": 77,
+      "end_line": 108,
+      "code": "public static String filterImage(String string)\r\n\t{\r\n        if(string == null || string.length() < 1)\r\n        {\r\n            return string;\r\n        }\r\n        \r\n\t\tStringBuffer source = new StringBuffer( string );\r\n    \r\n        for(int i = 0; i < source.length(); i++)\r\n        {\r\n            if(source.charAt(i) == '<')\r\n            {\r\n            \tfor( int j = i+1;j < (source.length());j++)\r\n            \t{\r\n            \t\tif(source.charAt(j) == '>')\r\n            \t\t{\r\n            \t\t\tString subString = source.substring(i+1,i+8);\r\n\t\t\t\t\t\tif(subString.equals(\"img src=\"))\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tsource.replace(i,j+1,\"[IMG]\");\r\n\t\t\t\t\t\t\tsource.replace(j,j+1,\"[/IMG]\");\r\n\t\t\t\t\t\t}\r\n            \t\t}\t\r\n            \t}\r\n\r\n            }\r\n        }\r\n\r\n\r\n\t\treturn  source.toString();\r\n\t}"
+    },
+    {
+      "id": "WEB-INF/classes/forum/FilterBack.java:LCF35",
+      "path": "WEB-INF/classes/forum/FilterBack.java",
+      "name": "filterURL",
+      "parameters": [
+        "String string"
+      ],
+      "body": "{\r\n        if(string == null || string.length() < 1)\r\n        {\r\n            return string;\r\n        }\r\n        \r\n\t\tStringBuffer source = new StringBuffer( string );\r\n    \r\n        for(int i = 0; i < source.length(); i++)\r\n        {\r\n            if(source.charAt(i) == '<')\r\n            {\r\n            \tfor( int j = i+1;j < source.length();j++)\r\n            \t{\r\n            \t\tif(source.charAt(j) == '>')\r\n            \t\t{\r\n            \t\t\t\r\n\t\t\t\t\t\tif(source.substring(i+1,i+8).equals(\"a href=\"))\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tsource.replace(i,i+8,\"[URL=\");\r\n\t\t\t\t\t\t\tsource.replace(j-9,j-2,\"]\");\r\n\t\t\t\t\t\t\t//source.append(\"|ok\");\r\n\t\t\t\t\t\t\t\r\n\t\t\t\t\t\t}else if(source.substring(i+1,j).equals(\"/a\"))\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tsource.replace(i,j+1,\"[/URL]\");\t\r\n\t\t\t\t\t\t\t\r\n\t\t\t\t\t\t}else{\r\n\t\t\t\t\t\t\tsource.append(\"|12345678\");\r\n\t\t\t\t\t\t\t//source.append(\"|\" + source.substring(i+1,i+2));\t\r\n\t\t\t\t\t\t}\r\n            \t\t}\t\r\n            \t}\r\n\r\n            }\r\n        }\r\n\t\treturn  source.toString();\r\n\t}",
+      "start_line": 110,
+      "end_line": 148,
+      "code": "public static String filterURL(String string)\r\n\t{\r\n        if(string == null || string.length() < 1)\r\n        {\r\n            return string;\r\n        }\r\n        \r\n\t\tStringBuffer source = new StringBuffer( string );\r\n    \r\n        for(int i = 0; i < source.length(); i++)\r\n        {\r\n            if(source.charAt(i) == '<')\r\n            {\r\n            \tfor( int j = i+1;j < source.length();j++)\r\n            \t{\r\n            \t\tif(source.charAt(j) == '>')\r\n            \t\t{\r\n            \t\t\t\r\n\t\t\t\t\t\tif(source.substring(i+1,i+8).equals(\"a href=\"))\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tsource.replace(i,i+8,\"[URL=\");\r\n\t\t\t\t\t\t\tsource.replace(j-9,j-2,\"]\");\r\n\t\t\t\t\t\t\t//source.append(\"|ok\");\r\n\t\t\t\t\t\t\t\r\n\t\t\t\t\t\t}else if(source.substring(i+1,j).equals(\"/a\"))\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tsource.replace(i,j+1,\"[/URL]\");\t\r\n\t\t\t\t\t\t\t\r\n\t\t\t\t\t\t}else{\r\n\t\t\t\t\t\t\tsource.append(\"|12345678\");\r\n\t\t\t\t\t\t\t//source.append(\"|\" + source.substring(i+1,i+2));\t\r\n\t\t\t\t\t\t}\r\n            \t\t}\t\r\n            \t}\r\n\r\n            }\r\n        }\r\n\t\treturn  source.toString();\r\n\t}"
+    },
+    {
+      "id": "WEB-INF/classes/forum/FilterBack.java:LCF36",
+      "path": "WEB-INF/classes/forum/FilterBack.java",
+      "name": "filterEmoticons",
+      "parameters": [
+        "String string"
+      ],
+      "body": "{\t\r\n        StringBuffer source = new StringBuffer( string );\r\n    \r\n        for(int i = 0; i < source.length(); i++){          \r\n         \tif(source.charAt(i) == '<'){\r\n        \t\tfor( int j = i+1;j < (source.length());j++){        \t\t\t\r\n        \t\t\tif(source.charAt(j) == '>'){\r\n        \t\t\t\tString subString = source.substring(i+1,j);\r\n\t\t\t\t\t\tif(subString.equals(\"img src=./emoticons/mellow.gif border=0\")){\r\n\t\t\t\t\t\t\tsource.replace(i,j+1,\":mellow:\");\r\n\t\t\t\t\t\t}else if(subString.equals(\"img src=./emoticons/huh.gif border=0\")){\r\n\t\t\t\t\t\t\tsource.replace(i,j+1,\":huh:\");\r\n\t\t\t\t\t\t}else if(subString.equals(\"img src=./emoticons/rolleyes.gif border=0\")){\r\n\t\t\t\t\t\t\tsource.replace(i,j+1,\":rolleyes:\");\r\n\t\t\t\t\t\t}else if(subString.equals(\"img src=./emoticons/lol.gif border=0\")){\r\n\t\t\t\t\t\t\tsource.replace(i,j+1,\":lol:\");\r\n\t\t\t\t\t\t}else if(subString.equals(\"img src=./emoticons/wub.gif border=0\")){\r\n\t\t\t\t\t\t\tsource.replace(i,j+1,\":wub:\");\r\n\t\t\t\t\t\t}else if(subString.equals(\"img src=./emoticons/angry.gif border=0\")){\r\n\t\t\t\t\t\t\tsource.replace(i,j+1,\":angry:\");\r\n\t\t\t\t\t\t}else if(subString.equals(\"img src=./emoticons/unsure.gif border=0\")){\r\n\t\t\t\t\t\t\tsource.replace(i,j+1,\":unsure:\");\r\n\t\t\t\t\t\t}else if(subString.equals(\"img src=./emoticons/wacko.gif border=0\")){\r\n\t\t\t\t\t\t\tsource.replace(i,j+1,\":wacko:\");\r\n\t\t\t\t\t\t}else if(subString.equals(\"img src=./emoticons/blink.gif border=0\")){\r\n\t\t\t\t\t\t\tsource.replace(i,j+1,\":blink:\");\r\n\t\t\t\t\t\t}else if(subString.equals(\"img src=./emoticons/ph34r.gif border=0\")){\r\n\t\t\t\t\t\t\tsource.replace(i,j+1,\":ph34r:\");\r\n\t\t\t\t\t\t}else if(subString.equals(\"img src=./emoticons/bounce.gif border=0\")){\r\n\t\t\t\t\t\t\tsource.replace(i,j+1,\":bounce:\");\r\n\t\t\t\t\t\t}else if(subString.equals(\"img src=./emoticons/fuck.gif border=0\")){\r\n\t\t\t\t\t\t\tsource.replace(i,j+1,\":fuck:\");\r\n\t\t\t\t\t\t}else if(subString.equals(\"img src=./emoticons/scream.gif border=0\")){\r\n\t\t\t\t\t\t\tsource.replace(i,j+1,\":scream.gif:\");\r\n\t\t\t\t\t\t}else if(subString.equals(\"img src=./emoticons/silly.gif border=0\")){\r\n\t\t\t\t\t\t\tsource.replace(i,j+1,\":silly:\");\r\n\t\t\t\t\t\t}else if(subString.equals(\"img src=./emoticons/frusty.gif border=0\")){\r\n\t\t\t\t\t\t\tsource.replace(i,j+1,\":frusty:\");\r\n\t\t\t\t\t\t}else if(subString.equals(\"img src=./emoticons/kwijl.gif border=0\")){\r\n\t\t\t\t\t\t\tsource.replace(i,j+1,\":kwijl:\");\r\n\t\t\t\t\t\t}else if(subString.equals(\"img src=./emoticons/puke.gif border=0\")){\r\n\t\t\t\t\t\t\tsource.replace(i,j+1,\":puke:\");\r\n\t\t\t\t\t\t}else if(subString.equals(\"img src=./emoticons/bid.gif border=0\")){\r\n\t\t\t\t\t\t\tsource.replace(i,j+1,\":bid:\");\r\n\t\t\t\t\t\t}else if(subString.equals(\"img src=./emoticons/hammer.gif border=0\")){\r\n\t\t\t\t\t\t\tsource.replace(i,j+1,\":hammer:\");\r\n\t\t\t\t\t\t}else if(subString.equals(\"img src=./emoticons/good.gif border=0\")){\r\n\t\t\t\t\t\t\tsource.replace(i,j+1,\":good:\");\t\r\n\t\t\t\t\t\t}\t\t\t\t\t\t\t\t\t\t\t\t\r\n        \t\t\t}\r\n        \t\t}\r\n        \t\t\r\n\t\t\t}   \t\r\n    \t}\r\n    \treturn source.toString();\r\n    }",
+      "start_line": 150,
+      "end_line": 206,
+      "code": "public static String filterEmoticons(String string)\r\n\t{\t\r\n        StringBuffer source = new StringBuffer( string );\r\n    \r\n        for(int i = 0; i < source.length(); i++){          \r\n         \tif(source.charAt(i) == '<'){\r\n        \t\tfor( int j = i+1;j < (source.length());j++){        \t\t\t\r\n        \t\t\tif(source.charAt(j) == '>'){\r\n        \t\t\t\tString subString = source.substring(i+1,j);\r\n\t\t\t\t\t\tif(subString.equals(\"img src=./emoticons/mellow.gif border=0\")){\r\n\t\t\t\t\t\t\tsource.replace(i,j+1,\":mellow:\");\r\n\t\t\t\t\t\t}else if(subString.equals(\"img src=./emoticons/huh.gif border=0\")){\r\n\t\t\t\t\t\t\tsource.replace(i,j+1,\":huh:\");\r\n\t\t\t\t\t\t}else if(subString.equals(\"img src=./emoticons/rolleyes.gif border=0\")){\r\n\t\t\t\t\t\t\tsource.replace(i,j+1,\":rolleyes:\");\r\n\t\t\t\t\t\t}else if(subString.equals(\"img src=./emoticons/lol.gif border=0\")){\r\n\t\t\t\t\t\t\tsource.replace(i,j+1,\":lol:\");\r\n\t\t\t\t\t\t}else if(subString.equals(\"img src=./emoticons/wub.gif border=0\")){\r\n\t\t\t\t\t\t\tsource.replace(i,j+1,\":wub:\");\r\n\t\t\t\t\t\t}else if(subString.equals(\"img src=./emoticons/angry.gif border=0\")){\r\n\t\t\t\t\t\t\tsource.replace(i,j+1,\":angry:\");\r\n\t\t\t\t\t\t}else if(subString.equals(\"img src=./emoticons/unsure.gif border=0\")){\r\n\t\t\t\t\t\t\tsource.replace(i,j+1,\":unsure:\");\r\n\t\t\t\t\t\t}else if(subString.equals(\"img src=./emoticons/wacko.gif border=0\")){\r\n\t\t\t\t\t\t\tsource.replace(i,j+1,\":wacko:\");\r\n\t\t\t\t\t\t}else if(subString.equals(\"img src=./emoticons/blink.gif border=0\")){\r\n\t\t\t\t\t\t\tsource.replace(i,j+1,\":blink:\");\r\n\t\t\t\t\t\t}else if(subString.equals(\"img src=./emoticons/ph34r.gif border=0\")){\r\n\t\t\t\t\t\t\tsource.replace(i,j+1,\":ph34r:\");\r\n\t\t\t\t\t\t}else if(subString.equals(\"img src=./emoticons/bounce.gif border=0\")){\r\n\t\t\t\t\t\t\tsource.replace(i,j+1,\":bounce:\");\r\n\t\t\t\t\t\t}else if(subString.equals(\"img src=./emoticons/fuck.gif border=0\")){\r\n\t\t\t\t\t\t\tsource.replace(i,j+1,\":fuck:\");\r\n\t\t\t\t\t\t}else if(subString.equals(\"img src=./emoticons/scream.gif border=0\")){\r\n\t\t\t\t\t\t\tsource.replace(i,j+1,\":scream.gif:\");\r\n\t\t\t\t\t\t}else if(subString.equals(\"img src=./emoticons/silly.gif border=0\")){\r\n\t\t\t\t\t\t\tsource.replace(i,j+1,\":silly:\");\r\n\t\t\t\t\t\t}else if(subString.equals(\"img src=./emoticons/frusty.gif border=0\")){\r\n\t\t\t\t\t\t\tsource.replace(i,j+1,\":frusty:\");\r\n\t\t\t\t\t\t}else if(subString.equals(\"img src=./emoticons/kwijl.gif border=0\")){\r\n\t\t\t\t\t\t\tsource.replace(i,j+1,\":kwijl:\");\r\n\t\t\t\t\t\t}else if(subString.equals(\"img src=./emoticons/puke.gif border=0\")){\r\n\t\t\t\t\t\t\tsource.replace(i,j+1,\":puke:\");\r\n\t\t\t\t\t\t}else if(subString.equals(\"img src=./emoticons/bid.gif border=0\")){\r\n\t\t\t\t\t\t\tsource.replace(i,j+1,\":bid:\");\r\n\t\t\t\t\t\t}else if(subString.equals(\"img src=./emoticons/hammer.gif border=0\")){\r\n\t\t\t\t\t\t\tsource.replace(i,j+1,\":hammer:\");\r\n\t\t\t\t\t\t}else if(subString.equals(\"img src=./emoticons/good.gif border=0\")){\r\n\t\t\t\t\t\t\tsource.replace(i,j+1,\":good:\");\t\r\n\t\t\t\t\t\t}\t\t\t\t\t\t\t\t\t\t\t\t\r\n        \t\t\t}\r\n        \t\t}\r\n        \t\t\r\n\t\t\t}   \t\r\n    \t}\r\n    \treturn source.toString();\r\n    }"
+    },
+    {
+      "id": "WEB-INF/classes/forum/Include.java:LCF37",
+      "path": "WEB-INF/classes/forum/Include.java",
+      "name": "header",
+      "parameters": [
+        "String title"
+      ],
+      "body": "{\r\n   \tString head =\t\r\n   \t\t\"<Html>\\n\"+\r\n  \t\t\"<Head>\\n\"+\r\n  \t\t\"<Title>\"+ title + \"</Title>\\n\"+\r\n  \t\t\"</Head>\\n\";\r\n    return(DOCTYPE + \"\\n\" + head ); \r\n  }",
+      "start_line": 13,
+      "end_line": 20,
+      "code": "public static String header(String title){\r\n   \tString head =\t\r\n   \t\t\"<Html>\\n\"+\r\n  \t\t\"<Head>\\n\"+\r\n  \t\t\"<Title>\"+ title + \"</Title>\\n\"+\r\n  \t\t\"</Head>\\n\";\r\n    return(DOCTYPE + \"\\n\" + head ); \r\n  }"
+    },
+    {
+      "id": "WEB-INF/classes/forum/Include.java:LCF38",
+      "path": "WEB-INF/classes/forum/Include.java",
+      "name": "body",
+      "parameters": [],
+      "body": "{\r\n  \tString body =\r\n  \t\t\"<Body>\\n\"+\r\n  \t\t\"<center><a href=\\\"..\\\\forum\\\\index.jsp\\\"><img src=\\\"..\\\\forum\\\\logo.jpg\\\" border=\\\"0\\\"></a></center>\\n\"+\r\n  \t\t\"<br>\\n\";\r\n\r\n  \treturn(body);\r\n  }",
+      "start_line": 22,
+      "end_line": 29,
+      "code": "public static String body(){\r\n  \tString body =\r\n  \t\t\"<Body>\\n\"+\r\n  \t\t\"<center><a href=\\\"..\\\\forum\\\\index.jsp\\\"><img src=\\\"..\\\\forum\\\\logo.jpg\\\" border=\\\"0\\\"></a></center>\\n\"+\r\n  \t\t\"<br>\\n\";\r\n\r\n  \treturn(body);\r\n  }"
+    },
+    {
+      "id": "WEB-INF/classes/forum/Include.java:LCF39",
+      "path": "WEB-INF/classes/forum/Include.java",
+      "name": "body",
+      "parameters": [
+        "String username"
+      ],
+      "body": "{\r\n  \tString body =\r\n  \t\tTable_start()+\r\n  \t\tTable_title(\"InfoBar\",1,\"left\")+\r\n  \t\tTable_start_body()+\r\n \t\tTable_body(new Date().toString(),0)+\r\n \t\tTable_close_body()+\t \r\n        Table_close()+\r\n  \t\t\"<Body>\\n\"+\r\n  \t\t\"<center><a href=\\\"..\\\\forum\\\\index.jsp\\\"><img src=\\\"..\\\\logo.jpg\\\" border=\\\"0\\\"></a></center>\\n\"+\r\n  \t\t\"<br>\\n\"+\r\n  \t\tTable_start()+\r\n \t\tTable_title(\"ToolBar\",1,\"left\")+\r\n \t\tTable_start_body()+\r\n \t\tTable_body(\r\n \t\t\t\"Logged in as:<b> \"+ username.toUpperCase() + \"</b>&nbsp;&nbsp;&nbsp;\"+\r\n            \"<a href=\\\"forum.Profile\\\">Your Profile</a>\",0)+\r\n \t\tTable_close_body()+\t \r\n        Table_close()+\r\n        \"<br>\\n\";\r\n\r\n  \treturn(body);\r\n  }",
+      "start_line": 31,
+      "end_line": 53,
+      "code": "public static String body(String username){\r\n  \tString body =\r\n  \t\tTable_start()+\r\n  \t\tTable_title(\"InfoBar\",1,\"left\")+\r\n  \t\tTable_start_body()+\r\n \t\tTable_body(new Date().toString(),0)+\r\n \t\tTable_close_body()+\t \r\n        Table_close()+\r\n  \t\t\"<Body>\\n\"+\r\n  \t\t\"<center><a href=\\\"..\\\\forum\\\\index.jsp\\\"><img src=\\\"..\\\\logo.jpg\\\" border=\\\"0\\\"></a></center>\\n\"+\r\n  \t\t\"<br>\\n\"+\r\n  \t\tTable_start()+\r\n \t\tTable_title(\"ToolBar\",1,\"left\")+\r\n \t\tTable_start_body()+\r\n \t\tTable_body(\r\n \t\t\t\"Logged in as:<b> \"+ username.toUpperCase() + \"</b>&nbsp;&nbsp;&nbsp;\"+\r\n            \"<a href=\\\"forum.Profile\\\">Your Profile</a>\",0)+\r\n \t\tTable_close_body()+\t \r\n        Table_close()+\r\n        \"<br>\\n\";\r\n\r\n  \treturn(body);\r\n  }"
+    },
+    {
+      "id": "WEB-INF/classes/forum/Include.java:LCF40",
+      "path": "WEB-INF/classes/forum/Include.java",
+      "name": "Table_start",
+      "parameters": [],
+      "body": "{\r\n  \tString Table_start =\r\n  \t\t\"<TABLE cellSpacing=\\\"0\\\" cellPadding=\\\"0\\\" width=\\\"90%\\\" bgColor=\\\"#336699\\\" border=\\\"0\\\" align=\\\"center\\\">\\n\" +\r\n        \"<TR>\\n\"+\r\n        \"<TD>\\n\"+\r\n        \"<TABLE cellSpacing=\\\"1\\\" cellPadding=\\\"4\\\" width=\\\"100%\\\" border=\\\"0\\\">\\n\"+\r\n        \"<TR bgColor=\\\"#ccccff\\\">\\n\";\r\n  \treturn Table_start;\r\n  }",
+      "start_line": 55,
+      "end_line": 63,
+      "code": "public static String Table_start(){\r\n  \tString Table_start =\r\n  \t\t\"<TABLE cellSpacing=\\\"0\\\" cellPadding=\\\"0\\\" width=\\\"90%\\\" bgColor=\\\"#336699\\\" border=\\\"0\\\" align=\\\"center\\\">\\n\" +\r\n        \"<TR>\\n\"+\r\n        \"<TD>\\n\"+\r\n        \"<TABLE cellSpacing=\\\"1\\\" cellPadding=\\\"4\\\" width=\\\"100%\\\" border=\\\"0\\\">\\n\"+\r\n        \"<TR bgColor=\\\"#ccccff\\\">\\n\";\r\n  \treturn Table_start;\r\n  }"
+    },
+    {
+      "id": "WEB-INF/classes/forum/Include.java:LCF41",
+      "path": "WEB-INF/classes/forum/Include.java",
+      "name": "Table_start_title",
+      "parameters": [],
+      "body": "{\r\n  \tString Table_start_title =\"<TR bgColor=#ccccff>\";\r\n  \treturn Table_start_title;\r\n  }",
+      "start_line": 65,
+      "end_line": 68,
+      "code": "public static String Table_start_title(){\r\n  \tString Table_start_title =\"<TR bgColor=#ccccff>\";\r\n  \treturn Table_start_title;\r\n  }"
+    },
+    {
+      "id": "WEB-INF/classes/forum/Include.java:LCF42",
+      "path": "WEB-INF/classes/forum/Include.java",
+      "name": "Table_title",
+      "parameters": [
+        "String title",
+        "int colspan",
+        "String align"
+      ],
+      "body": "{\r\n  \tString Table_title=\r\n  \t\t\"<TD align=\\\"\" + align + \"\\\" colspan=\\\"\" + colspan + \"\\\">\"+\r\n  \t\t\"<FONT face=Verdana,Arial,Helvetica color=#003366 size=1>\"+\r\n  \t\t\"<B>\"+ title + \"</B>\"+\r\n  \t\t\"</FONT>\" +\r\n  \t\t\"</TD>\";\r\n\treturn Table_title;\r\n  }",
+      "start_line": 70,
+      "end_line": 78,
+      "code": "public static String Table_title(String title,int colspan,String align){\r\n  \tString Table_title=\r\n  \t\t\"<TD align=\\\"\" + align + \"\\\" colspan=\\\"\" + colspan + \"\\\">\"+\r\n  \t\t\"<FONT face=Verdana,Arial,Helvetica color=#003366 size=1>\"+\r\n  \t\t\"<B>\"+ title + \"</B>\"+\r\n  \t\t\"</FONT>\" +\r\n  \t\t\"</TD>\";\r\n\treturn Table_title;\r\n  }"
+    },
+    {
+      "id": "WEB-INF/classes/forum/Include.java:LCF43",
+      "path": "WEB-INF/classes/forum/Include.java",
+      "name": "Table_start_body",
+      "parameters": [],
+      "body": "{\r\n  \tString Table_start_body=\"<TR bgColor=#ffffff>\";\r\n  \treturn Table_start_body;\r\n  }",
+      "start_line": 80,
+      "end_line": 83,
+      "code": "public static String Table_start_body(){\r\n  \tString Table_start_body=\"<TR bgColor=#ffffff>\";\r\n  \treturn Table_start_body;\r\n  }"
+    },
+    {
+      "id": "WEB-INF/classes/forum/Include.java:LCF44",
+      "path": "WEB-INF/classes/forum/Include.java",
+      "name": "Table_body",
+      "parameters": [
+        "String body",
+        "int width"
+      ],
+      "body": "{\r\n  \tString Table_body=\r\n        \"<TD align=\\\"left\\\" valign=\\\"top\\\" width=\\\"\" + width +\"\\\">\" +\r\n        \"<FONT face=Verdana,Arial,Helvetica color=#003366 size=1>\" + body + \r\n        \"</FONT>\"+\r\n        \"</TD>\";\r\n\treturn Table_body;\r\n  }",
+      "start_line": 84,
+      "end_line": 91,
+      "code": "public static String Table_body(String body,int width){\r\n  \tString Table_body=\r\n        \"<TD align=\\\"left\\\" valign=\\\"top\\\" width=\\\"\" + width +\"\\\">\" +\r\n        \"<FONT face=Verdana,Arial,Helvetica color=#003366 size=1>\" + body + \r\n        \"</FONT>\"+\r\n        \"</TD>\";\r\n\treturn Table_body;\r\n  }"
+    },
+    {
+      "id": "WEB-INF/classes/forum/Include.java:LCF45",
+      "path": "WEB-INF/classes/forum/Include.java",
+      "name": "Table_close_body",
+      "parameters": [],
+      "body": "{\r\n  \tString Table_close_body=\"</TR>\";\r\n  \treturn Table_close_body;\r\n  }",
+      "start_line": 93,
+      "end_line": 96,
+      "code": "public static String Table_close_body(){\r\n  \tString Table_close_body=\"</TR>\";\r\n  \treturn Table_close_body;\r\n  }"
+    },
+    {
+      "id": "WEB-INF/classes/forum/Include.java:LCF46",
+      "path": "WEB-INF/classes/forum/Include.java",
+      "name": "Table_close",
+      "parameters": [],
+      "body": "{\r\n  \tString Table_close=\r\n  \t\t\"</TABLE>\"+\r\n\t\t\"</TD>\"+\r\n\t\t\"</TR>\"+\r\n\t\t\"</TABLE>\";\r\n  \treturn Table_close;\r\n  }",
+      "start_line": 98,
+      "end_line": 105,
+      "code": "public static String Table_close(){\r\n  \tString Table_close=\r\n  \t\t\"</TABLE>\"+\r\n\t\t\"</TD>\"+\r\n\t\t\"</TR>\"+\r\n\t\t\"</TABLE>\";\r\n  \treturn Table_close;\r\n  }"
+    },
+    {
+      "id": "WEB-INF/classes/forum/Include.java:LCF47",
+      "path": "WEB-INF/classes/forum/Include.java",
+      "name": "emoticons",
+      "parameters": [],
+      "body": "{\r\n  \tString emoticons =\r\n  \t\t\"<table cellSpacing=\\\"0\\\" cellPadding=\\\"5\\\" width=\\\"100%\\\">\\n\"+\r\n  \t\t\"<tr>\\n\"+\r\n  \t\t\"<td width=100><a onclick=javascript:form.message.value+=\\\":mellow:\\\";form.message.focus();><img src=./emoticons/mellow.gif border=0></a></td>\\n\" +\r\n  \t\t\"<td width=100><a onclick=javascript:form.message.value+=\\\":huh:\\\";form.message.focus();><img src=./emoticons/huh.gif border=0></a></td>\\n\" +\r\n  \t\t\"<td width=100><a onclick=javascript:form.message.value+=\\\":rolleyes:\\\";form.message.focus();><img src=./emoticons/rolleyes.gif border=0></a></td>\\n\" +\r\n  \t\t\"</tr>\\n\"+\r\n  \t\t\"<tr>\\n\"+\r\n  \t\t\"<td width=100><a onclick=javascript:form.message.value+=\\\":lol:\\\";form.message.focus();><img src=./emoticons/lol.gif border=0></a></td>\\n\" +\r\n  \t\t\"<td width=100><a onclick=javascript:form.message.value+=\\\":wub:\\\";form.message.focus();><img src=./emoticons/wub.gif border=0></a></td>\\n\" +\r\n  \t\t\"<td width=100><a onclick=javascript:form.message.value+=\\\":angry:\\\";form.message.focus();><img src=./emoticons/angry.gif border=0></a></td>\\n\" +\r\n  \t\t\"</tr>\\n\"+\r\n  \t\t\"<tr>\\n\"+\r\n  \t\t\"<td width=100><a onclick=javascript:form.message.value+=\\\":unsure:\\\";form.message.focus();><img src=./emoticons/unsure.gif border=0></a></td>\\n\" +\r\n  \t\t\"<td width=100><a onclick=javascript:form.message.value+=\\\":wacko:\\\";form.message.focus();><img src=./emoticons/wacko.gif border=0></a></td>\\n\" +\r\n  \t\t\"<td width=100><a onclick=javascript:form.message.value+=\\\":blink:\\\";form.message.focus();><img src=./emoticons/blink.gif border=0></a></td>\\n\" +\r\n  \t\t\"</tr>\\n\"+\r\n  \t\t\"<tr>\\n\"+\r\n  \t\t\"<td width=100><a onclick=javascript:form.message.value+=\\\":ph34r:\\\";form.message.focus();><img src=./emoticons/ph34r.gif border=0></a></td>\\n\" +\r\n  \t\t\"<td width=100><a onclick=javascript:form.message.value+=\\\":wacko:\\\";form.message.focus();><img src=./emoticons/wacko.gif border=0></a></td>\\n\" +\r\n  \t\t\"<td width=100><a onclick=javascript:form.message.value+=\\\":bounce:\\\";form.message.focus();><img src=./emoticons/bounce.gif border=0></a></td>\\n\" +\r\n  \t\t\"</tr>\\n\"+\r\n  \t\t\"<tr>\\n\"+\r\n  \t\t\"<td width=100><a onclick=javascript:form.message.value+=\\\":fuck:\\\";form.message.focus();><img src=./emoticons/fuck.gif border=0></a></td>\\n\" +\r\n  \t\t\"<td width=100><a onclick=javascript:form.message.value+=\\\":scream:\\\";form.message.focus();><img src=./emoticons/scream.gif border=0></a></td>\\n\" +\r\n  \t\t\"<td width=100><a onclick=javascript:form.message.value+=\\\":silly:\\\";form.message.focus();><img src=./emoticons/silly.gif border=0></a></td>\\n\" +\r\n  \t\t\"</tr>\\n\"+\r\n  \t\t\"<tr>\\n\"+\r\n  \t\t\"<td width=100><a onclick=javascript:form.message.value+=\\\":frusty:\\\";form.message.focus();><img src=./emoticons/frusty.gif border=0></a></td>\\n\" +\r\n  \t\t\"<td width=100><a onclick=javascript:form.message.value+=\\\":kwijl:\\\";form.message.focus();><img src=./emoticons/kwijl.gif border=0></a></td>\\n\" +\r\n  \t\t\"<td width=100><a onclick=javascript:form.message.value+=\\\":puke:\\\";form.message.focus();><img src=./emoticons/puke.gif border=0></a></td>\\n\" +\r\n  \t\t\"</tr>\\n\"+\r\n  \t\t\"<tr>\\n\"+\r\n  \t\t\"<td width=100><a onclick=javascript:form.message.value+=\\\":bid:\\\";form.message.focus();><img src=./emoticons/bid.gif border=0></a></td>\\n\" +\r\n  \t\t\"<td width=100><a onclick=javascript:form.message.value+=\\\":hammer:\\\";form.message.focus();><img src=./emoticons/hammer.gif border=0></a></td>\\n\" +\r\n  \t\t\"<td width=100><a onclick=javascript:form.message.value+=\\\":good:\\\";form.message.focus();><img src=./emoticons/good.gif border=0></a></td>\\n\" +\r\n  \t\t\"</tr></table>\\n\";\r\n  \treturn emoticons;\r\n  }",
+      "start_line": 107,
+      "end_line": 146,
+      "code": "public static String emoticons(){\r\n  \tString emoticons =\r\n  \t\t\"<table cellSpacing=\\\"0\\\" cellPadding=\\\"5\\\" width=\\\"100%\\\">\\n\"+\r\n  \t\t\"<tr>\\n\"+\r\n  \t\t\"<td width=100><a onclick=javascript:form.message.value+=\\\":mellow:\\\";form.message.focus();><img src=./emoticons/mellow.gif border=0></a></td>\\n\" +\r\n  \t\t\"<td width=100><a onclick=javascript:form.message.value+=\\\":huh:\\\";form.message.focus();><img src=./emoticons/huh.gif border=0></a></td>\\n\" +\r\n  \t\t\"<td width=100><a onclick=javascript:form.message.value+=\\\":rolleyes:\\\";form.message.focus();><img src=./emoticons/rolleyes.gif border=0></a></td>\\n\" +\r\n  \t\t\"</tr>\\n\"+\r\n  \t\t\"<tr>\\n\"+\r\n  \t\t\"<td width=100><a onclick=javascript:form.message.value+=\\\":lol:\\\";form.message.focus();><img src=./emoticons/lol.gif border=0></a></td>\\n\" +\r\n  \t\t\"<td width=100><a onclick=javascript:form.message.value+=\\\":wub:\\\";form.message.focus();><img src=./emoticons/wub.gif border=0></a></td>\\n\" +\r\n  \t\t\"<td width=100><a onclick=javascript:form.message.value+=\\\":angry:\\\";form.message.focus();><img src=./emoticons/angry.gif border=0></a></td>\\n\" +\r\n  \t\t\"</tr>\\n\"+\r\n  \t\t\"<tr>\\n\"+\r\n  \t\t\"<td width=100><a onclick=javascript:form.message.value+=\\\":unsure:\\\";form.message.focus();><img src=./emoticons/unsure.gif border=0></a></td>\\n\" +\r\n  \t\t\"<td width=100><a onclick=javascript:form.message.value+=\\\":wacko:\\\";form.message.focus();><img src=./emoticons/wacko.gif border=0></a></td>\\n\" +\r\n  \t\t\"<td width=100><a onclick=javascript:form.message.value+=\\\":blink:\\\";form.message.focus();><img src=./emoticons/blink.gif border=0></a></td>\\n\" +\r\n  \t\t\"</tr>\\n\"+\r\n  \t\t\"<tr>\\n\"+\r\n  \t\t\"<td width=100><a onclick=javascript:form.message.value+=\\\":ph34r:\\\";form.message.focus();><img src=./emoticons/ph34r.gif border=0></a></td>\\n\" +\r\n  \t\t\"<td width=100><a onclick=javascript:form.message.value+=\\\":wacko:\\\";form.message.focus();><img src=./emoticons/wacko.gif border=0></a></td>\\n\" +\r\n  \t\t\"<td width=100><a onclick=javascript:form.message.value+=\\\":bounce:\\\";form.message.focus();><img src=./emoticons/bounce.gif border=0></a></td>\\n\" +\r\n  \t\t\"</tr>\\n\"+\r\n  \t\t\"<tr>\\n\"+\r\n  \t\t\"<td width=100><a onclick=javascript:form.message.value+=\\\":fuck:\\\";form.message.focus();><img src=./emoticons/fuck.gif border=0></a></td>\\n\" +\r\n  \t\t\"<td width=100><a onclick=javascript:form.message.value+=\\\":scream:\\\";form.message.focus();><img src=./emoticons/scream.gif border=0></a></td>\\n\" +\r\n  \t\t\"<td width=100><a onclick=javascript:form.message.value+=\\\":silly:\\\";form.message.focus();><img src=./emoticons/silly.gif border=0></a></td>\\n\" +\r\n  \t\t\"</tr>\\n\"+\r\n  \t\t\"<tr>\\n\"+\r\n  \t\t\"<td width=100><a onclick=javascript:form.message.value+=\\\":frusty:\\\";form.message.focus();><img src=./emoticons/frusty.gif border=0></a></td>\\n\" +\r\n  \t\t\"<td width=100><a onclick=javascript:form.message.value+=\\\":kwijl:\\\";form.message.focus();><img src=./emoticons/kwijl.gif border=0></a></td>\\n\" +\r\n  \t\t\"<td width=100><a onclick=javascript:form.message.value+=\\\":puke:\\\";form.message.focus();><img src=./emoticons/puke.gif border=0></a></td>\\n\" +\r\n  \t\t\"</tr>\\n\"+\r\n  \t\t\"<tr>\\n\"+\r\n  \t\t\"<td width=100><a onclick=javascript:form.message.value+=\\\":bid:\\\";form.message.focus();><img src=./emoticons/bid.gif border=0></a></td>\\n\" +\r\n  \t\t\"<td width=100><a onclick=javascript:form.message.value+=\\\":hammer:\\\";form.message.focus();><img src=./emoticons/hammer.gif border=0></a></td>\\n\" +\r\n  \t\t\"<td width=100><a onclick=javascript:form.message.value+=\\\":good:\\\";form.message.focus();><img src=./emoticons/good.gif border=0></a></td>\\n\" +\r\n  \t\t\"</tr></table>\\n\";\r\n  \treturn emoticons;\r\n  }"
+    },
+    {
+      "id": "WEB-INF/classes/forum/Include.java:LCF48",
+      "path": "WEB-INF/classes/forum/Include.java",
+      "name": "avatars",
+      "parameters": [],
+      "body": "{\t\t\t\t\t\t\t\t\t\t\t\r\n  \tString avatars = \"<select name=\\\"avatar_list\\\" size=\\\"10\\\" onchange=\\\"document.images.img.src=document.profile.avatar_list.options[document.profile.avatar_list.selectedIndex].value;document.profile.link_avatar.value=document.profile.avatar_list.options[document.profile.avatar_list.selectedIndex].value;\\\">\\n\";\r\n\tfor(int i=0;i<55;i++){\r\n\t\tavatars = avatars + \"<option value=\\\"../avatars/avatar_\" + i + \".jpg\\\">Avatar \" + i + \"</option>\\n\";\r\n\t}\r\n  \tavatars = avatars + \"</select>\\n\";\r\n  \treturn avatars;\t\r\n  }",
+      "start_line": 149,
+      "end_line": 156,
+      "code": "public static String avatars(){\t\t\t\t\t\t\t\t\t\t\t\r\n  \tString avatars = \"<select name=\\\"avatar_list\\\" size=\\\"10\\\" onchange=\\\"document.images.img.src=document.profile.avatar_list.options[document.profile.avatar_list.selectedIndex].value;document.profile.link_avatar.value=document.profile.avatar_list.options[document.profile.avatar_list.selectedIndex].value;\\\">\\n\";\r\n\tfor(int i=0;i<55;i++){\r\n\t\tavatars = avatars + \"<option value=\\\"../avatars/avatar_\" + i + \".jpg\\\">Avatar \" + i + \"</option>\\n\";\r\n\t}\r\n  \tavatars = avatars + \"</select>\\n\";\r\n  \treturn avatars;\t\r\n  }"
+    },
+    {
+      "id": "WEB-INF/classes/forum/Include.java:LCF49",
+      "path": "WEB-INF/classes/forum/Include.java",
+      "name": "footer",
+      "parameters": [],
+      "body": "{\r\n  \tString foot =\r\n  \t\t\"<br><center>&copy; 2002 by <a href=mailto:grieks03@ie.hva.nl>Erwin</a></center>\"+\r\n  \t\t\"</Body>\\n\"+\r\n  \t\t\"</Html>\\n\";\r\n  \treturn(foot);\r\n  }",
+      "start_line": 158,
+      "end_line": 164,
+      "code": "public static String footer(){\r\n  \tString foot =\r\n  \t\t\"<br><center>&copy; 2002 by <a href=mailto:grieks03@ie.hva.nl>Erwin</a></center>\"+\r\n  \t\t\"</Body>\\n\"+\r\n  \t\t\"</Html>\\n\";\r\n  \treturn(foot);\r\n  }"
+    },
+    {
+      "id": "WEB-INF/classes/forum/Login.java:LCF50",
+      "path": "WEB-INF/classes/forum/Login.java",
+      "name": "doPost",
+      "parameters": [
+        "HttpServletRequest request",
+        "HttpServletResponse response"
+      ],
+      "body": "{\r\n        \t\r\n        PrintWriter out = response.getWriter();\r\n        \r\n        \t    try{ \r\n        \t     \r\n\t\t\t\t\tString loginUser = request.getParameter(\"username\");\r\n                    String loginPass = request.getParameter(\"password\");\r\n                    \r\n                    db.connect();\r\n                    \r\n                    String password = \"null\";\r\n                    String password2 = \"zero\";\r\n                    String type = \"null\";\r\n\r\n                    \r\n\r\n                    ResultSet rs = db.selectQuery(\r\n                    \t\"SELECT * \"+\r\n                    \t\"FROM forum_users \"+\r\n                    \t\"WHERE user_name =\\\"\" + loginUser + \"\\\"\");\r\n                    while(rs.next()){\r\n                    \tpassword = rs.getString(\"password\");\r\n                    \ttype = rs.getString(\"type\");\r\n                    }\r\n                    \r\n\t\t\t\t\t\r\n                    \r\n                    ResultSet rs2 = db.selectQuery(\r\n                    \t\"SELECT \"+\r\n                    \t\"password(\\\"\"+ loginPass +\"\\\") password\");\r\n                    while(rs2.next()){\r\n                    \tpassword2 = rs2.getString(\"password\");\t\r\n\t\t\t\t\t}\r\n\r\n\t\t\t\t\t\r\n                    if(password2.equals(password)){\r\n                    \tHttpSession session = request.getSession(true);\r\n                    \t\r\n                    \t//Cookie cookie = new Cookie(\"username\",loginUser);\r\n                    \tsession.setAttribute(\"username\",loginUser);\r\n                    \t//cookie.setMaxAge(60*60*24*365);\r\n                    \t//cookie.setPath(\"/\");\r\n                    \t//response.addCookie(cookie);\r\n                    \t//cookie = new Cookie(\"password\",password);\r\n                    \tsession.setAttribute(\"password\",password);\r\n                    \t//cookie.setMaxAge(60*60*24*365);\r\n                    \t//cookie.setPath(\"/\");\r\n                    \t//response.addCookie(cookie);                    \t\r\n                    \t//cookie = new Cookie(\"type\",type);\r\n                    \tsession.setAttribute(\"type\",type);\r\n                    \t//cookie.setMaxAge(60*60*24*365);\r\n                    \t//cookie.setPath(\"/\");\r\n                    \t//response.addCookie(cookie);\r\n                    \r\n                    \tresponse.sendRedirect(Variable.getForumPath() + \"index.jsp\");\r\n                    }else{\r\n\t\t\t\t\t\tresponse.sendRedirect(Variable.getForumPath() + \"info.jsp?action=wrongpass\");\r\n                    }\r\n                    \r\n \t\t\t\t\t\r\n                    db.close();\r\n                    \r\n                }catch(Exception e){}\r\n                \r\n             \r\n        }",
+      "start_line": 16,
+      "end_line": 83,
+      "code": "public void doPost (HttpServletRequest request, HttpServletResponse response)\r\n        throws ServletException, IOException{\r\n        \t\r\n        PrintWriter out = response.getWriter();\r\n        \r\n        \t    try{ \r\n        \t     \r\n\t\t\t\t\tString loginUser = request.getParameter(\"username\");\r\n                    String loginPass = request.getParameter(\"password\");\r\n                    \r\n                    db.connect();\r\n                    \r\n                    String password = \"null\";\r\n                    String password2 = \"zero\";\r\n                    String type = \"null\";\r\n\r\n                    \r\n\r\n                    ResultSet rs = db.selectQuery(\r\n                    \t\"SELECT * \"+\r\n                    \t\"FROM forum_users \"+\r\n                    \t\"WHERE user_name =\\\"\" + loginUser + \"\\\"\");\r\n                    while(rs.next()){\r\n                    \tpassword = rs.getString(\"password\");\r\n                    \ttype = rs.getString(\"type\");\r\n                    }\r\n                    \r\n\t\t\t\t\t\r\n                    \r\n                    ResultSet rs2 = db.selectQuery(\r\n                    \t\"SELECT \"+\r\n                    \t\"password(\\\"\"+ loginPass +\"\\\") password\");\r\n                    while(rs2.next()){\r\n                    \tpassword2 = rs2.getString(\"password\");\t\r\n\t\t\t\t\t}\r\n\r\n\t\t\t\t\t\r\n                    if(password2.equals(password)){\r\n                    \tHttpSession session = request.getSession(true);\r\n                    \t\r\n                    \t//Cookie cookie = new Cookie(\"username\",loginUser);\r\n                    \tsession.setAttribute(\"username\",loginUser);\r\n                    \t//cookie.setMaxAge(60*60*24*365);\r\n                    \t//cookie.setPath(\"/\");\r\n                    \t//response.addCookie(cookie);\r\n                    \t//cookie = new Cookie(\"password\",password);\r\n                    \tsession.setAttribute(\"password\",password);\r\n                    \t//cookie.setMaxAge(60*60*24*365);\r\n                    \t//cookie.setPath(\"/\");\r\n                    \t//response.addCookie(cookie);                    \t\r\n                    \t//cookie = new Cookie(\"type\",type);\r\n                    \tsession.setAttribute(\"type\",type);\r\n                    \t//cookie.setMaxAge(60*60*24*365);\r\n                    \t//cookie.setPath(\"/\");\r\n                    \t//response.addCookie(cookie);\r\n                    \r\n                    \tresponse.sendRedirect(Variable.getForumPath() + \"index.jsp\");\r\n                    }else{\r\n\t\t\t\t\t\tresponse.sendRedirect(Variable.getForumPath() + \"info.jsp?action=wrongpass\");\r\n                    }\r\n                    \r\n \t\t\t\t\t\r\n                    db.close();\r\n                    \r\n                }catch(Exception e){}\r\n                \r\n             \r\n        }"
+    },
+    {
+      "id": "WEB-INF/classes/forum/Login.java:LCF51",
+      "path": "WEB-INF/classes/forum/Login.java",
+      "name": "doGet",
+      "parameters": [
+        "HttpServletRequest request",
+        "HttpServletResponse response"
+      ],
+      "body": "{      \r\n                doPost(request, response);\r\n        }",
+      "start_line": 84,
+      "end_line": 87,
+      "code": "public void doGet (HttpServletRequest request, HttpServletResponse response)\r\n        throws ServletException, IOException{      \r\n                doPost(request, response);\r\n        }"
+    },
+    {
+      "id": "WEB-INF/classes/forum/Logout.java:LCF52",
+      "path": "WEB-INF/classes/forum/Logout.java",
+      "name": "doPost",
+      "parameters": [
+        "HttpServletRequest request",
+        "HttpServletResponse response"
+      ],
+      "body": "{\r\n        \r\n        PrintWriter out = response.getWriter();\r\n        try{ \r\n\t\t\t//Cookie[] cookies = request.getCookies();\r\n\t\t\tHttpSession session = request.getSession(true);\r\n\t\t\t\r\n\t\t\tsession.removeAttribute(\"username\");\r\n\t\t\tsession.removeAttribute(\"password\");\r\n\t\t\tsession.removeAttribute(\"type\");\r\n\t\t\t/*\r\n\t\t\tif (cookies != null){\r\n\t\t \t\tCookie cookie;\r\n\t\t\t\tfor(int i=0;i<cookies.length;i++){\r\n\t\t\t\t\tcookie = cookies[i];\r\n\t\t\t\t\tif(cookie.getName().equals(\"username\")){\r\n\t\t\t\t\t\tcookie.setMaxAge(0);\r\n\t\t\t\t\t\tresponse.addCookie(cookie);\r\n\t\t\t\t\t\tsession.removeAttribute(\"username\");\r\n\t\t\t\t\t}else if(cookie.getName().equals(\"password\")){\r\n\t\t\t\t\t\tcookie.setMaxAge(0);\r\n\t\t\t\t\t\tresponse.addCookie(cookie);\r\n\t\t\t\t\t\tsession.removeAttribute(\"password\");\r\n\t\t\t\t\t}else if(cookie.getName().equals(\"type\")){\r\n\t\t\t\t\t\tcookie.setMaxAge(0);\r\n\t\t\t\t\t\tresponse.addCookie(cookie);\r\n\t\t\t\t\t\tsession.removeAttribute(\"type\");\r\n\t\t\t\t\t}\r\n\t\t\t\t\t\r\n\t\t\t\t}\t\t\t\t\t\r\n\t\t\t}*/\r\n                    \t\r\n\t\t\tresponse.sendRedirect(Variable.getForumPath() + \"index.jsp\");\r\n\t\t\t\r\n\t\t\t}catch(Exception e){}\r\n        }",
+      "start_line": 9,
+      "end_line": 45,
+      "code": "public void doPost (HttpServletRequest request, HttpServletResponse response)\r\n        throws ServletException, IOException{\r\n        \r\n        PrintWriter out = response.getWriter();\r\n        try{ \r\n\t\t\t//Cookie[] cookies = request.getCookies();\r\n\t\t\tHttpSession session = request.getSession(true);\r\n\t\t\t\r\n\t\t\tsession.removeAttribute(\"username\");\r\n\t\t\tsession.removeAttribute(\"password\");\r\n\t\t\tsession.removeAttribute(\"type\");\r\n\t\t\t/*\r\n\t\t\tif (cookies != null){\r\n\t\t \t\tCookie cookie;\r\n\t\t\t\tfor(int i=0;i<cookies.length;i++){\r\n\t\t\t\t\tcookie = cookies[i];\r\n\t\t\t\t\tif(cookie.getName().equals(\"username\")){\r\n\t\t\t\t\t\tcookie.setMaxAge(0);\r\n\t\t\t\t\t\tresponse.addCookie(cookie);\r\n\t\t\t\t\t\tsession.removeAttribute(\"username\");\r\n\t\t\t\t\t}else if(cookie.getName().equals(\"password\")){\r\n\t\t\t\t\t\tcookie.setMaxAge(0);\r\n\t\t\t\t\t\tresponse.addCookie(cookie);\r\n\t\t\t\t\t\tsession.removeAttribute(\"password\");\r\n\t\t\t\t\t}else if(cookie.getName().equals(\"type\")){\r\n\t\t\t\t\t\tcookie.setMaxAge(0);\r\n\t\t\t\t\t\tresponse.addCookie(cookie);\r\n\t\t\t\t\t\tsession.removeAttribute(\"type\");\r\n\t\t\t\t\t}\r\n\t\t\t\t\t\r\n\t\t\t\t}\t\t\t\t\t\r\n\t\t\t}*/\r\n                    \t\r\n\t\t\tresponse.sendRedirect(Variable.getForumPath() + \"index.jsp\");\r\n\t\t\t\r\n\t\t\t}catch(Exception e){}\r\n        }"
+    },
+    {
+      "id": "WEB-INF/classes/forum/Logout.java:LCF53",
+      "path": "WEB-INF/classes/forum/Logout.java",
+      "name": "doGet",
+      "parameters": [
+        "HttpServletRequest request",
+        "HttpServletResponse response"
+      ],
+      "body": "{ \r\n                doPost(request, response);\r\n        }",
+      "start_line": 46,
+      "end_line": 49,
+      "code": "public void doGet (HttpServletRequest request, HttpServletResponse response)\r\n        throws ServletException, IOException{ \r\n                doPost(request, response);\r\n        }"
+    },
+    {
+      "id": "WEB-INF/classes/forum/Utilities.java:LCF54",
+      "path": "WEB-INF/classes/forum/Utilities.java",
+      "name": "getTopics",
+      "parameters": [
+        "String forum_id"
+      ],
+      "body": "{\r\n  \t\t\r\n\t\tString topics = null;\r\n\t\ttry{\r\n\t\t\tDBConnectie db = new DBConnectie(Variable.getDb(),Variable.getDbLogin(),Variable.getDbPassword());\r\n\t\t\tdb.connect();\r\n\t\r\n\t\t\tResultSet rs = db.selectQuery(\r\n\t\t\t\t\"SELECT count(*) topics FROM forum_message \" + \r\n\t\t\t\t\"WHERE forum_id =\\\"\" + forum_id + \"\\\" \" +\r\n\t\t\t\t\"AND reply_id=\\\"0\\\"\");\r\n\t\t\t\t\t\t\r\n\t\t\twhile(rs.next()){\r\n\t\t\t\ttopics = rs.getString(\"topics\");\r\n\t\t\t}\r\n\t\t\tdb.close();\r\n\t\t}catch(Exception e){}\r\n\t\t\r\n\t\treturn \ttopics;\t\t\t\t\t\t\t\t\t\t\t\r\n  \t}",
+      "start_line": 12,
+      "end_line": 31,
+      "code": "public static String getTopics(String forum_id){\r\n  \t\t\r\n\t\tString topics = null;\r\n\t\ttry{\r\n\t\t\tDBConnectie db = new DBConnectie(Variable.getDb(),Variable.getDbLogin(),Variable.getDbPassword());\r\n\t\t\tdb.connect();\r\n\t\r\n\t\t\tResultSet rs = db.selectQuery(\r\n\t\t\t\t\"SELECT count(*) topics FROM forum_message \" + \r\n\t\t\t\t\"WHERE forum_id =\\\"\" + forum_id + \"\\\" \" +\r\n\t\t\t\t\"AND reply_id=\\\"0\\\"\");\r\n\t\t\t\t\t\t\r\n\t\t\twhile(rs.next()){\r\n\t\t\t\ttopics = rs.getString(\"topics\");\r\n\t\t\t}\r\n\t\t\tdb.close();\r\n\t\t}catch(Exception e){}\r\n\t\t\r\n\t\treturn \ttopics;\t\t\t\t\t\t\t\t\t\t\t\r\n  \t}"
+    },
+    {
+      "id": "WEB-INF/classes/forum/Utilities.java:LCF55",
+      "path": "WEB-INF/classes/forum/Utilities.java",
+      "name": "getforumReplies",
+      "parameters": [
+        "String forum_id"
+      ],
+      "body": "{\r\n  \t\t\r\n\t\tString replies = null;\r\n\t\ttry{\r\n\t\t\tDBConnectie db = new DBConnectie(Variable.getDb(),Variable.getDbLogin(),Variable.getDbPassword());\r\n\t\t\tdb.connect();\r\n\t\r\n\t\t\tResultSet rs = db.selectQuery(\r\n\t\t\t\t\"SELECT count(*)-\" + getTopics(forum_id) + \" replies FROM forum_message \" + \r\n\t\t\t\t\"WHERE forum_id =\\\"\" + forum_id + \"\\\"\");\r\n\t\t\t\t\t\t\r\n\t\t\twhile(rs.next()){\r\n\t\t\t\treplies = rs.getString(\"replies\");\r\n\t\t\t}\r\n\t\t\tdb.close();\r\n\t\t}catch(Exception e){}\r\n\t\t\r\n\t\treturn \treplies;\t\t\t\t\t\t\t\t\t\t\t\r\n  \t}",
+      "start_line": 33,
+      "end_line": 51,
+      "code": "public static String getforumReplies(String forum_id){\r\n  \t\t\r\n\t\tString replies = null;\r\n\t\ttry{\r\n\t\t\tDBConnectie db = new DBConnectie(Variable.getDb(),Variable.getDbLogin(),Variable.getDbPassword());\r\n\t\t\tdb.connect();\r\n\t\r\n\t\t\tResultSet rs = db.selectQuery(\r\n\t\t\t\t\"SELECT count(*)-\" + getTopics(forum_id) + \" replies FROM forum_message \" + \r\n\t\t\t\t\"WHERE forum_id =\\\"\" + forum_id + \"\\\"\");\r\n\t\t\t\t\t\t\r\n\t\t\twhile(rs.next()){\r\n\t\t\t\treplies = rs.getString(\"replies\");\r\n\t\t\t}\r\n\t\t\tdb.close();\r\n\t\t}catch(Exception e){}\r\n\t\t\r\n\t\treturn \treplies;\t\t\t\t\t\t\t\t\t\t\t\r\n  \t}"
+    },
+    {
+      "id": "WEB-INF/classes/forum/Utilities.java:LCF56",
+      "path": "WEB-INF/classes/forum/Utilities.java",
+      "name": "getReplies",
+      "parameters": [
+        "String forum_id",
+        "String thread_id"
+      ],
+      "body": "{\r\n  \t\t\r\n\t\tString replies = null;\r\n\t\ttry{\r\n\t\t\tDBConnectie db = new DBConnectie(Variable.getDb(),Variable.getDbLogin(),Variable.getDbPassword());\r\n\t\t\tdb.connect();\r\n\t\r\n\t\t\tResultSet rs = db.selectQuery(\r\n\t\t\t\t\"SELECT count(*)-1 replies FROM forum_message \" + \r\n\t\t\t\t\"WHERE forum_id=\\\"\" +  forum_id + \"\\\" AND thread_id =\\\"\" + thread_id + \"\\\"\");\r\n\t\t\t\t\t\t\r\n\t\t\twhile(rs.next()){\r\n\t\t\t\treplies = rs.getString(\"replies\");\r\n\t\t\t}\r\n\t\t\tdb.close();\r\n\t\t}catch(Exception e){}\r\n\t\t\r\n\t\treturn \treplies;\t\t\t\t\t\t\t\t\t\t\t\r\n  \t}",
+      "start_line": 53,
+      "end_line": 71,
+      "code": "public static String getReplies(String forum_id,String thread_id){\r\n  \t\t\r\n\t\tString replies = null;\r\n\t\ttry{\r\n\t\t\tDBConnectie db = new DBConnectie(Variable.getDb(),Variable.getDbLogin(),Variable.getDbPassword());\r\n\t\t\tdb.connect();\r\n\t\r\n\t\t\tResultSet rs = db.selectQuery(\r\n\t\t\t\t\"SELECT count(*)-1 replies FROM forum_message \" + \r\n\t\t\t\t\"WHERE forum_id=\\\"\" +  forum_id + \"\\\" AND thread_id =\\\"\" + thread_id + \"\\\"\");\r\n\t\t\t\t\t\t\r\n\t\t\twhile(rs.next()){\r\n\t\t\t\treplies = rs.getString(\"replies\");\r\n\t\t\t}\r\n\t\t\tdb.close();\r\n\t\t}catch(Exception e){}\r\n\t\t\r\n\t\treturn \treplies;\t\t\t\t\t\t\t\t\t\t\t\r\n  \t}"
+    },
+    {
+      "id": "WEB-INF/classes/forum/Utilities.java:LCF57",
+      "path": "WEB-INF/classes/forum/Utilities.java",
+      "name": "getMorePages",
+      "parameters": [
+        "String replies",
+        "String forum_id",
+        "String thread_id",
+        "boolean pages"
+      ],
+      "body": "{\t\r\n\r\n  \t  String morePages = \"\";\r\n  \t\tif(!((Integer.parseInt(replies)+1) < (Integer.parseInt(Variable.getMessagePerPage()) + 1))){\r\n\t\t\t\r\n\t\t\tif(pages){morePages += \"&nbsp;( \";}\r\n\t\t\t\r\n\t\t\tfor(int i=0;i< (Integer.parseInt(replies)+1);i += (Integer.parseInt(Variable.getMessagePerPage())) ){\r\n\t\t\t\tmorePages +=\r\n\t\t\t\t\t\"<a href=message.jsp?forum_id=\" + forum_id + \"&thread_id=\" + thread_id + \r\n\t\t\t\t\t\"&start=\"+ i +\r\n\t\t\t\t\t\" class=\\\"pathBarLink\\\">\" + ((i/(Integer.parseInt(Variable.getMessagePerPage())))+1)+ \"</a> \";\r\n\t\t\t}\r\n\t\t\tif(pages){morePages += \" )</span>\";}\r\n\t\t}\r\n\t\treturn \tmorePages;\r\n\t}",
+      "start_line": 73,
+      "end_line": 90,
+      "code": "public static String getMorePages(String replies,String forum_id,String thread_id,boolean pages)\r\n  \t{\t\r\n\r\n  \t  String morePages = \"\";\r\n  \t\tif(!((Integer.parseInt(replies)+1) < (Integer.parseInt(Variable.getMessagePerPage()) + 1))){\r\n\t\t\t\r\n\t\t\tif(pages){morePages += \"&nbsp;( \";}\r\n\t\t\t\r\n\t\t\tfor(int i=0;i< (Integer.parseInt(replies)+1);i += (Integer.parseInt(Variable.getMessagePerPage())) ){\r\n\t\t\t\tmorePages +=\r\n\t\t\t\t\t\"<a href=message.jsp?forum_id=\" + forum_id + \"&thread_id=\" + thread_id + \r\n\t\t\t\t\t\"&start=\"+ i +\r\n\t\t\t\t\t\" class=\\\"pathBarLink\\\">\" + ((i/(Integer.parseInt(Variable.getMessagePerPage())))+1)+ \"</a> \";\r\n\t\t\t}\r\n\t\t\tif(pages){morePages += \" )</span>\";}\r\n\t\t}\r\n\t\treturn \tmorePages;\r\n\t}"
+    },
+    {
+      "id": "WEB-INF/classes/forum/Utilities.java:LCF58",
+      "path": "WEB-INF/classes/forum/Utilities.java",
+      "name": "getforumTile",
+      "parameters": [
+        "String forum_id"
+      ],
+      "body": "{\r\n\t\t\r\n\t\tString forumTitle = null;\r\n\t\ttry{\r\n\t\t\tDBConnectie db = new DBConnectie(Variable.getDb(),Variable.getDbLogin(),Variable.getDbPassword());\r\n\t\t\tdb.connect();\r\n\t\r\n\t\t\tResultSet rs = db.selectQuery(\r\n\t\t\t\t\"SELECT title FROM forum_forums \"+\r\n\t\t\t\t\"WHERE forum_id=\\\"\"+ forum_id + \"\\\"\");\r\n\t\t\t\t\t\t\r\n\t\t\twhile(rs.next()){\r\n\t\t\t\tforumTitle = rs.getString(\"title\");\r\n\t\t\t}\r\n\t\t\tdb.close();\r\n\t\t}catch(Exception e){}\r\n\t\t\r\n\t\treturn \tforumTitle;\r\n\t}",
+      "start_line": 92,
+      "end_line": 110,
+      "code": "public static String getforumTile(String forum_id){\r\n\t\t\r\n\t\tString forumTitle = null;\r\n\t\ttry{\r\n\t\t\tDBConnectie db = new DBConnectie(Variable.getDb(),Variable.getDbLogin(),Variable.getDbPassword());\r\n\t\t\tdb.connect();\r\n\t\r\n\t\t\tResultSet rs = db.selectQuery(\r\n\t\t\t\t\"SELECT title FROM forum_forums \"+\r\n\t\t\t\t\"WHERE forum_id=\\\"\"+ forum_id + \"\\\"\");\r\n\t\t\t\t\t\t\r\n\t\t\twhile(rs.next()){\r\n\t\t\t\tforumTitle = rs.getString(\"title\");\r\n\t\t\t}\r\n\t\t\tdb.close();\r\n\t\t}catch(Exception e){}\r\n\t\t\r\n\t\treturn \tforumTitle;\r\n\t}"
+    },
+    {
+      "id": "WEB-INF/classes/forum/Utilities.java:LCF59",
+      "path": "WEB-INF/classes/forum/Utilities.java",
+      "name": "getThreadTile",
+      "parameters": [
+        "String forum_id",
+        "String thread_id"
+      ],
+      "body": "{\r\n\t\t\r\n\t\tString threadTitle = null;\r\n\t\ttry{\r\n\t\t\tDBConnectie db = new DBConnectie(Variable.getDb(),Variable.getDbLogin(),Variable.getDbPassword());\r\n\t\t\tdb.connect();\r\n\t\r\n\t\t\tResultSet rs = db.selectQuery(\r\n\t\t\t\t\"SELECT title FROM forum_threads \"+\r\n\t\t\t\t\"WHERE forum_id=\\\"\"+ forum_id + \"\\\" \" + \r\n\t\t\t\t\"AND thread_id=\\\"\" + thread_id + \"\\\"\");\r\n\t\t\t\t\t\t\r\n\t\t\twhile(rs.next()){\r\n\t\t\t\tthreadTitle = rs.getString(\"title\");\r\n\t\t\t}\r\n\t\t\tdb.close();\r\n\t\t}catch(Exception e){}\r\n\t\t\r\n\t\treturn \tthreadTitle;\r\n\t}",
+      "start_line": 112,
+      "end_line": 131,
+      "code": "public static String getThreadTile(String forum_id,String thread_id){\r\n\t\t\r\n\t\tString threadTitle = null;\r\n\t\ttry{\r\n\t\t\tDBConnectie db = new DBConnectie(Variable.getDb(),Variable.getDbLogin(),Variable.getDbPassword());\r\n\t\t\tdb.connect();\r\n\t\r\n\t\t\tResultSet rs = db.selectQuery(\r\n\t\t\t\t\"SELECT title FROM forum_threads \"+\r\n\t\t\t\t\"WHERE forum_id=\\\"\"+ forum_id + \"\\\" \" + \r\n\t\t\t\t\"AND thread_id=\\\"\" + thread_id + \"\\\"\");\r\n\t\t\t\t\t\t\r\n\t\t\twhile(rs.next()){\r\n\t\t\t\tthreadTitle = rs.getString(\"title\");\r\n\t\t\t}\r\n\t\t\tdb.close();\r\n\t\t}catch(Exception e){}\r\n\t\t\r\n\t\treturn \tthreadTitle;\r\n\t}"
+    },
+    {
+      "id": "WEB-INF/classes/forum/Utilities.java:LCF60",
+      "path": "WEB-INF/classes/forum/Utilities.java",
+      "name": "getforumInfo",
+      "parameters": [
+        "String forum_id"
+      ],
+      "body": "{\r\n\t\t\r\n\t\tString forumInfo = null;\r\n\t\ttry{\r\n\t\t\tDBConnectie db = new DBConnectie(Variable.getDb(),Variable.getDbLogin(),Variable.getDbPassword());\r\n\t\t\tdb.connect();\r\n\t\r\n\t\t\tResultSet rs = db.selectQuery(\r\n\t\t\t\t\"SELECT forum_info FROM forum_forums \"+\r\n\t\t\t\t\"WHERE forum_id=\\\"\"+ forum_id + \"\\\"\");\r\n\t\t\t\t\t\t\r\n\t\t\twhile(rs.next()){\r\n\t\t\t\tforumInfo = rs.getString(\"forum_info\");\r\n\t\t\t}\r\n\t\t\tdb.close();\r\n\t\t}catch(Exception e){}\r\n\t\t\r\n\t\tif(forumInfo.equals(null)){\r\n\t\t\tforumInfo = \"\";\t\r\n\t\t}\r\n\t\t\r\n\t\treturn \tforumInfo;\r\n\t}",
+      "start_line": 133,
+      "end_line": 155,
+      "code": "public static String getforumInfo(String forum_id){\r\n\t\t\r\n\t\tString forumInfo = null;\r\n\t\ttry{\r\n\t\t\tDBConnectie db = new DBConnectie(Variable.getDb(),Variable.getDbLogin(),Variable.getDbPassword());\r\n\t\t\tdb.connect();\r\n\t\r\n\t\t\tResultSet rs = db.selectQuery(\r\n\t\t\t\t\"SELECT forum_info FROM forum_forums \"+\r\n\t\t\t\t\"WHERE forum_id=\\\"\"+ forum_id + \"\\\"\");\r\n\t\t\t\t\t\t\r\n\t\t\twhile(rs.next()){\r\n\t\t\t\tforumInfo = rs.getString(\"forum_info\");\r\n\t\t\t}\r\n\t\t\tdb.close();\r\n\t\t}catch(Exception e){}\r\n\t\t\r\n\t\tif(forumInfo.equals(null)){\r\n\t\t\tforumInfo = \"\";\t\r\n\t\t}\r\n\t\t\r\n\t\treturn \tforumInfo;\r\n\t}"
+    },
+    {
+      "id": "WEB-INF/classes/forum/Utilities.java:LCF61",
+      "path": "WEB-INF/classes/forum/Utilities.java",
+      "name": "lastPostInfo",
+      "parameters": [
+        "String forum_id"
+      ],
+      "body": "{\r\n\t\t\r\n\t\tString lastPostInfo = null;\r\n\t\tString thread_id = null;\r\n\t\tString title = null;\r\n\t\tString date_time = null;\r\n\t\tString user = null;\r\n\t\t\r\n\t\ttry{\r\n\t\t\tDBConnectie db = new DBConnectie(Variable.getDb(),Variable.getDbLogin(),Variable.getDbPassword());\r\n\t\t\tdb.connect();\r\n\t\r\n\t\t\tResultSet rs = db.selectQuery(\r\n\t\t\t\t\"SELECT MAX(date_time) date_time FROM forum_message \"+\r\n\t\t\t\t\"WHERE forum_id=\\\"\"+ forum_id + \"\\\"\");\r\n\t\t\t\t\t\t\r\n\t\t\twhile(rs.next()){\r\n\t\t\t\tdate_time = rs.getString(\"date_time\");\r\n\t\t\t}\r\n\t\t\t\t\r\n\t\t\tResultSet rs2 = db.selectQuery(\r\n\t\t\t\t\"SELECT thread_id,user FROM forum_message \"+\r\n\t\t\t\t\"WHERE forum_id=\\\"\"+ forum_id + \"\\\" \"+\r\n\t\t\t\t\"AND date_time=\\\"\" + date_time + \"\\\"\");\r\n\t\t\t\t\t\t\r\n\t\t\twhile(rs2.next()){\r\n\t\t\t\tthread_id = rs2.getString(\"thread_id\");\r\n\t\t\t\tuser = rs2.getString(\"user\");\r\n\t\t\t}\t\t\t\t\r\n\t\t\t\t\r\n\t\t\t\t\r\n\t\t\t\t\t\t\t\t\t\r\n\t\t\tResultSet rs3 = db.selectQuery(\r\n\t\t\t\t\"SELECT * FROM forum_threads \"+\r\n\t\t\t\t\"WHERE thread_id=\\\"\"+ thread_id + \"\\\" \"+\r\n\t\t\t\t\"AND forum_id=\\\"\" + forum_id + \"\\\"\");\r\n\t\t\t\t\t\t\r\n\t\t\twhile(rs3.next()){\r\n\t\t\t\ttitle = rs3.getString(\"title\");\r\n\t\t\t}\t\t\t\r\n\t\t\t\r\n\t\t\tif(date_time == null){ \r\n\t\t\t\tdate_time = \"No info\";\t\r\n\t\t\t}\r\n\t\t\tif(user == null){\r\n\t\t\t\tuser = \"No info\";\t\t\r\n\t\t\t}\r\n\t\t\tif(title == null){\r\n\t\t\t\ttitle = \"No info\";\t\r\n\t\t\t}\r\n\t\t\t\r\n\t\t\tlastPostInfo = date_time + \"<br>In: \" + title + \"<br>By: \" + user;\r\n\t\t\t\r\n\t\t\t\r\n\t\t\tdb.close();\r\n\t\t}catch(Exception e){}\r\n\t\t\t\t\r\n\t\treturn \tlastPostInfo;\r\n\t}",
+      "start_line": 158,
+      "end_line": 216,
+      "code": "public static String lastPostInfo(String forum_id){\r\n\t\t\r\n\t\tString lastPostInfo = null;\r\n\t\tString thread_id = null;\r\n\t\tString title = null;\r\n\t\tString date_time = null;\r\n\t\tString user = null;\r\n\t\t\r\n\t\ttry{\r\n\t\t\tDBConnectie db = new DBConnectie(Variable.getDb(),Variable.getDbLogin(),Variable.getDbPassword());\r\n\t\t\tdb.connect();\r\n\t\r\n\t\t\tResultSet rs = db.selectQuery(\r\n\t\t\t\t\"SELECT MAX(date_time) date_time FROM forum_message \"+\r\n\t\t\t\t\"WHERE forum_id=\\\"\"+ forum_id + \"\\\"\");\r\n\t\t\t\t\t\t\r\n\t\t\twhile(rs.next()){\r\n\t\t\t\tdate_time = rs.getString(\"date_time\");\r\n\t\t\t}\r\n\t\t\t\t\r\n\t\t\tResultSet rs2 = db.selectQuery(\r\n\t\t\t\t\"SELECT thread_id,user FROM forum_message \"+\r\n\t\t\t\t\"WHERE forum_id=\\\"\"+ forum_id + \"\\\" \"+\r\n\t\t\t\t\"AND date_time=\\\"\" + date_time + \"\\\"\");\r\n\t\t\t\t\t\t\r\n\t\t\twhile(rs2.next()){\r\n\t\t\t\tthread_id = rs2.getString(\"thread_id\");\r\n\t\t\t\tuser = rs2.getString(\"user\");\r\n\t\t\t}\t\t\t\t\r\n\t\t\t\t\r\n\t\t\t\t\r\n\t\t\t\t\t\t\t\t\t\r\n\t\t\tResultSet rs3 = db.selectQuery(\r\n\t\t\t\t\"SELECT * FROM forum_threads \"+\r\n\t\t\t\t\"WHERE thread_id=\\\"\"+ thread_id + \"\\\" \"+\r\n\t\t\t\t\"AND forum_id=\\\"\" + forum_id + \"\\\"\");\r\n\t\t\t\t\t\t\r\n\t\t\twhile(rs3.next()){\r\n\t\t\t\ttitle = rs3.getString(\"title\");\r\n\t\t\t}\t\t\t\r\n\t\t\t\r\n\t\t\tif(date_time == null){ \r\n\t\t\t\tdate_time = \"No info\";\t\r\n\t\t\t}\r\n\t\t\tif(user == null){\r\n\t\t\t\tuser = \"No info\";\t\t\r\n\t\t\t}\r\n\t\t\tif(title == null){\r\n\t\t\t\ttitle = \"No info\";\t\r\n\t\t\t}\r\n\t\t\t\r\n\t\t\tlastPostInfo = date_time + \"<br>In: \" + title + \"<br>By: \" + user;\r\n\t\t\t\r\n\t\t\t\r\n\t\t\tdb.close();\r\n\t\t}catch(Exception e){}\r\n\t\t\t\t\r\n\t\treturn \tlastPostInfo;\r\n\t}"
+    },
+    {
+      "id": "WEB-INF/classes/forum/Utilities.java:LCF62",
+      "path": "WEB-INF/classes/forum/Utilities.java",
+      "name": "lastActionInfo",
+      "parameters": [
+        "String forum_id",
+        "String thread_id"
+      ],
+      "body": "{\r\n\t\t\r\n\t\tString lastPostInfo = null;\r\n\t\tString date_time = null;\r\n\t\tString user = null;\r\n\t\t\r\n\t\ttry{\r\n\t\t\tDBConnectie db = new DBConnectie(Variable.getDb(),Variable.getDbLogin(),Variable.getDbPassword());\r\n\t\t\tdb.connect();\r\n\t\r\n\t\t\tResultSet rs = db.selectQuery(\r\n\t\t\t\t\"SELECT MAX(date_time) date_time FROM forum_message \"+\r\n\t\t\t\t\"WHERE forum_id=\\\"\"+ forum_id + \"\\\" \"+ \r\n\t\t\t\t\"AND thread_id=\\\"\" + thread_id + \"\\\"\");\r\n\t\t\t\t\t\t\r\n\t\t\twhile(rs.next()){\r\n\t\t\t\tdate_time = rs.getString(\"date_time\");\t\r\n\t\t\t}\r\n\t\t\t\r\n\t\t\tResultSet rs2 = db.selectQuery(\r\n\t\t\t\t\"SELECT user FROM forum_message \"+\r\n\t\t\t\t\"WHERE forum_id=\\\"\"+ forum_id + \"\\\" \"+ \r\n\t\t\t\t\"AND thread_id=\\\"\" + thread_id + \"\\\" \"+\r\n\t\t\t\t\"AND date_time=\\\"\" + date_time + \"\\\"\");\r\n\t\t\t\t\t\t\r\n\t\t\twhile(rs2.next()){\r\n\t\t\t\tuser = rs2.getString(\"user\");\t\r\n\t\t\t}\r\n\t\t\t\t\t\t\r\n\t\t\tif(date_time == null){ \r\n\t\t\t\tdate_time = \"No info\";\t\r\n\t\t\t}\r\n\t\t\tif(user == null){\r\n\t\t\t\tuser = \"No info\";\t\t\r\n\t\t\t}\r\n\t\t\t\r\n\t\t\tlastPostInfo = date_time + \"<br>Last post by: \" + user;\r\n\t\t\t\r\n\t\t\t\r\n\t\t\tdb.close();\r\n\t\t}catch(Exception e){}\r\n\t\t\t\t\r\n\t\treturn \tlastPostInfo;\r\n\t}",
+      "start_line": 218,
+      "end_line": 261,
+      "code": "public static String lastActionInfo(String forum_id,String thread_id){\r\n\t\t\r\n\t\tString lastPostInfo = null;\r\n\t\tString date_time = null;\r\n\t\tString user = null;\r\n\t\t\r\n\t\ttry{\r\n\t\t\tDBConnectie db = new DBConnectie(Variable.getDb(),Variable.getDbLogin(),Variable.getDbPassword());\r\n\t\t\tdb.connect();\r\n\t\r\n\t\t\tResultSet rs = db.selectQuery(\r\n\t\t\t\t\"SELECT MAX(date_time) date_time FROM forum_message \"+\r\n\t\t\t\t\"WHERE forum_id=\\\"\"+ forum_id + \"\\\" \"+ \r\n\t\t\t\t\"AND thread_id=\\\"\" + thread_id + \"\\\"\");\r\n\t\t\t\t\t\t\r\n\t\t\twhile(rs.next()){\r\n\t\t\t\tdate_time = rs.getString(\"date_time\");\t\r\n\t\t\t}\r\n\t\t\t\r\n\t\t\tResultSet rs2 = db.selectQuery(\r\n\t\t\t\t\"SELECT user FROM forum_message \"+\r\n\t\t\t\t\"WHERE forum_id=\\\"\"+ forum_id + \"\\\" \"+ \r\n\t\t\t\t\"AND thread_id=\\\"\" + thread_id + \"\\\" \"+\r\n\t\t\t\t\"AND date_time=\\\"\" + date_time + \"\\\"\");\r\n\t\t\t\t\t\t\r\n\t\t\twhile(rs2.next()){\r\n\t\t\t\tuser = rs2.getString(\"user\");\t\r\n\t\t\t}\r\n\t\t\t\t\t\t\r\n\t\t\tif(date_time == null){ \r\n\t\t\t\tdate_time = \"No info\";\t\r\n\t\t\t}\r\n\t\t\tif(user == null){\r\n\t\t\t\tuser = \"No info\";\t\t\r\n\t\t\t}\r\n\t\t\t\r\n\t\t\tlastPostInfo = date_time + \"<br>Last post by: \" + user;\r\n\t\t\t\r\n\t\t\t\r\n\t\t\tdb.close();\r\n\t\t}catch(Exception e){}\r\n\t\t\t\t\r\n\t\treturn \tlastPostInfo;\r\n\t}"
+    },
+    {
+      "id": "WEB-INF/classes/forum/Utilities.java:LCF63",
+      "path": "WEB-INF/classes/forum/Utilities.java",
+      "name": "addView",
+      "parameters": [
+        "String forum_id",
+        "String thread_id"
+      ],
+      "body": "{\r\n\r\n\t\ttry{\r\n\t\t\tDBConnectie db = new DBConnectie(Variable.getDb(),Variable.getDbLogin(),Variable.getDbPassword());\r\n\t\t\tdb.connect();\r\n\t\r\n\t\t\tdb.query(\r\n\t\t\t\t\"UPDATE forum_threads SET views = views + 1 \"+\r\n\t\t\t\t\"WHERE forum_id =\\\"\" + forum_id + \"\\\" \"+\r\n\t\t\t\t\"AND thread_id=\\\"\" + thread_id + \"\\\"\");\r\n\r\n\t\t\tdb.close();\r\n\t\t}catch(Exception e){}\r\n\t}",
+      "start_line": 263,
+      "end_line": 276,
+      "code": "public static void addView(String forum_id,String thread_id){\r\n\r\n\t\ttry{\r\n\t\t\tDBConnectie db = new DBConnectie(Variable.getDb(),Variable.getDbLogin(),Variable.getDbPassword());\r\n\t\t\tdb.connect();\r\n\t\r\n\t\t\tdb.query(\r\n\t\t\t\t\"UPDATE forum_threads SET views = views + 1 \"+\r\n\t\t\t\t\"WHERE forum_id =\\\"\" + forum_id + \"\\\" \"+\r\n\t\t\t\t\"AND thread_id=\\\"\" + thread_id + \"\\\"\");\r\n\r\n\t\t\tdb.close();\r\n\t\t}catch(Exception e){}\r\n\t}"
+    },
+    {
+      "id": "WEB-INF/classes/forum/Utilities.java:LCF64",
+      "path": "WEB-INF/classes/forum/Utilities.java",
+      "name": "getViews",
+      "parameters": [
+        "String forum_id",
+        "String thread_id"
+      ],
+      "body": "{\r\n\t\t\r\n\t\tString views = null;\r\n\t\ttry{\r\n\t\t\tDBConnectie db = new DBConnectie(Variable.getDb(),Variable.getDbLogin(),Variable.getDbPassword());\r\n\t\t\tdb.connect();\r\n\t\r\n\t\t\tResultSet rs = db.selectQuery(\r\n\t\t\t\t\"SELECT views FROM forum_threads \"+\r\n\t\t\t\t\"WHERE forum_id=\\\"\"+ forum_id + \"\\\" \"+\r\n\t\t\t\t\"AND thread_id=\\\"\" + thread_id + \"\\\"\");\r\n\t\t\t\t\t\t\r\n\t\t\twhile(rs.next()){\r\n\t\t\t\tviews = rs.getString(\"views\");\r\n\t\t\t}\r\n\t\t\tdb.close();\r\n\t\t}catch(Exception e){}\r\n\t\t\r\n\t\treturn \tviews;\r\n\t}",
+      "start_line": 278,
+      "end_line": 297,
+      "code": "public static String getViews(String forum_id,String thread_id){\r\n\t\t\r\n\t\tString views = null;\r\n\t\ttry{\r\n\t\t\tDBConnectie db = new DBConnectie(Variable.getDb(),Variable.getDbLogin(),Variable.getDbPassword());\r\n\t\t\tdb.connect();\r\n\t\r\n\t\t\tResultSet rs = db.selectQuery(\r\n\t\t\t\t\"SELECT views FROM forum_threads \"+\r\n\t\t\t\t\"WHERE forum_id=\\\"\"+ forum_id + \"\\\" \"+\r\n\t\t\t\t\"AND thread_id=\\\"\" + thread_id + \"\\\"\");\r\n\t\t\t\t\t\t\r\n\t\t\twhile(rs.next()){\r\n\t\t\t\tviews = rs.getString(\"views\");\r\n\t\t\t}\r\n\t\t\tdb.close();\r\n\t\t}catch(Exception e){}\r\n\t\t\r\n\t\treturn \tviews;\r\n\t}"
+    },
+    {
+      "id": "WEB-INF/classes/forum/Utilities.java:LCF65",
+      "path": "WEB-INF/classes/forum/Utilities.java",
+      "name": "getMessageLength",
+      "parameters": [
+        "String forum_id",
+        "String thread_id",
+        "String reply_id"
+      ],
+      "body": "{\r\n\t\tint messageLength = 0;\r\n\t\ttry{\r\n\t\t\tDBConnectie db = new DBConnectie(Variable.getDb(),Variable.getDbLogin(),Variable.getDbPassword());\r\n\t\t\tdb.connect();\r\n\t\t\t\r\n\t\t\tResultSet rs = db.selectQuery(\r\n\t\t\t\t\"SELECT message FROM forum_message \"+\r\n\t\t\t\t\"WHERE forum_id=\\\"\"+ forum_id + \"\\\" \"+\r\n\t\t\t\t\"AND thread_id=\\\"\" + thread_id + \"\\\" \"+\r\n\t\t\t\t\"AND reply_id=\\\"\" + reply_id + \"\\\"\");\r\n\t\t\t\t\t\t\r\n\t\t\twhile(rs.next()){\r\n\t\t\t\tmessageLength = rs.getString(\"message\").length();\r\n\t\t\t} \r\n\t\t\tdb.close();\r\n\t\t}catch(Exception e){}\r\n\t\t\r\n\t\treturn \tmessageLength;\r\n\t\r\n\t}",
+      "start_line": 299,
+      "end_line": 320,
+      "code": "public static int getMessageLength(String forum_id,String thread_id,String reply_id)\r\n\t{\r\n\t\tint messageLength = 0;\r\n\t\ttry{\r\n\t\t\tDBConnectie db = new DBConnectie(Variable.getDb(),Variable.getDbLogin(),Variable.getDbPassword());\r\n\t\t\tdb.connect();\r\n\t\t\t\r\n\t\t\tResultSet rs = db.selectQuery(\r\n\t\t\t\t\"SELECT message FROM forum_message \"+\r\n\t\t\t\t\"WHERE forum_id=\\\"\"+ forum_id + \"\\\" \"+\r\n\t\t\t\t\"AND thread_id=\\\"\" + thread_id + \"\\\" \"+\r\n\t\t\t\t\"AND reply_id=\\\"\" + reply_id + \"\\\"\");\r\n\t\t\t\t\t\t\r\n\t\t\twhile(rs.next()){\r\n\t\t\t\tmessageLength = rs.getString(\"message\").length();\r\n\t\t\t} \r\n\t\t\tdb.close();\r\n\t\t}catch(Exception e){}\r\n\t\t\r\n\t\treturn \tmessageLength;\r\n\t\r\n\t}"
+    },
+    {
+      "id": "WEB-INF/classes/forum/Variable.java:LCF66",
+      "path": "WEB-INF/classes/forum/Variable.java",
+      "name": "getDb",
+      "parameters": [],
+      "body": "{\r\n\t\treturn dbDatabase;\r\n\t}",
+      "start_line": 15,
+      "end_line": 17,
+      "code": "public static String getDb(){\r\n\t\treturn dbDatabase;\r\n\t}"
+    },
+    {
+      "id": "WEB-INF/classes/forum/Variable.java:LCF67",
+      "path": "WEB-INF/classes/forum/Variable.java",
+      "name": "getDbLogin",
+      "parameters": [],
+      "body": "{\r\n\t\treturn dbLogin;\r\n\t}",
+      "start_line": 19,
+      "end_line": 21,
+      "code": "public static String getDbLogin(){\r\n\t\treturn dbLogin;\r\n\t}"
+    },
+    {
+      "id": "WEB-INF/classes/forum/Variable.java:LCF68",
+      "path": "WEB-INF/classes/forum/Variable.java",
+      "name": "getDbPassword",
+      "parameters": [],
+      "body": "{\r\n\t\treturn dbPassword;\r\n\t}",
+      "start_line": 23,
+      "end_line": 25,
+      "code": "public static String getDbPassword(){\r\n\t\treturn dbPassword;\r\n\t}"
+    },
+    {
+      "id": "WEB-INF/classes/forum/Variable.java:LCF69",
+      "path": "WEB-INF/classes/forum/Variable.java",
+      "name": "getForumPath",
+      "parameters": [],
+      "body": "{\r\n\t\treturn forumPath;\r\n\t}",
+      "start_line": 27,
+      "end_line": 29,
+      "code": "public static String getForumPath(){\r\n\t\treturn forumPath;\r\n\t}"
+    },
+    {
+      "id": "WEB-INF/classes/forum/Variable.java:LCF70",
+      "path": "WEB-INF/classes/forum/Variable.java",
+      "name": "getForumName",
+      "parameters": [],
+      "body": "{\r\n\t\treturn forumName;\r\n\t}",
+      "start_line": 31,
+      "end_line": 33,
+      "code": "public static String getForumName(){\r\n\t\treturn forumName;\r\n\t}"
+    },
+    {
+      "id": "WEB-INF/classes/forum/Variable.java:LCF71",
+      "path": "WEB-INF/classes/forum/Variable.java",
+      "name": "getMessagePerPage",
+      "parameters": [],
+      "body": "{\r\n\t\treturn messagePerPage;\r\n\t}",
+      "start_line": 35,
+      "end_line": 37,
+      "code": "public static String getMessagePerPage(){\r\n\t\treturn messagePerPage;\r\n\t}"
+    }
+  ]
+}

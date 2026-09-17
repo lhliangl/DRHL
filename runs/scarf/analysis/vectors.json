@@ -1,0 +1,463 @@
+{
+  "vectors": [
+    {
+      "category": "static_only",
+      "page": "install.php",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "admin_only",
+      "page": "addsession.php",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "name": "text_8d97f530",
+          "chair": "250",
+          "month": "0",
+          "day": "0",
+          "year": "value_e3d88d1b",
+          "starthour": "-1",
+          "startminute": "-1",
+          "endhour": "-1",
+          "endminute": "-1",
+          "submit": "Add Session"
+        },
+        "referer": "addsession.php"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "admin_only",
+      "page": "comments.php",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": "generaloptions.php"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "admin_only",
+      "page": "comments.php?comment_id=p1",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "comment_id": "215"
+        },
+        "referer": "comments.php"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "horizontal",
+      "page": "comments.php?comment_id=p1",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {
+          "comment_id": "215"
+        },
+        "referer": "comments.php"
+      },
+      "identity_parameters": [
+        "comment_id"
+      ],
+      "page_overrides": []
+    },
+    {
+      "category": "admin_only",
+      "page": "editpaper.php",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "title": "text_ea1fbc3c",
+          "abstract": "value_d493d6b7",
+          "authors[]": "250",
+          "MAX_FILE_SIZE": "100000000",
+          "session": "111",
+          "submit": "Add Paper"
+        },
+        "referer": "editpaper.php"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "admin_only",
+      "page": "editpaper.php?paper_id=p1",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "title": "sad",
+          "abstract": "zxc",
+          "authors[]": "250",
+          "MAX_FILE_SIZE": "100000000",
+          "session": "106",
+          "submit": "Save Changes",
+          "paper_id": "122"
+        },
+        "referer": "editpaper.php?paper_id=p1"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "horizontal",
+      "page": "editpaper.php?paper_id=p1",
+      "authorized_roles": [],
+      "request": {
+        "method": "POST",
+        "params": {
+          "title": "sad",
+          "abstract": "zxc",
+          "authors[]": "250",
+          "MAX_FILE_SIZE": "100000000",
+          "session": "106",
+          "submit": "Save Changes",
+          "paper_id": "122"
+        },
+        "referer": "editpaper.php?paper_id=p1"
+      },
+      "identity_parameters": [
+        "paper_id"
+      ],
+      "page_overrides": []
+    },
+    {
+      "category": "admin_only",
+      "page": "editsession.php?action=confirmdelete&session_id=p1",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "session_id": "106",
+          "action": "confirmdelete"
+        },
+        "referer": "editsession.php?action=delete&session_id=p1"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "horizontal",
+      "page": "editsession.php?action=confirmdelete&session_id=p1",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {
+          "session_id": "106",
+          "action": "confirmdelete"
+        },
+        "referer": "editsession.php?action=delete&session_id=p1"
+      },
+      "identity_parameters": [
+        "session_id"
+      ],
+      "page_overrides": []
+    },
+    {
+      "category": "admin_only",
+      "page": "editsession.php?action=delete&session_id=p1",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "session_id": "106",
+          "action": "delete"
+        },
+        "referer": "index.php"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "horizontal",
+      "page": "editsession.php?action=delete&session_id=p1",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {
+          "session_id": "106",
+          "action": "delete"
+        },
+        "referer": "index.php"
+      },
+      "identity_parameters": [
+        "session_id"
+      ],
+      "page_overrides": []
+    },
+    {
+      "category": "admin_only",
+      "page": "editsession.php?session_id=p1",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "name": "b4XeAS",
+          "chair": "250",
+          "month": "12",
+          "day": "31",
+          "year": "2000",
+          "starthour": "22",
+          "startminute": "-1",
+          "endhour": "22",
+          "endminute": "-1",
+          "120": "1",
+          "92": "2",
+          "121": "1",
+          "122": "1",
+          "submit": "Save Session"
+        },
+        "referer": "editsession.php?session_id=p1"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "horizontal",
+      "page": "editsession.php?session_id=p1",
+      "authorized_roles": [],
+      "request": {
+        "method": "POST",
+        "params": {
+          "name": "b4XeAS",
+          "chair": "250",
+          "month": "12",
+          "day": "31",
+          "year": "2000",
+          "starthour": "22",
+          "startminute": "-1",
+          "endhour": "22",
+          "endminute": "-1",
+          "120": "1",
+          "92": "2",
+          "121": "1",
+          "122": "1",
+          "submit": "Save Session"
+        },
+        "referer": "editsession.php?session_id=p1"
+      },
+      "identity_parameters": [
+        "session_id"
+      ],
+      "page_overrides": []
+    },
+    {
+      "category": "admin_only",
+      "page": "generaloptions.php",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "250_email": "sUtK5cZF@qq.com",
+          "250_firstname": "NtISmy",
+          "250_lastname": "FzCDUQ",
+          "250_affiliation": "CUHw0H",
+          "250_privilege": "user",
+          "250_showemail": "on",
+          "130_email": "1592108346@qq.com",
+          "130_firstname": "ZK9lgV",
+          "130_lastname": "JRMNgH",
+          "130_affiliation": "7SUetl",
+          "130_privilege": "user",
+          "130_showemail": "on",
+          "142_email": "1629081457@qq.com",
+          "142_firstname": "kns1JH",
+          "142_lastname": "K5ArIu",
+          "142_affiliation": "mZfiIg",
+          "142_privilege": "user",
+          "142_showemail": "on",
+          "136_email": "1085936217@qq.com",
+          "136_firstname": "obkBYH",
+          "136_lastname": "L7oZUu",
+          "136_affiliation": "tbsdHW",
+          "136_privilege": "user",
+          "136_showemail": "on",
+          "135_email": "1895034162@qq.com",
+          "135_firstname": "AvH6lU",
+          "135_lastname": "LpjCax",
+          "135_affiliation": "zegAGi",
+          "135_privilege": "user",
+          "135_showemail": "on",
+          "247_email": "8219307645@qq.com",
+          "247_firstname": "7Mmvcp",
+          "247_lastname": "lPm64f",
+          "247_affiliation": "f70Oa9",
+          "247_privilege": "user",
+          "247_showemail": "on",
+          "232_email": "admin1@qq.com",
+          "232_firstname": "EJ5w2T",
+          "232_lastname": "OpXet7",
+          "232_affiliation": "qEMany",
+          "232_privilege": "admin",
+          "232_showemail": "on",
+          "235_email": "3967452180@qq.com",
+          "235_firstname": "bP3B67",
+          "235_lastname": "p3cE06",
+          "235_affiliation": "8SeV7p",
+          "235_privilege": "user",
+          "235_showemail": "on",
+          "188_email": "5136908427@qq.com",
+          "188_firstname": "YRCcOn",
+          "188_lastname": "pYIe2x",
+          "188_affiliation": "zRf4UE",
+          "188_privilege": "user",
+          "188_showemail": "on",
+          "241_email": "user2@qq.com",
+          "241_firstname": "ZM0nos",
+          "241_lastname": "qDpUGk",
+          "241_affiliation": "SWGkTI",
+          "241_privilege": "user",
+          "241_showemail": "on",
+          "242_email": "0135924678@qq.com",
+          "242_firstname": "paZPKn",
+          "242_lastname": "QFdPmT",
+          "242_affiliation": "IQxvOF",
+          "242_privilege": "user",
+          "242_showemail": "on",
+          "210_email": "5412963780@qq.com",
+          "210_firstname": "1MUIG9",
+          "210_lastname": "Qs6vV1",
+          "210_affiliation": "L8VgEq",
+          "210_privilege": "user",
+          "210_showemail": "on",
+          "182_email": "9642031857@qq.com",
+          "182_firstname": "Ouy4pC",
+          "182_lastname": "rJDsFq",
+          "182_affiliation": "mNUHDl",
+          "182_privilege": "user",
+          "182_showemail": "on",
+          "243_email": "4130582976@qq.com",
+          "243_firstname": "znKDCh",
+          "243_lastname": "SdwICh",
+          "243_affiliation": "aZedWN",
+          "243_privilege": "user",
+          "243_showemail": "on",
+          "233_email": "5023698174@qq.com",
+          "233_firstname": "JwTSLY",
+          "233_lastname": "SlYPjI",
+          "233_affiliation": "DPdyTw",
+          "233_privilege": "user",
+          "233_showemail": "on",
+          "245_email": "user1@qq.com",
+          "245_firstname": "vcl9KE",
+          "245_lastname": "Sq1pUy",
+          "245_affiliation": "2hSbiq",
+          "245_privilege": "user",
+          "245_showemail": "on",
+          "183_email": "7204518639@qq.com",
+          "183_firstname": "xjtzDh",
+          "183_lastname": "VFQp23",
+          "183_affiliation": "XxhMcO",
+          "183_privilege": "user",
+          "183_showemail": "on",
+          "140_email": "1085623791@qq.com",
+          "140_firstname": "Uij4H8",
+          "140_lastname": "VR8Kbh",
+          "140_affiliation": "Wq6miw",
+          "140_privilege": "user",
+          "140_showemail": "on",
+          "244_email": "4082917365@qq.com",
+          "244_firstname": "AVhlZU",
+          "244_lastname": "XaAqyP",
+          "244_affiliation": "goXsh8",
+          "244_privilege": "user",
+          "244_showemail": "on",
+          "249_email": "C4hjPNbe@qq.com",
+          "249_firstname": "6RuF6m",
+          "249_lastname": "xIHgIM",
+          "249_affiliation": "yJ0Q50",
+          "249_privilege": "user",
+          "249_showemail": "on",
+          "216_email": "zaproxy@example.com",
+          "216_firstname": "ZAP",
+          "216_lastname": "ZAP",
+          "216_affiliation": "ZAP",
+          "216_privilege": "user",
+          "216_showemail": "on",
+          "184_email": "9781620345@qq.com",
+          "184_firstname": "8xPpeY",
+          "184_lastname": "zDmT1Z",
+          "184_affiliation": "85La9f",
+          "184_privilege": "user",
+          "184_showemail": "on",
+          "159_email": "1095214786@qq.com",
+          "159_firstname": "6oBtch",
+          "159_lastname": "zO8uPY",
+          "159_affiliation": "oznBCh",
+          "159_privilege": "user",
+          "159_showemail": "on",
+          "237_email": "8361947250@qq.com",
+          "237_firstname": "Xgjpao",
+          "237_lastname": "zQlRxK",
+          "237_affiliation": "UbyR63",
+          "237_privilege": "user",
+          "237_showemail": "on",
+          "usersubmit": "Save Changes to Users"
+        },
+        "referer": "generaloptions.php"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "useroptions.php",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "email": "user1@qq.com",
+          "email2": "drhl_b67d0476@example.test",
+          "firstname": "vcl9KE",
+          "lastname": "Sq1pUy",
+          "showemail": "on",
+          "affiliation": "2hSbiq",
+          "password": "12345678",
+          "password2": "12345678",
+          "submit": "Save changes"
+        },
+        "referer": "useroptions.php"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    }
+  ]
+}

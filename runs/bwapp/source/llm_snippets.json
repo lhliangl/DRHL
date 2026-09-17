@@ -1,0 +1,25 @@
+{
+  "summary": {
+    "source_items": 3482,
+    "llm_items": 4,
+    "items_removed": 3478
+  },
+  "snippets": [
+    {
+      "path": "backdoor.php",
+      "if_framework": "if (!(isset($_SESSION[\"login\"]) && $_SESSION[\"login\"])) {\n    header(\"Location: login.php\");\n}"
+    },
+    {
+      "path": "security.php",
+      "if_framework": "if (!(isset($_SESSION[\"login\"]) && $_SESSION[\"login\"])) {\n    header(\"Location: login.php\");\n}"
+    },
+    {
+      "path": "sqli_13-ps.php",
+      "if_framework": "if ($_COOKIE[\"security_level\"] != \"2\") {\n    header(\"Location: sqli_13.php\");\n    exit;\n}"
+    },
+    {
+      "path": "sqli_13.php",
+      "if_framework": "if ($_COOKIE[\"security_level\"] == \"2\") {\n    header(\"Location: sqli_13-ps.php\");\n    exit;\n}"
+    }
+  ]
+}

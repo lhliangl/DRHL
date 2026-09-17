@@ -1,0 +1,15 @@
+{
+  "role": "visitor",
+  "kind": "visitor",
+  "nodes": [
+    "index.jsp"
+  ],
+  "edges": [],
+  "requests": {
+    "index.jsp": {
+      "method": "GET",
+      "params": {},
+      "referer": null
+    }
+  }
+}

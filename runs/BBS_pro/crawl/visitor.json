@@ -1,0 +1,87 @@
+{
+  "role": "visitor",
+  "kind": "visitor",
+  "nodes": [
+    "./",
+    "acc_login/",
+    "acc_register/",
+    "category/p1/",
+    "detail/p1/",
+    "login/",
+    "register/"
+  ],
+  "edges": [
+    {
+      "from": "./",
+      "to": "category/p1/"
+    },
+    {
+      "from": "./",
+      "to": "detail/p1/"
+    },
+    {
+      "from": "detail/p1/",
+      "to": "login/"
+    },
+    {
+      "from": "login/",
+      "to": "acc_login/"
+    },
+    {
+      "from": "login/",
+      "to": "register/"
+    },
+    {
+      "from": "register/",
+      "to": "acc_register/"
+    }
+  ],
+  "requests": {
+    "./": {
+      "method": "GET",
+      "params": {},
+      "referer": null
+    },
+    "favicon.ico": {
+      "method": "GET",
+      "params": {},
+      "referer": null
+    },
+    "detail/p1/": {
+      "method": "GET",
+      "params": {},
+      "referer": "./"
+    },
+    "login/": {
+      "method": "GET",
+      "params": {},
+      "referer": "detail/p1/"
+    },
+    "acc_login/": {
+      "method": "POST",
+      "params": {
+        "username": "zhangsan",
+        "password": "123456"
+      },
+      "referer": "login/"
+    },
+    "register/": {
+      "method": "GET",
+      "params": {},
+      "referer": "login/"
+    },
+    "acc_register/": {
+      "method": "POST",
+      "params": {
+        "username": "zhangsan",
+        "password": "123456"
+      },
+      "referer": "register/"
+    },
+    "category/p1/": {
+      "method": "GET",
+      "params": {},
+      "referer": "./"
+    }
+  }
+}

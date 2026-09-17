@@ -1,0 +1,1451 @@
+{
+  "parameters": [
+    {
+      "id": "admin/band_editor.php:LCP1",
+      "path": "admin/band_editor.php",
+      "expression": "$_GET['language']",
+      "aliases": [
+        "$_GET['language']",
+        "$language"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 23,
+          "condition": "(isset ($_GET['language']))"
+        },
+        {
+          "source": "conditional",
+          "line": 31,
+          "condition": "($language==0)"
+        }
+      ],
+      "condition_indexes": [
+        0,
+        1
+      ]
+    },
+    {
+      "id": "admin/band_editor.php:LCP2",
+      "path": "admin/band_editor.php",
+      "expression": "$log",
+      "aliases": [
+        "$log",
+        "$dati_login['login']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 145,
+          "condition": "($log!=\"admin\"&&$pw!=\"admin\")"
+        },
+        {
+          "source": "conditional",
+          "line": 147,
+          "condition": "((isset($_COOKIE[$string_cook_login])&&$log==$_COOKIE[$string_cook_login])&&(isset($_COOKIE[$string_cook_password])&&$pw==$_COOKIE[$string_cook_password]))"
+        }
+      ],
+      "condition_indexes": [
+        2,
+        3
+      ]
+    },
+    {
+      "id": "admin/band_editor.php:LCP3",
+      "path": "admin/band_editor.php",
+      "expression": "$pw",
+      "aliases": [
+        "$pw",
+        "$dati_login['password']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 145,
+          "condition": "($log!=\"admin\"&&$pw!=\"admin\")"
+        },
+        {
+          "source": "conditional",
+          "line": 147,
+          "condition": "((isset($_COOKIE[$string_cook_login])&&$log==$_COOKIE[$string_cook_login])&&(isset($_COOKIE[$string_cook_password])&&$pw==$_COOKIE[$string_cook_password]))"
+        }
+      ],
+      "condition_indexes": [
+        2,
+        3
+      ]
+    },
+    {
+      "id": "admin/band_editor.php:LCP4",
+      "path": "admin/band_editor.php",
+      "expression": "$_COOKIE[$string_cook_login]",
+      "aliases": [
+        "$_COOKIE[$string_cook_login]"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 147,
+          "condition": "((isset($_COOKIE[$string_cook_login])&&$log==$_COOKIE[$string_cook_login])&&(isset($_COOKIE[$string_cook_password])&&$pw==$_COOKIE[$string_cook_password]))"
+        }
+      ],
+      "condition_indexes": [
+        3
+      ]
+    },
+    {
+      "id": "admin/band_editor.php:LCP5",
+      "path": "admin/band_editor.php",
+      "expression": "$_COOKIE[$string_cook_password]",
+      "aliases": [
+        "$_COOKIE[$string_cook_password]"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 147,
+          "condition": "((isset($_COOKIE[$string_cook_login])&&$log==$_COOKIE[$string_cook_login])&&(isset($_COOKIE[$string_cook_password])&&$pw==$_COOKIE[$string_cook_password]))"
+        }
+      ],
+      "condition_indexes": [
+        3
+      ]
+    },
+    {
+      "id": "admin/band_editor.php:LCP6",
+      "path": "admin/band_editor.php",
+      "expression": "$test_log",
+      "aliases": [
+        "$test_log"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 169,
+          "condition": "($test_log)"
+        }
+      ],
+      "condition_indexes": [
+        4
+      ]
+    },
+    {
+      "id": "admin/config_editor.php:LCP7",
+      "path": "admin/config_editor.php",
+      "expression": "$_GET['language']",
+      "aliases": [
+        "$_GET['language']",
+        "$language"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 23,
+          "condition": "(isset ($_GET['language']))"
+        },
+        {
+          "source": "conditional",
+          "line": 31,
+          "condition": "($language==0)"
+        }
+      ],
+      "condition_indexes": [
+        0,
+        1
+      ]
+    },
+    {
+      "id": "admin/config_editor.php:LCP8",
+      "path": "admin/config_editor.php",
+      "expression": "$log",
+      "aliases": [
+        "$log",
+        "$dati_login['login']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 146,
+          "condition": "($log!=\"admin\"&&$pw!=\"admin\")"
+        },
+        {
+          "source": "conditional",
+          "line": 148,
+          "condition": "((isset($_COOKIE[$string_cook_login])&&$log==$_COOKIE[$string_cook_login])&&(isset($_COOKIE[$string_cook_password])&&$pw==$_COOKIE[$string_cook_password]))"
+        }
+      ],
+      "condition_indexes": [
+        2,
+        3
+      ]
+    },
+    {
+      "id": "admin/config_editor.php:LCP9",
+      "path": "admin/config_editor.php",
+      "expression": "$pw",
+      "aliases": [
+        "$pw",
+        "$dati_login['password']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 146,
+          "condition": "($log!=\"admin\"&&$pw!=\"admin\")"
+        },
+        {
+          "source": "conditional",
+          "line": 148,
+          "condition": "((isset($_COOKIE[$string_cook_login])&&$log==$_COOKIE[$string_cook_login])&&(isset($_COOKIE[$string_cook_password])&&$pw==$_COOKIE[$string_cook_password]))"
+        }
+      ],
+      "condition_indexes": [
+        2,
+        3
+      ]
+    },
+    {
+      "id": "admin/config_editor.php:LCP10",
+      "path": "admin/config_editor.php",
+      "expression": "$_COOKIE[$string_cook_login]",
+      "aliases": [
+        "$_COOKIE[$string_cook_login]"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 148,
+          "condition": "((isset($_COOKIE[$string_cook_login])&&$log==$_COOKIE[$string_cook_login])&&(isset($_COOKIE[$string_cook_password])&&$pw==$_COOKIE[$string_cook_password]))"
+        }
+      ],
+      "condition_indexes": [
+        3
+      ]
+    },
+    {
+      "id": "admin/config_editor.php:LCP11",
+      "path": "admin/config_editor.php",
+      "expression": "$_COOKIE[$string_cook_password]",
+      "aliases": [
+        "$_COOKIE[$string_cook_password]"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 148,
+          "condition": "((isset($_COOKIE[$string_cook_login])&&$log==$_COOKIE[$string_cook_login])&&(isset($_COOKIE[$string_cook_password])&&$pw==$_COOKIE[$string_cook_password]))"
+        }
+      ],
+      "condition_indexes": [
+        3
+      ]
+    },
+    {
+      "id": "admin/config_editor.php:LCP12",
+      "path": "admin/config_editor.php",
+      "expression": "$test_log",
+      "aliases": [
+        "$test_log"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 170,
+          "condition": "($test_log)"
+        }
+      ],
+      "condition_indexes": [
+        4
+      ]
+    },
+    {
+      "id": "admin/config_editor.php:LCP13",
+      "path": "admin/config_editor.php",
+      "expression": "$dati_config['barra1r']",
+      "aliases": [
+        "$dati_config['barra1r']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 221,
+          "condition": "($dati_config['barra1r']<=15)"
+        }
+      ],
+      "condition_indexes": [
+        5
+      ]
+    },
+    {
+      "id": "admin/config_editor.php:LCP14",
+      "path": "admin/config_editor.php",
+      "expression": "$dati_config['barra1g']",
+      "aliases": [
+        "$dati_config['barra1g']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 224,
+          "condition": "($dati_config['barra1g']<=15)"
+        }
+      ],
+      "condition_indexes": [
+        6
+      ]
+    },
+    {
+      "id": "admin/config_editor.php:LCP15",
+      "path": "admin/config_editor.php",
+      "expression": "$dati_config['barra1b']",
+      "aliases": [
+        "$dati_config['barra1b']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 227,
+          "condition": "($dati_config['barra1b']<=15)"
+        }
+      ],
+      "condition_indexes": [
+        7
+      ]
+    },
+    {
+      "id": "admin/config_editor.php:LCP16",
+      "path": "admin/config_editor.php",
+      "expression": "$dati_config['barra2r']",
+      "aliases": [
+        "$dati_config['barra2r']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 254,
+          "condition": "($dati_config['barra2r']<=15)"
+        }
+      ],
+      "condition_indexes": [
+        8
+      ]
+    },
+    {
+      "id": "admin/config_editor.php:LCP17",
+      "path": "admin/config_editor.php",
+      "expression": "$dati_config['barra2g']",
+      "aliases": [
+        "$dati_config['barra2g']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 257,
+          "condition": "($dati_config['barra2g']<=15)"
+        }
+      ],
+      "condition_indexes": [
+        9
+      ]
+    },
+    {
+      "id": "admin/config_editor.php:LCP18",
+      "path": "admin/config_editor.php",
+      "expression": "$dati_config['barra2b']",
+      "aliases": [
+        "$dati_config['barra2b']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 260,
+          "condition": "($dati_config['barra2b']<=15)"
+        }
+      ],
+      "condition_indexes": [
+        10
+      ]
+    },
+    {
+      "id": "admin/config_editor.php:LCP19",
+      "path": "admin/config_editor.php",
+      "expression": "$dati_config['barra3r']",
+      "aliases": [
+        "$dati_config['barra3r']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 287,
+          "condition": "($dati_config['barra3r']<=15)"
+        }
+      ],
+      "condition_indexes": [
+        11
+      ]
+    },
+    {
+      "id": "admin/config_editor.php:LCP20",
+      "path": "admin/config_editor.php",
+      "expression": "$dati_config['barra3g']",
+      "aliases": [
+        "$dati_config['barra3g']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 290,
+          "condition": "($dati_config['barra3g']<=15)"
+        }
+      ],
+      "condition_indexes": [
+        12
+      ]
+    },
+    {
+      "id": "admin/config_editor.php:LCP21",
+      "path": "admin/config_editor.php",
+      "expression": "$dati_config['barra3b']",
+      "aliases": [
+        "$dati_config['barra3b']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 293,
+          "condition": "($dati_config['barra3b']<=15)"
+        }
+      ],
+      "condition_indexes": [
+        13
+      ]
+    },
+    {
+      "id": "admin/config_editor.php:LCP22",
+      "path": "admin/config_editor.php",
+      "expression": "$dati_config['barra4r']",
+      "aliases": [
+        "$dati_config['barra4r']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 320,
+          "condition": "($dati_config['barra4r']<=15)"
+        }
+      ],
+      "condition_indexes": [
+        14
+      ]
+    },
+    {
+      "id": "admin/config_editor.php:LCP23",
+      "path": "admin/config_editor.php",
+      "expression": "$dati_config['barra4g']",
+      "aliases": [
+        "$dati_config['barra4g']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 323,
+          "condition": "($dati_config['barra4g']<=15)"
+        }
+      ],
+      "condition_indexes": [
+        15
+      ]
+    },
+    {
+      "id": "admin/config_editor.php:LCP24",
+      "path": "admin/config_editor.php",
+      "expression": "$dati_config['barra4b']",
+      "aliases": [
+        "$dati_config['barra4b']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 326,
+          "condition": "($dati_config['barra4b']<=15)"
+        }
+      ],
+      "condition_indexes": [
+        16
+      ]
+    },
+    {
+      "id": "admin/elabora_cookie.php:LCP25",
+      "path": "admin/elabora_cookie.php",
+      "expression": "$_POST['log']",
+      "aliases": [
+        "$_POST['log']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 25,
+          "condition": "((isset($_POST['log'])&&$_POST['log']!=\"\")&&(isset($_POST['pw'])&&$_POST['pw']!=\"\"))"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "admin/elabora_cookie.php:LCP26",
+      "path": "admin/elabora_cookie.php",
+      "expression": "$_POST['pw']",
+      "aliases": [
+        "$_POST['pw']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 25,
+          "condition": "((isset($_POST['log'])&&$_POST['log']!=\"\")&&(isset($_POST['pw'])&&$_POST['pw']!=\"\"))"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "admin/index.php:LCP27",
+      "path": "admin/index.php",
+      "expression": "$_GET['language']",
+      "aliases": [
+        "$_GET['language']",
+        "$language"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 23,
+          "condition": "(isset ($_GET['language']))"
+        },
+        {
+          "source": "conditional",
+          "line": 31,
+          "condition": "($language==0)"
+        }
+      ],
+      "condition_indexes": [
+        0,
+        1
+      ]
+    },
+    {
+      "id": "admin/localization.php:LCP28",
+      "path": "admin/localization.php",
+      "expression": "$language",
+      "aliases": [
+        "$language"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 24,
+          "condition": "($language==1)"
+        },
+        {
+          "source": "conditional",
+          "line": 105,
+          "condition": "($language==2)"
+        }
+      ],
+      "condition_indexes": [
+        0,
+        1
+      ]
+    },
+    {
+      "id": "admin/modifica_band.php:LCP29",
+      "path": "admin/modifica_band.php",
+      "expression": "$_GET['language']",
+      "aliases": [
+        "$_GET['language']",
+        "$language"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 23,
+          "condition": "(isset ($_GET['language']))"
+        },
+        {
+          "source": "conditional",
+          "line": 39,
+          "condition": "($language==0||$nuova_band==0)"
+        }
+      ],
+      "condition_indexes": [
+        0,
+        2
+      ]
+    },
+    {
+      "id": "admin/modifica_band.php:LCP30",
+      "path": "admin/modifica_band.php",
+      "expression": "$_GET['nuova_band']",
+      "aliases": [
+        "$_GET['nuova_band']",
+        "$nuova_band"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 31,
+          "condition": "(isset ($_GET['nuova_band']))"
+        },
+        {
+          "source": "conditional",
+          "line": 39,
+          "condition": "($language==0||$nuova_band==0)"
+        },
+        {
+          "source": "conditional",
+          "line": 74,
+          "condition": "($nuova_band==2)"
+        },
+        {
+          "source": "conditional",
+          "line": 130,
+          "condition": "($nuova_band==1)"
+        }
+      ],
+      "condition_indexes": [
+        1,
+        2,
+        3,
+        7
+      ]
+    },
+    {
+      "id": "admin/modifica_band.php:LCP31",
+      "path": "admin/modifica_band.php",
+      "expression": "$_POST[$stringa_check]",
+      "aliases": [
+        "$_POST[$stringa_check]"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 97,
+          "condition": "($_POST[$stringa_check]==\"on\")"
+        }
+      ],
+      "condition_indexes": [
+        4
+      ]
+    },
+    {
+      "id": "admin/modifica_band.php:LCP32",
+      "path": "admin/modifica_band.php",
+      "expression": "$_POST[$stringa_nome_band]",
+      "aliases": [
+        "$_POST[$stringa_nome_band]"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 106,
+          "condition": "($_POST[$stringa_nome_band]!=$dati_band['nome_band'])"
+        }
+      ],
+      "condition_indexes": [
+        5
+      ]
+    },
+    {
+      "id": "admin/modifica_band.php:LCP33",
+      "path": "admin/modifica_band.php",
+      "expression": "$dati_band['nome_band']",
+      "aliases": [
+        "$dati_band['nome_band']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 106,
+          "condition": "($_POST[$stringa_nome_band]!=$dati_band['nome_band'])"
+        }
+      ],
+      "condition_indexes": [
+        5
+      ]
+    },
+    {
+      "id": "admin/modifica_band.php:LCP34",
+      "path": "admin/modifica_band.php",
+      "expression": "$_POST[$stringa_voti]",
+      "aliases": [
+        "$_POST[$stringa_voti]"
+      ],
+      "database_relations": [
+        {
+          "table": "",
+          "field": "voti",
+          "line": 93
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 115,
+          "condition": "($_POST[$stringa_voti]!=$dati_band['voti'])"
+        }
+      ],
+      "condition_indexes": [
+        6
+      ]
+    },
+    {
+      "id": "admin/modifica_band.php:LCP35",
+      "path": "admin/modifica_band.php",
+      "expression": "$dati_band['voti']",
+      "aliases": [
+        "$dati_band['voti']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 115,
+          "condition": "($_POST[$stringa_voti]!=$dati_band['voti'])"
+        }
+      ],
+      "condition_indexes": [
+        6
+      ]
+    },
+    {
+      "id": "admin/modifica_band.php:LCP36",
+      "path": "admin/modifica_band.php",
+      "expression": "$_POST['nome_band']",
+      "aliases": [
+        "$_POST['nome_band']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 132,
+          "condition": "($_POST['nome_band']!=\"\")"
+        }
+      ],
+      "condition_indexes": [
+        8
+      ]
+    },
+    {
+      "id": "admin/modifica_configurazione.php:LCP37",
+      "path": "admin/modifica_configurazione.php",
+      "expression": "$_POST['login']",
+      "aliases": [
+        "$_POST['login']",
+        "$_POST['old_login']",
+        "$log"
+      ],
+      "database_relations": [
+        {
+          "table": "phpoll_",
+          "field": "",
+          "line": 120
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 107,
+          "condition": "((isset($_POST['login'])&&$_POST['login']!=\"\")&&(isset($_POST['password'])&&$_POST['password']!=\"\"))"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "admin/modifica_configurazione.php:LCP38",
+      "path": "admin/modifica_configurazione.php",
+      "expression": "$_POST['password']",
+      "aliases": [
+        "$_POST['password']",
+        "$_POST['old_password']",
+        "$pw"
+      ],
+      "database_relations": [
+        {
+          "table": "phpoll_",
+          "field": "",
+          "line": 120
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 107,
+          "condition": "((isset($_POST['login'])&&$_POST['login']!=\"\")&&(isset($_POST['password'])&&$_POST['password']!=\"\"))"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "admin/modifica_configurazione.php:LCP39",
+      "path": "admin/modifica_configurazione.php",
+      "expression": "$split_length",
+      "aliases": [
+        "$split_length"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 46,
+          "condition": "($split_length < 1)"
+        },
+        {
+          "source": "conditional",
+          "line": 48,
+          "condition": "($split_length > $count)"
+        }
+      ],
+      "condition_indexes": [
+        0,
+        1
+      ]
+    },
+    {
+      "id": "admin/modifica_configurazione.php:LCP40",
+      "path": "admin/modifica_configurazione.php",
+      "expression": "$count",
+      "aliases": [
+        "$count"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 48,
+          "condition": "($split_length > $count)"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "admin/modifica_votanti.php:LCP41",
+      "path": "admin/modifica_votanti.php",
+      "expression": "$_POST[$dati_voti['id']]",
+      "aliases": [
+        "$_POST[$dati_voti['id']]"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 64,
+          "condition": "($_POST[$dati_voti['id']]==\"on\")"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "admin/modifica_votanti.php:LCP42",
+      "path": "admin/modifica_votanti.php",
+      "expression": "$dati_voti['band_votate']",
+      "aliases": [
+        "$dati_voti['band_votate']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 75,
+          "condition": "(stristr($dati_voti['band_votate'], $dati_band['nome_band']))"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "admin/modifica_votanti.php:LCP43",
+      "path": "admin/modifica_votanti.php",
+      "expression": "$dati_band['nome_band']",
+      "aliases": [
+        "$dati_band['nome_band']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 75,
+          "condition": "(stristr($dati_voti['band_votate'], $dati_band['nome_band']))"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "admin/risultati_config.php:LCP44",
+      "path": "admin/risultati_config.php",
+      "expression": "$_GET['language']",
+      "aliases": [
+        "$_GET['language']",
+        "$language"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 23,
+          "condition": "(isset ($_GET['language']))"
+        },
+        {
+          "source": "conditional",
+          "line": 31,
+          "condition": "($language==0)"
+        }
+      ],
+      "condition_indexes": [
+        0,
+        1
+      ]
+    },
+    {
+      "id": "admin/risultati_config.php:LCP45",
+      "path": "admin/risultati_config.php",
+      "expression": "$i",
+      "aliases": [
+        "$i"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 122,
+          "condition": "($i==1)"
+        },
+        {
+          "source": "conditional",
+          "line": 134,
+          "condition": "($i)"
+        }
+      ],
+      "condition_indexes": [
+        2,
+        4
+      ]
+    },
+    {
+      "id": "admin/risultati_config.php:LCP46",
+      "path": "admin/risultati_config.php",
+      "expression": "$divisore",
+      "aliases": [
+        "$divisore"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 126,
+          "condition": "($divisore>0)"
+        }
+      ],
+      "condition_indexes": [
+        3
+      ]
+    },
+    {
+      "id": "admin/votanti.php:LCP47",
+      "path": "admin/votanti.php",
+      "expression": "$_GET['language']",
+      "aliases": [
+        "$_GET['language']",
+        "$language"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 23,
+          "condition": "(isset ($_GET['language']))"
+        },
+        {
+          "source": "conditional",
+          "line": 31,
+          "condition": "($language==0)"
+        }
+      ],
+      "condition_indexes": [
+        0,
+        1
+      ]
+    },
+    {
+      "id": "admin/votanti.php:LCP48",
+      "path": "admin/votanti.php",
+      "expression": "$log",
+      "aliases": [
+        "$log",
+        "$dati_login['login']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 142,
+          "condition": "($log!=\"admin\"&&$pw!=\"admin\")"
+        },
+        {
+          "source": "conditional",
+          "line": 144,
+          "condition": "((isset($_COOKIE[$string_cook_login])&&$log==$_COOKIE[$string_cook_login])&&(isset($_COOKIE[$string_cook_password])&&$pw==$_COOKIE[$string_cook_password]))"
+        }
+      ],
+      "condition_indexes": [
+        2,
+        3
+      ]
+    },
+    {
+      "id": "admin/votanti.php:LCP49",
+      "path": "admin/votanti.php",
+      "expression": "$pw",
+      "aliases": [
+        "$pw",
+        "$dati_login['password']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 142,
+          "condition": "($log!=\"admin\"&&$pw!=\"admin\")"
+        },
+        {
+          "source": "conditional",
+          "line": 144,
+          "condition": "((isset($_COOKIE[$string_cook_login])&&$log==$_COOKIE[$string_cook_login])&&(isset($_COOKIE[$string_cook_password])&&$pw==$_COOKIE[$string_cook_password]))"
+        }
+      ],
+      "condition_indexes": [
+        2,
+        3
+      ]
+    },
+    {
+      "id": "admin/votanti.php:LCP50",
+      "path": "admin/votanti.php",
+      "expression": "$_COOKIE[$string_cook_login]",
+      "aliases": [
+        "$_COOKIE[$string_cook_login]"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 144,
+          "condition": "((isset($_COOKIE[$string_cook_login])&&$log==$_COOKIE[$string_cook_login])&&(isset($_COOKIE[$string_cook_password])&&$pw==$_COOKIE[$string_cook_password]))"
+        }
+      ],
+      "condition_indexes": [
+        3
+      ]
+    },
+    {
+      "id": "admin/votanti.php:LCP51",
+      "path": "admin/votanti.php",
+      "expression": "$_COOKIE[$string_cook_password]",
+      "aliases": [
+        "$_COOKIE[$string_cook_password]"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 144,
+          "condition": "((isset($_COOKIE[$string_cook_login])&&$log==$_COOKIE[$string_cook_login])&&(isset($_COOKIE[$string_cook_password])&&$pw==$_COOKIE[$string_cook_password]))"
+        }
+      ],
+      "condition_indexes": [
+        3
+      ]
+    },
+    {
+      "id": "admin/votanti.php:LCP52",
+      "path": "admin/votanti.php",
+      "expression": "$test_log",
+      "aliases": [
+        "$test_log"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 166,
+          "condition": "($test_log)"
+        }
+      ],
+      "condition_indexes": [
+        4
+      ]
+    },
+    {
+      "id": "admin/votanti.php:LCP53",
+      "path": "admin/votanti.php",
+      "expression": "$_POST['indietro_di']",
+      "aliases": [
+        "$_POST['indietro_di']",
+        "$indietro_di"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 168,
+          "condition": "(isset($_POST['indietro_di']))"
+        },
+        {
+          "source": "conditional",
+          "line": 201,
+          "condition": "($indietro_di)"
+        }
+      ],
+      "condition_indexes": [
+        5,
+        8
+      ]
+    },
+    {
+      "id": "admin/votanti.php:LCP54",
+      "path": "admin/votanti.php",
+      "expression": "$_POST['candidate']",
+      "aliases": [
+        "$_POST['candidate']",
+        "$candidate"
+      ],
+      "database_relations": [
+        {
+          "table": "",
+          "field": "",
+          "line": 284
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 175,
+          "condition": "(isset($_POST['candidate'])&&$_POST['candidate']!=\"--- ALL ---\")"
+        },
+        {
+          "source": "conditional",
+          "line": 180,
+          "condition": "(isset($_POST['candidate'])&&$_POST['candidate']==\"--- ALL ---\")"
+        },
+        {
+          "source": "conditional",
+          "line": 260,
+          "condition": "($_POST['candidate']==\"--- ALL ---\")"
+        },
+        {
+          "source": "conditional",
+          "line": 268,
+          "condition": "($_POST['candidate']==$dati_banda['nome_band'])"
+        }
+      ],
+      "condition_indexes": [
+        6,
+        7,
+        9,
+        10
+      ]
+    },
+    {
+      "id": "admin/votanti.php:LCP55",
+      "path": "admin/votanti.php",
+      "expression": "$dati_banda['nome_band']",
+      "aliases": [
+        "$dati_banda['nome_band']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 268,
+          "condition": "($_POST['candidate']==$dati_banda['nome_band'])"
+        }
+      ],
+      "condition_indexes": [
+        10
+      ]
+    },
+    {
+      "id": "admin/votanti.php:LCP56",
+      "path": "admin/votanti.php",
+      "expression": "$dati_voti['votato']",
+      "aliases": [
+        "$dati_voti['votato']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 328,
+          "condition": "($dati_voti['votato']==\"1\")"
+        }
+      ],
+      "condition_indexes": [
+        11
+      ]
+    },
+    {
+      "id": "risultati.php:LCP57",
+      "path": "risultati.php",
+      "expression": "$i",
+      "aliases": [
+        "$i"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 70,
+          "condition": "($i==1)"
+        },
+        {
+          "source": "conditional",
+          "line": 76,
+          "condition": "($i==1)"
+        },
+        {
+          "source": "conditional",
+          "line": 80,
+          "condition": "($i>1&&$i<=5)"
+        },
+        {
+          "source": "conditional",
+          "line": 86,
+          "condition": "($i>5&&$i<=10)"
+        }
+      ],
+      "condition_indexes": [
+        0,
+        1,
+        2,
+        3
+      ]
+    }
+  ]
+}

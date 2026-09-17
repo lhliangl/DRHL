@@ -1,0 +1,142 @@
+{
+  "snippets": [
+    {
+      "path": "admin/band_editor.php",
+      "kind": "conditional",
+      "start_line": 145,
+      "end_line": 165,
+      "condition": "($log!=\"admin\"&&$pw!=\"admin\")",
+      "terminations": [
+        {
+          "kind": "configured_denial",
+          "line": 163,
+          "code": "$test_log = true;",
+          "denial_text": false
+        }
+      ],
+      "code": "if ($log!=\"admin\"&&$pw!=\"admin\") {\r\n\r\n\tif ((isset($_COOKIE[$string_cook_login])&&$log==$_COOKIE[$string_cook_login])&&(isset($_COOKIE[$string_cook_password])&&$pw==$_COOKIE[$string_cook_password])) {\r\n\t\t\r\n\t\t$test_log = true;\r\n\t\t\r\n\t}\r\n\t\r\n\telse {\r\n\t\t\r\n\t\t$test_log = false;\r\n\t\t\r\n\t}\r\n\t\r\n\t}\r\n\t\r\n\telse {\r\n\t\t\r\n\t\t$test_log = true;\r\n\t\t\r\n\t}",
+      "parameter_ids": [
+        "admin/band_editor.php:LCP2",
+        "admin/band_editor.php:LCP3"
+      ],
+      "function_ids": [],
+      "if_framework": "if ($log!=\"admin\"&&$pw!=\"admin\") {\n    $test_log = true;\n}"
+    },
+    {
+      "path": "admin/band_editor.php",
+      "kind": "conditional",
+      "start_line": 147,
+      "end_line": 157,
+      "condition": "((isset($_COOKIE[$string_cook_login])&&$log==$_COOKIE[$string_cook_login])&&(isset($_COOKIE[$string_cook_password])&&$pw==$_COOKIE[$string_cook_password]))",
+      "terminations": [
+        {
+          "kind": "configured_denial",
+          "line": 149,
+          "code": "$test_log = true;",
+          "denial_text": false
+        }
+      ],
+      "code": "if ((isset($_COOKIE[$string_cook_login])&&$log==$_COOKIE[$string_cook_login])&&(isset($_COOKIE[$string_cook_password])&&$pw==$_COOKIE[$string_cook_password])) {\r\n\t\t\r\n\t\t$test_log = true;\r\n\t\t\r\n\t}\r\n\t\r\n\telse {\r\n\t\t\r\n\t\t$test_log = false;\r\n\t\t\r\n\t}",
+      "parameter_ids": [
+        "admin/band_editor.php:LCP4",
+        "admin/band_editor.php:LCP2",
+        "admin/band_editor.php:LCP5",
+        "admin/band_editor.php:LCP3"
+      ],
+      "function_ids": [],
+      "if_framework": "if ((isset($_COOKIE[$string_cook_login])&&$log==$_COOKIE[$string_cook_login])&&(isset($_COOKIE[$string_cook_password])&&$pw==$_COOKIE[$string_cook_password])) {\n    $test_log = true;\n}"
+    },
+    {
+      "path": "admin/config_editor.php",
+      "kind": "conditional",
+      "start_line": 146,
+      "end_line": 166,
+      "condition": "($log!=\"admin\"&&$pw!=\"admin\")",
+      "terminations": [
+        {
+          "kind": "configured_denial",
+          "line": 164,
+          "code": "$test_log = true;",
+          "denial_text": false
+        }
+      ],
+      "code": "if ($log!=\"admin\"&&$pw!=\"admin\") {\r\n\r\n\tif ((isset($_COOKIE[$string_cook_login])&&$log==$_COOKIE[$string_cook_login])&&(isset($_COOKIE[$string_cook_password])&&$pw==$_COOKIE[$string_cook_password])) {\r\n\t\t\r\n\t\t$test_log = true;\r\n\t\t\r\n\t}\r\n\t\r\n\telse {\r\n\t\t\r\n\t\t$test_log = false;\r\n\t\t\r\n\t}\r\n\t\r\n\t}\r\n\t\r\n\telse {\r\n\t\t\r\n\t\t$test_log = true;\r\n\t\t\r\n\t}",
+      "parameter_ids": [
+        "admin/config_editor.php:LCP8",
+        "admin/config_editor.php:LCP9"
+      ],
+      "function_ids": [],
+      "if_framework": "if ($log!=\"admin\"&&$pw!=\"admin\") {\n    $test_log = true;\n}"
+    },
+    {
+      "path": "admin/config_editor.php",
+      "kind": "conditional",
+      "start_line": 148,
+      "end_line": 158,
+      "condition": "((isset($_COOKIE[$string_cook_login])&&$log==$_COOKIE[$string_cook_login])&&(isset($_COOKIE[$string_cook_password])&&$pw==$_COOKIE[$string_cook_password]))",
+      "terminations": [
+        {
+          "kind": "configured_denial",
+          "line": 150,
+          "code": "$test_log = true;",
+          "denial_text": false
+        }
+      ],
+      "code": "if ((isset($_COOKIE[$string_cook_login])&&$log==$_COOKIE[$string_cook_login])&&(isset($_COOKIE[$string_cook_password])&&$pw==$_COOKIE[$string_cook_password])) {\r\n\t\t\r\n\t\t$test_log = true;\r\n\t\t\r\n\t}\r\n\t\r\n\telse {\r\n\t\t\r\n\t\t$test_log = false;\r\n\t\t\r\n\t}",
+      "parameter_ids": [
+        "admin/config_editor.php:LCP10",
+        "admin/config_editor.php:LCP8",
+        "admin/config_editor.php:LCP11",
+        "admin/config_editor.php:LCP9"
+      ],
+      "function_ids": [],
+      "if_framework": "if ((isset($_COOKIE[$string_cook_login])&&$log==$_COOKIE[$string_cook_login])&&(isset($_COOKIE[$string_cook_password])&&$pw==$_COOKIE[$string_cook_password])) {\n    $test_log = true;\n}"
+    },
+    {
+      "path": "admin/votanti.php",
+      "kind": "conditional",
+      "start_line": 142,
+      "end_line": 162,
+      "condition": "($log!=\"admin\"&&$pw!=\"admin\")",
+      "terminations": [
+        {
+          "kind": "configured_denial",
+          "line": 160,
+          "code": "$test_log = true;",
+          "denial_text": false
+        }
+      ],
+      "code": "if ($log!=\"admin\"&&$pw!=\"admin\") {\r\n\r\n\tif ((isset($_COOKIE[$string_cook_login])&&$log==$_COOKIE[$string_cook_login])&&(isset($_COOKIE[$string_cook_password])&&$pw==$_COOKIE[$string_cook_password])) {\r\n\t\t\r\n\t\t$test_log = true;\r\n\t\t\r\n\t}\r\n\t\r\n\telse {\r\n\t\t\r\n\t\t$test_log = false;\r\n\t\t\r\n\t}\r\n\t\r\n\t}\r\n\t\r\n\telse {\r\n\t\t\r\n\t\t$test_log = true;\r\n\t\t\r\n\t}",
+      "parameter_ids": [
+        "admin/votanti.php:LCP48",
+        "admin/votanti.php:LCP49"
+      ],
+      "function_ids": [],
+      "if_framework": "if ($log!=\"admin\"&&$pw!=\"admin\") {\n    $test_log = true;\n}"
+    },
+    {
+      "path": "admin/votanti.php",
+      "kind": "conditional",
+      "start_line": 144,
+      "end_line": 154,
+      "condition": "((isset($_COOKIE[$string_cook_login])&&$log==$_COOKIE[$string_cook_login])&&(isset($_COOKIE[$string_cook_password])&&$pw==$_COOKIE[$string_cook_password]))",
+      "terminations": [
+        {
+          "kind": "configured_denial",
+          "line": 146,
+          "code": "$test_log = true;",
+          "denial_text": false
+        }
+      ],
+      "code": "if ((isset($_COOKIE[$string_cook_login])&&$log==$_COOKIE[$string_cook_login])&&(isset($_COOKIE[$string_cook_password])&&$pw==$_COOKIE[$string_cook_password])) {\r\n\t\t\r\n\t\t$test_log = true;\r\n\t\t\r\n\t}\r\n\t\r\n\telse {\r\n\t\t\r\n\t\t$test_log = false;\r\n\t\t\r\n\t}",
+      "parameter_ids": [
+        "admin/votanti.php:LCP50",
+        "admin/votanti.php:LCP48",
+        "admin/votanti.php:LCP51",
+        "admin/votanti.php:LCP49"
+      ],
+      "function_ids": [],
+      "if_framework": "if ((isset($_COOKIE[$string_cook_login])&&$log==$_COOKIE[$string_cook_login])&&(isset($_COOKIE[$string_cook_password])&&$pw==$_COOKIE[$string_cook_password])) {\n    $test_log = true;\n}"
+    }
+  ]
+}

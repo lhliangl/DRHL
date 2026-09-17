@@ -1,0 +1,672 @@
+{
+  "summary": {
+    "vulnerable": 1,
+    "not_vulnerable": 43
+  },
+  "findings": [
+    {
+      "category": "static_only",
+      "page": "<slug:slug>/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": null,
+      "evidence": [
+        "oracle=response-cascade",
+        "configured public page; successful access is not a vulnerability"
+      ],
+      "error": null
+    },
+    {
+      "category": "static_only",
+      "page": "blog/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 404,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 404",
+        "denial marker: page not found",
+        "invalid resource marker: page not found",
+        "target resource did not exist; access-control vulnerability is not confirmed"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "admin/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/",
+        "redirected: http://localhost:8000/admin/login/?next=/admin/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/auth/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/auth/",
+        "redirected: http://localhost:8000/admin/login/?next=/admin/auth/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/auth/",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 404,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 404",
+        "denial marker: page not found",
+        "invalid resource marker: page not found",
+        "target resource did not exist; access-control vulnerability is not confirmed"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/auth/",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 404,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 404",
+        "denial marker: page not found",
+        "invalid resource marker: page not found",
+        "target resource did not exist; access-control vulnerability is not confirmed"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/auth/group/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 403,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 403",
+        "HTTP 403; attack did not receive a normal resource page"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/auth/group/",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 403,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 403",
+        "HTTP 403; attack did not receive a normal resource page"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/auth/group/",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 403,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 403",
+        "HTTP 403; attack did not receive a normal resource page"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/auth/group/1/change/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 403,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 403",
+        "HTTP 403; attack did not receive a normal resource page"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/auth/group/1/change/",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 403,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 403",
+        "HTTP 403; attack did not receive a normal resource page"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/auth/group/1/change/",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 403,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 403",
+        "HTTP 403; attack did not receive a normal resource page"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/auth/group/add/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 403,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 403",
+        "HTTP 403; attack did not receive a normal resource page"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/auth/group/add/",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 403,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 403",
+        "HTTP 403; attack did not receive a normal resource page"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/auth/group/add/",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 403,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 403",
+        "HTTP 403; attack did not receive a normal resource page"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/auth/user/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 403,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 403",
+        "HTTP 403; attack did not receive a normal resource page"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/auth/user/",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 403,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 403",
+        "HTTP 403; attack did not receive a normal resource page"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/auth/user/",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 403,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 403",
+        "HTTP 403; attack did not receive a normal resource page"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/auth/user/4/change/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 403,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 403",
+        "HTTP 403; attack did not receive a normal resource page"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/auth/user/4/change/",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 403,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 403",
+        "HTTP 403; attack did not receive a normal resource page"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/auth/user/4/change/",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 403,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 403",
+        "HTTP 403; attack did not receive a normal resource page"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/auth/user/4/delete/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 403,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 403",
+        "HTTP 403; attack did not receive a normal resource page"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/auth/user/4/delete/",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 403,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 403",
+        "HTTP 403; attack did not receive a normal resource page"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/auth/user/4/delete/",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 403,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 403",
+        "HTTP 403; attack did not receive a normal resource page"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/auth/user/4/history/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/auth/user/4/history/",
+        "redirected: http://localhost:8000/admin/login/?next=/admin/auth/user/4/history/"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/auth/user/4/history/",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 403,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 403",
+        "HTTP 403; attack did not receive a normal resource page"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/auth/user/4/history/",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 403,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 403",
+        "HTTP 403; attack did not receive a normal resource page"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/auth/user/4/password/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 403,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 403",
+        "HTTP 403; attack did not receive a normal resource page"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/auth/user/4/password/",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 403,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 403",
+        "HTTP 403; attack did not receive a normal resource page"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/auth/user/4/password/",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 403,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 403",
+        "HTTP 403; attack did not receive a normal resource page"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/auth/user/add/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 403,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 403",
+        "HTTP 403; attack did not receive a normal resource page"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/auth/user/add/",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 403,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 403",
+        "HTTP 403; attack did not receive a normal resource page"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/auth/user/add/",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 403,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 403",
+        "HTTP 403; attack did not receive a normal resource page"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "admin/blog/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost:8000/admin/login/?next=/admin/blog/",
+        "redirected: http://localhost:8000/admin/login/?next=/admin/blog/"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "admin/blog/post/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 403,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 403",
+        "HTTP 403; attack did not receive a normal resource page"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "admin/blog/post/1/change/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 403,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 403",
+        "HTTP 403; attack did not receive a normal resource page"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/blog/post/5/change/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 403,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 403",
+        "HTTP 403; attack did not receive a normal resource page"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/blog/post/5/change/",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 403,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 403",
+        "HTTP 403; attack did not receive a normal resource page"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/blog/post/5/change/",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 403,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 403",
+        "HTTP 403; attack did not receive a normal resource page"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/blog/post/add/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 403,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 403",
+        "HTTP 403; attack did not receive a normal resource page"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/blog/post/add/",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 403,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 403",
+        "HTTP 403; attack did not receive a normal resource page"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/blog/post/add/",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 403,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 403",
+        "HTTP 403; attack did not receive a normal resource page"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "admin/password_change/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 403,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 403",
+        "HTTP 403; attack did not receive a normal resource page"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "eee/",
+      "actor": "visitor",
+      "status": "vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 200 without redirect or denial marker"
+      ],
+      "error": null
+    }
+  ]
+}

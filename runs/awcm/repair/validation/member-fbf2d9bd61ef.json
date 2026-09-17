@@ -1,0 +1,142 @@
+{
+  "category": "vertical",
+  "page": "member.php?id=1",
+  "source": "D:\\phpStudy\\PHPTutorial\\WWW\\awcm\\member.php",
+  "output": "D:\\project\\python\\DRHL\\runs\\awcm\\repair\\files\\attempt-1\\member.php",
+  "status": "successful_repair",
+  "message": "syntax/compile, vulnerability blocking, and regression validation all passed",
+  "engine": "llm",
+  "plan": "{\"missing_check\": \"Admin role check\", \"insertion_location\": \"After include(\\\"header.php\\\"); and before include(\\\"includes/window_top.php\\\");\", \"recommended_guard\": \"if ($member_level !== 'admin') {\\n    print '<meta http-equiv=\\\"refresh\\\" content=\\\"0; URL=index.php\\\">';\\n    exit;\\n}\", \"reused_project_semantics\": \"$member_level and 'admin' from control.php; meta refresh to index.php and exit from member_cp.php\", \"reason\": \"member.php lacks the vertical role guard used in control.php. The attacker user1 can access member.php?id=1 directly because only authentication is performed in header.php, not authorization. Applying the project's $member_level !== 'admin' check before profile output blocks the lower-privilege actor while preserving admin access.\"}",
+  "prompt_artifact": "D:\\project\\python\\DRHL\\runs\\awcm\\repair\\prompts\\member-attempt1-d3a94a572ea1.json",
+  "attempts": 1,
+  "patches_generated": 1,
+  "syntax_compile_ok": 1,
+  "exploit_blocked": 1,
+  "regression_passed": 1,
+  "database_validation_applied": 1,
+  "database_validation_passed": 1,
+  "successful": true,
+  "validation_artifact": "D:\\project\\python\\DRHL\\runs\\awcm\\repair\\validation\\member-fbf2d9bd61ef.json",
+  "attempt_details": [
+    {
+      "attempt": 1,
+      "output": "D:\\project\\python\\DRHL\\runs\\awcm\\repair\\files\\attempt-1\\member.php",
+      "syntax_compile_ok": true,
+      "exploit_blocked": true,
+      "regression_passed": true,
+      "successful": true,
+      "message": "syntax=(No syntax errors detected in D:\\project\\python\\DRHL\\runs\\awcm\\repair\\files\\attempt-1\\member.php); deployment=(source patch applied); vulnerability_blocking=(response=True; database=passed; evidence=user1:not_vulnerable); regression=(response=True; database=passed; evidence=authorized status=200; denial=[])",
+      "prompt_artifact": "D:\\project\\python\\DRHL\\runs\\awcm\\repair\\prompts\\member-attempt1-d3a94a572ea1.json",
+      "plan": "{\"missing_check\": \"Admin role check\", \"insertion_location\": \"After include(\\\"header.php\\\"); and before include(\\\"includes/window_top.php\\\");\", \"recommended_guard\": \"if ($member_level !== 'admin') {\\n    print '<meta http-equiv=\\\"refresh\\\" content=\\\"0; URL=index.php\\\">';\\n    exit;\\n}\", \"reused_project_semantics\": \"$member_level and 'admin' from control.php; meta refresh to index.php and exit from member_cp.php\", \"reason\": \"member.php lacks the vertical role guard used in control.php. The attacker user1 can access member.php?id=1 directly because only authentication is performed in header.php, not authorization. Applying the project's $member_level !== 'admin' check before profile output blocks the lower-privilege actor while preserving admin access.\"}",
+      "database_validation_passed": true,
+      "database_validation": {
+        "oracle_version": 2,
+        "scope": "repair_only",
+        "applicable": true,
+        "passed": true,
+        "status": "passed",
+        "dimensions": {
+          "vulnerability_blocking": {
+            "phase": "attack",
+            "applicable": true,
+            "passed": true
+          },
+          "regression": {
+            "phase": "authorized",
+            "applicable": true,
+            "passed": true
+          }
+        },
+        "scenarios": [
+          {
+            "name": "AWCM-GT-002-admin-profile-read",
+            "operation": "read",
+            "passed": true,
+            "phases": [
+              {
+                "phase": "attack",
+                "role": "user1",
+                "session_before_setup": false,
+                "setup_sql": [
+                  "UPDATE awcm_members SET title='DRHLR_46644832ab07' WHERE id=1"
+                ],
+                "session_requests": [],
+                "request": {
+                  "method": "GET",
+                  "page": "member.php?id=1",
+                  "params": {
+                    "id": "1"
+                  },
+                  "referer": "online.php",
+                  "cookie_names": []
+                },
+                "response": {
+                  "status_code": 200,
+                  "url": "http://localhost/awcm/member.php?id=1",
+                  "body_length": 10348
+                },
+                "query": null,
+                "observed": null,
+                "assertions": [
+                  {
+                    "type": "response_not_contains",
+                    "expected": "DRHLR_46644832ab07",
+                    "passed": true
+                  }
+                ],
+                "passed": true
+              },
+              {
+                "phase": "authorized",
+                "role": "admin",
+                "session_before_setup": false,
+                "setup_sql": [
+                  "UPDATE awcm_members SET title='DRHLR_46644832ab07' WHERE id=1"
+                ],
+                "session_requests": [],
+                "request": {
+                  "method": "GET",
+                  "page": "member.php?id=1",
+                  "params": {
+                    "id": "1"
+                  },
+                  "referer": "online.php",
+                  "cookie_names": []
+                },
+                "response": {
+                  "status_code": 200,
+                  "url": "http://localhost/awcm/member.php?id=1",
+                  "body_length": 16224
+                },
+                "query": null,
+                "observed": null,
+                "assertions": [
+                  {
+                    "type": "response_contains",
+                    "expected": "DRHLR_46644832ab07",
+                    "passed": true
+                  }
+                ],
+                "passed": true
+              }
+            ]
+          }
+        ],
+        "combined_dimensions": {
+          "vulnerability_blocking": {
+            "passed": true,
+            "response_oracle_passed": true,
+            "database_oracle_applicable": true,
+            "database_oracle_passed": true
+          },
+          "regression": {
+            "passed": true,
+            "response_oracle_passed": true,
+            "database_oracle_applicable": true,
+            "database_oracle_passed": true
+          }
+        }
+      }
+    }
+  ]
+}

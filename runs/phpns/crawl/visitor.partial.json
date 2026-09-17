@@ -1,0 +1,84 @@
+{
+  "role": "visitor",
+  "kind": "visitor",
+  "nodes": [
+    "help.php",
+    "inc/wysiwyg/license.txt",
+    "index.php",
+    "login.php",
+    "login.php?do=p",
+    "preferences.php?do=wizard"
+  ],
+  "edges": [
+    {
+      "from": "help.php",
+      "to": "inc/wysiwyg/license.txt"
+    },
+    {
+      "from": "help.php",
+      "to": "preferences.php?do=wizard"
+    },
+    {
+      "from": "index.php",
+      "to": "login.php"
+    },
+    {
+      "from": "login.php",
+      "to": "help.php"
+    },
+    {
+      "from": "login.php",
+      "to": "login.php"
+    },
+    {
+      "from": "login.php",
+      "to": "login.php?do=p"
+    },
+    {
+      "from": "login.php?do=p",
+      "to": "login.php?do=p"
+    },
+    {
+      "from": "preferences.php?do=wizard",
+      "to": "login.php"
+    }
+  ],
+  "requests": {
+    "index.php": {
+      "method": "GET",
+      "params": {},
+      "referer": null
+    },
+    "login.php": {
+      "method": "GET",
+      "params": {},
+      "referer": "index.php"
+    },
+    "login.php?do=p": {
+      "method": "POST",
+      "params": {
+        "username": "text_8cda0f29",
+        "password": "12345678",
+        "remember": "on"
+      },
+      "referer": "login.php"
+    },
+    "help.php": {
+      "method": "GET",
+      "params": {},
+      "referer": "login.php"
+    },
+    "inc/wysiwyg/license.txt": {
+      "method": "GET",
+      "params": {},
+      "referer": "help.php"
+    },
+    "preferences.php?do=wizard": {
+      "method": "GET",
+      "params": {
+        "do": "wizard"
+      },
+      "referer": "help.php"
+    }
+  }
+}

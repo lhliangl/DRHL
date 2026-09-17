@@ -1,0 +1,203 @@
+{
+  "role": "user1",
+  "kind": "user",
+  "nodes": [
+    "./",
+    "auth/changepass",
+    "categories/p1/",
+    "categories/p1/topics/new/",
+    "categories/p1/topics/p1/",
+    "categories/p1/topics/p1/comments/new/",
+    "categories/p1/topics/p1/comments/p1/edit/",
+    "categories/p1/topics/p1/edit/",
+    "users/p1/"
+  ],
+  "edges": [
+    {
+      "from": "./",
+      "to": "categories/p1/"
+    },
+    {
+      "from": "auth/changepass",
+      "to": "auth/changepass"
+    },
+    {
+      "from": "categories/p1/",
+      "to": "categories/p1/topics/new/"
+    },
+    {
+      "from": "categories/p1/",
+      "to": "categories/p1/topics/p1/"
+    },
+    {
+      "from": "categories/p1/topics/new/",
+      "to": "categories/p1/topics/new/"
+    },
+    {
+      "from": "categories/p1/topics/new/",
+      "to": "categories/p1/topics/p1/"
+    },
+    {
+      "from": "categories/p1/topics/new/",
+      "to": "categories/p1/topics/p1/comments/new/"
+    },
+    {
+      "from": "categories/p1/topics/p1/",
+      "to": "categories/p1/topics/p1/comments/p1/edit/"
+    },
+    {
+      "from": "categories/p1/topics/p1/comments/new/",
+      "to": "categories/p1/topics/p1/"
+    },
+    {
+      "from": "categories/p1/topics/p1/comments/new/",
+      "to": "categories/p1/topics/p1/comments/new/"
+    },
+    {
+      "from": "categories/p1/topics/p1/comments/new/",
+      "to": "categories/p1/topics/p1/edit/"
+    },
+    {
+      "from": "categories/p1/topics/p1/comments/p1/edit/",
+      "to": "categories/p1/topics/p1/"
+    },
+    {
+      "from": "categories/p1/topics/p1/comments/p1/edit/",
+      "to": "categories/p1/topics/p1/comments/p1/edit/"
+    },
+    {
+      "from": "categories/p1/topics/p1/edit/",
+      "to": "categories/p1/topics/p1/"
+    },
+    {
+      "from": "categories/p1/topics/p1/edit/",
+      "to": "categories/p1/topics/p1/edit/"
+    },
+    {
+      "from": "users/p1/",
+      "to": "./"
+    }
+  ],
+  "requests": {
+    "users/p1/": {
+      "method": "GET",
+      "params": {},
+      "referer": null
+    },
+    "auth/signin": {
+      "method": "POST",
+      "params": {
+        "gorilla.csrf.Token": "TEKiGg9UjVx2/VxcMm/toM3HbosetTukJ3hliW8WTMsrkXUJRqzC4teiZLZUWD2BtXcF6pVGaVdkkGMf/TpUxg==",
+        "next": "/forums/localhost/",
+        "email": "user1@qq.com",
+        "password": "12345678",
+        "submit": "Signin"
+      },
+      "referer": null
+    },
+    "auth/jlKuze5VSMND5CSljP8z": {
+      "method": "GET",
+      "params": {},
+      "referer": null
+    },
+    "./": {
+      "method": "GET",
+      "params": {},
+      "referer": null
+    },
+    "jlKuze5VSMND5CSljP8z": {
+      "method": "GET",
+      "params": {},
+      "referer": null
+    },
+    "users/jlKuze5VSMND5CSljP8z": {
+      "method": "GET",
+      "params": {},
+      "referer": null
+    },
+    "categories/p1/": {
+      "method": "GET",
+      "params": {},
+      "referer": "./"
+    },
+    "categories/jlKuze5VSMND5CSljP8z": {
+      "method": "GET",
+      "params": {},
+      "referer": "./"
+    },
+    "categories/p1/topics/p1/": {
+      "method": "GET",
+      "params": {},
+      "referer": "categories/p1/"
+    },
+    "categories/3/topics/jlKuze5VSMND5CSljP8z": {
+      "method": "GET",
+      "params": {},
+      "referer": "categories/p1/"
+    },
+    "categories/p1/topics/p1/comments/p1/edit/": {
+      "method": "POST",
+      "params": {
+        "gorilla.csrf.Token": "6Mqz5/jBdrH4s/gOSlvP5dTmrcAGVkFCAKmwWYwFN1kwHJVFTwQu2pccvWE0s/JNo+VIkOX3BPF0uUTqf/06Ww==",
+        "content": "> wwww6EYFpUSJLbAHDn1LEgIjpFuofEGHiB",
+        "action": "Delete"
+      },
+      "referer": "categories/p1/topics/p1/comments/p1/edit/"
+    },
+    "categories/3/topics/4/comments/27/jlKuze5VSMND5CSljP8z": {
+      "method": "GET",
+      "params": {},
+      "referer": "categories/p1/topics/p1/"
+    },
+    "categories/p1/topics/new/": {
+      "method": "POST",
+      "params": {
+        "gorilla.csrf.Token": "2Y7j/rtVlZZ8TNB4jHWe9X/S6mptPkxMJKI87Sfo1lMBWMVcDJDN/RPjlRfynaNdCNEPOo6fCf9Qsshe1BDbUQ==",
+        "title": "DRHL Test Topic",
+        "content": "DRHL generated content for access-control testing.",
+        "action": "Submit"
+      },
+      "referer": "categories/p1/topics/new/"
+    },
+    "categories/p1/topics/p1/comments/new/": {
+      "method": "POST",
+      "params": {
+        "gorilla.csrf.Token": "svBR9lFTJ1GdZoH+ea6lMnYIJkI+nxUX8XlXb99YgbVqJndU5pZ/OvLJxJEHRpiaAQvDEt0+UKSFaaPcLKCMtw==",
+        "content": "DRHL generated content for access-control testing.",
+        "action": "Submit"
+      },
+      "referer": "categories/p1/topics/p1/comments/new/"
+    },
+    "categories/3/topics/33/comments/jlKuze5VSMND5CSljP8z": {
+      "method": "GET",
+      "params": {},
+      "referer": "categories/p1/topics/new/"
+    },
+    "categories/p1/topics/p1/edit/": {
+      "method": "POST",
+      "params": {
+        "gorilla.csrf.Token": "gKi7tL82oSIjmM/k5UcFhoK5wOxAz4s7rHjOZ8KmZgdYfp0WCPP5SUw3ioubrzgu9bolvKNuzojYaDrUMV5rBQ==",
+        "title": "DRHL Test Topic",
+        "content": "DRHL generated content for access-control testing.",
+        "action": "Delete"
+      },
+      "referer": "categories/p1/topics/p1/edit/"
+    },
+    "categories/3/topics/33/jlKuze5VSMND5CSljP8z": {
+      "method": "GET",
+      "params": {},
+      "referer": "categories/p1/topics/p1/comments/new/"
+    },
+    "auth/changepass": {
+      "method": "POST",
+      "params": {
+        "gorilla.csrf.Token": "KLB04ITCfzeXmKiQpdTVRlvgEg+AMwyab5DOzRi5UZtPY6PzzTowiTbHkHrD4wVnI1B5bgvAXmkseMhbipVJlg==",
+        "old_password": "12345678",
+        "password": "12345678",
+        "password2": "12345678",
+        "submit": "Change password"
+      },
+      "referer": "auth/changepass"
+    }
+  }
+}

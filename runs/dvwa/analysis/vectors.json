@@ -1,0 +1,973 @@
+{
+  "vectors": [
+    {
+      "category": "static_only",
+      "page": "vulnerabilities/api/index.php",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "static_only",
+      "page": "vulnerabilities/api/src/GenericController.php",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "static_only",
+      "page": "vulnerabilities/api/src/HealthController.php",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "static_only",
+      "page": "vulnerabilities/api/src/Helpers.php",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "static_only",
+      "page": "vulnerabilities/api/src/Login.php",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "static_only",
+      "page": "vulnerabilities/api/src/LoginController.php",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "static_only",
+      "page": "vulnerabilities/api/src/Order.php",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "static_only",
+      "page": "vulnerabilities/api/src/OrderController.php",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "static_only",
+      "page": "vulnerabilities/api/src/Token.php",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "static_only",
+      "page": "vulnerabilities/api/src/User.php",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "static_only",
+      "page": "vulnerabilities/api/src/UserController.php",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "static_only",
+      "page": "vulnerabilities/authbypass/change_user_details.php",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "static_only",
+      "page": "vulnerabilities/authbypass/get_user_data.php",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "static_only",
+      "page": "vulnerabilities/authbypass/index.php",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "static_only",
+      "page": "vulnerabilities/brute/index.php",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "static_only",
+      "page": "vulnerabilities/captcha/index.php",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "static_only",
+      "page": "vulnerabilities/csp/index.php",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "static_only",
+      "page": "vulnerabilities/csrf/index.php",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "static_only",
+      "page": "vulnerabilities/csrf/test_credentials.php",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "static_only",
+      "page": "vulnerabilities/exec/index.php",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "static_only",
+      "page": "vulnerabilities/fi/index.php",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "static_only",
+      "page": "vulnerabilities/javascript/index.php",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "static_only",
+      "page": "vulnerabilities/open_redirect/index.php",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "static_only",
+      "page": "vulnerabilities/sqli/index.php",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "static_only",
+      "page": "vulnerabilities/sqli_blind/index.php",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "static_only",
+      "page": "vulnerabilities/upload/index.php",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "static_only",
+      "page": "vulnerabilities/weak_id/index.php",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "static_only",
+      "page": "vulnerabilities/xss_d/index.php",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "static_only",
+      "page": "vulnerabilities/xss_r/index.php",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "static_only",
+      "page": "vulnerabilities/xss_s/index.php",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "./",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": "instructions.php?doc=p1"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "about.php",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": "vulnerabilities/api/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "instructions.php",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": "setup.php"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "instructions.php?doc=p1",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "doc": "copying"
+        },
+        "referer": "instructions.php"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "security.php",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "security": "low",
+          "seclev_submit": "Submit",
+          "user_token": "e01ee516a56950fffa6d24e080ed4250"
+        },
+        "referer": "security.php"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "setup.php",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "create_db": "Create / Reset Database",
+          "user_token": "50e0dbad7873804dd8779e8867552e38"
+        },
+        "referer": "setup.php"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "vulnerabilities/api/",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "vulnerabilities/authbypass/",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": "vulnerabilities/open_redirect/source/info.php?id=2"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "vulnerabilities/brute/",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "username": "text_7385575f",
+          "password": "12345678",
+          "Login": "Login"
+        },
+        "referer": "vulnerabilities/brute/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "vulnerabilities/brute/?Login=p1&password=p1&username=p1",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "username": "text_27a5e144",
+          "password": "12345678",
+          "Login": "Login"
+        },
+        "referer": "vulnerabilities/brute/?Login=p1&password=p1&username=p1"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "horizontal",
+      "page": "vulnerabilities/brute/?Login=p1&password=p1&username=p1",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {
+          "username": "text_27a5e144",
+          "password": "12345678",
+          "Login": "Login"
+        },
+        "referer": "vulnerabilities/brute/?Login=p1&password=p1&username=p1"
+      },
+      "identity_parameters": [
+        "username"
+      ]
+    },
+    {
+      "category": "admin_only",
+      "page": "vulnerabilities/captcha/",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "step": "1",
+          "password_new": "12345678",
+          "password_conf": "12345678",
+          "Change": "Change"
+        },
+        "referer": "vulnerabilities/captcha/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "vulnerabilities/cryptography/",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": "security.php"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "vulnerabilities/cryptography/index.php",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "password": "12345678"
+        },
+        "referer": "vulnerabilities/cryptography/index.php"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "vulnerabilities/csp/",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "include": "value_de8e0182"
+        },
+        "referer": "vulnerabilities/csp/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "vulnerabilities/csrf/",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "password_new": "12345678",
+          "password_conf": "12345678",
+          "Change": "Change"
+        },
+        "referer": "vulnerabilities/csrf/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "vulnerabilities/csrf/?Change=p1&password_conf=p1&password_new=p1",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "password_new": "12345678",
+          "password_conf": "12345678",
+          "Change": "Change"
+        },
+        "referer": "vulnerabilities/csrf/?Change=p1&password_conf=p1&password_new=p1"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "vulnerabilities/exec/",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "ip": "value_02511d4d",
+          "Submit": "Submit"
+        },
+        "referer": "vulnerabilities/exec/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "vulnerabilities/fi/?page=file1.php",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "page": "file1.php"
+        },
+        "referer": "vulnerabilities/fi/?page=include.php"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "horizontal",
+      "page": "vulnerabilities/fi/?page=file1.php",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {
+          "page": "file1.php"
+        },
+        "referer": "vulnerabilities/fi/?page=include.php"
+      },
+      "identity_parameters": [
+        "page"
+      ]
+    },
+    {
+      "category": "admin_only",
+      "page": "vulnerabilities/fi/?page=file2.php",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "page": "file2.php"
+        },
+        "referer": "vulnerabilities/fi/?page=include.php"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "horizontal",
+      "page": "vulnerabilities/fi/?page=file2.php",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {
+          "page": "file2.php"
+        },
+        "referer": "vulnerabilities/fi/?page=include.php"
+      },
+      "identity_parameters": [
+        "page"
+      ]
+    },
+    {
+      "category": "admin_only",
+      "page": "vulnerabilities/fi/?page=file3.php",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "page": "file3.php"
+        },
+        "referer": "vulnerabilities/fi/?page=include.php"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "horizontal",
+      "page": "vulnerabilities/fi/?page=file3.php",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {
+          "page": "file3.php"
+        },
+        "referer": "vulnerabilities/fi/?page=include.php"
+      },
+      "identity_parameters": [
+        "page"
+      ]
+    },
+    {
+      "category": "admin_only",
+      "page": "vulnerabilities/fi/?page=include.php",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "page": "include.php"
+        },
+        "referer": "vulnerabilities/upload/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "horizontal",
+      "page": "vulnerabilities/fi/?page=include.php",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {
+          "page": "include.php"
+        },
+        "referer": "vulnerabilities/upload/"
+      },
+      "identity_parameters": [
+        "page"
+      ]
+    },
+    {
+      "category": "admin_only",
+      "page": "vulnerabilities/javascript/",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "token": "8b479aefbd90795395b3e7089ae0dc09",
+          "phrase": "ChangeMe",
+          "send": "Submit"
+        },
+        "referer": "vulnerabilities/javascript/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "vulnerabilities/open_redirect/",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": "vulnerabilities/cryptography/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "vulnerabilities/sqli/",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "id": "1",
+          "Submit": "Submit"
+        },
+        "referer": "vulnerabilities/sqli/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "vulnerabilities/sqli/?Submit=p1&id=1",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "id": "1",
+          "Submit": "Submit"
+        },
+        "referer": "vulnerabilities/sqli/?Submit=p1&id=1"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "horizontal",
+      "page": "vulnerabilities/sqli/?Submit=p1&id=1",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {
+          "id": "1",
+          "Submit": "Submit"
+        },
+        "referer": "vulnerabilities/sqli/?Submit=p1&id=1"
+      },
+      "identity_parameters": [
+        "id"
+      ]
+    },
+    {
+      "category": "admin_only",
+      "page": "vulnerabilities/sqli_blind/",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "id": "1",
+          "Submit": "Submit"
+        },
+        "referer": "vulnerabilities/sqli_blind/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "vulnerabilities/sqli_blind/?Submit=p1&id=1",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "id": "1",
+          "Submit": "Submit"
+        },
+        "referer": "vulnerabilities/sqli_blind/?Submit=p1&id=1"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "horizontal",
+      "page": "vulnerabilities/sqli_blind/?Submit=p1&id=1",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {
+          "id": "1",
+          "Submit": "Submit"
+        },
+        "referer": "vulnerabilities/sqli_blind/?Submit=p1&id=1"
+      },
+      "identity_parameters": [
+        "id"
+      ]
+    },
+    {
+      "category": "admin_only",
+      "page": "vulnerabilities/upload/",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "MAX_FILE_SIZE": "100000",
+          "Upload": "Upload"
+        },
+        "referer": "vulnerabilities/upload/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "vulnerabilities/weak_id/",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {},
+        "referer": "vulnerabilities/weak_id/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "vulnerabilities/xss_d/",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "default": "English"
+        },
+        "referer": "vulnerabilities/xss_d/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "vulnerabilities/xss_d/?default=p1",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "default": "English"
+        },
+        "referer": "vulnerabilities/xss_d/?default=p1"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "vulnerabilities/xss_r/",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "name": "text_fb07a4e2"
+        },
+        "referer": "vulnerabilities/xss_r/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "vulnerabilities/xss_r/?name=p1",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "name": "text_e3205c12"
+        },
+        "referer": "vulnerabilities/xss_r/?name=p1"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "vulnerabilities/xss_s/",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "txtName": "text_711d65d3",
+          "mtxMessage": "comment_c12986ef",
+          "btnSign": "Sign Guestbook",
+          "btnClear": "Clear Guestbook"
+        },
+        "referer": "vulnerabilities/xss_s/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "static_only",
+      "page": "setup.php",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": []
+    }
+  ]
+}

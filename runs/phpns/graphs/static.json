@@ -1,0 +1,713 @@
+{
+  "nodes": [
+    "about.php",
+    "article.php",
+    "etc.php",
+    "help.php",
+    "inc/..",
+    "inc/auth.php",
+    "inc/captcha.php",
+    "inc/config.php",
+    "inc/errors.php",
+    "inc/function.php",
+    "inc/global_files.php",
+    "inc/head_data.php",
+    "inc/header.php",
+    "inc/page_desc.php",
+    "inc/themecontrol.php",
+    "index.php",
+    "install/..",
+    "install/../index.php",
+    "install/index.php",
+    "install/install.inc.php",
+    "install/install.tmp.php",
+    "install/upgrade.php",
+    "login.php",
+    "manage.php",
+    "preferences.php",
+    "shownews.php",
+    "showtitle.php",
+    "user.php"
+  ],
+  "source_nodes": [
+    "about.php",
+    "article.php",
+    "etc.php",
+    "help.php",
+    "inc/auth.php",
+    "inc/captcha.php",
+    "inc/config.php",
+    "inc/errors.php",
+    "inc/function.php",
+    "inc/global_files.php",
+    "inc/head_data.php",
+    "inc/header.php",
+    "inc/page_desc.php",
+    "inc/themecontrol.php",
+    "index.php",
+    "install/index.php",
+    "install/install.inc.php",
+    "install/install.tmp.php",
+    "install/upgrade.php",
+    "login.php",
+    "manage.php",
+    "preferences.php",
+    "shownews.php",
+    "showtitle.php",
+    "user.php"
+  ],
+  "edges": [
+    {
+      "from": "about.php",
+      "to": "inc/header.php",
+      "kind": "dependency"
+    },
+    {
+      "from": "about.php",
+      "to": "inc/themecontrol.php",
+      "kind": "dependency"
+    },
+    {
+      "from": "article.php",
+      "to": "inc/header.php",
+      "kind": "dependency"
+    },
+    {
+      "from": "article.php",
+      "to": "inc/themecontrol.php",
+      "kind": "dependency"
+    },
+    {
+      "from": "etc.php",
+      "to": "inc/header.php",
+      "kind": "dependency"
+    },
+    {
+      "from": "etc.php",
+      "to": "shownews.php",
+      "kind": "dependency"
+    },
+    {
+      "from": "inc/header.php",
+      "to": "inc/auth.php",
+      "kind": "dependency"
+    },
+    {
+      "from": "inc/header.php",
+      "to": "inc/config.php",
+      "kind": "dependency"
+    },
+    {
+      "from": "inc/header.php",
+      "to": "inc/errors.php",
+      "kind": "dependency"
+    },
+    {
+      "from": "inc/header.php",
+      "to": "inc/function.php",
+      "kind": "dependency"
+    },
+    {
+      "from": "inc/header.php",
+      "to": "inc/global_files.php",
+      "kind": "dependency"
+    },
+    {
+      "from": "inc/header.php",
+      "to": "inc/head_data.php",
+      "kind": "dependency"
+    },
+    {
+      "from": "inc/themecontrol.php",
+      "to": "inc/page_desc.php",
+      "kind": "dependency"
+    },
+    {
+      "from": "index.php",
+      "to": "inc/header.php",
+      "kind": "dependency"
+    },
+    {
+      "from": "index.php",
+      "to": "inc/themecontrol.php",
+      "kind": "dependency"
+    },
+    {
+      "from": "install/index.php",
+      "to": "install/install.inc.php",
+      "kind": "dependency"
+    },
+    {
+      "from": "install/index.php",
+      "to": "install/install.tmp.php",
+      "kind": "dependency"
+    },
+    {
+      "from": "install/install.inc.php",
+      "to": "inc/errors.php",
+      "kind": "dependency"
+    },
+    {
+      "from": "install/upgrade.php",
+      "to": "inc/config.php",
+      "kind": "dependency"
+    },
+    {
+      "from": "install/upgrade.php",
+      "to": "install/install.tmp.php",
+      "kind": "dependency"
+    },
+    {
+      "from": "login.php",
+      "to": "inc/header.php",
+      "kind": "dependency"
+    },
+    {
+      "from": "login.php",
+      "to": "inc/themecontrol.php",
+      "kind": "dependency"
+    },
+    {
+      "from": "manage.php",
+      "to": "inc/header.php",
+      "kind": "dependency"
+    },
+    {
+      "from": "manage.php",
+      "to": "inc/themecontrol.php",
+      "kind": "dependency"
+    },
+    {
+      "from": "preferences.php",
+      "to": "inc/header.php",
+      "kind": "dependency"
+    },
+    {
+      "from": "preferences.php",
+      "to": "inc/themecontrol.php",
+      "kind": "dependency"
+    },
+    {
+      "from": "shownews.php",
+      "to": "inc/captcha.php",
+      "kind": "dependency"
+    },
+    {
+      "from": "shownews.php",
+      "to": "inc/config.php",
+      "kind": "dependency"
+    },
+    {
+      "from": "showtitle.php",
+      "to": "inc/config.php",
+      "kind": "dependency"
+    },
+    {
+      "from": "user.php",
+      "to": "inc/header.php",
+      "kind": "dependency"
+    },
+    {
+      "from": "user.php",
+      "to": "inc/themecontrol.php",
+      "kind": "dependency"
+    },
+    {
+      "from": "about.php",
+      "to": "about.php",
+      "kind": "http"
+    },
+    {
+      "from": "about.php",
+      "to": "help.php",
+      "kind": "http"
+    },
+    {
+      "from": "article.php",
+      "to": "article.php",
+      "kind": "http"
+    },
+    {
+      "from": "article.php",
+      "to": "index.php",
+      "kind": "http"
+    },
+    {
+      "from": "help.php",
+      "to": "preferences.php",
+      "kind": "http"
+    },
+    {
+      "from": "inc/errors.php",
+      "to": "index.php",
+      "kind": "http"
+    },
+    {
+      "from": "index.php",
+      "to": "article.php",
+      "kind": "http"
+    },
+    {
+      "from": "install/index.php",
+      "to": "index.php",
+      "kind": "http"
+    },
+    {
+      "from": "install/index.php",
+      "to": "install/index.php",
+      "kind": "http"
+    },
+    {
+      "from": "install/index.php",
+      "to": "install/upgrade.php",
+      "kind": "http"
+    },
+    {
+      "from": "install/install.tmp.php",
+      "to": "index.php",
+      "kind": "http"
+    },
+    {
+      "from": "install/install.tmp.php",
+      "to": "install/index.php",
+      "kind": "http"
+    },
+    {
+      "from": "login.php",
+      "to": "index.php",
+      "kind": "http"
+    },
+    {
+      "from": "login.php",
+      "to": "login.php",
+      "kind": "http"
+    },
+    {
+      "from": "manage.php",
+      "to": "article.php",
+      "kind": "http"
+    },
+    {
+      "from": "manage.php",
+      "to": "index.php",
+      "kind": "http"
+    },
+    {
+      "from": "manage.php",
+      "to": "manage.php",
+      "kind": "http"
+    },
+    {
+      "from": "preferences.php",
+      "to": "index.php",
+      "kind": "http"
+    },
+    {
+      "from": "preferences.php",
+      "to": "preferences.php",
+      "kind": "http"
+    },
+    {
+      "from": "preferences.php",
+      "to": "user.php",
+      "kind": "http"
+    },
+    {
+      "from": "user.php",
+      "to": "index.php",
+      "kind": "http"
+    },
+    {
+      "from": "user.php",
+      "to": "manage.php",
+      "kind": "http"
+    },
+    {
+      "from": "user.php",
+      "to": "user.php",
+      "kind": "http"
+    }
+  ],
+  "dependency_edges": [
+    {
+      "from": "about.php",
+      "to": "inc/header.php"
+    },
+    {
+      "from": "about.php",
+      "to": "inc/themecontrol.php"
+    },
+    {
+      "from": "article.php",
+      "to": "inc/header.php"
+    },
+    {
+      "from": "article.php",
+      "to": "inc/themecontrol.php"
+    },
+    {
+      "from": "etc.php",
+      "to": "inc/header.php"
+    },
+    {
+      "from": "etc.php",
+      "to": "shownews.php"
+    },
+    {
+      "from": "inc/header.php",
+      "to": "inc/auth.php"
+    },
+    {
+      "from": "inc/header.php",
+      "to": "inc/config.php"
+    },
+    {
+      "from": "inc/header.php",
+      "to": "inc/errors.php"
+    },
+    {
+      "from": "inc/header.php",
+      "to": "inc/function.php"
+    },
+    {
+      "from": "inc/header.php",
+      "to": "inc/global_files.php"
+    },
+    {
+      "from": "inc/header.php",
+      "to": "inc/head_data.php"
+    },
+    {
+      "from": "inc/themecontrol.php",
+      "to": "inc/page_desc.php"
+    },
+    {
+      "from": "index.php",
+      "to": "inc/header.php"
+    },
+    {
+      "from": "index.php",
+      "to": "inc/themecontrol.php"
+    },
+    {
+      "from": "install/index.php",
+      "to": "install/install.inc.php"
+    },
+    {
+      "from": "install/index.php",
+      "to": "install/install.tmp.php"
+    },
+    {
+      "from": "install/install.inc.php",
+      "to": "inc/errors.php"
+    },
+    {
+      "from": "install/upgrade.php",
+      "to": "inc/config.php"
+    },
+    {
+      "from": "install/upgrade.php",
+      "to": "install/install.tmp.php"
+    },
+    {
+      "from": "login.php",
+      "to": "inc/header.php"
+    },
+    {
+      "from": "login.php",
+      "to": "inc/themecontrol.php"
+    },
+    {
+      "from": "manage.php",
+      "to": "inc/header.php"
+    },
+    {
+      "from": "manage.php",
+      "to": "inc/themecontrol.php"
+    },
+    {
+      "from": "preferences.php",
+      "to": "inc/header.php"
+    },
+    {
+      "from": "preferences.php",
+      "to": "inc/themecontrol.php"
+    },
+    {
+      "from": "shownews.php",
+      "to": "inc/captcha.php"
+    },
+    {
+      "from": "shownews.php",
+      "to": "inc/config.php"
+    },
+    {
+      "from": "showtitle.php",
+      "to": "inc/config.php"
+    },
+    {
+      "from": "user.php",
+      "to": "inc/header.php"
+    },
+    {
+      "from": "user.php",
+      "to": "inc/themecontrol.php"
+    }
+  ],
+  "http_edges": [
+    {
+      "from": "about.php",
+      "to": "about.php"
+    },
+    {
+      "from": "about.php",
+      "to": "help.php"
+    },
+    {
+      "from": "article.php",
+      "to": "article.php"
+    },
+    {
+      "from": "article.php",
+      "to": "index.php"
+    },
+    {
+      "from": "help.php",
+      "to": "preferences.php"
+    },
+    {
+      "from": "inc/errors.php",
+      "to": "index.php"
+    },
+    {
+      "from": "index.php",
+      "to": "article.php"
+    },
+    {
+      "from": "install/index.php",
+      "to": "index.php"
+    },
+    {
+      "from": "install/index.php",
+      "to": "install/index.php"
+    },
+    {
+      "from": "install/index.php",
+      "to": "install/upgrade.php"
+    },
+    {
+      "from": "install/install.tmp.php",
+      "to": "index.php"
+    },
+    {
+      "from": "install/install.tmp.php",
+      "to": "install/index.php"
+    },
+    {
+      "from": "login.php",
+      "to": "index.php"
+    },
+    {
+      "from": "login.php",
+      "to": "login.php"
+    },
+    {
+      "from": "manage.php",
+      "to": "article.php"
+    },
+    {
+      "from": "manage.php",
+      "to": "index.php"
+    },
+    {
+      "from": "manage.php",
+      "to": "manage.php"
+    },
+    {
+      "from": "preferences.php",
+      "to": "index.php"
+    },
+    {
+      "from": "preferences.php",
+      "to": "preferences.php"
+    },
+    {
+      "from": "preferences.php",
+      "to": "user.php"
+    },
+    {
+      "from": "user.php",
+      "to": "index.php"
+    },
+    {
+      "from": "user.php",
+      "to": "manage.php"
+    },
+    {
+      "from": "user.php",
+      "to": "user.php"
+    }
+  ],
+  "url_to_source": {
+    "about.php": "about.php",
+    "article.php": "article.php",
+    "etc.php": "etc.php",
+    "help.php": "help.php",
+    "inc/..": "index.php",
+    "index.php": "index.php",
+    "install/..": "index.php",
+    "install/../index.php": "index.php",
+    "install/index.php": "install/index.php",
+    "install/install.inc.php": "install/install.inc.php",
+    "install/install.tmp.php": "install/install.tmp.php",
+    "install/upgrade.php": "install/upgrade.php",
+    "login.php": "login.php",
+    "manage.php": "manage.php",
+    "preferences.php": "preferences.php",
+    "shownews.php": "shownews.php",
+    "showtitle.php": "showtitle.php",
+    "user.php": "user.php"
+  },
+  "route_url_to_source": {},
+  "http_url_to_source": {
+    "about.php": "about.php",
+    "article.php": "article.php",
+    "help.php": "help.php",
+    "inc/..": "index.php",
+    "index.php": "index.php",
+    "install/..": "index.php",
+    "install/../index.php": "index.php",
+    "install/index.php": "install/index.php",
+    "install/upgrade.php": "install/upgrade.php",
+    "login.php": "login.php",
+    "manage.php": "manage.php",
+    "preferences.php": "preferences.php",
+    "user.php": "user.php"
+  },
+  "direct_url_to_source": {
+    "about.php": "about.php",
+    "article.php": "article.php",
+    "etc.php": "etc.php",
+    "help.php": "help.php",
+    "index.php": "index.php",
+    "install/index.php": "install/index.php",
+    "install/install.inc.php": "install/install.inc.php",
+    "install/install.tmp.php": "install/install.tmp.php",
+    "install/upgrade.php": "install/upgrade.php",
+    "login.php": "login.php",
+    "manage.php": "manage.php",
+    "preferences.php": "preferences.php",
+    "shownews.php": "shownews.php",
+    "showtitle.php": "showtitle.php",
+    "user.php": "user.php"
+  },
+  "classifications": {
+    "UP": [
+      "about.php",
+      "article.php",
+      "etc.php",
+      "help.php",
+      "inc/..",
+      "index.php",
+      "install/..",
+      "install/../index.php",
+      "install/index.php",
+      "install/install.inc.php",
+      "install/install.tmp.php",
+      "install/upgrade.php",
+      "login.php",
+      "manage.php",
+      "preferences.php",
+      "shownews.php",
+      "showtitle.php",
+      "user.php"
+    ],
+    "CP": [
+      "inc/auth.php",
+      "inc/captcha.php",
+      "inc/config.php",
+      "inc/errors.php",
+      "inc/function.php",
+      "inc/global_files.php",
+      "inc/head_data.php",
+      "inc/header.php",
+      "inc/page_desc.php",
+      "inc/themecontrol.php"
+    ],
+    "UP_prime0": [
+      "article.php",
+      "index.php",
+      "manage.php",
+      "preferences.php",
+      "user.php"
+    ],
+    "UPdiff1": [
+      "about.php",
+      "etc.php",
+      "help.php",
+      "inc/..",
+      "login.php",
+      "shownews.php",
+      "showtitle.php"
+    ],
+    "UPdiff2": [
+      "install/..",
+      "install/../index.php",
+      "install/index.php",
+      "install/install.inc.php",
+      "install/install.tmp.php",
+      "install/upgrade.php"
+    ],
+    "UPdiff": [
+      "about.php",
+      "etc.php",
+      "help.php",
+      "inc/..",
+      "install/..",
+      "install/../index.php",
+      "install/index.php",
+      "install/install.inc.php",
+      "install/install.tmp.php",
+      "install/upgrade.php",
+      "login.php",
+      "shownews.php",
+      "showtitle.php"
+    ],
+    "observed": [
+      "article.php",
+      "index.php",
+      "manage.php",
+      "preferences.php",
+      "user.php"
+    ],
+    "internal_reachable": [
+      "inc/auth.php",
+      "inc/config.php",
+      "inc/errors.php",
+      "inc/function.php",
+      "inc/global_files.php",
+      "inc/head_data.php",
+      "inc/header.php",
+      "inc/page_desc.php",
+      "inc/themecontrol.php"
+    ],
+    "public_unobserved": [
+      "about.php",
+      "etc.php",
+      "help.php",
+      "inc/..",
+      "install/..",
+      "install/../index.php",
+      "install/index.php",
+      "install/install.inc.php",
+      "install/install.tmp.php",
+      "install/upgrade.php",
+      "login.php",
+      "shownews.php",
+      "showtitle.php"
+    ],
+    "support_unreachable": [
+      "inc/captcha.php"
+    ]
+  }
+}

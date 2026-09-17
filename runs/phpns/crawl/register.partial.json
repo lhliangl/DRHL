@@ -1,0 +1,754 @@
+{
+  "role": "register",
+  "kind": "user",
+  "nodes": [
+    "article.php",
+    "article.php?do=edit&id=p1",
+    "index.php",
+    "index.php?do=permissiondenied",
+    "manage.php",
+    "manage.php?do=deleteitems",
+    "manage.php?do=search",
+    "manage.php?sort=active%2Fasc",
+    "manage.php?sort=active%2Fdesc",
+    "manage.php?sort=article_author%2Fasc",
+    "manage.php?sort=article_author%2Fdesc",
+    "manage.php?sort=article_cat%2Fasc",
+    "manage.php?sort=article_cat%2Fdesc",
+    "manage.php?sort=article_title%2Fasc",
+    "manage.php?sort=article_title%2Fdesc",
+    "manage.php?sort=timestamp%2Fasc",
+    "manage.php?sort=timestamp%2Fdesc",
+    "manage.php?v=",
+    "manage.php?v=32",
+    "manage.php?v=admin",
+    "manage.php?v=all",
+    "manage.php?v=register",
+    "manage.php?v=unactive",
+    "manage.php?v=unapproved",
+    "manage.php?v=user1",
+    "manage.php?v=user2",
+    "preferences.php",
+    "preferences.php?do=categories",
+    "preferences.php?do=globalmessage",
+    "user.php",
+    "user.php?do=deleteusers",
+    "user.php?do=edit&id=p1",
+    "user.php?do=editrank&id=p1",
+    "user.php?do=loginrec",
+    "user.php?do=new",
+    "user.php?do=newrank",
+    "user.php?do=ranks"
+  ],
+  "edges": [
+    {
+      "from": "article.php",
+      "to": "index.php?do=permissiondenied"
+    },
+    {
+      "from": "article.php?do=edit&id=p1",
+      "to": "index.php?do=permissiondenied"
+    },
+    {
+      "from": "index.php",
+      "to": "manage.php?v=unactive"
+    },
+    {
+      "from": "index.php",
+      "to": "manage.php?v=unapproved"
+    },
+    {
+      "from": "index.php",
+      "to": "user.php?do=loginrec"
+    },
+    {
+      "from": "index.php?do=permissiondenied",
+      "to": "article.php"
+    },
+    {
+      "from": "index.php?do=permissiondenied",
+      "to": "manage.php"
+    },
+    {
+      "from": "index.php?do=permissiondenied",
+      "to": "preferences.php"
+    },
+    {
+      "from": "index.php?do=permissiondenied",
+      "to": "preferences.php?do=globalmessage"
+    },
+    {
+      "from": "index.php?do=permissiondenied",
+      "to": "user.php"
+    },
+    {
+      "from": "manage.php",
+      "to": "manage.php"
+    },
+    {
+      "from": "manage.php",
+      "to": "manage.php?do=deleteitems"
+    },
+    {
+      "from": "manage.php",
+      "to": "manage.php?do=search"
+    },
+    {
+      "from": "manage.php",
+      "to": "manage.php?v="
+    },
+    {
+      "from": "manage.php",
+      "to": "manage.php?v=user1"
+    },
+    {
+      "from": "manage.php?do=deleteitems",
+      "to": "index.php?do=permissiondenied"
+    },
+    {
+      "from": "manage.php?do=search",
+      "to": "manage.php"
+    },
+    {
+      "from": "manage.php?sort=active%2Fasc",
+      "to": "manage.php"
+    },
+    {
+      "from": "manage.php?sort=active%2Fasc",
+      "to": "manage.php?do=deleteitems"
+    },
+    {
+      "from": "manage.php?sort=active%2Fasc",
+      "to": "manage.php?do=search"
+    },
+    {
+      "from": "manage.php?sort=active%2Fasc",
+      "to": "manage.php?sort=article_author%2Fasc"
+    },
+    {
+      "from": "manage.php?sort=active%2Fdesc",
+      "to": "manage.php"
+    },
+    {
+      "from": "manage.php?sort=active%2Fdesc",
+      "to": "manage.php?do=deleteitems"
+    },
+    {
+      "from": "manage.php?sort=active%2Fdesc",
+      "to": "manage.php?do=search"
+    },
+    {
+      "from": "manage.php?sort=article_author%2Fasc",
+      "to": "manage.php"
+    },
+    {
+      "from": "manage.php?sort=article_author%2Fasc",
+      "to": "manage.php?do=deleteitems"
+    },
+    {
+      "from": "manage.php?sort=article_author%2Fasc",
+      "to": "manage.php?do=search"
+    },
+    {
+      "from": "manage.php?sort=article_author%2Fasc",
+      "to": "manage.php?sort=timestamp%2Fasc"
+    },
+    {
+      "from": "manage.php?sort=article_author%2Fdesc",
+      "to": "manage.php"
+    },
+    {
+      "from": "manage.php?sort=article_author%2Fdesc",
+      "to": "manage.php?do=deleteitems"
+    },
+    {
+      "from": "manage.php?sort=article_author%2Fdesc",
+      "to": "manage.php?do=search"
+    },
+    {
+      "from": "manage.php?sort=article_cat%2Fasc",
+      "to": "manage.php"
+    },
+    {
+      "from": "manage.php?sort=article_cat%2Fasc",
+      "to": "manage.php?do=deleteitems"
+    },
+    {
+      "from": "manage.php?sort=article_cat%2Fasc",
+      "to": "manage.php?do=search"
+    },
+    {
+      "from": "manage.php?sort=article_cat%2Fasc",
+      "to": "manage.php?sort=article_title%2Fasc"
+    },
+    {
+      "from": "manage.php?sort=article_cat%2Fdesc",
+      "to": "manage.php"
+    },
+    {
+      "from": "manage.php?sort=article_cat%2Fdesc",
+      "to": "manage.php?do=deleteitems"
+    },
+    {
+      "from": "manage.php?sort=article_cat%2Fdesc",
+      "to": "manage.php?do=search"
+    },
+    {
+      "from": "manage.php?sort=article_title%2Fasc",
+      "to": "manage.php"
+    },
+    {
+      "from": "manage.php?sort=article_title%2Fasc",
+      "to": "manage.php?do=deleteitems"
+    },
+    {
+      "from": "manage.php?sort=article_title%2Fasc",
+      "to": "manage.php?do=search"
+    },
+    {
+      "from": "manage.php?sort=article_title%2Fasc",
+      "to": "manage.php?sort=active%2Fdesc"
+    },
+    {
+      "from": "manage.php?sort=article_title%2Fasc",
+      "to": "manage.php?sort=article_author%2Fdesc"
+    },
+    {
+      "from": "manage.php?sort=article_title%2Fasc",
+      "to": "manage.php?sort=article_cat%2Fdesc"
+    },
+    {
+      "from": "manage.php?sort=article_title%2Fasc",
+      "to": "manage.php?sort=article_title%2Fdesc"
+    },
+    {
+      "from": "manage.php?sort=article_title%2Fasc",
+      "to": "manage.php?sort=timestamp%2Fdesc"
+    },
+    {
+      "from": "manage.php?sort=article_title%2Fasc",
+      "to": "preferences.php?do=categories"
+    },
+    {
+      "from": "manage.php?sort=article_title%2Fdesc",
+      "to": "manage.php"
+    },
+    {
+      "from": "manage.php?sort=article_title%2Fdesc",
+      "to": "manage.php?do=deleteitems"
+    },
+    {
+      "from": "manage.php?sort=article_title%2Fdesc",
+      "to": "manage.php?do=search"
+    },
+    {
+      "from": "manage.php?sort=timestamp%2Fasc",
+      "to": "manage.php"
+    },
+    {
+      "from": "manage.php?sort=timestamp%2Fasc",
+      "to": "manage.php?do=deleteitems"
+    },
+    {
+      "from": "manage.php?sort=timestamp%2Fasc",
+      "to": "manage.php?do=search"
+    },
+    {
+      "from": "manage.php?sort=timestamp%2Fasc",
+      "to": "manage.php?sort=article_cat%2Fasc"
+    },
+    {
+      "from": "manage.php?sort=timestamp%2Fdesc",
+      "to": "manage.php"
+    },
+    {
+      "from": "manage.php?sort=timestamp%2Fdesc",
+      "to": "manage.php?do=deleteitems"
+    },
+    {
+      "from": "manage.php?sort=timestamp%2Fdesc",
+      "to": "manage.php?do=search"
+    },
+    {
+      "from": "manage.php?v=",
+      "to": "manage.php"
+    },
+    {
+      "from": "manage.php?v=",
+      "to": "manage.php?do=deleteitems"
+    },
+    {
+      "from": "manage.php?v=",
+      "to": "manage.php?do=search"
+    },
+    {
+      "from": "manage.php?v=32",
+      "to": "article.php?do=edit&id=p1"
+    },
+    {
+      "from": "manage.php?v=32",
+      "to": "manage.php"
+    },
+    {
+      "from": "manage.php?v=32",
+      "to": "manage.php?do=deleteitems"
+    },
+    {
+      "from": "manage.php?v=32",
+      "to": "manage.php?do=search"
+    },
+    {
+      "from": "manage.php?v=admin",
+      "to": "manage.php"
+    },
+    {
+      "from": "manage.php?v=admin",
+      "to": "manage.php?do=deleteitems"
+    },
+    {
+      "from": "manage.php?v=admin",
+      "to": "manage.php?do=search"
+    },
+    {
+      "from": "manage.php?v=admin",
+      "to": "manage.php?v=32"
+    },
+    {
+      "from": "manage.php?v=all",
+      "to": "manage.php"
+    },
+    {
+      "from": "manage.php?v=all",
+      "to": "manage.php?do=deleteitems"
+    },
+    {
+      "from": "manage.php?v=all",
+      "to": "manage.php?do=search"
+    },
+    {
+      "from": "manage.php?v=all",
+      "to": "manage.php?sort=active%2Fasc"
+    },
+    {
+      "from": "manage.php?v=register",
+      "to": "manage.php"
+    },
+    {
+      "from": "manage.php?v=register",
+      "to": "manage.php?do=deleteitems"
+    },
+    {
+      "from": "manage.php?v=register",
+      "to": "manage.php?do=search"
+    },
+    {
+      "from": "manage.php?v=unactive",
+      "to": "manage.php"
+    },
+    {
+      "from": "manage.php?v=unactive",
+      "to": "manage.php?do=deleteitems"
+    },
+    {
+      "from": "manage.php?v=unactive",
+      "to": "manage.php?do=search"
+    },
+    {
+      "from": "manage.php?v=unapproved",
+      "to": "manage.php"
+    },
+    {
+      "from": "manage.php?v=unapproved",
+      "to": "manage.php?do=deleteitems"
+    },
+    {
+      "from": "manage.php?v=unapproved",
+      "to": "manage.php?do=search"
+    },
+    {
+      "from": "manage.php?v=user1",
+      "to": "manage.php"
+    },
+    {
+      "from": "manage.php?v=user1",
+      "to": "manage.php?do=deleteitems"
+    },
+    {
+      "from": "manage.php?v=user1",
+      "to": "manage.php?do=search"
+    },
+    {
+      "from": "manage.php?v=user1",
+      "to": "manage.php?v=user2"
+    },
+    {
+      "from": "manage.php?v=user2",
+      "to": "manage.php"
+    },
+    {
+      "from": "manage.php?v=user2",
+      "to": "manage.php?do=deleteitems"
+    },
+    {
+      "from": "manage.php?v=user2",
+      "to": "manage.php?do=search"
+    },
+    {
+      "from": "manage.php?v=user2",
+      "to": "manage.php?v=all"
+    },
+    {
+      "from": "preferences.php",
+      "to": "index.php?do=permissiondenied"
+    },
+    {
+      "from": "preferences.php?do=categories",
+      "to": "index.php?do=permissiondenied"
+    },
+    {
+      "from": "preferences.php?do=globalmessage",
+      "to": "index.php?do=permissiondenied"
+    },
+    {
+      "from": "user.php",
+      "to": "manage.php?v=admin"
+    },
+    {
+      "from": "user.php",
+      "to": "manage.php?v=register"
+    },
+    {
+      "from": "user.php",
+      "to": "user.php?do=deleteusers"
+    },
+    {
+      "from": "user.php",
+      "to": "user.php?do=edit&id=p1"
+    },
+    {
+      "from": "user.php",
+      "to": "user.php?do=editrank&id=p1"
+    },
+    {
+      "from": "user.php",
+      "to": "user.php?do=new"
+    },
+    {
+      "from": "user.php",
+      "to": "user.php?do=newrank"
+    },
+    {
+      "from": "user.php",
+      "to": "user.php?do=ranks"
+    },
+    {
+      "from": "user.php?do=deleteusers",
+      "to": "index.php?do=permissiondenied"
+    },
+    {
+      "from": "user.php?do=edit&id=p1",
+      "to": "index.php?do=permissiondenied"
+    },
+    {
+      "from": "user.php?do=editrank&id=p1",
+      "to": "index.php?do=permissiondenied"
+    },
+    {
+      "from": "user.php?do=loginrec",
+      "to": "index.php?do=permissiondenied"
+    },
+    {
+      "from": "user.php?do=new",
+      "to": "index.php?do=permissiondenied"
+    },
+    {
+      "from": "user.php?do=newrank",
+      "to": "index.php?do=permissiondenied"
+    },
+    {
+      "from": "user.php?do=ranks",
+      "to": "index.php?do=permissiondenied"
+    }
+  ],
+  "requests": {
+    "index.php": {
+      "method": "GET",
+      "params": {},
+      "referer": null
+    },
+    "login.php": {
+      "method": "GET",
+      "params": {},
+      "referer": null
+    },
+    "login.php?do=p": {
+      "method": "POST",
+      "params": {
+        "do": "p",
+        "password": "123456",
+        "remember": "on",
+        "username": "register"
+      },
+      "referer": null
+    },
+    "images/favicon.ico": {
+      "method": "GET",
+      "params": {},
+      "referer": null
+    },
+    "user.php?do=loginrec": {
+      "method": "GET",
+      "params": {
+        "do": "loginrec"
+      },
+      "referer": "index.php"
+    },
+    "index.php?do=permissiondenied": {
+      "method": "GET",
+      "params": {
+        "do": "permissiondenied"
+      },
+      "referer": "user.php?do=loginrec"
+    },
+    "preferences.php?do=globalmessage": {
+      "method": "GET",
+      "params": {
+        "do": "globalmessage"
+      },
+      "referer": "index.php?do=permissiondenied"
+    },
+    "preferences.php": {
+      "method": "GET",
+      "params": {},
+      "referer": "index.php?do=permissiondenied"
+    },
+    "user.php": {
+      "method": "GET",
+      "params": {},
+      "referer": "index.php?do=permissiondenied"
+    },
+    "user.php?do=deleteusers": {
+      "method": "POST",
+      "params": {
+        "11": "11",
+        "10": "10",
+        "9": "9",
+        "8": "8"
+      },
+      "referer": "user.php"
+    },
+    "manage.php?v=admin": {
+      "method": "GET",
+      "params": {
+        "v": "admin"
+      },
+      "referer": "user.php"
+    },
+    "manage.php?do=search": {
+      "method": "POST",
+      "params": {
+        "query": "click here to start the search...",
+        "category": "all"
+      },
+      "referer": "manage.php?v=unactive"
+    },
+    "manage.php": {
+      "method": "GET",
+      "params": {
+        "v": "value_8950aefd"
+      },
+      "referer": "manage.php?v=unactive"
+    },
+    "manage.php?do=deleteitems": {
+      "method": "POST",
+      "params": {
+        "query": "click here to start the search...",
+        "category": "all"
+      },
+      "referer": "manage.php?v=unactive"
+    },
+    "manage.php?v=": {
+      "method": "GET",
+      "params": {
+        "v": ""
+      },
+      "referer": "manage.php?v=admin"
+    },
+    "manage.php?v=32": {
+      "method": "GET",
+      "params": {
+        "v": "32"
+      },
+      "referer": "manage.php?v=admin"
+    },
+    "article.php?do=edit&id=p1": {
+      "method": "GET",
+      "params": {
+        "id": "2",
+        "do": "edit"
+      },
+      "referer": "manage.php?v=32"
+    },
+    "manage.php?v=user1": {
+      "method": "GET",
+      "params": {
+        "v": "user1"
+      },
+      "referer": "manage.php"
+    },
+    "manage.php?v=user2": {
+      "method": "GET",
+      "params": {
+        "v": "user2"
+      },
+      "referer": "manage.php?v=user1"
+    },
+    "manage.php?v=all": {
+      "method": "GET",
+      "params": {
+        "v": "all"
+      },
+      "referer": "manage.php?v=user2"
+    },
+    "manage.php?sort=active%2Fasc": {
+      "method": "GET",
+      "params": {
+        "sort": "active/asc"
+      },
+      "referer": "manage.php?v=all"
+    },
+    "manage.php?sort=article_author%2Fasc": {
+      "method": "GET",
+      "params": {
+        "sort": "article_author/asc"
+      },
+      "referer": "manage.php?sort=active%2Fasc"
+    },
+    "manage.php?sort=timestamp%2Fasc": {
+      "method": "GET",
+      "params": {
+        "sort": "timestamp/asc"
+      },
+      "referer": "manage.php?sort=article_author%2Fasc"
+    },
+    "manage.php?sort=article_cat%2Fasc": {
+      "method": "GET",
+      "params": {
+        "sort": "article_cat/asc"
+      },
+      "referer": "manage.php?sort=timestamp%2Fasc"
+    },
+    "manage.php?sort=article_title%2Fasc": {
+      "method": "GET",
+      "params": {
+        "sort": "article_title/asc"
+      },
+      "referer": "manage.php?sort=article_cat%2Fasc"
+    },
+    "preferences.php?do=categories": {
+      "method": "GET",
+      "params": {
+        "do": "categories"
+      },
+      "referer": "manage.php?sort=article_title%2Fasc"
+    },
+    "article.php": {
+      "method": "GET",
+      "params": {},
+      "referer": "index.php?do=permissiondenied"
+    },
+    "manage.php?sort=active%2Fdesc": {
+      "method": "GET",
+      "params": {
+        "sort": "active/desc"
+      },
+      "referer": "manage.php?sort=article_title%2Fasc"
+    },
+    "manage.php?sort=article_author%2Fdesc": {
+      "method": "GET",
+      "params": {
+        "sort": "article_author/desc"
+      },
+      "referer": "manage.php?sort=article_title%2Fasc"
+    },
+    "manage.php?sort=timestamp%2Fdesc": {
+      "method": "GET",
+      "params": {
+        "sort": "timestamp/desc"
+      },
+      "referer": "manage.php?sort=article_title%2Fasc"
+    },
+    "manage.php?sort=article_cat%2Fdesc": {
+      "method": "GET",
+      "params": {
+        "sort": "article_cat/desc"
+      },
+      "referer": "manage.php?sort=article_title%2Fasc"
+    },
+    "manage.php?sort=article_title%2Fdesc": {
+      "method": "GET",
+      "params": {
+        "sort": "article_title/desc"
+      },
+      "referer": "manage.php?sort=article_title%2Fasc"
+    },
+    "user.php?do=editrank&id=p1": {
+      "method": "GET",
+      "params": {
+        "id": "1",
+        "do": "editrank"
+      },
+      "referer": "user.php"
+    },
+    "user.php?do=edit&id=p1": {
+      "method": "GET",
+      "params": {
+        "id": "8",
+        "do": "edit"
+      },
+      "referer": "user.php"
+    },
+    "manage.php?v=register": {
+      "method": "GET",
+      "params": {
+        "v": "register"
+      },
+      "referer": "user.php"
+    },
+    "user.php?do=new": {
+      "method": "GET",
+      "params": {
+        "do": "new"
+      },
+      "referer": "user.php"
+    },
+    "user.php?do=ranks": {
+      "method": "GET",
+      "params": {
+        "do": "ranks"
+      },
+      "referer": "user.php"
+    },
+    "user.php?do=newrank": {
+      "method": "GET",
+      "params": {
+        "do": "newrank"
+      },
+      "referer": "user.php"
+    },
+    "manage.php?v=unapproved": {
+      "method": "GET",
+      "params": {
+        "v": "unapproved"
+      },
+      "referer": "index.php"
+    },
+    "manage.php?v=unactive": {
+      "method": "GET",
+      "params": {
+        "v": "unactive"
+      },
+      "referer": "index.php"
+    }
+  }
+}

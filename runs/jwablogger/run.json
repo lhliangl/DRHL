@@ -1,0 +1,27 @@
+{
+  "status": "completed",
+  "started_at": "2026-07-02T07:45:57.389132+00:00",
+  "config": "D:\\project\\python\\DRHL\\configs\\jwablogger.json",
+  "artifacts": {
+    "dynamic_graph": "D:\\project\\python\\DRHL\\runs\\jwablogger\\graphs\\dynamic.json",
+    "static_graph": "D:\\project\\python\\DRHL\\runs\\jwablogger\\graphs\\static.json",
+    "candidate_parameters": "D:\\project\\python\\DRHL\\runs\\jwablogger\\source\\candidate_parameters.json",
+    "candidate_functions": "D:\\project\\python\\DRHL\\runs\\jwablogger\\source\\candidate_functions.json",
+    "access_control_parameters": "D:\\project\\python\\DRHL\\runs\\jwablogger\\source\\parameters.json",
+    "access_control_functions": "D:\\project\\python\\DRHL\\runs\\jwablogger\\source\\functions.json",
+    "access_control_snippets": "D:\\project\\python\\DRHL\\runs\\jwablogger\\source\\snippets.json",
+    "fused_graph": "D:\\project\\python\\DRHL\\runs\\jwablogger\\graphs\\fused.json",
+    "graph_summary": "D:\\project\\python\\DRHL\\runs\\jwablogger\\graphs\\summary.json",
+    "graph_summary_csv": "D:\\project\\python\\DRHL\\runs\\jwablogger\\graphs\\summary.csv",
+    "attack_vectors": "D:\\project\\python\\DRHL\\runs\\jwablogger\\analysis\\vectors.json",
+    "findings": "D:\\project\\python\\DRHL\\runs\\jwablogger\\analysis\\findings.json",
+    "repairs": "D:\\project\\python\\DRHL\\runs\\jwablogger\\repair\\manifest.json",
+    "repair_report": "D:\\project\\python\\DRHL\\runs\\jwablogger\\repair\\repair_report.md",
+    "metrics_json": "D:\\project\\python\\DRHL\\runs\\jwablogger\\metrics\\summary.json",
+    "metrics_csv": "D:\\project\\python\\DRHL\\runs\\jwablogger\\metrics\\summary.csv",
+    "llm_access_control_snippets": "D:\\project\\python\\DRHL\\runs\\jwablogger\\source\\llm_snippets.json"
+  },
+  "finished_at": "2026-07-02T07:53:11.176245+00:00",
+  "repair_rerun_started_at": "2026-09-13T02:42:14.333844+00:00",
+  "repair_rerun_finished_at": "2026-09-13T02:44:07.776871+00:00"
+}

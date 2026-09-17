@@ -1,0 +1,163 @@
+{
+  "summary": {
+    "Repair Items": 1,
+    "Total Repair Attempts": 1,
+    "Patch Generation Attempts": 1,
+    "Patches Generated": 1,
+    "Failed Patches": 0,
+    "Syntax / Compile OK": 1,
+    "Exploit Blocked": 1,
+    "Regression Passed": 1,
+    "Database Validation Applied": 1,
+    "Database Validation Passed": 1,
+    "Successful Repairs": 1,
+    "Failed Repairs": 0,
+    "Successful on Attempt 1": 1,
+    "Successful on Attempt 2": 0,
+    "Successful on Attempt 3": 0
+  },
+  "repairs": [
+    {
+      "category": "authenticated_only",
+      "page": "blogger/viewEntry/5444/drhl_test_entry.html",
+      "source": "D:\\tomcat9\\webapps\\jwablogger\\java\\jwaBlogger\\src\\jwaBlogger\\webApp\\Blogger.java",
+      "output": "D:\\project\\python\\DRHL\\runs\\jwablogger\\repair\\files\\attempt-1\\java\\jwaBlogger\\src\\jwaBlogger\\webApp\\Blogger.java",
+      "status": "successful_repair",
+      "message": "syntax/compile, vulnerability blocking, and regression validation all passed",
+      "engine": "llm",
+      "plan": "{\"missing_check\": \"authenticated-user check (remoteUser null check)\", \"insertion_location\": \"At the start of processViewEntry(ServerInterface serverInterface), before the WebAppInterface.viewEntry call.\", \"recommended_guard\": \"if (serverInterface.getRemoteUser() == null) return \\\"/blogger/entries\\\";\", \"reused_project_semantics\": \"serverInterface.getRemoteUser() is the app's authenticated-user accessor (used in processSaveEntry, processTemplate, processSetAutoLogin); redirecting to \\\"/blogger/entries\\\" is the project's common unauthenticated/unauthorized return (processLogout, processVerify, processLogin failure, processRegister).\", \"reason\": \"processViewEntry directly calls WebAppInterface.viewEntry without verifying an authenticated remote user, allowing a visitor to reach the view operation. The authenticated_only policy requires blocking unauthenticated callers before viewEntry. The guard reuses the real getRemoteUser() accessor and the existing \\\"/blogger/entries\\\" redirect style, while preserving access for authenticated roles user1 and user2.\"}",
+      "prompt_artifact": "D:\\project\\python\\DRHL\\runs\\jwablogger\\repair\\prompts\\Blogger-attempt1-832a459fe499.json",
+      "attempts": 1,
+      "patches_generated": 1,
+      "syntax_compile_ok": 1,
+      "exploit_blocked": 1,
+      "regression_passed": 1,
+      "database_validation_applied": 1,
+      "database_validation_passed": 1,
+      "successful": true,
+      "validation_artifact": "D:\\project\\python\\DRHL\\runs\\jwablogger\\repair\\validation\\Blogger-6e856fdd2ed8.json",
+      "attempt_details": [
+        {
+          "attempt": 1,
+          "output": "D:\\project\\python\\DRHL\\runs\\jwablogger\\repair\\files\\attempt-1\\java\\jwaBlogger\\src\\jwaBlogger\\webApp\\Blogger.java",
+          "syntax_compile_ok": true,
+          "exploit_blocked": true,
+          "regression_passed": true,
+          "successful": true,
+          "message": "syntax=(注: D:\\project\\python\\DRHL\\runs\\jwablogger\\repair\\files\\attempt-1\\java\\jwaBlogger\\src\\jwaBlogger\\webApp\\Blogger.java使用了未经检查或不安全的操作。\n注: 有关详细信息, 请使用 -Xlint:unchecked 重新编译。); deployment=(javac=(注: 某些输入文件使用了未经检查或不安全的操作。\n注: 有关详细信息, 请使用 -Xlint:unchecked 重新编译。); reload=(touched D:\\tomcat9\\webapps\\jwablogger\\WEB-INF\\web.xml)); vulnerability_blocking=(response=True; database=passed; evidence=visitor:not_vulnerable); regression=(response=True; database=passed; evidence=authorized status=200; denial=[])",
+          "prompt_artifact": "D:\\project\\python\\DRHL\\runs\\jwablogger\\repair\\prompts\\Blogger-attempt1-832a459fe499.json",
+          "plan": "{\"missing_check\": \"authenticated-user check (remoteUser null check)\", \"insertion_location\": \"At the start of processViewEntry(ServerInterface serverInterface), before the WebAppInterface.viewEntry call.\", \"recommended_guard\": \"if (serverInterface.getRemoteUser() == null) return \\\"/blogger/entries\\\";\", \"reused_project_semantics\": \"serverInterface.getRemoteUser() is the app's authenticated-user accessor (used in processSaveEntry, processTemplate, processSetAutoLogin); redirecting to \\\"/blogger/entries\\\" is the project's common unauthenticated/unauthorized return (processLogout, processVerify, processLogin failure, processRegister).\", \"reason\": \"processViewEntry directly calls WebAppInterface.viewEntry without verifying an authenticated remote user, allowing a visitor to reach the view operation. The authenticated_only policy requires blocking unauthenticated callers before viewEntry. The guard reuses the real getRemoteUser() accessor and the existing \\\"/blogger/entries\\\" redirect style, while preserving access for authenticated roles user1 and user2.\"}",
+          "database_validation_passed": true,
+          "database_validation": {
+            "oracle_version": 2,
+            "scope": "repair_only",
+            "applicable": true,
+            "passed": true,
+            "status": "passed",
+            "dimensions": {
+              "vulnerability_blocking": {
+                "phase": "attack",
+                "applicable": true,
+                "passed": true
+              },
+              "regression": {
+                "phase": "authorized",
+                "applicable": true,
+                "passed": true
+              }
+            },
+            "scenarios": [
+              {
+                "name": "jwablogger-view-entry-authenticated-read",
+                "operation": "read",
+                "passed": true,
+                "phases": [
+                  {
+                    "phase": "attack",
+                    "role": "visitor",
+                    "session_before_setup": false,
+                    "setup_sql": [
+                      "INSERT INTO blog_entry (blog_entry_id, author, title, tags, description, internal_name, external_url, is_visible, has_comments, has_anonymous_comments) VALUES (990001, 'user1', 'DRHLR_a887e43e8975', 'drhl-oracle', 'DRHLR_a887e43e8975', 'drhl_oracle_private_entry', 'http://', 'true', 'false', 'false')",
+                      "INSERT INTO blog_entry_text (blog_entry_id, blog_text) VALUES (990001, 'DRHLR_a887e43e8975')"
+                    ],
+                    "session_requests": [],
+                    "request": {
+                      "method": "GET",
+                      "page": "blogger/viewEntry/990001/drhl_oracle_private_entry.html",
+                      "params": {},
+                      "referer": "blogger?c=register",
+                      "cookie_names": []
+                    },
+                    "response": {
+                      "status_code": 200,
+                      "url": "http://localhost:8080/jwablogger/blogger/viewEntry/990001/drhl_oracle_private_entry.html",
+                      "body_length": 39548
+                    },
+                    "query": null,
+                    "observed": null,
+                    "assertions": [
+                      {
+                        "type": "response_not_contains",
+                        "expected": "DRHLR_a887e43e8975",
+                        "passed": true
+                      }
+                    ],
+                    "passed": true
+                  },
+                  {
+                    "phase": "authorized",
+                    "role": "user1",
+                    "session_before_setup": false,
+                    "setup_sql": [
+                      "INSERT INTO blog_entry (blog_entry_id, author, title, tags, description, internal_name, external_url, is_visible, has_comments, has_anonymous_comments) VALUES (990001, 'user1', 'DRHLR_a887e43e8975', 'drhl-oracle', 'DRHLR_a887e43e8975', 'drhl_oracle_private_entry', 'http://', 'true', 'false', 'false')",
+                      "INSERT INTO blog_entry_text (blog_entry_id, blog_text) VALUES (990001, 'DRHLR_a887e43e8975')"
+                    ],
+                    "session_requests": [],
+                    "request": {
+                      "method": "GET",
+                      "page": "blogger/viewEntry/990001/drhl_oracle_private_entry.html",
+                      "params": {},
+                      "referer": "blogger?c=register",
+                      "cookie_names": []
+                    },
+                    "response": {
+                      "status_code": 200,
+                      "url": "http://localhost:8080/jwablogger/blogger/viewEntry/990001/drhl_oracle_private_entry.html",
+                      "body_length": 20671
+                    },
+                    "query": null,
+                    "observed": null,
+                    "assertions": [
+                      {
+                        "type": "response_contains",
+                        "expected": "DRHLR_a887e43e8975",
+                        "passed": true
+                      }
+                    ],
+                    "passed": true
+                  }
+                ]
+              }
+            ],
+            "combined_dimensions": {
+              "vulnerability_blocking": {
+                "passed": true,
+                "response_oracle_applicable": true,
+                "response_oracle_passed": true,
+                "database_oracle_applicable": true,
+                "database_oracle_passed": true
+              },
+              "regression": {
+                "passed": true,
+                "response_oracle_applicable": true,
+                "response_oracle_passed": true,
+                "database_oracle_applicable": true,
+                "database_oracle_passed": true
+              }
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

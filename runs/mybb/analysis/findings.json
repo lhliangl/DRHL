@@ -1,0 +1,3008 @@
+{
+  "summary": {
+    "vulnerable": 2,
+    "not_vulnerable": 211
+  },
+  "findings": [
+    {
+      "category": "static_only",
+      "page": "admin/index.php",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: please enter your username and password to continue."
+      ],
+      "error": null
+    },
+    {
+      "category": "static_only",
+      "page": "portal.php",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": null,
+      "evidence": [
+        "oracle=response-cascade",
+        "configured public page; successful access is not a vulnerability"
+      ],
+      "error": null
+    },
+    {
+      "category": "static_only",
+      "page": "rss.php",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "static page response body was empty; treated as not vulnerable"
+      ],
+      "error": null
+    },
+    {
+      "category": "static_only",
+      "page": "task.php",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "static-only page did not match configured high-risk standalone patterns"
+      ],
+      "error": null
+    },
+    {
+      "category": "static_only",
+      "page": "xmlhttp.php",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "empty response body (possible silent exception)"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "archive/index.php/forum-2.html",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": null,
+      "evidence": [
+        "oracle=response-cascade",
+        "configured public page; successful access is not a vulnerability"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "archive/index.php/thread-1.html",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": null,
+      "evidence": [
+        "oracle=response-cascade",
+        "configured public page; successful access is not a vulnerability"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "calendar.php?action=addevent&calendar=p1",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you are either not logged in or do not have permission to view this page. this could be because one of the following reasons:zyqxa6mjx3na360crcbxy3szycj08l"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "calendar.php?action=addevent&calendar=p1&private=p1",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you are either not logged in or do not have permission to view this page. this could be because one of the following reasons:zyqxa6mjx3na360crcbxy3szycj08l"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "editpost.php",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you are either not logged in or do not have permission to view this page. this could be because one of the following reasons:zyqxa6mjx3na360crcbxy3szycj08l"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "editpost.php",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: password required"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "editpost.php",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you do not have permission to access this page."
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "editpost.php?pid=p1",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you are either not logged in or do not have permission to view this page. this could be because one of the following reasons:zyqxa6mjx3na360crcbxy3szycj08l"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "editpost.php?pid=p1",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "invalid resource marker: you seem to have followed an invalid address",
+        "target resource did not exist; access-control vulnerability is not confirmed"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "editpost.php?pid=p1",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "invalid resource marker: you seem to have followed an invalid address",
+        "target resource did not exist; access-control vulnerability is not confirmed"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "member.php?action=resendactivation",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": null,
+      "evidence": [
+        "oracle=response-cascade",
+        "configured public page; successful access is not a vulnerability"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "member.php?action=resendactivation",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": null,
+      "evidence": [
+        "oracle=response-cascade",
+        "configured public page; successful access is not a vulnerability"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "member.php?action=resendactivation",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": null,
+      "evidence": [
+        "oracle=response-cascade",
+        "configured public page; successful access is not a vulnerability"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "misc.php?action=clearpass&fid=p1",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": null,
+      "evidence": [
+        "oracle=response-cascade",
+        "configured public page; successful access is not a vulnerability"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "misc.php?action=clearpass&fid=p1",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": null,
+      "evidence": [
+        "oracle=response-cascade",
+        "configured public page; successful access is not a vulnerability"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "misc.php?action=clearpass&fid=p1",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": null,
+      "evidence": [
+        "oracle=response-cascade",
+        "configured public page; successful access is not a vulnerability"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "misc.php?action=markread&fid=p1",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": null,
+      "evidence": [
+        "oracle=response-cascade",
+        "configured public page; successful access is not a vulnerability"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "misc.php?action=markread&fid=p1",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": null,
+      "evidence": [
+        "oracle=response-cascade",
+        "configured public page; successful access is not a vulnerability"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "misc.php?action=markread&fid=p1",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": null,
+      "evidence": [
+        "oracle=response-cascade",
+        "configured public page; successful access is not a vulnerability"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "modcp.php",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you are either not logged in or do not have permission to view this page. this could be because one of the following reasons:zyqxa6mjx3na360crcbxy3szycj08l"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "modcp.php",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you do not have permission to access this page."
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "modcp.php",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you do not have permission to access this page."
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "modcp.php?action=allreports",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you are either not logged in or do not have permission to view this page. this could be because one of the following reasons:zyqxa6mjx3na360crcbxy3szycj08l"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "modcp.php?action=allreports",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you do not have permission to access this page."
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "modcp.php?action=allreports",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you do not have permission to access this page."
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "modcp.php?action=announcements",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you are either not logged in or do not have permission to view this page. this could be because one of the following reasons:zyqxa6mjx3na360crcbxy3szycj08l"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "modcp.php?action=announcements",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you do not have permission to access this page."
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "modcp.php?action=announcements",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you do not have permission to access this page."
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "modcp.php?action=banning",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you are either not logged in or do not have permission to view this page. this could be because one of the following reasons:zyqxa6mjx3na360crcbxy3szycj08l"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "modcp.php?action=banning",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you do not have permission to access this page."
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "modcp.php?action=banning",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you do not have permission to access this page."
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "modcp.php?action=banuser",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you are either not logged in or do not have permission to view this page. this could be because one of the following reasons:zyqxa6mjx3na360crcbxy3szycj08l"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "modcp.php?action=banuser",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you do not have permission to access this page."
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "modcp.php?action=banuser",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you do not have permission to access this page."
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "modcp.php?action=banuser&uid=p1",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you are either not logged in or do not have permission to view this page. this could be because one of the following reasons:zyqxa6mjx3na360crcbxy3szycj08l"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "modcp.php?action=banuser&uid=p1",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you do not have permission to access this page."
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "modcp.php?action=banuser&uid=p1",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you do not have permission to access this page."
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "modcp.php?action=editprofile&uid=p1",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you are either not logged in or do not have permission to view this page. this could be because one of the following reasons:zyqxa6mjx3na360crcbxy3szycj08l"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "modcp.php?action=editprofile&uid=p1",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you do not have permission to access this page."
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "modcp.php?action=editprofile&uid=p1",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you do not have permission to access this page."
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "modcp.php?action=finduser",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you are either not logged in or do not have permission to view this page. this could be because one of the following reasons:zyqxa6mjx3na360crcbxy3szycj08l"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "modcp.php?action=finduser",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you do not have permission to access this page."
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "modcp.php?action=finduser",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you do not have permission to access this page."
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "modcp.php?action=iplookup&ipaddress=p1",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you are either not logged in or do not have permission to view this page. this could be because one of the following reasons:zyqxa6mjx3na360crcbxy3szycj08l"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "modcp.php?action=iplookup&ipaddress=p1",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you do not have permission to access this page."
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "modcp.php?action=iplookup&ipaddress=p1",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you do not have permission to access this page."
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "modcp.php?action=ipsearch",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you are either not logged in or do not have permission to view this page. this could be because one of the following reasons:zyqxa6mjx3na360crcbxy3szycj08l"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "modcp.php?action=ipsearch",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you do not have permission to access this page."
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "modcp.php?action=ipsearch",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you do not have permission to access this page."
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "modcp.php?action=ipsearch&ipaddress=p1&search_users=p1",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you are either not logged in or do not have permission to view this page. this could be because one of the following reasons:zyqxa6mjx3na360crcbxy3szycj08l"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "modcp.php?action=ipsearch&ipaddress=p1&search_users=p1",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you do not have permission to access this page."
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "modcp.php?action=ipsearch&ipaddress=p1&search_users=p1",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you do not have permission to access this page."
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "modcp.php?action=liftban&uid=p1",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you are either not logged in or do not have permission to view this page. this could be because one of the following reasons:zyqxa6mjx3na360crcbxy3szycj08l"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "modcp.php?action=liftban&uid=p1",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you do not have permission to access this page."
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "modcp.php?action=liftban&uid=p1",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you do not have permission to access this page."
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "modcp.php?action=modlogs",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you are either not logged in or do not have permission to view this page. this could be because one of the following reasons:zyqxa6mjx3na360crcbxy3szycj08l"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "modcp.php?action=modlogs",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you do not have permission to access this page."
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "modcp.php?action=modlogs",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you do not have permission to access this page."
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "modcp.php?action=modqueue",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you are either not logged in or do not have permission to view this page. this could be because one of the following reasons:zyqxa6mjx3na360crcbxy3szycj08l"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "modcp.php?action=modqueue",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you do not have permission to access this page."
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "modcp.php?action=modqueue",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you do not have permission to access this page."
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "modcp.php?action=new_announcement&fid=p1",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you are either not logged in or do not have permission to view this page. this could be because one of the following reasons:zyqxa6mjx3na360crcbxy3szycj08l"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "modcp.php?action=new_announcement&fid=p1",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you do not have permission to access this page."
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "modcp.php?action=new_announcement&fid=p1",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you do not have permission to access this page."
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "modcp.php?action=reports",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you are either not logged in or do not have permission to view this page. this could be because one of the following reasons:zyqxa6mjx3na360crcbxy3szycj08l"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "modcp.php?action=reports",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you do not have permission to access this page."
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "modcp.php?action=reports",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you do not have permission to access this page."
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "modcp.php?action=warninglogs",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you are either not logged in or do not have permission to view this page. this could be because one of the following reasons:zyqxa6mjx3na360crcbxy3szycj08l"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "modcp.php?action=warninglogs",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you do not have permission to access this page."
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "modcp.php?action=warninglogs",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you do not have permission to access this page."
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "modcp.php?action=warninglogs&filter%5Bmod_username%5D=p1&filter%5Border%5D=p1&filter%5Bper_page%5D=p1&filter%5Breason%5D=p1&filter%5Bsortby%5D=p1&filter%5Busername%5D=p1",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you are either not logged in or do not have permission to view this page. this could be because one of the following reasons:zyqxa6mjx3na360crcbxy3szycj08l"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "modcp.php?action=warninglogs&filter%5Bmod_username%5D=p1&filter%5Border%5D=p1&filter%5Bper_page%5D=p1&filter%5Breason%5D=p1&filter%5Bsortby%5D=p1&filter%5Busername%5D=p1",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you do not have permission to access this page."
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "modcp.php?action=warninglogs&filter%5Bmod_username%5D=p1&filter%5Border%5D=p1&filter%5Bper_page%5D=p1&filter%5Breason%5D=p1&filter%5Bsortby%5D=p1&filter%5Busername%5D=p1",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you do not have permission to access this page."
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "modcp.php?action=warninglogs&filter=p1",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you are either not logged in or do not have permission to view this page. this could be because one of the following reasons:zyqxa6mjx3na360crcbxy3szycj08l"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "modcp.php?action=warninglogs&filter=p1",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you do not have permission to access this page."
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "modcp.php?action=warninglogs&filter=p1",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you do not have permission to access this page."
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "moderation.php",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: password required"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "moderation.php",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: password required"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "moderation.php",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: password required"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "moderation.php?action=getip&pid=p1",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you are either not logged in or do not have permission to view this page. this could be because one of the following reasons:zyqxa6mjx3na360crcbxy3szycj08l"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "moderation.php?action=getip&pid=p1",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you do not have permission to access this page."
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "moderation.php?action=getip&pid=p1",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you do not have permission to access this page."
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "newreply.php",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you are either not logged in or do not have permission to view this page. this could be because one of the following reasons:zyqxa6mjx3na360crcbxy3szycj08l"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "newreply.php",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: password required"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "newreply.php",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: password required"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "newreply.php?load_all_quotes=p1&tid=p1",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "invalid resource marker: specified thread does not exist",
+        "target resource did not exist; access-control vulnerability is not confirmed"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "newreply.php?load_all_quotes=p1&tid=p1",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "invalid resource marker: specified thread does not exist",
+        "target resource did not exist; access-control vulnerability is not confirmed"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "newreply.php?load_all_quotes=p1&tid=p1",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "invalid resource marker: specified thread does not exist",
+        "target resource did not exist; access-control vulnerability is not confirmed"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "newreply.php?pid=p1&tid=p1",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "invalid resource marker: specified thread does not exist",
+        "target resource did not exist; access-control vulnerability is not confirmed"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "newreply.php?pid=p1&tid=p1",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "invalid resource marker: specified thread does not exist",
+        "target resource did not exist; access-control vulnerability is not confirmed"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "newreply.php?pid=p1&tid=p1",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "invalid resource marker: specified thread does not exist",
+        "target resource did not exist; access-control vulnerability is not confirmed"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "newreply.php?processed=p1&tid=p1",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you are either not logged in or do not have permission to view this page. this could be because one of the following reasons:zyqxa6mjx3na360crcbxy3szycj08l"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "newreply.php?processed=p1&tid=p1",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: password required"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "newreply.php?processed=p1&tid=p1",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: password required"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "newreply.php?tid=p1",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "invalid resource marker: specified thread does not exist",
+        "target resource did not exist; access-control vulnerability is not confirmed"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "newreply.php?tid=p1",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "invalid resource marker: specified thread does not exist",
+        "target resource did not exist; access-control vulnerability is not confirmed"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "newreply.php?tid=p1",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "invalid resource marker: specified thread does not exist",
+        "target resource did not exist; access-control vulnerability is not confirmed"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "newthread.php",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you are either not logged in or do not have permission to view this page. this could be because one of the following reasons:zyqxa6mjx3na360crcbxy3szycj08l"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "newthread.php",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "response replay review: newthread.php response is normal forum/category/password handling, not the target vulnerability"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "newthread.php",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "response replay review: newthread.php response is normal forum/category/password handling, not the target vulnerability"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "newthread.php?fid=p1",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you are either not logged in or do not have permission to view this page. this could be because one of the following reasons:zyqxa6mjx3na360crcbxy3szycj08l"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "newthread.php?fid=p1",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: password required"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "newthread.php?fid=p1",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: password required"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "newthread.php?fid=p1&processed=p1",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "response replay review: newthread.php response is normal forum/category/password handling, not the target vulnerability"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "newthread.php?fid=p1&processed=p1",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "response replay review: newthread.php response is normal forum/category/password handling, not the target vulnerability"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "newthread.php?fid=p1&processed=p1",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "response replay review: newthread.php response is normal forum/category/password handling, not the target vulnerability"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "printthread.php",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": null,
+      "evidence": [
+        "oracle=response-cascade",
+        "configured public page; successful access is not a vulnerability"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "printthread.php",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": null,
+      "evidence": [
+        "oracle=response-cascade",
+        "configured public page; successful access is not a vulnerability"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "printthread.php",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": null,
+      "evidence": [
+        "oracle=response-cascade",
+        "configured public page; successful access is not a vulnerability"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "printthread.php?tid=p1",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": null,
+      "evidence": [
+        "oracle=response-cascade",
+        "configured public page; successful access is not a vulnerability"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "printthread.php?tid=p1",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": null,
+      "evidence": [
+        "oracle=response-cascade",
+        "configured public page; successful access is not a vulnerability"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "printthread.php?tid=p1",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": null,
+      "evidence": [
+        "oracle=response-cascade",
+        "configured public page; successful access is not a vulnerability"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "private.php?action=advanced_search",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you are either not logged in or do not have permission to view this page. this could be because one of the following reasons:zyqxa6mjx3na360crcbxy3szycj08l"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "private.php?action=delete&pmid=p1",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you are either not logged in or do not have permission to view this page. this could be because one of the following reasons:zyqxa6mjx3na360crcbxy3szycj08l"
+      ],
+      "error": null
+    },
+    {
+      "category": "horizontal",
+      "page": "private.php?action=delete&pmid=p1",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "response replay review: private.php page is an authenticated user feature or invalid PM target, not the known forum-password subscription bug"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "private.php?action=dismiss_notice",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you are either not logged in or do not have permission to view this page. this could be because one of the following reasons:zyqxa6mjx3na360crcbxy3szycj08l"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "private.php?action=empty",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you are either not logged in or do not have permission to view this page. this could be because one of the following reasons:zyqxa6mjx3na360crcbxy3szycj08l"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "private.php?action=export",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you are either not logged in or do not have permission to view this page. this could be because one of the following reasons:zyqxa6mjx3na360crcbxy3szycj08l"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "private.php?action=folders",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you are either not logged in or do not have permission to view this page. this could be because one of the following reasons:zyqxa6mjx3na360crcbxy3szycj08l"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "private.php?action=read&pmid=p1",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you are either not logged in or do not have permission to view this page. this could be because one of the following reasons:zyqxa6mjx3na360crcbxy3szycj08l"
+      ],
+      "error": null
+    },
+    {
+      "category": "horizontal",
+      "page": "private.php?action=read&pmid=p1",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "response replay review: private.php page is an authenticated user feature or invalid PM target, not the known forum-password subscription bug"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "private.php?action=send",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you are either not logged in or do not have permission to view this page. this could be because one of the following reasons:zyqxa6mjx3na360crcbxy3szycj08l"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "private.php?action=send&do=forward&pmid=p1",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you are either not logged in or do not have permission to view this page. this could be because one of the following reasons:zyqxa6mjx3na360crcbxy3szycj08l"
+      ],
+      "error": null
+    },
+    {
+      "category": "horizontal",
+      "page": "private.php?action=send&do=forward&pmid=p1",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "response replay review: private.php page is an authenticated user feature or invalid PM target, not the known forum-password subscription bug"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "private.php?action=send&do=reply&pmid=p1",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you are either not logged in or do not have permission to view this page. this could be because one of the following reasons:zyqxa6mjx3na360crcbxy3szycj08l"
+      ],
+      "error": null
+    },
+    {
+      "category": "horizontal",
+      "page": "private.php?action=send&do=reply&pmid=p1",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "response replay review: private.php page is an authenticated user feature or invalid PM target, not the known forum-password subscription bug"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "private.php?action=tracking",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you are either not logged in or do not have permission to view this page. this could be because one of the following reasons:zyqxa6mjx3na360crcbxy3szycj08l"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "private.php?fid=p1",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you are either not logged in or do not have permission to view this page. this could be because one of the following reasons:zyqxa6mjx3na360crcbxy3szycj08l"
+      ],
+      "error": null
+    },
+    {
+      "category": "horizontal",
+      "page": "private.php?fid=p1",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "response replay review: private.php page is an authenticated user feature or invalid PM target, not the known forum-password subscription bug"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "ratethread.php",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: authorization code mismatch"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "ratethread.php",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: password required"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "ratethread.php",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: password required"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "ratethread.php?rating=p1&tid=p1",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: authorization code mismatch"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "ratethread.php?rating=p1&tid=p1",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: authorization code mismatch"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "ratethread.php?rating=p1&tid=p1",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: authorization code mismatch"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "search.php?action=getdaily",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": null,
+      "evidence": [
+        "oracle=response-cascade",
+        "configured public page; successful access is not a vulnerability"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "search.php?action=getnew",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": null,
+      "evidence": [
+        "oracle=response-cascade",
+        "configured public page; successful access is not a vulnerability"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "sendthread.php",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you are either not logged in or do not have permission to view this page. this could be because one of the following reasons:zyqxa6mjx3na360crcbxy3szycj08l"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "sendthread.php",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: password required"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "sendthread.php",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: password required"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "sendthread.php?tid=p1",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "invalid resource marker: specified thread does not exist",
+        "target resource did not exist; access-control vulnerability is not confirmed"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "sendthread.php?tid=p1",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "invalid resource marker: specified thread does not exist",
+        "target resource did not exist; access-control vulnerability is not confirmed"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "sendthread.php?tid=p1",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "invalid resource marker: specified thread does not exist",
+        "target resource did not exist; access-control vulnerability is not confirmed"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "showthread.php",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": null,
+      "evidence": [
+        "oracle=response-cascade",
+        "configured public page; successful access is not a vulnerability"
+      ],
+      "error": null
+    },
+    {
+      "category": "horizontal",
+      "page": "showthread.php",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": null,
+      "evidence": [
+        "oracle=response-cascade",
+        "configured public page; successful access is not a vulnerability",
+        "horizontal override: tid=1"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "showthread.php?action=lastpost&tid=p1",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": null,
+      "evidence": [
+        "oracle=response-cascade",
+        "configured public page; successful access is not a vulnerability"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "showthread.php?action=lastpost&tid=p1",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": null,
+      "evidence": [
+        "oracle=response-cascade",
+        "configured public page; successful access is not a vulnerability"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "showthread.php?action=lastpost&tid=p1",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": null,
+      "evidence": [
+        "oracle=response-cascade",
+        "configured public page; successful access is not a vulnerability"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "showthread.php?action=nextnewest&tid=p1",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": null,
+      "evidence": [
+        "oracle=response-cascade",
+        "configured public page; successful access is not a vulnerability"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "showthread.php?action=nextnewest&tid=p1",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": null,
+      "evidence": [
+        "oracle=response-cascade",
+        "configured public page; successful access is not a vulnerability"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "showthread.php?action=nextnewest&tid=p1",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": null,
+      "evidence": [
+        "oracle=response-cascade",
+        "configured public page; successful access is not a vulnerability"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "showthread.php?action=nextoldest&tid=p1",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": null,
+      "evidence": [
+        "oracle=response-cascade",
+        "configured public page; successful access is not a vulnerability"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "showthread.php?action=nextoldest&tid=p1",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": null,
+      "evidence": [
+        "oracle=response-cascade",
+        "configured public page; successful access is not a vulnerability"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "showthread.php?action=nextoldest&tid=p1",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": null,
+      "evidence": [
+        "oracle=response-cascade",
+        "configured public page; successful access is not a vulnerability"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "showthread.php?mode=p1&pid=p1&tid=p1",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": null,
+      "evidence": [
+        "oracle=response-cascade",
+        "configured public page; successful access is not a vulnerability"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "showthread.php?mode=p1&pid=p1&tid=p1",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": null,
+      "evidence": [
+        "oracle=response-cascade",
+        "configured public page; successful access is not a vulnerability"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "showthread.php?mode=p1&pid=p1&tid=p1",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": null,
+      "evidence": [
+        "oracle=response-cascade",
+        "configured public page; successful access is not a vulnerability"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "showthread.php?pid=p1",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": null,
+      "evidence": [
+        "oracle=response-cascade",
+        "configured public page; successful access is not a vulnerability"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "showthread.php?pid=p1",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": null,
+      "evidence": [
+        "oracle=response-cascade",
+        "configured public page; successful access is not a vulnerability"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "showthread.php?pid=p1",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": null,
+      "evidence": [
+        "oracle=response-cascade",
+        "configured public page; successful access is not a vulnerability"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "showthread.php?pid=p1&tid=p1",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": null,
+      "evidence": [
+        "oracle=response-cascade",
+        "configured public page; successful access is not a vulnerability"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "showthread.php?pid=p1&tid=p1",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": null,
+      "evidence": [
+        "oracle=response-cascade",
+        "configured public page; successful access is not a vulnerability"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "showthread.php?pid=p1&tid=p1",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": null,
+      "evidence": [
+        "oracle=response-cascade",
+        "configured public page; successful access is not a vulnerability"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "showthread.php?tid=p1",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": null,
+      "evidence": [
+        "oracle=response-cascade",
+        "configured public page; successful access is not a vulnerability"
+      ],
+      "error": null
+    },
+    {
+      "category": "horizontal",
+      "page": "showthread.php?tid=p1",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": null,
+      "evidence": [
+        "oracle=response-cascade",
+        "configured public page; successful access is not a vulnerability",
+        "horizontal override: tid=1"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "usercp.php",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you are either not logged in or do not have permission to view this page. this could be because one of the following reasons:zyqxa6mjx3na360crcbxy3szycj08l"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "usercp.php?action=attachments",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you are either not logged in or do not have permission to view this page. this could be because one of the following reasons:zyqxa6mjx3na360crcbxy3szycj08l"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "usercp.php?action=avatar",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you are either not logged in or do not have permission to view this page. this could be because one of the following reasons:zyqxa6mjx3na360crcbxy3szycj08l"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "usercp.php?action=changename",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you are either not logged in or do not have permission to view this page. this could be because one of the following reasons:zyqxa6mjx3na360crcbxy3szycj08l"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "usercp.php?action=changename",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": null,
+      "evidence": [
+        "oracle=response-cascade",
+        "configured authenticated-public page; ordinary authenticated users are allowed"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "usercp.php?action=changename",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": null,
+      "evidence": [
+        "oracle=response-cascade",
+        "configured authenticated-public page; ordinary authenticated users are allowed"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "usercp.php?action=drafts",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you are either not logged in or do not have permission to view this page. this could be because one of the following reasons:zyqxa6mjx3na360crcbxy3szycj08l"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "usercp.php?action=editlists",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you are either not logged in or do not have permission to view this page. this could be because one of the following reasons:zyqxa6mjx3na360crcbxy3szycj08l"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "usercp.php?action=editsig",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you are either not logged in or do not have permission to view this page. this could be because one of the following reasons:zyqxa6mjx3na360crcbxy3szycj08l"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "usercp.php?action=email",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you are either not logged in or do not have permission to view this page. this could be because one of the following reasons:zyqxa6mjx3na360crcbxy3szycj08l"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "usercp.php?action=forumsubscriptions",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you are either not logged in or do not have permission to view this page. this could be because one of the following reasons:zyqxa6mjx3na360crcbxy3szycj08l"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "usercp.php?action=options",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you are either not logged in or do not have permission to view this page. this could be because one of the following reasons:zyqxa6mjx3na360crcbxy3szycj08l"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "usercp.php?action=password",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you are either not logged in or do not have permission to view this page. this could be because one of the following reasons:zyqxa6mjx3na360crcbxy3szycj08l"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "usercp.php?action=profile",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you are either not logged in or do not have permission to view this page. this could be because one of the following reasons:zyqxa6mjx3na360crcbxy3szycj08l"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "usercp.php?action=subscriptions",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you are either not logged in or do not have permission to view this page. this could be because one of the following reasons:zyqxa6mjx3na360crcbxy3szycj08l"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "usercp.php?action=usergroups",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you are either not logged in or do not have permission to view this page. this could be because one of the following reasons:zyqxa6mjx3na360crcbxy3szycj08l"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "usercp2.php",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you are either not logged in or do not have permission to view this page. this could be because one of the following reasons:zyqxa6mjx3na360crcbxy3szycj08l"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "usercp2.php",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "response replay review: bare usercp2.php action endpoint; not a distinct access-control page"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "usercp2.php",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "response replay review: bare usercp2.php action endpoint; not a distinct access-control page"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "usercp2.php?action=addsubscription&fid=p1&type=forum",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you are either not logged in or do not have permission to view this page. this could be because one of the following reasons:zyqxa6mjx3na360crcbxy3szycj08l"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "usercp2.php?action=addsubscription&fid=p1&type=forum",
+      "actor": "user1",
+      "status": "vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "response replay review: known target: logged-in user can subscribe to password-protected forum without entering forum password",
+        "HTTP 200 without redirect or denial marker"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "usercp2.php?action=addsubscription&fid=p1&type=forum",
+      "actor": "user2",
+      "status": "vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "response replay review: known target: logged-in user can subscribe to password-protected forum without entering forum password",
+        "HTTP 200 without redirect or denial marker"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "usercp2.php?action=addsubscription&tid=p1",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you are either not logged in or do not have permission to view this page. this could be because one of the following reasons:zyqxa6mjx3na360crcbxy3szycj08l"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "usercp2.php?action=addsubscription&tid=p1",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": null,
+      "evidence": [
+        "oracle=response-cascade",
+        "configured authenticated-public page; ordinary authenticated users are allowed"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "usercp2.php?action=addsubscription&tid=p1",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": null,
+      "evidence": [
+        "oracle=response-cascade",
+        "configured authenticated-public page; ordinary authenticated users are allowed"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "usercp2.php?action=removesubscription&fid=p1&type=forum",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you are either not logged in or do not have permission to view this page. this could be because one of the following reasons:zyqxa6mjx3na360crcbxy3szycj08l"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "usercp2.php?action=removesubscription&fid=p1&type=forum",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": null,
+      "evidence": [
+        "oracle=response-cascade",
+        "configured authenticated-public page; ordinary authenticated users are allowed"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "usercp2.php?action=removesubscription&fid=p1&type=forum",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": null,
+      "evidence": [
+        "oracle=response-cascade",
+        "configured authenticated-public page; ordinary authenticated users are allowed"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "usercp2.php?action=removesubscription&tid=p1",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you are either not logged in or do not have permission to view this page. this could be because one of the following reasons:zyqxa6mjx3na360crcbxy3szycj08l"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "usercp2.php?action=removesubscription&tid=p1",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": null,
+      "evidence": [
+        "oracle=response-cascade",
+        "configured authenticated-public page; ordinary authenticated users are allowed"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "usercp2.php?action=removesubscription&tid=p1",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": null,
+      "evidence": [
+        "oracle=response-cascade",
+        "configured authenticated-public page; ordinary authenticated users are allowed"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "warnings.php",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: authorization code mismatch"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "warnings.php",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you do not have permission to access this page."
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "warnings.php",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you do not have permission to access this page."
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "warnings.php?action=view&wid=p1",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you are either not logged in or do not have permission to view this page. this could be because one of the following reasons:zyqxa6mjx3na360crcbxy3szycj08l"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "warnings.php?action=view&wid=p1",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you do not have permission to access this page."
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "warnings.php?action=view&wid=p1",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you do not have permission to access this page."
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "warnings.php?action=warn&pid=p1&uid=p1",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you are either not logged in or do not have permission to view this page. this could be because one of the following reasons:zyqxa6mjx3na360crcbxy3szycj08l"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "warnings.php?action=warn&pid=p1&uid=p1",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you do not have permission to access this page."
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "warnings.php?action=warn&pid=p1&uid=p1",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you do not have permission to access this page."
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "warnings.php?uid=p1",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you are either not logged in or do not have permission to view this page. this could be because one of the following reasons:zyqxa6mjx3na360crcbxy3szycj08l"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "warnings.php?uid=p1",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you do not have permission to access this page."
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "warnings.php?uid=p1",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: you do not have permission to access this page."
+      ],
+      "error": null
+    }
+  ]
+}

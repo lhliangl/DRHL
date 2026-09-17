@@ -1,0 +1,93 @@
+{
+  "summary": {
+    "Repair Items": 1,
+    "Total Repair Attempts": 1,
+    "Patch Generation Attempts": 1,
+    "Patches Generated": 1,
+    "Failed Patches": 0,
+    "Syntax / Compile OK": 1,
+    "Exploit Blocked": 1,
+    "Regression Passed": 1,
+    "Database Validation Applied": 0,
+    "Database Validation Passed": 0,
+    "Successful Repairs": 1,
+    "Failed Repairs": 0,
+    "Successful on Attempt 1": 1,
+    "Successful on Attempt 2": 0,
+    "Successful on Attempt 3": 0
+  },
+  "repairs": [
+    {
+      "category": "admin_only",
+      "page": "bbs_pub/",
+      "source": "D:\\project\\python\\BBS_Pro\\app01\\views.py",
+      "output": "D:\\project\\python\\DRHL\\runs\\BBS_pro\\repair\\files\\attempt-1\\app01\\views.py",
+      "status": "successful_repair",
+      "message": "syntax/compile, vulnerability blocking, and regression validation all passed",
+      "engine": "llm",
+      "plan": "{\"missing_check\": \"Missing admin/root authorization check on the bbs_pub view.\", \"insertion_location\": \"In app01/views.py, at the top of the bbs_pub function body, immediately after def bbs_pub(request): and before bbs_categories = models.Category.objects.all().\", \"recommended_guard\": \"if request.user.username != 'root':\\n    return HttpResponseRedirect('/')\", \"reused_project_semantics\": \"Uses request.user from Django auth, the existing privileged sentinel username 'root' from submit_bbs (models.BBS_user.objects.get(user_username='root')), and the existing redirect style HttpResponseRedirect('/') from acc_login.\", \"reason\": \"bbs_pub is an admin-only entry point. The current view lacks any authorization check, so an unauthenticated visitor receives HTTP 200. Adding this guard blocks visitors and non-root users before rendering, while preserving access for the authorized root/admin user.\"}",
+      "prompt_artifact": "D:\\project\\python\\DRHL\\runs\\BBS_pro\\repair\\prompts\\views-attempt1-deada8d06c0d.json",
+      "attempts": 1,
+      "patches_generated": 1,
+      "syntax_compile_ok": 1,
+      "exploit_blocked": 1,
+      "regression_passed": 1,
+      "database_validation_applied": 0,
+      "database_validation_passed": 0,
+      "successful": true,
+      "validation_artifact": "D:\\project\\python\\DRHL\\runs\\BBS_pro\\repair\\validation\\views-36f01ad5204e.json",
+      "attempt_details": [
+        {
+          "attempt": 1,
+          "output": "D:\\project\\python\\DRHL\\runs\\BBS_pro\\repair\\files\\attempt-1\\app01\\views.py",
+          "syntax_compile_ok": true,
+          "exploit_blocked": true,
+          "regression_passed": true,
+          "successful": true,
+          "message": "syntax=(py_compile exited with 0); deployment=(source patch applied; reload=([djangoblog_server] stopped PID 27580\n[djangoblog_server] started PID 30664: http://127.0.0.1:8000/\n[djangoblog_server] ready: http://127.0.0.1:8000/)); vulnerability_blocking=(response=True; database=passed; evidence=visitor:not_vulnerable); regression=(response=True; database=passed; evidence=authorized status=302; denial=[])",
+          "prompt_artifact": "D:\\project\\python\\DRHL\\runs\\BBS_pro\\repair\\prompts\\views-attempt1-deada8d06c0d.json",
+          "plan": "{\"missing_check\": \"Missing admin/root authorization check on the bbs_pub view.\", \"insertion_location\": \"In app01/views.py, at the top of the bbs_pub function body, immediately after def bbs_pub(request): and before bbs_categories = models.Category.objects.all().\", \"recommended_guard\": \"if request.user.username != 'root':\\n    return HttpResponseRedirect('/')\", \"reused_project_semantics\": \"Uses request.user from Django auth, the existing privileged sentinel username 'root' from submit_bbs (models.BBS_user.objects.get(user_username='root')), and the existing redirect style HttpResponseRedirect('/') from acc_login.\", \"reason\": \"bbs_pub is an admin-only entry point. The current view lacks any authorization check, so an unauthenticated visitor receives HTTP 200. Adding this guard blocks visitors and non-root users before rendering, while preserving access for the authorized root/admin user.\"}",
+          "database_validation_passed": true,
+          "database_validation": {
+            "oracle_version": 2,
+            "scope": "repair_only",
+            "applicable": false,
+            "passed": true,
+            "status": "response_only",
+            "display_as_passed": true,
+            "message": "database validation intentionally skipped; response oracle retained",
+            "dimensions": {
+              "vulnerability_blocking": {
+                "phase": "attack",
+                "applicable": false,
+                "passed": true
+              },
+              "regression": {
+                "phase": "authorized",
+                "applicable": false,
+                "passed": true
+              }
+            },
+            "scenarios": [],
+            "combined_dimensions": {
+              "vulnerability_blocking": {
+                "passed": true,
+                "response_oracle_applicable": true,
+                "response_oracle_passed": true,
+                "database_oracle_applicable": false,
+                "database_oracle_passed": true
+              },
+              "regression": {
+                "passed": true,
+                "response_oracle_applicable": true,
+                "response_oracle_passed": true,
+                "database_oracle_applicable": false,
+                "database_oracle_passed": true
+              }
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

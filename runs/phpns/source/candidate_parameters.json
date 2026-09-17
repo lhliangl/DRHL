@@ -1,0 +1,7142 @@
+{
+  "parameters": [
+    {
+      "id": "about.php:LCP1",
+      "path": "about.php",
+      "expression": "$_GET['version_check']",
+      "aliases": [
+        "$_GET['version_check']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 20,
+          "condition": "($_GET['version_check'])"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "article.php:LCP2",
+      "path": "article.php",
+      "expression": "$_SESSION['username']",
+      "aliases": [
+        "$_SESSION['username']"
+      ],
+      "database_relations": [
+        {
+          "table": "",
+          "field": "i",
+          "line": 135
+        }
+      ],
+      "sources": [
+        "database"
+      ],
+      "locations": [
+        {
+          "source": "database",
+          "line": 149,
+          "condition": "$_SESSION['username']"
+        },
+        {
+          "source": "database",
+          "line": 291,
+          "condition": "$_SESSION['username']"
+        },
+        {
+          "source": "database",
+          "line": 345,
+          "condition": "$_SESSION['username']"
+        }
+      ],
+      "condition_indexes": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "id": "article.php:LCP3",
+      "path": "article.php",
+      "expression": "$_POST['preview']",
+      "aliases": [
+        "$_POST['preview']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 15,
+          "condition": "(isset($_POST['preview']))"
+        }
+      ],
+      "condition_indexes": [
+        3
+      ]
+    },
+    {
+      "id": "article.php:LCP4",
+      "path": "article.php",
+      "expression": "$do",
+      "aliases": [
+        "$do",
+        "$_GET['do']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 16,
+          "condition": "(!$do)"
+        },
+        {
+          "source": "conditional",
+          "line": 29,
+          "condition": "($do == \"preview\")"
+        },
+        {
+          "source": "conditional",
+          "line": 64,
+          "condition": "($do == \"p\")"
+        },
+        {
+          "source": "conditional",
+          "line": 183,
+          "condition": "($do == \"edit\")"
+        },
+        {
+          "source": "conditional",
+          "line": 215,
+          "condition": "($do == \"editp\")"
+        },
+        {
+          "source": "conditional",
+          "line": 323,
+          "condition": "($do == \"activate\")"
+        },
+        {
+          "source": "conditional",
+          "line": 329,
+          "condition": "($do == \"comments\")"
+        }
+      ],
+      "condition_indexes": [
+        4,
+        6,
+        8,
+        27,
+        33,
+        51,
+        52
+      ]
+    },
+    {
+      "id": "article.php:LCP5",
+      "path": "article.php",
+      "expression": "$globalvars['rank'][10]",
+      "aliases": [
+        "$globalvars['rank'][10]"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 19,
+          "condition": "($globalvars['rank'][10] == 0)"
+        },
+        {
+          "source": "conditional",
+          "line": 32,
+          "condition": "($globalvars['rank'][10] == 0)"
+        },
+        {
+          "source": "conditional",
+          "line": 67,
+          "condition": "($globalvars['rank'][10] == 0)"
+        },
+        {
+          "source": "conditional",
+          "line": 73,
+          "condition": "($globalvars['rank'][10] == 2)"
+        }
+      ],
+      "condition_indexes": [
+        5,
+        7,
+        9,
+        10
+      ]
+    },
+    {
+      "id": "article.php:LCP6",
+      "path": "article.php",
+      "expression": "$_POST",
+      "aliases": [
+        "$_POST",
+        "$items"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 81,
+          "condition": "(isset($_POST))"
+        },
+        {
+          "source": "conditional",
+          "line": 224,
+          "condition": "(isset($_POST))"
+        },
+        {
+          "source": "conditional",
+          "line": 332,
+          "condition": "(!$items)"
+        }
+      ],
+      "condition_indexes": [
+        11,
+        35,
+        54
+      ]
+    },
+    {
+      "id": "article.php:LCP7",
+      "path": "article.php",
+      "expression": "$data['article_title']",
+      "aliases": [
+        "$data['article_title']",
+        "$_POST['article_title']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 99,
+          "condition": "(empty($data['article_title']))"
+        },
+        {
+          "source": "conditional",
+          "line": 240,
+          "condition": "(empty($data['article_title']))"
+        }
+      ],
+      "condition_indexes": [
+        12,
+        36
+      ]
+    },
+    {
+      "id": "article.php:LCP8",
+      "path": "article.php",
+      "expression": "$data['article_text']",
+      "aliases": [
+        "$data['article_text']",
+        "$_POST['article_text']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 104,
+          "condition": "(empty($data['article_text']))"
+        },
+        {
+          "source": "conditional",
+          "line": 245,
+          "condition": "(empty($data['article_text']))"
+        }
+      ],
+      "condition_indexes": [
+        13,
+        37
+      ]
+    },
+    {
+      "id": "article.php:LCP9",
+      "path": "article.php",
+      "expression": "$data['article_cat']",
+      "aliases": [
+        "$data['article_cat']",
+        "$_POST['article_cat']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 110,
+          "condition": "(empty($data['article_cat']))"
+        },
+        {
+          "source": "conditional",
+          "line": 251,
+          "condition": "(empty($data['article_cat']))"
+        }
+      ],
+      "condition_indexes": [
+        14,
+        38
+      ]
+    },
+    {
+      "id": "article.php:LCP10",
+      "path": "article.php",
+      "expression": "$data['start_date']",
+      "aliases": [
+        "$data['start_date']",
+        "$_POST['start_date']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 117,
+          "condition": "($data['start_date'])"
+        },
+        {
+          "source": "conditional",
+          "line": 197,
+          "condition": "($data['start_date'])"
+        },
+        {
+          "source": "conditional",
+          "line": 259,
+          "condition": "($data['start_date'])"
+        }
+      ],
+      "condition_indexes": [
+        15,
+        29,
+        39
+      ]
+    },
+    {
+      "id": "article.php:LCP11",
+      "path": "article.php",
+      "expression": "$data['end_date']",
+      "aliases": [
+        "$data['end_date']",
+        "$_POST['end_date']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 120,
+          "condition": "($data['end_date'])"
+        },
+        {
+          "source": "conditional",
+          "line": 200,
+          "condition": "($data['end_date'])"
+        },
+        {
+          "source": "conditional",
+          "line": 262,
+          "condition": "($data['end_date'])"
+        }
+      ],
+      "condition_indexes": [
+        16,
+        30,
+        40
+      ]
+    },
+    {
+      "id": "article.php:LCP12",
+      "path": "article.php",
+      "expression": "$data['achecked']",
+      "aliases": [
+        "$data['achecked']",
+        "$_POST['achecked']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 125,
+          "condition": "($data['achecked'] == \"\")"
+        },
+        {
+          "source": "conditional",
+          "line": 163,
+          "condition": "($data['achecked'] == 0)"
+        },
+        {
+          "source": "conditional",
+          "line": 177,
+          "condition": "($data['achecked'] == 0)"
+        },
+        {
+          "source": "conditional",
+          "line": 268,
+          "condition": "($data['achecked'] == \"\")"
+        },
+        {
+          "source": "conditional",
+          "line": 304,
+          "condition": "($data['achecked'] == 0)"
+        },
+        {
+          "source": "conditional",
+          "line": 317,
+          "condition": "($data['achecked'] == 0)"
+        }
+      ],
+      "condition_indexes": [
+        17,
+        24,
+        26,
+        41,
+        48,
+        50
+      ]
+    },
+    {
+      "id": "article.php:LCP13",
+      "path": "article.php",
+      "expression": "$data['acchecked']",
+      "aliases": [
+        "$data['acchecked']",
+        "$_POST['acchecked']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 129,
+          "condition": "($data['acchecked'] == \"\")"
+        },
+        {
+          "source": "conditional",
+          "line": 160,
+          "condition": "($data['acchecked'] == 0)"
+        },
+        {
+          "source": "conditional",
+          "line": 174,
+          "condition": "($data['acchecked'] == 0)"
+        },
+        {
+          "source": "conditional",
+          "line": 271,
+          "condition": "($data['acchecked'] == \"\")"
+        },
+        {
+          "source": "conditional",
+          "line": 301,
+          "condition": "($data['acchecked'] == 0)"
+        },
+        {
+          "source": "conditional",
+          "line": 314,
+          "condition": "($data['acchecked'] == 0)"
+        }
+      ],
+      "condition_indexes": [
+        18,
+        23,
+        25,
+        42,
+        47,
+        49
+      ]
+    },
+    {
+      "id": "article.php:LCP14",
+      "path": "article.php",
+      "expression": "$proceed",
+      "aliases": [
+        "$proceed"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 139,
+          "condition": "($proceed == \"yes\")"
+        },
+        {
+          "source": "conditional",
+          "line": 148,
+          "condition": "($proceed == \"yes\")"
+        },
+        {
+          "source": "conditional",
+          "line": 280,
+          "condition": "($proceed == \"yes\")"
+        },
+        {
+          "source": "conditional",
+          "line": 289,
+          "condition": "($proceed == \"yes\")"
+        }
+      ],
+      "condition_indexes": [
+        19,
+        22,
+        43,
+        46
+      ]
+    },
+    {
+      "id": "article.php:LCP15",
+      "path": "article.php",
+      "expression": "$_FILES['image']['name']",
+      "aliases": [
+        "$_FILES['image']['name']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 140,
+          "condition": "($_FILES['image']['name'])"
+        },
+        {
+          "source": "conditional",
+          "line": 281,
+          "condition": "($_FILES['image']['name'])"
+        }
+      ],
+      "condition_indexes": [
+        20,
+        44
+      ]
+    },
+    {
+      "id": "article.php:LCP16",
+      "path": "article.php",
+      "expression": "$data['image']",
+      "aliases": [
+        "$data['image']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 141,
+          "condition": "(!$data['image'] = upload_image($_FILES['image']))"
+        },
+        {
+          "source": "conditional",
+          "line": 282,
+          "condition": "(!$data['image'] = upload_image($_FILES['image']))"
+        }
+      ],
+      "condition_indexes": [
+        21,
+        45
+      ]
+    },
+    {
+      "id": "article.php:LCP17",
+      "path": "article.php",
+      "expression": "$_FILES['image']",
+      "aliases": [
+        "$_FILES['image']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 141,
+          "condition": "(!$data['image'] = upload_image($_FILES['image']))"
+        },
+        {
+          "source": "conditional",
+          "line": 282,
+          "condition": "(!$data['image'] = upload_image($_FILES['image']))"
+        }
+      ],
+      "condition_indexes": [
+        21,
+        45
+      ]
+    },
+    {
+      "id": "article.php:LCP18",
+      "path": "article.php",
+      "expression": "$globalvars['rank'][14]",
+      "aliases": [
+        "$globalvars['rank'][14]"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 186,
+          "condition": "($globalvars['rank'][14] == 0)"
+        },
+        {
+          "source": "conditional",
+          "line": 218,
+          "condition": "($globalvars['rank'][14] == 0)"
+        }
+      ],
+      "condition_indexes": [
+        28,
+        34
+      ]
+    },
+    {
+      "id": "article.php:LCP19",
+      "path": "article.php",
+      "expression": "$data['allow_comments']",
+      "aliases": [
+        "$data['allow_comments']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 205,
+          "condition": "($data['allow_comments'] == 0)"
+        }
+      ],
+      "condition_indexes": [
+        31
+      ]
+    },
+    {
+      "id": "article.php:LCP20",
+      "path": "article.php",
+      "expression": "$data['active']",
+      "aliases": [
+        "$data['active']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 209,
+          "condition": "($data['active'] == 0)"
+        }
+      ],
+      "condition_indexes": [
+        32
+      ]
+    },
+    {
+      "id": "article.php:LCP21",
+      "path": "article.php",
+      "expression": "$_GET['action']",
+      "aliases": [
+        "$_GET['action']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 330,
+          "condition": "($_GET['action'] == 'delete')"
+        }
+      ],
+      "condition_indexes": [
+        53
+      ]
+    },
+    {
+      "id": "article.php:LCP22",
+      "path": "article.php",
+      "expression": "$_GET['id']",
+      "aliases": [
+        "$_GET['id']",
+        "$globalvars['page_name']",
+        "$id"
+      ],
+      "database_relations": [
+        {
+          "table": "",
+          "field": "article_id",
+          "line": 356
+        },
+        {
+          "table": "",
+          "field": "id",
+          "line": 362
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 348,
+          "condition": "(!is_numeric($_GET['id']))"
+        }
+      ],
+      "condition_indexes": [
+        55
+      ]
+    },
+    {
+      "id": "etc.php:LCP23",
+      "path": "etc.php",
+      "expression": "$_SESSION['username']",
+      "aliases": [
+        "$_SESSION['username']"
+      ],
+      "database_relations": [
+        {
+          "table": "",
+          "field": "i",
+          "line": 135
+        }
+      ],
+      "sources": [
+        "database"
+      ],
+      "locations": [
+        {
+          "source": "database",
+          "line": 21,
+          "condition": "$_SESSION['username']"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "etc.php:LCP24",
+      "path": "etc.php",
+      "expression": "$do",
+      "aliases": [
+        "$do",
+        "$_GET['do']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 15,
+          "condition": "($do == \"backup\")"
+        },
+        {
+          "source": "conditional",
+          "line": 22,
+          "condition": "($do == \"rss\")"
+        },
+        {
+          "source": "conditional",
+          "line": 29,
+          "condition": "($do == NULL)"
+        }
+      ],
+      "condition_indexes": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "id": "inc/auth.php:LCP25",
+      "path": "inc/auth.php",
+      "expression": "$_SESSION['username']",
+      "aliases": [
+        "$_SESSION['username']",
+        "$user_fetch['user_name']"
+      ],
+      "database_relations": [
+        {
+          "table": "",
+          "field": "i",
+          "line": 135
+        }
+      ],
+      "sources": [
+        "database"
+      ],
+      "locations": [
+        {
+          "source": "database",
+          "line": 25,
+          "condition": "$_SESSION['username']"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "inc/auth.php:LCP26",
+      "path": "inc/auth.php",
+      "expression": "$_SESSION['userID']",
+      "aliases": [
+        "$_SESSION['userID']",
+        "$user_fetch['id']"
+      ],
+      "database_relations": [
+        {
+          "table": "",
+          "field": "",
+          "line": 99
+        }
+      ],
+      "sources": [
+        "database"
+      ],
+      "locations": [
+        {
+          "source": "database",
+          "line": 26,
+          "condition": "$_SESSION['userID']"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "inc/auth.php:LCP27",
+      "path": "inc/auth.php",
+      "expression": "$_COOKIE['cookie_auth']",
+      "aliases": [
+        "$_COOKIE['cookie_auth']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 11,
+          "condition": "($_COOKIE['cookie_auth'] && !$_SESSION['auth'])"
+        }
+      ],
+      "condition_indexes": [
+        2
+      ]
+    },
+    {
+      "id": "inc/auth.php:LCP28",
+      "path": "inc/auth.php",
+      "expression": "$_SESSION['auth']",
+      "aliases": [
+        "$_SESSION['auth']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 11,
+          "condition": "($_COOKIE['cookie_auth'] && !$_SESSION['auth'])"
+        },
+        {
+          "source": "conditional",
+          "line": 32,
+          "condition": "(@$_SESSION['auth'] != \"yes\")"
+        }
+      ],
+      "condition_indexes": [
+        2,
+        4
+      ]
+    },
+    {
+      "id": "inc/auth.php:LCP29",
+      "path": "inc/auth.php",
+      "expression": "$cookie_check",
+      "aliases": [
+        "$cookie_check"
+      ],
+      "database_relations": [
+        {
+          "table": "",
+          "field": "",
+          "line": 15
+        },
+        {
+          "table": "",
+          "field": "",
+          "line": 20
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 17,
+          "condition": "(mysql_num_rows($cookie_check) > 0)"
+        }
+      ],
+      "condition_indexes": [
+        3
+      ]
+    },
+    {
+      "id": "inc/auth.php:LCP30",
+      "path": "inc/auth.php",
+      "expression": "$_SESSION['path']",
+      "aliases": [
+        "$_SESSION['path']",
+        "$globalvars['path_to']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 37,
+          "condition": "(@$_SESSION['path'] != $globalvars['path_to'])"
+        }
+      ],
+      "condition_indexes": [
+        5
+      ]
+    },
+    {
+      "id": "inc/function.php:LCP31",
+      "path": "inc/function.php",
+      "expression": "$clean",
+      "aliases": [
+        "$clean"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 23,
+          "condition": "($clean == TRUE)"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "inc/function.php:LCP32",
+      "path": "inc/function.php",
+      "expression": "$array",
+      "aliases": [
+        "$array"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 31,
+          "condition": "($array == TRUE)"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "inc/function.php:LCP33",
+      "path": "inc/function.php",
+      "expression": "$type",
+      "aliases": [
+        "$type"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 40,
+          "condition": "($type == 1)"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "inc/function.php:LCP34",
+      "path": "inc/function.php",
+      "expression": "$ext",
+      "aliases": [
+        "$ext"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 42,
+          "condition": "($ext == 1)"
+        },
+        {
+          "source": "conditional",
+          "line": 43,
+          "condition": "($ext == 2)"
+        }
+      ],
+      "condition_indexes": [
+        1,
+        2
+      ]
+    },
+    {
+      "id": "inc/function.php:LCP35",
+      "path": "inc/function.php",
+      "expression": "$v",
+      "aliases": [
+        "$v"
+      ],
+      "database_relations": [
+        {
+          "table": "",
+          "field": "",
+          "line": 71
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 53,
+          "condition": "($v == \"unactive\")"
+        },
+        {
+          "source": "conditional",
+          "line": 55,
+          "condition": "($v == \"active\")"
+        },
+        {
+          "source": "conditional",
+          "line": 57,
+          "condition": "(is_numeric($v)  || $v == 'all')"
+        },
+        {
+          "source": "conditional",
+          "line": 59,
+          "condition": "($v == \"unapproved\")"
+        },
+        {
+          "source": "conditional",
+          "line": 61,
+          "condition": "($v != \"\")"
+        }
+      ],
+      "condition_indexes": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "id": "inc/function.php:LCP36",
+      "path": "inc/function.php",
+      "expression": "$sort",
+      "aliases": [
+        "$sort"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 65,
+          "condition": "($sort)"
+        }
+      ],
+      "condition_indexes": [
+        5
+      ]
+    },
+    {
+      "id": "inc/function.php:LCP37",
+      "path": "inc/function.php",
+      "expression": "$load_res",
+      "aliases": [
+        "$load_res"
+      ],
+      "database_relations": [
+        {
+          "table": "",
+          "field": "",
+          "line": 71
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 76,
+          "condition": "(mysql_num_rows($load_res) == 0)"
+        }
+      ],
+      "condition_indexes": [
+        6
+      ]
+    },
+    {
+      "id": "inc/function.php:LCP38",
+      "path": "inc/function.php",
+      "expression": "$search['category']",
+      "aliases": [
+        "$search['category']",
+        "$category_s"
+      ],
+      "database_relations": [
+        {
+          "table": "",
+          "field": "",
+          "line": 95
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 88,
+          "condition": "($search['category'] == \"all\")"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "inc/function.php:LCP39",
+      "path": "inc/function.php",
+      "expression": "$_SESSION['username']",
+      "aliases": [
+        "$_SESSION['username']"
+      ],
+      "database_relations": [
+        {
+          "table": "",
+          "field": "i",
+          "line": 135
+        }
+      ],
+      "sources": [
+        "database"
+      ],
+      "locations": [
+        {
+          "source": "database",
+          "line": 126,
+          "condition": "$_SESSION['username']"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "inc/function.php:LCP40",
+      "path": "inc/function.php",
+      "expression": "$name",
+      "aliases": [
+        "$name"
+      ],
+      "database_relations": [
+        {
+          "table": "",
+          "field": "name",
+          "line": 118
+        },
+        {
+          "table": "",
+          "field": "name",
+          "line": 120
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 117,
+          "condition": "($name == \"timestamp_format\" || $name == \"def_comlimit\" || $name == \"def_rsslimit\" || $name == \"def_rsstitle\" || $name == \"def_rssdesc\" || $name == \"global_message\")"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "inc/function.php:LCP41",
+      "path": "inc/function.php",
+      "expression": "$_SESSION['username']",
+      "aliases": [
+        "$_SESSION['username']"
+      ],
+      "database_relations": [
+        {
+          "table": "",
+          "field": "i",
+          "line": 135
+        }
+      ],
+      "sources": [
+        "database"
+      ],
+      "locations": [
+        {
+          "source": "database",
+          "line": 135,
+          "condition": "$_SESSION['username']"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "inc/function.php:LCP42",
+      "path": "inc/function.php",
+      "expression": "$data",
+      "aliases": [
+        "$data"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 139,
+          "condition": "(is_array($data))"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "inc/function.php:LCP43",
+      "path": "inc/function.php",
+      "expression": "$template",
+      "aliases": [
+        "$template"
+      ],
+      "database_relations": [
+        {
+          "table": "",
+          "field": "id",
+          "line": 159
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 151,
+          "condition": "(!$template)"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "inc/function.php:LCP44",
+      "path": "inc/function.php",
+      "expression": "$type",
+      "aliases": [
+        "$type"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 168,
+          "condition": "($type == \"html_comment\")"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "inc/function.php:LCP45",
+      "path": "inc/function.php",
+      "expression": "$_SESSION[userID]",
+      "aliases": [
+        "$_SESSION[userID]"
+      ],
+      "database_relations": [
+        {
+          "table": "",
+          "field": "",
+          "line": 190
+        }
+      ],
+      "sources": [
+        "database"
+      ],
+      "locations": [
+        {
+          "source": "database",
+          "line": 190,
+          "condition": "$_SESSION[userID]"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "inc/function.php:LCP46",
+      "path": "inc/function.php",
+      "expression": "$sort",
+      "aliases": [
+        "$sort"
+      ],
+      "database_relations": [
+        {
+          "table": "",
+          "field": "",
+          "line": 241
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 208,
+          "condition": "(!$sort)"
+        },
+        {
+          "source": "conditional",
+          "line": 212,
+          "condition": "($sort)"
+        }
+      ],
+      "condition_indexes": [
+        0,
+        1
+      ]
+    },
+    {
+      "id": "inc/function.php:LCP47",
+      "path": "inc/function.php",
+      "expression": "$lrow['user']",
+      "aliases": [
+        "$lrow['user']",
+        "$usernamerow['user_name']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 227,
+          "condition": "($lrow['user'] == NULL)"
+        }
+      ],
+      "condition_indexes": [
+        2
+      ]
+    },
+    {
+      "id": "inc/function.php:LCP48",
+      "path": "inc/function.php",
+      "expression": "$format",
+      "aliases": [
+        "$format"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 280,
+          "condition": "($format == \"option\")"
+        },
+        {
+          "source": "conditional",
+          "line": 303,
+          "condition": "($format = \"row\")"
+        }
+      ],
+      "condition_indexes": [
+        0,
+        4
+      ]
+    },
+    {
+      "id": "inc/function.php:LCP49",
+      "path": "inc/function.php",
+      "expression": "$data['article_cat']",
+      "aliases": [
+        "$data['article_cat']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 282,
+          "condition": "($data['article_cat'] == $cat_row['id'])"
+        },
+        {
+          "source": "conditional",
+          "line": 293,
+          "condition": "($data['article_cat'] == $catsub_row['id'])"
+        }
+      ],
+      "condition_indexes": [
+        1,
+        3
+      ]
+    },
+    {
+      "id": "inc/function.php:LCP50",
+      "path": "inc/function.php",
+      "expression": "$cat_row['id']",
+      "aliases": [
+        "$cat_row['id']"
+      ],
+      "database_relations": [
+        {
+          "table": "",
+          "field": "cat_parent",
+          "line": 291
+        },
+        {
+          "table": "",
+          "field": "cat_parent",
+          "line": 309
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 282,
+          "condition": "($data['article_cat'] == $cat_row['id'])"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "inc/function.php:LCP51",
+      "path": "inc/function.php",
+      "expression": "$display",
+      "aliases": [
+        "$display"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 289,
+          "condition": "($display != 'top')"
+        }
+      ],
+      "condition_indexes": [
+        2
+      ]
+    },
+    {
+      "id": "inc/function.php:LCP52",
+      "path": "inc/function.php",
+      "expression": "$catsub_row['id']",
+      "aliases": [
+        "$catsub_row['id']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 293,
+          "condition": "($data['article_cat'] == $catsub_row['id'])"
+        }
+      ],
+      "condition_indexes": [
+        3
+      ]
+    },
+    {
+      "id": "inc/function.php:LCP53",
+      "path": "inc/function.php",
+      "expression": "$do",
+      "aliases": [
+        "$do"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 339,
+          "condition": "(!$do || $do == \"p\" || $do == \"preview\")"
+        },
+        {
+          "source": "conditional",
+          "line": 344,
+          "condition": "($do == \"edit\")"
+        }
+      ],
+      "condition_indexes": [
+        0,
+        1
+      ]
+    },
+    {
+      "id": "inc/function.php:LCP54",
+      "path": "inc/function.php",
+      "expression": "$data['approved']",
+      "aliases": [
+        "$data['approved']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 346,
+          "condition": "($data['approved'] == 0 && $globalvars['rank'][12] == 1)"
+        }
+      ],
+      "condition_indexes": [
+        2
+      ]
+    },
+    {
+      "id": "inc/function.php:LCP55",
+      "path": "inc/function.php",
+      "expression": "$globalvars['rank'][12]",
+      "aliases": [
+        "$globalvars['rank'][12]"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 346,
+          "condition": "($data['approved'] == 0 && $globalvars['rank'][12] == 1)"
+        }
+      ],
+      "condition_indexes": [
+        2
+      ]
+    },
+    {
+      "id": "inc/function.php:LCP56",
+      "path": "inc/function.php",
+      "expression": "$data['article_imgid']",
+      "aliases": [
+        "$data['article_imgid']",
+        "$image_view"
+      ],
+      "database_relations": [
+        {
+          "table": "",
+          "field": "",
+          "line": 362
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 353,
+          "condition": "($data['article_imgid'])"
+        }
+      ],
+      "condition_indexes": [
+        3
+      ]
+    },
+    {
+      "id": "inc/function.php:LCP57",
+      "path": "inc/function.php",
+      "expression": "$globalvars['rank'][10]",
+      "aliases": [
+        "$globalvars['rank'][10]"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 358,
+          "condition": "($globalvars['rank'][10] == 2)"
+        }
+      ],
+      "condition_indexes": [
+        4
+      ]
+    },
+    {
+      "id": "inc/function.php:LCP58",
+      "path": "inc/function.php",
+      "expression": "$globalvars['page_name']",
+      "aliases": [
+        "$globalvars['page_name']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 422,
+          "condition": "($globalvars['page_name'] == \"search\")"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "inc/function.php:LCP59",
+      "path": "inc/function.php",
+      "expression": "$sort",
+      "aliases": [
+        "$sort"
+      ],
+      "database_relations": [
+        {
+          "table": "",
+          "field": "",
+          "line": 448
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 437,
+          "condition": "(!$sort)"
+        },
+        {
+          "source": "conditional",
+          "line": 441,
+          "condition": "($sort)"
+        }
+      ],
+      "condition_indexes": [
+        1,
+        2
+      ]
+    },
+    {
+      "id": "inc/function.php:LCP60",
+      "path": "inc/function.php",
+      "expression": "$_SESSION['username']",
+      "aliases": [
+        "$_SESSION['username']"
+      ],
+      "database_relations": [
+        {
+          "table": "",
+          "field": "i",
+          "line": 135
+        }
+      ],
+      "sources": [
+        "database"
+      ],
+      "locations": [
+        {
+          "source": "database",
+          "line": 541,
+          "condition": "$_SESSION['username']"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "inc/function.php:LCP61",
+      "path": "inc/function.php",
+      "expression": "$_SESSION['username']",
+      "aliases": [
+        "$_SESSION['username']"
+      ],
+      "database_relations": [
+        {
+          "table": "",
+          "field": "i",
+          "line": 135
+        }
+      ],
+      "sources": [
+        "database"
+      ],
+      "locations": [
+        {
+          "source": "database",
+          "line": 574,
+          "condition": "$_SESSION['username']"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "inc/function.php:LCP62",
+      "path": "inc/function.php",
+      "expression": "$data['image']",
+      "aliases": [
+        "$data['image']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 552,
+          "condition": "($data['image'])"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "inc/function.php:LCP63",
+      "path": "inc/function.php",
+      "expression": "$file['type']",
+      "aliases": [
+        "$file['type']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 588,
+          "condition": "($file['type'] == 'image/gif' || $file['type'] == 'image/jpeg' || $file['type'] == 'image/jpg' || $file['type'] == 'image/png' || $file['type'] == 'image/bmp' || $file['type'] == 'image/tiff' ||  $file['type'] == 'image/tff')"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "inc/function.php:LCP64",
+      "path": "inc/function.php",
+      "expression": "$file['tmp_name']",
+      "aliases": [
+        "$file['tmp_name']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 589,
+          "condition": "(@move_uploaded_file($file['tmp_name'], $target_path))"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "inc/function.php:LCP65",
+      "path": "inc/function.php",
+      "expression": "$target_path",
+      "aliases": [
+        "$target_path"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 589,
+          "condition": "(@move_uploaded_file($file['tmp_name'], $target_path))"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "inc/function.php:LCP66",
+      "path": "inc/function.php",
+      "expression": "$catid",
+      "aliases": [
+        "$catid"
+      ],
+      "database_relations": [
+        {
+          "table": "",
+          "field": "id",
+          "line": 616
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 615,
+          "condition": "($catid != \"all\")"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "inc/function.php:LCP67",
+      "path": "inc/function.php",
+      "expression": "$data",
+      "aliases": [
+        "$data"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 624,
+          "condition": "(is_array($data))"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "inc/function.php:LCP68",
+      "path": "inc/function.php",
+      "expression": "$rawtype",
+      "aliases": [
+        "$rawtype"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 641,
+          "condition": "($rawtype == \"start\")"
+        },
+        {
+          "source": "conditional",
+          "line": 643,
+          "condition": "($rawtype == \"end\")"
+        }
+      ],
+      "condition_indexes": [
+        0,
+        1
+      ]
+    },
+    {
+      "id": "inc/function.php:LCP69",
+      "path": "inc/function.php",
+      "expression": "$data[$type]",
+      "aliases": [
+        "$data[$type]"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 646,
+          "condition": "(eregi('^[0-9]{2}/[0-9]{2}/[0-9]{4}$',$data[$type]))"
+        }
+      ],
+      "condition_indexes": [
+        2
+      ]
+    },
+    {
+      "id": "inc/function.php:LCP70",
+      "path": "inc/function.php",
+      "expression": "$data[$type][0]",
+      "aliases": [
+        "$data[$type][0]"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 649,
+          "condition": "(!checkdate($data[$type][0],$data[$type][1],$data[$type][2]))"
+        },
+        {
+          "source": "conditional",
+          "line": 655,
+          "condition": "(mktime(0,0,0,$data[$type][0],$data[$type][1],$data[$type][2]))"
+        }
+      ],
+      "condition_indexes": [
+        3,
+        4
+      ]
+    },
+    {
+      "id": "inc/function.php:LCP71",
+      "path": "inc/function.php",
+      "expression": "$data[$type][1]",
+      "aliases": [
+        "$data[$type][1]"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 649,
+          "condition": "(!checkdate($data[$type][0],$data[$type][1],$data[$type][2]))"
+        },
+        {
+          "source": "conditional",
+          "line": 655,
+          "condition": "(mktime(0,0,0,$data[$type][0],$data[$type][1],$data[$type][2]))"
+        }
+      ],
+      "condition_indexes": [
+        3,
+        4
+      ]
+    },
+    {
+      "id": "inc/function.php:LCP72",
+      "path": "inc/function.php",
+      "expression": "$data[$type][2]",
+      "aliases": [
+        "$data[$type][2]"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 649,
+          "condition": "(!checkdate($data[$type][0],$data[$type][1],$data[$type][2]))"
+        },
+        {
+          "source": "conditional",
+          "line": 655,
+          "condition": "(mktime(0,0,0,$data[$type][0],$data[$type][1],$data[$type][2]))"
+        }
+      ],
+      "condition_indexes": [
+        3,
+        4
+      ]
+    },
+    {
+      "id": "inc/function.php:LCP73",
+      "path": "inc/function.php",
+      "expression": "$do",
+      "aliases": [
+        "$do"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 693,
+          "condition": "($do == \"new\" || $do == \"newp\")"
+        },
+        {
+          "source": "conditional",
+          "line": 695,
+          "condition": "($do == \"edit\" || $do == \"editp\")"
+        }
+      ],
+      "condition_indexes": [
+        0,
+        1
+      ]
+    },
+    {
+      "id": "inc/function.php:LCP74",
+      "path": "inc/function.php",
+      "expression": "$_SESSION['username']",
+      "aliases": [
+        "$_SESSION['username']"
+      ],
+      "database_relations": [
+        {
+          "table": "",
+          "field": "i",
+          "line": 135
+        }
+      ],
+      "sources": [
+        "database"
+      ],
+      "locations": [
+        {
+          "source": "database",
+          "line": 766,
+          "condition": "$_SESSION['username']"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "inc/function.php:LCP75",
+      "path": "inc/function.php",
+      "expression": "$_SESSION['username']",
+      "aliases": [
+        "$_SESSION['username']"
+      ],
+      "database_relations": [
+        {
+          "table": "",
+          "field": "i",
+          "line": 135
+        }
+      ],
+      "sources": [
+        "database"
+      ],
+      "locations": [
+        {
+          "source": "database",
+          "line": 798,
+          "condition": "$_SESSION['username']"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "inc/function.php:LCP76",
+      "path": "inc/function.php",
+      "expression": "$data['password_']",
+      "aliases": [
+        "$data['password_']",
+        "$password_p"
+      ],
+      "database_relations": [
+        {
+          "table": "",
+          "field": "",
+          "line": 782
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 775,
+          "condition": "($data['password_'] != NULL)"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "inc/function.php:LCP77",
+      "path": "inc/function.php",
+      "expression": "$do",
+      "aliases": [
+        "$do"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 811,
+          "condition": "($do == 'newrank' || $do == 'nrankp')"
+        },
+        {
+          "source": "conditional",
+          "line": 813,
+          "condition": "($do == 'editrank' || $do == 'erankp')"
+        }
+      ],
+      "condition_indexes": [
+        0,
+        1
+      ]
+    },
+    {
+      "id": "inc/function.php:LCP78",
+      "path": "inc/function.php",
+      "expression": "$_SESSION['username']",
+      "aliases": [
+        "$_SESSION['username']"
+      ],
+      "database_relations": [
+        {
+          "table": "",
+          "field": "i",
+          "line": 135
+        }
+      ],
+      "sources": [
+        "database"
+      ],
+      "locations": [
+        {
+          "source": "database",
+          "line": 1005,
+          "condition": "$_SESSION['username']"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "inc/function.php:LCP79",
+      "path": "inc/function.php",
+      "expression": "$_SESSION['username']",
+      "aliases": [
+        "$_SESSION['username']"
+      ],
+      "database_relations": [
+        {
+          "table": "",
+          "field": "i",
+          "line": 135
+        }
+      ],
+      "sources": [
+        "database"
+      ],
+      "locations": [
+        {
+          "source": "database",
+          "line": 1023,
+          "condition": "$_SESSION['username']"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "inc/function.php:LCP80",
+      "path": "inc/function.php",
+      "expression": "$_SESSION['username']",
+      "aliases": [
+        "$_SESSION['username']"
+      ],
+      "database_relations": [
+        {
+          "table": "",
+          "field": "i",
+          "line": 135
+        }
+      ],
+      "sources": [
+        "database"
+      ],
+      "locations": [
+        {
+          "source": "database",
+          "line": 1091,
+          "condition": "$_SESSION['username']"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "inc/function.php:LCP81",
+      "path": "inc/function.php",
+      "expression": "$action",
+      "aliases": [
+        "$action"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 1099,
+          "condition": "($action == 'edit' || $action == 'editp')"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "inc/function.php:LCP82",
+      "path": "inc/function.php",
+      "expression": "$_SESSION['username']",
+      "aliases": [
+        "$_SESSION['username']"
+      ],
+      "database_relations": [
+        {
+          "table": "",
+          "field": "i",
+          "line": 135
+        }
+      ],
+      "sources": [
+        "database"
+      ],
+      "locations": [
+        {
+          "source": "database",
+          "line": 1160,
+          "condition": "$_SESSION['username']"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "inc/function.php:LCP83",
+      "path": "inc/function.php",
+      "expression": "$_SESSION['username']",
+      "aliases": [
+        "$_SESSION['username']"
+      ],
+      "database_relations": [
+        {
+          "table": "",
+          "field": "i",
+          "line": 135
+        }
+      ],
+      "sources": [
+        "database"
+      ],
+      "locations": [
+        {
+          "source": "database",
+          "line": 1184,
+          "condition": "$_SESSION['username']"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "inc/function.php:LCP84",
+      "path": "inc/function.php",
+      "expression": "$_SESSION['username']",
+      "aliases": [
+        "$_SESSION['username']"
+      ],
+      "database_relations": [
+        {
+          "table": "",
+          "field": "i",
+          "line": 135
+        }
+      ],
+      "sources": [
+        "database"
+      ],
+      "locations": [
+        {
+          "source": "database",
+          "line": 1194,
+          "condition": "$_SESSION['username']"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "inc/function.php:LCP85",
+      "path": "inc/function.php",
+      "expression": "$st_res",
+      "aliases": [
+        "$st_res"
+      ],
+      "database_relations": [
+        {
+          "table": "",
+          "field": "",
+          "line": 1190
+        },
+        {
+          "table": "",
+          "field": "",
+          "line": 1192
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 1191,
+          "condition": "($st_res)"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "inc/function.php:LCP86",
+      "path": "inc/function.php",
+      "expression": "$_SESSION['username']",
+      "aliases": [
+        "$_SESSION['username']"
+      ],
+      "database_relations": [
+        {
+          "table": "",
+          "field": "i",
+          "line": 135
+        }
+      ],
+      "sources": [
+        "database"
+      ],
+      "locations": [
+        {
+          "source": "database",
+          "line": 1221,
+          "condition": "$_SESSION['username']"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "inc/function.php:LCP87",
+      "path": "inc/function.php",
+      "expression": "$rss_load",
+      "aliases": [
+        "$rss_load",
+        "$rss_url",
+        "$rss_xml"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 1241,
+          "condition": "($rss_load = $rss_load = @file_get_contents($rss_url))"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "inc/function.php:LCP88",
+      "path": "inc/function.php",
+      "expression": "$start",
+      "aliases": [
+        "$start"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 1250,
+          "condition": "($start < 5)"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "inc/header.php:LCP89",
+      "path": "inc/header.php",
+      "expression": "$globalvars['installed']",
+      "aliases": [
+        "$globalvars['installed']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 26,
+          "condition": "($globalvars['installed'] == \"no\")"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "inc/header.php:LCP90",
+      "path": "inc/header.php",
+      "expression": "$globalvars['pagetype']",
+      "aliases": [
+        "$globalvars['pagetype']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 41,
+          "condition": "(!$globalvars['pagetype'])"
+        },
+        {
+          "source": "conditional",
+          "line": 45,
+          "condition": "($globalvars['pagetype'] == \"admin\" || $globalvars['pagetype'] == \"about\")"
+        }
+      ],
+      "condition_indexes": [
+        1,
+        2
+      ]
+    },
+    {
+      "id": "inc/header.php:LCP91",
+      "path": "inc/header.php",
+      "expression": "$globalvars['page_name']",
+      "aliases": [
+        "$globalvars['page_name']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 49,
+          "condition": "(!$globalvars['page_name'])"
+        }
+      ],
+      "condition_indexes": [
+        3
+      ]
+    },
+    {
+      "id": "inc/page_desc.php:LCP92",
+      "path": "inc/page_desc.php",
+      "expression": "$_SESSION['username']",
+      "aliases": [
+        "$_SESSION['username']",
+        "$page_desc['index']"
+      ],
+      "database_relations": [
+        {
+          "table": "",
+          "field": "i",
+          "line": 135
+        }
+      ],
+      "sources": [
+        "database"
+      ],
+      "locations": [
+        {
+          "source": "database",
+          "line": 14,
+          "condition": "$_SESSION['username']"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "inc/themecontrol.php:LCP93",
+      "path": "inc/themecontrol.php",
+      "expression": "$_SESSION['username']",
+      "aliases": [
+        "$_SESSION['username']"
+      ],
+      "database_relations": [
+        {
+          "table": "",
+          "field": "i",
+          "line": 135
+        }
+      ],
+      "sources": [
+        "database"
+      ],
+      "locations": [
+        {
+          "source": "database",
+          "line": 61,
+          "condition": "$_SESSION['username']"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "inc/themecontrol.php:LCP94",
+      "path": "inc/themecontrol.php",
+      "expression": "$globalvars['pagetype']",
+      "aliases": [
+        "$globalvars['pagetype']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 25,
+          "condition": "($globalvars['pagetype'] == \"admin\")"
+        },
+        {
+          "source": "conditional",
+          "line": 27,
+          "condition": "($globalvars['pagetype'] == \"login\")"
+        },
+        {
+          "source": "conditional",
+          "line": 37,
+          "condition": "($globalvars['pagetype'] == \"admin\")"
+        },
+        {
+          "source": "conditional",
+          "line": 90,
+          "condition": "($globalvars['pagetype'] == \"login\")"
+        }
+      ],
+      "condition_indexes": [
+        1,
+        2,
+        3,
+        12
+      ]
+    },
+    {
+      "id": "inc/themecontrol.php:LCP95",
+      "path": "inc/themecontrol.php",
+      "expression": "$wysiwyg['v1']",
+      "aliases": [
+        "$wysiwyg['v1']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 46,
+          "condition": "($wysiwyg['v1'] == 'yes')"
+        }
+      ],
+      "condition_indexes": [
+        4
+      ]
+    },
+    {
+      "id": "inc/themecontrol.php:LCP96",
+      "path": "inc/themecontrol.php",
+      "expression": "$globalvars['page_image']",
+      "aliases": [
+        "$globalvars['page_image']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 51,
+          "condition": "(empty($globalvars['page_image']))"
+        },
+        {
+          "source": "conditional",
+          "line": 53,
+          "condition": "($globalvars['page_image'])"
+        },
+        {
+          "source": "conditional",
+          "line": 55,
+          "condition": "($globalvars['page_image'] == \"none\")"
+        }
+      ],
+      "condition_indexes": [
+        5,
+        6,
+        7
+      ]
+    },
+    {
+      "id": "inc/themecontrol.php:LCP97",
+      "path": "inc/themecontrol.php",
+      "expression": "$global_message['v3']",
+      "aliases": [
+        "$global_message['v3']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 72,
+          "condition": "($global_message['v3'] != NULL)"
+        }
+      ],
+      "condition_indexes": [
+        8
+      ]
+    },
+    {
+      "id": "inc/themecontrol.php:LCP98",
+      "path": "inc/themecontrol.php",
+      "expression": "$databaseinfo['dbname']",
+      "aliases": [
+        "$databaseinfo['dbname']"
+      ],
+      "database_relations": [
+        {
+          "table": "",
+          "field": "",
+          "line": 84
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 82,
+          "condition": "(file_exists($databaseinfo['dbname'].'.sql'))"
+        }
+      ],
+      "condition_indexes": [
+        10
+      ]
+    },
+    {
+      "id": "inc/themecontrol.php:LCP99",
+      "path": "inc/themecontrol.php",
+      "expression": "$globalvars['page_name']",
+      "aliases": [
+        "$globalvars['page_name']",
+        "$current_page_name",
+        "$page_image"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 83,
+          "condition": "($globalvars['page_name'] == \"index\")"
+        }
+      ],
+      "condition_indexes": [
+        11
+      ]
+    },
+    {
+      "id": "index.php:LCP100",
+      "path": "index.php",
+      "expression": "$_GET['do']",
+      "aliases": [
+        "$_GET['do']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 15,
+          "condition": "($_GET['do'] == NULL)"
+        },
+        {
+          "source": "conditional",
+          "line": 46,
+          "condition": "($_GET['do'] == \"permissiondenied\")"
+        }
+      ],
+      "condition_indexes": [
+        0,
+        1
+      ]
+    },
+    {
+      "id": "install/index.php:LCP101",
+      "path": "install/index.php",
+      "expression": "$step",
+      "aliases": [
+        "$step",
+        "$_GET['step']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 74,
+          "condition": "(!$step)"
+        },
+        {
+          "source": "conditional",
+          "line": 89,
+          "condition": "($step == 1)"
+        },
+        {
+          "source": "conditional",
+          "line": 97,
+          "condition": "($step == 2)"
+        },
+        {
+          "source": "conditional",
+          "line": 162,
+          "condition": "($step == 3)"
+        }
+      ],
+      "condition_indexes": [
+        0,
+        1,
+        3,
+        13
+      ]
+    },
+    {
+      "id": "install/index.php:LCP102",
+      "path": "install/index.php",
+      "expression": "$_POST[upgrade]",
+      "aliases": [
+        "$_POST[upgrade]"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 91,
+          "condition": "($_POST[upgrade] == TRUE)"
+        }
+      ],
+      "condition_indexes": [
+        2
+      ]
+    },
+    {
+      "id": "install/index.php:LCP103",
+      "path": "install/index.php",
+      "expression": "$value",
+      "aliases": [
+        "$value"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 103,
+          "condition": "($value == NULL && $key != 'db_tableprefix')"
+        }
+      ],
+      "condition_indexes": [
+        4
+      ]
+    },
+    {
+      "id": "install/index.php:LCP104",
+      "path": "install/index.php",
+      "expression": "$key",
+      "aliases": [
+        "$key"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 103,
+          "condition": "($value == NULL && $key != 'db_tableprefix')"
+        }
+      ],
+      "condition_indexes": [
+        4
+      ]
+    },
+    {
+      "id": "install/index.php:LCP105",
+      "path": "install/index.php",
+      "expression": "$data['password']",
+      "aliases": [
+        "$data['password']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 110,
+          "condition": "($data['password'] && ($data['password'] != $data['c_password']))"
+        },
+        {
+          "source": "conditional",
+          "line": 113,
+          "condition": "($data['password'])"
+        }
+      ],
+      "condition_indexes": [
+        5,
+        6
+      ]
+    },
+    {
+      "id": "install/index.php:LCP106",
+      "path": "install/index.php",
+      "expression": "$data['c_password']",
+      "aliases": [
+        "$data['c_password']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 110,
+          "condition": "($data['password'] && ($data['password'] != $data['c_password']))"
+        }
+      ],
+      "condition_indexes": [
+        5
+      ]
+    },
+    {
+      "id": "install/index.php:LCP107",
+      "path": "install/index.php",
+      "expression": "$continue",
+      "aliases": [
+        "$continue"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 117,
+          "condition": "($continue == TRUE)"
+        },
+        {
+          "source": "conditional",
+          "line": 128,
+          "condition": "($continue == TRUE)"
+        },
+        {
+          "source": "conditional",
+          "line": 135,
+          "condition": "($continue == FALSE)"
+        },
+        {
+          "source": "conditional",
+          "line": 139,
+          "condition": "($continue == TRUE)"
+        },
+        {
+          "source": "conditional",
+          "line": 220,
+          "condition": "($continue == FALSE)"
+        }
+      ],
+      "condition_indexes": [
+        7,
+        10,
+        11,
+        12,
+        16
+      ]
+    },
+    {
+      "id": "install/index.php:LCP108",
+      "path": "install/index.php",
+      "expression": "$connection",
+      "aliases": [
+        "$connection"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 118,
+          "condition": "(!$connection = @mysql_connect($data['db_host'], $data['db_user'], $data['db_password']))"
+        },
+        {
+          "source": "conditional",
+          "line": 122,
+          "condition": "(!@mysql_select_db($data['db_name'], $connection))"
+        }
+      ],
+      "condition_indexes": [
+        8,
+        9
+      ]
+    },
+    {
+      "id": "install/index.php:LCP109",
+      "path": "install/index.php",
+      "expression": "$data['db_host']",
+      "aliases": [
+        "$data['db_host']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 118,
+          "condition": "(!$connection = @mysql_connect($data['db_host'], $data['db_user'], $data['db_password']))"
+        }
+      ],
+      "condition_indexes": [
+        8
+      ]
+    },
+    {
+      "id": "install/index.php:LCP110",
+      "path": "install/index.php",
+      "expression": "$data['db_user']",
+      "aliases": [
+        "$data['db_user']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 118,
+          "condition": "(!$connection = @mysql_connect($data['db_host'], $data['db_user'], $data['db_password']))"
+        }
+      ],
+      "condition_indexes": [
+        8
+      ]
+    },
+    {
+      "id": "install/index.php:LCP111",
+      "path": "install/index.php",
+      "expression": "$data['db_password']",
+      "aliases": [
+        "$data['db_password']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 118,
+          "condition": "(!$connection = @mysql_connect($data['db_host'], $data['db_user'], $data['db_password']))"
+        }
+      ],
+      "condition_indexes": [
+        8
+      ]
+    },
+    {
+      "id": "install/index.php:LCP112",
+      "path": "install/index.php",
+      "expression": "$data['db_name']",
+      "aliases": [
+        "$data['db_name']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 122,
+          "condition": "(!@mysql_select_db($data['db_name'], $connection))"
+        }
+      ],
+      "condition_indexes": [
+        9
+      ]
+    },
+    {
+      "id": "install/index.php:LCP113",
+      "path": "install/index.php",
+      "expression": "$filec",
+      "aliases": [
+        "$filec"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 208,
+          "condition": "($filec = @fopen(\"../inc/config.php\",'w'))"
+        },
+        {
+          "source": "conditional",
+          "line": 210,
+          "condition": "(!@fwrite($filec, $fcontent))"
+        }
+      ],
+      "condition_indexes": [
+        14,
+        15
+      ]
+    },
+    {
+      "id": "install/index.php:LCP114",
+      "path": "install/index.php",
+      "expression": "$fcontent",
+      "aliases": [
+        "$fcontent",
+        "$content",
+        "$license_txt"
+      ],
+      "database_relations": [
+        {
+          "table": "",
+          "field": "",
+          "line": 144
+        },
+        {
+          "table": "",
+          "field": "",
+          "line": 228
+        },
+        {
+          "table": "",
+          "field": "readonly",
+          "line": 228
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 210,
+          "condition": "(!@fwrite($filec, $fcontent))"
+        }
+      ],
+      "condition_indexes": [
+        15
+      ]
+    },
+    {
+      "id": "install/index.php:LCP115",
+      "path": "install/index.php",
+      "expression": "$data['db_tableprefix']",
+      "aliases": [
+        "$data['db_tableprefix']"
+      ],
+      "database_relations": [
+        {
+          "table": "",
+          "field": "value",
+          "line": 17
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 10,
+          "condition": "(!$data['db_tableprefix'])"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "install/index.php:LCP116",
+      "path": "install/index.php",
+      "expression": "$data['db_host']",
+      "aliases": [
+        "$data['db_host']"
+      ],
+      "database_relations": [
+        {
+          "table": "",
+          "field": "value",
+          "line": 17
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 13,
+          "condition": "(!$data['db_host'])"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "install/upgrade.php:LCP117",
+      "path": "install/upgrade.php",
+      "expression": "$_GET[step]",
+      "aliases": [
+        "$_GET[step]"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 16,
+          "condition": "(!$_GET[step])"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "install/upgrade.php:LCP118",
+      "path": "install/upgrade.php",
+      "expression": "$_POST",
+      "aliases": [
+        "$_POST"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 55,
+          "condition": "($_POST)"
+        }
+      ],
+      "condition_indexes": [
+        3
+      ]
+    },
+    {
+      "id": "install/upgrade.php:LCP119",
+      "path": "install/upgrade.php",
+      "expression": "$step",
+      "aliases": [
+        "$step",
+        "$_GET['step']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 110,
+          "condition": "($step == 1)"
+        },
+        {
+          "source": "conditional",
+          "line": 151,
+          "condition": "($step == 2)"
+        }
+      ],
+      "condition_indexes": [
+        6,
+        7
+      ]
+    },
+    {
+      "id": "login.php:LCP120",
+      "path": "login.php",
+      "expression": "$_SESSION['username']",
+      "aliases": [
+        "$_SESSION['username']",
+        "$fdata['user_name']"
+      ],
+      "database_relations": [
+        {
+          "table": "",
+          "field": "i",
+          "line": 135
+        }
+      ],
+      "sources": [
+        "database"
+      ],
+      "locations": [
+        {
+          "source": "database",
+          "line": 88,
+          "condition": "$_SESSION['username']"
+        },
+        {
+          "source": "database",
+          "line": 120,
+          "condition": "$_SESSION['username']"
+        },
+        {
+          "source": "database",
+          "line": 127,
+          "condition": "$_SESSION['username']"
+        }
+      ],
+      "condition_indexes": [
+        0,
+        2,
+        3
+      ]
+    },
+    {
+      "id": "login.php:LCP121",
+      "path": "login.php",
+      "expression": "$_SESSION['userID']",
+      "aliases": [
+        "$_SESSION['userID']",
+        "$fdata['id']"
+      ],
+      "database_relations": [
+        {
+          "table": "",
+          "field": "",
+          "line": 99
+        }
+      ],
+      "sources": [
+        "database"
+      ],
+      "locations": [
+        {
+          "source": "database",
+          "line": 89,
+          "condition": "$_SESSION['userID']"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "login.php:LCP122",
+      "path": "login.php",
+      "expression": "$_GET['m']",
+      "aliases": [
+        "$_GET['m']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 17,
+          "condition": "($_GET['m'] == \"out\")"
+        },
+        {
+          "source": "conditional",
+          "line": 19,
+          "condition": "($_GET['m'] == \"nologin\")"
+        }
+      ],
+      "condition_indexes": [
+        4,
+        5
+      ]
+    },
+    {
+      "id": "login.php:LCP123",
+      "path": "login.php",
+      "expression": "$do",
+      "aliases": [
+        "$do",
+        "$_GET['do']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 23,
+          "condition": "(!$do)"
+        },
+        {
+          "source": "conditional",
+          "line": 40,
+          "condition": "($do == \"p\")"
+        },
+        {
+          "source": "conditional",
+          "line": 126,
+          "condition": "($do == \"logout\")"
+        }
+      ],
+      "condition_indexes": [
+        6,
+        7,
+        11
+      ]
+    },
+    {
+      "id": "login.php:LCP124",
+      "path": "login.php",
+      "expression": "$lnumcheck",
+      "aliases": [
+        "$lnumcheck"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 49,
+          "condition": "($lnumcheck == 0)"
+        }
+      ],
+      "condition_indexes": [
+        8
+      ]
+    },
+    {
+      "id": "login.php:LCP125",
+      "path": "login.php",
+      "expression": "$loginvar['remember']",
+      "aliases": [
+        "$loginvar['remember']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 95,
+          "condition": "($loginvar['remember'])"
+        }
+      ],
+      "condition_indexes": [
+        9
+      ]
+    },
+    {
+      "id": "login.php:LCP126",
+      "path": "login.php",
+      "expression": "$rdata['permissions'][8]",
+      "aliases": [
+        "$rdata['permissions'][8]"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 113,
+          "condition": "($rdata['permissions'][8] == 0)"
+        }
+      ],
+      "condition_indexes": [
+        10
+      ]
+    },
+    {
+      "id": "manage.php:LCP127",
+      "path": "manage.php",
+      "expression": "$_SESSION['username']",
+      "aliases": [
+        "$_SESSION['username']"
+      ],
+      "database_relations": [
+        {
+          "table": "",
+          "field": "i",
+          "line": 135
+        }
+      ],
+      "sources": [
+        "database"
+      ],
+      "locations": [
+        {
+          "source": "database",
+          "line": 82,
+          "condition": "$_SESSION['username']"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "manage.php:LCP128",
+      "path": "manage.php",
+      "expression": "$page",
+      "aliases": [
+        "$page",
+        "$_GET['page']",
+        "$next_page",
+        "$prev_page"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 17,
+          "condition": "(!$page)"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "manage.php:LCP129",
+      "path": "manage.php",
+      "expression": "$do",
+      "aliases": [
+        "$do",
+        "$_GET['do']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 30,
+          "condition": "(!$do)"
+        },
+        {
+          "source": "conditional",
+          "line": 61,
+          "condition": "($do == \"deleteitems\")"
+        },
+        {
+          "source": "conditional",
+          "line": 87,
+          "condition": "($do == \"search\")"
+        }
+      ],
+      "condition_indexes": [
+        2,
+        7,
+        10
+      ]
+    },
+    {
+      "id": "manage.php:LCP130",
+      "path": "manage.php",
+      "expression": "$item_list",
+      "aliases": [
+        "$item_list"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 36,
+          "condition": "(mysql_num_rows($item_list) == NULL)"
+        }
+      ],
+      "condition_indexes": [
+        3
+      ]
+    },
+    {
+      "id": "manage.php:LCP131",
+      "path": "manage.php",
+      "expression": "$item_row['active']",
+      "aliases": [
+        "$item_row['active']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 47,
+          "condition": "($item_row['active'] == 1)"
+        },
+        {
+          "source": "conditional",
+          "line": 47,
+          "condition": "($item_row['active'] == 0)"
+        },
+        {
+          "source": "conditional",
+          "line": 112,
+          "condition": "($item_row['active'] == 1)"
+        },
+        {
+          "source": "conditional",
+          "line": 112,
+          "condition": "($item_row['active'] == 0)"
+        }
+      ],
+      "condition_indexes": [
+        4,
+        5,
+        15,
+        16
+      ]
+    },
+    {
+      "id": "manage.php:LCP132",
+      "path": "manage.php",
+      "expression": "$item_row['approved']",
+      "aliases": [
+        "$item_row['approved']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 48,
+          "condition": "($item_row['approved'] == 0)"
+        },
+        {
+          "source": "conditional",
+          "line": 113,
+          "condition": "($item_row['approved'] == 0)"
+        }
+      ],
+      "condition_indexes": [
+        6,
+        17
+      ]
+    },
+    {
+      "id": "manage.php:LCP133",
+      "path": "manage.php",
+      "expression": "$globalvars['rank'][16]",
+      "aliases": [
+        "$globalvars['rank'][16]"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 64,
+          "condition": "($globalvars['rank'][16] == 0)"
+        }
+      ],
+      "condition_indexes": [
+        8
+      ]
+    },
+    {
+      "id": "manage.php:LCP134",
+      "path": "manage.php",
+      "expression": "$items",
+      "aliases": [
+        "$items",
+        "$_POST"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 69,
+          "condition": "(!$items)"
+        }
+      ],
+      "condition_indexes": [
+        9
+      ]
+    },
+    {
+      "id": "manage.php:LCP135",
+      "path": "manage.php",
+      "expression": "$search['query']",
+      "aliases": [
+        "$search['query']",
+        "$_GET['q']",
+        "$_POST['query']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 92,
+          "condition": "($search['query'] == \"\")"
+        },
+        {
+          "source": "conditional",
+          "line": 96,
+          "condition": "($search['query'] == \"click here to start the search...\" || $search['query'] == \"\")"
+        }
+      ],
+      "condition_indexes": [
+        11,
+        13
+      ]
+    },
+    {
+      "id": "manage.php:LCP136",
+      "path": "manage.php",
+      "expression": "$search['category']",
+      "aliases": [
+        "$search['category']",
+        "$_GET['c']",
+        "$_POST['category']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 94,
+          "condition": "(!$search['category'])"
+        }
+      ],
+      "condition_indexes": [
+        12
+      ]
+    },
+    {
+      "id": "manage.php:LCP137",
+      "path": "manage.php",
+      "expression": "$searchres",
+      "aliases": [
+        "$searchres"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 102,
+          "condition": "(mysql_num_rows($searchres) == 0)"
+        }
+      ],
+      "condition_indexes": [
+        14
+      ]
+    },
+    {
+      "id": "preferences.php:LCP138",
+      "path": "preferences.php",
+      "expression": "$_SESSION['username']",
+      "aliases": [
+        "$_SESSION['username']"
+      ],
+      "database_relations": [
+        {
+          "table": "",
+          "field": "i",
+          "line": 135
+        }
+      ],
+      "sources": [
+        "database"
+      ],
+      "locations": [
+        {
+          "source": "database",
+          "line": 77,
+          "condition": "$_SESSION['username']"
+        },
+        {
+          "source": "database",
+          "line": 92,
+          "condition": "$_SESSION['username']"
+        },
+        {
+          "source": "database",
+          "line": 160,
+          "condition": "$_SESSION['username']"
+        },
+        {
+          "source": "database",
+          "line": 246,
+          "condition": "$_SESSION['username']"
+        },
+        {
+          "source": "database",
+          "line": 341,
+          "condition": "$_SESSION['username']"
+        },
+        {
+          "source": "database",
+          "line": 514,
+          "condition": "$_SESSION['username']"
+        },
+        {
+          "source": "database",
+          "line": 537,
+          "condition": "$_SESSION['username']"
+        },
+        {
+          "source": "database",
+          "line": 574,
+          "condition": "$_SESSION['username']"
+        },
+        {
+          "source": "database",
+          "line": 585,
+          "condition": "$_SESSION['username']"
+        },
+        {
+          "source": "database",
+          "line": 763,
+          "condition": "$_SESSION['username']"
+        },
+        {
+          "source": "database",
+          "line": 797,
+          "condition": "$_SESSION['username']"
+        },
+        {
+          "source": "database",
+          "line": 851,
+          "condition": "$_SESSION['username']"
+        },
+        {
+          "source": "database",
+          "line": 922,
+          "condition": "$_SESSION['username']"
+        },
+        {
+          "source": "database",
+          "line": 957,
+          "condition": "$_SESSION['username']"
+        },
+        {
+          "source": "database",
+          "line": 985,
+          "condition": "$_SESSION['username']"
+        },
+        {
+          "source": "database",
+          "line": 1022,
+          "condition": "$_SESSION['username']"
+        }
+      ],
+      "condition_indexes": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ]
+    },
+    {
+      "id": "preferences.php:LCP139",
+      "path": "preferences.php",
+      "expression": "$globalvars['rank'][6]",
+      "aliases": [
+        "$globalvars['rank'][6]"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 16,
+          "condition": "($globalvars['rank'][6] == 0)"
+        }
+      ],
+      "condition_indexes": [
+        16
+      ]
+    },
+    {
+      "id": "preferences.php:LCP140",
+      "path": "preferences.php",
+      "expression": "$do",
+      "aliases": [
+        "$do",
+        "$_GET['do']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 21,
+          "condition": "(!$do)"
+        },
+        {
+          "source": "conditional",
+          "line": 66,
+          "condition": "($do == \"categories\")"
+        },
+        {
+          "source": "conditional",
+          "line": 146,
+          "condition": "($do == \"display\")"
+        },
+        {
+          "source": "conditional",
+          "line": 233,
+          "condition": "($do == \"comments\")"
+        },
+        {
+          "source": "conditional",
+          "line": 328,
+          "condition": "($do == \"rss\")"
+        },
+        {
+          "source": "conditional",
+          "line": 436,
+          "condition": "($do == \"templates\")"
+        },
+        {
+          "source": "conditional",
+          "line": 545,
+          "condition": "($do == \"sef\")"
+        },
+        {
+          "source": "conditional",
+          "line": 562,
+          "condition": "($do == \"ban\")"
+        },
+        {
+          "source": "conditional",
+          "line": 630,
+          "condition": "($do == \"wizard\")"
+        },
+        {
+          "source": "conditional",
+          "line": 734,
+          "condition": "($do == \"syslog\")"
+        },
+        {
+          "source": "conditional",
+          "line": 753,
+          "condition": "($do == \"backup\")"
+        },
+        {
+          "source": "conditional",
+          "line": 821,
+          "condition": "($do == \"images\")"
+        },
+        {
+          "source": "conditional",
+          "line": 826,
+          "condition": "($do == \"themes\")"
+        },
+        {
+          "source": "conditional",
+          "line": 915,
+          "condition": "($do == \"wysiwyg\")"
+        },
+        {
+          "source": "conditional",
+          "line": 950,
+          "condition": "($do == \"timestamp\")"
+        },
+        {
+          "source": "conditional",
+          "line": 977,
+          "condition": "($do == \"line\")"
+        },
+        {
+          "source": "conditional",
+          "line": 1014,
+          "condition": "($do == \"globalmessage\")"
+        }
+      ],
+      "condition_indexes": [
+        17,
+        18,
+        23,
+        27,
+        33,
+        39,
+        52,
+        53,
+        57,
+        59,
+        61,
+        65,
+        66,
+        71,
+        73,
+        75,
+        77
+      ]
+    },
+    {
+      "id": "preferences.php:LCP141",
+      "path": "preferences.php",
+      "expression": "$action",
+      "aliases": [
+        "$action",
+        "$_GET['action']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 69,
+          "condition": "($action == \"new\")"
+        },
+        {
+          "source": "conditional",
+          "line": 81,
+          "condition": "($action == \"deleteitems\")"
+        },
+        {
+          "source": "conditional",
+          "line": 151,
+          "condition": "($_GET['action'] == \"update\")"
+        },
+        {
+          "source": "conditional",
+          "line": 238,
+          "condition": "($_GET['action'] == \"update\")"
+        },
+        {
+          "source": "conditional",
+          "line": 331,
+          "condition": "($_GET['action'] == \"update\")"
+        },
+        {
+          "source": "conditional",
+          "line": 442,
+          "condition": "($action == \"switch\")"
+        },
+        {
+          "source": "conditional",
+          "line": 453,
+          "condition": "(!$action)"
+        },
+        {
+          "source": "conditional",
+          "line": 498,
+          "condition": "($action == \"new\")"
+        },
+        {
+          "source": "conditional",
+          "line": 502,
+          "condition": "($action == \"newp\")"
+        },
+        {
+          "source": "conditional",
+          "line": 521,
+          "condition": "($action == \"edit\")"
+        },
+        {
+          "source": "conditional",
+          "line": 525,
+          "condition": "($action == \"editp\")"
+        },
+        {
+          "source": "conditional",
+          "line": 566,
+          "condition": "($_GET['action'] == 'newp')"
+        },
+        {
+          "source": "conditional",
+          "line": 576,
+          "condition": "($_GET['action'] == \"delete\")"
+        },
+        {
+          "source": "conditional",
+          "line": 634,
+          "condition": "($_GET['action'] == \"p\")"
+        },
+        {
+          "source": "conditional",
+          "line": 757,
+          "condition": "($_GET['action'] == \"backup\")"
+        },
+        {
+          "source": "conditional",
+          "line": 786,
+          "condition": "($_GET['action'] == \"restore\")"
+        },
+        {
+          "source": "conditional",
+          "line": 832,
+          "condition": "($action == \"switch\" && $path != \"\")"
+        },
+        {
+          "source": "conditional",
+          "line": 918,
+          "condition": "($_GET['action'] == 'update')"
+        },
+        {
+          "source": "conditional",
+          "line": 953,
+          "condition": "($_GET['action'] == 'update')"
+        },
+        {
+          "source": "conditional",
+          "line": 980,
+          "condition": "($_GET['action'] == 'update')"
+        },
+        {
+          "source": "conditional",
+          "line": 1018,
+          "condition": "($_GET['action'] == \"update\")"
+        }
+      ],
+      "condition_indexes": [
+        19,
+        22,
+        24,
+        28,
+        34,
+        40,
+        42,
+        44,
+        45,
+        48,
+        49,
+        54,
+        56,
+        58,
+        62,
+        63,
+        67,
+        72,
+        74,
+        76,
+        78
+      ]
+    },
+    {
+      "id": "preferences.php:LCP142",
+      "path": "preferences.php",
+      "expression": "$data['name']",
+      "aliases": [
+        "$data['name']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 71,
+          "condition": "(empty($data['name']))"
+        }
+      ],
+      "condition_indexes": [
+        20
+      ]
+    },
+    {
+      "id": "preferences.php:LCP143",
+      "path": "preferences.php",
+      "expression": "$proceed",
+      "aliases": [
+        "$proceed"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 76,
+          "condition": "($proceed != \"no\")"
+        }
+      ],
+      "condition_indexes": [
+        21
+      ]
+    },
+    {
+      "id": "preferences.php:LCP144",
+      "path": "preferences.php",
+      "expression": "$def_order['v1']",
+      "aliases": [
+        "$def_order['v1']"
+      ],
+      "database_relations": [
+        {
+          "table": "",
+          "field": "value",
+          "line": 176
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 170,
+          "condition": "($def_order['v1'] == \"desc\")"
+        },
+        {
+          "source": "conditional",
+          "line": 172,
+          "condition": "($def_order['v1'] == \"asc\")"
+        }
+      ],
+      "condition_indexes": [
+        25,
+        26
+      ]
+    },
+    {
+      "id": "preferences.php:LCP145",
+      "path": "preferences.php",
+      "expression": "$def_comorder['v1']",
+      "aliases": [
+        "$def_comorder['v1']"
+      ],
+      "database_relations": [
+        {
+          "table": "",
+          "field": "value",
+          "line": 266
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 254,
+          "condition": "($def_comorder['v1'] == \"desc\")"
+        },
+        {
+          "source": "conditional",
+          "line": 256,
+          "condition": "($def_comorder['v1'] == \"asc\")"
+        }
+      ],
+      "condition_indexes": [
+        29,
+        30
+      ]
+    },
+    {
+      "id": "preferences.php:LCP146",
+      "path": "preferences.php",
+      "expression": "$def_comenabled['v1']",
+      "aliases": [
+        "$def_comenabled['v1']"
+      ],
+      "database_relations": [
+        {
+          "table": "",
+          "field": "value",
+          "line": 266
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 260,
+          "condition": "($def_comenabled['v1'] == 0)"
+        },
+        {
+          "source": "conditional",
+          "line": 262,
+          "condition": "($def_comenabled['v1'] == 1)"
+        }
+      ],
+      "condition_indexes": [
+        31,
+        32
+      ]
+    },
+    {
+      "id": "preferences.php:LCP147",
+      "path": "preferences.php",
+      "expression": "$def_rssorder['v1']",
+      "aliases": [
+        "$def_rssorder['v1']"
+      ],
+      "database_relations": [
+        {
+          "table": "",
+          "field": "value",
+          "line": 363
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 351,
+          "condition": "($def_rssorder['v1'] == \"desc\")"
+        },
+        {
+          "source": "conditional",
+          "line": 353,
+          "condition": "($def_rssorder['v1'] == \"asc\")"
+        }
+      ],
+      "condition_indexes": [
+        35,
+        36
+      ]
+    },
+    {
+      "id": "preferences.php:LCP148",
+      "path": "preferences.php",
+      "expression": "$def_rssenabled['v1']",
+      "aliases": [
+        "$def_rssenabled['v1']"
+      ],
+      "database_relations": [
+        {
+          "table": "",
+          "field": "value",
+          "line": 363
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 357,
+          "condition": "($def_rssenabled['v1'] == 0)"
+        },
+        {
+          "source": "conditional",
+          "line": 359,
+          "condition": "($def_rssenabled['v1'] == 1)"
+        }
+      ],
+      "condition_indexes": [
+        37,
+        38
+      ]
+    },
+    {
+      "id": "preferences.php:LCP149",
+      "path": "preferences.php",
+      "expression": "$sw_id",
+      "aliases": [
+        "$sw_id",
+        "$_POST['select']"
+      ],
+      "database_relations": [
+        {
+          "table": "",
+          "field": "sw_id",
+          "line": 443
+        },
+        {
+          "table": "",
+          "field": "",
+          "line": 443
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 445,
+          "condition": "(switch_template($sw_id))"
+        }
+      ],
+      "condition_indexes": [
+        41
+      ]
+    },
+    {
+      "id": "preferences.php:LCP150",
+      "path": "preferences.php",
+      "expression": "$trow['template_selected']",
+      "aliases": [
+        "$trow['template_selected']"
+      ],
+      "database_relations": [
+        {
+          "table": "",
+          "field": "",
+          "line": 463
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 460,
+          "condition": "($trow['template_selected'] == TRUE)"
+        }
+      ],
+      "condition_indexes": [
+        43
+      ]
+    },
+    {
+      "id": "preferences.php:LCP151",
+      "path": "preferences.php",
+      "expression": "$data['template_name']",
+      "aliases": [
+        "$data['template_name']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 505,
+          "condition": "($data['template_name'] == \"\")"
+        },
+        {
+          "source": "conditional",
+          "line": 528,
+          "condition": "($data['template_name'] == NULL)"
+        }
+      ],
+      "condition_indexes": [
+        46,
+        50
+      ]
+    },
+    {
+      "id": "preferences.php:LCP152",
+      "path": "preferences.php",
+      "expression": "$continue",
+      "aliases": [
+        "$continue"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 510,
+          "condition": "($continue == TRUE)"
+        },
+        {
+          "source": "conditional",
+          "line": 533,
+          "condition": "($continue == TRUE)"
+        }
+      ],
+      "condition_indexes": [
+        47,
+        51
+      ]
+    },
+    {
+      "id": "preferences.php:LCP153",
+      "path": "preferences.php",
+      "expression": "$data['ip']",
+      "aliases": [
+        "$data['ip']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 571,
+          "condition": "(!$data['ip'] || !preg_match('/^[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}$/', $data['ip']))"
+        }
+      ],
+      "condition_indexes": [
+        55
+      ]
+    },
+    {
+      "id": "preferences.php:LCP154",
+      "path": "preferences.php",
+      "expression": "$page",
+      "aliases": [
+        "$page",
+        "$_GET['page']",
+        "$next_page",
+        "$prev_page"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 739,
+          "condition": "(!$page)"
+        }
+      ],
+      "condition_indexes": [
+        60
+      ]
+    },
+    {
+      "id": "preferences.php:LCP155",
+      "path": "preferences.php",
+      "expression": "$_FILES['file']['tmp_name']",
+      "aliases": [
+        "$_FILES['file']['tmp_name']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 789,
+          "condition": "(move_uploaded_file($_FILES['file']['tmp_name'], $target_path))"
+        }
+      ],
+      "condition_indexes": [
+        64
+      ]
+    },
+    {
+      "id": "preferences.php:LCP156",
+      "path": "preferences.php",
+      "expression": "$target_path",
+      "aliases": [
+        "$target_path"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 789,
+          "condition": "(move_uploaded_file($_FILES['file']['tmp_name'], $target_path))"
+        }
+      ],
+      "condition_indexes": [
+        64
+      ]
+    },
+    {
+      "id": "preferences.php:LCP157",
+      "path": "preferences.php",
+      "expression": "$path",
+      "aliases": [
+        "$path",
+        "$_POST['path']",
+        "$theme_path"
+      ],
+      "database_relations": [
+        {
+          "table": "",
+          "field": "",
+          "line": 841
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 832,
+          "condition": "($action == \"switch\" && $path != \"\")"
+        }
+      ],
+      "condition_indexes": [
+        67
+      ]
+    },
+    {
+      "id": "preferences.php:LCP158",
+      "path": "preferences.php",
+      "expression": "$value",
+      "aliases": [
+        "$value",
+        "$radio"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 858,
+          "condition": "(is_dir(\"themes/$value\") == true && $value != '.' && $value != '..')"
+        },
+        {
+          "source": "conditional",
+          "line": 875,
+          "condition": "(is_file(\"themes/$value/theme.xml\"))"
+        }
+      ],
+      "condition_indexes": [
+        68,
+        69
+      ]
+    },
+    {
+      "id": "preferences.php:LCP159",
+      "path": "preferences.php",
+      "expression": "$themeinfo->name",
+      "aliases": [
+        "$themeinfo->name"
+      ],
+      "database_relations": [
+        {
+          "table": "",
+          "field": "",
+          "line": 841
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 883,
+          "condition": "(\"$themeinfo->name\" == $stheme['theme_name'])"
+        }
+      ],
+      "condition_indexes": [
+        70
+      ]
+    },
+    {
+      "id": "preferences.php:LCP160",
+      "path": "preferences.php",
+      "expression": "$stheme['theme_name']",
+      "aliases": [
+        "$stheme['theme_name']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 883,
+          "condition": "(\"$themeinfo->name\" == $stheme['theme_name'])"
+        }
+      ],
+      "condition_indexes": [
+        70
+      ]
+    },
+    {
+      "id": "shownews.php:LCP161",
+      "path": "shownews.php",
+      "expression": "$do",
+      "aliases": [
+        "$do"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 37,
+          "condition": "(!$do && !strstr($_GET['a'], 'page:'))"
+        },
+        {
+          "source": "conditional",
+          "line": 339,
+          "condition": "(((!$do || $do == 'rss') && (!$id || $id == 'do=rss')) || $static == TRUE)"
+        }
+      ],
+      "condition_indexes": [
+        0,
+        18
+      ]
+    },
+    {
+      "id": "shownews.php:LCP162",
+      "path": "shownews.php",
+      "expression": "$_GET['a']",
+      "aliases": [
+        "$_GET['a']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 37,
+          "condition": "(!$do && !strstr($_GET['a'], 'page:'))"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "shownews.php:LCP163",
+      "path": "shownews.php",
+      "expression": "$sef_override",
+      "aliases": [
+        "$sef_override"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 46,
+          "condition": "($sef_override == FALSE)"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "shownews.php:LCP164",
+      "path": "shownews.php",
+      "expression": "$id",
+      "aliases": [
+        "$id",
+        "$inject_error",
+        "$title_id",
+        "$where_spec"
+      ],
+      "database_relations": [
+        {
+          "table": "",
+          "field": "article_id",
+          "line": 486
+        },
+        {
+          "table": "",
+          "field": "article_title",
+          "line": 315
+        },
+        {
+          "table": "",
+          "field": "article_title",
+          "line": 483
+        },
+        {
+          "table": "",
+          "field": "",
+          "line": 456
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 47,
+          "condition": "(!is_numeric($id) && $id && $id != 'do=rss')"
+        },
+        {
+          "source": "conditional",
+          "line": 58,
+          "condition": "($id && substr($id,strlen($id)-1,1) == '/')"
+        },
+        {
+          "source": "conditional",
+          "line": 339,
+          "condition": "(((!$do || $do == 'rss') && (!$id || $id == 'do=rss')) || $static == TRUE)"
+        },
+        {
+          "source": "conditional",
+          "line": 444,
+          "condition": "($id && !$mode && $static == FALSE)"
+        }
+      ],
+      "condition_indexes": [
+        2,
+        3,
+        18,
+        33
+      ]
+    },
+    {
+      "id": "shownews.php:LCP165",
+      "path": "shownews.php",
+      "expression": "$siteonline['v1']",
+      "aliases": [
+        "$siteonline['v1']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 278,
+          "condition": "($siteonline['v1'] == 'no')"
+        }
+      ],
+      "condition_indexes": [
+        10
+      ]
+    },
+    {
+      "id": "shownews.php:LCP166",
+      "path": "shownews.php",
+      "expression": "$ip['ip']",
+      "aliases": [
+        "$ip['ip']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 283,
+          "condition": "($ip['ip'] == $_SERVER['REMOTE_ADDR'])"
+        }
+      ],
+      "condition_indexes": [
+        11
+      ]
+    },
+    {
+      "id": "shownews.php:LCP167",
+      "path": "shownews.php",
+      "expression": "$_SERVER['REMOTE_ADDR']",
+      "aliases": [
+        "$_SERVER['REMOTE_ADDR']",
+        "$ip"
+      ],
+      "database_relations": [
+        {
+          "table": "",
+          "field": "",
+          "line": 325
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 283,
+          "condition": "($ip['ip'] == $_SERVER['REMOTE_ADDR'])"
+        }
+      ],
+      "condition_indexes": [
+        11
+      ]
+    },
+    {
+      "id": "shownews.php:LCP168",
+      "path": "shownews.php",
+      "expression": "$_POST",
+      "aliases": [
+        "$_POST"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 297,
+          "condition": "($_POST && $static != TRUE)"
+        }
+      ],
+      "condition_indexes": [
+        12
+      ]
+    },
+    {
+      "id": "shownews.php:LCP169",
+      "path": "shownews.php",
+      "expression": "$static",
+      "aliases": [
+        "$static"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 297,
+          "condition": "($_POST && $static != TRUE)"
+        },
+        {
+          "source": "conditional",
+          "line": 339,
+          "condition": "(((!$do || $do == 'rss') && (!$id || $id == 'do=rss')) || $static == TRUE)"
+        },
+        {
+          "source": "conditional",
+          "line": 444,
+          "condition": "($id && !$mode && $static == FALSE)"
+        },
+        {
+          "source": "conditional",
+          "line": 497,
+          "condition": "(($allow_com['v1'] == TRUE && $allow_com['article_specific'] == 1 && $static != TRUE) || $comment_override == TRUE && $static != TRUE)"
+        }
+      ],
+      "condition_indexes": [
+        12,
+        18,
+        33,
+        40
+      ]
+    },
+    {
+      "id": "shownews.php:LCP170",
+      "path": "shownews.php",
+      "expression": "$comment['name']",
+      "aliases": [
+        "$comment['name']"
+      ],
+      "database_relations": [
+        {
+          "table": "",
+          "field": "",
+          "line": 325
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 305,
+          "condition": "(!$comment['name'] || !$comment['email'] || !$comment['comment'] || !preg_match(\"/^[A-Za-z0-9_-]+@[A-Za-z0-9_-]+\\.([A-Za-z0-9_-][A-Za-z0-9_]+)$/\", $comment['email']))"
+        }
+      ],
+      "condition_indexes": [
+        13
+      ]
+    },
+    {
+      "id": "shownews.php:LCP171",
+      "path": "shownews.php",
+      "expression": "$comment['email']",
+      "aliases": [
+        "$comment['email']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 305,
+          "condition": "(!$comment['name'] || !$comment['email'] || !$comment['comment'] || !preg_match(\"/^[A-Za-z0-9_-]+@[A-Za-z0-9_-]+\\.([A-Za-z0-9_-][A-Za-z0-9_]+)$/\", $comment['email']))"
+        }
+      ],
+      "condition_indexes": [
+        13
+      ]
+    },
+    {
+      "id": "shownews.php:LCP172",
+      "path": "shownews.php",
+      "expression": "$comment['comment']",
+      "aliases": [
+        "$comment['comment']"
+      ],
+      "database_relations": [
+        {
+          "table": "",
+          "field": "",
+          "line": 325
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 305,
+          "condition": "(!$comment['name'] || !$comment['email'] || !$comment['comment'] || !preg_match(\"/^[A-Za-z0-9_-]+@[A-Za-z0-9_-]+\\.([A-Za-z0-9_-][A-Za-z0-9_]+)$/\", $comment['email']))"
+        }
+      ],
+      "condition_indexes": [
+        13
+      ]
+    },
+    {
+      "id": "shownews.php:LCP173",
+      "path": "shownews.php",
+      "expression": "$comment['captcha']",
+      "aliases": [
+        "$comment['captcha']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 309,
+          "condition": "($comment['captcha'] != base64_decode($comment['captcha_answer'])-(60-20) || !$comment['captcha'])"
+        }
+      ],
+      "condition_indexes": [
+        14
+      ]
+    },
+    {
+      "id": "shownews.php:LCP174",
+      "path": "shownews.php",
+      "expression": "$comment['captcha_answer']",
+      "aliases": [
+        "$comment['captcha_answer']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 309,
+          "condition": "($comment['captcha'] != base64_decode($comment['captcha_answer'])-(60-20) || !$comment['captcha'])"
+        }
+      ],
+      "condition_indexes": [
+        14
+      ]
+    },
+    {
+      "id": "shownews.php:LCP175",
+      "path": "shownews.php",
+      "expression": "$mod_rewrite",
+      "aliases": [
+        "$mod_rewrite"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 313,
+          "condition": "($mod_rewrite == TRUE)"
+        },
+        {
+          "source": "conditional",
+          "line": 323,
+          "condition": "(!is_numeric($comment['id']) && $mod_rewrite == FALSE)"
+        },
+        {
+          "source": "conditional",
+          "line": 448,
+          "condition": "($mod_rewrite == TRUE)"
+        },
+        {
+          "source": "conditional",
+          "line": 481,
+          "condition": "($mod_rewrite == TRUE)"
+        }
+      ],
+      "condition_indexes": [
+        15,
+        16,
+        35,
+        39
+      ]
+    },
+    {
+      "id": "shownews.php:LCP176",
+      "path": "shownews.php",
+      "expression": "$comment['id']",
+      "aliases": [
+        "$comment['id']",
+        "$article_id",
+        "$article_id['id']"
+      ],
+      "database_relations": [
+        {
+          "table": "",
+          "field": "article_id",
+          "line": 484
+        },
+        {
+          "table": "",
+          "field": "",
+          "line": 315
+        },
+        {
+          "table": "",
+          "field": "",
+          "line": 325
+        },
+        {
+          "table": "",
+          "field": "",
+          "line": 483
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 323,
+          "condition": "(!is_numeric($comment['id']) && $mod_rewrite == FALSE)"
+        }
+      ],
+      "condition_indexes": [
+        16
+      ]
+    },
+    {
+      "id": "shownews.php:LCP177",
+      "path": "shownews.php",
+      "expression": "$comment_continue",
+      "aliases": [
+        "$comment_continue"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 324,
+          "condition": "($comment_continue == TRUE)"
+        }
+      ],
+      "condition_indexes": [
+        17
+      ]
+    },
+    {
+      "id": "shownews.php:LCP178",
+      "path": "shownews.php",
+      "expression": "$category",
+      "aliases": [
+        "$category"
+      ],
+      "database_relations": [
+        {
+          "table": "",
+          "field": "",
+          "line": 377
+        },
+        {
+          "table": "",
+          "field": "",
+          "line": 386
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 342,
+          "condition": "($category)"
+        }
+      ],
+      "condition_indexes": [
+        19
+      ]
+    },
+    {
+      "id": "shownews.php:LCP179",
+      "path": "shownews.php",
+      "expression": "$offset",
+      "aliases": [
+        "$offset",
+        "$offset['v1']",
+        "$original_offset"
+      ],
+      "database_relations": [
+        {
+          "table": "",
+          "field": "",
+          "line": 343
+        },
+        {
+          "table": "",
+          "field": "",
+          "line": 386
+        },
+        {
+          "table": "",
+          "field": "",
+          "line": 377
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 343,
+          "condition": "(!$offset)"
+        }
+      ],
+      "condition_indexes": [
+        20
+      ]
+    },
+    {
+      "id": "shownews.php:LCP180",
+      "path": "shownews.php",
+      "expression": "$limit",
+      "aliases": [
+        "$limit",
+        "$limit['v1']",
+        "$rsslimit['v3']"
+      ],
+      "database_relations": [
+        {
+          "table": "",
+          "field": "",
+          "line": 344
+        },
+        {
+          "table": "",
+          "field": "",
+          "line": 377
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 344,
+          "condition": "(!$limit)"
+        }
+      ],
+      "condition_indexes": [
+        21
+      ]
+    },
+    {
+      "id": "shownews.php:LCP181",
+      "path": "shownews.php",
+      "expression": "$order",
+      "aliases": [
+        "$order",
+        "$order['v3']"
+      ],
+      "database_relations": [
+        {
+          "table": "",
+          "field": "",
+          "line": 345
+        },
+        {
+          "table": "",
+          "field": "",
+          "line": 372
+        },
+        {
+          "table": "",
+          "field": "",
+          "line": 386
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 345,
+          "condition": "(!$order)"
+        }
+      ],
+      "condition_indexes": [
+        22
+      ]
+    },
+    {
+      "id": "shownews.php:LCP182",
+      "path": "shownews.php",
+      "expression": "$items_per_page",
+      "aliases": [
+        "$items_per_page",
+        "$items_per_page['v1']"
+      ],
+      "database_relations": [
+        {
+          "table": "",
+          "field": "",
+          "line": 346
+        },
+        {
+          "table": "",
+          "field": "",
+          "line": 386
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 346,
+          "condition": "(!$items_per_page)"
+        }
+      ],
+      "condition_indexes": [
+        23
+      ]
+    },
+    {
+      "id": "shownews.php:LCP183",
+      "path": "shownews.php",
+      "expression": "$current_page",
+      "aliases": [
+        "$current_page",
+        "$page['next']",
+        "$page['previous']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 356,
+          "condition": "(!is_numeric($current_page) && !$current_page)"
+        },
+        {
+          "source": "conditional",
+          "line": 360,
+          "condition": "($current_page == 1)"
+        },
+        {
+          "source": "conditional",
+          "line": 422,
+          "condition": "($current_page > 1)"
+        },
+        {
+          "source": "conditional",
+          "line": 427,
+          "condition": "($current_page < $pages['page_num'])"
+        },
+        {
+          "source": "conditional",
+          "line": 433,
+          "condition": "($i == $current_page)"
+        }
+      ],
+      "condition_indexes": [
+        24,
+        25,
+        30,
+        31,
+        32
+      ]
+    },
+    {
+      "id": "shownews.php:LCP184",
+      "path": "shownews.php",
+      "expression": "$mode",
+      "aliases": [
+        "$mode"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 369,
+          "condition": "($mode == \"rss\")"
+        },
+        {
+          "source": "conditional",
+          "line": 402,
+          "condition": "($mode == 'rss')"
+        },
+        {
+          "source": "conditional",
+          "line": 415,
+          "condition": "(!$mode && $disable_pagination != TRUE)"
+        },
+        {
+          "source": "conditional",
+          "line": 444,
+          "condition": "($id && !$mode && $static == FALSE)"
+        },
+        {
+          "source": "conditional",
+          "line": 511,
+          "condition": "($mode == 'rss')"
+        }
+      ],
+      "condition_indexes": [
+        26,
+        28,
+        29,
+        33,
+        41
+      ]
+    },
+    {
+      "id": "shownews.php:LCP185",
+      "path": "shownews.php",
+      "expression": "$time",
+      "aliases": [
+        "$time"
+      ],
+      "database_relations": [
+        {
+          "table": "",
+          "field": "",
+          "line": 325
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 399,
+          "condition": "($time >= $row['start_date'] || $time <= $row['end_date']  || $row['start_date'] == NULL || $row['end_date'] == NULL)"
+        },
+        {
+          "source": "conditional",
+          "line": 470,
+          "condition": "($time >= $row['start_date'] || $time <= $row['end_date']  || $row['start_date'] == NULL || $row['end_date'] == NULL)"
+        }
+      ],
+      "condition_indexes": [
+        27,
+        37
+      ]
+    },
+    {
+      "id": "shownews.php:LCP186",
+      "path": "shownews.php",
+      "expression": "$row['start_date']",
+      "aliases": [
+        "$row['start_date']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 399,
+          "condition": "($time >= $row['start_date'] || $time <= $row['end_date']  || $row['start_date'] == NULL || $row['end_date'] == NULL)"
+        },
+        {
+          "source": "conditional",
+          "line": 470,
+          "condition": "($time >= $row['start_date'] || $time <= $row['end_date']  || $row['start_date'] == NULL || $row['end_date'] == NULL)"
+        }
+      ],
+      "condition_indexes": [
+        27,
+        37
+      ]
+    },
+    {
+      "id": "shownews.php:LCP187",
+      "path": "shownews.php",
+      "expression": "$row['end_date']",
+      "aliases": [
+        "$row['end_date']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 399,
+          "condition": "($time >= $row['start_date'] || $time <= $row['end_date']  || $row['start_date'] == NULL || $row['end_date'] == NULL)"
+        },
+        {
+          "source": "conditional",
+          "line": 470,
+          "condition": "($time >= $row['start_date'] || $time <= $row['end_date']  || $row['start_date'] == NULL || $row['end_date'] == NULL)"
+        }
+      ],
+      "condition_indexes": [
+        27,
+        37
+      ]
+    },
+    {
+      "id": "shownews.php:LCP188",
+      "path": "shownews.php",
+      "expression": "$disable_pagination",
+      "aliases": [
+        "$disable_pagination"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 415,
+          "condition": "(!$mode && $disable_pagination != TRUE)"
+        }
+      ],
+      "condition_indexes": [
+        29
+      ]
+    },
+    {
+      "id": "shownews.php:LCP189",
+      "path": "shownews.php",
+      "expression": "$pages['page_num']",
+      "aliases": [
+        "$pages['page_num']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 427,
+          "condition": "($current_page < $pages['page_num'])"
+        }
+      ],
+      "condition_indexes": [
+        31
+      ]
+    },
+    {
+      "id": "shownews.php:LCP190",
+      "path": "shownews.php",
+      "expression": "$i",
+      "aliases": [
+        "$i"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 433,
+          "condition": "($i == $current_page)"
+        }
+      ],
+      "condition_indexes": [
+        32
+      ]
+    },
+    {
+      "id": "shownews.php:LCP191",
+      "path": "shownews.php",
+      "expression": "$comment_override",
+      "aliases": [
+        "$comment_override"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 445,
+          "condition": "(!$comment_override)"
+        },
+        {
+          "source": "conditional",
+          "line": 497,
+          "condition": "(($allow_com['v1'] == TRUE && $allow_com['article_specific'] == 1 && $static != TRUE) || $comment_override == TRUE && $static != TRUE)"
+        }
+      ],
+      "condition_indexes": [
+        34,
+        40
+      ]
+    },
+    {
+      "id": "shownews.php:LCP192",
+      "path": "shownews.php",
+      "expression": "$fetch_news_res",
+      "aliases": [
+        "$fetch_news_res"
+      ],
+      "database_relations": [
+        {
+          "table": "",
+          "field": "",
+          "line": 386
+        },
+        {
+          "table": "",
+          "field": "",
+          "line": 456
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 462,
+          "condition": "(mysql_num_rows($fetch_news_res) == 0)"
+        }
+      ],
+      "condition_indexes": [
+        36
+      ]
+    },
+    {
+      "id": "shownews.php:LCP193",
+      "path": "shownews.php",
+      "expression": "$allow_com['v1']",
+      "aliases": [
+        "$allow_com['v1']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 480,
+          "condition": "($allow_com['v1'] == TRUE)"
+        },
+        {
+          "source": "conditional",
+          "line": 497,
+          "condition": "(($allow_com['v1'] == TRUE && $allow_com['article_specific'] == 1 && $static != TRUE) || $comment_override == TRUE && $static != TRUE)"
+        }
+      ],
+      "condition_indexes": [
+        38,
+        40
+      ]
+    },
+    {
+      "id": "shownews.php:LCP194",
+      "path": "shownews.php",
+      "expression": "$allow_com['article_specific']",
+      "aliases": [
+        "$allow_com['article_specific']",
+        "$row['allow_comments']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 497,
+          "condition": "(($allow_com['v1'] == TRUE && $allow_com['article_specific'] == 1 && $static != TRUE) || $comment_override == TRUE && $static != TRUE)"
+        }
+      ],
+      "condition_indexes": [
+        40
+      ]
+    },
+    {
+      "id": "shownews.php:LCP195",
+      "path": "shownews.php",
+      "expression": "$data",
+      "aliases": [
+        "$data"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 75,
+          "condition": "(is_array($data))"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "shownews.php:LCP196",
+      "path": "shownews.php",
+      "expression": "$data",
+      "aliases": [
+        "$data"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 89,
+          "condition": "(is_array($data))"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "shownews.php:LCP197",
+      "path": "shownews.php",
+      "expression": "$clean",
+      "aliases": [
+        "$clean"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 102,
+          "condition": "($clean == TRUE)"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "shownews.php:LCP198",
+      "path": "shownews.php",
+      "expression": "$type",
+      "aliases": [
+        "$type"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 108,
+          "condition": "($type == 1)"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "shownews.php:LCP199",
+      "path": "shownews.php",
+      "expression": "$template",
+      "aliases": [
+        "$template"
+      ],
+      "database_relations": [
+        {
+          "table": "",
+          "field": "id",
+          "line": 133
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 129,
+          "condition": "(!$template)"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "shownews.php:LCP200",
+      "path": "shownews.php",
+      "expression": "$type",
+      "aliases": [
+        "$type"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 171,
+          "condition": "($type == \"html_article\")"
+        },
+        {
+          "source": "conditional",
+          "line": 214,
+          "condition": "($type == \"html_comment\")"
+        },
+        {
+          "source": "conditional",
+          "line": 225,
+          "condition": "($type == \"html_form\")"
+        },
+        {
+          "source": "conditional",
+          "line": 243,
+          "condition": "($type == \"html_pagination\")"
+        },
+        {
+          "source": "conditional",
+          "line": 250,
+          "condition": "($type == \"rss\")"
+        }
+      ],
+      "condition_indexes": [
+        0,
+        3,
+        4,
+        6,
+        9
+      ]
+    },
+    {
+      "id": "shownews.php:LCP201",
+      "path": "shownews.php",
+      "expression": "$mod_rewrite",
+      "aliases": [
+        "$mod_rewrite"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 176,
+          "condition": "($mod_rewrite == TRUE)"
+        },
+        {
+          "source": "conditional",
+          "line": 228,
+          "condition": "($mod_rewrite == TRUE)"
+        },
+        {
+          "source": "conditional",
+          "line": 256,
+          "condition": "($mod_rewrite)"
+        }
+      ],
+      "condition_indexes": [
+        1,
+        5,
+        11
+      ]
+    },
+    {
+      "id": "shownews.php:LCP202",
+      "path": "shownews.php",
+      "expression": "$id",
+      "aliases": [
+        "$id",
+        "$rss_link",
+        "$url"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 186,
+          "condition": "($id && $disable_extended_article != TRUE)"
+        }
+      ],
+      "condition_indexes": [
+        2
+      ]
+    },
+    {
+      "id": "shownews.php:LCP203",
+      "path": "shownews.php",
+      "expression": "$disable_extended_article",
+      "aliases": [
+        "$disable_extended_article"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 186,
+          "condition": "($id && $disable_extended_article != TRUE)"
+        }
+      ],
+      "condition_indexes": [
+        2
+      ]
+    },
+    {
+      "id": "shownews.php:LCP204",
+      "path": "shownews.php",
+      "expression": "$item['previous']",
+      "aliases": [
+        "$item['previous']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 245,
+          "condition": "($item['previous'])"
+        }
+      ],
+      "condition_indexes": [
+        7
+      ]
+    },
+    {
+      "id": "shownews.php:LCP205",
+      "path": "shownews.php",
+      "expression": "$item['next']",
+      "aliases": [
+        "$item['next']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 246,
+          "condition": "($item['next'])"
+        }
+      ],
+      "condition_indexes": [
+        8
+      ]
+    },
+    {
+      "id": "shownews.php:LCP206",
+      "path": "shownews.php",
+      "expression": "$_SERVER['PHP_SELF']",
+      "aliases": [
+        "$_SERVER['PHP_SELF']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 252,
+          "condition": "(strstr($_SERVER['PHP_SELF'], 'etc.php'))"
+        }
+      ],
+      "condition_indexes": [
+        10
+      ]
+    },
+    {
+      "id": "showtitle.php:LCP207",
+      "path": "showtitle.php",
+      "expression": "$id",
+      "aliases": [
+        "$id",
+        "$_GET['a']",
+        "$inject_error"
+      ],
+      "database_relations": [
+        {
+          "table": "",
+          "field": "",
+          "line": 91
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 34,
+          "condition": "(!is_numeric($id) && $id && $id != 'do=rss')"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "showtitle.php:LCP208",
+      "path": "showtitle.php",
+      "expression": "$mod_rewrite",
+      "aliases": [
+        "$mod_rewrite"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 85,
+          "condition": "($mod_rewrite)"
+        }
+      ],
+      "condition_indexes": [
+        3
+      ]
+    },
+    {
+      "id": "showtitle.php:LCP209",
+      "path": "showtitle.php",
+      "expression": "$time",
+      "aliases": [
+        "$time"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 101,
+          "condition": "($time >= $row['start_date'] || $time <= $row['end_date']  || $row['start_date'] == NULL || $row['end_date'] == NULL)"
+        }
+      ],
+      "condition_indexes": [
+        4
+      ]
+    },
+    {
+      "id": "showtitle.php:LCP210",
+      "path": "showtitle.php",
+      "expression": "$row['start_date']",
+      "aliases": [
+        "$row['start_date']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 101,
+          "condition": "($time >= $row['start_date'] || $time <= $row['end_date']  || $row['start_date'] == NULL || $row['end_date'] == NULL)"
+        }
+      ],
+      "condition_indexes": [
+        4
+      ]
+    },
+    {
+      "id": "showtitle.php:LCP211",
+      "path": "showtitle.php",
+      "expression": "$row['end_date']",
+      "aliases": [
+        "$row['end_date']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 101,
+          "condition": "($time >= $row['start_date'] || $time <= $row['end_date']  || $row['start_date'] == NULL || $row['end_date'] == NULL)"
+        }
+      ],
+      "condition_indexes": [
+        4
+      ]
+    },
+    {
+      "id": "showtitle.php:LCP212",
+      "path": "showtitle.php",
+      "expression": "$data",
+      "aliases": [
+        "$data"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 58,
+          "condition": "(is_array($data))"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "showtitle.php:LCP213",
+      "path": "showtitle.php",
+      "expression": "$data",
+      "aliases": [
+        "$data"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 72,
+          "condition": "(is_array($data))"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "user.php:LCP214",
+      "path": "user.php",
+      "expression": "$_SESSION['username']",
+      "aliases": [
+        "$_SESSION['username']"
+      ],
+      "database_relations": [
+        {
+          "table": "",
+          "field": "i",
+          "line": 135
+        }
+      ],
+      "sources": [
+        "database"
+      ],
+      "locations": [
+        {
+          "source": "database",
+          "line": 400,
+          "condition": "$_SESSION['username']"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "user.php:LCP215",
+      "path": "user.php",
+      "expression": "$do",
+      "aliases": [
+        "$do",
+        "$_GET['do']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 15,
+          "condition": "(!$do)"
+        },
+        {
+          "source": "conditional",
+          "line": 88,
+          "condition": "($do == \"new\")"
+        },
+        {
+          "source": "conditional",
+          "line": 98,
+          "condition": "($do == \"newp\")"
+        },
+        {
+          "source": "conditional",
+          "line": 169,
+          "condition": "($do == \"deleteusers\")"
+        },
+        {
+          "source": "conditional",
+          "line": 187,
+          "condition": "($do == \"edit\")"
+        },
+        {
+          "source": "conditional",
+          "line": 206,
+          "condition": "($do == \"editp\")"
+        },
+        {
+          "source": "conditional",
+          "line": 278,
+          "condition": "($do == \"ranks\")"
+        },
+        {
+          "source": "conditional",
+          "line": 326,
+          "condition": "($do == \"deleteranks\")"
+        },
+        {
+          "source": "conditional",
+          "line": 343,
+          "condition": "($do == \"newrank\")"
+        },
+        {
+          "source": "conditional",
+          "line": 353,
+          "condition": "($do == \"nrankp\")"
+        },
+        {
+          "source": "conditional",
+          "line": 402,
+          "condition": "($do == \"editrank\")"
+        },
+        {
+          "source": "conditional",
+          "line": 449,
+          "condition": "($do == \"erankp\")"
+        },
+        {
+          "source": "conditional",
+          "line": 501,
+          "condition": "($do == \"loginrec\")"
+        }
+      ],
+      "condition_indexes": [
+        1,
+        4,
+        6,
+        15,
+        18,
+        21,
+        31,
+        33,
+        36,
+        38,
+        42,
+        47,
+        51
+      ]
+    },
+    {
+      "id": "user.php:LCP216",
+      "path": "user.php",
+      "expression": "$page",
+      "aliases": [
+        "$page",
+        "$_GET['page']",
+        "$next_page",
+        "$prev_page"
+      ],
+      "database_relations": [
+        {
+          "table": "",
+          "field": "page",
+          "line": 48
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 20,
+          "condition": "(!$page)"
+        },
+        {
+          "source": "conditional",
+          "line": 521,
+          "condition": "(!$page)"
+        }
+      ],
+      "condition_indexes": [
+        2,
+        54
+      ]
+    },
+    {
+      "id": "user.php:LCP217",
+      "path": "user.php",
+      "expression": "$item_list",
+      "aliases": [
+        "$item_list"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 29,
+          "condition": "(mysql_num_rows($item_list) == NULL)"
+        },
+        {
+          "source": "conditional",
+          "line": 532,
+          "condition": "(mysql_num_rows($item_list) == NULL)"
+        }
+      ],
+      "condition_indexes": [
+        3,
+        55
+      ]
+    },
+    {
+      "id": "user.php:LCP218",
+      "path": "user.php",
+      "expression": "$globalvars['rank'][18]",
+      "aliases": [
+        "$globalvars['rank'][18]"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 90,
+          "condition": "($globalvars['rank'][18] == 0)"
+        },
+        {
+          "source": "conditional",
+          "line": 100,
+          "condition": "($globalvars['rank'][18] == 0)"
+        }
+      ],
+      "condition_indexes": [
+        5,
+        7
+      ]
+    },
+    {
+      "id": "user.php:LCP219",
+      "path": "user.php",
+      "expression": "$_POST",
+      "aliases": [
+        "$_POST",
+        "$data",
+        "$items",
+        "$rank"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 105,
+          "condition": "(isset($_POST))"
+        },
+        {
+          "source": "conditional",
+          "line": 177,
+          "condition": "(!$items)"
+        },
+        {
+          "source": "conditional",
+          "line": 213,
+          "condition": "(isset($_POST))"
+        },
+        {
+          "source": "conditional",
+          "line": 333,
+          "condition": "(!$items)"
+        }
+      ],
+      "condition_indexes": [
+        8,
+        17,
+        23,
+        35
+      ]
+    },
+    {
+      "id": "user.php:LCP220",
+      "path": "user.php",
+      "expression": "$data['username_']",
+      "aliases": [
+        "$data['username_']",
+        "$_POST['username_']",
+        "$data['user_name']"
+      ],
+      "database_relations": [
+        {
+          "table": "",
+          "field": "user_name",
+          "line": 148
+        },
+        {
+          "table": "",
+          "field": "user_name",
+          "line": 256
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 126,
+          "condition": "(!$data['username_'])"
+        },
+        {
+          "source": "conditional",
+          "line": 236,
+          "condition": "(!$data['username_'])"
+        },
+        {
+          "source": "conditional",
+          "line": 258,
+          "condition": "($data['original_username'] != $data['username_'])"
+        }
+      ],
+      "condition_indexes": [
+        9,
+        24,
+        29
+      ]
+    },
+    {
+      "id": "user.php:LCP221",
+      "path": "user.php",
+      "expression": "$data['fullname']",
+      "aliases": [
+        "$data['fullname']",
+        "$_POST['fullname']",
+        "$data['full_name']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 131,
+          "condition": "(!$data['fullname'])"
+        },
+        {
+          "source": "conditional",
+          "line": 241,
+          "condition": "(!$data['fullname'])"
+        }
+      ],
+      "condition_indexes": [
+        10,
+        25
+      ]
+    },
+    {
+      "id": "user.php:LCP222",
+      "path": "user.php",
+      "expression": "$data['password_']",
+      "aliases": [
+        "$data['password_']",
+        "$_POST['password_']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 136,
+          "condition": "(!$data['password_'])"
+        },
+        {
+          "source": "conditional",
+          "line": 142,
+          "condition": "($data['password_'] != $data['cpassword_'])"
+        },
+        {
+          "source": "conditional",
+          "line": 247,
+          "condition": "($data['password_'])"
+        },
+        {
+          "source": "conditional",
+          "line": 249,
+          "condition": "($data['password_'] != $data['cpassword_'])"
+        }
+      ],
+      "condition_indexes": [
+        11,
+        12,
+        26,
+        27
+      ]
+    },
+    {
+      "id": "user.php:LCP223",
+      "path": "user.php",
+      "expression": "$data['cpassword_']",
+      "aliases": [
+        "$data['cpassword_']",
+        "$_POST['cpassword_']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 142,
+          "condition": "($data['password_'] != $data['cpassword_'])"
+        },
+        {
+          "source": "conditional",
+          "line": 249,
+          "condition": "($data['password_'] != $data['cpassword_'])"
+        }
+      ],
+      "condition_indexes": [
+        12,
+        27
+      ]
+    },
+    {
+      "id": "user.php:LCP224",
+      "path": "user.php",
+      "expression": "$checkres",
+      "aliases": [
+        "$checkres"
+      ],
+      "database_relations": [
+        {
+          "table": "",
+          "field": "",
+          "line": 148
+        },
+        {
+          "table": "",
+          "field": "",
+          "line": 256
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 149,
+          "condition": "(mysql_num_rows($checkres) > 0)"
+        },
+        {
+          "source": "conditional",
+          "line": 257,
+          "condition": "(mysql_num_rows($checkres) > 0)"
+        }
+      ],
+      "condition_indexes": [
+        13,
+        28
+      ]
+    },
+    {
+      "id": "user.php:LCP225",
+      "path": "user.php",
+      "expression": "$con",
+      "aliases": [
+        "$con"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 156,
+          "condition": "($con == \"yes\")"
+        },
+        {
+          "source": "conditional",
+          "line": 265,
+          "condition": "($con == \"yes\")"
+        }
+      ],
+      "condition_indexes": [
+        14,
+        30
+      ]
+    },
+    {
+      "id": "user.php:LCP226",
+      "path": "user.php",
+      "expression": "$globalvars['rank'][22]",
+      "aliases": [
+        "$globalvars['rank'][22]"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 171,
+          "condition": "($globalvars['rank'][22] == 0)"
+        }
+      ],
+      "condition_indexes": [
+        16
+      ]
+    },
+    {
+      "id": "user.php:LCP227",
+      "path": "user.php",
+      "expression": "$globalvars['rank'][20]",
+      "aliases": [
+        "$globalvars['rank'][20]"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 189,
+          "condition": "($globalvars['rank'][20] == 0)"
+        },
+        {
+          "source": "conditional",
+          "line": 208,
+          "condition": "($globalvars['rank'][20] == 0)"
+        }
+      ],
+      "condition_indexes": [
+        19,
+        22
+      ]
+    },
+    {
+      "id": "user.php:LCP228",
+      "path": "user.php",
+      "expression": "$id",
+      "aliases": [
+        "$id",
+        "$_GET['id']"
+      ],
+      "database_relations": [
+        {
+          "table": "",
+          "field": "id",
+          "line": 200
+        },
+        {
+          "table": "",
+          "field": "id",
+          "line": 414
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 198,
+          "condition": "($id)"
+        },
+        {
+          "source": "conditional",
+          "line": 412,
+          "condition": "($id)"
+        }
+      ],
+      "condition_indexes": [
+        20,
+        44
+      ]
+    },
+    {
+      "id": "user.php:LCP229",
+      "path": "user.php",
+      "expression": "$data['original_username']",
+      "aliases": [
+        "$data['original_username']",
+        "$_POST['original_username']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 258,
+          "condition": "($data['original_username'] != $data['username_'])"
+        }
+      ],
+      "condition_indexes": [
+        29
+      ]
+    },
+    {
+      "id": "user.php:LCP230",
+      "path": "user.php",
+      "expression": "$globalvars['rank'][2]",
+      "aliases": [
+        "$globalvars['rank'][2]"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 280,
+          "condition": "($globalvars['rank'][2] == 0)"
+        },
+        {
+          "source": "conditional",
+          "line": 328,
+          "condition": "($globalvars['rank'][2] == 0)"
+        },
+        {
+          "source": "conditional",
+          "line": 404,
+          "condition": "($globalvars['rank'][2] == 0)"
+        },
+        {
+          "source": "conditional",
+          "line": 451,
+          "condition": "($globalvars['rank'][2] == 0)"
+        }
+      ],
+      "condition_indexes": [
+        32,
+        34,
+        43,
+        48
+      ]
+    },
+    {
+      "id": "user.php:LCP231",
+      "path": "user.php",
+      "expression": "$globalvars['rank'][0]",
+      "aliases": [
+        "$globalvars['rank'][0]"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 345,
+          "condition": "($globalvars['rank'][0] == 0)"
+        },
+        {
+          "source": "conditional",
+          "line": 355,
+          "condition": "($globalvars['rank'][0] == 0)"
+        }
+      ],
+      "condition_indexes": [
+        37,
+        39
+      ]
+    },
+    {
+      "id": "user.php:LCP232",
+      "path": "user.php",
+      "expression": "$data[$key]",
+      "aliases": [
+        "$data[$key]"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 377,
+          "condition": "($data[$key] == \"\")"
+        },
+        {
+          "source": "conditional",
+          "line": 474,
+          "condition": "($data[$key] == \"\")"
+        }
+      ],
+      "condition_indexes": [
+        40,
+        49
+      ]
+    },
+    {
+      "id": "user.php:LCP233",
+      "path": "user.php",
+      "expression": "$rank['rank_title']",
+      "aliases": [
+        "$rank['rank_title']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 394,
+          "condition": "($rank['rank_title'] == NULL || $rank['rank_desc'] == NULL || $continue == FALSE)"
+        },
+        {
+          "source": "conditional",
+          "line": 491,
+          "condition": "($rank['rank_title'] == NULL || $rank['rank_desc'] == NULL || $continue == FALSE)"
+        }
+      ],
+      "condition_indexes": [
+        41,
+        50
+      ]
+    },
+    {
+      "id": "user.php:LCP234",
+      "path": "user.php",
+      "expression": "$rank['rank_desc']",
+      "aliases": [
+        "$rank['rank_desc']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 394,
+          "condition": "($rank['rank_title'] == NULL || $rank['rank_desc'] == NULL || $continue == FALSE)"
+        },
+        {
+          "source": "conditional",
+          "line": 491,
+          "condition": "($rank['rank_title'] == NULL || $rank['rank_desc'] == NULL || $continue == FALSE)"
+        }
+      ],
+      "condition_indexes": [
+        41,
+        50
+      ]
+    },
+    {
+      "id": "user.php:LCP235",
+      "path": "user.php",
+      "expression": "$continue",
+      "aliases": [
+        "$continue"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 394,
+          "condition": "($rank['rank_title'] == NULL || $rank['rank_desc'] == NULL || $continue == FALSE)"
+        },
+        {
+          "source": "conditional",
+          "line": 491,
+          "condition": "($rank['rank_title'] == NULL || $rank['rank_desc'] == NULL || $continue == FALSE)"
+        }
+      ],
+      "condition_indexes": [
+        41,
+        50
+      ]
+    },
+    {
+      "id": "user.php:LCP236",
+      "path": "user.php",
+      "expression": "$data['createarticles']",
+      "aliases": [
+        "$data['createarticles']",
+        "$data['permissions'][5]"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 438,
+          "condition": "($data['createarticles'] == 'allowapp')"
+        },
+        {
+          "source": "conditional",
+          "line": 438,
+          "condition": "($data['createarticles'] == 'allow')"
+        }
+      ],
+      "condition_indexes": [
+        45,
+        46
+      ]
+    },
+    {
+      "id": "user.php:LCP237",
+      "path": "user.php",
+      "expression": "$globalvars['rank'][4]",
+      "aliases": [
+        "$globalvars['rank'][4]"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 503,
+          "condition": "($globalvars['rank'][4] == 0)"
+        }
+      ],
+      "condition_indexes": [
+        52
+      ]
+    },
+    {
+      "id": "user.php:LCP238",
+      "path": "user.php",
+      "expression": "$action",
+      "aliases": [
+        "$action",
+        "$_GET['action']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 513,
+          "condition": "($action == \"delall\")"
+        }
+      ],
+      "condition_indexes": [
+        53
+      ]
+    }
+  ]
+}

@@ -1,0 +1,304 @@
+{
+  "snippets": [
+    {
+      "path": "admin/add.php",
+      "kind": "guard_call",
+      "start_line": 21,
+      "end_line": 21,
+      "function": "checkuser",
+      "code": "checkUser()",
+      "parameter_ids": [
+        "admin/common.php:LCP14"
+      ],
+      "function_ids": [
+        "admin/common.php:LCF4"
+      ]
+    },
+    {
+      "path": "admin/add_user.php",
+      "kind": "guard_call",
+      "start_line": 21,
+      "end_line": 21,
+      "function": "checkuser",
+      "code": "checkUser()",
+      "parameter_ids": [
+        "admin/common.php:LCP14"
+      ],
+      "function_ids": [
+        "admin/common.php:LCF4"
+      ]
+    },
+    {
+      "path": "admin/add_user.php",
+      "kind": "guard_call",
+      "start_line": 99,
+      "end_line": 99,
+      "function": "checkuser",
+      "code": "checkUser()",
+      "parameter_ids": [
+        "admin/common.php:LCP14"
+      ],
+      "function_ids": [
+        "admin/common.php:LCF4"
+      ]
+    },
+    {
+      "path": "admin/common.php",
+      "kind": "semantic_source",
+      "start_line": 1,
+      "end_line": 78,
+      "code": "<?php\r\n/*\r\n    This file is a part of Basic PHP Event Lister.  Copyright (c) 2008 Mark MacCollin, Mevin Productions, www.mevin.com\r\n\r\n    This program is free software; you can redistribute it and/or modify\r\n    it under the terms of the GNU General Public License as published by\r\n    the Free Software Foundation; either version 2 of the License, or\r\n    (at your option) any later version.\r\n\r\n    This program is distributed in the hope that it will be useful,\r\n    but WITHOUT ANY WARRANTY; without even the implied warranty of\r\n    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\r\n    GNU General Public License for more details.\r\n\r\n    You should have received a copy of the GNU General Public License\r\n    along with this program; if not, write to the Free Software\r\n    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA\r\n*/ \r\n\r\nsession_start();\r\n\r\nfunction loginUser($username,$password){\r\n\t$errorText = '';\r\n\t$validUser = false;\r\n\t\r\n// Check user existance\t\r\n\t\r\ninclude 'config.php';\r\n$con = mysqli_connect($dbhost,$dbuser,$dbpass,'',$dbport) OR DIE ('Unable to connect to database! Please try again later.');\r\n\r\nmysqli_select_db($con, $dbname) or die( \"Unable to select database\");\r\n$username = mysqli_real_escape_string($con, $username);   //转义特殊字符，username中有特殊字符就会被转义成新的username然后再进行增删改查操作\r\n$password = mysqli_real_escape_string($con, $password);\r\n$query=\" SELECT * FROM admin WHERE uname = '$username'\";\r\n$result=mysqli_query($con, $query);\r\n$num=mysqli_num_rows($result);\r\nmysqli_close($con);\r\n$i=0;\r\n\t//读取编号为number的数据\r\n\tfunction mysqli_result($result, $number, $field=0) {\r\n\t\tmysqli_data_seek($result, $number);   //查找编号为$number的数据放在$result中\r\n\t\t$row = mysqli_fetch_array($result);   // 读取数据\r\n\t\treturn $row[$field];\r\n\t}\r\n\r\nwhile ($i < $num) {\r\n$pword=mysqli_result($result,$i,\"pword\");\r\n$i++;\r\n}\r\n\r\n\r\n//if ($pword == md5($password)){\r\nif ($pword == md5($password.$salt)){\r\n\r\n$validUser= true;\r\n$_SESSION['userName'] = $username;\r\n} \r\n\r\nif ($validUser != true) $errorText = \"<center><font class=\\\"error\\\">Invalid username or password!</font> </center>\";\r\n    \r\nif ($validUser == true) $_SESSION['validUser'] = true;\r\nelse $_SESSION['validUser'] = false;\r\nreturn $errorText;\t\r\n} \r\n\t\r\nfunction logoutUser(){\r\n\tunset($_SESSION['validUser']);\r\n\tunset($_SESSION['userName']);\r\n}\r\n\r\nfunction checkUser(){\r\n\tif ((!isset($_SESSION['validUser'])) || ($_SESSION['validUser'] != true)){\r\n\t\theader('Location: login.php');\r\n\t}\r\n}\r\n\r\n?>",
+      "semantic_evidence": [
+        {
+          "kind": "php_session_identity_key",
+          "key": "username"
+        }
+      ],
+      "parameter_ids": [
+        "admin/common.php:LCP13"
+      ],
+      "function_ids": []
+    },
+    {
+      "path": "admin/common.php",
+      "kind": "database_operation",
+      "start_line": 34,
+      "end_line": 34,
+      "code": "$query=\" SELECT * FROM admin WHERE uname = '$username'\";",
+      "database_relations": [
+        {
+          "table": "admin",
+          "field": "uname",
+          "line": 34
+        }
+      ],
+      "related_conditions": [],
+      "parameter_ids": [
+        "admin/common.php:LCP8",
+        "admin/common.php:LCP13"
+      ],
+      "function_ids": []
+    },
+    {
+      "path": "admin/common.php",
+      "kind": "semantic_source",
+      "start_line": 56,
+      "end_line": 56,
+      "code": "$_SESSION['userName'] = $username;",
+      "semantic_evidence": [
+        {
+          "kind": "php_session_identity_key",
+          "key": "username"
+        }
+      ],
+      "parameter_ids": [
+        "admin/common.php:LCP8"
+      ],
+      "function_ids": []
+    },
+    {
+      "path": "admin/common.php",
+      "kind": "validation_function",
+      "start_line": 71,
+      "end_line": 75,
+      "function": "checkUser",
+      "code": "function checkUser(){\r\n\tif ((!isset($_SESSION['validUser'])) || ($_SESSION['validUser'] != true)){\r\n\t\theader('Location: login.php');\r\n\t}\r\n}",
+      "parameter_ids": [
+        "admin/common.php:LCP14"
+      ],
+      "function_ids": [
+        "admin/common.php:LCF4"
+      ]
+    },
+    {
+      "path": "admin/common.php",
+      "kind": "conditional",
+      "start_line": 72,
+      "end_line": 74,
+      "condition": "((!isset($_SESSION['validUser'])) || ($_SESSION['validUser'] != true))",
+      "terminations": [
+        {
+          "kind": "redirect",
+          "line": 73,
+          "code": "header('Location: login.php');",
+          "denial_text": false
+        }
+      ],
+      "code": "if ((!isset($_SESSION['validUser'])) || ($_SESSION['validUser'] != true)){\r\n\t\theader('Location: login.php');\r\n\t}",
+      "parameter_ids": [
+        "admin/common.php:LCP14"
+      ],
+      "function_ids": [
+        "admin/common.php:LCF4"
+      ],
+      "if_framework": "if ((!isset($_SESSION['validUser'])) || ($_SESSION['validUser'] != true)) {\n    header('Location: login.php');\n}"
+    },
+    {
+      "path": "admin/copy.php",
+      "kind": "guard_call",
+      "start_line": 21,
+      "end_line": 21,
+      "function": "checkuser",
+      "code": "checkUser()",
+      "parameter_ids": [
+        "admin/common.php:LCP14"
+      ],
+      "function_ids": [
+        "admin/common.php:LCF4"
+      ]
+    },
+    {
+      "path": "admin/delete.php",
+      "kind": "guard_call",
+      "start_line": 21,
+      "end_line": 21,
+      "function": "checkuser",
+      "code": "checkUser()",
+      "parameter_ids": [
+        "admin/common.php:LCP14"
+      ],
+      "function_ids": [
+        "admin/common.php:LCF4"
+      ]
+    },
+    {
+      "path": "admin/index.php",
+      "kind": "guard_call",
+      "start_line": 21,
+      "end_line": 21,
+      "function": "checkuser",
+      "code": "checkUser()",
+      "parameter_ids": [
+        "admin/common.php:LCP14"
+      ],
+      "function_ids": [
+        "admin/common.php:LCF4"
+      ]
+    },
+    {
+      "path": "admin/list.php",
+      "kind": "guard_call",
+      "start_line": 22,
+      "end_line": 22,
+      "function": "checkuser",
+      "code": "checkUser()",
+      "parameter_ids": [
+        "admin/common.php:LCP14"
+      ],
+      "function_ids": [
+        "admin/common.php:LCF4"
+      ]
+    },
+    {
+      "path": "admin/message.php",
+      "kind": "guard_call",
+      "start_line": 21,
+      "end_line": 21,
+      "function": "checkuser",
+      "code": "checkUser()",
+      "parameter_ids": [
+        "admin/common.php:LCP14"
+      ],
+      "function_ids": [
+        "admin/common.php:LCF4"
+      ]
+    },
+    {
+      "path": "admin/update.php",
+      "kind": "guard_call",
+      "start_line": 21,
+      "end_line": 21,
+      "function": "checkuser",
+      "code": "checkUser()",
+      "parameter_ids": [
+        "admin/common.php:LCP14"
+      ],
+      "function_ids": [
+        "admin/common.php:LCF4"
+      ]
+    },
+    {
+      "path": "admin/user_delete.php",
+      "kind": "semantic_source",
+      "start_line": 22,
+      "end_line": 22,
+      "code": "$un = $_SESSION['userName'];",
+      "semantic_evidence": [
+        {
+          "kind": "php_session_identity_key",
+          "key": "username"
+        }
+      ],
+      "parameter_ids": [
+        "admin/user_delete.php:LCP43"
+      ],
+      "function_ids": []
+    },
+    {
+      "path": "admin/user_delete.php",
+      "kind": "guard_call",
+      "start_line": 23,
+      "end_line": 23,
+      "function": "checkuser",
+      "code": "checkUser()",
+      "parameter_ids": [
+        "admin/common.php:LCP14"
+      ],
+      "function_ids": [
+        "admin/common.php:LCF4"
+      ]
+    },
+    {
+      "path": "admin/user_delete.php",
+      "kind": "database_operation",
+      "start_line": 34,
+      "end_line": 34,
+      "code": "$query=\" SELECT * FROM admin WHERE uname = '$username'\";",
+      "database_relations": [
+        {
+          "table": "admin",
+          "field": "uname",
+          "line": 34
+        }
+      ],
+      "related_conditions": [
+        {
+          "start_line": 57,
+          "end_line": 73,
+          "condition": "($uname == $un)"
+        }
+      ],
+      "parameter_ids": [
+        "admin/user_delete.php:LCP43"
+      ],
+      "function_ids": []
+    },
+    {
+      "path": "admin/user_delete.php",
+      "kind": "conditional",
+      "start_line": 57,
+      "end_line": 73,
+      "condition": "($uname == $un)",
+      "terminations": [],
+      "code": "if ($uname == $un) { echo '<span class=error><b>You cannot delete yourself!</b></span>'; \r\n\r\nexit();\r\n\r\n }\r\n \r\n else if ($id == '1') { echo '<span class=error><b>You cannot delete the main user!</b></span>';\r\n\r\nexit();\r\n\r\n }\r\n \r\n else if ($uname == 'demo') { echo '<span class=error><b>You cannot delete the demo user!</b></span>';\r\n\r\nexit();\r\n\r\n }",
+      "parameter_ids": [
+        "admin/user_delete.php:LCP43"
+      ],
+      "function_ids": []
+    },
+    {
+      "path": "admin/users.php",
+      "kind": "guard_call",
+      "start_line": 21,
+      "end_line": 21,
+      "function": "checkuser",
+      "code": "checkUser()",
+      "parameter_ids": [
+        "admin/common.php:LCP14"
+      ],
+      "function_ids": [
+        "admin/common.php:LCF4"
+      ]
+    }
+  ]
+}

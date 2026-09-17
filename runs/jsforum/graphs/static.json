@@ -1,0 +1,371 @@
+{
+  "nodes": [
+    "WEB-INF/classes/forum/Cookies.java",
+    "WEB-INF/classes/forum/DBConnectie.java",
+    "WEB-INF/classes/forum/Filter.java",
+    "WEB-INF/classes/forum/FilterBack.java",
+    "WEB-INF/classes/forum/Include.java",
+    "WEB-INF/classes/forum/Utilities.java",
+    "WEB-INF/classes/forum/Variable.java",
+    "forum/.\\index.jsp",
+    "forum/editmessage.jsp",
+    "forum/forum.jsp",
+    "forum/include/avatars.jsp",
+    "forum/include/body.jsp",
+    "forum/include/emoticons.jsp",
+    "forum/include/footer.jsp",
+    "forum/include/header.jsp",
+    "forum/include/table_body.jsp",
+    "forum/include/table_body_username.jsp",
+    "forum/include/table_close.jsp",
+    "forum/include/table_close_body.jsp",
+    "forum/include/table_start.jsp",
+    "forum/include/table_start_body.jsp",
+    "forum/include/table_start_title.jsp",
+    "forum/include/table_title.jsp",
+    "forum/include/textStyle.jsp",
+    "forum/index.jsp",
+    "forum/info.jsp",
+    "forum/message.jsp",
+    "forum/profile.jsp",
+    "forum/register.jsp",
+    "forum/thread.jsp",
+    "servlet/forum.AddForum",
+    "servlet/forum.AddReply",
+    "servlet/forum.AddThread",
+    "servlet/forum.AddUser",
+    "servlet/forum.ChangeMessage",
+    "servlet/forum.ChangeProfile",
+    "servlet/forum.DeleteForum",
+    "servlet/forum.DeleteReply",
+    "servlet/forum.DeleteThread",
+    "servlet/forum.Login",
+    "servlet/forum.Logout"
+  ],
+  "source_nodes": [
+    "WEB-INF/classes/forum/AddForum.java",
+    "WEB-INF/classes/forum/AddReply.java",
+    "WEB-INF/classes/forum/AddThread.java",
+    "WEB-INF/classes/forum/AddUser.java",
+    "WEB-INF/classes/forum/ChangeMessage.java",
+    "WEB-INF/classes/forum/ChangeProfile.java",
+    "WEB-INF/classes/forum/Cookies.java",
+    "WEB-INF/classes/forum/DBConnectie.java",
+    "WEB-INF/classes/forum/DeleteForum.java",
+    "WEB-INF/classes/forum/DeleteReply.java",
+    "WEB-INF/classes/forum/DeleteThread.java",
+    "WEB-INF/classes/forum/Filter.java",
+    "WEB-INF/classes/forum/FilterBack.java",
+    "WEB-INF/classes/forum/Include.java",
+    "WEB-INF/classes/forum/Login.java",
+    "WEB-INF/classes/forum/Logout.java",
+    "WEB-INF/classes/forum/Utilities.java",
+    "WEB-INF/classes/forum/Variable.java",
+    "forum/editmessage.jsp",
+    "forum/forum.jsp",
+    "forum/include/avatars.jsp",
+    "forum/include/body.jsp",
+    "forum/include/emoticons.jsp",
+    "forum/include/footer.jsp",
+    "forum/include/header.jsp",
+    "forum/include/table_body.jsp",
+    "forum/include/table_body_username.jsp",
+    "forum/include/table_close.jsp",
+    "forum/include/table_close_body.jsp",
+    "forum/include/table_start.jsp",
+    "forum/include/table_start_body.jsp",
+    "forum/include/table_start_title.jsp",
+    "forum/include/table_title.jsp",
+    "forum/include/textStyle.jsp",
+    "forum/index.jsp",
+    "forum/info.jsp",
+    "forum/message.jsp",
+    "forum/profile.jsp",
+    "forum/register.jsp",
+    "forum/thread.jsp"
+  ],
+  "edges": [
+    {
+      "from": "forum/editmessage.jsp",
+      "to": "forum/index.jsp",
+      "kind": "http"
+    },
+    {
+      "from": "forum/editmessage.jsp",
+      "to": "forum/register.jsp",
+      "kind": "http"
+    },
+    {
+      "from": "forum/forum.jsp",
+      "to": "forum/index.jsp",
+      "kind": "http"
+    },
+    {
+      "from": "forum/forum.jsp",
+      "to": "forum/register.jsp",
+      "kind": "http"
+    },
+    {
+      "from": "forum/info.jsp",
+      "to": "forum/index.jsp",
+      "kind": "http"
+    },
+    {
+      "from": "forum/message.jsp",
+      "to": "forum/index.jsp",
+      "kind": "http"
+    },
+    {
+      "from": "forum/message.jsp",
+      "to": "forum/register.jsp",
+      "kind": "http"
+    },
+    {
+      "from": "forum/profile.jsp",
+      "to": "forum/index.jsp",
+      "kind": "http"
+    },
+    {
+      "from": "forum/profile.jsp",
+      "to": "forum/register.jsp",
+      "kind": "http"
+    },
+    {
+      "from": "forum/thread.jsp",
+      "to": "forum/index.jsp",
+      "kind": "http"
+    },
+    {
+      "from": "forum/thread.jsp",
+      "to": "forum/register.jsp",
+      "kind": "http"
+    }
+  ],
+  "dependency_edges": [],
+  "http_edges": [
+    {
+      "from": "forum/editmessage.jsp",
+      "to": "forum/index.jsp"
+    },
+    {
+      "from": "forum/editmessage.jsp",
+      "to": "forum/register.jsp"
+    },
+    {
+      "from": "forum/forum.jsp",
+      "to": "forum/index.jsp"
+    },
+    {
+      "from": "forum/forum.jsp",
+      "to": "forum/register.jsp"
+    },
+    {
+      "from": "forum/info.jsp",
+      "to": "forum/index.jsp"
+    },
+    {
+      "from": "forum/message.jsp",
+      "to": "forum/index.jsp"
+    },
+    {
+      "from": "forum/message.jsp",
+      "to": "forum/register.jsp"
+    },
+    {
+      "from": "forum/profile.jsp",
+      "to": "forum/index.jsp"
+    },
+    {
+      "from": "forum/profile.jsp",
+      "to": "forum/register.jsp"
+    },
+    {
+      "from": "forum/thread.jsp",
+      "to": "forum/index.jsp"
+    },
+    {
+      "from": "forum/thread.jsp",
+      "to": "forum/register.jsp"
+    }
+  ],
+  "url_to_source": {
+    "forum/.\\index.jsp": "forum/index.jsp",
+    "forum/editmessage.jsp": "forum/editmessage.jsp",
+    "forum/forum.jsp": "forum/forum.jsp",
+    "forum/index.jsp": "forum/index.jsp",
+    "forum/info.jsp": "forum/info.jsp",
+    "forum/message.jsp": "forum/message.jsp",
+    "forum/profile.jsp": "forum/profile.jsp",
+    "forum/register.jsp": "forum/register.jsp",
+    "forum/thread.jsp": "forum/thread.jsp",
+    "servlet/forum.AddForum": "WEB-INF/classes/forum/AddForum.java",
+    "servlet/forum.AddReply": "WEB-INF/classes/forum/AddReply.java",
+    "servlet/forum.AddThread": "WEB-INF/classes/forum/AddThread.java",
+    "servlet/forum.AddUser": "WEB-INF/classes/forum/AddUser.java",
+    "servlet/forum.ChangeMessage": "WEB-INF/classes/forum/ChangeMessage.java",
+    "servlet/forum.ChangeProfile": "WEB-INF/classes/forum/ChangeProfile.java",
+    "servlet/forum.DeleteForum": "WEB-INF/classes/forum/DeleteForum.java",
+    "servlet/forum.DeleteReply": "WEB-INF/classes/forum/DeleteReply.java",
+    "servlet/forum.DeleteThread": "WEB-INF/classes/forum/DeleteThread.java",
+    "servlet/forum.Login": "WEB-INF/classes/forum/Login.java",
+    "servlet/forum.Logout": "WEB-INF/classes/forum/Logout.java"
+  },
+  "route_url_to_source": {
+    "servlet/forum.AddForum": "WEB-INF/classes/forum/AddForum.java",
+    "servlet/forum.AddReply": "WEB-INF/classes/forum/AddReply.java",
+    "servlet/forum.AddThread": "WEB-INF/classes/forum/AddThread.java",
+    "servlet/forum.AddUser": "WEB-INF/classes/forum/AddUser.java",
+    "servlet/forum.ChangeMessage": "WEB-INF/classes/forum/ChangeMessage.java",
+    "servlet/forum.ChangeProfile": "WEB-INF/classes/forum/ChangeProfile.java",
+    "servlet/forum.DeleteForum": "WEB-INF/classes/forum/DeleteForum.java",
+    "servlet/forum.DeleteReply": "WEB-INF/classes/forum/DeleteReply.java",
+    "servlet/forum.DeleteThread": "WEB-INF/classes/forum/DeleteThread.java",
+    "servlet/forum.Login": "WEB-INF/classes/forum/Login.java",
+    "servlet/forum.Logout": "WEB-INF/classes/forum/Logout.java"
+  },
+  "http_url_to_source": {
+    "forum/.\\index.jsp": "forum/index.jsp",
+    "forum/index.jsp": "forum/index.jsp",
+    "forum/register.jsp": "forum/register.jsp"
+  },
+  "direct_url_to_source": {
+    "forum/editmessage.jsp": "forum/editmessage.jsp",
+    "forum/forum.jsp": "forum/forum.jsp",
+    "forum/index.jsp": "forum/index.jsp",
+    "forum/info.jsp": "forum/info.jsp",
+    "forum/message.jsp": "forum/message.jsp",
+    "forum/profile.jsp": "forum/profile.jsp",
+    "forum/register.jsp": "forum/register.jsp",
+    "forum/thread.jsp": "forum/thread.jsp"
+  },
+  "classifications": {
+    "UP": [
+      "forum/.\\index.jsp",
+      "forum/editmessage.jsp",
+      "forum/forum.jsp",
+      "forum/index.jsp",
+      "forum/info.jsp",
+      "forum/message.jsp",
+      "forum/profile.jsp",
+      "forum/register.jsp",
+      "forum/thread.jsp",
+      "servlet/forum.AddForum",
+      "servlet/forum.AddReply",
+      "servlet/forum.AddThread",
+      "servlet/forum.AddUser",
+      "servlet/forum.ChangeMessage",
+      "servlet/forum.ChangeProfile",
+      "servlet/forum.DeleteForum",
+      "servlet/forum.DeleteReply",
+      "servlet/forum.DeleteThread",
+      "servlet/forum.Login",
+      "servlet/forum.Logout"
+    ],
+    "CP": [
+      "WEB-INF/classes/forum/Cookies.java",
+      "WEB-INF/classes/forum/DBConnectie.java",
+      "WEB-INF/classes/forum/Filter.java",
+      "WEB-INF/classes/forum/FilterBack.java",
+      "WEB-INF/classes/forum/Include.java",
+      "WEB-INF/classes/forum/Utilities.java",
+      "WEB-INF/classes/forum/Variable.java",
+      "forum/include/avatars.jsp",
+      "forum/include/body.jsp",
+      "forum/include/emoticons.jsp",
+      "forum/include/footer.jsp",
+      "forum/include/header.jsp",
+      "forum/include/table_body.jsp",
+      "forum/include/table_body_username.jsp",
+      "forum/include/table_close.jsp",
+      "forum/include/table_close_body.jsp",
+      "forum/include/table_start.jsp",
+      "forum/include/table_start_body.jsp",
+      "forum/include/table_start_title.jsp",
+      "forum/include/table_title.jsp",
+      "forum/include/textStyle.jsp"
+    ],
+    "UP_prime0": [
+      "forum/index.jsp",
+      "forum/info.jsp",
+      "forum/register.jsp",
+      "servlet/forum.AddForum",
+      "servlet/forum.AddReply",
+      "servlet/forum.AddThread",
+      "servlet/forum.AddUser",
+      "servlet/forum.ChangeMessage",
+      "servlet/forum.ChangeProfile",
+      "servlet/forum.DeleteForum",
+      "servlet/forum.DeleteReply",
+      "servlet/forum.DeleteThread",
+      "servlet/forum.Login"
+    ],
+    "UPdiff1": [
+      "forum/.\\index.jsp",
+      "forum/editmessage.jsp",
+      "forum/forum.jsp",
+      "forum/message.jsp",
+      "forum/profile.jsp",
+      "forum/thread.jsp"
+    ],
+    "UPdiff2": [
+      "servlet/forum.Logout"
+    ],
+    "UPdiff": [
+      "forum/.\\index.jsp",
+      "forum/editmessage.jsp",
+      "forum/forum.jsp",
+      "forum/message.jsp",
+      "forum/profile.jsp",
+      "forum/thread.jsp",
+      "servlet/forum.Logout"
+    ],
+    "observed": [
+      "WEB-INF/classes/forum/AddForum.java",
+      "WEB-INF/classes/forum/AddReply.java",
+      "WEB-INF/classes/forum/AddThread.java",
+      "WEB-INF/classes/forum/AddUser.java",
+      "WEB-INF/classes/forum/ChangeMessage.java",
+      "WEB-INF/classes/forum/ChangeProfile.java",
+      "WEB-INF/classes/forum/DeleteForum.java",
+      "WEB-INF/classes/forum/DeleteReply.java",
+      "WEB-INF/classes/forum/DeleteThread.java",
+      "WEB-INF/classes/forum/Login.java",
+      "forum/index.jsp",
+      "forum/info.jsp",
+      "forum/register.jsp"
+    ],
+    "internal_reachable": [],
+    "public_unobserved": [
+      "forum/.\\index.jsp",
+      "forum/editmessage.jsp",
+      "forum/forum.jsp",
+      "forum/message.jsp",
+      "forum/profile.jsp",
+      "forum/thread.jsp",
+      "servlet/forum.Logout"
+    ],
+    "support_unreachable": [
+      "WEB-INF/classes/forum/Cookies.java",
+      "WEB-INF/classes/forum/DBConnectie.java",
+      "WEB-INF/classes/forum/Filter.java",
+      "WEB-INF/classes/forum/FilterBack.java",
+      "WEB-INF/classes/forum/Include.java",
+      "WEB-INF/classes/forum/Utilities.java",
+      "WEB-INF/classes/forum/Variable.java",
+      "forum/include/avatars.jsp",
+      "forum/include/body.jsp",
+      "forum/include/emoticons.jsp",
+      "forum/include/footer.jsp",
+      "forum/include/header.jsp",
+      "forum/include/table_body.jsp",
+      "forum/include/table_body_username.jsp",
+      "forum/include/table_close.jsp",
+      "forum/include/table_close_body.jsp",
+      "forum/include/table_start.jsp",
+      "forum/include/table_start_body.jsp",
+      "forum/include/table_start_title.jsp",
+      "forum/include/table_title.jsp",
+      "forum/include/textStyle.jsp"
+    ]
+  }
+}

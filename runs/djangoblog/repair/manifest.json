@@ -1,0 +1,157 @@
+{
+  "summary": {
+    "Repair Items": 1,
+    "Total Repair Attempts": 3,
+    "Patch Generation Attempts": 3,
+    "Patches Generated": 3,
+    "Failed Patches": 2,
+    "Syntax / Compile OK": 3,
+    "Exploit Blocked": 1,
+    "Regression Passed": 1,
+    "Database Validation Applied": 0,
+    "Database Validation Passed": 0,
+    "Successful Repairs": 1,
+    "Failed Repairs": 0,
+    "Successful on Attempt 1": 0,
+    "Successful on Attempt 2": 0,
+    "Successful on Attempt 3": 1
+  },
+  "repairs": [
+    {
+      "category": "authenticated_only",
+      "page": "eee/",
+      "source": "D:\\project\\python\\DjangoBlog\\blog\\views.py",
+      "output": "D:\\project\\python\\DRHL\\runs\\djangoblog\\repair\\files\\attempt-3\\blog\\views.py",
+      "status": "successful_repair",
+      "message": "syntax/compile, vulnerability blocking, and regression validation all passed",
+      "engine": "llm",
+      "plan": "{\"missing_check\": \"Authentication guard on the PostDetail view; anonymous visitors can reach the target without redirect or denial.\", \"insertion_location\": \"blog/views.py, on class PostDetail (the detail view handling eee/), before generic.DetailView in the base-class list; add the auth mixin import at module top.\", \"recommended_guard\": \"Django LoginRequiredMixin applied as the leftmost base class on PostDetail, imported from django.contrib.auth.mixins.\", \"reused_project_semantics\": \"The project uses Django generic class-based views (generic.DetailView), the Post model, and template post_detail.html. No custom auth/role/owner variables or sentinel denial/redirect markers are present in the provided snippets, so reuse the correct Django CBV authentication guard context (LoginRequiredMixin) rather than inventing a role/owner check.\", \"reason\": \"PostDetail has no authentication check, so a visitor receives HTTP 200 for eee/. LoginRequiredMixin blocks unauthorized requests before the detail query/dispatch and preserves access for authenticated users user1/user2. Prior attempts likely failed because the guard was not applied to the PostDetail class or was not wired into the CBV dispatch.\"}",
+      "prompt_artifact": "D:\\project\\python\\DRHL\\runs\\djangoblog\\repair\\prompts\\views-attempt3-b4e433b140cc.json",
+      "attempts": 3,
+      "patches_generated": 3,
+      "syntax_compile_ok": 3,
+      "exploit_blocked": 1,
+      "regression_passed": 1,
+      "database_validation_applied": 0,
+      "database_validation_passed": 0,
+      "successful": true,
+      "validation_artifact": "D:\\project\\python\\DRHL\\runs\\djangoblog\\repair\\validation\\views-946e99d3d2eb.json",
+      "attempt_details": [
+        {
+          "attempt": 1,
+          "output": "D:\\project\\python\\DRHL\\runs\\djangoblog\\repair\\files\\attempt-1\\blog\\views.py",
+          "syntax_compile_ok": true,
+          "exploit_blocked": false,
+          "regression_passed": false,
+          "successful": false,
+          "message": "syntax=(py_compile exited with 0); runtime deployment hook failed: repair.validation.reload_command exited with 1: [djangoblog_server] stopped PID 13792\n[djangoblog_server] started PID 33140: http://localhost:8000/\n\n[djangoblog_server] timed out waiting for http://localhost:8000/; see D:\\project\\python\\DRHL\\database_recovery\\djangoblog\\runserver.stderr.log",
+          "prompt_artifact": "D:\\project\\python\\DRHL\\runs\\djangoblog\\repair\\prompts\\views-attempt1-6b251a562b5e.json",
+          "plan": "{\"missing_check\": \"Authentication guard to block unauthenticated visitors from accessing the post view.\", \"insertion_location\": \"In blog/views.py, add LoginRequiredMixin as the first base class on the view class that handles eee/ (PostDetail, and PostList if eee/ maps to it); import it at the top of the module.\", \"recommended_guard\": \"from django.contrib.auth.mixins import LoginRequiredMixin; class PostDetail(LoginRequiredMixin, generic.DetailView) (and similarly for PostList if applicable).\", \"reused_project_semantics\": \"Project uses Django generic views (generic.ListView, generic.DetailView) and the status=1 sentinel for published posts. No custom auth/role/owner variables or denial markers are present in the provided snippets, so the correct guard context is Django's built-in LoginRequiredMixin, which redirects unauthenticated users to settings.LOGIN_URL.\", \"reason\": \"The view currently has no authentication check, so a visitor can access eee/ and receive HTTP 200 without redirect or denial. Adding LoginRequiredMixin blocks unauthenticated visitors before the view executes, while allowing any authenticated user (authorized_roles user1, user2) as required by the authenticated_only policy.\"}",
+          "database_validation_passed": false,
+          "database_validation": {
+            "oracle_version": 2,
+            "scope": "repair_only",
+            "applicable": false,
+            "passed": false,
+            "status": "not_run",
+            "dimensions": {
+              "vulnerability_blocking": {
+                "phase": "attack",
+                "applicable": false,
+                "passed": false
+              },
+              "regression": {
+                "phase": "authorized",
+                "applicable": false,
+                "passed": false
+              }
+            },
+            "scenarios": []
+          }
+        },
+        {
+          "attempt": 2,
+          "output": "D:\\project\\python\\DRHL\\runs\\djangoblog\\repair\\files\\attempt-2\\blog\\views.py",
+          "syntax_compile_ok": true,
+          "exploit_blocked": false,
+          "regression_passed": false,
+          "successful": false,
+          "message": "syntax=(py_compile exited with 0); runtime deployment hook failed: repair.validation.reload_command exited with 1: [djangoblog_server] stopped PID 19040\n[djangoblog_server] started PID 12664: http://localhost:8000/\n\n[djangoblog_server] timed out waiting for http://localhost:8000/; see D:\\project\\python\\DRHL\\database_recovery\\djangoblog\\runserver.stderr.log",
+          "prompt_artifact": "D:\\project\\python\\DRHL\\runs\\djangoblog\\repair\\prompts\\views-attempt2-9ba1e2b85207.json",
+          "plan": "{\"missing_check\": \"Authentication guard on the view serving /eee/, which is PostList in the provided snippet.\", \"insertion_location\": \"blog/views.py: change class PostList(generic.ListView) to class PostList(LoginRequiredMixin, generic.ListView), adding LoginRequiredMixin as the first base class.\", \"recommended_guard\": \"LoginRequiredMixin\", \"reused_project_semantics\": \"The snippet uses Django generic ListView and Post.objects.filter(status=1); no custom auth/role/owner variables, sentinel values, or denial markers are present. The project-appropriate guard context is Django's built-in authentication mixin, which redirects anonymous users to LOGIN_URL.\", \"reason\": \"The access policy is authenticated_only and the attacker is a visitor. PostList currently inherits only generic.ListView, so /eee/ is served with HTTP 200 to unauthenticated users. Adding LoginRequiredMixin blocks the visitor before the queryset runs while preserving access for authenticated users such as user1 and user2, matching the authorized roles without an overly strict owner/role check.\"}",
+          "database_validation_passed": false,
+          "database_validation": {
+            "oracle_version": 2,
+            "scope": "repair_only",
+            "applicable": false,
+            "passed": false,
+            "status": "not_run",
+            "dimensions": {
+              "vulnerability_blocking": {
+                "phase": "attack",
+                "applicable": false,
+                "passed": false
+              },
+              "regression": {
+                "phase": "authorized",
+                "applicable": false,
+                "passed": false
+              }
+            },
+            "scenarios": []
+          }
+        },
+        {
+          "attempt": 3,
+          "output": "D:\\project\\python\\DRHL\\runs\\djangoblog\\repair\\files\\attempt-3\\blog\\views.py",
+          "syntax_compile_ok": true,
+          "exploit_blocked": true,
+          "regression_passed": true,
+          "successful": true,
+          "message": "syntax=(py_compile exited with 0); deployment=(source patch applied; reload=([djangoblog_server] stopped PID 8128\n[djangoblog_server] started PID 35332: http://localhost:8000/\n[djangoblog_server] ready: http://localhost:8000/)); vulnerability_blocking=(response=True; database=passed; evidence=visitor:not_vulnerable); regression=(response=True; database=passed; evidence=authorized status=200; denial=[])",
+          "prompt_artifact": "D:\\project\\python\\DRHL\\runs\\djangoblog\\repair\\prompts\\views-attempt3-b4e433b140cc.json",
+          "plan": "{\"missing_check\": \"Authentication guard on the PostDetail view; anonymous visitors can reach the target without redirect or denial.\", \"insertion_location\": \"blog/views.py, on class PostDetail (the detail view handling eee/), before generic.DetailView in the base-class list; add the auth mixin import at module top.\", \"recommended_guard\": \"Django LoginRequiredMixin applied as the leftmost base class on PostDetail, imported from django.contrib.auth.mixins.\", \"reused_project_semantics\": \"The project uses Django generic class-based views (generic.DetailView), the Post model, and template post_detail.html. No custom auth/role/owner variables or sentinel denial/redirect markers are present in the provided snippets, so reuse the correct Django CBV authentication guard context (LoginRequiredMixin) rather than inventing a role/owner check.\", \"reason\": \"PostDetail has no authentication check, so a visitor receives HTTP 200 for eee/. LoginRequiredMixin blocks unauthorized requests before the detail query/dispatch and preserves access for authenticated users user1/user2. Prior attempts likely failed because the guard was not applied to the PostDetail class or was not wired into the CBV dispatch.\"}",
+          "database_validation_passed": true,
+          "database_validation": {
+            "oracle_version": 2,
+            "scope": "repair_only",
+            "applicable": false,
+            "passed": true,
+            "status": "response_only",
+            "display_as_passed": true,
+            "message": "database validation intentionally skipped; response oracle retained",
+            "dimensions": {
+              "vulnerability_blocking": {
+                "phase": "attack",
+                "applicable": false,
+                "passed": true
+              },
+              "regression": {
+                "phase": "authorized",
+                "applicable": false,
+                "passed": true
+              }
+            },
+            "scenarios": [],
+            "combined_dimensions": {
+              "vulnerability_blocking": {
+                "passed": true,
+                "response_oracle_applicable": true,
+                "response_oracle_passed": true,
+                "database_oracle_applicable": false,
+                "database_oracle_passed": true
+              },
+              "regression": {
+                "passed": true,
+                "response_oracle_applicable": true,
+                "response_oracle_passed": true,
+                "database_oracle_applicable": false,
+                "database_oracle_passed": true
+              }
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

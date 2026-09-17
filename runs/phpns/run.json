@@ -1,0 +1,28 @@
+{
+  "status": "completed",
+  "started_at": "2026-06-30T03:40:49.257120+00:00",
+  "config": "D:\\project\\python\\DRHL\\configs\\phpns.json",
+  "artifacts": {
+    "dynamic_graph": "D:\\project\\python\\DRHL\\runs\\phpns\\graphs\\dynamic.json",
+    "static_graph": "D:\\project\\python\\DRHL\\runs\\phpns\\graphs\\static.json",
+    "candidate_parameters": "D:\\project\\python\\DRHL\\runs\\phpns\\source\\candidate_parameters.json",
+    "candidate_functions": "D:\\project\\python\\DRHL\\runs\\phpns\\source\\candidate_functions.json",
+    "access_control_parameters": "D:\\project\\python\\DRHL\\runs\\phpns\\source\\parameters.json",
+    "access_control_functions": "D:\\project\\python\\DRHL\\runs\\phpns\\source\\functions.json",
+    "access_control_snippets": "D:\\project\\python\\DRHL\\runs\\phpns\\source\\snippets.json",
+    "fused_graph": "D:\\project\\python\\DRHL\\runs\\phpns\\graphs\\fused.json",
+    "graph_summary": "D:\\project\\python\\DRHL\\runs\\phpns\\graphs\\summary.json",
+    "graph_summary_csv": "D:\\project\\python\\DRHL\\runs\\phpns\\graphs\\summary.csv",
+    "attack_vectors": "D:\\project\\python\\DRHL\\runs\\phpns\\analysis\\vectors.json",
+    "findings": "D:\\project\\python\\DRHL\\runs\\phpns\\analysis\\findings.json",
+    "repairs": "D:\\project\\python\\DRHL\\runs\\phpns\\repair\\manifest.json",
+    "repair_report": "D:\\project\\python\\DRHL\\runs\\phpns\\repair\\repair_report.md",
+    "metrics_json": "D:\\project\\python\\DRHL\\runs\\phpns\\metrics\\summary.json",
+    "metrics_csv": "D:\\project\\python\\DRHL\\runs\\phpns\\metrics\\summary.csv",
+    "vulnerability_report": "D:\\project\\python\\DRHL\\runs\\phpns\\analysis\\vulnerability_report.md",
+    "llm_access_control_snippets": "D:\\project\\python\\DRHL\\runs\\phpns\\source\\llm_snippets.json"
+  },
+  "finished_at": "2026-06-30T04:44:47.950955+00:00",
+  "repair_only_finished_at": "2026-09-09T10:10:02.377252+00:00",
+  "detection_rerun_finished_at": "2026-09-08T06:18:06.677600+00:00"
+}

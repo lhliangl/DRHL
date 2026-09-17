@@ -1,0 +1,88 @@
+{
+  "vectors": [
+    {
+      "category": "static_only",
+      "page": "logout/",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "bbs_pub/",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": "detail/p1/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "bbs_sub/",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "category_select": "0",
+          "title": "DRHL BBS test title",
+          "summary": "DRHL generated summary for access-control testing.",
+          "content": "DRHL generated BBS content for access-control testing."
+        },
+        "referer": "bbs_pub/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "bbs_sub/",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": "bbs_pub/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "sub_comment/",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "comment_content": "DRHL generated comment for access-control testing.",
+          "bbs_id": "28"
+        },
+        "referer": "detail/p1/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "sub_comment/",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": "detail/p1/"
+      },
+      "identity_parameters": []
+    }
+  ]
+}

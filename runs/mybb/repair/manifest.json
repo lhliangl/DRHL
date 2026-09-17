@@ -1,0 +1,670 @@
+{
+  "summary": {
+    "Repair Items": 1,
+    "Total Repair Attempts": 3,
+    "Patch Generation Attempts": 3,
+    "Patches Generated": 3,
+    "Failed Patches": 2,
+    "Syntax / Compile OK": 3,
+    "Exploit Blocked": 3,
+    "Regression Passed": 1,
+    "Database Validation Applied": 3,
+    "Database Validation Passed": 1,
+    "Successful Repairs": 1,
+    "Failed Repairs": 0,
+    "Successful on Attempt 1": 0,
+    "Successful on Attempt 2": 0,
+    "Successful on Attempt 3": 1
+  },
+  "repairs": [
+    {
+      "category": "admin_only",
+      "page": "usercp2.php?action=addsubscription&fid=p1&type=forum",
+      "source": "D:\\phpStudy\\PHPTutorial\\WWW\\mybb\\usercp2.php",
+      "output": "D:\\project\\python\\DRHL\\runs\\mybb\\repair\\files\\attempt-3\\usercp2.php",
+      "status": "successful_repair",
+      "message": "syntax/compile, vulnerability blocking, and regression validation all passed",
+      "engine": "llm",
+      "plan": "{\"missing_check\": \"check_forum_password($forum['fid']);\", \"insertion_location\": \"In usercp2.php, inside the `if($mybb->input['action'] == \\\"addsubscription\\\")` block, within the `if($mybb->input['type'] == \\\"forum\\\")` branch, immediately after the `$forumpermissions` check (`if($forumpermissions['canview'] == 0 || $forumpermissions['canviewthreads'] == 0) { error_no_permission(); }`) and before `add_subscribed_forum($forum['fid']);`.\", \"recommended_guard\": \"if($mybb->usergroup['cancp'] != 1)\\n{\\n\\tcheck_forum_password($forum['fid']);\\n}\", \"reused_project_semantics\": \"Uses $mybb->usergroup['cancp'] as the project's admin/privileged-role flag (as in global.php) to bypass the forum password gate for authorized admins, and reuses check_forum_password($forum['fid']) from inc/functions.php for the password-protected forum denial/redirect behavior.\", \"reason\": \"The forum addsubscription path checks only forum permissions, not the forum password, allowing a non-admin to subscribe to a password-protected forum without entering its password. Inserting the canonical check_forum_password guard after permission validation blocks the unauthorized user while preserving admin access via the cancp bypass, matching the authorized admin role.\"}",
+      "prompt_artifact": "D:\\project\\python\\DRHL\\runs\\mybb\\repair\\prompts\\usercp2-attempt3-33fbb582739a.json",
+      "attempts": 3,
+      "patches_generated": 3,
+      "syntax_compile_ok": 3,
+      "exploit_blocked": 3,
+      "regression_passed": 1,
+      "database_validation_applied": 3,
+      "database_validation_passed": 1,
+      "successful": true,
+      "validation_artifact": "D:\\project\\python\\DRHL\\runs\\mybb\\repair\\validation\\usercp2-458eb41b9ced.json",
+      "attempt_details": [
+        {
+          "attempt": 1,
+          "output": "D:\\project\\python\\DRHL\\runs\\mybb\\repair\\files\\attempt-1\\usercp2.php",
+          "syntax_compile_ok": true,
+          "exploit_blocked": true,
+          "regression_passed": false,
+          "successful": false,
+          "message": "syntax=(No syntax errors detected in D:\\project\\python\\DRHL\\runs\\mybb\\repair\\files\\attempt-1\\usercp2.php); deployment=(source patch applied); vulnerability_blocking=(response=True; database=passed; evidence=visitor:not_vulnerable; user1:not_vulnerable; user2:not_vulnerable); regression=(response=False; database=failed; evidence=authorized status=200; denial=['denial marker: password required'])",
+          "prompt_artifact": "D:\\project\\python\\DRHL\\runs\\mybb\\repair\\prompts\\usercp2-attempt1-127774ecea7e.json",
+          "plan": "{\"missing_check\": \"check_forum_password($forum['fid']);\", \"insertion_location\": \"In usercp2.php, inside the `addsubscription` action within the `if($mybb->input['type'] == \\\"forum\\\")` block, after the `$forumpermissions` check (`if($forumpermissions['canview'] == 0 || $forumpermissions['canviewthreads'] == 0) { error_no_permission(); }`) and immediately before `add_subscribed_forum($forum['fid']);`.\", \"recommended_guard\": \"check_forum_password($forum['fid']);\", \"reused_project_semantics\": \"Reuses `check_forum_password()` from `inc/functions.php` (included via `global.php`). It checks `$forum_cache[$fid]['password']` and `$mybb->cookies['forumpass'][$fid]` using `md5($mybb->user['uid'].$password)`, sets the `forumpass[$fid]` cookie on successful password entry, and denies access by outputting the `forumdisplay_password` template and `exit`ing (or redirecting with `header(\\\"Location: ...\\\")` for parent forums).\", \"reason\": \"The `addsubscription` action for `type=forum` validates `canview` and `canviewthreads` but never verifies the forum password. A logged-in user can directly request `usercp2.php?action=addsubscription&fid=p1&type=forum` and subscribe to a password-protected forum without entering the password. Inserting `check_forum_password($forum['fid']);` before `add_subscribed_forum()` enforces the existing forum password guard, blocking unauthorized subscriptions while preserving normal access for users who have supplied the password.\"}",
+          "database_validation_passed": false,
+          "database_validation": {
+            "oracle_version": 2,
+            "scope": "repair_only",
+            "applicable": true,
+            "passed": false,
+            "status": "failed",
+            "dimensions": {
+              "vulnerability_blocking": {
+                "phase": "attack",
+                "applicable": true,
+                "passed": true
+              },
+              "regression": {
+                "phase": "authorized",
+                "applicable": true,
+                "passed": false
+              }
+            },
+            "scenarios": [
+              {
+                "name": "mybb-protected-forum-subscription-user1-create",
+                "operation": "create",
+                "passed": false,
+                "phases": [
+                  {
+                    "phase": "attack",
+                    "role": "user1",
+                    "session_before_setup": false,
+                    "setup_sql": [
+                      "DELETE FROM mybb_forumsubscriptions WHERE fid=2 AND uid IN (1,2,3)"
+                    ],
+                    "session_requests": [],
+                    "request": {
+                      "method": "GET",
+                      "page": "usercp2.php",
+                      "params": {
+                        "action": "addsubscription",
+                        "type": "forum",
+                        "fid": "2",
+                        "my_post_key": "runtime"
+                      },
+                      "referer": "forumdisplay.php?fid=2",
+                      "cookie_names": []
+                    },
+                    "response": {
+                      "status_code": 200,
+                      "url": "http://localhost/mybb/usercp2.php?action=addsubscription&type=forum&fid=2&my_post_key=8fd495b95d51b665c22493ccfd043e6a",
+                      "body_length": 7015
+                    },
+                    "query": "SELECT COUNT(*) FROM mybb_forumsubscriptions WHERE fid=2 AND uid=2",
+                    "observed": "0",
+                    "assertions": [
+                      {
+                        "type": "scalar_zero",
+                        "expected": "0",
+                        "observed": "0",
+                        "passed": true
+                      }
+                    ],
+                    "passed": true
+                  },
+                  {
+                    "phase": "authorized",
+                    "role": "admin",
+                    "session_before_setup": false,
+                    "setup_sql": [
+                      "DELETE FROM mybb_forumsubscriptions WHERE fid=2 AND uid IN (1,2,3)"
+                    ],
+                    "session_requests": [],
+                    "request": {
+                      "method": "GET",
+                      "page": "usercp2.php",
+                      "params": {
+                        "action": "addsubscription",
+                        "type": "forum",
+                        "fid": "2",
+                        "my_post_key": "runtime"
+                      },
+                      "referer": "forumdisplay.php?fid=2",
+                      "cookie_names": []
+                    },
+                    "response": {
+                      "status_code": 200,
+                      "url": "http://localhost/mybb/usercp2.php?action=addsubscription&type=forum&fid=2&my_post_key=8038851d491c2519bb6c5ded3e4c6158",
+                      "body_length": 7743
+                    },
+                    "query": "SELECT COUNT(*) FROM mybb_forumsubscriptions WHERE fid=2 AND uid=1",
+                    "observed": "0",
+                    "assertions": [
+                      {
+                        "type": "scalar_nonzero",
+                        "expected": "nonzero",
+                        "observed": "0",
+                        "passed": false
+                      }
+                    ],
+                    "passed": false
+                  }
+                ]
+              },
+              {
+                "name": "mybb-protected-forum-subscription-user2-create",
+                "operation": "create",
+                "passed": false,
+                "phases": [
+                  {
+                    "phase": "attack",
+                    "role": "user2",
+                    "session_before_setup": false,
+                    "setup_sql": [
+                      "DELETE FROM mybb_forumsubscriptions WHERE fid=2 AND uid IN (1,2,3)"
+                    ],
+                    "session_requests": [],
+                    "request": {
+                      "method": "GET",
+                      "page": "usercp2.php",
+                      "params": {
+                        "action": "addsubscription",
+                        "type": "forum",
+                        "fid": "2",
+                        "my_post_key": "runtime"
+                      },
+                      "referer": "forumdisplay.php?fid=2",
+                      "cookie_names": []
+                    },
+                    "response": {
+                      "status_code": 200,
+                      "url": "http://localhost/mybb/usercp2.php?action=addsubscription&type=forum&fid=2&my_post_key=24fecc0863e67d44754900860ae033e3",
+                      "body_length": 7015
+                    },
+                    "query": "SELECT COUNT(*) FROM mybb_forumsubscriptions WHERE fid=2 AND uid=3",
+                    "observed": "0",
+                    "assertions": [
+                      {
+                        "type": "scalar_zero",
+                        "expected": "0",
+                        "observed": "0",
+                        "passed": true
+                      }
+                    ],
+                    "passed": true
+                  },
+                  {
+                    "phase": "authorized",
+                    "role": "admin",
+                    "session_before_setup": false,
+                    "setup_sql": [
+                      "DELETE FROM mybb_forumsubscriptions WHERE fid=2 AND uid IN (1,2,3)"
+                    ],
+                    "session_requests": [],
+                    "request": {
+                      "method": "GET",
+                      "page": "usercp2.php",
+                      "params": {
+                        "action": "addsubscription",
+                        "type": "forum",
+                        "fid": "2",
+                        "my_post_key": "runtime"
+                      },
+                      "referer": "forumdisplay.php?fid=2",
+                      "cookie_names": []
+                    },
+                    "response": {
+                      "status_code": 200,
+                      "url": "http://localhost/mybb/usercp2.php?action=addsubscription&type=forum&fid=2&my_post_key=8038851d491c2519bb6c5ded3e4c6158",
+                      "body_length": 7743
+                    },
+                    "query": "SELECT COUNT(*) FROM mybb_forumsubscriptions WHERE fid=2 AND uid=1",
+                    "observed": "0",
+                    "assertions": [
+                      {
+                        "type": "scalar_nonzero",
+                        "expected": "nonzero",
+                        "observed": "0",
+                        "passed": false
+                      }
+                    ],
+                    "passed": false
+                  }
+                ]
+              }
+            ],
+            "combined_dimensions": {
+              "vulnerability_blocking": {
+                "passed": true,
+                "response_oracle_passed": true,
+                "database_oracle_applicable": true,
+                "database_oracle_passed": true
+              },
+              "regression": {
+                "passed": false,
+                "response_oracle_passed": false,
+                "database_oracle_applicable": true,
+                "database_oracle_passed": false
+              }
+            }
+          }
+        },
+        {
+          "attempt": 2,
+          "output": "D:\\project\\python\\DRHL\\runs\\mybb\\repair\\files\\attempt-2\\usercp2.php",
+          "syntax_compile_ok": true,
+          "exploit_blocked": true,
+          "regression_passed": false,
+          "successful": false,
+          "message": "syntax=(No syntax errors detected in D:\\project\\python\\DRHL\\runs\\mybb\\repair\\files\\attempt-2\\usercp2.php); deployment=(source patch applied); vulnerability_blocking=(response=True; database=passed; evidence=visitor:not_vulnerable; user1:not_vulnerable; user2:not_vulnerable); regression=(response=False; database=failed; evidence=authorized status=200; denial=['denial marker: password required'])",
+          "prompt_artifact": "D:\\project\\python\\DRHL\\runs\\mybb\\repair\\prompts\\usercp2-attempt2-a57287753d2b.json",
+          "plan": "{\"missing_check\": \"Forum password verification/cookie check for a password-protected forum before creating the forum subscription.\", \"insertion_location\": \"usercp2.php, in the addsubscription action, inside the `if($mybb->input['type'] == \\\"forum\\\")` branch, immediately after the existing $forumpermissions['canview']/['canviewthreads'] check and before `add_subscribed_forum($forum['fid']);`.\", \"recommended_guard\": \"check_forum_password($forum['fid']);\", \"reused_project_semantics\": \"Reuses the project's existing `check_forum_password()` from inc/functions.php. It checks $forum_cache[$fid]['password'], accepts $mybb->input['pwverify'] for form submission, validates existing access via $mybb->cookies['forumpass'][$fid] against md5($mybb->user['uid'].$password), sets the forumpass cookie with my_setcookie on success, and otherwise emits the project's password form/redirect and exits. This matches the existing forum-password gate used elsewhere and leaves existing error_no_permission() style intact for ordinary forum permission failures.\", \"reason\": \"The addsubscription type=forum path reaches add_subscribed_forum() without invoking the project's forum-password gate, so a logged-in user can subscribe to a password-protected forum without entering the forum password. Inserting `check_forum_password($forum['fid'])` at that point blocks the unauthorized bypass while preserving normal subscription behavior for forums without passwords and not imposing an admin-only or owner-only restriction, which avoids the regression that a too-strict admin/role guard would cause.\"}",
+          "database_validation_passed": false,
+          "database_validation": {
+            "oracle_version": 2,
+            "scope": "repair_only",
+            "applicable": true,
+            "passed": false,
+            "status": "failed",
+            "dimensions": {
+              "vulnerability_blocking": {
+                "phase": "attack",
+                "applicable": true,
+                "passed": true
+              },
+              "regression": {
+                "phase": "authorized",
+                "applicable": true,
+                "passed": false
+              }
+            },
+            "scenarios": [
+              {
+                "name": "mybb-protected-forum-subscription-user1-create",
+                "operation": "create",
+                "passed": false,
+                "phases": [
+                  {
+                    "phase": "attack",
+                    "role": "user1",
+                    "session_before_setup": false,
+                    "setup_sql": [
+                      "DELETE FROM mybb_forumsubscriptions WHERE fid=2 AND uid IN (1,2,3)"
+                    ],
+                    "session_requests": [],
+                    "request": {
+                      "method": "GET",
+                      "page": "usercp2.php",
+                      "params": {
+                        "action": "addsubscription",
+                        "type": "forum",
+                        "fid": "2",
+                        "my_post_key": "runtime"
+                      },
+                      "referer": "forumdisplay.php?fid=2",
+                      "cookie_names": []
+                    },
+                    "response": {
+                      "status_code": 200,
+                      "url": "http://localhost/mybb/usercp2.php?action=addsubscription&type=forum&fid=2&my_post_key=8fd495b95d51b665c22493ccfd043e6a",
+                      "body_length": 7015
+                    },
+                    "query": "SELECT COUNT(*) FROM mybb_forumsubscriptions WHERE fid=2 AND uid=2",
+                    "observed": "0",
+                    "assertions": [
+                      {
+                        "type": "scalar_zero",
+                        "expected": "0",
+                        "observed": "0",
+                        "passed": true
+                      }
+                    ],
+                    "passed": true
+                  },
+                  {
+                    "phase": "authorized",
+                    "role": "admin",
+                    "session_before_setup": false,
+                    "setup_sql": [
+                      "DELETE FROM mybb_forumsubscriptions WHERE fid=2 AND uid IN (1,2,3)"
+                    ],
+                    "session_requests": [],
+                    "request": {
+                      "method": "GET",
+                      "page": "usercp2.php",
+                      "params": {
+                        "action": "addsubscription",
+                        "type": "forum",
+                        "fid": "2",
+                        "my_post_key": "runtime"
+                      },
+                      "referer": "forumdisplay.php?fid=2",
+                      "cookie_names": []
+                    },
+                    "response": {
+                      "status_code": 200,
+                      "url": "http://localhost/mybb/usercp2.php?action=addsubscription&type=forum&fid=2&my_post_key=8038851d491c2519bb6c5ded3e4c6158",
+                      "body_length": 7743
+                    },
+                    "query": "SELECT COUNT(*) FROM mybb_forumsubscriptions WHERE fid=2 AND uid=1",
+                    "observed": "0",
+                    "assertions": [
+                      {
+                        "type": "scalar_nonzero",
+                        "expected": "nonzero",
+                        "observed": "0",
+                        "passed": false
+                      }
+                    ],
+                    "passed": false
+                  }
+                ]
+              },
+              {
+                "name": "mybb-protected-forum-subscription-user2-create",
+                "operation": "create",
+                "passed": false,
+                "phases": [
+                  {
+                    "phase": "attack",
+                    "role": "user2",
+                    "session_before_setup": false,
+                    "setup_sql": [
+                      "DELETE FROM mybb_forumsubscriptions WHERE fid=2 AND uid IN (1,2,3)"
+                    ],
+                    "session_requests": [],
+                    "request": {
+                      "method": "GET",
+                      "page": "usercp2.php",
+                      "params": {
+                        "action": "addsubscription",
+                        "type": "forum",
+                        "fid": "2",
+                        "my_post_key": "runtime"
+                      },
+                      "referer": "forumdisplay.php?fid=2",
+                      "cookie_names": []
+                    },
+                    "response": {
+                      "status_code": 200,
+                      "url": "http://localhost/mybb/usercp2.php?action=addsubscription&type=forum&fid=2&my_post_key=24fecc0863e67d44754900860ae033e3",
+                      "body_length": 7015
+                    },
+                    "query": "SELECT COUNT(*) FROM mybb_forumsubscriptions WHERE fid=2 AND uid=3",
+                    "observed": "0",
+                    "assertions": [
+                      {
+                        "type": "scalar_zero",
+                        "expected": "0",
+                        "observed": "0",
+                        "passed": true
+                      }
+                    ],
+                    "passed": true
+                  },
+                  {
+                    "phase": "authorized",
+                    "role": "admin",
+                    "session_before_setup": false,
+                    "setup_sql": [
+                      "DELETE FROM mybb_forumsubscriptions WHERE fid=2 AND uid IN (1,2,3)"
+                    ],
+                    "session_requests": [],
+                    "request": {
+                      "method": "GET",
+                      "page": "usercp2.php",
+                      "params": {
+                        "action": "addsubscription",
+                        "type": "forum",
+                        "fid": "2",
+                        "my_post_key": "runtime"
+                      },
+                      "referer": "forumdisplay.php?fid=2",
+                      "cookie_names": []
+                    },
+                    "response": {
+                      "status_code": 200,
+                      "url": "http://localhost/mybb/usercp2.php?action=addsubscription&type=forum&fid=2&my_post_key=8038851d491c2519bb6c5ded3e4c6158",
+                      "body_length": 7743
+                    },
+                    "query": "SELECT COUNT(*) FROM mybb_forumsubscriptions WHERE fid=2 AND uid=1",
+                    "observed": "0",
+                    "assertions": [
+                      {
+                        "type": "scalar_nonzero",
+                        "expected": "nonzero",
+                        "observed": "0",
+                        "passed": false
+                      }
+                    ],
+                    "passed": false
+                  }
+                ]
+              }
+            ],
+            "combined_dimensions": {
+              "vulnerability_blocking": {
+                "passed": true,
+                "response_oracle_passed": true,
+                "database_oracle_applicable": true,
+                "database_oracle_passed": true
+              },
+              "regression": {
+                "passed": false,
+                "response_oracle_passed": false,
+                "database_oracle_applicable": true,
+                "database_oracle_passed": false
+              }
+            }
+          }
+        },
+        {
+          "attempt": 3,
+          "output": "D:\\project\\python\\DRHL\\runs\\mybb\\repair\\files\\attempt-3\\usercp2.php",
+          "syntax_compile_ok": true,
+          "exploit_blocked": true,
+          "regression_passed": true,
+          "successful": true,
+          "message": "syntax=(No syntax errors detected in D:\\project\\python\\DRHL\\runs\\mybb\\repair\\files\\attempt-3\\usercp2.php); deployment=(source patch applied); vulnerability_blocking=(response=True; database=passed; evidence=visitor:not_vulnerable; user1:not_vulnerable; user2:not_vulnerable); regression=(response=True; database=passed; evidence=authorized status=200; denial=[])",
+          "prompt_artifact": "D:\\project\\python\\DRHL\\runs\\mybb\\repair\\prompts\\usercp2-attempt3-33fbb582739a.json",
+          "plan": "{\"missing_check\": \"check_forum_password($forum['fid']);\", \"insertion_location\": \"In usercp2.php, inside the `if($mybb->input['action'] == \\\"addsubscription\\\")` block, within the `if($mybb->input['type'] == \\\"forum\\\")` branch, immediately after the `$forumpermissions` check (`if($forumpermissions['canview'] == 0 || $forumpermissions['canviewthreads'] == 0) { error_no_permission(); }`) and before `add_subscribed_forum($forum['fid']);`.\", \"recommended_guard\": \"if($mybb->usergroup['cancp'] != 1)\\n{\\n\\tcheck_forum_password($forum['fid']);\\n}\", \"reused_project_semantics\": \"Uses $mybb->usergroup['cancp'] as the project's admin/privileged-role flag (as in global.php) to bypass the forum password gate for authorized admins, and reuses check_forum_password($forum['fid']) from inc/functions.php for the password-protected forum denial/redirect behavior.\", \"reason\": \"The forum addsubscription path checks only forum permissions, not the forum password, allowing a non-admin to subscribe to a password-protected forum without entering its password. Inserting the canonical check_forum_password guard after permission validation blocks the unauthorized user while preserving admin access via the cancp bypass, matching the authorized admin role.\"}",
+          "database_validation_passed": true,
+          "database_validation": {
+            "oracle_version": 2,
+            "scope": "repair_only",
+            "applicable": true,
+            "passed": true,
+            "status": "passed",
+            "dimensions": {
+              "vulnerability_blocking": {
+                "phase": "attack",
+                "applicable": true,
+                "passed": true
+              },
+              "regression": {
+                "phase": "authorized",
+                "applicable": true,
+                "passed": true
+              }
+            },
+            "scenarios": [
+              {
+                "name": "mybb-protected-forum-subscription-user1-create",
+                "operation": "create",
+                "passed": true,
+                "phases": [
+                  {
+                    "phase": "attack",
+                    "role": "user1",
+                    "session_before_setup": false,
+                    "setup_sql": [
+                      "DELETE FROM mybb_forumsubscriptions WHERE fid=2 AND uid IN (1,2,3)"
+                    ],
+                    "session_requests": [],
+                    "request": {
+                      "method": "GET",
+                      "page": "usercp2.php",
+                      "params": {
+                        "action": "addsubscription",
+                        "type": "forum",
+                        "fid": "2",
+                        "my_post_key": "runtime"
+                      },
+                      "referer": "forumdisplay.php?fid=2",
+                      "cookie_names": []
+                    },
+                    "response": {
+                      "status_code": 200,
+                      "url": "http://localhost/mybb/usercp2.php?action=addsubscription&type=forum&fid=2&my_post_key=8fd495b95d51b665c22493ccfd043e6a",
+                      "body_length": 7015
+                    },
+                    "query": "SELECT COUNT(*) FROM mybb_forumsubscriptions WHERE fid=2 AND uid=2",
+                    "observed": "0",
+                    "assertions": [
+                      {
+                        "type": "scalar_zero",
+                        "expected": "0",
+                        "observed": "0",
+                        "passed": true
+                      }
+                    ],
+                    "passed": true
+                  },
+                  {
+                    "phase": "authorized",
+                    "role": "admin",
+                    "session_before_setup": false,
+                    "setup_sql": [
+                      "DELETE FROM mybb_forumsubscriptions WHERE fid=2 AND uid IN (1,2,3)"
+                    ],
+                    "session_requests": [],
+                    "request": {
+                      "method": "GET",
+                      "page": "usercp2.php",
+                      "params": {
+                        "action": "addsubscription",
+                        "type": "forum",
+                        "fid": "2",
+                        "my_post_key": "runtime"
+                      },
+                      "referer": "forumdisplay.php?fid=2",
+                      "cookie_names": []
+                    },
+                    "response": {
+                      "status_code": 200,
+                      "url": "http://localhost/mybb/usercp2.php?action=addsubscription&type=forum&fid=2&my_post_key=8038851d491c2519bb6c5ded3e4c6158",
+                      "body_length": 2470
+                    },
+                    "query": "SELECT COUNT(*) FROM mybb_forumsubscriptions WHERE fid=2 AND uid=1",
+                    "observed": "1",
+                    "assertions": [
+                      {
+                        "type": "scalar_nonzero",
+                        "expected": "nonzero",
+                        "observed": "1",
+                        "passed": true
+                      }
+                    ],
+                    "passed": true
+                  }
+                ]
+              },
+              {
+                "name": "mybb-protected-forum-subscription-user2-create",
+                "operation": "create",
+                "passed": true,
+                "phases": [
+                  {
+                    "phase": "attack",
+                    "role": "user2",
+                    "session_before_setup": false,
+                    "setup_sql": [
+                      "DELETE FROM mybb_forumsubscriptions WHERE fid=2 AND uid IN (1,2,3)"
+                    ],
+                    "session_requests": [],
+                    "request": {
+                      "method": "GET",
+                      "page": "usercp2.php",
+                      "params": {
+                        "action": "addsubscription",
+                        "type": "forum",
+                        "fid": "2",
+                        "my_post_key": "runtime"
+                      },
+                      "referer": "forumdisplay.php?fid=2",
+                      "cookie_names": []
+                    },
+                    "response": {
+                      "status_code": 200,
+                      "url": "http://localhost/mybb/usercp2.php?action=addsubscription&type=forum&fid=2&my_post_key=24fecc0863e67d44754900860ae033e3",
+                      "body_length": 7015
+                    },
+                    "query": "SELECT COUNT(*) FROM mybb_forumsubscriptions WHERE fid=2 AND uid=3",
+                    "observed": "0",
+                    "assertions": [
+                      {
+                        "type": "scalar_zero",
+                        "expected": "0",
+                        "observed": "0",
+                        "passed": true
+                      }
+                    ],
+                    "passed": true
+                  },
+                  {
+                    "phase": "authorized",
+                    "role": "admin",
+                    "session_before_setup": false,
+                    "setup_sql": [
+                      "DELETE FROM mybb_forumsubscriptions WHERE fid=2 AND uid IN (1,2,3)"
+                    ],
+                    "session_requests": [],
+                    "request": {
+                      "method": "GET",
+                      "page": "usercp2.php",
+                      "params": {
+                        "action": "addsubscription",
+                        "type": "forum",
+                        "fid": "2",
+                        "my_post_key": "runtime"
+                      },
+                      "referer": "forumdisplay.php?fid=2",
+                      "cookie_names": []
+                    },
+                    "response": {
+                      "status_code": 200,
+                      "url": "http://localhost/mybb/usercp2.php?action=addsubscription&type=forum&fid=2&my_post_key=8038851d491c2519bb6c5ded3e4c6158",
+                      "body_length": 2470
+                    },
+                    "query": "SELECT COUNT(*) FROM mybb_forumsubscriptions WHERE fid=2 AND uid=1",
+                    "observed": "1",
+                    "assertions": [
+                      {
+                        "type": "scalar_nonzero",
+                        "expected": "nonzero",
+                        "observed": "1",
+                        "passed": true
+                      }
+                    ],
+                    "passed": true
+                  }
+                ]
+              }
+            ],
+            "combined_dimensions": {
+              "vulnerability_blocking": {
+                "passed": true,
+                "response_oracle_passed": true,
+                "database_oracle_applicable": true,
+                "database_oracle_passed": true
+              },
+              "regression": {
+                "passed": true,
+                "response_oracle_passed": true,
+                "database_oracle_applicable": true,
+                "database_oracle_passed": true
+              }
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

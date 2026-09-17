@@ -1,0 +1,47 @@
+{
+  "functions": [
+    {
+      "id": "functions.php:LCF3",
+      "path": "functions.php",
+      "name": "is_admin",
+      "parameters": [],
+      "body": "{\r\n\tif ($_SESSION['privilege'] == 'admin') return TRUE;\r\n\telse return FALSE;\r\n}",
+      "start_line": 15,
+      "end_line": 18,
+      "conditions": [
+        "($_SESSION['privilege'] == 'admin')"
+      ],
+      "code": "function is_admin() {\r\n\tif ($_SESSION['privilege'] == 'admin') return TRUE;\r\n\telse return FALSE;\r\n}",
+      "parameter_ids": [
+        "functions.php:LCP54"
+      ],
+      "validation_evidence": [
+        "validated_parameter_condition",
+        "same_branch_termination"
+      ]
+    },
+    {
+      "id": "functions.php:LCF9",
+      "path": "functions.php",
+      "name": "require_admin",
+      "parameters": [],
+      "body": "{\r\n\tif (!is_admin()) {\r\n\t        die (\"You don't have access to view this page, sorry. Please try going to the <a href='index.php'>index page</a> to view the site.\");\r\n\t}\r\n}",
+      "start_line": 65,
+      "end_line": 69,
+      "conditions": [
+        "(!is_admin())"
+      ],
+      "code": "function require_admin() {\r\n\tif (!is_admin()) {\r\n\t        die (\"You don't have access to view this page, sorry. Please try going to the <a href='index.php'>index page</a> to view the site.\");\r\n\t}\r\n}",
+      "parameter_ids": [
+        "functions.php:LCP54"
+      ],
+      "called_function_ids": [
+        "functions.php:LCF3"
+      ],
+      "validation_evidence": [
+        "calls_validated_function",
+        "same_branch_termination"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,375 @@
+{
+  "parameters": [
+    {
+      "id": "accounts/decorators.py:LCP2",
+      "path": "accounts/decorators.py",
+      "expression": "request.user",
+      "aliases": [
+        "request.user"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 11,
+          "condition": "u.is_active and u.is_student or u.is_superuser"
+        },
+        {
+          "source": "conditional",
+          "line": 26,
+          "condition": "u.is_active and u.is_lecturer or u.is_superuser"
+        },
+        {
+          "source": "conditional",
+          "line": 41,
+          "condition": "u.is_active and u.is_superuser"
+        }
+      ],
+      "condition_indexes": [
+        0,
+        2,
+        4
+      ],
+      "validation_evidence": [
+        {
+          "kind": "terminating_condition",
+          "line": 11,
+          "condition": "u.is_active and u.is_student or u.is_superuser",
+          "terminations": [
+            {
+              "kind": "django_user_passes_test",
+              "line": 11,
+              "code": "user_passes_test(\n        lambda u: u.is_active and u.is_student or u.is_superuser,\n        login_url=login_url,\n        redirect_field_name=redirect_field_name\n    )",
+              "is_statement": false
+            }
+          ]
+        },
+        {
+          "kind": "terminating_condition",
+          "line": 26,
+          "condition": "u.is_active and u.is_lecturer or u.is_superuser",
+          "terminations": [
+            {
+              "kind": "django_user_passes_test",
+              "line": 26,
+              "code": "user_passes_test(\n        lambda u: u.is_active and u.is_lecturer or u.is_superuser,\n        login_url=login_url,\n        redirect_field_name=redirect_field_name\n    )",
+              "is_statement": false
+            }
+          ]
+        },
+        {
+          "kind": "terminating_condition",
+          "line": 41,
+          "condition": "u.is_active and u.is_superuser",
+          "terminations": [
+            {
+              "kind": "django_user_passes_test",
+              "line": 41,
+              "code": "user_passes_test(\n        lambda u: u.is_active and u.is_superuser,\n        login_url=login_url,\n        redirect_field_name=redirect_field_name\n    )",
+              "is_statement": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "accounts/decorators.py:LCP3",
+      "path": "accounts/decorators.py",
+      "expression": "u.is_active",
+      "aliases": [
+        "u.is_active"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 11,
+          "condition": "u.is_active and u.is_student or u.is_superuser"
+        },
+        {
+          "source": "conditional",
+          "line": 26,
+          "condition": "u.is_active and u.is_lecturer or u.is_superuser"
+        },
+        {
+          "source": "conditional",
+          "line": 41,
+          "condition": "u.is_active and u.is_superuser"
+        }
+      ],
+      "condition_indexes": [
+        0,
+        2,
+        4
+      ],
+      "validation_evidence": [
+        {
+          "kind": "terminating_condition",
+          "line": 11,
+          "condition": "u.is_active and u.is_student or u.is_superuser",
+          "terminations": [
+            {
+              "kind": "django_user_passes_test",
+              "line": 11,
+              "code": "user_passes_test(\n        lambda u: u.is_active and u.is_student or u.is_superuser,\n        login_url=login_url,\n        redirect_field_name=redirect_field_name\n    )",
+              "is_statement": false
+            }
+          ]
+        },
+        {
+          "kind": "terminating_condition",
+          "line": 26,
+          "condition": "u.is_active and u.is_lecturer or u.is_superuser",
+          "terminations": [
+            {
+              "kind": "django_user_passes_test",
+              "line": 26,
+              "code": "user_passes_test(\n        lambda u: u.is_active and u.is_lecturer or u.is_superuser,\n        login_url=login_url,\n        redirect_field_name=redirect_field_name\n    )",
+              "is_statement": false
+            }
+          ]
+        },
+        {
+          "kind": "terminating_condition",
+          "line": 41,
+          "condition": "u.is_active and u.is_superuser",
+          "terminations": [
+            {
+              "kind": "django_user_passes_test",
+              "line": 41,
+              "code": "user_passes_test(\n        lambda u: u.is_active and u.is_superuser,\n        login_url=login_url,\n        redirect_field_name=redirect_field_name\n    )",
+              "is_statement": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "accounts/decorators.py:LCP4",
+      "path": "accounts/decorators.py",
+      "expression": "u.is_student",
+      "aliases": [
+        "u.is_student"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 11,
+          "condition": "u.is_active and u.is_student or u.is_superuser"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ],
+      "validation_evidence": [
+        {
+          "kind": "terminating_condition",
+          "line": 11,
+          "condition": "u.is_active and u.is_student or u.is_superuser",
+          "terminations": [
+            {
+              "kind": "django_user_passes_test",
+              "line": 11,
+              "code": "user_passes_test(\n        lambda u: u.is_active and u.is_student or u.is_superuser,\n        login_url=login_url,\n        redirect_field_name=redirect_field_name\n    )",
+              "is_statement": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "accounts/decorators.py:LCP5",
+      "path": "accounts/decorators.py",
+      "expression": "u.is_superuser",
+      "aliases": [
+        "u.is_superuser"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 11,
+          "condition": "u.is_active and u.is_student or u.is_superuser"
+        },
+        {
+          "source": "conditional",
+          "line": 26,
+          "condition": "u.is_active and u.is_lecturer or u.is_superuser"
+        },
+        {
+          "source": "conditional",
+          "line": 41,
+          "condition": "u.is_active and u.is_superuser"
+        }
+      ],
+      "condition_indexes": [
+        0,
+        2,
+        4
+      ],
+      "validation_evidence": [
+        {
+          "kind": "terminating_condition",
+          "line": 11,
+          "condition": "u.is_active and u.is_student or u.is_superuser",
+          "terminations": [
+            {
+              "kind": "django_user_passes_test",
+              "line": 11,
+              "code": "user_passes_test(\n        lambda u: u.is_active and u.is_student or u.is_superuser,\n        login_url=login_url,\n        redirect_field_name=redirect_field_name\n    )",
+              "is_statement": false
+            }
+          ]
+        },
+        {
+          "kind": "terminating_condition",
+          "line": 26,
+          "condition": "u.is_active and u.is_lecturer or u.is_superuser",
+          "terminations": [
+            {
+              "kind": "django_user_passes_test",
+              "line": 26,
+              "code": "user_passes_test(\n        lambda u: u.is_active and u.is_lecturer or u.is_superuser,\n        login_url=login_url,\n        redirect_field_name=redirect_field_name\n    )",
+              "is_statement": false
+            }
+          ]
+        },
+        {
+          "kind": "terminating_condition",
+          "line": 41,
+          "condition": "u.is_active and u.is_superuser",
+          "terminations": [
+            {
+              "kind": "django_user_passes_test",
+              "line": 41,
+              "code": "user_passes_test(\n        lambda u: u.is_active and u.is_superuser,\n        login_url=login_url,\n        redirect_field_name=redirect_field_name\n    )",
+              "is_statement": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "accounts/decorators.py:LCP7",
+      "path": "accounts/decorators.py",
+      "expression": "u.is_lecturer",
+      "aliases": [
+        "u.is_lecturer"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 26,
+          "condition": "u.is_active and u.is_lecturer or u.is_superuser"
+        }
+      ],
+      "condition_indexes": [
+        2
+      ],
+      "validation_evidence": [
+        {
+          "kind": "terminating_condition",
+          "line": 26,
+          "condition": "u.is_active and u.is_lecturer or u.is_superuser",
+          "terminations": [
+            {
+              "kind": "django_user_passes_test",
+              "line": 26,
+              "code": "user_passes_test(\n        lambda u: u.is_active and u.is_lecturer or u.is_superuser,\n        login_url=login_url,\n        redirect_field_name=redirect_field_name\n    )",
+              "is_statement": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "quiz/views.py:LCP112",
+      "path": "quiz/views.py",
+      "expression": "self.quiz.draft",
+      "aliases": [
+        "self.quiz.draft"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 226,
+          "condition": "self.quiz.draft and not request.user.has_perm('quiz.change_quiz')"
+        }
+      ],
+      "condition_indexes": [
+        13
+      ],
+      "validation_evidence": [
+        {
+          "kind": "terminating_condition",
+          "line": 226,
+          "condition": "self.quiz.draft and not request.user.has_perm('quiz.change_quiz')",
+          "terminations": [
+            {
+              "kind": "configured_denial",
+              "line": 227,
+              "code": "raise PermissionDenied"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "quiz/views.py:LCP113",
+      "path": "quiz/views.py",
+      "expression": "request.user.has_perm",
+      "aliases": [
+        "request.user.has_perm"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 226,
+          "condition": "self.quiz.draft and not request.user.has_perm('quiz.change_quiz')"
+        }
+      ],
+      "condition_indexes": [
+        13
+      ],
+      "validation_evidence": [
+        {
+          "kind": "terminating_condition",
+          "line": 226,
+          "condition": "self.quiz.draft and not request.user.has_perm('quiz.change_quiz')",
+          "terminations": [
+            {
+              "kind": "configured_denial",
+              "line": 227,
+              "code": "raise PermissionDenied"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

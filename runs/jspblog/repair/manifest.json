@@ -1,0 +1,1055 @@
+{
+  "summary": {
+    "Repair Items": 7,
+    "Total Repair Attempts": 10,
+    "Patch Generation Attempts": 10,
+    "Patches Generated": 10,
+    "Failed Patches": 3,
+    "Syntax / Compile OK": 10,
+    "Exploit Blocked": 10,
+    "Regression Passed": 7,
+    "Database Validation Applied": 5,
+    "Database Validation Passed": 3,
+    "Successful Repairs": 7,
+    "Failed Repairs": 0,
+    "Successful on Attempt 1": 5,
+    "Successful on Attempt 2": 1,
+    "Successful on Attempt 3": 1
+  },
+  "repairs": [
+    {
+      "category": "admin_only",
+      "page": "admin/addnews.jsp",
+      "source": "D:\\tomcat9\\webapps\\blog\\admin\\addnews.jsp",
+      "output": "D:\\project\\python\\DRHL\\runs\\jspblog\\repair\\files\\attempt-2\\admin\\addnews.jsp",
+      "status": "successful_repair",
+      "message": "syntax/compile, vulnerability blocking, and regression validation all passed",
+      "engine": "llm",
+      "plan": "{\"missing_check\": \"Admin authentication guard (drhlLoggedIn check) is missing; the page is directly accessible without verifying the authenticated admin session.\", \"insertion_location\": \"Immediately after the initial page directive <%@page contentType=\\\"text/html\\\"%> and before the <html> tag, any HTML output, or database access.\", \"recommended_guard\": \"<%@ include file=\\\"auth.jsp\\\" %>\", \"reused_project_semantics\": \"Reuses the existing admin/auth.jsp guard: variable drhlLoggedIn, sentinel value \\\"true\\\", denial via response.sendRedirect(\\\"index.jsp\\\") and return.\", \"reason\": \"Direct visitor access to admin/addnews.jsp must be blocked before the page queries the database or renders the admin form. Including the project's existing auth guard preserves intended admin access while denying unauthorized visitors.\"}",
+      "prompt_artifact": "D:\\project\\python\\DRHL\\runs\\jspblog\\repair\\prompts\\addnews-attempt2-21f202ce4d40.json",
+      "attempts": 2,
+      "patches_generated": 2,
+      "syntax_compile_ok": 2,
+      "exploit_blocked": 2,
+      "regression_passed": 1,
+      "database_validation_applied": 0,
+      "database_validation_passed": 0,
+      "successful": true,
+      "validation_artifact": "D:\\project\\python\\DRHL\\runs\\jspblog\\repair\\validation\\addnews-8dfa6849c9bc.json",
+      "attempt_details": [
+        {
+          "attempt": 1,
+          "output": "D:\\project\\python\\DRHL\\runs\\jspblog\\repair\\files\\attempt-1\\admin\\addnews.jsp",
+          "syntax_compile_ok": true,
+          "exploit_blocked": true,
+          "regression_passed": false,
+          "successful": false,
+          "message": "syntax=(syntax check disabled by configuration); deployment=(source patch applied); vulnerability_blocking=(response=True; database=passed; evidence=visitor:not_vulnerable); regression=(response=False; database=passed; evidence=authorized status=302; denial=['denial redirect: http://localhost:8080/blog/admin/index.jsp'])",
+          "prompt_artifact": "D:\\project\\python\\DRHL\\runs\\jspblog\\repair\\prompts\\addnews-attempt1-57de89165650.json",
+          "plan": "{\"missing_check\": \"Admin authentication guard verifying the drhlLoggedIn session flag is 'true'\", \"insertion_location\": \"Immediately after the initial page directive (<%@page contentType=\\\"text/html\\\"%>) and before the <html> tag, so it executes before any HTML output or database access.\", \"recommended_guard\": \"if (drhlLoggedIn == null || !drhlLoggedIn.equals(\\\"true\\\")) {\\n    response.sendRedirect(\\\"index.jsp\\\");\\n    return;\\n}\", \"reused_project_semantics\": \"drhlLoggedIn is the project's session-scoped authentication flag (as checked in admin/auth.jsp); 'true' is the authorized sentinel value; unauthorized access is denied by response.sendRedirect(\\\"index.jsp\\\") followed by return. The guard context is the same as admin/auth.jsp; ensure drhlLoggedIn is initialized from session as in that file (e.g., by including auth.jsp or equivalent), without inventing new session keys.\", \"reason\": \"admin/addnews.jsp is an admin-only page that performs database queries and generates admin functionality. Without this check, an unauthenticated visitor can access it (HTTP 200). Inserting the existing admin auth guard before any sensitive operations blocks unauthorized requests while preserving access for authenticated admins with drhlLoggedIn='true'.\"}",
+          "database_validation_passed": true,
+          "database_validation": {
+            "oracle_version": 2,
+            "scope": "repair_only",
+            "applicable": false,
+            "passed": true,
+            "status": "response_only",
+            "display_as_passed": true,
+            "message": "database validation intentionally skipped; response oracle retained",
+            "dimensions": {
+              "vulnerability_blocking": {
+                "phase": "attack",
+                "applicable": false,
+                "passed": true
+              },
+              "regression": {
+                "phase": "authorized",
+                "applicable": false,
+                "passed": true
+              }
+            },
+            "scenarios": [],
+            "combined_dimensions": {
+              "vulnerability_blocking": {
+                "passed": true,
+                "response_oracle_applicable": true,
+                "response_oracle_passed": true,
+                "database_oracle_applicable": false,
+                "database_oracle_passed": true
+              },
+              "regression": {
+                "passed": false,
+                "response_oracle_applicable": true,
+                "response_oracle_passed": false,
+                "database_oracle_applicable": false,
+                "database_oracle_passed": true
+              }
+            }
+          }
+        },
+        {
+          "attempt": 2,
+          "output": "D:\\project\\python\\DRHL\\runs\\jspblog\\repair\\files\\attempt-2\\admin\\addnews.jsp",
+          "syntax_compile_ok": true,
+          "exploit_blocked": true,
+          "regression_passed": true,
+          "successful": true,
+          "message": "syntax=(syntax check disabled by configuration); deployment=(source patch applied); vulnerability_blocking=(response=True; database=passed; evidence=visitor:not_vulnerable); regression=(response=True; database=passed; evidence=authorized status=200; denial=[])",
+          "prompt_artifact": "D:\\project\\python\\DRHL\\runs\\jspblog\\repair\\prompts\\addnews-attempt2-21f202ce4d40.json",
+          "plan": "{\"missing_check\": \"Admin authentication guard (drhlLoggedIn check) is missing; the page is directly accessible without verifying the authenticated admin session.\", \"insertion_location\": \"Immediately after the initial page directive <%@page contentType=\\\"text/html\\\"%> and before the <html> tag, any HTML output, or database access.\", \"recommended_guard\": \"<%@ include file=\\\"auth.jsp\\\" %>\", \"reused_project_semantics\": \"Reuses the existing admin/auth.jsp guard: variable drhlLoggedIn, sentinel value \\\"true\\\", denial via response.sendRedirect(\\\"index.jsp\\\") and return.\", \"reason\": \"Direct visitor access to admin/addnews.jsp must be blocked before the page queries the database or renders the admin form. Including the project's existing auth guard preserves intended admin access while denying unauthorized visitors.\"}",
+          "database_validation_passed": true,
+          "database_validation": {
+            "oracle_version": 2,
+            "scope": "repair_only",
+            "applicable": false,
+            "passed": true,
+            "status": "response_only",
+            "display_as_passed": true,
+            "message": "database validation intentionally skipped; response oracle retained",
+            "dimensions": {
+              "vulnerability_blocking": {
+                "phase": "attack",
+                "applicable": false,
+                "passed": true
+              },
+              "regression": {
+                "phase": "authorized",
+                "applicable": false,
+                "passed": true
+              }
+            },
+            "scenarios": [],
+            "combined_dimensions": {
+              "vulnerability_blocking": {
+                "passed": true,
+                "response_oracle_applicable": true,
+                "response_oracle_passed": true,
+                "database_oracle_applicable": false,
+                "database_oracle_passed": true
+              },
+              "regression": {
+                "passed": true,
+                "response_oracle_applicable": true,
+                "response_oracle_passed": true,
+                "database_oracle_applicable": false,
+                "database_oracle_passed": true
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/addnews2.jsp",
+      "source": "D:\\tomcat9\\webapps\\blog\\admin\\addnews2.jsp",
+      "output": "D:\\project\\python\\DRHL\\runs\\jspblog\\repair\\files\\attempt-3\\admin\\addnews2.jsp",
+      "status": "successful_repair",
+      "message": "syntax/compile, vulnerability blocking, and regression validation all passed",
+      "engine": "llm",
+      "plan": "{\"missing_check\": \"Authentication/authorization guard for admin-only page; verify drhlLoggedIn session flag is 'true' before executing any sensitive logic.\", \"insertion_location\": \"At the top of admin/addnews2.jsp, immediately after the <%@page contentType=\\\"text/html\\\"%> directive and before any HTML output, parameter reads, or database connection/INSERT code.\", \"recommended_guard\": \"Reuse the existing admin/auth.jsp guard by adding <%@ include file=\\\"auth.jsp\\\" %> at the insertion point. This guard is: if (drhlLoggedIn == null || !drhlLoggedIn.equals(\\\"true\\\")) { response.sendRedirect(\\\"index.jsp\\\"); return; }\", \"reused_project_semantics\": \"Uses the drhlLoggedIn session flag, sentinel value \\\"true\\\", and response.sendRedirect(\\\"index.jsp\\\") denial style from admin/auth.jsp. Admin access is preserved when drhlLoggedIn equals \\\"true\\\".\", \"reason\": \"admin/addnews2.jsp is an admin-only standalone entry that performs a database INSERT without access control. Inserting the existing project auth guard before any sensitive operation blocks unauthorized visitor access while keeping intended admin access functional.\"}",
+      "prompt_artifact": "D:\\project\\python\\DRHL\\runs\\jspblog\\repair\\prompts\\addnews2-attempt3-5f6b89e6e4c1.json",
+      "attempts": 3,
+      "patches_generated": 3,
+      "syntax_compile_ok": 3,
+      "exploit_blocked": 3,
+      "regression_passed": 1,
+      "database_validation_applied": 3,
+      "database_validation_passed": 1,
+      "successful": true,
+      "validation_artifact": "D:\\project\\python\\DRHL\\runs\\jspblog\\repair\\validation\\addnews2-2390afb2a810.json",
+      "attempt_details": [
+        {
+          "attempt": 1,
+          "output": "D:\\project\\python\\DRHL\\runs\\jspblog\\repair\\files\\attempt-1\\admin\\addnews2.jsp",
+          "syntax_compile_ok": true,
+          "exploit_blocked": true,
+          "regression_passed": false,
+          "successful": false,
+          "message": "syntax=(syntax check disabled by configuration); deployment=(source patch applied); vulnerability_blocking=(response=True; database=passed; evidence=visitor:not_vulnerable); regression=(response=True; database=failed; evidence=authorized status=302; denial=['denial redirect: http://localhost:8080/blog/admin/index.jsp']; authorized success redirect accepted)",
+          "prompt_artifact": "D:\\project\\python\\DRHL\\runs\\jspblog\\repair\\prompts\\addnews2-attempt1-8cc5f361669c.json",
+          "plan": "{\"missing_check\": \"Missing admin-only authentication guard for direct access to admin/addnews2.jsp before processing POST data or executing the news INSERT.\", \"insertion_location\": \"At the very top of admin/addnews2.jsp, immediately after the page directives and before the <html> output or any request-parameter reads/DB operations, so unauthorized users are redirected before output or side effects.\", \"recommended_guard\": \"<% String drhlLoggedIn = (String) session.getAttribute(\\\"drhlLoggedIn\\\"); if (drhlLoggedIn == null || !drhlLoggedIn.equals(\\\"true\\\")) { response.sendRedirect(\\\"index.jsp\\\"); return; } %>\", \"reused_project_semantics\": \"Reuses the project admin session flag drhlLoggedIn, the exact sentinel value \\\"true\\\", and the denial style from admin/auth.jsp: response.sendRedirect(\\\"index.jsp\\\"); return;\", \"reason\": \"admin/addnews2.jsp is an admin-only standalone entry that reads POST parameters and performs a database INSERT without checking the existing admin authentication flag. Adding the project's drhlLoggedIn guard before any sensitive operation blocks visitors while preserving access for authorized admins whose session flag equals \\\"true\\\".\"}",
+          "database_validation_passed": false,
+          "database_validation": {
+            "oracle_version": 2,
+            "scope": "repair_only",
+            "applicable": true,
+            "passed": false,
+            "status": "failed",
+            "dimensions": {
+              "vulnerability_blocking": {
+                "phase": "attack",
+                "applicable": true,
+                "passed": true
+              },
+              "regression": {
+                "phase": "authorized",
+                "applicable": true,
+                "passed": false
+              }
+            },
+            "scenarios": [
+              {
+                "name": "jspblog-add-news-admin-create",
+                "operation": "create",
+                "passed": false,
+                "phases": [
+                  {
+                    "phase": "attack",
+                    "role": "visitor",
+                    "session_before_setup": false,
+                    "setup_sql": [],
+                    "session_requests": [],
+                    "request": {
+                      "method": "POST",
+                      "page": "admin/addnews2.jsp",
+                      "params": {
+                        "author": "drhl-oracle@example.test",
+                        "headline": "DRHLR_146ed089ea22",
+                        "date": "Thu Jan 01 00:00:00 CST 2026",
+                        "body": "DRHLR_146ed089ea22",
+                        "submit": "Add"
+                      },
+                      "referer": "admin/addnews.jsp",
+                      "cookie_names": []
+                    },
+                    "response": {
+                      "status_code": 302,
+                      "url": "http://localhost:8080/blog/admin/addnews2.jsp",
+                      "body_length": 0
+                    },
+                    "query": "SELECT COUNT(*) FROM news WHERE headline='DRHLR_146ed089ea22'",
+                    "observed": "0",
+                    "assertions": [
+                      {
+                        "type": "scalar_zero",
+                        "expected": "0",
+                        "observed": "0",
+                        "passed": true
+                      }
+                    ],
+                    "passed": true
+                  },
+                  {
+                    "phase": "authorized",
+                    "role": "admin",
+                    "session_before_setup": false,
+                    "setup_sql": [],
+                    "session_requests": [],
+                    "request": {
+                      "method": "POST",
+                      "page": "admin/addnews2.jsp",
+                      "params": {
+                        "author": "drhl-oracle@example.test",
+                        "headline": "DRHLR_146ed089ea22",
+                        "date": "Thu Jan 01 00:00:00 CST 2026",
+                        "body": "DRHLR_146ed089ea22",
+                        "submit": "Add"
+                      },
+                      "referer": "admin/addnews.jsp",
+                      "cookie_names": []
+                    },
+                    "response": {
+                      "status_code": 302,
+                      "url": "http://localhost:8080/blog/admin/addnews2.jsp",
+                      "body_length": 0
+                    },
+                    "query": "SELECT COUNT(*) FROM news WHERE headline='DRHLR_146ed089ea22'",
+                    "observed": "0",
+                    "assertions": [
+                      {
+                        "type": "scalar_nonzero",
+                        "expected": "nonzero",
+                        "observed": "0",
+                        "passed": false
+                      }
+                    ],
+                    "passed": false
+                  }
+                ]
+              }
+            ],
+            "combined_dimensions": {
+              "vulnerability_blocking": {
+                "passed": true,
+                "response_oracle_applicable": true,
+                "response_oracle_passed": true,
+                "database_oracle_applicable": true,
+                "database_oracle_passed": true
+              },
+              "regression": {
+                "passed": false,
+                "response_oracle_applicable": true,
+                "response_oracle_passed": true,
+                "database_oracle_applicable": true,
+                "database_oracle_passed": false
+              }
+            }
+          }
+        },
+        {
+          "attempt": 2,
+          "output": "D:\\project\\python\\DRHL\\runs\\jspblog\\repair\\files\\attempt-2\\admin\\addnews2.jsp",
+          "syntax_compile_ok": true,
+          "exploit_blocked": true,
+          "regression_passed": false,
+          "successful": false,
+          "message": "syntax=(syntax check disabled by configuration); deployment=(source patch applied); vulnerability_blocking=(response=True; database=passed; evidence=visitor:not_vulnerable); regression=(response=True; database=failed; evidence=authorized status=302; denial=['denial redirect: http://localhost:8080/blog/admin/index.jsp']; authorized success redirect accepted)",
+          "prompt_artifact": "D:\\project\\python\\DRHL\\runs\\jspblog\\repair\\prompts\\addnews2-attempt2-0208cf89c207.json",
+          "plan": "{\"missing_check\": \"Missing authentication/authorization guard on admin-only JSP entry; a visitor can directly POST to admin/addnews2.jsp and execute the news INSERT without being challenged.\", \"insertion_location\": \"At the top of the JSP scriptlet in admin/addnews2.jsp, immediately after `<%@ page language=\\\"java\\\" import=\\\"java.sql.*\\\" %>` and before `// add_res.jsp // form data`, any `request.getParameter` reads, or database operations.\", \"recommended_guard\": \"String drhlLoggedIn = (String) session.getAttribute(\\\"drhlLoggedIn\\\");\\nif (drhlLoggedIn == null || !drhlLoggedIn.equals(\\\"true\\\")) {\\n    response.sendRedirect(\\\"index.jsp\\\");\\n    return;\\n}\", \"reused_project_semantics\": \"Reuses the project’s existing admin guard context from admin/auth.jsp: the `drhlLoggedIn` session flag, the sentinel value `\\\"true\\\"`, and the denial style `response.sendRedirect(\\\"index.jsp\\\"); return;`.\", \"reason\": \"admin/addnews2.jsp is an admin-only standalone entry that performs a sensitive database INSERT. It currently has no access check, so an unauthenticated visitor can POST directly and modify data. The existing project guard in admin/auth.jsp checks the `drhlLoggedIn` session attribute for `\\\"true\\\"` and redirects unauthorized users to index.jsp. Inserting this exact guard at the start of the scriptlet blocks unauthorized visitors before parameter parsing or SQL execution while preserving intended admin access.\"}",
+          "database_validation_passed": false,
+          "database_validation": {
+            "oracle_version": 2,
+            "scope": "repair_only",
+            "applicable": true,
+            "passed": false,
+            "status": "failed",
+            "dimensions": {
+              "vulnerability_blocking": {
+                "phase": "attack",
+                "applicable": true,
+                "passed": true
+              },
+              "regression": {
+                "phase": "authorized",
+                "applicable": true,
+                "passed": false
+              }
+            },
+            "scenarios": [
+              {
+                "name": "jspblog-add-news-admin-create",
+                "operation": "create",
+                "passed": false,
+                "phases": [
+                  {
+                    "phase": "attack",
+                    "role": "visitor",
+                    "session_before_setup": false,
+                    "setup_sql": [],
+                    "session_requests": [],
+                    "request": {
+                      "method": "POST",
+                      "page": "admin/addnews2.jsp",
+                      "params": {
+                        "author": "drhl-oracle@example.test",
+                        "headline": "DRHLR_c23ccbbf2b50",
+                        "date": "Thu Jan 01 00:00:00 CST 2026",
+                        "body": "DRHLR_c23ccbbf2b50",
+                        "submit": "Add"
+                      },
+                      "referer": "admin/addnews.jsp",
+                      "cookie_names": []
+                    },
+                    "response": {
+                      "status_code": 302,
+                      "url": "http://localhost:8080/blog/admin/addnews2.jsp",
+                      "body_length": 0
+                    },
+                    "query": "SELECT COUNT(*) FROM news WHERE headline='DRHLR_c23ccbbf2b50'",
+                    "observed": "0",
+                    "assertions": [
+                      {
+                        "type": "scalar_zero",
+                        "expected": "0",
+                        "observed": "0",
+                        "passed": true
+                      }
+                    ],
+                    "passed": true
+                  },
+                  {
+                    "phase": "authorized",
+                    "role": "admin",
+                    "session_before_setup": false,
+                    "setup_sql": [],
+                    "session_requests": [],
+                    "request": {
+                      "method": "POST",
+                      "page": "admin/addnews2.jsp",
+                      "params": {
+                        "author": "drhl-oracle@example.test",
+                        "headline": "DRHLR_c23ccbbf2b50",
+                        "date": "Thu Jan 01 00:00:00 CST 2026",
+                        "body": "DRHLR_c23ccbbf2b50",
+                        "submit": "Add"
+                      },
+                      "referer": "admin/addnews.jsp",
+                      "cookie_names": []
+                    },
+                    "response": {
+                      "status_code": 302,
+                      "url": "http://localhost:8080/blog/admin/addnews2.jsp",
+                      "body_length": 0
+                    },
+                    "query": "SELECT COUNT(*) FROM news WHERE headline='DRHLR_c23ccbbf2b50'",
+                    "observed": "0",
+                    "assertions": [
+                      {
+                        "type": "scalar_nonzero",
+                        "expected": "nonzero",
+                        "observed": "0",
+                        "passed": false
+                      }
+                    ],
+                    "passed": false
+                  }
+                ]
+              }
+            ],
+            "combined_dimensions": {
+              "vulnerability_blocking": {
+                "passed": true,
+                "response_oracle_applicable": true,
+                "response_oracle_passed": true,
+                "database_oracle_applicable": true,
+                "database_oracle_passed": true
+              },
+              "regression": {
+                "passed": false,
+                "response_oracle_applicable": true,
+                "response_oracle_passed": true,
+                "database_oracle_applicable": true,
+                "database_oracle_passed": false
+              }
+            }
+          }
+        },
+        {
+          "attempt": 3,
+          "output": "D:\\project\\python\\DRHL\\runs\\jspblog\\repair\\files\\attempt-3\\admin\\addnews2.jsp",
+          "syntax_compile_ok": true,
+          "exploit_blocked": true,
+          "regression_passed": true,
+          "successful": true,
+          "message": "syntax=(syntax check disabled by configuration); deployment=(source patch applied); vulnerability_blocking=(response=True; database=passed; evidence=visitor:not_vulnerable); regression=(response=True; database=passed; evidence=authorized status=200; denial=[])",
+          "prompt_artifact": "D:\\project\\python\\DRHL\\runs\\jspblog\\repair\\prompts\\addnews2-attempt3-5f6b89e6e4c1.json",
+          "plan": "{\"missing_check\": \"Authentication/authorization guard for admin-only page; verify drhlLoggedIn session flag is 'true' before executing any sensitive logic.\", \"insertion_location\": \"At the top of admin/addnews2.jsp, immediately after the <%@page contentType=\\\"text/html\\\"%> directive and before any HTML output, parameter reads, or database connection/INSERT code.\", \"recommended_guard\": \"Reuse the existing admin/auth.jsp guard by adding <%@ include file=\\\"auth.jsp\\\" %> at the insertion point. This guard is: if (drhlLoggedIn == null || !drhlLoggedIn.equals(\\\"true\\\")) { response.sendRedirect(\\\"index.jsp\\\"); return; }\", \"reused_project_semantics\": \"Uses the drhlLoggedIn session flag, sentinel value \\\"true\\\", and response.sendRedirect(\\\"index.jsp\\\") denial style from admin/auth.jsp. Admin access is preserved when drhlLoggedIn equals \\\"true\\\".\", \"reason\": \"admin/addnews2.jsp is an admin-only standalone entry that performs a database INSERT without access control. Inserting the existing project auth guard before any sensitive operation blocks unauthorized visitor access while keeping intended admin access functional.\"}",
+          "database_validation_passed": true,
+          "database_validation": {
+            "oracle_version": 2,
+            "scope": "repair_only",
+            "applicable": true,
+            "passed": true,
+            "status": "passed",
+            "dimensions": {
+              "vulnerability_blocking": {
+                "phase": "attack",
+                "applicable": true,
+                "passed": true
+              },
+              "regression": {
+                "phase": "authorized",
+                "applicable": true,
+                "passed": true
+              }
+            },
+            "scenarios": [
+              {
+                "name": "jspblog-add-news-admin-create",
+                "operation": "create",
+                "passed": true,
+                "phases": [
+                  {
+                    "phase": "attack",
+                    "role": "visitor",
+                    "session_before_setup": false,
+                    "setup_sql": [],
+                    "session_requests": [],
+                    "request": {
+                      "method": "POST",
+                      "page": "admin/addnews2.jsp",
+                      "params": {
+                        "author": "drhl-oracle@example.test",
+                        "headline": "DRHLR_516bdd1bb758",
+                        "date": "Thu Jan 01 00:00:00 CST 2026",
+                        "body": "DRHLR_516bdd1bb758",
+                        "submit": "Add"
+                      },
+                      "referer": "admin/addnews.jsp",
+                      "cookie_names": []
+                    },
+                    "response": {
+                      "status_code": 302,
+                      "url": "http://localhost:8080/blog/admin/addnews2.jsp",
+                      "body_length": 0
+                    },
+                    "query": "SELECT COUNT(*) FROM news WHERE headline='DRHLR_516bdd1bb758'",
+                    "observed": "0",
+                    "assertions": [
+                      {
+                        "type": "scalar_zero",
+                        "expected": "0",
+                        "observed": "0",
+                        "passed": true
+                      }
+                    ],
+                    "passed": true
+                  },
+                  {
+                    "phase": "authorized",
+                    "role": "admin",
+                    "session_before_setup": false,
+                    "setup_sql": [],
+                    "session_requests": [],
+                    "request": {
+                      "method": "POST",
+                      "page": "admin/addnews2.jsp",
+                      "params": {
+                        "author": "drhl-oracle@example.test",
+                        "headline": "DRHLR_516bdd1bb758",
+                        "date": "Thu Jan 01 00:00:00 CST 2026",
+                        "body": "DRHLR_516bdd1bb758",
+                        "submit": "Add"
+                      },
+                      "referer": "admin/addnews.jsp",
+                      "cookie_names": []
+                    },
+                    "response": {
+                      "status_code": 200,
+                      "url": "http://localhost:8080/blog/admin/addnews2.jsp",
+                      "body_length": 356
+                    },
+                    "query": "SELECT COUNT(*) FROM news WHERE headline='DRHLR_516bdd1bb758'",
+                    "observed": "1",
+                    "assertions": [
+                      {
+                        "type": "scalar_nonzero",
+                        "expected": "nonzero",
+                        "observed": "1",
+                        "passed": true
+                      }
+                    ],
+                    "passed": true
+                  }
+                ]
+              }
+            ],
+            "combined_dimensions": {
+              "vulnerability_blocking": {
+                "passed": true,
+                "response_oracle_applicable": true,
+                "response_oracle_passed": true,
+                "database_oracle_applicable": true,
+                "database_oracle_passed": true
+              },
+              "regression": {
+                "passed": true,
+                "response_oracle_applicable": true,
+                "response_oracle_passed": true,
+                "database_oracle_applicable": true,
+                "database_oracle_passed": true
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/adduser.jsp",
+      "source": "D:\\tomcat9\\webapps\\blog\\admin\\adduser.jsp",
+      "output": "D:\\project\\python\\DRHL\\runs\\jspblog\\repair\\files\\attempt-1\\admin\\adduser.jsp",
+      "status": "successful_repair",
+      "message": "syntax/compile, vulnerability blocking, and regression validation all passed",
+      "engine": "llm",
+      "plan": "{\"missing_check\": \"Missing inclusion of the admin authentication guard before any output; admin/adduser.jsp can be accessed directly by unauthenticated visitors.\", \"insertion_location\": \"At the very top of admin/adduser.jsp, immediately after the <%@page contentType=\\\"text/html\\\"%> directive and before the <html> tag or any other content.\", \"recommended_guard\": \"<%@ include file=\\\"auth.jsp\\\" %>\", \"reused_project_semantics\": \"Reuses admin/auth.jsp guard logic which checks the drhlLoggedIn value against the sentinel \\\"true\\\" and denies unauthorized users with response.sendRedirect(\\\"index.jsp\\\") followed by return.\", \"reason\": \"admin/adduser.jsp is an admin-only entry point but lacks the shared auth guard used by other admin pages. Including auth.jsp at the top blocks unauthenticated visitors (attacker_role visitor) before any sensitive operation or form rendering, while preserving access for authorized admin users because the guard only redirects when drhlLoggedIn is null or not \\\"true\\\".\"}",
+      "prompt_artifact": "D:\\project\\python\\DRHL\\runs\\jspblog\\repair\\prompts\\adduser-attempt1-4db7ace84eec.json",
+      "attempts": 1,
+      "patches_generated": 1,
+      "syntax_compile_ok": 1,
+      "exploit_blocked": 1,
+      "regression_passed": 1,
+      "database_validation_applied": 0,
+      "database_validation_passed": 0,
+      "successful": true,
+      "validation_artifact": "D:\\project\\python\\DRHL\\runs\\jspblog\\repair\\validation\\adduser-6e129e7db2f2.json",
+      "attempt_details": [
+        {
+          "attempt": 1,
+          "output": "D:\\project\\python\\DRHL\\runs\\jspblog\\repair\\files\\attempt-1\\admin\\adduser.jsp",
+          "syntax_compile_ok": true,
+          "exploit_blocked": true,
+          "regression_passed": true,
+          "successful": true,
+          "message": "syntax=(syntax check disabled by configuration); deployment=(source patch applied); vulnerability_blocking=(response=True; database=passed; evidence=visitor:not_vulnerable); regression=(response=True; database=passed; evidence=authorized status=200; denial=[])",
+          "prompt_artifact": "D:\\project\\python\\DRHL\\runs\\jspblog\\repair\\prompts\\adduser-attempt1-4db7ace84eec.json",
+          "plan": "{\"missing_check\": \"Missing inclusion of the admin authentication guard before any output; admin/adduser.jsp can be accessed directly by unauthenticated visitors.\", \"insertion_location\": \"At the very top of admin/adduser.jsp, immediately after the <%@page contentType=\\\"text/html\\\"%> directive and before the <html> tag or any other content.\", \"recommended_guard\": \"<%@ include file=\\\"auth.jsp\\\" %>\", \"reused_project_semantics\": \"Reuses admin/auth.jsp guard logic which checks the drhlLoggedIn value against the sentinel \\\"true\\\" and denies unauthorized users with response.sendRedirect(\\\"index.jsp\\\") followed by return.\", \"reason\": \"admin/adduser.jsp is an admin-only entry point but lacks the shared auth guard used by other admin pages. Including auth.jsp at the top blocks unauthenticated visitors (attacker_role visitor) before any sensitive operation or form rendering, while preserving access for authorized admin users because the guard only redirects when drhlLoggedIn is null or not \\\"true\\\".\"}",
+          "database_validation_passed": true,
+          "database_validation": {
+            "oracle_version": 2,
+            "scope": "repair_only",
+            "applicable": false,
+            "passed": true,
+            "status": "response_only",
+            "display_as_passed": true,
+            "message": "database validation intentionally skipped; response oracle retained",
+            "dimensions": {
+              "vulnerability_blocking": {
+                "phase": "attack",
+                "applicable": false,
+                "passed": true
+              },
+              "regression": {
+                "phase": "authorized",
+                "applicable": false,
+                "passed": true
+              }
+            },
+            "scenarios": [],
+            "combined_dimensions": {
+              "vulnerability_blocking": {
+                "passed": true,
+                "response_oracle_applicable": true,
+                "response_oracle_passed": true,
+                "database_oracle_applicable": false,
+                "database_oracle_passed": true
+              },
+              "regression": {
+                "passed": true,
+                "response_oracle_applicable": true,
+                "response_oracle_passed": true,
+                "database_oracle_applicable": false,
+                "database_oracle_passed": true
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/adduser2.jsp",
+      "source": "D:\\tomcat9\\webapps\\blog\\admin\\adduser2.jsp",
+      "output": "D:\\project\\python\\DRHL\\runs\\jspblog\\repair\\files\\attempt-1\\admin\\adduser2.jsp",
+      "status": "successful_repair",
+      "message": "syntax/compile, vulnerability blocking, and regression validation all passed",
+      "engine": "llm",
+      "plan": "{\"missing_check\": \"Missing inclusion/execution of the admin authentication guard defined in admin/auth.jsp.\", \"insertion_location\": \"At the very beginning of admin/adduser2.jsp, immediately after the `<%@page contentType=\\\"text/html\\\"%>` directive and before the `<html>` tag, so the guard runs before any HTML output or database operations.\", \"recommended_guard\": \"<%@ include file=\\\"auth.jsp\\\" %>\", \"reused_project_semantics\": \"admin/auth.jsp defines the guard: if (drhlLoggedIn == null || !drhlLoggedIn.equals(\\\"true\\\")) { response.sendRedirect(\\\"index.jsp\\\"); return; } — it uses the `drhlLoggedIn` flag and sentinel `\\\"true\\\"`, denying by redirecting to `index.jsp` and returning.\", \"reason\": \"admin/adduser2.jsp is an admin-only entry that performs database inserts. Without the project's auth guard, a visitor can access it directly. Including the existing auth.jsp guard blocks unauthorized users before any sensitive operation while leaving admin access intact because the guard only rejects when `drhlLoggedIn` is not `\\\"true\\\"`.\"}",
+      "prompt_artifact": "D:\\project\\python\\DRHL\\runs\\jspblog\\repair\\prompts\\adduser2-attempt1-6426be209d9c.json",
+      "attempts": 1,
+      "patches_generated": 1,
+      "syntax_compile_ok": 1,
+      "exploit_blocked": 1,
+      "regression_passed": 1,
+      "database_validation_applied": 1,
+      "database_validation_passed": 1,
+      "successful": true,
+      "validation_artifact": "D:\\project\\python\\DRHL\\runs\\jspblog\\repair\\validation\\adduser2-f945660f5d67.json",
+      "attempt_details": [
+        {
+          "attempt": 1,
+          "output": "D:\\project\\python\\DRHL\\runs\\jspblog\\repair\\files\\attempt-1\\admin\\adduser2.jsp",
+          "syntax_compile_ok": true,
+          "exploit_blocked": true,
+          "regression_passed": true,
+          "successful": true,
+          "message": "syntax=(syntax check disabled by configuration); deployment=(source patch applied); vulnerability_blocking=(response=True; database=passed; evidence=visitor:not_vulnerable); regression=(response=True; database=passed; evidence=authorized status=200; denial=[])",
+          "prompt_artifact": "D:\\project\\python\\DRHL\\runs\\jspblog\\repair\\prompts\\adduser2-attempt1-6426be209d9c.json",
+          "plan": "{\"missing_check\": \"Missing inclusion/execution of the admin authentication guard defined in admin/auth.jsp.\", \"insertion_location\": \"At the very beginning of admin/adduser2.jsp, immediately after the `<%@page contentType=\\\"text/html\\\"%>` directive and before the `<html>` tag, so the guard runs before any HTML output or database operations.\", \"recommended_guard\": \"<%@ include file=\\\"auth.jsp\\\" %>\", \"reused_project_semantics\": \"admin/auth.jsp defines the guard: if (drhlLoggedIn == null || !drhlLoggedIn.equals(\\\"true\\\")) { response.sendRedirect(\\\"index.jsp\\\"); return; } — it uses the `drhlLoggedIn` flag and sentinel `\\\"true\\\"`, denying by redirecting to `index.jsp` and returning.\", \"reason\": \"admin/adduser2.jsp is an admin-only entry that performs database inserts. Without the project's auth guard, a visitor can access it directly. Including the existing auth.jsp guard blocks unauthorized users before any sensitive operation while leaving admin access intact because the guard only rejects when `drhlLoggedIn` is not `\\\"true\\\"`.\"}",
+          "database_validation_passed": true,
+          "database_validation": {
+            "oracle_version": 2,
+            "scope": "repair_only",
+            "applicable": true,
+            "passed": true,
+            "status": "passed",
+            "dimensions": {
+              "vulnerability_blocking": {
+                "phase": "attack",
+                "applicable": true,
+                "passed": true
+              },
+              "regression": {
+                "phase": "authorized",
+                "applicable": true,
+                "passed": true
+              }
+            },
+            "scenarios": [
+              {
+                "name": "jspblog-add-user-admin-create",
+                "operation": "create",
+                "passed": true,
+                "phases": [
+                  {
+                    "phase": "attack",
+                    "role": "visitor",
+                    "session_before_setup": false,
+                    "setup_sql": [],
+                    "session_requests": [],
+                    "request": {
+                      "method": "POST",
+                      "page": "admin/adduser2.jsp",
+                      "params": {
+                        "author": "DRHLR_a27e3dbd33e8",
+                        "name": "DRHLR_a27e3dbd33e8",
+                        "submit": "Add"
+                      },
+                      "referer": "admin/adduser.jsp",
+                      "cookie_names": []
+                    },
+                    "response": {
+                      "status_code": 302,
+                      "url": "http://localhost:8080/blog/admin/adduser2.jsp",
+                      "body_length": 0
+                    },
+                    "query": "SELECT COUNT(*) FROM user WHERE author='DRHLR_a27e3dbd33e8'",
+                    "observed": "0",
+                    "assertions": [
+                      {
+                        "type": "scalar_zero",
+                        "expected": "0",
+                        "observed": "0",
+                        "passed": true
+                      }
+                    ],
+                    "passed": true
+                  },
+                  {
+                    "phase": "authorized",
+                    "role": "admin",
+                    "session_before_setup": false,
+                    "setup_sql": [],
+                    "session_requests": [],
+                    "request": {
+                      "method": "POST",
+                      "page": "admin/adduser2.jsp",
+                      "params": {
+                        "author": "DRHLR_a27e3dbd33e8",
+                        "name": "DRHLR_a27e3dbd33e8",
+                        "submit": "Add"
+                      },
+                      "referer": "admin/adduser.jsp",
+                      "cookie_names": []
+                    },
+                    "response": {
+                      "status_code": 200,
+                      "url": "http://localhost:8080/blog/admin/adduser2.jsp",
+                      "body_length": 396
+                    },
+                    "query": "SELECT COUNT(*) FROM user WHERE author='DRHLR_a27e3dbd33e8'",
+                    "observed": "1",
+                    "assertions": [
+                      {
+                        "type": "scalar_nonzero",
+                        "expected": "nonzero",
+                        "observed": "1",
+                        "passed": true
+                      }
+                    ],
+                    "passed": true
+                  }
+                ]
+              }
+            ],
+            "combined_dimensions": {
+              "vulnerability_blocking": {
+                "passed": true,
+                "response_oracle_applicable": true,
+                "response_oracle_passed": true,
+                "database_oracle_applicable": true,
+                "database_oracle_passed": true
+              },
+              "regression": {
+                "passed": true,
+                "response_oracle_applicable": true,
+                "response_oracle_passed": true,
+                "database_oracle_applicable": true,
+                "database_oracle_passed": true
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/admin.jsp",
+      "source": "D:\\tomcat9\\webapps\\blog\\admin\\admin.jsp",
+      "output": "D:\\project\\python\\DRHL\\runs\\jspblog\\repair\\files\\attempt-1\\admin\\admin.jsp",
+      "status": "successful_repair",
+      "message": "syntax/compile, vulnerability blocking, and regression validation all passed",
+      "engine": "llm",
+      "plan": "{\"type\": \"json_object\", \"missing_check\": \"The admin/admin.jsp control panel lacks the admin authentication guard; it renders directly without validating the drhlLoggedIn session flag.\", \"insertion_location\": \"At the very beginning of admin/admin.jsp, before the control-panel HTML output, typically as the first scriptlet/include after any page directive.\", \"recommended_guard\": \"Reuse the existing admin/auth.jsp guard: if (drhlLoggedIn == null || !drhlLoggedIn.equals(\\\"true\\\")) { response.sendRedirect(\\\"index.jsp\\\"); return; } — preferably by statically including auth.jsp at the top of admin/admin.jsp so the return exits the page before sensitive content is emitted.\", \"reused_project_semantics\": \"Uses the app's drhlLoggedIn session flag with sentinel value \\\"true\\\" and the existing denial style of redirecting to index.jsp from admin/auth.jsp; no new session keys or generic checks are introduced.\", \"reason\": \"This is a static admin_only entry page, so unauthorized visitors must be blocked before the control panel is served. Reusing admin/auth.jsp blocks direct visitor access while preserving legitimate access for admin users whose drhlLoggedIn equals \\\"true\\\".\"}",
+      "prompt_artifact": "D:\\project\\python\\DRHL\\runs\\jspblog\\repair\\prompts\\admin-attempt1-6366cba927c1.json",
+      "attempts": 1,
+      "patches_generated": 1,
+      "syntax_compile_ok": 1,
+      "exploit_blocked": 1,
+      "regression_passed": 1,
+      "database_validation_applied": 0,
+      "database_validation_passed": 0,
+      "successful": true,
+      "validation_artifact": "D:\\project\\python\\DRHL\\runs\\jspblog\\repair\\validation\\admin-1d9d746fb1c6.json",
+      "attempt_details": [
+        {
+          "attempt": 1,
+          "output": "D:\\project\\python\\DRHL\\runs\\jspblog\\repair\\files\\attempt-1\\admin\\admin.jsp",
+          "syntax_compile_ok": true,
+          "exploit_blocked": true,
+          "regression_passed": true,
+          "successful": true,
+          "message": "syntax=(syntax check disabled by configuration); deployment=(source patch applied); vulnerability_blocking=(response=True; database=passed; evidence=visitor:not_vulnerable); regression=(response=True; database=passed; evidence=authorized status=200; denial=[])",
+          "prompt_artifact": "D:\\project\\python\\DRHL\\runs\\jspblog\\repair\\prompts\\admin-attempt1-6366cba927c1.json",
+          "plan": "{\"type\": \"json_object\", \"missing_check\": \"The admin/admin.jsp control panel lacks the admin authentication guard; it renders directly without validating the drhlLoggedIn session flag.\", \"insertion_location\": \"At the very beginning of admin/admin.jsp, before the control-panel HTML output, typically as the first scriptlet/include after any page directive.\", \"recommended_guard\": \"Reuse the existing admin/auth.jsp guard: if (drhlLoggedIn == null || !drhlLoggedIn.equals(\\\"true\\\")) { response.sendRedirect(\\\"index.jsp\\\"); return; } — preferably by statically including auth.jsp at the top of admin/admin.jsp so the return exits the page before sensitive content is emitted.\", \"reused_project_semantics\": \"Uses the app's drhlLoggedIn session flag with sentinel value \\\"true\\\" and the existing denial style of redirecting to index.jsp from admin/auth.jsp; no new session keys or generic checks are introduced.\", \"reason\": \"This is a static admin_only entry page, so unauthorized visitors must be blocked before the control panel is served. Reusing admin/auth.jsp blocks direct visitor access while preserving legitimate access for admin users whose drhlLoggedIn equals \\\"true\\\".\"}",
+          "database_validation_passed": true,
+          "database_validation": {
+            "oracle_version": 2,
+            "scope": "repair_only",
+            "applicable": false,
+            "passed": true,
+            "status": "response_only",
+            "display_as_passed": true,
+            "message": "database validation intentionally skipped; response oracle retained",
+            "dimensions": {
+              "vulnerability_blocking": {
+                "phase": "attack",
+                "applicable": false,
+                "passed": true
+              },
+              "regression": {
+                "phase": "authorized",
+                "applicable": false,
+                "passed": true
+              }
+            },
+            "scenarios": [],
+            "combined_dimensions": {
+              "vulnerability_blocking": {
+                "passed": true,
+                "response_oracle_applicable": true,
+                "response_oracle_passed": true,
+                "database_oracle_applicable": false,
+                "database_oracle_passed": true
+              },
+              "regression": {
+                "passed": true,
+                "response_oracle_applicable": true,
+                "response_oracle_passed": true,
+                "database_oracle_applicable": false,
+                "database_oracle_passed": true
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/editnews.jsp",
+      "source": "D:\\tomcat9\\webapps\\blog\\admin\\editnews.jsp",
+      "output": "D:\\project\\python\\DRHL\\runs\\jspblog\\repair\\files\\attempt-1\\admin\\editnews.jsp",
+      "status": "successful_repair",
+      "message": "syntax/compile, vulnerability blocking, and regression validation all passed",
+      "engine": "llm",
+      "plan": "{\"missing_check\": \"No admin authentication guard is present before admin/editnews.jsp renders the news edit form or opens the database connection, so a visitor can access it directly with HTTP 200 and no redirect/denial marker.\", \"insertion_location\": \"At the very top of admin/editnews.jsp, immediately after the existing JSP page directives (contentType and import) and before any HTML output, Class.forName, DriverManager.getConnection, or ResultSet processing.\", \"recommended_guard\": \"<%@ include file=\\\"auth.jsp\\\" %> — reuses admin/auth.jsp's guard: if (drhlLoggedIn == null || !drhlLoggedIn.equals(\\\"true\\\")) { response.sendRedirect(\\\"index.jsp\\\"); return; }\", \"reused_project_semantics\": \"Uses the project's drhlLoggedIn guard variable, the sentinel value \\\"true\\\", and the existing denial style response.sendRedirect(\\\"index.jsp\\\") followed by return, sourced from admin/auth.jsp.\", \"reason\": \"admin/editnews.jsp is an admin-only standalone entry that currently lacks the app's admin guard. Including the existing admin/auth.jsp guard before any sensitive DB/form operations blocks unauthorized visitors while preserving intended admin access when drhlLoggedIn equals \\\"true\\\".\"}",
+      "prompt_artifact": "D:\\project\\python\\DRHL\\runs\\jspblog\\repair\\prompts\\editnews-attempt1-cc95c05edb1c.json",
+      "attempts": 1,
+      "patches_generated": 1,
+      "syntax_compile_ok": 1,
+      "exploit_blocked": 1,
+      "regression_passed": 1,
+      "database_validation_applied": 0,
+      "database_validation_passed": 0,
+      "successful": true,
+      "validation_artifact": "D:\\project\\python\\DRHL\\runs\\jspblog\\repair\\validation\\editnews-27f9a20c8f7a.json",
+      "attempt_details": [
+        {
+          "attempt": 1,
+          "output": "D:\\project\\python\\DRHL\\runs\\jspblog\\repair\\files\\attempt-1\\admin\\editnews.jsp",
+          "syntax_compile_ok": true,
+          "exploit_blocked": true,
+          "regression_passed": true,
+          "successful": true,
+          "message": "syntax=(syntax check disabled by configuration); deployment=(source patch applied); vulnerability_blocking=(response=True; database=passed; evidence=visitor:not_vulnerable); regression=(response=True; database=passed; evidence=authorized status=200; denial=[])",
+          "prompt_artifact": "D:\\project\\python\\DRHL\\runs\\jspblog\\repair\\prompts\\editnews-attempt1-cc95c05edb1c.json",
+          "plan": "{\"missing_check\": \"No admin authentication guard is present before admin/editnews.jsp renders the news edit form or opens the database connection, so a visitor can access it directly with HTTP 200 and no redirect/denial marker.\", \"insertion_location\": \"At the very top of admin/editnews.jsp, immediately after the existing JSP page directives (contentType and import) and before any HTML output, Class.forName, DriverManager.getConnection, or ResultSet processing.\", \"recommended_guard\": \"<%@ include file=\\\"auth.jsp\\\" %> — reuses admin/auth.jsp's guard: if (drhlLoggedIn == null || !drhlLoggedIn.equals(\\\"true\\\")) { response.sendRedirect(\\\"index.jsp\\\"); return; }\", \"reused_project_semantics\": \"Uses the project's drhlLoggedIn guard variable, the sentinel value \\\"true\\\", and the existing denial style response.sendRedirect(\\\"index.jsp\\\") followed by return, sourced from admin/auth.jsp.\", \"reason\": \"admin/editnews.jsp is an admin-only standalone entry that currently lacks the app's admin guard. Including the existing admin/auth.jsp guard before any sensitive DB/form operations blocks unauthorized visitors while preserving intended admin access when drhlLoggedIn equals \\\"true\\\".\"}",
+          "database_validation_passed": true,
+          "database_validation": {
+            "oracle_version": 2,
+            "scope": "repair_only",
+            "applicable": false,
+            "passed": true,
+            "status": "response_only",
+            "display_as_passed": true,
+            "message": "database validation intentionally skipped; response oracle retained",
+            "dimensions": {
+              "vulnerability_blocking": {
+                "phase": "attack",
+                "applicable": false,
+                "passed": true
+              },
+              "regression": {
+                "phase": "authorized",
+                "applicable": false,
+                "passed": true
+              }
+            },
+            "scenarios": [],
+            "combined_dimensions": {
+              "vulnerability_blocking": {
+                "passed": true,
+                "response_oracle_applicable": true,
+                "response_oracle_passed": true,
+                "database_oracle_applicable": false,
+                "database_oracle_passed": true
+              },
+              "regression": {
+                "passed": true,
+                "response_oracle_applicable": true,
+                "response_oracle_passed": true,
+                "database_oracle_applicable": false,
+                "database_oracle_passed": true
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/editnews2.jsp?body=p1&headline=AokwZT",
+      "source": "D:\\tomcat9\\webapps\\blog\\admin\\editnews2.jsp",
+      "output": "D:\\project\\python\\DRHL\\runs\\jspblog\\repair\\files\\attempt-1\\admin\\editnews2.jsp",
+      "status": "successful_repair",
+      "message": "syntax/compile, vulnerability blocking, and regression validation all passed",
+      "engine": "llm",
+      "plan": "{\"missing_check\": \"Admin authentication guard checking that session flag drhlLoggedIn equals \\\"true\\\"; unauthorized requests must be redirected to index.jsp before any parameter handling or SQL update.\", \"insertion_location\": \"At the very top of admin/editnews2.jsp, immediately after the page directive `<%@page contentType=\\\"text/html\\\"%>` and before the `<html>` output or any parameter/DB code.\", \"recommended_guard\": \"Reuse admin/auth.jsp's existing guard: reject when drhlLoggedIn is null or not equal to \\\"true\\\", then response.sendRedirect(\\\"index.jsp\\\") and return; preferably include admin/auth.jsp at the top so its drhlLoggedIn context is initialized as the project does.\", \"reused_project_semantics\": \"drhlLoggedIn flag, sentinel value \\\"true\\\", response.sendRedirect(\\\"index.jsp\\\") denial style with return, admin/auth.jsp as the project auth guard context.\", \"reason\": \"admin/editnews2.jsp is an admin-only entry that performs a SQL UPDATE; without the admin/auth.jsp guard a visitor can call it directly. Inserting the existing guard at the top blocks unauthorized visitors while preserving authorized admin access.\"}",
+      "prompt_artifact": "D:\\project\\python\\DRHL\\runs\\jspblog\\repair\\prompts\\editnews2-attempt1-14f8e7f80ba3.json",
+      "attempts": 1,
+      "patches_generated": 1,
+      "syntax_compile_ok": 1,
+      "exploit_blocked": 1,
+      "regression_passed": 1,
+      "database_validation_applied": 1,
+      "database_validation_passed": 1,
+      "successful": true,
+      "validation_artifact": "D:\\project\\python\\DRHL\\runs\\jspblog\\repair\\validation\\editnews2-01cde6de8883.json",
+      "attempt_details": [
+        {
+          "attempt": 1,
+          "output": "D:\\project\\python\\DRHL\\runs\\jspblog\\repair\\files\\attempt-1\\admin\\editnews2.jsp",
+          "syntax_compile_ok": true,
+          "exploit_blocked": true,
+          "regression_passed": true,
+          "successful": true,
+          "message": "syntax=(syntax check disabled by configuration); deployment=(source patch applied); vulnerability_blocking=(response=True; database=passed; evidence=visitor:not_vulnerable); regression=(response=True; database=passed; evidence=authorized status=200; denial=[])",
+          "prompt_artifact": "D:\\project\\python\\DRHL\\runs\\jspblog\\repair\\prompts\\editnews2-attempt1-14f8e7f80ba3.json",
+          "plan": "{\"missing_check\": \"Admin authentication guard checking that session flag drhlLoggedIn equals \\\"true\\\"; unauthorized requests must be redirected to index.jsp before any parameter handling or SQL update.\", \"insertion_location\": \"At the very top of admin/editnews2.jsp, immediately after the page directive `<%@page contentType=\\\"text/html\\\"%>` and before the `<html>` output or any parameter/DB code.\", \"recommended_guard\": \"Reuse admin/auth.jsp's existing guard: reject when drhlLoggedIn is null or not equal to \\\"true\\\", then response.sendRedirect(\\\"index.jsp\\\") and return; preferably include admin/auth.jsp at the top so its drhlLoggedIn context is initialized as the project does.\", \"reused_project_semantics\": \"drhlLoggedIn flag, sentinel value \\\"true\\\", response.sendRedirect(\\\"index.jsp\\\") denial style with return, admin/auth.jsp as the project auth guard context.\", \"reason\": \"admin/editnews2.jsp is an admin-only entry that performs a SQL UPDATE; without the admin/auth.jsp guard a visitor can call it directly. Inserting the existing guard at the top blocks unauthorized visitors while preserving authorized admin access.\"}",
+          "database_validation_passed": true,
+          "database_validation": {
+            "oracle_version": 2,
+            "scope": "repair_only",
+            "applicable": true,
+            "passed": true,
+            "status": "passed",
+            "dimensions": {
+              "vulnerability_blocking": {
+                "phase": "attack",
+                "applicable": true,
+                "passed": true
+              },
+              "regression": {
+                "phase": "authorized",
+                "applicable": true,
+                "passed": true
+              }
+            },
+            "scenarios": [
+              {
+                "name": "jspblog-edit-news-admin-update",
+                "operation": "update",
+                "passed": true,
+                "phases": [
+                  {
+                    "phase": "attack",
+                    "role": "visitor",
+                    "session_before_setup": false,
+                    "setup_sql": [],
+                    "session_requests": [],
+                    "request": {
+                      "method": "GET",
+                      "page": "admin/editnews2.jsp",
+                      "params": {
+                        "headline": "DRHL Oracle News",
+                        "body": "DRHLR_31c49227b1d6"
+                      },
+                      "referer": "admin/editnews.jsp",
+                      "cookie_names": []
+                    },
+                    "response": {
+                      "status_code": 302,
+                      "url": "http://localhost:8080/blog/admin/editnews2.jsp?headline=DRHL+Oracle+News&body=DRHLR_31c49227b1d6",
+                      "body_length": 0
+                    },
+                    "query": "SELECT COUNT(*) FROM news WHERE body='DRHLR_31c49227b1d6'",
+                    "observed": "0",
+                    "assertions": [
+                      {
+                        "type": "scalar_zero",
+                        "expected": "0",
+                        "observed": "0",
+                        "passed": true
+                      }
+                    ],
+                    "passed": true
+                  },
+                  {
+                    "phase": "authorized",
+                    "role": "admin",
+                    "session_before_setup": false,
+                    "setup_sql": [],
+                    "session_requests": [],
+                    "request": {
+                      "method": "GET",
+                      "page": "admin/editnews2.jsp",
+                      "params": {
+                        "headline": "DRHL Oracle News",
+                        "body": "DRHLR_31c49227b1d6"
+                      },
+                      "referer": "admin/editnews.jsp",
+                      "cookie_names": []
+                    },
+                    "response": {
+                      "status_code": 200,
+                      "url": "http://localhost:8080/blog/admin/editnews2.jsp?headline=DRHL+Oracle+News&body=DRHLR_31c49227b1d6",
+                      "body_length": 394
+                    },
+                    "query": "SELECT COUNT(*) FROM news WHERE body='DRHLR_31c49227b1d6'",
+                    "observed": "16",
+                    "assertions": [
+                      {
+                        "type": "scalar_nonzero",
+                        "expected": "nonzero",
+                        "observed": "16",
+                        "passed": true
+                      }
+                    ],
+                    "passed": true
+                  }
+                ]
+              }
+            ],
+            "combined_dimensions": {
+              "vulnerability_blocking": {
+                "passed": true,
+                "response_oracle_applicable": true,
+                "response_oracle_passed": true,
+                "database_oracle_applicable": true,
+                "database_oracle_passed": true
+              },
+              "regression": {
+                "passed": true,
+                "response_oracle_applicable": true,
+                "response_oracle_passed": true,
+                "database_oracle_applicable": true,
+                "database_oracle_passed": true
+              }
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

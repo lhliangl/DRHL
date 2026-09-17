@@ -1,0 +1,1267 @@
+{
+  "snippets": [
+    {
+      "path": "article.php",
+      "kind": "conditional",
+      "start_line": 19,
+      "end_line": 22,
+      "condition": "($globalvars['rank'][10] == 0)",
+      "terminations": [
+        {
+          "kind": "redirect",
+          "line": 20,
+          "code": "header(\"Location: index.php?do=permissiondenied\");",
+          "denial_text": false
+        }
+      ],
+      "code": "if ($globalvars['rank'][10] == 0) {\r\n\t\t\theader(\"Location: index.php?do=permissiondenied\");\r\n\t\t\tdie();\t\r\n\t\t}",
+      "parameter_ids": [
+        "article.php:LCP5"
+      ],
+      "function_ids": [],
+      "if_framework": "if ($globalvars['rank'][10] == 0) {\n    header(\"Location: index.php?do=permissiondenied\");\n}"
+    },
+    {
+      "path": "article.php",
+      "kind": "conditional",
+      "start_line": 32,
+      "end_line": 35,
+      "condition": "($globalvars['rank'][10] == 0)",
+      "terminations": [
+        {
+          "kind": "redirect",
+          "line": 33,
+          "code": "header(\"Location: index.php?do=permissiondenied\");",
+          "denial_text": false
+        }
+      ],
+      "code": "if ($globalvars['rank'][10] == 0) {\r\n\t\t\theader(\"Location: index.php?do=permissiondenied\");\r\n\t\t\tdie();\r\n\t\t}",
+      "parameter_ids": [
+        "article.php:LCP5"
+      ],
+      "function_ids": [],
+      "if_framework": "if ($globalvars['rank'][10] == 0) {\n    header(\"Location: index.php?do=permissiondenied\");\n}"
+    },
+    {
+      "path": "article.php",
+      "kind": "conditional",
+      "start_line": 67,
+      "end_line": 70,
+      "condition": "($globalvars['rank'][10] == 0)",
+      "terminations": [
+        {
+          "kind": "redirect",
+          "line": 68,
+          "code": "header(\"Location: index.php?do=permissiondenied\");",
+          "denial_text": false
+        }
+      ],
+      "code": "if ($globalvars['rank'][10] == 0) {\r\n\t\t\theader(\"Location: index.php?do=permissiondenied\");\r\n\t\t\tdie();\t\r\n\t\t}",
+      "parameter_ids": [
+        "article.php:LCP5"
+      ],
+      "function_ids": [],
+      "if_framework": "if ($globalvars['rank'][10] == 0) {\n    header(\"Location: index.php?do=permissiondenied\");\n}"
+    },
+    {
+      "path": "article.php",
+      "kind": "conditional",
+      "start_line": 73,
+      "end_line": 77,
+      "condition": "($globalvars['rank'][10] == 2)",
+      "terminations": [],
+      "code": "if ($globalvars['rank'][10] == 2) {\r\n\t\t\t$data['approved'] = 0;\r\n\t\t} else {\r\n\t\t\t$data['approved'] = 1;\r\n\t\t}",
+      "parameter_ids": [
+        "article.php:LCP5"
+      ],
+      "function_ids": []
+    },
+    {
+      "path": "article.php",
+      "kind": "semantic_source",
+      "start_line": 149,
+      "end_line": 149,
+      "code": "new_item($data,$_SESSION['username']);",
+      "semantic_evidence": [
+        {
+          "kind": "php_session_identity_key",
+          "key": "username"
+        }
+      ],
+      "parameter_ids": [
+        "article.php:LCP2"
+      ],
+      "function_ids": []
+    },
+    {
+      "path": "article.php",
+      "kind": "conditional",
+      "start_line": 186,
+      "end_line": 189,
+      "condition": "($globalvars['rank'][14] == 0)",
+      "terminations": [
+        {
+          "kind": "redirect",
+          "line": 187,
+          "code": "header(\"Location: index.php?do=permissiondenied\");",
+          "denial_text": false
+        }
+      ],
+      "code": "if ($globalvars['rank'][14] == 0) {\r\n\t\t\theader(\"Location: index.php?do=permissiondenied\");\r\n\t\t\tdie();\t\r\n\t\t}",
+      "parameter_ids": [
+        "article.php:LCP18"
+      ],
+      "function_ids": [],
+      "if_framework": "if ($globalvars['rank'][14] == 0) {\n    header(\"Location: index.php?do=permissiondenied\");\n}"
+    },
+    {
+      "path": "article.php",
+      "kind": "conditional",
+      "start_line": 218,
+      "end_line": 221,
+      "condition": "($globalvars['rank'][14] == 0)",
+      "terminations": [
+        {
+          "kind": "redirect",
+          "line": 219,
+          "code": "header(\"Location: index.php?do=permissiondenied\");",
+          "denial_text": false
+        }
+      ],
+      "code": "if ($globalvars['rank'][14] == 0) {\r\n\t\t\theader(\"Location: index.php?do=permissiondenied\");\r\n\t\t\tdie();\t\r\n\t\t}",
+      "parameter_ids": [
+        "article.php:LCP18"
+      ],
+      "function_ids": [],
+      "if_framework": "if ($globalvars['rank'][14] == 0) {\n    header(\"Location: index.php?do=permissiondenied\");\n}"
+    },
+    {
+      "path": "article.php",
+      "kind": "semantic_source",
+      "start_line": 291,
+      "end_line": 291,
+      "code": "edit_item($data,$_SESSION['username']);",
+      "semantic_evidence": [
+        {
+          "kind": "php_session_identity_key",
+          "key": "username"
+        }
+      ],
+      "parameter_ids": [
+        "article.php:LCP2"
+      ],
+      "function_ids": []
+    },
+    {
+      "path": "article.php",
+      "kind": "semantic_source",
+      "start_line": 345,
+      "end_line": 345,
+      "code": "log_this('delete_comments','User <i>'.$_SESSION['username'].'</i> has <strong>deleted</strong> the comments: \"'.$items_f.'\"');",
+      "semantic_evidence": [
+        {
+          "kind": "php_session_identity_key",
+          "key": "username"
+        }
+      ],
+      "parameter_ids": [
+        "article.php:LCP2"
+      ],
+      "function_ids": []
+    },
+    {
+      "path": "etc.php",
+      "kind": "semantic_source",
+      "start_line": 21,
+      "end_line": 21,
+      "code": "log_this('backup','User <i>'.$_SESSION['username'].'</i> has <strong>backed up</strong> the system database.');",
+      "semantic_evidence": [
+        {
+          "kind": "php_session_identity_key",
+          "key": "username"
+        }
+      ],
+      "parameter_ids": [
+        "etc.php:LCP23"
+      ],
+      "function_ids": []
+    },
+    {
+      "path": "inc/auth.php",
+      "kind": "conditional",
+      "start_line": 11,
+      "end_line": 30,
+      "condition": "($_COOKIE['cookie_auth'] && !$_SESSION['auth'])",
+      "terminations": [],
+      "code": "if ($_COOKIE['cookie_auth'] && !$_SESSION['auth']) { //if we detect a cookie, we have to verify that it is valid.\r\n\t$globalvars['cookie_auth'] = clean_data($_COOKIE['cookie_auth']); //clean the data\r\n\t\r\n\t//check and see if there is an entry with that cookie auth code\r\n\t$cookie_check = general_query('SELECT * FROM '.$databaseinfo['prefix'].'cookielog WHERE cookie_id=\"'.$globalvars['cookie_auth'].'\"'); \r\n\t\r\n\tif (mysql_num_rows($cookie_check) > 0) {\r\n\t\r\n\t\t//we need an mysql_fetch_array too... so we can't use the previous one (without annoying while clauses)\r\n\t\t$cookie_check = general_query('SELECT * FROM '.$databaseinfo['prefix'].'cookielog WHERE cookie_id=\"'.$globalvars['cookie_auth'].'\"', TRUE);\r\n\t\t$user_fetch = general_query('SELECT * FROM '.$databaseinfo['prefix'].'users WHERE id=\"'.$cookie_check['user_id'].'\"', TRUE);\r\n\t\t$user_rank_data = general_query('SELECT * FROM '.$databaseinfo['prefix'].'ranks WHERE id=\"'.$user_fetch['rank_id'].'\"', TRUE);\r\n\t\t\r\n\t\t\t$_SESSION['auth'] = 'yes';\r\n\t\t\t$_SESSION['username'] = $user_fetch['user_name'];\r\n\t\t\t$_SESSION['userID'] = $user_fetch['id'];\r\n\t\t\t$_SESSION['permissions'] = $user_rank_data['permissions'];\r\n\t\t\t$_SESSION['path'] = $globalvars['path_to'];\r\n\t}\r\n}",
+      "parameter_ids": [
+        "inc/auth.php:LCP28"
+      ],
+      "function_ids": []
+    },
+    {
+      "path": "inc/auth.php",
+      "kind": "semantic_source",
+      "start_line": 25,
+      "end_line": 25,
+      "code": "$_SESSION['username'] = $user_fetch['user_name'];",
+      "semantic_evidence": [
+        {
+          "kind": "php_session_identity_key",
+          "key": "username"
+        }
+      ],
+      "parameter_ids": [
+        "inc/auth.php:LCP25"
+      ],
+      "function_ids": []
+    },
+    {
+      "path": "inc/auth.php",
+      "kind": "semantic_source",
+      "start_line": 26,
+      "end_line": 26,
+      "code": "$_SESSION['userID'] = $user_fetch['id'];",
+      "semantic_evidence": [
+        {
+          "kind": "php_session_identity_key",
+          "key": "userid"
+        }
+      ],
+      "parameter_ids": [
+        "inc/auth.php:LCP26"
+      ],
+      "function_ids": []
+    },
+    {
+      "path": "inc/auth.php",
+      "kind": "conditional",
+      "start_line": 32,
+      "end_line": 35,
+      "condition": "(@$_SESSION['auth'] != \"yes\")",
+      "terminations": [
+        {
+          "kind": "redirect",
+          "line": 33,
+          "code": "header(\"Location: login.php\");",
+          "denial_text": false
+        }
+      ],
+      "code": "if (@$_SESSION['auth'] != \"yes\") {\r\n\theader(\"Location: login.php\");\r\n\tdie();\r\n}",
+      "parameter_ids": [
+        "inc/auth.php:LCP28"
+      ],
+      "function_ids": [],
+      "if_framework": "if (@$_SESSION['auth'] != \"yes\") {\n    header(\"Location: login.php\");\n}"
+    },
+    {
+      "path": "inc/auth.php",
+      "kind": "conditional",
+      "start_line": 37,
+      "end_line": 40,
+      "condition": "(@$_SESSION['path'] != $globalvars['path_to'])",
+      "terminations": [
+        {
+          "kind": "redirect",
+          "line": 38,
+          "code": "header(\"Location: login.php\");",
+          "denial_text": false
+        }
+      ],
+      "code": "if (@$_SESSION['path'] != $globalvars['path_to']) {\r\n\theader(\"Location: login.php\");\r\n\tdie();\r\n}",
+      "parameter_ids": [
+        "inc/auth.php:LCP30"
+      ],
+      "function_ids": [],
+      "if_framework": "if (@$_SESSION['path'] != $globalvars['path_to']) {\n    header(\"Location: login.php\");\n}"
+    },
+    {
+      "path": "inc/function.php",
+      "kind": "semantic_source",
+      "start_line": 126,
+      "end_line": 126,
+      "code": "log_this('change_config','User <i>'.$_SESSION['username'].'</i> has <strong>modified</strong> a configuration value,  \"'.$name.'\" to \"'.$value.'\"');",
+      "semantic_evidence": [
+        {
+          "kind": "php_session_identity_key",
+          "key": "username"
+        }
+      ],
+      "parameter_ids": [
+        "inc/function.php:LCP39"
+      ],
+      "function_ids": []
+    },
+    {
+      "path": "inc/function.php",
+      "kind": "semantic_source",
+      "start_line": 135,
+      "end_line": 135,
+      "code": "log_this('delete','User <i>'.$_SESSION['username'].'</i> has <strong>deleted</strong> a tables contents. Table: '.$table.'. Items: '.$items);",
+      "semantic_evidence": [
+        {
+          "kind": "php_session_identity_key",
+          "key": "username"
+        }
+      ],
+      "parameter_ids": [
+        "inc/function.php:LCP41"
+      ],
+      "function_ids": []
+    },
+    {
+      "path": "inc/function.php",
+      "kind": "semantic_source",
+      "start_line": 190,
+      "end_line": 191,
+      "code": "$log = general_query(\"INSERT INTO \".$databaseinfo['prefix'].\"syslog (task,description,user,page,timestamp) VALUES\r\n\t\t('\".$task.\"','\".$description.\"','\".$_SESSION[userID].\"','\".$page.\"','\".time().\"')\");",
+      "semantic_evidence": [
+        {
+          "kind": "php_session_identity_key",
+          "key": "userid"
+        }
+      ],
+      "parameter_ids": [
+        "inc/function.php:LCP45"
+      ],
+      "function_ids": []
+    },
+    {
+      "path": "inc/function.php",
+      "kind": "semantic_source",
+      "start_line": 541,
+      "end_line": 541,
+      "code": "log_this('new_item','User <i>'.$_SESSION['username'].'</i> has <strong>created</strong> a new article titled \"'.$data['article_title'].'\"');",
+      "semantic_evidence": [
+        {
+          "kind": "php_session_identity_key",
+          "key": "username"
+        }
+      ],
+      "parameter_ids": [
+        "inc/function.php:LCP60"
+      ],
+      "function_ids": []
+    },
+    {
+      "path": "inc/function.php",
+      "kind": "semantic_source",
+      "start_line": 574,
+      "end_line": 574,
+      "code": "log_this('edit_item','User <i>'.$_SESSION['username'].'</i> has <strong>modified</strong> article titled \"'.$data['article_title'].'\" (ID: '.$data['id'].')');",
+      "semantic_evidence": [
+        {
+          "kind": "php_session_identity_key",
+          "key": "username"
+        }
+      ],
+      "parameter_ids": [
+        "inc/function.php:LCP61"
+      ],
+      "function_ids": []
+    },
+    {
+      "path": "inc/function.php",
+      "kind": "semantic_source",
+      "start_line": 766,
+      "end_line": 766,
+      "code": "log_this('new_user','User <i>'.$_SESSION['username'].'</i> has <strong>created</strong> a new user account named <i>'.$data['username_'].'</i> ('.$data['fullname'].') with the rank of '.$data['rank']);",
+      "semantic_evidence": [
+        {
+          "kind": "php_session_identity_key",
+          "key": "username"
+        }
+      ],
+      "parameter_ids": [
+        "inc/function.php:LCP74"
+      ],
+      "function_ids": []
+    },
+    {
+      "path": "inc/function.php",
+      "kind": "semantic_source",
+      "start_line": 798,
+      "end_line": 798,
+      "code": "log_this('edit_user','User <i>'.$_SESSION['username'].'</i> has <strong>modified</strong> '.$data['username_']);",
+      "semantic_evidence": [
+        {
+          "kind": "php_session_identity_key",
+          "key": "username"
+        }
+      ],
+      "parameter_ids": [
+        "inc/function.php:LCP75"
+      ],
+      "function_ids": []
+    },
+    {
+      "path": "inc/function.php",
+      "kind": "semantic_source",
+      "start_line": 1005,
+      "end_line": 1005,
+      "code": "log_this('new_rank','User <i>'.$_SESSION['username'].'</i> has <strong>created</strong> a new rank named '.$rank['rank_title'].'. Rank description \"'.$rank['rank_desc'].'\". Permissions: '.$permissions_string);",
+      "semantic_evidence": [
+        {
+          "kind": "php_session_identity_key",
+          "key": "username"
+        }
+      ],
+      "parameter_ids": [
+        "inc/function.php:LCP78"
+      ],
+      "function_ids": []
+    },
+    {
+      "path": "inc/function.php",
+      "kind": "semantic_source",
+      "start_line": 1023,
+      "end_line": 1023,
+      "code": "log_this('edit_rank','User <i>'.$_SESSION['username'].'</i> has <strong>modified</strong> rank named '.$rank['rank_title'].'. Rank description \"'.$rank['rank_desc'].'\". Permissions: '.$permissions_string);",
+      "semantic_evidence": [
+        {
+          "kind": "php_session_identity_key",
+          "key": "username"
+        }
+      ],
+      "parameter_ids": [
+        "inc/function.php:LCP79"
+      ],
+      "function_ids": []
+    },
+    {
+      "path": "inc/function.php",
+      "kind": "semantic_source",
+      "start_line": 1091,
+      "end_line": 1091,
+      "code": "log_this('new_category','User <i>'.$_SESSION['username'].'</i> has <strong>created</strong> a new category named '.$data['name'].'. Category description \"'.$data['description']);",
+      "semantic_evidence": [
+        {
+          "kind": "php_session_identity_key",
+          "key": "username"
+        }
+      ],
+      "parameter_ids": [
+        "inc/function.php:LCP80"
+      ],
+      "function_ids": []
+    },
+    {
+      "path": "inc/function.php",
+      "kind": "semantic_source",
+      "start_line": 1160,
+      "end_line": 1160,
+      "code": "log_this('new_template','User <i>'.$_SESSION['username'].'</i> has <strong>created</strong> a new template named '.$data['template_name'].'. Template description \"'.$data['template_desc']);",
+      "semantic_evidence": [
+        {
+          "kind": "php_session_identity_key",
+          "key": "username"
+        }
+      ],
+      "parameter_ids": [
+        "inc/function.php:LCP82"
+      ],
+      "function_ids": []
+    },
+    {
+      "path": "inc/function.php",
+      "kind": "semantic_source",
+      "start_line": 1184,
+      "end_line": 1184,
+      "code": "log_this('edit_template','User <i>'.$_SESSION['username'].'</i> has <strong>modified</strong> template named '.$data['template_name'].'. Template description \"'.$data['template_desc']);",
+      "semantic_evidence": [
+        {
+          "kind": "php_session_identity_key",
+          "key": "username"
+        }
+      ],
+      "parameter_ids": [
+        "inc/function.php:LCP83"
+      ],
+      "function_ids": []
+    },
+    {
+      "path": "inc/function.php",
+      "kind": "semantic_source",
+      "start_line": 1194,
+      "end_line": 1194,
+      "code": "log_this('template_switch','User <i>'.$_SESSION['username'].'</i> has <strong>switched the default template</strong> to ID: '.$id.'');",
+      "semantic_evidence": [
+        {
+          "kind": "php_session_identity_key",
+          "key": "username"
+        }
+      ],
+      "parameter_ids": [
+        "inc/function.php:LCP84"
+      ],
+      "function_ids": []
+    },
+    {
+      "path": "inc/function.php",
+      "kind": "semantic_source",
+      "start_line": 1221,
+      "end_line": 1221,
+      "code": "log_this('edit_template','User <i>'.$_SESSION['username'].'</i> has <strong>banned</strong> user at the IP of: '.$data['ip'].'. Reason:  \"'.$data['reason']);",
+      "semantic_evidence": [
+        {
+          "kind": "php_session_identity_key",
+          "key": "username"
+        }
+      ],
+      "parameter_ids": [
+        "inc/function.php:LCP86"
+      ],
+      "function_ids": []
+    },
+    {
+      "path": "inc/page_desc.php",
+      "kind": "semantic_source",
+      "start_line": 14,
+      "end_line": 14,
+      "code": "$page_desc['index'] = \"Welcome to the phpns admin area, <strong>\".$_SESSION['username'].\"</strong>. To start, you may want to post a <a href=\\\"article.php\\\">new article</a>, or choose a different task on the navigation. Below, you'll find a list of your recent articles, and some statistics.\";",
+      "semantic_evidence": [
+        {
+          "kind": "php_session_identity_key",
+          "key": "username"
+        }
+      ],
+      "parameter_ids": [
+        "inc/page_desc.php:LCP92"
+      ],
+      "function_ids": []
+    },
+    {
+      "path": "inc/themecontrol.php",
+      "kind": "semantic_source",
+      "start_line": 61,
+      "end_line": 61,
+      "code": "$file = str_replace('{username}',$_SESSION['username'],$file);",
+      "semantic_evidence": [
+        {
+          "kind": "php_session_identity_key",
+          "key": "username"
+        }
+      ],
+      "parameter_ids": [
+        "inc/themecontrol.php:LCP93"
+      ],
+      "function_ids": []
+    },
+    {
+      "path": "login.php",
+      "kind": "conditional",
+      "start_line": 49,
+      "end_line": 124,
+      "condition": "($lnumcheck == 0)",
+      "terminations": [
+        {
+          "kind": "configured_denial",
+          "line": 50,
+          "code": "$content = '<div id=\"login_error\" class=\"warning\">\r\n\t\t\t\t<h3>Login failed</h3>\r\n\t\t\t\t<p>We could not find a user entry with that username and password. If you have forgotten your password, use the recovery tool. Cookies must be enabled to login to the system!</p>\r\n\t\t</div>\r\n\t\t\r\n\t\t\t\t<div id=\"login\">\r\n\t\t\t<form id=\"login_form\" action=\"?do=p\" method=\"post\">\r\n\t\t\t\t<h2>User login</h2>\r\n\t\t\t\t<label for=\"username\">Username</label> <input type=\"text\" name=\"username\" id=\"username\" value=\"' . $loginvar['username'] . '\" /><br />\r\n\t\t\t\t<label for=\"password\">Password</label> <input type=\"password\" name=\"password\" id=\"password\" class=\"outline\" /><br />\r\n\r\n\t\t\t\t<label for=\"remember\">Remember me</label> <input type=\"checkbox\" name=\"remember\" id=\"remember\">\r\n\t\t\t\t<div id=\"login_submit\">\r\n\t\t\t\t\t<input type=\"submit\" id=\"submit\" value=\"Login\" />\r\n\t\t\t\t</div>\r\n\t\t\t</form>\r\n\t\t\t<script type=\"text/javascript\"> \r\n\t\t\t\tdocument.getElementById(\\'password\\').focus(); \r\n\t\t\t</script> \r\n\t\t</div>';",
+          "denial_text": false
+        },
+        {
+          "kind": "configured_denial",
+          "line": 123,
+          "code": "header(\"Location: index.php\");",
+          "denial_text": false
+        }
+      ],
+      "code": "if ($lnumcheck == 0) { //if no result was found...\r\n\t\t\t$content = '<div id=\"login_error\" class=\"warning\">\r\n\t\t\t\t<h3>Login failed</h3>\r\n\t\t\t\t<p>We could not find a user entry with that username and password. If you have forgotten your password, use the recovery tool. Cookies must be enabled to login to the system!</p>\r\n\t\t</div>\r\n\t\t\r\n\t\t\t\t<div id=\"login\">\r\n\t\t\t<form id=\"login_form\" action=\"?do=p\" method=\"post\">\r\n\t\t\t\t<h2>User login</h2>\r\n\t\t\t\t<label for=\"username\">Username</label> <input type=\"text\" name=\"username\" id=\"username\" value=\"' . $loginvar['username'] . '\" /><br />\r\n\t\t\t\t<label for=\"password\">Password</label> <input type=\"password\" name=\"password\" id=\"password\" class=\"outline\" /><br />\r\n\r\n\t\t\t\t<label for=\"remember\">Remember me</label> <input type=\"checkbox\" name=\"remember\" id=\"remember\">\r\n\t\t\t\t<div id=\"login_submit\">\r\n\t\t\t\t\t<input type=\"submit\" id=\"submit\" value=\"Login\" />\r\n\t\t\t\t</div>\r\n\t\t\t</form>\r\n\t\t\t<script type=\"text/javascript\"> \r\n\t\t\t\tdocument.getElementById(\\'password\\').focus(); \r\n\t\t\t</script> \r\n\t\t</div>';\r\n\t\t} else {\r\n\t\t\t//insert login record.\r\n\t\t\t$loginvar['timestamp'] = time();\r\n\t\t\t\r\n\t\t\t\t//get some vars from db\r\n\t\t\t\t$fdata = general_query('SELECT * FROM '.$databaseinfo['prefix'].'users WHERE user_name=\"'.$loginvar['username'].'\"', TRUE);\r\n\t\t\t\t\t//get rank string\r\n\t\t\t\t\t$rdata = general_query('SELECT * FROM '.$databaseinfo['prefix'].'ranks WHERE id='.$fdata['rank_id'].'', TRUE);\r\n\t\t\t\t\t//insert login record\r\n\t\t\t\t\t$res = general_query(\"INSERT INTO \".$databaseinfo['prefix'].\"userlogin \r\n\t\t\t\t\t(username,rank_id,timestamp,ip) \r\n\t\t\t\t\tVALUES (\r\n\t\t\t\t\t'\".$loginvar['username'].\"',\r\n\t\t\t\t\t'\".$rdata['id'].\"',\r\n\t\t\t\t\t'\".$loginvar['timestamp'].\"',\r\n\t\t\t\t\t'\".$globalvars['ip'].\"')\");\r\n\t\t\t\t\t\r\n\t\t\t//define session variables, set cookies\r\n\t\t\t$_SESSION['username'] = $fdata['user_name'];\r\n\t\t\t$_SESSION['userID'] = $fdata['id'];\r\n\t\t\t$_SESSION['permissions'] = $rdata['permissions'];\r\n\t\t\t$_SESSION['auth'] = \"yes\";\r\n\t\t\t$_SESSION['path'] = $globalvars['path_to'];\r\n\t\t\t\t\r\n\t\t\t\t//if the user wants to set a cookie, we have to do more stuff. (bleh.)\r\n\t\t\t\tif ($loginvar['remember']) {\r\n\t\t\t\t\t\t//generate randomized string for cookie identification\r\n\t\t\t\t\t\t//we'll generate it now.\r\n\t\t\t\t\t\t$cookie_string = md5(uniqid(rand(), true));\r\n\t\t\t\t\t$cookielog_res = general_query('INSERT INTO '.$databaseinfo['prefix'].'cookielog \r\n\t\t\t\t\t(user_id,rank_id,cookie_id,timestamp,ip)\r\n\t\t\t\t\tVALUES (\r\n\t\t\t\t\t\"'.$fdata['id'].'\",\r\n\t\t\t\t\t\"'.$fdata['rank_id'].'\",\r\n\t\t\t\t\t\"'.$cookie_string.'\",\r\n\t\t\t\t\t\"'.$loginvar['timestamp'].'\",\r\n\t\t\t\t\t\"'.$globalvars['ip'].'\"\r\n\t\t\t\t\t)');\r\n\t\t\t\t\t\r\n\t\t\t\t\tsetcookie('cookie_auth', $cookie_string, time()+604800); //set cookie to expire in a week\r\n\t\t\t\t}\r\n\t\t\t\t\r\n\t\t\t\t//quick permission check (redir to error)\r\n\t\t\t\tif ($rdata['permissions'][8] == 0) {\r\n\t\t\t\t\tsession_destroy();\r\n\t\t\t\t\theader(\"Location: login.php?m=nologin\");\r\n\t\t\t\t\tdie();\t\r\n\t\t\t\t}\r\n\t\t\t\r\n\t\t\t//log the login\r\n\t\t\tlog_this('login','User <i>'.$_SESSION['username'].'</i> has <strong>logged in</strong>');\r\n\t\t\t\r\n\t\t\t//go to index\r\n\t\t\theader(\"Location: index.php\"); //redirect to index\r\n\t\t}",
+      "parameter_ids": [
+        "login.php:LCP124"
+      ],
+      "function_ids": [],
+      "if_framework": "if ($lnumcheck == 0) {\n    $content = '<div id=\"login_error\" class=\"warning\">\n    \t\t\t\t<h3>Login failed</h3>\n    \t\t\t\t<p>We could not find a user entry with that username and password. If you have forgotten your password, use the recovery tool. Cookies must be enabled to login to the system!</p>\n    \t\t</div>\n    \t\t\n    \t\t\t\t<div id=\"login\">\n    \t\t\t<form id=\"login_form\" action=\"?do=p\" method=\"post\">\n    \t\t\t\t<h2>User login</h2>\n    \t\t\t\t<label for=\"username\">Username</label> <input type=\"text\" name=\"username\" id=\"username\" value=\"' . $loginvar['username'] . '\" /><br />\n    \t\t\t\t<label for=\"password\">Password</label> <input type=\"password\" name=\"password\" id=\"password\" class=\"outline\" /><br />\n    \n    \t\t\t\t<label for=\"remember\">Remember me</label> <input type=\"checkbox\" name=\"remember\" id=\"remember\">\n    \t\t\t\t<div id=\"login_submit\">\n    \t\t\t\t\t<input type=\"submit\" id=\"submit\" value=\"Login\" />\n    \t\t\t\t</div>\n    \t\t\t</form>\n    \t\t\t<script type=\"text/javascript\"> \n    \t\t\t\tdocument.getElementById(\\'password\\').focus(); \n    \t\t\t</script> \n    \t\t</div>';\n    header(\"Location: index.php\");\n}"
+    },
+    {
+      "path": "login.php",
+      "kind": "semantic_source",
+      "start_line": 88,
+      "end_line": 88,
+      "code": "$_SESSION['username'] = $fdata['user_name'];",
+      "semantic_evidence": [
+        {
+          "kind": "php_session_identity_key",
+          "key": "username"
+        }
+      ],
+      "parameter_ids": [
+        "login.php:LCP120"
+      ],
+      "function_ids": []
+    },
+    {
+      "path": "login.php",
+      "kind": "semantic_source",
+      "start_line": 89,
+      "end_line": 89,
+      "code": "$_SESSION['userID'] = $fdata['id'];",
+      "semantic_evidence": [
+        {
+          "kind": "php_session_identity_key",
+          "key": "userid"
+        }
+      ],
+      "parameter_ids": [
+        "login.php:LCP121"
+      ],
+      "function_ids": []
+    },
+    {
+      "path": "login.php",
+      "kind": "conditional",
+      "start_line": 113,
+      "end_line": 117,
+      "condition": "($rdata['permissions'][8] == 0)",
+      "terminations": [
+        {
+          "kind": "redirect",
+          "line": 115,
+          "code": "header(\"Location: login.php?m=nologin\");",
+          "denial_text": false
+        }
+      ],
+      "code": "if ($rdata['permissions'][8] == 0) {\r\n\t\t\t\t\tsession_destroy();\r\n\t\t\t\t\theader(\"Location: login.php?m=nologin\");\r\n\t\t\t\t\tdie();\t\r\n\t\t\t\t}",
+      "parameter_ids": [
+        "login.php:LCP126"
+      ],
+      "function_ids": [],
+      "if_framework": "if ($rdata['permissions'][8] == 0) {\n    header(\"Location: login.php?m=nologin\");\n}"
+    },
+    {
+      "path": "login.php",
+      "kind": "semantic_source",
+      "start_line": 120,
+      "end_line": 120,
+      "code": "log_this('login','User <i>'.$_SESSION['username'].'</i> has <strong>logged in</strong>');",
+      "semantic_evidence": [
+        {
+          "kind": "php_session_identity_key",
+          "key": "username"
+        }
+      ],
+      "parameter_ids": [
+        "login.php:LCP120"
+      ],
+      "function_ids": []
+    },
+    {
+      "path": "login.php",
+      "kind": "semantic_source",
+      "start_line": 127,
+      "end_line": 127,
+      "code": "log_this('logout','User <i>'.$_SESSION['username'].'</i> has <strong>logged out</strong>.');",
+      "semantic_evidence": [
+        {
+          "kind": "php_session_identity_key",
+          "key": "username"
+        }
+      ],
+      "parameter_ids": [
+        "login.php:LCP120"
+      ],
+      "function_ids": []
+    },
+    {
+      "path": "manage.php",
+      "kind": "conditional",
+      "start_line": 64,
+      "end_line": 67,
+      "condition": "($globalvars['rank'][16] == 0)",
+      "terminations": [
+        {
+          "kind": "redirect",
+          "line": 65,
+          "code": "header(\"Location: index.php?do=permissiondenied\");",
+          "denial_text": false
+        }
+      ],
+      "code": "if ($globalvars['rank'][16] == 0) {\r\n\t\t\theader(\"Location: index.php?do=permissiondenied\");\r\n\t\t\tdie();\t\r\n\t\t}",
+      "parameter_ids": [
+        "manage.php:LCP133"
+      ],
+      "function_ids": [],
+      "if_framework": "if ($globalvars['rank'][16] == 0) {\n    header(\"Location: index.php?do=permissiondenied\");\n}"
+    },
+    {
+      "path": "manage.php",
+      "kind": "semantic_source",
+      "start_line": 82,
+      "end_line": 82,
+      "code": "log_this('delete_items','User <i>'.$_SESSION['username'].'</i> has <strong>deleted</strong> the following articles: \"'.$items_f.'\"');",
+      "semantic_evidence": [
+        {
+          "kind": "php_session_identity_key",
+          "key": "username"
+        }
+      ],
+      "parameter_ids": [
+        "manage.php:LCP127"
+      ],
+      "function_ids": []
+    },
+    {
+      "path": "preferences.php",
+      "kind": "conditional",
+      "start_line": 16,
+      "end_line": 19,
+      "condition": "($globalvars['rank'][6] == 0)",
+      "terminations": [
+        {
+          "kind": "redirect",
+          "line": 17,
+          "code": "header(\"Location: index.php?do=permissiondenied\");",
+          "denial_text": false
+        }
+      ],
+      "code": "if ($globalvars['rank'][6] == 0) {\r\n\t\theader(\"Location: index.php?do=permissiondenied\");\r\n\t\tdie();\t\r\n\t}",
+      "parameter_ids": [
+        "preferences.php:LCP139"
+      ],
+      "function_ids": [],
+      "if_framework": "if ($globalvars['rank'][6] == 0) {\n    header(\"Location: index.php?do=permissiondenied\");\n}"
+    },
+    {
+      "path": "preferences.php",
+      "kind": "semantic_source",
+      "start_line": 77,
+      "end_line": 77,
+      "code": "new_category($data,$_SESSION['username']);",
+      "semantic_evidence": [
+        {
+          "kind": "php_session_identity_key",
+          "key": "username"
+        }
+      ],
+      "parameter_ids": [
+        "preferences.php:LCP138"
+      ],
+      "function_ids": []
+    },
+    {
+      "path": "preferences.php",
+      "kind": "semantic_source",
+      "start_line": 92,
+      "end_line": 92,
+      "code": "log_this('delete_categories','User <i>'.$_SESSION['username'].'</i> has <strong>deleted</strong> the following categories (ID(s)): '.$items_f.'');",
+      "semantic_evidence": [
+        {
+          "kind": "php_session_identity_key",
+          "key": "username"
+        }
+      ],
+      "parameter_ids": [
+        "preferences.php:LCP138"
+      ],
+      "function_ids": []
+    },
+    {
+      "path": "preferences.php",
+      "kind": "semantic_source",
+      "start_line": 160,
+      "end_line": 160,
+      "code": "log_this('display_config','User <i>'.$_SESSION['username'].'</i> has <strong>edited</strong> the default display options');",
+      "semantic_evidence": [
+        {
+          "kind": "php_session_identity_key",
+          "key": "username"
+        }
+      ],
+      "parameter_ids": [
+        "preferences.php:LCP138"
+      ],
+      "function_ids": []
+    },
+    {
+      "path": "preferences.php",
+      "kind": "semantic_source",
+      "start_line": 246,
+      "end_line": 246,
+      "code": "log_this('comment_config','User <i>'.$_SESSION['username'].'</i> has <strong>edited</strong> the default comment options');",
+      "semantic_evidence": [
+        {
+          "kind": "php_session_identity_key",
+          "key": "username"
+        }
+      ],
+      "parameter_ids": [
+        "preferences.php:LCP138"
+      ],
+      "function_ids": []
+    },
+    {
+      "path": "preferences.php",
+      "kind": "semantic_source",
+      "start_line": 341,
+      "end_line": 341,
+      "code": "log_this('rss_config','User <i>'.$_SESSION['username'].'</i> has <strong>edited</strong> the default rss options');",
+      "semantic_evidence": [
+        {
+          "kind": "php_session_identity_key",
+          "key": "username"
+        }
+      ],
+      "parameter_ids": [
+        "preferences.php:LCP138"
+      ],
+      "function_ids": []
+    },
+    {
+      "path": "preferences.php",
+      "kind": "semantic_source",
+      "start_line": 514,
+      "end_line": 514,
+      "code": "$res = new_template($data,$_SESSION['username']);",
+      "semantic_evidence": [
+        {
+          "kind": "php_session_identity_key",
+          "key": "username"
+        }
+      ],
+      "parameter_ids": [
+        "preferences.php:LCP138"
+      ],
+      "function_ids": []
+    },
+    {
+      "path": "preferences.php",
+      "kind": "semantic_source",
+      "start_line": 537,
+      "end_line": 537,
+      "code": "$res = edit_template($data,$_SESSION['username']);",
+      "semantic_evidence": [
+        {
+          "kind": "php_session_identity_key",
+          "key": "username"
+        }
+      ],
+      "parameter_ids": [
+        "preferences.php:LCP138"
+      ],
+      "function_ids": []
+    },
+    {
+      "path": "preferences.php",
+      "kind": "semantic_source",
+      "start_line": 574,
+      "end_line": 574,
+      "code": "ban($data,$_SESSION['username']);",
+      "semantic_evidence": [
+        {
+          "kind": "php_session_identity_key",
+          "key": "username"
+        }
+      ],
+      "parameter_ids": [
+        "preferences.php:LCP138"
+      ],
+      "function_ids": []
+    },
+    {
+      "path": "preferences.php",
+      "kind": "semantic_source",
+      "start_line": 585,
+      "end_line": 585,
+      "code": "log_this('lift_ban','User <i>'.$_SESSION['username'].'</i> has <strong>lifted bans</strong> for the following ids: '.$items_f.'');",
+      "semantic_evidence": [
+        {
+          "kind": "php_session_identity_key",
+          "key": "username"
+        }
+      ],
+      "parameter_ids": [
+        "preferences.php:LCP138"
+      ],
+      "function_ids": []
+    },
+    {
+      "path": "preferences.php",
+      "kind": "semantic_source",
+      "start_line": 763,
+      "end_line": 763,
+      "code": "log_this('backup_db','User <i>'.$_SESSION['username'].'</i> has <strong>backed up</strong> the system database');",
+      "semantic_evidence": [
+        {
+          "kind": "php_session_identity_key",
+          "key": "username"
+        }
+      ],
+      "parameter_ids": [
+        "preferences.php:LCP138"
+      ],
+      "function_ids": []
+    },
+    {
+      "path": "preferences.php",
+      "kind": "semantic_source",
+      "start_line": 797,
+      "end_line": 797,
+      "code": "log_this('backup_restore','User <i>'.$_SESSION['username'].'</i> has <strong>restored</strong> a previous phpns database.');",
+      "semantic_evidence": [
+        {
+          "kind": "php_session_identity_key",
+          "key": "username"
+        }
+      ],
+      "parameter_ids": [
+        "preferences.php:LCP138"
+      ],
+      "function_ids": []
+    },
+    {
+      "path": "preferences.php",
+      "kind": "semantic_source",
+      "start_line": 851,
+      "end_line": 851,
+      "code": "log_this('change_theme','User <i>'.$_SESSION['username'].'</i> has <strong>changed</strong> the default system theme.');",
+      "semantic_evidence": [
+        {
+          "kind": "php_session_identity_key",
+          "key": "username"
+        }
+      ],
+      "parameter_ids": [
+        "preferences.php:LCP138"
+      ],
+      "function_ids": []
+    },
+    {
+      "path": "preferences.php",
+      "kind": "semantic_source",
+      "start_line": 922,
+      "end_line": 922,
+      "code": "log_this('wysiwyg_options','User <i>'.$_SESSION['username'].'</i> has <strong>disabled/enabled</strong> the wysiwyg editor');",
+      "semantic_evidence": [
+        {
+          "kind": "php_session_identity_key",
+          "key": "username"
+        }
+      ],
+      "parameter_ids": [
+        "preferences.php:LCP138"
+      ],
+      "function_ids": []
+    },
+    {
+      "path": "preferences.php",
+      "kind": "semantic_source",
+      "start_line": 957,
+      "end_line": 957,
+      "code": "log_this('system_timestamp','User <i>'.$_SESSION['username'].'</i> has <strong>edited</strong> the default system timestamp format');",
+      "semantic_evidence": [
+        {
+          "kind": "php_session_identity_key",
+          "key": "username"
+        }
+      ],
+      "parameter_ids": [
+        "preferences.php:LCP138"
+      ],
+      "function_ids": []
+    },
+    {
+      "path": "preferences.php",
+      "kind": "semantic_source",
+      "start_line": 985,
+      "end_line": 985,
+      "code": "log_this('site_line','User <i>'.$_SESSION['username'].'</i> has <strong>changed</strong> the online/offline status');",
+      "semantic_evidence": [
+        {
+          "kind": "php_session_identity_key",
+          "key": "username"
+        }
+      ],
+      "parameter_ids": [
+        "preferences.php:LCP138"
+      ],
+      "function_ids": []
+    },
+    {
+      "path": "preferences.php",
+      "kind": "semantic_source",
+      "start_line": 1022,
+      "end_line": 1022,
+      "code": "log_this('global_message','User <i>'.$_SESSION['username'].'</i> has <strong>edited</strong> the default global message');",
+      "semantic_evidence": [
+        {
+          "kind": "php_session_identity_key",
+          "key": "username"
+        }
+      ],
+      "parameter_ids": [
+        "preferences.php:LCP138"
+      ],
+      "function_ids": []
+    },
+    {
+      "path": "user.php",
+      "kind": "conditional",
+      "start_line": 90,
+      "end_line": 93,
+      "condition": "($globalvars['rank'][18] == 0)",
+      "terminations": [
+        {
+          "kind": "redirect",
+          "line": 91,
+          "code": "header(\"Location: index.php?do=permissiondenied\");",
+          "denial_text": false
+        }
+      ],
+      "code": "if ($globalvars['rank'][18] == 0) {\r\n\t\t\theader(\"Location: index.php?do=permissiondenied\");\t\r\n\t\t\tdie(); //if header doesn't work, kill the script.\r\n\t\t}",
+      "parameter_ids": [
+        "user.php:LCP218"
+      ],
+      "function_ids": [],
+      "if_framework": "if ($globalvars['rank'][18] == 0) {\n    header(\"Location: index.php?do=permissiondenied\");\n}"
+    },
+    {
+      "path": "user.php",
+      "kind": "conditional",
+      "start_line": 100,
+      "end_line": 103,
+      "condition": "($globalvars['rank'][18] == 0)",
+      "terminations": [
+        {
+          "kind": "redirect",
+          "line": 101,
+          "code": "header(\"Location: index.php?do=permissiondenied\");",
+          "denial_text": false
+        }
+      ],
+      "code": "if ($globalvars['rank'][18] == 0) {\r\n\t\t\theader(\"Location: index.php?do=permissiondenied\");\t\r\n\t\t\tdie(); //if header doesn't work, kill the script.\r\n\t\t}",
+      "parameter_ids": [
+        "user.php:LCP218"
+      ],
+      "function_ids": [],
+      "if_framework": "if ($globalvars['rank'][18] == 0) {\n    header(\"Location: index.php?do=permissiondenied\");\n}"
+    },
+    {
+      "path": "user.php",
+      "kind": "conditional",
+      "start_line": 171,
+      "end_line": 174,
+      "condition": "($globalvars['rank'][22] == 0)",
+      "terminations": [
+        {
+          "kind": "redirect",
+          "line": 172,
+          "code": "header(\"Location: index.php?do=permissiondenied\");",
+          "denial_text": false
+        }
+      ],
+      "code": "if ($globalvars['rank'][22] == 0) {\r\n\t\t\theader(\"Location: index.php?do=permissiondenied\");\t\r\n\t\t\tdie(); //if header doesn't work, kill the script.\r\n\t\t}",
+      "parameter_ids": [
+        "user.php:LCP226"
+      ],
+      "function_ids": [],
+      "if_framework": "if ($globalvars['rank'][22] == 0) {\n    header(\"Location: index.php?do=permissiondenied\");\n}"
+    },
+    {
+      "path": "user.php",
+      "kind": "conditional",
+      "start_line": 189,
+      "end_line": 192,
+      "condition": "($globalvars['rank'][20] == 0)",
+      "terminations": [
+        {
+          "kind": "redirect",
+          "line": 190,
+          "code": "header(\"Location: index.php?do=permissiondenied\");",
+          "denial_text": false
+        }
+      ],
+      "code": "if ($globalvars['rank'][20] == 0) {\r\n\t\t\theader(\"Location: index.php?do=permissiondenied\");\t\r\n\t\t\tdie(); //if header doesn't work, kill the script.\r\n\t\t}",
+      "parameter_ids": [
+        "user.php:LCP227"
+      ],
+      "function_ids": [],
+      "if_framework": "if ($globalvars['rank'][20] == 0) {\n    header(\"Location: index.php?do=permissiondenied\");\n}"
+    },
+    {
+      "path": "user.php",
+      "kind": "conditional",
+      "start_line": 208,
+      "end_line": 211,
+      "condition": "($globalvars['rank'][20] == 0)",
+      "terminations": [
+        {
+          "kind": "redirect",
+          "line": 209,
+          "code": "header(\"Location: index.php?do=permissiondenied\");",
+          "denial_text": false
+        }
+      ],
+      "code": "if ($globalvars['rank'][20] == 0) {\r\n\t\theader(\"Location: index.php?do=permissiondenied\");\t\r\n\t\tdie(); //if header doesn't work, kill the script.\r\n\t}",
+      "parameter_ids": [
+        "user.php:LCP227"
+      ],
+      "function_ids": [],
+      "if_framework": "if ($globalvars['rank'][20] == 0) {\n    header(\"Location: index.php?do=permissiondenied\");\n}"
+    },
+    {
+      "path": "user.php",
+      "kind": "conditional",
+      "start_line": 280,
+      "end_line": 283,
+      "condition": "($globalvars['rank'][2] == 0)",
+      "terminations": [
+        {
+          "kind": "redirect",
+          "line": 281,
+          "code": "header(\"Location: index.php?do=permissiondenied\");",
+          "denial_text": false
+        }
+      ],
+      "code": "if ($globalvars['rank'][2] == 0) {\r\n\t\t\t\theader(\"Location: index.php?do=permissiondenied\");\t\r\n\t\t\t\tdie(); //if header doesn't work, kill the script.\r\n\t\t\t}",
+      "parameter_ids": [
+        "user.php:LCP230"
+      ],
+      "function_ids": [],
+      "if_framework": "if ($globalvars['rank'][2] == 0) {\n    header(\"Location: index.php?do=permissiondenied\");\n}"
+    },
+    {
+      "path": "user.php",
+      "kind": "conditional",
+      "start_line": 328,
+      "end_line": 331,
+      "condition": "($globalvars['rank'][2] == 0)",
+      "terminations": [
+        {
+          "kind": "redirect",
+          "line": 329,
+          "code": "header(\"Location: index.php?do=permissiondenied\");",
+          "denial_text": false
+        }
+      ],
+      "code": "if ($globalvars['rank'][2] == 0) {\r\n\t\t\t\theader(\"Location: index.php?do=permissiondenied\");\t\r\n\t\t\t\tdie(); //if header doesn't work, kill the script.\r\n\t\t\t}",
+      "parameter_ids": [
+        "user.php:LCP230"
+      ],
+      "function_ids": [],
+      "if_framework": "if ($globalvars['rank'][2] == 0) {\n    header(\"Location: index.php?do=permissiondenied\");\n}"
+    },
+    {
+      "path": "user.php",
+      "kind": "conditional",
+      "start_line": 345,
+      "end_line": 348,
+      "condition": "($globalvars['rank'][0] == 0)",
+      "terminations": [
+        {
+          "kind": "redirect",
+          "line": 346,
+          "code": "header(\"Location: index.php?do=permissiondenied\");",
+          "denial_text": false
+        }
+      ],
+      "code": "if ($globalvars['rank'][0] == 0) {\r\n\t\t\t\theader(\"Location: index.php?do=permissiondenied\");\r\n\t\t\t\tdie();\t\r\n\t\t\t}",
+      "parameter_ids": [
+        "user.php:LCP231"
+      ],
+      "function_ids": [],
+      "if_framework": "if ($globalvars['rank'][0] == 0) {\n    header(\"Location: index.php?do=permissiondenied\");\n}"
+    },
+    {
+      "path": "user.php",
+      "kind": "conditional",
+      "start_line": 355,
+      "end_line": 358,
+      "condition": "($globalvars['rank'][0] == 0)",
+      "terminations": [
+        {
+          "kind": "redirect",
+          "line": 356,
+          "code": "header(\"Location: index.php?do=permissiondenied\");",
+          "denial_text": false
+        }
+      ],
+      "code": "if ($globalvars['rank'][0] == 0) {\r\n\t\t\t\theader(\"Location: index.php?do=permissiondenied\");\r\n\t\t\t\tdie();\t\r\n\t\t\t}",
+      "parameter_ids": [
+        "user.php:LCP231"
+      ],
+      "function_ids": [],
+      "if_framework": "if ($globalvars['rank'][0] == 0) {\n    header(\"Location: index.php?do=permissiondenied\");\n}"
+    },
+    {
+      "path": "user.php",
+      "kind": "semantic_source",
+      "start_line": 400,
+      "end_line": 400,
+      "code": "new_rank($rank,$permissions_string,$_SESSION['username']);",
+      "semantic_evidence": [
+        {
+          "kind": "php_session_identity_key",
+          "key": "username"
+        }
+      ],
+      "parameter_ids": [
+        "user.php:LCP214"
+      ],
+      "function_ids": []
+    },
+    {
+      "path": "user.php",
+      "kind": "conditional",
+      "start_line": 404,
+      "end_line": 407,
+      "condition": "($globalvars['rank'][2] == 0)",
+      "terminations": [
+        {
+          "kind": "redirect",
+          "line": 405,
+          "code": "header(\"Location: index.php?do=permissiondenied\");",
+          "denial_text": false
+        }
+      ],
+      "code": "if ($globalvars['rank'][2] == 0) {\r\n\t\t\t\theader(\"Location: index.php?do=permissiondenied\");\r\n\t\t\t\tdie();\t\r\n\t\t\t}",
+      "parameter_ids": [
+        "user.php:LCP230"
+      ],
+      "function_ids": [],
+      "if_framework": "if ($globalvars['rank'][2] == 0) {\n    header(\"Location: index.php?do=permissiondenied\");\n}"
+    },
+    {
+      "path": "user.php",
+      "kind": "conditional",
+      "start_line": 451,
+      "end_line": 454,
+      "condition": "($globalvars['rank'][2] == 0)",
+      "terminations": [
+        {
+          "kind": "redirect",
+          "line": 452,
+          "code": "header(\"Location: index.php?do=permissiondenied\");",
+          "denial_text": false
+        }
+      ],
+      "code": "if ($globalvars['rank'][2] == 0) {\r\n\t\t\t\theader(\"Location: index.php?do=permissiondenied\");\r\n\t\t\t\tdie();\t\r\n\t\t\t}",
+      "parameter_ids": [
+        "user.php:LCP230"
+      ],
+      "function_ids": [],
+      "if_framework": "if ($globalvars['rank'][2] == 0) {\n    header(\"Location: index.php?do=permissiondenied\");\n}"
+    },
+    {
+      "path": "user.php",
+      "kind": "conditional",
+      "start_line": 503,
+      "end_line": 506,
+      "condition": "($globalvars['rank'][4] == 0)",
+      "terminations": [
+        {
+          "kind": "redirect",
+          "line": 504,
+          "code": "header(\"Location: index.php?do=permissiondenied\");",
+          "denial_text": false
+        }
+      ],
+      "code": "if ($globalvars['rank'][4] == 0) {\r\n\t\t\t\theader(\"Location: index.php?do=permissiondenied\");\r\n\t\t\t\tdie();\t\r\n\t\t\t}",
+      "parameter_ids": [
+        "user.php:LCP237"
+      ],
+      "function_ids": [],
+      "if_framework": "if ($globalvars['rank'][4] == 0) {\n    header(\"Location: index.php?do=permissiondenied\");\n}"
+    }
+  ]
+}

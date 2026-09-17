@@ -1,0 +1,29 @@
+{
+  "status": "failed",
+  "started_at": "2026-07-04T01:06:53.824549+00:00",
+  "config": "D:\\project\\python\\DRHL\\configs\\mybb.json",
+  "artifacts": {
+    "dynamic_graph": "D:\\project\\python\\DRHL\\runs\\mybb\\graphs\\dynamic.json",
+    "static_graph": "D:\\project\\python\\DRHL\\runs\\mybb\\graphs\\static.json",
+    "candidate_parameters": "D:\\project\\python\\DRHL\\runs\\mybb\\source\\candidate_parameters.json",
+    "candidate_functions": "D:\\project\\python\\DRHL\\runs\\mybb\\source\\candidate_functions.json",
+    "access_control_parameters": "D:\\project\\python\\DRHL\\runs\\mybb\\source\\parameters.json",
+    "access_control_functions": "D:\\project\\python\\DRHL\\runs\\mybb\\source\\functions.json",
+    "access_control_snippets": "D:\\project\\python\\DRHL\\runs\\mybb\\source\\snippets.json",
+    "fused_graph": "D:\\project\\python\\DRHL\\runs\\mybb\\graphs\\fused.json",
+    "graph_summary": "D:\\project\\python\\DRHL\\runs\\mybb\\graphs\\summary.json",
+    "graph_summary_csv": "D:\\project\\python\\DRHL\\runs\\mybb\\graphs\\summary.csv",
+    "attack_vectors": "D:\\project\\python\\DRHL\\runs\\mybb\\analysis\\vectors.json",
+    "findings": "D:\\project\\python\\DRHL\\runs\\mybb\\analysis\\findings.json",
+    "metrics_json": "D:\\project\\python\\DRHL\\runs\\mybb\\metrics\\summary.json",
+    "metrics_csv": "D:\\project\\python\\DRHL\\runs\\mybb\\metrics\\summary.csv",
+    "repairs": "D:\\project\\python\\DRHL\\runs\\mybb\\repair\\manifest.json",
+    "repair_report": "D:\\project\\python\\DRHL\\runs\\mybb\\repair\\repair_report.md",
+    "llm_access_control_snippets": "D:\\project\\python\\DRHL\\runs\\mybb\\source\\llm_snippets.json"
+  },
+  "finished_at": "2026-07-04T02:43:23.511365+00:00",
+  "error": "KeyboardInterrupt: ",
+  "repair_only_finished_at": "2026-07-04T06:34:43.388999+00:00",
+  "repair_rerun_started_at": "2026-09-12T13:01:05.650841+00:00",
+  "repair_rerun_finished_at": "2026-09-12T13:06:17.591255+00:00"
+}

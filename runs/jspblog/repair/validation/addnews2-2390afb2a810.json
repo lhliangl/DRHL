@@ -1,0 +1,406 @@
+{
+  "category": "admin_only",
+  "page": "admin/addnews2.jsp",
+  "source": "D:\\tomcat9\\webapps\\blog\\admin\\addnews2.jsp",
+  "output": "D:\\project\\python\\DRHL\\runs\\jspblog\\repair\\files\\attempt-3\\admin\\addnews2.jsp",
+  "status": "successful_repair",
+  "message": "syntax/compile, vulnerability blocking, and regression validation all passed",
+  "engine": "llm",
+  "plan": "{\"missing_check\": \"Authentication/authorization guard for admin-only page; verify drhlLoggedIn session flag is 'true' before executing any sensitive logic.\", \"insertion_location\": \"At the top of admin/addnews2.jsp, immediately after the <%@page contentType=\\\"text/html\\\"%> directive and before any HTML output, parameter reads, or database connection/INSERT code.\", \"recommended_guard\": \"Reuse the existing admin/auth.jsp guard by adding <%@ include file=\\\"auth.jsp\\\" %> at the insertion point. This guard is: if (drhlLoggedIn == null || !drhlLoggedIn.equals(\\\"true\\\")) { response.sendRedirect(\\\"index.jsp\\\"); return; }\", \"reused_project_semantics\": \"Uses the drhlLoggedIn session flag, sentinel value \\\"true\\\", and response.sendRedirect(\\\"index.jsp\\\") denial style from admin/auth.jsp. Admin access is preserved when drhlLoggedIn equals \\\"true\\\".\", \"reason\": \"admin/addnews2.jsp is an admin-only standalone entry that performs a database INSERT without access control. Inserting the existing project auth guard before any sensitive operation blocks unauthorized visitor access while keeping intended admin access functional.\"}",
+  "prompt_artifact": "D:\\project\\python\\DRHL\\runs\\jspblog\\repair\\prompts\\addnews2-attempt3-5f6b89e6e4c1.json",
+  "attempts": 3,
+  "patches_generated": 3,
+  "syntax_compile_ok": 3,
+  "exploit_blocked": 3,
+  "regression_passed": 1,
+  "database_validation_applied": 3,
+  "database_validation_passed": 1,
+  "successful": true,
+  "validation_artifact": "D:\\project\\python\\DRHL\\runs\\jspblog\\repair\\validation\\addnews2-2390afb2a810.json",
+  "attempt_details": [
+    {
+      "attempt": 1,
+      "output": "D:\\project\\python\\DRHL\\runs\\jspblog\\repair\\files\\attempt-1\\admin\\addnews2.jsp",
+      "syntax_compile_ok": true,
+      "exploit_blocked": true,
+      "regression_passed": false,
+      "successful": false,
+      "message": "syntax=(syntax check disabled by configuration); deployment=(source patch applied); vulnerability_blocking=(response=True; database=passed; evidence=visitor:not_vulnerable); regression=(response=True; database=failed; evidence=authorized status=302; denial=['denial redirect: http://localhost:8080/blog/admin/index.jsp']; authorized success redirect accepted)",
+      "prompt_artifact": "D:\\project\\python\\DRHL\\runs\\jspblog\\repair\\prompts\\addnews2-attempt1-8cc5f361669c.json",
+      "plan": "{\"missing_check\": \"Missing admin-only authentication guard for direct access to admin/addnews2.jsp before processing POST data or executing the news INSERT.\", \"insertion_location\": \"At the very top of admin/addnews2.jsp, immediately after the page directives and before the <html> output or any request-parameter reads/DB operations, so unauthorized users are redirected before output or side effects.\", \"recommended_guard\": \"<% String drhlLoggedIn = (String) session.getAttribute(\\\"drhlLoggedIn\\\"); if (drhlLoggedIn == null || !drhlLoggedIn.equals(\\\"true\\\")) { response.sendRedirect(\\\"index.jsp\\\"); return; } %>\", \"reused_project_semantics\": \"Reuses the project admin session flag drhlLoggedIn, the exact sentinel value \\\"true\\\", and the denial style from admin/auth.jsp: response.sendRedirect(\\\"index.jsp\\\"); return;\", \"reason\": \"admin/addnews2.jsp is an admin-only standalone entry that reads POST parameters and performs a database INSERT without checking the existing admin authentication flag. Adding the project's drhlLoggedIn guard before any sensitive operation blocks visitors while preserving access for authorized admins whose session flag equals \\\"true\\\".\"}",
+      "database_validation_passed": false,
+      "database_validation": {
+        "oracle_version": 2,
+        "scope": "repair_only",
+        "applicable": true,
+        "passed": false,
+        "status": "failed",
+        "dimensions": {
+          "vulnerability_blocking": {
+            "phase": "attack",
+            "applicable": true,
+            "passed": true
+          },
+          "regression": {
+            "phase": "authorized",
+            "applicable": true,
+            "passed": false
+          }
+        },
+        "scenarios": [
+          {
+            "name": "jspblog-add-news-admin-create",
+            "operation": "create",
+            "passed": false,
+            "phases": [
+              {
+                "phase": "attack",
+                "role": "visitor",
+                "session_before_setup": false,
+                "setup_sql": [],
+                "session_requests": [],
+                "request": {
+                  "method": "POST",
+                  "page": "admin/addnews2.jsp",
+                  "params": {
+                    "author": "drhl-oracle@example.test",
+                    "headline": "DRHLR_146ed089ea22",
+                    "date": "Thu Jan 01 00:00:00 CST 2026",
+                    "body": "DRHLR_146ed089ea22",
+                    "submit": "Add"
+                  },
+                  "referer": "admin/addnews.jsp",
+                  "cookie_names": []
+                },
+                "response": {
+                  "status_code": 302,
+                  "url": "http://localhost:8080/blog/admin/addnews2.jsp",
+                  "body_length": 0
+                },
+                "query": "SELECT COUNT(*) FROM news WHERE headline='DRHLR_146ed089ea22'",
+                "observed": "0",
+                "assertions": [
+                  {
+                    "type": "scalar_zero",
+                    "expected": "0",
+                    "observed": "0",
+                    "passed": true
+                  }
+                ],
+                "passed": true
+              },
+              {
+                "phase": "authorized",
+                "role": "admin",
+                "session_before_setup": false,
+                "setup_sql": [],
+                "session_requests": [],
+                "request": {
+                  "method": "POST",
+                  "page": "admin/addnews2.jsp",
+                  "params": {
+                    "author": "drhl-oracle@example.test",
+                    "headline": "DRHLR_146ed089ea22",
+                    "date": "Thu Jan 01 00:00:00 CST 2026",
+                    "body": "DRHLR_146ed089ea22",
+                    "submit": "Add"
+                  },
+                  "referer": "admin/addnews.jsp",
+                  "cookie_names": []
+                },
+                "response": {
+                  "status_code": 302,
+                  "url": "http://localhost:8080/blog/admin/addnews2.jsp",
+                  "body_length": 0
+                },
+                "query": "SELECT COUNT(*) FROM news WHERE headline='DRHLR_146ed089ea22'",
+                "observed": "0",
+                "assertions": [
+                  {
+                    "type": "scalar_nonzero",
+                    "expected": "nonzero",
+                    "observed": "0",
+                    "passed": false
+                  }
+                ],
+                "passed": false
+              }
+            ]
+          }
+        ],
+        "combined_dimensions": {
+          "vulnerability_blocking": {
+            "passed": true,
+            "response_oracle_applicable": true,
+            "response_oracle_passed": true,
+            "database_oracle_applicable": true,
+            "database_oracle_passed": true
+          },
+          "regression": {
+            "passed": false,
+            "response_oracle_applicable": true,
+            "response_oracle_passed": true,
+            "database_oracle_applicable": true,
+            "database_oracle_passed": false
+          }
+        }
+      }
+    },
+    {
+      "attempt": 2,
+      "output": "D:\\project\\python\\DRHL\\runs\\jspblog\\repair\\files\\attempt-2\\admin\\addnews2.jsp",
+      "syntax_compile_ok": true,
+      "exploit_blocked": true,
+      "regression_passed": false,
+      "successful": false,
+      "message": "syntax=(syntax check disabled by configuration); deployment=(source patch applied); vulnerability_blocking=(response=True; database=passed; evidence=visitor:not_vulnerable); regression=(response=True; database=failed; evidence=authorized status=302; denial=['denial redirect: http://localhost:8080/blog/admin/index.jsp']; authorized success redirect accepted)",
+      "prompt_artifact": "D:\\project\\python\\DRHL\\runs\\jspblog\\repair\\prompts\\addnews2-attempt2-0208cf89c207.json",
+      "plan": "{\"missing_check\": \"Missing authentication/authorization guard on admin-only JSP entry; a visitor can directly POST to admin/addnews2.jsp and execute the news INSERT without being challenged.\", \"insertion_location\": \"At the top of the JSP scriptlet in admin/addnews2.jsp, immediately after `<%@ page language=\\\"java\\\" import=\\\"java.sql.*\\\" %>` and before `// add_res.jsp // form data`, any `request.getParameter` reads, or database operations.\", \"recommended_guard\": \"String drhlLoggedIn = (String) session.getAttribute(\\\"drhlLoggedIn\\\");\\nif (drhlLoggedIn == null || !drhlLoggedIn.equals(\\\"true\\\")) {\\n    response.sendRedirect(\\\"index.jsp\\\");\\n    return;\\n}\", \"reused_project_semantics\": \"Reuses the project’s existing admin guard context from admin/auth.jsp: the `drhlLoggedIn` session flag, the sentinel value `\\\"true\\\"`, and the denial style `response.sendRedirect(\\\"index.jsp\\\"); return;`.\", \"reason\": \"admin/addnews2.jsp is an admin-only standalone entry that performs a sensitive database INSERT. It currently has no access check, so an unauthenticated visitor can POST directly and modify data. The existing project guard in admin/auth.jsp checks the `drhlLoggedIn` session attribute for `\\\"true\\\"` and redirects unauthorized users to index.jsp. Inserting this exact guard at the start of the scriptlet blocks unauthorized visitors before parameter parsing or SQL execution while preserving intended admin access.\"}",
+      "database_validation_passed": false,
+      "database_validation": {
+        "oracle_version": 2,
+        "scope": "repair_only",
+        "applicable": true,
+        "passed": false,
+        "status": "failed",
+        "dimensions": {
+          "vulnerability_blocking": {
+            "phase": "attack",
+            "applicable": true,
+            "passed": true
+          },
+          "regression": {
+            "phase": "authorized",
+            "applicable": true,
+            "passed": false
+          }
+        },
+        "scenarios": [
+          {
+            "name": "jspblog-add-news-admin-create",
+            "operation": "create",
+            "passed": false,
+            "phases": [
+              {
+                "phase": "attack",
+                "role": "visitor",
+                "session_before_setup": false,
+                "setup_sql": [],
+                "session_requests": [],
+                "request": {
+                  "method": "POST",
+                  "page": "admin/addnews2.jsp",
+                  "params": {
+                    "author": "drhl-oracle@example.test",
+                    "headline": "DRHLR_c23ccbbf2b50",
+                    "date": "Thu Jan 01 00:00:00 CST 2026",
+                    "body": "DRHLR_c23ccbbf2b50",
+                    "submit": "Add"
+                  },
+                  "referer": "admin/addnews.jsp",
+                  "cookie_names": []
+                },
+                "response": {
+                  "status_code": 302,
+                  "url": "http://localhost:8080/blog/admin/addnews2.jsp",
+                  "body_length": 0
+                },
+                "query": "SELECT COUNT(*) FROM news WHERE headline='DRHLR_c23ccbbf2b50'",
+                "observed": "0",
+                "assertions": [
+                  {
+                    "type": "scalar_zero",
+                    "expected": "0",
+                    "observed": "0",
+                    "passed": true
+                  }
+                ],
+                "passed": true
+              },
+              {
+                "phase": "authorized",
+                "role": "admin",
+                "session_before_setup": false,
+                "setup_sql": [],
+                "session_requests": [],
+                "request": {
+                  "method": "POST",
+                  "page": "admin/addnews2.jsp",
+                  "params": {
+                    "author": "drhl-oracle@example.test",
+                    "headline": "DRHLR_c23ccbbf2b50",
+                    "date": "Thu Jan 01 00:00:00 CST 2026",
+                    "body": "DRHLR_c23ccbbf2b50",
+                    "submit": "Add"
+                  },
+                  "referer": "admin/addnews.jsp",
+                  "cookie_names": []
+                },
+                "response": {
+                  "status_code": 302,
+                  "url": "http://localhost:8080/blog/admin/addnews2.jsp",
+                  "body_length": 0
+                },
+                "query": "SELECT COUNT(*) FROM news WHERE headline='DRHLR_c23ccbbf2b50'",
+                "observed": "0",
+                "assertions": [
+                  {
+                    "type": "scalar_nonzero",
+                    "expected": "nonzero",
+                    "observed": "0",
+                    "passed": false
+                  }
+                ],
+                "passed": false
+              }
+            ]
+          }
+        ],
+        "combined_dimensions": {
+          "vulnerability_blocking": {
+            "passed": true,
+            "response_oracle_applicable": true,
+            "response_oracle_passed": true,
+            "database_oracle_applicable": true,
+            "database_oracle_passed": true
+          },
+          "regression": {
+            "passed": false,
+            "response_oracle_applicable": true,
+            "response_oracle_passed": true,
+            "database_oracle_applicable": true,
+            "database_oracle_passed": false
+          }
+        }
+      }
+    },
+    {
+      "attempt": 3,
+      "output": "D:\\project\\python\\DRHL\\runs\\jspblog\\repair\\files\\attempt-3\\admin\\addnews2.jsp",
+      "syntax_compile_ok": true,
+      "exploit_blocked": true,
+      "regression_passed": true,
+      "successful": true,
+      "message": "syntax=(syntax check disabled by configuration); deployment=(source patch applied); vulnerability_blocking=(response=True; database=passed; evidence=visitor:not_vulnerable); regression=(response=True; database=passed; evidence=authorized status=200; denial=[])",
+      "prompt_artifact": "D:\\project\\python\\DRHL\\runs\\jspblog\\repair\\prompts\\addnews2-attempt3-5f6b89e6e4c1.json",
+      "plan": "{\"missing_check\": \"Authentication/authorization guard for admin-only page; verify drhlLoggedIn session flag is 'true' before executing any sensitive logic.\", \"insertion_location\": \"At the top of admin/addnews2.jsp, immediately after the <%@page contentType=\\\"text/html\\\"%> directive and before any HTML output, parameter reads, or database connection/INSERT code.\", \"recommended_guard\": \"Reuse the existing admin/auth.jsp guard by adding <%@ include file=\\\"auth.jsp\\\" %> at the insertion point. This guard is: if (drhlLoggedIn == null || !drhlLoggedIn.equals(\\\"true\\\")) { response.sendRedirect(\\\"index.jsp\\\"); return; }\", \"reused_project_semantics\": \"Uses the drhlLoggedIn session flag, sentinel value \\\"true\\\", and response.sendRedirect(\\\"index.jsp\\\") denial style from admin/auth.jsp. Admin access is preserved when drhlLoggedIn equals \\\"true\\\".\", \"reason\": \"admin/addnews2.jsp is an admin-only standalone entry that performs a database INSERT without access control. Inserting the existing project auth guard before any sensitive operation blocks unauthorized visitor access while keeping intended admin access functional.\"}",
+      "database_validation_passed": true,
+      "database_validation": {
+        "oracle_version": 2,
+        "scope": "repair_only",
+        "applicable": true,
+        "passed": true,
+        "status": "passed",
+        "dimensions": {
+          "vulnerability_blocking": {
+            "phase": "attack",
+            "applicable": true,
+            "passed": true
+          },
+          "regression": {
+            "phase": "authorized",
+            "applicable": true,
+            "passed": true
+          }
+        },
+        "scenarios": [
+          {
+            "name": "jspblog-add-news-admin-create",
+            "operation": "create",
+            "passed": true,
+            "phases": [
+              {
+                "phase": "attack",
+                "role": "visitor",
+                "session_before_setup": false,
+                "setup_sql": [],
+                "session_requests": [],
+                "request": {
+                  "method": "POST",
+                  "page": "admin/addnews2.jsp",
+                  "params": {
+                    "author": "drhl-oracle@example.test",
+                    "headline": "DRHLR_516bdd1bb758",
+                    "date": "Thu Jan 01 00:00:00 CST 2026",
+                    "body": "DRHLR_516bdd1bb758",
+                    "submit": "Add"
+                  },
+                  "referer": "admin/addnews.jsp",
+                  "cookie_names": []
+                },
+                "response": {
+                  "status_code": 302,
+                  "url": "http://localhost:8080/blog/admin/addnews2.jsp",
+                  "body_length": 0
+                },
+                "query": "SELECT COUNT(*) FROM news WHERE headline='DRHLR_516bdd1bb758'",
+                "observed": "0",
+                "assertions": [
+                  {
+                    "type": "scalar_zero",
+                    "expected": "0",
+                    "observed": "0",
+                    "passed": true
+                  }
+                ],
+                "passed": true
+              },
+              {
+                "phase": "authorized",
+                "role": "admin",
+                "session_before_setup": false,
+                "setup_sql": [],
+                "session_requests": [],
+                "request": {
+                  "method": "POST",
+                  "page": "admin/addnews2.jsp",
+                  "params": {
+                    "author": "drhl-oracle@example.test",
+                    "headline": "DRHLR_516bdd1bb758",
+                    "date": "Thu Jan 01 00:00:00 CST 2026",
+                    "body": "DRHLR_516bdd1bb758",
+                    "submit": "Add"
+                  },
+                  "referer": "admin/addnews.jsp",
+                  "cookie_names": []
+                },
+                "response": {
+                  "status_code": 200,
+                  "url": "http://localhost:8080/blog/admin/addnews2.jsp",
+                  "body_length": 356
+                },
+                "query": "SELECT COUNT(*) FROM news WHERE headline='DRHLR_516bdd1bb758'",
+                "observed": "1",
+                "assertions": [
+                  {
+                    "type": "scalar_nonzero",
+                    "expected": "nonzero",
+                    "observed": "1",
+                    "passed": true
+                  }
+                ],
+                "passed": true
+              }
+            ]
+          }
+        ],
+        "combined_dimensions": {
+          "vulnerability_blocking": {
+            "passed": true,
+            "response_oracle_applicable": true,
+            "response_oracle_passed": true,
+            "database_oracle_applicable": true,
+            "database_oracle_passed": true
+          },
+          "regression": {
+            "passed": true,
+            "response_oracle_applicable": true,
+            "response_oracle_passed": true,
+            "database_oracle_applicable": true,
+            "database_oracle_passed": true
+          }
+        }
+      }
+    }
+  ]
+}

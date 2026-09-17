@@ -1,0 +1,2112 @@
+{
+  "vectors": [
+    {
+      "category": "static_only",
+      "page": "<int:pk>/<slug>/take/",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "static_only",
+      "page": "<int:pk>/course/add/",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "static_only",
+      "page": "<int:pk>/delete/",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "static_only",
+      "page": "<int:pk>/detail/",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "static_only",
+      "page": "<int:pk>/edit/",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "static_only",
+      "page": "<slug>/<int:pk>/add/",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "static_only",
+      "page": "<slug>/<int:pk>/delete/",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "static_only",
+      "page": "<slug>/quiz_add/",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "static_only",
+      "page": "<slug>/quizzes/",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "static_only",
+      "page": "accounts/",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "static_only",
+      "page": "accounts/api/",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "static_only",
+      "page": "add/",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "static_only",
+      "page": "allocated_course/<int:pk>/edit/",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "static_only",
+      "page": "checkout",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "static_only",
+      "page": "coinbase/",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "static_only",
+      "page": "complete/",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "static_only",
+      "page": "course/<int:pk>/deallocate/",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "static_only",
+      "page": "course/<slug>/detail/",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "static_only",
+      "page": "course/<slug>/documentations/<int:file_id>/delete/",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "static_only",
+      "page": "course/<slug>/documentations/<int:file_id>/edit/",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "static_only",
+      "page": "course/<slug>/documentations/upload/",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "static_only",
+      "page": "course/<slug>/edit/",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "static_only",
+      "page": "course/<slug>/video_tutorials/<video_slug>/delete/",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "static_only",
+      "page": "course/<slug>/video_tutorials/<video_slug>/detail/",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "static_only",
+      "page": "course/<slug>/video_tutorials/<video_slug>/edit/",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "static_only",
+      "page": "course/<slug>/video_tutorials/upload/",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "static_only",
+      "page": "course/allocated/",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "static_only",
+      "page": "course/assign/",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "static_only",
+      "page": "course/delete/<slug>/",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "static_only",
+      "page": "course/drop/",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "static_only",
+      "page": "course/registration/",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "static_only",
+      "page": "create-invoice/",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "static_only",
+      "page": "create-payment-intent",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "static_only",
+      "page": "gopay-charge/",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "static_only",
+      "page": "invoice-detail/<int:id>/",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "static_only",
+      "page": "marking/<int:pk>/",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "static_only",
+      "page": "marking_list/",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "static_only",
+      "page": "mc-question/add/<slug>/<int:quiz_id>/",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "static_only",
+      "page": "my_courses/",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "static_only",
+      "page": "paylike/",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "static_only",
+      "page": "payment-succeed/",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "static_only",
+      "page": "payments/",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "static_only",
+      "page": "paypal/",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "static_only",
+      "page": "progress/",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "static_only",
+      "page": "quiz/",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "static_only",
+      "page": "result/",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "static_only",
+      "page": "stripe-charge/",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "static_only",
+      "page": "stripe/",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "static_only",
+      "page": "webhook",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "accounts/admin_panel/",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": "accounts/profile/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "accounts/change_password/",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "csrfmiddlewaretoken": "LOa4Mt5oKOTQ3yeUxaXC8B4lYeimuSfHuo2wj5MeQiaYOlTnqgQvLcEgTAO5XBwG",
+          "old_password": "wojiaoliu456",
+          "new_password1": "wojiaoliu456",
+          "new_password2": "wojiaoliu456"
+        },
+        "referer": "accounts/change_password/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "accounts/lecturer/add/",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "csrfmiddlewaretoken": "gHshxsz1KrBemrCtUjojDba4o1HDjowYl0VDdI50Ls899ZnQm5LzOwzNdeF24ESM",
+          "username": "drhl_user",
+          "password1": "wojiaoliu456",
+          "password2": "wojiaoliu456",
+          "first_name": "DRHL",
+          "last_name": "Tester",
+          "email": "drhl@example.test",
+          "address": "DRHL test address",
+          "phone": "13800000000"
+        },
+        "referer": "accounts/lecturer/add/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "accounts/lecturers/",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "csrfmiddlewaretoken": "wPI9MiY9nDrSTbV4855BwqIRYndXBrrpB8bvsyu8oEYNGJGrARsRHL7ANAbmmHNd",
+          "id_no": "value_67d97e90",
+          "name": "DRHL Test Name",
+          "email": "drhl@example.test"
+        },
+        "referer": "accounts/lecturers/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "accounts/lecturers/20/delete/",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "csrfmiddlewaretoken": "efdJggc4hNs4NFNeKXU6s2BnliF97A7sjyG5WwI3iOZZAdyBcJhmDn06avDySQtg"
+        },
+        "referer": "accounts/lecturers/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "accounts/profile/",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": "accounts/setting/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "accounts/profile/19/detail/",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": "accounts/student/19/edit/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "accounts/setting/",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "csrfmiddlewaretoken": "p3JqXkQFhuUVbXivhHUtBXqMHwoGHe3P8DBSuWxvnYb3WKXYaNNmey0HCSUpaXkO",
+          "email": "user1@qq.com",
+          "first_name": "l",
+          "last_name": "hll",
+          "phone": "18522255555",
+          "address": "wqeqwe"
+        },
+        "referer": "accounts/setting/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "accounts/student/19/edit/",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "csrfmiddlewaretoken": "UaIsHZ13qUo3SLgtpCe0HKOmtuH6Fk8fZtbOnfx2rVVYFj1QRoBgS5d5iHFvqAu3",
+          "email": "user2@qq.com",
+          "first_name": "l",
+          "last_name": "hll",
+          "phone": "18522255555",
+          "address": "wqeqwe"
+        },
+        "referer": "accounts/student/19/edit/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "accounts/student/add/",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "csrfmiddlewaretoken": "h95Jb2RlJnjVdbUAiFQ0aMn1LZNDXKesmsy5RinkKoQQ0JFXKrdgl7MKAcL2I0Ag",
+          "username": "drhl_user",
+          "password1": "wojiaoliu456",
+          "password2": "wojiaoliu456",
+          "first_name": "DRHL",
+          "last_name": "Tester",
+          "email": "drhl@example.test",
+          "address": "DRHL test address",
+          "phone": "13800000000",
+          "department": "1",
+          "level": "Bachloar"
+        },
+        "referer": "accounts/student/add/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "accounts/students/",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "student_id": "1",
+          "name": "DRHL Test Name",
+          "department": "1"
+        },
+        "referer": "accounts/students/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "accounts/students/17/delete/",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "csrfmiddlewaretoken": "POKta0LGZdmQfjId5OKKOXC0esARgjm4U7dPQghF0eTL2RtAxA70Zi1J3Fyg1zIS"
+        },
+        "referer": "accounts/students/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "accounts/students/18/delete/",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "csrfmiddlewaretoken": "WLlmVB1hRUJ1zeFH8JxLkMlOi9ymIy9H14OIBRxgSVgWmMq4AvU1v7Kx7mwLtOvv"
+        },
+        "referer": "accounts/students/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "accounts/students/?department=p1&name=p1&student_id=p1",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "student_id": "1",
+          "name": "DRHL Test Name",
+          "department": "1"
+        },
+        "referer": "accounts/students/?department=p1&name=p1&student_id=p1"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "horizontal",
+      "page": "accounts/students/?department=p1&name=p1&student_id=p1",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {
+          "student_id": "1",
+          "name": "DRHL Test Name",
+          "department": "1"
+        },
+        "referer": "accounts/students/?department=p1&name=p1&student_id=p1"
+      },
+      "identity_parameters": [
+        "student_id"
+      ]
+    },
+    {
+      "category": "admin_only",
+      "page": "add_item/",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "csrfmiddlewaretoken": "vcHyvIO6tUBwPdo6v61kB2J9XmZBEppEAvaUbYk5uV8rCL9tXSoAMn8SMzX0pFLs",
+          "title": "DRHL Test Title",
+          "summary": "DRHL generated summary for access-control testing.",
+          "posted_as": "value_7f55105d"
+        },
+        "referer": "add_item/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "add_item/",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": "add_item/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/accounts/",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": "admin/accounts/parent/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/accounts/parent/",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "csrfmiddlewaretoken": "GaOYyknRF3vipAJmD4ptyyNDQhlQRfY7LthkeATQG42dc8uJ5QMJJTcmFujfCvkV"
+        },
+        "referer": "admin/accounts/parent/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/accounts/parent/add/",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "csrfmiddlewaretoken": "Ht1frvj0Jr5CmNeaJKbweLof0k3H4wNVMMuB7LPZKsCx9lZxbwyMp6NYPx16PM9J",
+          "user": "value_b83d31cb",
+          "student": "2",
+          "first_name": "DRHL",
+          "last_name": "Tester",
+          "phone": "13800000000",
+          "email": "drhl@example.test",
+          "relation_ship": "value_16bbe148",
+          "_save": "Save",
+          "_addanother": "Save and add another",
+          "_continue": "Save and continue editing"
+        },
+        "referer": "admin/accounts/parent/add/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/accounts/student/",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "csrfmiddlewaretoken": "mktqiuilMFvbvREIpNU5PLJTdW3AMiZ3rDWMYKOkNG26ipp5Rzhl068C291ZxylR",
+          "action": "value_65579f7c",
+          "select_across": "0"
+        },
+        "referer": "admin/accounts/student/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/accounts/student/add/",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "csrfmiddlewaretoken": "HZbrTypvm9kh5z2nAChxkF5VSCELIDBzMiENzOVunaRcS7NK2oENv0uEHPCatTXn",
+          "_popup": "1",
+          "_to_field": "id",
+          "student": "2",
+          "level": "Bachloar",
+          "department": "1",
+          "_save": "Save"
+        },
+        "referer": "admin/accounts/student/add/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/accounts/user/",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "csrfmiddlewaretoken": "FU6ef3YG4qlm2S7nwz0KPneozbJmPx2MKdzAVjuF5rShPqSKYln00ID7ooHLANoA",
+          "action": "value_656b53d8",
+          "select_across": "0"
+        },
+        "referer": "admin/accounts/user/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/accounts/user/add/",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "csrfmiddlewaretoken": "xos63YWnyUked7t7BL4tXv4GxkV7WQwqCHVsJesmzVR90Feu3xrJ8QtpmxTwH6Se",
+          "_popup": "1",
+          "_to_field": "id",
+          "password": "wojiaoliu456",
+          "last_login_0": "text_eb7eb907",
+          "last_login_1": "text_06888c91",
+          "groups": "value_0597b344",
+          "user_permissions": "value_50216e35",
+          "username": "drhl_user",
+          "first_name": "DRHL",
+          "last_name": "Tester",
+          "is_active": "on",
+          "date_joined_0": "2026-07-03",
+          "date_joined_1": "02:16:02",
+          "initial-date_joined_0": "2026-07-03",
+          "initial-date_joined_1": "02:16:02",
+          "phone": "13800000000",
+          "address": "DRHL test address",
+          "email": "drhl@example.test",
+          "_save": "Save"
+        },
+        "referer": "admin/accounts/user/add/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/app/",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": "admin/app/newsandevents/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/app/newsandevents/",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "csrfmiddlewaretoken": "Sp5TfSacZ0JGZyorr0mEws3WnWoba32QXIyfV8Gb01gBM69OTMJUHNsFc9mAVjoE",
+          "action": "value_39ba0da0",
+          "select_across": "0"
+        },
+        "referer": "admin/app/newsandevents/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/app/newsandevents/add/",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "csrfmiddlewaretoken": "hBmXxy1na6rtRGSQHtmo4GmjtBDRfFJamUPjdOxmb7YoEeDd9fJEf1L2iOBg0V5Y",
+          "title": "DRHL Test Title",
+          "summary": "DRHL generated summary for access-control testing.",
+          "posted_as": "value_8cb7becd",
+          "_save": "Save",
+          "_addanother": "Save and add another",
+          "_continue": "Save and continue editing"
+        },
+        "referer": "admin/app/newsandevents/add/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/app/semester/",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "csrfmiddlewaretoken": "TIW3HQmgN8KnuXgbfxctTgBe3nicIs7UY1ppn6SfO9hihv1yHjzJ4B0XSAgBtItI",
+          "action": "value_2038231c",
+          "select_across": "0"
+        },
+        "referer": "admin/app/semester/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/app/semester/add/",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "csrfmiddlewaretoken": "jEP58T8QEBpRvh3vXVvDuj5iKRUn0Z7woXirO9EPFCWMiPOSpHSTFEu1z4SMLftk",
+          "semester": "First",
+          "is_current_semester": "false",
+          "session": "2025/2026",
+          "next_semester_begins": "value_addf4f0f",
+          "_save": "Save",
+          "_addanother": "Save and add another",
+          "_continue": "Save and continue editing"
+        },
+        "referer": "admin/app/semester/add/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/app/session/",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "csrfmiddlewaretoken": "LMQohJYPyZ427EEhfNk2EFzmw0DnnaqfQ5jKXZuOz0BXUcpEHzHiP0Y5ldBM8qM3",
+          "action": "value_a76ec735",
+          "select_across": "0"
+        },
+        "referer": "admin/app/session/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/app/session/add/",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "csrfmiddlewaretoken": "zqQZkVMZYsXmH2YcaEBFgwSye77ewM3lEJjl0biYZtuhuAJzCqYVrRhh3k5Dh2p9",
+          "_popup": "1",
+          "_to_field": "id",
+          "session": "2025/2026",
+          "is_current_session": "false",
+          "next_session_begins": "value_af6a31ec",
+          "_save": "Save"
+        },
+        "referer": "admin/app/session/add/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/auth/",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": "admin/auth/group/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/auth/group/",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "csrfmiddlewaretoken": "5oSJ0RNelREk06SjW0BfIXxNLyqmKRw0aHl5G7jdmSbfNEDGoMYvTiWwALoLv7SO",
+          "action": "value_f27d28e5",
+          "select_across": "0"
+        },
+        "referer": "admin/auth/group/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/auth/group/add/",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "csrfmiddlewaretoken": "bot032Em6Ddwzb9I2jVxmA2BifKxVuQWgHWmJial7EKrmJU5u5iNxVrk7sIWGKcK",
+          "_popup": "1",
+          "_to_field": "id",
+          "name": "DRHL Test Name",
+          "permissions_old": "value_2acd1f5e",
+          "permissions": "value_75c635a3",
+          "_save": "Save"
+        },
+        "referer": "admin/auth/group/add/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/course/",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": "admin/course/courseallocation/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/course/course/",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "csrfmiddlewaretoken": "sjdwoDuWLG3H32FqLxcBl0Ex7xBgzzxOxCGS4T0VMHACQAqNdjzRwl3gWKzFkPTC",
+          "action": "value_11f682d2",
+          "select_across": "0"
+        },
+        "referer": "admin/course/course/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/course/course/add/",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "csrfmiddlewaretoken": "YLOo47tgDi7D2M94zHPTdvWPYo7ad3EZ34hKKnZfEjEyPkUr1tc9oQlyNB5zYj0N",
+          "_popup": "1",
+          "_to_field": "id",
+          "slug": "value_539a34ca",
+          "title": "DRHL Test Title",
+          "code": "DRHL101",
+          "credit": "0",
+          "summary": "DRHL generated summary for access-control testing.",
+          "program": "1",
+          "level": "Bachloar",
+          "year": "1",
+          "semester": "First",
+          "is_elective": "false",
+          "_save": "Save"
+        },
+        "referer": "admin/course/course/add/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/course/courseallocation/",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "csrfmiddlewaretoken": "Fycy8l8F46fIUUxLhRFopueAP6FXzoaNKRFUOBEE57MDHsi8JD2EAPDjEjDmkEwB",
+          "action": "value_835bca2c",
+          "select_across": "0"
+        },
+        "referer": "admin/course/courseallocation/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/course/courseallocation/1/change/",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": "admin/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/course/courseallocation/add/",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "csrfmiddlewaretoken": "3eOFf3BpDax8jb5768dLDeAYwOG6wVaX8xh1Vj7oEb436JQuyUA1OzZHl1EvhbwL",
+          "lecturer": "4",
+          "courses": "value_e9f925da",
+          "session": "2025/2026",
+          "_save": "Save",
+          "_addanother": "Save and add another",
+          "_continue": "Save and continue editing"
+        },
+        "referer": "admin/course/courseallocation/add/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/course/program/",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "csrfmiddlewaretoken": "43qaY3xWQDvUV5K4ZhO4VAmydBaBmE839mTwEj3VRE2PIDvrr3bk6VLh2O807UuR",
+          "action": "value_33795189",
+          "select_across": "0"
+        },
+        "referer": "admin/course/program/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/course/program/add/",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "csrfmiddlewaretoken": "bp0pcNj9ofh6iA0PrbFez1KwuTjxO5TJgItLS3P8pgO158LcTX2uKm9fj6hWzlfx",
+          "_popup": "1",
+          "_to_field": "id",
+          "title": "DRHL Test Title",
+          "summary": "DRHL generated summary for access-control testing.",
+          "_save": "Save"
+        },
+        "referer": "admin/course/program/add/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/course/upload/",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "csrfmiddlewaretoken": "N9pqisyx1gjMelfpURwgp9mhStWAZUH6SsSMYI4w2hQH1T0MmDTwAuL0HGUZKa3U"
+        },
+        "referer": "admin/course/upload/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/course/upload/add/",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "csrfmiddlewaretoken": "XhCLvHHovPk8gi1NsL1uOUZlhDDVxR5N2A57bXdnwQR33QMaUxoKZfo46QBki7rB",
+          "title": "DRHL Test Title",
+          "course": "1",
+          "_save": "Save",
+          "_addanother": "Save and add another",
+          "_continue": "Save and continue editing"
+        },
+        "referer": "admin/course/upload/add/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/password_change/",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "csrfmiddlewaretoken": "SGm4eQ3nB8fn9VHD2SzJGyydO2NklD2RXZPqU6zmC9MiWts0uEWZRTXWDfLJ6ToF",
+          "old_password": "wojiaoliu456",
+          "new_password1": "wojiaoliu456",
+          "new_password2": "wojiaoliu456"
+        },
+        "referer": "admin/password_change/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/quiz/",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": "admin/quiz/essay_question/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/quiz/essay_question/",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "csrfmiddlewaretoken": "OTcXb6V7enZ0c9jaFKrb409Ms3qtqQePTcFjRmr6fowVZH4x7wOrflyvhgoSb6AD",
+          "action": "value_4e5aa4a9",
+          "select_across": "0"
+        },
+        "referer": "admin/quiz/essay_question/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/quiz/essay_question/add/",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "csrfmiddlewaretoken": "CXrt1cE9jGY6PqJqTgDRbUApWhl40i2RHgUPHsa8kHv1CYuNl207mfZ8LujtLyoF",
+          "content": "DRHL generated content for access-control testing.",
+          "quiz_old": "value_4bbc4f45",
+          "quiz": "value_6d6e064e",
+          "explanation": "value_e39a87e8",
+          "_save": "Save",
+          "_addanother": "Save and add another",
+          "_continue": "Save and continue editing"
+        },
+        "referer": "admin/quiz/essay_question/add/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/quiz/mcquestion/",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "csrfmiddlewaretoken": "BzH0eA5Srkvm8bsx0ewH4oPkgrk9gW1zGSamUQBRsl2hVJdUs0TXfJe35Eiy1cnn"
+        },
+        "referer": "admin/quiz/mcquestion/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/quiz/mcquestion/add/",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "csrfmiddlewaretoken": "K8f9Hcx7ePb2cbRpCqdrB2YunyO9EeptPrIvns36fQIXZJCM4cAHMnndcLMypuLh",
+          "content": "DRHL generated content for access-control testing.",
+          "quiz_old": "value_471be380",
+          "quiz": "value_614f2b46",
+          "explanation": "value_cc9393b7",
+          "choice_order": "value_484d8a0b",
+          "choice_set-TOTAL_FORMS": "3",
+          "choice_set-INITIAL_FORMS": "0",
+          "choice_set-MIN_NUM_FORMS": "0",
+          "choice_set-MAX_NUM_FORMS": "1000",
+          "choice_set-0-id": "1",
+          "choice_set-0-question": "value_ad98adf3",
+          "choice_set-0-choice": "value_5587bead",
+          "choice_set-1-id": "1",
+          "choice_set-1-question": "value_e2c0429c",
+          "choice_set-1-choice": "value_eb5a8bbe",
+          "choice_set-2-id": "1",
+          "choice_set-2-question": "value_b759c943",
+          "choice_set-2-choice": "value_cbcc3b67",
+          "choice_set-__prefix__-id": "1",
+          "choice_set-__prefix__-question": "value_fdd61bc1",
+          "choice_set-__prefix__-choice": "value_01e591fc",
+          "_save": "Save",
+          "_addanother": "Save and add another",
+          "_continue": "Save and continue editing"
+        },
+        "referer": "admin/quiz/mcquestion/add/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/quiz/progress/",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "csrfmiddlewaretoken": "OXsXCBfG21IghsMwAo4fCbVJwYo7qVexTgVjiRLF32fb40xT2arvNwkslbmwbbAl",
+          "action": "value_d9c8ad4b",
+          "select_across": "0"
+        },
+        "referer": "admin/quiz/progress/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/quiz/progress/add/",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "csrfmiddlewaretoken": "gd6aDP98ZzckWgiQt40h5RhaVogNu1dnlwzwj5F70AJfJO3dVQnxgcGTKBecfhzb",
+          "user": "value_fee856ce",
+          "score": "80",
+          "_save": "Save",
+          "_addanother": "Save and add another",
+          "_continue": "Save and continue editing"
+        },
+        "referer": "admin/quiz/progress/add/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/quiz/quiz/",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "csrfmiddlewaretoken": "YwH4m1mYpimRpHimRYwsVEM5P5DGt7fb3Paq2hSXqjTMcf3JjKTI6ZbOEiB5enBZ"
+        },
+        "referer": "admin/quiz/quiz/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/quiz/quiz/add/",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "csrfmiddlewaretoken": "LeeCYQwe52tqbgdl7kd7QwuiBCpfy4miQxHYE62d630lYOYIz6An1RT1qPnEjkI6",
+          "_popup": "1",
+          "_to_field": "id",
+          "course": "1",
+          "title": "DRHL Test Title",
+          "slug": "value_6d3fc9b3",
+          "description": "DRHL generated description for access-control testing.",
+          "category": "value_283cb062",
+          "pass_mark": "50",
+          "questions_old": "value_377f3129",
+          "questions": "value_709fc1bf",
+          "_save": "Save"
+        },
+        "referer": "admin/quiz/quiz/add/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/quiz/sitting/",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "csrfmiddlewaretoken": "3aJug2PNEcXfXTZbKOs57iNTeXDsJIRc8tcQWilMFduaKrKycAPliDcC3aBRuYd0"
+        },
+        "referer": "admin/quiz/sitting/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/quiz/sitting/add/",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "csrfmiddlewaretoken": "b3oxPQDk3NMPmVtot6oAEAnVrVVCoWixgmRTv69j4OjK9teLVSLQPVMEg8T19cEl",
+          "user": "value_fe5e3c99",
+          "quiz": "value_1be2d5fe",
+          "course": "1",
+          "question_order": "value_3767b832",
+          "question_list": "value_1bd1c86b",
+          "incorrect_questions": "value_4152c93e",
+          "current_score": "1",
+          "user_answers": "{}",
+          "end_0": "value_7b310391",
+          "end_1": "value_832ae858",
+          "_save": "Save",
+          "_addanother": "Save and add another",
+          "_continue": "Save and continue editing"
+        },
+        "referer": "admin/quiz/sitting/add/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/result/",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": "admin/result/result/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/result/result/",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "csrfmiddlewaretoken": "4Hygl17HFJD3L0dbpQzD7eGtPQBrHn8Z901C1hDGGKaYyyYyRCWTiz5cE3zQsDuN",
+          "action": "value_ad77efa3",
+          "select_across": "0"
+        },
+        "referer": "admin/result/result/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/result/result/add/",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "csrfmiddlewaretoken": "exrGi8aiCejQWiWG7C7F2bOQK8ZPgzMMjQU2YoGhDfQLJQH3zouVdwdzzlXe1P8A",
+          "student": "2",
+          "gpa": "1",
+          "cgpa": "1",
+          "semester": "First",
+          "session": "2025/2026",
+          "level": "Bachloar",
+          "_save": "Save",
+          "_addanother": "Save and add another",
+          "_continue": "Save and continue editing"
+        },
+        "referer": "admin/result/result/add/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/result/takencourse/",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "csrfmiddlewaretoken": "Tu5hwcoAt30FCHoo10aAFE6l2tU895HSYNyDcsUzu4xApf9LtMxQQZv4RGSxUl3G",
+          "action": "value_bcf31d17",
+          "select_across": "0"
+        },
+        "referer": "admin/result/takencourse/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/result/takencourse/add/",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "csrfmiddlewaretoken": "v3YsVwTnDhxX3exaaJ0GAcAvbqPlmieSAmrOBMpmEi4SQMixCvnWLxZe0DNK7yAG",
+          "student": "2",
+          "course": "1",
+          "assignment": "0.0",
+          "mid_exam": "0.0",
+          "quiz": "0.0",
+          "attendance": "0.0",
+          "final_exam": "0.0",
+          "total": "0.0",
+          "grade": "value_cb5c031a",
+          "point": "0.0",
+          "comment": "comment_0db90afe",
+          "_save": "Save",
+          "_addanother": "Save and add another",
+          "_continue": "Save and continue editing"
+        },
+        "referer": "admin/result/takencourse/add/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "dashboard/",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": "accounts/lecturers/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "item/13/delete/",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": "./"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "programs/",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "csrfmiddlewaretoken": "QI97X1glN5pZHfTq3eLIZCIQXygj6dbBzi1zuDXbTzG7s2yTWkEBCdiLSUM2zWsA",
+          "program_filter": "value_6fed2064"
+        },
+        "referer": "programs/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "programs/13/course/add/",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "csrfmiddlewaretoken": "dyb9DqTiHJbcAzPaj3fAIeJ8BSaZF9jEiREvjGphIKI7n7AxLPCQTz8Rq58oqpFs",
+          "title": "DRHL Test Title",
+          "code": "DRHL101",
+          "summary": "DRHL generated summary for access-control testing.",
+          "program": "13",
+          "credit": "0",
+          "year": "1",
+          "semester": "First",
+          "level": "Bachloar",
+          "is_elective": "false"
+        },
+        "referer": "programs/13/course/add/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "programs/13/detail/",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "name": "DRHL Test Name",
+          "code": "DRHL101",
+          "year": "1"
+        },
+        "referer": "programs/13/detail/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "programs/13/detail/?code=p1&name=p1&year=p1",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "name": "DRHL Test Name",
+          "code": "DRHL101",
+          "year": "1"
+        },
+        "referer": "programs/13/detail/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "programs/?csrfmiddlewaretoken=p1&program_filter=p1",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "csrfmiddlewaretoken": "P4F2TaCTSybREcjNyb8hYVQdiikH3Ay7yExuqMjJY2sZpZYgrh1aBwq8dEQqwjP6",
+          "program_filter": "value_6fed2064"
+        },
+        "referer": "programs/?csrfmiddlewaretoken=p1&program_filter=p1"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "programs/add/",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "csrfmiddlewaretoken": "0fJ5tD4zUAnppMAWB8ko0TOPEMaggRvd5ycr9TAyVBUkcklj3UHEbedytZ8F17R1",
+          "title": "DRHL Test Title",
+          "summary": "DRHL generated summary for access-control testing."
+        },
+        "referer": "programs/add/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "programs/course/delete/software-testing/",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": "programs/13/detail/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "programs/course/drop/",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "csrfmiddlewaretoken": "qacQzpuhlP1WqaoflLc812qTce7RM8FS9K4i61b7rji4bX3IeR51ED0O7ADAfRWR",
+          "6": "on"
+        },
+        "referer": "programs/course/registration/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "programs/course/registration/",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "csrfmiddlewaretoken": "PbMMfPAdTobsDRhZdiD2PmS6XriQLDiSyLEeMrh3ZSsAoEWs6owVsXs1SNOzemzR"
+        },
+        "referer": "programs/course/registration/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "programs/course/secure-software-engineering/edit/",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "csrfmiddlewaretoken": "52OcVtGHKlG1BOwFlbHLkARXZzFuO8ZOalhyBJcGLmdWomh2NX41vVgGOMDTzolC",
+          "title": "Secure Software Engineering",
+          "code": "DRHL206",
+          "summary": "Secure Software Engineering generated for DRHL access-control experiments.",
+          "program": "13",
+          "credit": "3",
+          "year": "4",
+          "semester": "Second",
+          "level": "Bachloar",
+          "is_elective": "false"
+        },
+        "referer": "programs/course/secure-software-engineering/edit/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "programs/course/software-testing/detail/",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": "programs/13/detail/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "programs/my_courses/",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": "accounts/profile/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "quiz/marking_list/",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "user_filter": "value_3836fc26",
+          "quiz_filter": "value_efb408ae"
+        },
+        "referer": "quiz/marking_list/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "quiz/marking_list/?quiz_filter=p1&user_filter=p1",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "user_filter": "value_3836fc26",
+          "quiz_filter": "value_efb408ae"
+        },
+        "referer": "quiz/marking_list/?quiz_filter=p1&user_filter=p1"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "quiz/progress/",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": "result/grade/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "quiz/software-testing/quizzes/",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": "programs/course/software-testing/detail/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "result/assessment/",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "result/grade/",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": "programs/course/registration/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "result/registration/form/",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": "programs/course/registration/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "search/",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "q": "DRHL"
+        },
+        "referer": "quiz/software-testing/quizzes/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "semester/",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": "search/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "semester/add/",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "csrfmiddlewaretoken": "TUEcQ2bHiMVJakQEsqONqwK5EBGSMmoXYd7ywiHGjNsEXSB1Ucb3BR9OtOEhxCKL",
+          "semester": "First",
+          "is_current_semester": "True",
+          "session": "2025/2026",
+          "next_semester_begins": "value_3d75e88e"
+        },
+        "referer": "semester/add/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "session/",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": "semester/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "session/2/delete/",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": "session/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "session/add/",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "csrfmiddlewaretoken": "NZmlKkkGc7Qr7OFun8t0q9okd8QLQDFoSiPHqAQFd8nmUmqRPUQgBuN32lOaBT1c",
+          "session": "2025/2026",
+          "is_current_session": "false",
+          "next_session_begins": "value_690663ef"
+        },
+        "referer": "session/add/"
+      },
+      "identity_parameters": []
+    }
+  ]
+}

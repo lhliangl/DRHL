@@ -1,0 +1,4154 @@
+{
+  "parameters": [
+    {
+      "id": "accounts/api/views.py:LCP1",
+      "path": "accounts/api/views.py",
+      "expression": "q",
+      "aliases": [
+        "q",
+        "self.request.GET.q"
+      ],
+      "database_relations": [
+        {
+          "table": "qs",
+          "field": "username",
+          "line": 17
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 16,
+          "condition": "q is not None"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "accounts/decorators.py:LCP2",
+      "path": "accounts/decorators.py",
+      "expression": "request.user",
+      "aliases": [
+        "request.user"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 11,
+          "condition": "u.is_active and u.is_student or u.is_superuser"
+        },
+        {
+          "source": "conditional",
+          "line": 26,
+          "condition": "u.is_active and u.is_lecturer or u.is_superuser"
+        },
+        {
+          "source": "conditional",
+          "line": 41,
+          "condition": "u.is_active and u.is_superuser"
+        }
+      ],
+      "condition_indexes": [
+        0,
+        2,
+        4
+      ]
+    },
+    {
+      "id": "accounts/decorators.py:LCP3",
+      "path": "accounts/decorators.py",
+      "expression": "u.is_active",
+      "aliases": [
+        "u.is_active"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 11,
+          "condition": "u.is_active and u.is_student or u.is_superuser"
+        },
+        {
+          "source": "conditional",
+          "line": 26,
+          "condition": "u.is_active and u.is_lecturer or u.is_superuser"
+        },
+        {
+          "source": "conditional",
+          "line": 41,
+          "condition": "u.is_active and u.is_superuser"
+        }
+      ],
+      "condition_indexes": [
+        0,
+        2,
+        4
+      ]
+    },
+    {
+      "id": "accounts/decorators.py:LCP4",
+      "path": "accounts/decorators.py",
+      "expression": "u.is_student",
+      "aliases": [
+        "u.is_student"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 11,
+          "condition": "u.is_active and u.is_student or u.is_superuser"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "accounts/decorators.py:LCP5",
+      "path": "accounts/decorators.py",
+      "expression": "u.is_superuser",
+      "aliases": [
+        "u.is_superuser"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 11,
+          "condition": "u.is_active and u.is_student or u.is_superuser"
+        },
+        {
+          "source": "conditional",
+          "line": 26,
+          "condition": "u.is_active and u.is_lecturer or u.is_superuser"
+        },
+        {
+          "source": "conditional",
+          "line": 41,
+          "condition": "u.is_active and u.is_superuser"
+        }
+      ],
+      "condition_indexes": [
+        0,
+        2,
+        4
+      ]
+    },
+    {
+      "id": "accounts/decorators.py:LCP6",
+      "path": "accounts/decorators.py",
+      "expression": "function",
+      "aliases": [
+        "function"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 16,
+          "condition": "function"
+        },
+        {
+          "source": "conditional",
+          "line": 31,
+          "condition": "function"
+        },
+        {
+          "source": "conditional",
+          "line": 46,
+          "condition": "function"
+        }
+      ],
+      "condition_indexes": [
+        1,
+        3,
+        5
+      ]
+    },
+    {
+      "id": "accounts/decorators.py:LCP7",
+      "path": "accounts/decorators.py",
+      "expression": "u.is_lecturer",
+      "aliases": [
+        "u.is_lecturer"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 26,
+          "condition": "u.is_active and u.is_lecturer or u.is_superuser"
+        }
+      ],
+      "condition_indexes": [
+        2
+      ]
+    },
+    {
+      "id": "accounts/forms.py:LCP8",
+      "path": "accounts/forms.py",
+      "expression": "commit",
+      "aliases": [
+        "commit"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 57,
+          "condition": "commit"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "accounts/forms.py:LCP9",
+      "path": "accounts/forms.py",
+      "expression": "User.objects.filter(email__iexact=email, is_active=True).exists",
+      "aliases": [
+        "User.objects.filter(email__iexact=email, is_active=True).exists"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 207,
+          "condition": "not User.objects.filter(email__iexact=email, is_active=True).exists()"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "accounts/forms.py:LCP10",
+      "path": "accounts/forms.py",
+      "expression": "User.objects.filter",
+      "aliases": [
+        "User.objects.filter"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 207,
+          "condition": "not User.objects.filter(email__iexact=email, is_active=True).exists()"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "accounts/forms.py:LCP11",
+      "path": "accounts/forms.py",
+      "expression": "email__iexact",
+      "aliases": [
+        "email__iexact"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 207,
+          "condition": "not User.objects.filter(email__iexact=email, is_active=True).exists()"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "accounts/forms.py:LCP12",
+      "path": "accounts/forms.py",
+      "expression": "email",
+      "aliases": [
+        "email",
+        "self.cleaned_data['email']"
+      ],
+      "database_relations": [
+        {
+          "table": "User",
+          "field": "email",
+          "line": 207
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 207,
+          "condition": "not User.objects.filter(email__iexact=email, is_active=True).exists()"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "accounts/forms.py:LCP13",
+      "path": "accounts/forms.py",
+      "expression": "is_active",
+      "aliases": [
+        "is_active"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 207,
+          "condition": "not User.objects.filter(email__iexact=email, is_active=True).exists()"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "accounts/models.py:LCP14",
+      "path": "accounts/models.py",
+      "expression": "query",
+      "aliases": [
+        "query"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 44,
+          "condition": "query is not None"
+        },
+        {
+          "source": "conditional",
+          "line": 119,
+          "condition": "query is not None"
+        }
+      ],
+      "condition_indexes": [
+        0,
+        8
+      ]
+    },
+    {
+      "id": "accounts/models.py:LCP15",
+      "path": "accounts/models.py",
+      "expression": "self.first_name",
+      "aliases": [
+        "self.first_name"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 71,
+          "condition": "self.first_name and self.last_name"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "accounts/models.py:LCP16",
+      "path": "accounts/models.py",
+      "expression": "self.last_name",
+      "aliases": [
+        "self.last_name"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 71,
+          "condition": "self.first_name and self.last_name"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "accounts/models.py:LCP17",
+      "path": "accounts/models.py",
+      "expression": "self.is_superuser",
+      "aliases": [
+        "self.is_superuser"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 80,
+          "condition": "self.is_superuser"
+        }
+      ],
+      "condition_indexes": [
+        2
+      ]
+    },
+    {
+      "id": "accounts/models.py:LCP18",
+      "path": "accounts/models.py",
+      "expression": "self.is_student",
+      "aliases": [
+        "self.is_student"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 82,
+          "condition": "self.is_student"
+        }
+      ],
+      "condition_indexes": [
+        3
+      ]
+    },
+    {
+      "id": "accounts/models.py:LCP19",
+      "path": "accounts/models.py",
+      "expression": "self.is_lecturer",
+      "aliases": [
+        "self.is_lecturer"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 84,
+          "condition": "self.is_lecturer"
+        }
+      ],
+      "condition_indexes": [
+        4
+      ]
+    },
+    {
+      "id": "accounts/models.py:LCP20",
+      "path": "accounts/models.py",
+      "expression": "self.is_parent",
+      "aliases": [
+        "self.is_parent"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 86,
+          "condition": "self.is_parent"
+        }
+      ],
+      "condition_indexes": [
+        5
+      ]
+    },
+    {
+      "id": "accounts/models.py:LCP21",
+      "path": "accounts/models.py",
+      "expression": "img.height",
+      "aliases": [
+        "img.height"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 103,
+          "condition": "img.height > 300 or img.width > 300"
+        }
+      ],
+      "condition_indexes": [
+        6
+      ]
+    },
+    {
+      "id": "accounts/models.py:LCP22",
+      "path": "accounts/models.py",
+      "expression": "img.width",
+      "aliases": [
+        "img.width"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 103,
+          "condition": "img.height > 300 or img.width > 300"
+        }
+      ],
+      "condition_indexes": [
+        6
+      ]
+    },
+    {
+      "id": "accounts/models.py:LCP23",
+      "path": "accounts/models.py",
+      "expression": "self.picture.url",
+      "aliases": [
+        "self.picture.url"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 111,
+          "condition": "self.picture.url != settings.MEDIA_URL + 'default.png'"
+        }
+      ],
+      "condition_indexes": [
+        7
+      ]
+    },
+    {
+      "id": "accounts/models.py:LCP24",
+      "path": "accounts/models.py",
+      "expression": "settings.MEDIA_URL",
+      "aliases": [
+        "settings.MEDIA_URL"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 111,
+          "condition": "self.picture.url != settings.MEDIA_URL + 'default.png'"
+        }
+      ],
+      "condition_indexes": [
+        7
+      ]
+    },
+    {
+      "id": "accounts/views.py:LCP25",
+      "path": "accounts/views.py",
+      "expression": "request.method",
+      "aliases": [
+        "request.method"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 32,
+          "condition": "request.method == \"POST\""
+        },
+        {
+          "source": "conditional",
+          "line": 166,
+          "condition": "request.method == \"POST\""
+        },
+        {
+          "source": "conditional",
+          "line": 188,
+          "condition": "request.method == \"POST\""
+        },
+        {
+          "source": "conditional",
+          "line": 214,
+          "condition": "request.method == \"POST\""
+        },
+        {
+          "source": "conditional",
+          "line": 244,
+          "condition": "request.method == \"POST\""
+        },
+        {
+          "source": "conditional",
+          "line": 305,
+          "condition": "request.method == \"POST\""
+        },
+        {
+          "source": "conditional",
+          "line": 333,
+          "condition": "request.method == \"POST\""
+        }
+      ],
+      "condition_indexes": [
+        0,
+        7,
+        9,
+        11,
+        13,
+        15,
+        17
+      ]
+    },
+    {
+      "id": "accounts/views.py:LCP26",
+      "path": "accounts/views.py",
+      "expression": "form.is_valid",
+      "aliases": [
+        "form.is_valid"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 34,
+          "condition": "form.is_valid()"
+        },
+        {
+          "source": "conditional",
+          "line": 168,
+          "condition": "form.is_valid()"
+        },
+        {
+          "source": "conditional",
+          "line": 190,
+          "condition": "form.is_valid()"
+        },
+        {
+          "source": "conditional",
+          "line": 218,
+          "condition": "form.is_valid()"
+        },
+        {
+          "source": "conditional",
+          "line": 247,
+          "condition": "form.is_valid()"
+        },
+        {
+          "source": "conditional",
+          "line": 309,
+          "condition": "form.is_valid()"
+        },
+        {
+          "source": "conditional",
+          "line": 336,
+          "condition": "form.is_valid()"
+        }
+      ],
+      "condition_indexes": [
+        1,
+        8,
+        10,
+        12,
+        14,
+        16,
+        18
+      ]
+    },
+    {
+      "id": "accounts/views.py:LCP27",
+      "path": "accounts/views.py",
+      "expression": "request.user.is_lecturer",
+      "aliases": [
+        "request.user.is_lecturer"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 54,
+          "condition": "request.user.is_lecturer"
+        }
+      ],
+      "condition_indexes": [
+        2
+      ]
+    },
+    {
+      "id": "accounts/views.py:LCP28",
+      "path": "accounts/views.py",
+      "expression": "request.user.is_student",
+      "aliases": [
+        "request.user.is_student"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 68,
+          "condition": "request.user.is_student"
+        }
+      ],
+      "condition_indexes": [
+        3
+      ]
+    },
+    {
+      "id": "accounts/views.py:LCP29",
+      "path": "accounts/views.py",
+      "expression": "request.user.id",
+      "aliases": [
+        "request.user.id"
+      ],
+      "database_relations": [
+        {
+          "table": "Course",
+          "field": "allocated_course",
+          "line": 55
+        },
+        {
+          "table": "Student",
+          "field": "student",
+          "line": 69
+        },
+        {
+          "table": "TakenCourse",
+          "field": "student",
+          "line": 74
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 104,
+          "condition": "request.user.id == id"
+        }
+      ],
+      "condition_indexes": [
+        4
+      ]
+    },
+    {
+      "id": "accounts/views.py:LCP30",
+      "path": "accounts/views.py",
+      "expression": "id",
+      "aliases": [
+        "id"
+      ],
+      "database_relations": [
+        {
+          "table": "User",
+          "field": "pk",
+          "line": 112
+        },
+        {
+          "table": "Course",
+          "field": "allocated_course",
+          "line": 114
+        },
+        {
+          "table": "Student",
+          "field": "student",
+          "line": 127
+        },
+        {
+          "table": "TakenCourse",
+          "field": "student",
+          "line": 128
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 104,
+          "condition": "request.user.id == id"
+        }
+      ],
+      "condition_indexes": [
+        4
+      ]
+    },
+    {
+      "id": "accounts/views.py:LCP31",
+      "path": "accounts/views.py",
+      "expression": "user.is_lecturer",
+      "aliases": [
+        "user.is_lecturer"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 113,
+          "condition": "user.is_lecturer"
+        }
+      ],
+      "condition_indexes": [
+        5
+      ]
+    },
+    {
+      "id": "accounts/views.py:LCP32",
+      "path": "accounts/views.py",
+      "expression": "user.is_student",
+      "aliases": [
+        "user.is_student"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 126,
+          "condition": "user.is_student"
+        }
+      ],
+      "condition_indexes": [
+        6
+      ]
+    },
+    {
+      "id": "accounts/views.py:LCP33",
+      "path": "accounts/views.py",
+      "expression": "query",
+      "aliases": [
+        "query",
+        "self.request.GET.student_id"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 363,
+          "condition": "query is not None"
+        }
+      ],
+      "condition_indexes": [
+        19
+      ]
+    },
+    {
+      "id": "app/models.py:LCP34",
+      "path": "app/models.py",
+      "expression": "qs.count",
+      "aliases": [
+        "qs.count"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 45,
+          "condition": "qs.count() == 1"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "app/views.py:LCP35",
+      "path": "app/views.py",
+      "expression": "request.method",
+      "aliases": [
+        "request.method"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 26,
+          "condition": "request.method == 'POST'"
+        },
+        {
+          "source": "conditional",
+          "line": 48,
+          "condition": "request.method == 'POST'"
+        },
+        {
+          "source": "conditional",
+          "line": 91,
+          "condition": "request.method == 'POST'"
+        },
+        {
+          "source": "conditional",
+          "line": 121,
+          "condition": "request.method == 'POST'"
+        },
+        {
+          "source": "conditional",
+          "line": 179,
+          "condition": "request.method == 'POST'"
+        },
+        {
+          "source": "conditional",
+          "line": 226,
+          "condition": "request.method == 'POST'"
+        }
+      ],
+      "condition_indexes": [
+        0,
+        2,
+        4,
+        9,
+        16,
+        23
+      ]
+    },
+    {
+      "id": "app/views.py:LCP36",
+      "path": "app/views.py",
+      "expression": "form.is_valid",
+      "aliases": [
+        "form.is_valid"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 29,
+          "condition": "form.is_valid()"
+        },
+        {
+          "source": "conditional",
+          "line": 51,
+          "condition": "form.is_valid()"
+        },
+        {
+          "source": "conditional",
+          "line": 93,
+          "condition": "form.is_valid()"
+        },
+        {
+          "source": "conditional",
+          "line": 133,
+          "condition": "form.is_valid()"
+        },
+        {
+          "source": "conditional",
+          "line": 139,
+          "condition": "form.is_valid()"
+        },
+        {
+          "source": "conditional",
+          "line": 181,
+          "condition": "form.is_valid()"
+        },
+        {
+          "source": "conditional",
+          "line": 237,
+          "condition": "form.is_valid()"
+        },
+        {
+          "source": "conditional",
+          "line": 246,
+          "condition": "form.is_valid()"
+        }
+      ],
+      "condition_indexes": [
+        1,
+        3,
+        5,
+        13,
+        14,
+        17,
+        25,
+        26
+      ]
+    },
+    {
+      "id": "app/views.py:LCP37",
+      "path": "app/views.py",
+      "expression": "data",
+      "aliases": [
+        "data"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 96,
+          "condition": "data == 'true'"
+        },
+        {
+          "source": "conditional",
+          "line": 124,
+          "condition": "data == 'true'"
+        },
+        {
+          "source": "conditional",
+          "line": 183,
+          "condition": "data == 'True'"
+        }
+      ],
+      "condition_indexes": [
+        6,
+        10,
+        18
+      ]
+    },
+    {
+      "id": "app/views.py:LCP38",
+      "path": "app/views.py",
+      "expression": "sessions",
+      "aliases": [
+        "sessions"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 98,
+          "condition": "sessions"
+        },
+        {
+          "source": "conditional",
+          "line": 126,
+          "condition": "sessions"
+        }
+      ],
+      "condition_indexes": [
+        7,
+        11
+      ]
+    },
+    {
+      "id": "app/views.py:LCP39",
+      "path": "app/views.py",
+      "expression": "session.is_current_session",
+      "aliases": [
+        "session.is_current_session"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 100,
+          "condition": "session.is_current_session == True"
+        },
+        {
+          "source": "conditional",
+          "line": 128,
+          "condition": "session.is_current_session == True"
+        },
+        {
+          "source": "conditional",
+          "line": 154,
+          "condition": "session.is_current_session"
+        },
+        {
+          "source": "conditional",
+          "line": 201,
+          "condition": "session.is_current_session == True"
+        }
+      ],
+      "condition_indexes": [
+        8,
+        12,
+        15,
+        22
+      ]
+    },
+    {
+      "id": "app/views.py:LCP40",
+      "path": "app/views.py",
+      "expression": "Semester.objects.get",
+      "aliases": [
+        "Semester.objects.get"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 188,
+          "condition": "Semester.objects.get(semester=semester, session=ss)"
+        }
+      ],
+      "condition_indexes": [
+        19
+      ]
+    },
+    {
+      "id": "app/views.py:LCP41",
+      "path": "app/views.py",
+      "expression": "semester",
+      "aliases": [
+        "semester"
+      ],
+      "database_relations": [
+        {
+          "table": "Semester",
+          "field": "semester",
+          "line": 188
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 188,
+          "condition": "Semester.objects.get(semester=semester, session=ss)"
+        }
+      ],
+      "condition_indexes": [
+        19
+      ]
+    },
+    {
+      "id": "app/views.py:LCP42",
+      "path": "app/views.py",
+      "expression": "session",
+      "aliases": [
+        "session"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 188,
+          "condition": "Semester.objects.get(semester=semester, session=ss)"
+        }
+      ],
+      "condition_indexes": [
+        19
+      ]
+    },
+    {
+      "id": "app/views.py:LCP43",
+      "path": "app/views.py",
+      "expression": "ss",
+      "aliases": [
+        "ss"
+      ],
+      "database_relations": [
+        {
+          "table": "Session",
+          "field": "pk",
+          "line": 186
+        },
+        {
+          "table": "Semester",
+          "field": "session",
+          "line": 188
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 188,
+          "condition": "Semester.objects.get(semester=semester, session=ss)"
+        }
+      ],
+      "condition_indexes": [
+        19
+      ]
+    },
+    {
+      "id": "app/views.py:LCP44",
+      "path": "app/views.py",
+      "expression": "semesters",
+      "aliases": [
+        "semesters"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 194,
+          "condition": "semesters"
+        }
+      ],
+      "condition_indexes": [
+        20
+      ]
+    },
+    {
+      "id": "app/views.py:LCP45",
+      "path": "app/views.py",
+      "expression": "semester.is_current_semester",
+      "aliases": [
+        "semester.is_current_semester"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 196,
+          "condition": "semester.is_current_semester == True"
+        },
+        {
+          "source": "conditional",
+          "line": 259,
+          "condition": "semester.is_current_semester"
+        }
+      ],
+      "condition_indexes": [
+        21,
+        27
+      ]
+    },
+    {
+      "id": "app/views.py:LCP46",
+      "path": "app/views.py",
+      "expression": "request.POST.get",
+      "aliases": [
+        "request.POST.get"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 227,
+          "condition": "request.POST.get(\n                'is_current_semester') == 'True'"
+        }
+      ],
+      "condition_indexes": [
+        24
+      ]
+    },
+    {
+      "id": "course/models.py:LCP47",
+      "path": "course/models.py",
+      "expression": "query",
+      "aliases": [
+        "query"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 45,
+          "condition": "query is not None"
+        },
+        {
+          "source": "conditional",
+          "line": 69,
+          "condition": "query is not None"
+        }
+      ],
+      "condition_indexes": [
+        0,
+        1
+      ]
+    },
+    {
+      "id": "course/models.py:LCP48",
+      "path": "course/models.py",
+      "expression": "self.semester",
+      "aliases": [
+        "self.semester"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 104,
+          "condition": "self.semester == current_semester.semester"
+        }
+      ],
+      "condition_indexes": [
+        2
+      ]
+    },
+    {
+      "id": "course/models.py:LCP49",
+      "path": "course/models.py",
+      "expression": "current_semester.semester",
+      "aliases": [
+        "current_semester.semester"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 104,
+          "condition": "self.semester == current_semester.semester"
+        }
+      ],
+      "condition_indexes": [
+        2
+      ]
+    },
+    {
+      "id": "course/models.py:LCP50",
+      "path": "course/models.py",
+      "expression": "instance.slug",
+      "aliases": [
+        "instance.slug"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 111,
+          "condition": "not instance.slug"
+        },
+        {
+          "source": "conditional",
+          "line": 179,
+          "condition": "not instance.slug"
+        }
+      ],
+      "condition_indexes": [
+        3,
+        9
+      ]
+    },
+    {
+      "id": "course/models.py:LCP51",
+      "path": "course/models.py",
+      "expression": "ext",
+      "aliases": [
+        "ext",
+        "ext[len(ext)-1]"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 143,
+          "condition": "ext == 'doc' or ext == 'docx'"
+        },
+        {
+          "source": "conditional",
+          "line": 145,
+          "condition": "ext == 'pdf'"
+        },
+        {
+          "source": "conditional",
+          "line": 147,
+          "condition": "ext == 'xls' or ext == 'xlsx'"
+        },
+        {
+          "source": "conditional",
+          "line": 149,
+          "condition": "ext == 'ppt' or ext == 'pptx'"
+        },
+        {
+          "source": "conditional",
+          "line": 151,
+          "condition": "ext == 'zip' or ext == 'rar' or ext == '7zip'"
+        }
+      ],
+      "condition_indexes": [
+        4,
+        5,
+        6,
+        7,
+        8
+      ]
+    },
+    {
+      "id": "course/utils.py:LCP52",
+      "path": "course/utils.py",
+      "expression": "new_slug",
+      "aliases": [
+        "new_slug",
+        "slug"
+      ],
+      "database_relations": [
+        {
+          "table": "Klass",
+          "field": "slug",
+          "line": 24
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 18,
+          "condition": "new_slug is not None"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "course/utils.py:LCP53",
+      "path": "course/utils.py",
+      "expression": "qs_exists",
+      "aliases": [
+        "qs_exists"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 25,
+          "condition": "qs_exists"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "course/views.py:LCP54",
+      "path": "course/views.py",
+      "expression": "program_filter",
+      "aliases": [
+        "program_filter",
+        "request.GET.program_filter"
+      ],
+      "database_relations": [
+        {
+          "table": "Program",
+          "field": "title",
+          "line": 31
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 30,
+          "condition": "program_filter"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "course/views.py:LCP55",
+      "path": "course/views.py",
+      "expression": "request.method",
+      "aliases": [
+        "request.method"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 42,
+          "condition": "request.method == 'POST'"
+        },
+        {
+          "source": "conditional",
+          "line": 81,
+          "condition": "request.method == 'POST'"
+        },
+        {
+          "source": "conditional",
+          "line": 133,
+          "condition": "request.method == 'POST'"
+        },
+        {
+          "source": "conditional",
+          "line": 156,
+          "condition": "request.method == 'POST'"
+        },
+        {
+          "source": "conditional",
+          "line": 238,
+          "condition": "request.method == 'POST'"
+        },
+        {
+          "source": "conditional",
+          "line": 270,
+          "condition": "request.method == 'POST'"
+        },
+        {
+          "source": "conditional",
+          "line": 290,
+          "condition": "request.method == 'POST'"
+        },
+        {
+          "source": "conditional",
+          "line": 320,
+          "condition": "request.method == 'POST'"
+        },
+        {
+          "source": "conditional",
+          "line": 347,
+          "condition": "request.method == 'POST'"
+        },
+        {
+          "source": "conditional",
+          "line": 377,
+          "condition": "request.method == 'POST'"
+        },
+        {
+          "source": "conditional",
+          "line": 441,
+          "condition": "request.method == 'POST'"
+        }
+      ],
+      "condition_indexes": [
+        1,
+        3,
+        5,
+        7,
+        9,
+        11,
+        13,
+        15,
+        17,
+        19,
+        24
+      ]
+    },
+    {
+      "id": "course/views.py:LCP56",
+      "path": "course/views.py",
+      "expression": "form.is_valid",
+      "aliases": [
+        "form.is_valid"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 44,
+          "condition": "form.is_valid()"
+        },
+        {
+          "source": "conditional",
+          "line": 83,
+          "condition": "form.is_valid()"
+        },
+        {
+          "source": "conditional",
+          "line": 137,
+          "condition": "form.is_valid()"
+        },
+        {
+          "source": "conditional",
+          "line": 160,
+          "condition": "form.is_valid()"
+        },
+        {
+          "source": "conditional",
+          "line": 240,
+          "condition": "form.is_valid()"
+        },
+        {
+          "source": "conditional",
+          "line": 273,
+          "condition": "form.is_valid()"
+        },
+        {
+          "source": "conditional",
+          "line": 293,
+          "condition": "form.is_valid()"
+        },
+        {
+          "source": "conditional",
+          "line": 322,
+          "condition": "form.is_valid()"
+        },
+        {
+          "source": "conditional",
+          "line": 349,
+          "condition": "form.is_valid()"
+        }
+      ],
+      "condition_indexes": [
+        2,
+        4,
+        6,
+        8,
+        10,
+        12,
+        14,
+        16,
+        18
+      ]
+    },
+    {
+      "id": "course/views.py:LCP57",
+      "path": "course/views.py",
+      "expression": "registered_courses.count",
+      "aliases": [
+        "registered_courses.count"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 407,
+          "condition": "registered_courses.count() == 0"
+        },
+        {
+          "source": "conditional",
+          "line": 410,
+          "condition": "registered_courses.count() == all_courses.count()"
+        }
+      ],
+      "condition_indexes": [
+        20,
+        21
+      ]
+    },
+    {
+      "id": "course/views.py:LCP58",
+      "path": "course/views.py",
+      "expression": "all_courses.count",
+      "aliases": [
+        "all_courses.count"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 410,
+          "condition": "registered_courses.count() == all_courses.count()"
+        }
+      ],
+      "condition_indexes": [
+        21
+      ]
+    },
+    {
+      "id": "course/views.py:LCP59",
+      "path": "course/views.py",
+      "expression": "i.semester",
+      "aliases": [
+        "i.semester"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 417,
+          "condition": "i.semester == \"First\""
+        },
+        {
+          "source": "conditional",
+          "line": 419,
+          "condition": "i.semester == \"Second\""
+        }
+      ],
+      "condition_indexes": [
+        22,
+        23
+      ]
+    },
+    {
+      "id": "course/views.py:LCP60",
+      "path": "course/views.py",
+      "expression": "request.user.is_lecturer",
+      "aliases": [
+        "request.user.is_lecturer"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 459,
+          "condition": "request.user.is_lecturer"
+        }
+      ],
+      "condition_indexes": [
+        25
+      ]
+    },
+    {
+      "id": "course/views.py:LCP61",
+      "path": "course/views.py",
+      "expression": "request.user.is_student",
+      "aliases": [
+        "request.user.is_student"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 464,
+          "condition": "request.user.is_student"
+        }
+      ],
+      "condition_indexes": [
+        26
+      ]
+    },
+    {
+      "id": "manage.py:LCP62",
+      "path": "manage.py",
+      "expression": "__name__",
+      "aliases": [
+        "__name__"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 20,
+          "condition": "__name__ == '__main__'"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "payments/views.py:LCP63",
+      "path": "payments/views.py",
+      "expression": "request.method",
+      "aliases": [
+        "request.method"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 54,
+          "condition": "request.method == 'POST'"
+        },
+        {
+          "source": "conditional",
+          "line": 71,
+          "condition": "request.method == 'POST'"
+        },
+        {
+          "source": "conditional",
+          "line": 146,
+          "condition": "request.is_ajax() or request.method == 'POST'"
+        },
+        {
+          "source": "conditional",
+          "line": 159,
+          "condition": "request.method == 'POST'"
+        }
+      ],
+      "condition_indexes": [
+        0,
+        1,
+        3,
+        4
+      ]
+    },
+    {
+      "id": "payments/views.py:LCP64",
+      "path": "payments/views.py",
+      "expression": "response.has_succeed",
+      "aliases": [
+        "response.has_succeed"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 133,
+          "condition": "response.has_succeed()"
+        }
+      ],
+      "condition_indexes": [
+        2
+      ]
+    },
+    {
+      "id": "payments/views.py:LCP65",
+      "path": "payments/views.py",
+      "expression": "request.is_ajax",
+      "aliases": [
+        "request.is_ajax"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 146,
+          "condition": "request.is_ajax() or request.method == 'POST'"
+        }
+      ],
+      "condition_indexes": [
+        3
+      ]
+    },
+    {
+      "id": "quiz/admin.py:LCP66",
+      "path": "quiz/admin.py",
+      "expression": "self.instance.pk",
+      "aliases": [
+        "self.instance.pk"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 29,
+          "condition": "self.instance.pk"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "quiz/forms.py:LCP67",
+      "path": "quiz/forms.py",
+      "expression": "self.instance.pk",
+      "aliases": [
+        "self.instance.pk"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 43,
+          "condition": "self.instance.pk"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "quiz/models.py:LCP68",
+      "path": "quiz/models.py",
+      "expression": "query",
+      "aliases": [
+        "query"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 35,
+          "condition": "query is not None"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "quiz/models.py:LCP69",
+      "path": "quiz/models.py",
+      "expression": "self.single_attempt",
+      "aliases": [
+        "self.single_attempt"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 78,
+          "condition": "self.single_attempt is True"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "quiz/models.py:LCP70",
+      "path": "quiz/models.py",
+      "expression": "self.pass_mark",
+      "aliases": [
+        "self.pass_mark"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 81,
+          "condition": "self.pass_mark > 100"
+        },
+        {
+          "source": "conditional",
+          "line": 83,
+          "condition": "self.pass_mark < 0"
+        }
+      ],
+      "condition_indexes": [
+        2,
+        3
+      ]
+    },
+    {
+      "id": "quiz/models.py:LCP71",
+      "path": "quiz/models.py",
+      "expression": "instance.slug",
+      "aliases": [
+        "instance.slug"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 108,
+          "condition": "not instance.slug"
+        }
+      ],
+      "condition_indexes": [
+        4
+      ]
+    },
+    {
+      "id": "quiz/models.py:LCP72",
+      "path": "quiz/models.py",
+      "expression": "self.score",
+      "aliases": [
+        "self.score",
+        "score_before"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 137,
+          "condition": "len(self.score) > len(score_before)"
+        }
+      ],
+      "condition_indexes": [
+        5
+      ]
+    },
+    {
+      "id": "quiz/models.py:LCP73",
+      "path": "quiz/models.py",
+      "expression": "item",
+      "aliases": [
+        "item"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 146,
+          "condition": "any([item is False for item in [score_to_add, possible_to_add, isinstance(score_to_add, int), isinstance(possible_to_add, int)]])"
+        }
+      ],
+      "condition_indexes": [
+        6
+      ]
+    },
+    {
+      "id": "quiz/models.py:LCP74",
+      "path": "quiz/models.py",
+      "expression": "score_to_add",
+      "aliases": [
+        "score_to_add"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 146,
+          "condition": "any([item is False for item in [score_to_add, possible_to_add, isinstance(score_to_add, int), isinstance(possible_to_add, int)]])"
+        }
+      ],
+      "condition_indexes": [
+        6
+      ]
+    },
+    {
+      "id": "quiz/models.py:LCP75",
+      "path": "quiz/models.py",
+      "expression": "possible_to_add",
+      "aliases": [
+        "possible_to_add"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 146,
+          "condition": "any([item is False for item in [score_to_add, possible_to_add, isinstance(score_to_add, int), isinstance(possible_to_add, int)]])"
+        }
+      ],
+      "condition_indexes": [
+        6
+      ]
+    },
+    {
+      "id": "quiz/models.py:LCP76",
+      "path": "quiz/models.py",
+      "expression": "int",
+      "aliases": [
+        "int"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 146,
+          "condition": "any([item is False for item in [score_to_add, possible_to_add, isinstance(score_to_add, int), isinstance(possible_to_add, int)]])"
+        }
+      ],
+      "condition_indexes": [
+        6
+      ]
+    },
+    {
+      "id": "quiz/models.py:LCP77",
+      "path": "quiz/models.py",
+      "expression": "match",
+      "aliases": [
+        "match"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 153,
+          "condition": "match"
+        }
+      ],
+      "condition_indexes": [
+        7
+      ]
+    },
+    {
+      "id": "quiz/models.py:LCP78",
+      "path": "quiz/models.py",
+      "expression": "self.user.is_superuser",
+      "aliases": [
+        "self.user.is_superuser"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 169,
+          "condition": "self.user.is_superuser"
+        }
+      ],
+      "condition_indexes": [
+        8
+      ]
+    },
+    {
+      "id": "quiz/models.py:LCP79",
+      "path": "quiz/models.py",
+      "expression": "quiz.random_order",
+      "aliases": [
+        "quiz.random_order"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 178,
+          "condition": "quiz.random_order is True"
+        }
+      ],
+      "condition_indexes": [
+        9
+      ]
+    },
+    {
+      "id": "quiz/models.py:LCP80",
+      "path": "quiz/models.py",
+      "expression": "question_set",
+      "aliases": [
+        "question_set"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 185,
+          "condition": "len(question_set) == 0"
+        }
+      ],
+      "condition_indexes": [
+        10
+      ]
+    },
+    {
+      "id": "quiz/models.py:LCP81",
+      "path": "quiz/models.py",
+      "expression": "quiz.single_attempt",
+      "aliases": [
+        "quiz.single_attempt"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 203,
+          "condition": "quiz.single_attempt is True and self.filter(user=user, quiz=quiz, course=course, complete=True).exists()"
+        }
+      ],
+      "condition_indexes": [
+        11
+      ]
+    },
+    {
+      "id": "quiz/models.py:LCP82",
+      "path": "quiz/models.py",
+      "expression": "self.filter(user=user, quiz=quiz, course=course, complete=True).exists",
+      "aliases": [
+        "self.filter(user=user, quiz=quiz, course=course, complete=True).exists"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 203,
+          "condition": "quiz.single_attempt is True and self.filter(user=user, quiz=quiz, course=course, complete=True).exists()"
+        }
+      ],
+      "condition_indexes": [
+        11
+      ]
+    },
+    {
+      "id": "quiz/models.py:LCP83",
+      "path": "quiz/models.py",
+      "expression": "self.filter",
+      "aliases": [
+        "self.filter"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 203,
+          "condition": "quiz.single_attempt is True and self.filter(user=user, quiz=quiz, course=course, complete=True).exists()"
+        }
+      ],
+      "condition_indexes": [
+        11
+      ]
+    },
+    {
+      "id": "quiz/models.py:LCP84",
+      "path": "quiz/models.py",
+      "expression": "user",
+      "aliases": [
+        "user"
+      ],
+      "database_relations": [
+        {
+          "table": "self",
+          "field": "user",
+          "line": 203
+        },
+        {
+          "table": "self",
+          "field": "user",
+          "line": 206
+        },
+        {
+          "table": "self",
+          "field": "user",
+          "line": 210
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 203,
+          "condition": "quiz.single_attempt is True and self.filter(user=user, quiz=quiz, course=course, complete=True).exists()"
+        }
+      ],
+      "condition_indexes": [
+        11
+      ]
+    },
+    {
+      "id": "quiz/models.py:LCP85",
+      "path": "quiz/models.py",
+      "expression": "quiz",
+      "aliases": [
+        "quiz"
+      ],
+      "database_relations": [
+        {
+          "table": "self",
+          "field": "quiz",
+          "line": 203
+        },
+        {
+          "table": "self",
+          "field": "quiz",
+          "line": 206
+        },
+        {
+          "table": "self",
+          "field": "quiz",
+          "line": 210
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 203,
+          "condition": "quiz.single_attempt is True and self.filter(user=user, quiz=quiz, course=course, complete=True).exists()"
+        }
+      ],
+      "condition_indexes": [
+        11
+      ]
+    },
+    {
+      "id": "quiz/models.py:LCP86",
+      "path": "quiz/models.py",
+      "expression": "course",
+      "aliases": [
+        "course"
+      ],
+      "database_relations": [
+        {
+          "table": "self",
+          "field": "course",
+          "line": 203
+        },
+        {
+          "table": "self",
+          "field": "course",
+          "line": 206
+        },
+        {
+          "table": "self",
+          "field": "course",
+          "line": 210
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 203,
+          "condition": "quiz.single_attempt is True and self.filter(user=user, quiz=quiz, course=course, complete=True).exists()"
+        }
+      ],
+      "condition_indexes": [
+        11
+      ]
+    },
+    {
+      "id": "quiz/models.py:LCP87",
+      "path": "quiz/models.py",
+      "expression": "complete",
+      "aliases": [
+        "complete"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 203,
+          "condition": "quiz.single_attempt is True and self.filter(user=user, quiz=quiz, course=course, complete=True).exists()"
+        }
+      ],
+      "condition_indexes": [
+        11
+      ]
+    },
+    {
+      "id": "quiz/models.py:LCP88",
+      "path": "quiz/models.py",
+      "expression": "self.question_list",
+      "aliases": [
+        "self.question_list",
+        "others"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 240,
+          "condition": "not self.question_list"
+        },
+        {
+          "source": "conditional",
+          "line": 248,
+          "condition": "not self.question_list"
+        }
+      ],
+      "condition_indexes": [
+        12,
+        13
+      ]
+    },
+    {
+      "id": "quiz/models.py:LCP89",
+      "path": "quiz/models.py",
+      "expression": "divisor",
+      "aliases": [
+        "divisor"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 270,
+          "condition": "divisor < 1"
+        },
+        {
+          "source": "conditional",
+          "line": 273,
+          "condition": "dividend > divisor"
+        }
+      ],
+      "condition_indexes": [
+        14,
+        15
+      ]
+    },
+    {
+      "id": "quiz/models.py:LCP90",
+      "path": "quiz/models.py",
+      "expression": "dividend",
+      "aliases": [
+        "dividend"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 273,
+          "condition": "dividend > divisor"
+        }
+      ],
+      "condition_indexes": [
+        15
+      ]
+    },
+    {
+      "id": "quiz/models.py:LCP91",
+      "path": "quiz/models.py",
+      "expression": "correct",
+      "aliases": [
+        "correct"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 278,
+          "condition": "correct >= 1"
+        }
+      ],
+      "condition_indexes": [
+        16
+      ]
+    },
+    {
+      "id": "quiz/models.py:LCP92",
+      "path": "quiz/models.py",
+      "expression": "self.incorrect_questions",
+      "aliases": [
+        "self.incorrect_questions"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 289,
+          "condition": "len(self.incorrect_questions) > 0"
+        }
+      ],
+      "condition_indexes": [
+        17
+      ]
+    },
+    {
+      "id": "quiz/models.py:LCP93",
+      "path": "quiz/models.py",
+      "expression": "self.complete",
+      "aliases": [
+        "self.complete"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 292,
+          "condition": "self.complete"
+        }
+      ],
+      "condition_indexes": [
+        18
+      ]
+    },
+    {
+      "id": "quiz/models.py:LCP94",
+      "path": "quiz/models.py",
+      "expression": "self.check_if_passed",
+      "aliases": [
+        "self.check_if_passed"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 313,
+          "condition": "self.check_if_passed"
+        }
+      ],
+      "condition_indexes": [
+        19
+      ]
+    },
+    {
+      "id": "quiz/models.py:LCP95",
+      "path": "quiz/models.py",
+      "expression": "with_answers",
+      "aliases": [
+        "with_answers"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 328,
+          "condition": "with_answers"
+        }
+      ],
+      "condition_indexes": [
+        20
+      ]
+    },
+    {
+      "id": "quiz/models.py:LCP96",
+      "path": "quiz/models.py",
+      "expression": "answer.correct",
+      "aliases": [
+        "answer.correct"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 379,
+          "condition": "answer.correct is True"
+        }
+      ],
+      "condition_indexes": [
+        21
+      ]
+    },
+    {
+      "id": "quiz/models.py:LCP97",
+      "path": "quiz/models.py",
+      "expression": "self.choice_order",
+      "aliases": [
+        "self.choice_order"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 385,
+          "condition": "self.choice_order == 'content'"
+        },
+        {
+          "source": "conditional",
+          "line": 387,
+          "condition": "self.choice_order == 'random'"
+        },
+        {
+          "source": "conditional",
+          "line": 389,
+          "condition": "self.choice_order == 'none'"
+        }
+      ],
+      "condition_indexes": [
+        22,
+        23,
+        24
+      ]
+    },
+    {
+      "id": "quiz/templatetags/quiz_tags.py:LCP98",
+      "path": "quiz/templatetags/quiz_tags.py",
+      "expression": "question.id",
+      "aliases": [
+        "question.id"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 14,
+          "condition": "question.id in incorrect_list"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "quiz/templatetags/quiz_tags.py:LCP99",
+      "path": "quiz/templatetags/quiz_tags.py",
+      "expression": "incorrect_list",
+      "aliases": [
+        "incorrect_list",
+        "context.incorrect_questions"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 14,
+          "condition": "question.id in incorrect_list"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "quiz/utils.py:LCP100",
+      "path": "quiz/utils.py",
+      "expression": "new_slug",
+      "aliases": [
+        "new_slug",
+        "slug"
+      ],
+      "database_relations": [
+        {
+          "table": "Klass",
+          "field": "slug",
+          "line": 24
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 18,
+          "condition": "new_slug is not None"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "quiz/utils.py:LCP101",
+      "path": "quiz/utils.py",
+      "expression": "qs_exists",
+      "aliases": [
+        "qs_exists"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 25,
+          "condition": "qs_exists"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "quiz/views.py:LCP102",
+      "path": "quiz/views.py",
+      "expression": "self.request.POST",
+      "aliases": [
+        "self.request.POST"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 27,
+          "condition": "self.request.POST"
+        },
+        {
+          "source": "conditional",
+          "line": 55,
+          "condition": "self.request.POST"
+        },
+        {
+          "source": "conditional",
+          "line": 94,
+          "condition": "self.request.POST"
+        },
+        {
+          "source": "conditional",
+          "line": 113,
+          "condition": "\"another\" in self.request.POST"
+        }
+      ],
+      "condition_indexes": [
+        0,
+        2,
+        4,
+        6
+      ]
+    },
+    {
+      "id": "quiz/views.py:LCP103",
+      "path": "quiz/views.py",
+      "expression": "form.is_valid",
+      "aliases": [
+        "form.is_valid"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 39,
+          "condition": "form.is_valid()"
+        },
+        {
+          "source": "conditional",
+          "line": 67,
+          "condition": "form.is_valid()"
+        }
+      ],
+      "condition_indexes": [
+        1,
+        3
+      ]
+    },
+    {
+      "id": "quiz/views.py:LCP104",
+      "path": "quiz/views.py",
+      "expression": "formset.is_valid",
+      "aliases": [
+        "formset.is_valid"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 110,
+          "condition": "formset.is_valid()"
+        }
+      ],
+      "condition_indexes": [
+        5
+      ]
+    },
+    {
+      "id": "quiz/views.py:LCP105",
+      "path": "quiz/views.py",
+      "expression": "quiz_filter",
+      "aliases": [
+        "quiz_filter",
+        "self.request.GET.quiz_filter"
+      ],
+      "database_relations": [
+        {
+          "table": "queryset",
+          "field": "quiz",
+          "line": 141
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 140,
+          "condition": "quiz_filter"
+        }
+      ],
+      "condition_indexes": [
+        7
+      ]
+    },
+    {
+      "id": "quiz/views.py:LCP106",
+      "path": "quiz/views.py",
+      "expression": "self.request.user.is_superuser",
+      "aliases": [
+        "self.request.user.is_superuser"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 172,
+          "condition": "self.request.user.is_superuser"
+        },
+        {
+          "source": "conditional",
+          "line": 318,
+          "condition": "self.quiz.exam_paper is False or self.request.user.is_superuser or self.request.user.is_lecturer"
+        }
+      ],
+      "condition_indexes": [
+        8,
+        22
+      ]
+    },
+    {
+      "id": "quiz/views.py:LCP107",
+      "path": "quiz/views.py",
+      "expression": "user_filter",
+      "aliases": [
+        "user_filter",
+        "self.request.GET.user_filter"
+      ],
+      "database_relations": [
+        {
+          "table": "queryset",
+          "field": "user",
+          "line": 180
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 179,
+          "condition": "user_filter"
+        }
+      ],
+      "condition_indexes": [
+        9
+      ]
+    },
+    {
+      "id": "quiz/views.py:LCP108",
+      "path": "quiz/views.py",
+      "expression": "q_to_toggle",
+      "aliases": [
+        "q_to_toggle",
+        "request.POST.qid"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 193,
+          "condition": "q_to_toggle"
+        },
+        {
+          "source": "conditional",
+          "line": 195,
+          "condition": "int(q_to_toggle) in sitting.get_incorrect_questions"
+        }
+      ],
+      "condition_indexes": [
+        10,
+        11
+      ]
+    },
+    {
+      "id": "quiz/views.py:LCP109",
+      "path": "quiz/views.py",
+      "expression": "int",
+      "aliases": [
+        "int"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 195,
+          "condition": "int(q_to_toggle) in sitting.get_incorrect_questions"
+        }
+      ],
+      "condition_indexes": [
+        11
+      ]
+    },
+    {
+      "id": "quiz/views.py:LCP110",
+      "path": "quiz/views.py",
+      "expression": "sitting.get_incorrect_questions",
+      "aliases": [
+        "sitting.get_incorrect_questions"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 195,
+          "condition": "int(q_to_toggle) in sitting.get_incorrect_questions"
+        }
+      ],
+      "condition_indexes": [
+        11
+      ]
+    },
+    {
+      "id": "quiz/views.py:LCP111",
+      "path": "quiz/views.py",
+      "expression": "quizQuestions",
+      "aliases": [
+        "quizQuestions"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 222,
+          "condition": "quizQuestions <= 0"
+        }
+      ],
+      "condition_indexes": [
+        12
+      ]
+    },
+    {
+      "id": "quiz/views.py:LCP112",
+      "path": "quiz/views.py",
+      "expression": "self.quiz.draft",
+      "aliases": [
+        "self.quiz.draft"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 226,
+          "condition": "self.quiz.draft and not request.user.has_perm('quiz.change_quiz')"
+        }
+      ],
+      "condition_indexes": [
+        13
+      ]
+    },
+    {
+      "id": "quiz/views.py:LCP113",
+      "path": "quiz/views.py",
+      "expression": "request.user.has_perm",
+      "aliases": [
+        "request.user.has_perm"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 226,
+          "condition": "self.quiz.draft and not request.user.has_perm('quiz.change_quiz')"
+        }
+      ],
+      "condition_indexes": [
+        13
+      ]
+    },
+    {
+      "id": "quiz/views.py:LCP114",
+      "path": "quiz/views.py",
+      "expression": "self.sitting",
+      "aliases": [
+        "self.sitting"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 231,
+          "condition": "self.sitting is False"
+        }
+      ],
+      "condition_indexes": [
+        14
+      ]
+    },
+    {
+      "id": "quiz/views.py:LCP115",
+      "path": "quiz/views.py",
+      "expression": "self.question.__class__",
+      "aliases": [
+        "self.question.__class__"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 242,
+          "condition": "self.question.__class__ is Essay_Question"
+        }
+      ],
+      "condition_indexes": [
+        15
+      ]
+    },
+    {
+      "id": "quiz/views.py:LCP116",
+      "path": "quiz/views.py",
+      "expression": "Essay_Question",
+      "aliases": [
+        "Essay_Question"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 242,
+          "condition": "self.question.__class__ is Essay_Question"
+        }
+      ],
+      "condition_indexes": [
+        15
+      ]
+    },
+    {
+      "id": "quiz/views.py:LCP117",
+      "path": "quiz/views.py",
+      "expression": "self.sitting.get_first_question",
+      "aliases": [
+        "self.sitting.get_first_question"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 256,
+          "condition": "self.sitting.get_first_question() is False"
+        }
+      ],
+      "condition_indexes": [
+        16
+      ]
+    },
+    {
+      "id": "quiz/views.py:LCP118",
+      "path": "quiz/views.py",
+      "expression": "self",
+      "aliases": [
+        "self"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 268,
+          "condition": "hasattr(self, 'previous')"
+        },
+        {
+          "source": "conditional",
+          "line": 270,
+          "condition": "hasattr(self, 'progress')"
+        }
+      ],
+      "condition_indexes": [
+        17,
+        18
+      ]
+    },
+    {
+      "id": "quiz/views.py:LCP119",
+      "path": "quiz/views.py",
+      "expression": "is_correct",
+      "aliases": [
+        "is_correct"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 279,
+          "condition": "is_correct is True"
+        }
+      ],
+      "condition_indexes": [
+        19
+      ]
+    },
+    {
+      "id": "quiz/views.py:LCP120",
+      "path": "quiz/views.py",
+      "expression": "self.quiz.answers_at_end",
+      "aliases": [
+        "self.quiz.answers_at_end"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 286,
+          "condition": "self.quiz.answers_at_end is not True"
+        },
+        {
+          "source": "conditional",
+          "line": 314,
+          "condition": "self.quiz.answers_at_end"
+        }
+      ],
+      "condition_indexes": [
+        20,
+        21
+      ]
+    },
+    {
+      "id": "quiz/views.py:LCP121",
+      "path": "quiz/views.py",
+      "expression": "self.quiz.exam_paper",
+      "aliases": [
+        "self.quiz.exam_paper"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 318,
+          "condition": "self.quiz.exam_paper is False or self.request.user.is_superuser or self.request.user.is_lecturer"
+        }
+      ],
+      "condition_indexes": [
+        22
+      ]
+    },
+    {
+      "id": "quiz/views.py:LCP122",
+      "path": "quiz/views.py",
+      "expression": "self.request.user.is_lecturer",
+      "aliases": [
+        "self.request.user.is_lecturer"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 318,
+          "condition": "self.quiz.exam_paper is False or self.request.user.is_superuser or self.request.user.is_lecturer"
+        }
+      ],
+      "condition_indexes": [
+        22
+      ]
+    },
+    {
+      "id": "result/models.py:LCP123",
+      "path": "result/models.py",
+      "expression": "qs.count",
+      "aliases": [
+        "qs.count"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 78,
+          "condition": "qs.count() == 1"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "result/models.py:LCP124",
+      "path": "result/models.py",
+      "expression": "request.user.is_authenticated",
+      "aliases": [
+        "request.user.is_authenticated"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 81,
+          "condition": "request.user.is_authenticated() and cart_obj.user is None"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "result/models.py:LCP125",
+      "path": "result/models.py",
+      "expression": "cart_obj.user",
+      "aliases": [
+        "cart_obj.user",
+        "request.user"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 81,
+          "condition": "request.user.is_authenticated() and cart_obj.user is None"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "result/models.py:LCP126",
+      "path": "result/models.py",
+      "expression": "user",
+      "aliases": [
+        "user",
+        "user_obj"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 92,
+          "condition": "user is not None"
+        }
+      ],
+      "condition_indexes": [
+        2
+      ]
+    },
+    {
+      "id": "result/models.py:LCP127",
+      "path": "result/models.py",
+      "expression": "user.is_authenticated",
+      "aliases": [
+        "user.is_authenticated"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 93,
+          "condition": "user.is_authenticated()"
+        }
+      ],
+      "condition_indexes": [
+        3
+      ]
+    },
+    {
+      "id": "result/models.py:LCP128",
+      "path": "result/models.py",
+      "expression": "total",
+      "aliases": [
+        "total"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 126,
+          "condition": "total >= 90"
+        },
+        {
+          "source": "conditional",
+          "line": 128,
+          "condition": "total >= 85"
+        },
+        {
+          "source": "conditional",
+          "line": 130,
+          "condition": "total >= 80"
+        },
+        {
+          "source": "conditional",
+          "line": 132,
+          "condition": "total >= 75"
+        },
+        {
+          "source": "conditional",
+          "line": 134,
+          "condition": "total >= 70"
+        },
+        {
+          "source": "conditional",
+          "line": 136,
+          "condition": "total >= 65"
+        },
+        {
+          "source": "conditional",
+          "line": 138,
+          "condition": "total >= 60"
+        },
+        {
+          "source": "conditional",
+          "line": 140,
+          "condition": "total >= 55"
+        },
+        {
+          "source": "conditional",
+          "line": 142,
+          "condition": "total >= 50"
+        },
+        {
+          "source": "conditional",
+          "line": 144,
+          "condition": "total >= 45"
+        },
+        {
+          "source": "conditional",
+          "line": 146,
+          "condition": "total < 45"
+        }
+      ],
+      "condition_indexes": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ]
+    },
+    {
+      "id": "result/models.py:LCP129",
+      "path": "result/models.py",
+      "expression": "grade",
+      "aliases": [
+        "grade",
+        "A",
+        "A_minus",
+        "A_plus",
+        "B",
+        "B_minus",
+        "B_plus",
+        "C",
+        "C_minus",
+        "C_plus",
+        "D",
+        "F",
+        "NG"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 154,
+          "condition": "grade == F or grade == NG"
+        },
+        {
+          "source": "conditional",
+          "line": 167,
+          "condition": "self.grade == A_plus"
+        },
+        {
+          "source": "conditional",
+          "line": 169,
+          "condition": "self.grade == A"
+        },
+        {
+          "source": "conditional",
+          "line": 171,
+          "condition": "self.grade == A_minus"
+        },
+        {
+          "source": "conditional",
+          "line": 173,
+          "condition": "self.grade == B_plus"
+        },
+        {
+          "source": "conditional",
+          "line": 175,
+          "condition": "self.grade == B"
+        },
+        {
+          "source": "conditional",
+          "line": 177,
+          "condition": "self.grade == B_minus"
+        },
+        {
+          "source": "conditional",
+          "line": 179,
+          "condition": "self.grade == C_plus"
+        },
+        {
+          "source": "conditional",
+          "line": 181,
+          "condition": "self.grade == C"
+        },
+        {
+          "source": "conditional",
+          "line": 183,
+          "condition": "self.grade == C_minus"
+        },
+        {
+          "source": "conditional",
+          "line": 185,
+          "condition": "self.grade == D"
+        },
+        {
+          "source": "conditional",
+          "line": 199,
+          "condition": "i.grade == A_plus"
+        },
+        {
+          "source": "conditional",
+          "line": 201,
+          "condition": "i.grade == A"
+        },
+        {
+          "source": "conditional",
+          "line": 203,
+          "condition": "i.grade == A_minus"
+        },
+        {
+          "source": "conditional",
+          "line": 205,
+          "condition": "i.grade == B_plus"
+        },
+        {
+          "source": "conditional",
+          "line": 207,
+          "condition": "i.grade == B"
+        },
+        {
+          "source": "conditional",
+          "line": 209,
+          "condition": "i.grade == B_minus"
+        },
+        {
+          "source": "conditional",
+          "line": 211,
+          "condition": "i.grade == C_plus"
+        },
+        {
+          "source": "conditional",
+          "line": 213,
+          "condition": "i.grade == C"
+        },
+        {
+          "source": "conditional",
+          "line": 215,
+          "condition": "i.grade == C_minus"
+        },
+        {
+          "source": "conditional",
+          "line": 217,
+          "condition": "i.grade == D"
+        }
+      ],
+      "condition_indexes": [
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35
+      ]
+    },
+    {
+      "id": "result/models.py:LCP130",
+      "path": "result/models.py",
+      "expression": "self.grade",
+      "aliases": [
+        "self.grade"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 167,
+          "condition": "self.grade == A_plus"
+        },
+        {
+          "source": "conditional",
+          "line": 169,
+          "condition": "self.grade == A"
+        },
+        {
+          "source": "conditional",
+          "line": 171,
+          "condition": "self.grade == A_minus"
+        },
+        {
+          "source": "conditional",
+          "line": 173,
+          "condition": "self.grade == B_plus"
+        },
+        {
+          "source": "conditional",
+          "line": 175,
+          "condition": "self.grade == B"
+        },
+        {
+          "source": "conditional",
+          "line": 177,
+          "condition": "self.grade == B_minus"
+        },
+        {
+          "source": "conditional",
+          "line": 179,
+          "condition": "self.grade == C_plus"
+        },
+        {
+          "source": "conditional",
+          "line": 181,
+          "condition": "self.grade == C"
+        },
+        {
+          "source": "conditional",
+          "line": 183,
+          "condition": "self.grade == C_minus"
+        },
+        {
+          "source": "conditional",
+          "line": 185,
+          "condition": "self.grade == D"
+        }
+      ],
+      "condition_indexes": [
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25
+      ]
+    },
+    {
+      "id": "result/models.py:LCP131",
+      "path": "result/models.py",
+      "expression": "i.grade",
+      "aliases": [
+        "i.grade"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 199,
+          "condition": "i.grade == A_plus"
+        },
+        {
+          "source": "conditional",
+          "line": 201,
+          "condition": "i.grade == A"
+        },
+        {
+          "source": "conditional",
+          "line": 203,
+          "condition": "i.grade == A_minus"
+        },
+        {
+          "source": "conditional",
+          "line": 205,
+          "condition": "i.grade == B_plus"
+        },
+        {
+          "source": "conditional",
+          "line": 207,
+          "condition": "i.grade == B"
+        },
+        {
+          "source": "conditional",
+          "line": 209,
+          "condition": "i.grade == B_minus"
+        },
+        {
+          "source": "conditional",
+          "line": 211,
+          "condition": "i.grade == C_plus"
+        },
+        {
+          "source": "conditional",
+          "line": 213,
+          "condition": "i.grade == C"
+        },
+        {
+          "source": "conditional",
+          "line": 215,
+          "condition": "i.grade == C_minus"
+        },
+        {
+          "source": "conditional",
+          "line": 217,
+          "condition": "i.grade == D"
+        }
+      ],
+      "condition_indexes": [
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35
+      ]
+    },
+    {
+      "id": "result/models.py:LCP132",
+      "path": "result/models.py",
+      "expression": "i.cgpa",
+      "aliases": [
+        "i.cgpa"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 233,
+          "condition": "i.cgpa is not None"
+        }
+      ],
+      "condition_indexes": [
+        36
+      ]
+    },
+    {
+      "id": "result/models.py:LCP133",
+      "path": "result/models.py",
+      "expression": "current_semester",
+      "aliases": [
+        "current_semester"
+      ],
+      "database_relations": [
+        {
+          "table": "TakenCourse",
+          "field": "course",
+          "line": 194
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 236,
+          "condition": "str(current_semester) == SECOND"
+        }
+      ],
+      "condition_indexes": [
+        37
+      ]
+    },
+    {
+      "id": "result/models.py:LCP134",
+      "path": "result/models.py",
+      "expression": "SECOND",
+      "aliases": [
+        "SECOND"
+      ],
+      "database_relations": [
+        {
+          "table": "Result",
+          "field": "semester",
+          "line": 246
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 236,
+          "condition": "str(current_semester) == SECOND"
+        }
+      ],
+      "condition_indexes": [
+        37
+      ]
+    },
+    {
+      "id": "result/views.py:LCP135",
+      "path": "result/views.py",
+      "expression": "request.method",
+      "aliases": [
+        "request.method"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 61,
+          "condition": "request.method == 'GET'"
+        },
+        {
+          "source": "conditional",
+          "line": 84,
+          "condition": "request.method == 'POST'"
+        }
+      ],
+      "condition_indexes": [
+        0,
+        1
+      ]
+    },
+    {
+      "id": "result/views.py:LCP136",
+      "path": "result/views.py",
+      "expression": "i",
+      "aliases": [
+        "i"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 99,
+          "condition": "i == courses.count()"
+        }
+      ],
+      "condition_indexes": [
+        2
+      ]
+    },
+    {
+      "id": "result/views.py:LCP137",
+      "path": "result/views.py",
+      "expression": "courses.count",
+      "aliases": [
+        "courses.count"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 99,
+          "condition": "i == courses.count()"
+        }
+      ],
+      "condition_indexes": [
+        2
+      ]
+    },
+    {
+      "id": "result/views.py:LCP138",
+      "path": "result/views.py",
+      "expression": "i.course.semester",
+      "aliases": [
+        "i.course.semester"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 172,
+          "condition": "i.course.semester == \"First\""
+        },
+        {
+          "source": "conditional",
+          "line": 174,
+          "condition": "i.course.semester == \"Second\""
+        }
+      ],
+      "condition_indexes": [
+        3,
+        4
+      ]
+    },
+    {
+      "id": "result/views.py:LCP139",
+      "path": "result/views.py",
+      "expression": "student.grade",
+      "aliases": [
+        "student.grade"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 312,
+          "condition": "student.grade == 'F'"
+        }
+      ],
+      "condition_indexes": [
+        5
+      ]
+    },
+    {
+      "id": "result/views.py:LCP140",
+      "path": "result/views.py",
+      "expression": "course.course.semester",
+      "aliases": [
+        "course.course.semester"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 443,
+          "condition": "course.course.semester == FIRST"
+        },
+        {
+          "source": "conditional",
+          "line": 507,
+          "condition": "course.course.semester == SECOND"
+        }
+      ],
+      "condition_indexes": [
+        6,
+        7
+      ]
+    },
+    {
+      "id": "result/views.py:LCP141",
+      "path": "result/views.py",
+      "expression": "FIRST",
+      "aliases": [
+        "FIRST"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 443,
+          "condition": "course.course.semester == FIRST"
+        }
+      ],
+      "condition_indexes": [
+        6
+      ]
+    },
+    {
+      "id": "result/views.py:LCP142",
+      "path": "result/views.py",
+      "expression": "SECOND",
+      "aliases": [
+        "SECOND"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 507,
+          "condition": "course.course.semester == SECOND"
+        }
+      ],
+      "condition_indexes": [
+        7
+      ]
+    },
+    {
+      "id": "search/views.py:LCP143",
+      "path": "search/views.py",
+      "expression": "query",
+      "aliases": [
+        "query",
+        "request.GET.q"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 65,
+          "condition": "query is not None"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "SMS/urls.py:LCP144",
+      "path": "SMS/urls.py",
+      "expression": "settings.DEBUG",
+      "aliases": [
+        "settings.DEBUG"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 23,
+          "condition": "settings.DEBUG"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    }
+  ]
+}

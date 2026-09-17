@@ -1,0 +1,27 @@
+{
+  "metrics": {
+    "hsng_construction_seconds": 66.136054,
+    "detection_seconds": 96.913978,
+    "access_control_snippets_extraction_seconds": 0.018187,
+    "llm_inference_seconds": 99.052539,
+    "tokens_in": 4501,
+    "tokens_out": 21320,
+    "tokens_total": 25821,
+    "api_cost_usd": 0.0,
+    "api_cost_pricing_configured": false,
+    "llm_requests": 6,
+    "total_seconds": 295.207907
+  },
+  "columns": {
+    "HSNG Construction Time(s)": 66.136054,
+    "Detection Time (s)": 96.913978,
+    "Access Control Snippets Extraction Time (s)": 0.018187,
+    "LLM Inference (s)": 99.052539,
+    "Tokens (In / Out)": "4501 / 21320",
+    "API Cost ($)": 0.0,
+    "Total Time (s)": 295.207907
+  },
+  "notes": [
+    "API cost is 0.0 because repair.llm input/output token pricing is not configured."
+  ]
+}

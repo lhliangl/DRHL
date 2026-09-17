@@ -1,0 +1,1619 @@
+{
+  "role": "admin",
+  "kind": "admin",
+  "nodes": [
+    "./",
+    "accounts/admin_panel/",
+    "accounts/change_password/",
+    "accounts/lecturer/add/",
+    "accounts/lecturers/",
+    "accounts/lecturers/20/delete/",
+    "accounts/profile/",
+    "accounts/profile/19/detail/",
+    "accounts/setting/",
+    "accounts/student/19/edit/",
+    "accounts/student/add/",
+    "accounts/students/",
+    "accounts/students/17/delete/",
+    "accounts/students/18/delete/",
+    "accounts/students/?department=p1&name=p1&student_id=p1",
+    "add_item/",
+    "admin/",
+    "admin/accounts/",
+    "admin/accounts/parent/",
+    "admin/accounts/parent/add/",
+    "admin/accounts/student/",
+    "admin/accounts/student/add/",
+    "admin/accounts/user/",
+    "admin/accounts/user/add/",
+    "admin/app/",
+    "admin/app/newsandevents/",
+    "admin/app/newsandevents/add/",
+    "admin/app/semester/",
+    "admin/app/semester/add/",
+    "admin/app/session/",
+    "admin/app/session/add/",
+    "admin/auth/",
+    "admin/auth/group/",
+    "admin/auth/group/add/",
+    "admin/course/",
+    "admin/course/course/",
+    "admin/course/course/add/",
+    "admin/course/courseallocation/",
+    "admin/course/courseallocation/1/change/",
+    "admin/course/courseallocation/add/",
+    "admin/course/program/",
+    "admin/course/program/add/",
+    "admin/course/upload/",
+    "admin/course/upload/add/",
+    "admin/password_change/",
+    "admin/quiz/",
+    "admin/quiz/essay_question/",
+    "admin/quiz/essay_question/add/",
+    "admin/quiz/mcquestion/",
+    "admin/quiz/mcquestion/add/",
+    "admin/quiz/progress/",
+    "admin/quiz/progress/add/",
+    "admin/quiz/quiz/",
+    "admin/quiz/quiz/add/",
+    "admin/quiz/sitting/",
+    "admin/quiz/sitting/add/",
+    "admin/result/",
+    "admin/result/result/",
+    "admin/result/result/add/",
+    "admin/result/takencourse/",
+    "admin/result/takencourse/add/",
+    "dashboard/",
+    "item/13/delete/",
+    "programs/",
+    "programs/13/course/add/",
+    "programs/13/detail/",
+    "programs/13/detail/?code=p1&name=p1&year=p1",
+    "programs/?csrfmiddlewaretoken=p1&program_filter=p1",
+    "programs/add/",
+    "programs/course/delete/software-testing/",
+    "programs/course/secure-software-engineering/edit/",
+    "quiz/marking_list/",
+    "quiz/marking_list/?quiz_filter=p1&user_filter=p1",
+    "quiz/progress/",
+    "result/assessment/",
+    "result/grade/",
+    "search/",
+    "semester/",
+    "semester/add/",
+    "session/",
+    "session/2/delete/",
+    "session/add/"
+  ],
+  "edges": [
+    {
+      "from": "./",
+      "to": "add_item/"
+    },
+    {
+      "from": "./",
+      "to": "item/13/delete/"
+    },
+    {
+      "from": "./",
+      "to": "programs/13/detail/"
+    },
+    {
+      "from": "./",
+      "to": "search/"
+    },
+    {
+      "from": "accounts/admin_panel/",
+      "to": "search/"
+    },
+    {
+      "from": "accounts/change_password/",
+      "to": "accounts/change_password/"
+    },
+    {
+      "from": "accounts/change_password/",
+      "to": "accounts/profile/"
+    },
+    {
+      "from": "accounts/change_password/",
+      "to": "search/"
+    },
+    {
+      "from": "accounts/lecturer/add/",
+      "to": "accounts/lecturer/add/"
+    },
+    {
+      "from": "accounts/lecturer/add/",
+      "to": "accounts/lecturers/"
+    },
+    {
+      "from": "accounts/lecturer/add/",
+      "to": "search/"
+    },
+    {
+      "from": "accounts/lecturers/",
+      "to": "accounts/lecturer/add/"
+    },
+    {
+      "from": "accounts/lecturers/",
+      "to": "accounts/lecturers/"
+    },
+    {
+      "from": "accounts/lecturers/",
+      "to": "accounts/lecturers/20/delete/"
+    },
+    {
+      "from": "accounts/lecturers/",
+      "to": "dashboard/"
+    },
+    {
+      "from": "accounts/lecturers/",
+      "to": "search/"
+    },
+    {
+      "from": "accounts/profile/",
+      "to": "accounts/admin_panel/"
+    },
+    {
+      "from": "accounts/profile/",
+      "to": "search/"
+    },
+    {
+      "from": "accounts/profile/19/detail/",
+      "to": "accounts/lecturers/"
+    },
+    {
+      "from": "accounts/profile/19/detail/",
+      "to": "search/"
+    },
+    {
+      "from": "accounts/setting/",
+      "to": "accounts/change_password/"
+    },
+    {
+      "from": "accounts/setting/",
+      "to": "accounts/profile/"
+    },
+    {
+      "from": "accounts/setting/",
+      "to": "accounts/setting/"
+    },
+    {
+      "from": "accounts/setting/",
+      "to": "search/"
+    },
+    {
+      "from": "accounts/student/19/edit/",
+      "to": "accounts/profile/19/detail/"
+    },
+    {
+      "from": "accounts/student/19/edit/",
+      "to": "accounts/student/19/edit/"
+    },
+    {
+      "from": "accounts/student/19/edit/",
+      "to": "accounts/student/add/"
+    },
+    {
+      "from": "accounts/student/19/edit/",
+      "to": "accounts/students/"
+    },
+    {
+      "from": "accounts/student/19/edit/",
+      "to": "search/"
+    },
+    {
+      "from": "accounts/student/add/",
+      "to": "accounts/student/add/"
+    },
+    {
+      "from": "accounts/student/add/",
+      "to": "search/"
+    },
+    {
+      "from": "accounts/students/",
+      "to": "accounts/student/19/edit/"
+    },
+    {
+      "from": "accounts/students/",
+      "to": "accounts/students/"
+    },
+    {
+      "from": "accounts/students/",
+      "to": "accounts/students/17/delete/"
+    },
+    {
+      "from": "accounts/students/",
+      "to": "accounts/students/18/delete/"
+    },
+    {
+      "from": "accounts/students/",
+      "to": "accounts/students/?department=p1&name=p1&student_id=p1"
+    },
+    {
+      "from": "accounts/students/",
+      "to": "search/"
+    },
+    {
+      "from": "accounts/students/17/delete/",
+      "to": "accounts/students/"
+    },
+    {
+      "from": "accounts/students/?department=p1&name=p1&student_id=p1",
+      "to": "accounts/students/?department=p1&name=p1&student_id=p1"
+    },
+    {
+      "from": "accounts/students/?department=p1&name=p1&student_id=p1",
+      "to": "search/"
+    },
+    {
+      "from": "add_item/",
+      "to": "add_item/"
+    },
+    {
+      "from": "add_item/",
+      "to": "search/"
+    },
+    {
+      "from": "admin/",
+      "to": "admin/course/courseallocation/1/change/"
+    },
+    {
+      "from": "admin/",
+      "to": "admin/result/takencourse/"
+    },
+    {
+      "from": "admin/accounts/parent/",
+      "to": "admin/accounts/"
+    },
+    {
+      "from": "admin/accounts/parent/",
+      "to": "admin/accounts/parent/"
+    },
+    {
+      "from": "admin/accounts/parent/add/",
+      "to": "admin/accounts/parent/"
+    },
+    {
+      "from": "admin/accounts/parent/add/",
+      "to": "admin/accounts/parent/add/"
+    },
+    {
+      "from": "admin/accounts/student/",
+      "to": "admin/accounts/parent/add/"
+    },
+    {
+      "from": "admin/accounts/student/",
+      "to": "admin/accounts/student/"
+    },
+    {
+      "from": "admin/accounts/student/add/",
+      "to": "admin/accounts/student/add/"
+    },
+    {
+      "from": "admin/accounts/student/add/",
+      "to": "admin/accounts/user/add/"
+    },
+    {
+      "from": "admin/accounts/user/",
+      "to": "admin/accounts/student/"
+    },
+    {
+      "from": "admin/accounts/user/",
+      "to": "admin/accounts/user/"
+    },
+    {
+      "from": "admin/accounts/user/add/",
+      "to": "admin/accounts/user/add/"
+    },
+    {
+      "from": "admin/accounts/user/add/",
+      "to": "admin/auth/group/add/"
+    },
+    {
+      "from": "admin/app/newsandevents/",
+      "to": "admin/accounts/user/"
+    },
+    {
+      "from": "admin/app/newsandevents/",
+      "to": "admin/app/"
+    },
+    {
+      "from": "admin/app/newsandevents/",
+      "to": "admin/app/newsandevents/"
+    },
+    {
+      "from": "admin/app/newsandevents/add/",
+      "to": "admin/app/newsandevents/"
+    },
+    {
+      "from": "admin/app/newsandevents/add/",
+      "to": "admin/app/newsandevents/add/"
+    },
+    {
+      "from": "admin/app/semester/",
+      "to": "admin/app/newsandevents/add/"
+    },
+    {
+      "from": "admin/app/semester/",
+      "to": "admin/app/semester/"
+    },
+    {
+      "from": "admin/app/semester/add/",
+      "to": "admin/app/semester/"
+    },
+    {
+      "from": "admin/app/semester/add/",
+      "to": "admin/app/semester/add/"
+    },
+    {
+      "from": "admin/app/session/",
+      "to": "admin/app/semester/add/"
+    },
+    {
+      "from": "admin/app/session/",
+      "to": "admin/app/session/"
+    },
+    {
+      "from": "admin/app/session/add/",
+      "to": "admin/app/session/add/"
+    },
+    {
+      "from": "admin/auth/group/",
+      "to": "admin/app/session/"
+    },
+    {
+      "from": "admin/auth/group/",
+      "to": "admin/auth/"
+    },
+    {
+      "from": "admin/auth/group/",
+      "to": "admin/auth/group/"
+    },
+    {
+      "from": "admin/auth/group/add/",
+      "to": "admin/auth/group/add/"
+    },
+    {
+      "from": "admin/course/course/",
+      "to": "admin/course/course/"
+    },
+    {
+      "from": "admin/course/course/",
+      "to": "admin/course/courseallocation/add/"
+    },
+    {
+      "from": "admin/course/course/add/",
+      "to": "admin/course/course/add/"
+    },
+    {
+      "from": "admin/course/course/add/",
+      "to": "admin/course/program/add/"
+    },
+    {
+      "from": "admin/course/courseallocation/",
+      "to": "admin/auth/group/"
+    },
+    {
+      "from": "admin/course/courseallocation/",
+      "to": "admin/course/"
+    },
+    {
+      "from": "admin/course/courseallocation/",
+      "to": "admin/course/courseallocation/"
+    },
+    {
+      "from": "admin/course/courseallocation/1/change/",
+      "to": "admin/"
+    },
+    {
+      "from": "admin/course/courseallocation/add/",
+      "to": "admin/app/session/add/"
+    },
+    {
+      "from": "admin/course/courseallocation/add/",
+      "to": "admin/course/courseallocation/"
+    },
+    {
+      "from": "admin/course/courseallocation/add/",
+      "to": "admin/course/courseallocation/add/"
+    },
+    {
+      "from": "admin/course/program/",
+      "to": "admin/course/course/"
+    },
+    {
+      "from": "admin/course/program/",
+      "to": "admin/course/program/"
+    },
+    {
+      "from": "admin/course/program/add/",
+      "to": "admin/course/program/add/"
+    },
+    {
+      "from": "admin/course/upload/",
+      "to": "admin/course/program/"
+    },
+    {
+      "from": "admin/course/upload/",
+      "to": "admin/course/upload/"
+    },
+    {
+      "from": "admin/course/upload/add/",
+      "to": "admin/course/upload/"
+    },
+    {
+      "from": "admin/course/upload/add/",
+      "to": "admin/course/upload/add/"
+    },
+    {
+      "from": "admin/password_change/",
+      "to": "admin/password_change/"
+    },
+    {
+      "from": "admin/password_change/",
+      "to": "admin/quiz/progress/add/"
+    },
+    {
+      "from": "admin/quiz/",
+      "to": "./"
+    },
+    {
+      "from": "admin/quiz/essay_question/",
+      "to": "admin/course/upload/add/"
+    },
+    {
+      "from": "admin/quiz/essay_question/",
+      "to": "admin/quiz/"
+    },
+    {
+      "from": "admin/quiz/essay_question/",
+      "to": "admin/quiz/essay_question/"
+    },
+    {
+      "from": "admin/quiz/essay_question/add/",
+      "to": "admin/quiz/essay_question/"
+    },
+    {
+      "from": "admin/quiz/essay_question/add/",
+      "to": "admin/quiz/essay_question/add/"
+    },
+    {
+      "from": "admin/quiz/mcquestion/",
+      "to": "admin/quiz/essay_question/add/"
+    },
+    {
+      "from": "admin/quiz/mcquestion/",
+      "to": "admin/quiz/mcquestion/"
+    },
+    {
+      "from": "admin/quiz/mcquestion/add/",
+      "to": "admin/quiz/mcquestion/"
+    },
+    {
+      "from": "admin/quiz/mcquestion/add/",
+      "to": "admin/quiz/mcquestion/add/"
+    },
+    {
+      "from": "admin/quiz/progress/",
+      "to": "admin/quiz/progress/"
+    },
+    {
+      "from": "admin/quiz/progress/",
+      "to": "admin/quiz/sitting/add/"
+    },
+    {
+      "from": "admin/quiz/progress/add/",
+      "to": "admin/quiz/progress/"
+    },
+    {
+      "from": "admin/quiz/progress/add/",
+      "to": "admin/quiz/progress/add/"
+    },
+    {
+      "from": "admin/quiz/quiz/",
+      "to": "admin/quiz/mcquestion/add/"
+    },
+    {
+      "from": "admin/quiz/quiz/",
+      "to": "admin/quiz/quiz/"
+    },
+    {
+      "from": "admin/quiz/quiz/add/",
+      "to": "admin/quiz/quiz/add/"
+    },
+    {
+      "from": "admin/quiz/sitting/",
+      "to": "admin/quiz/quiz/"
+    },
+    {
+      "from": "admin/quiz/sitting/",
+      "to": "admin/quiz/sitting/"
+    },
+    {
+      "from": "admin/quiz/sitting/add/",
+      "to": "admin/quiz/quiz/add/"
+    },
+    {
+      "from": "admin/quiz/sitting/add/",
+      "to": "admin/quiz/sitting/"
+    },
+    {
+      "from": "admin/quiz/sitting/add/",
+      "to": "admin/quiz/sitting/add/"
+    },
+    {
+      "from": "admin/result/",
+      "to": "admin/password_change/"
+    },
+    {
+      "from": "admin/result/result/",
+      "to": "admin/result/"
+    },
+    {
+      "from": "admin/result/result/",
+      "to": "admin/result/result/"
+    },
+    {
+      "from": "admin/result/result/add/",
+      "to": "admin/result/result/"
+    },
+    {
+      "from": "admin/result/result/add/",
+      "to": "admin/result/result/add/"
+    },
+    {
+      "from": "admin/result/takencourse/",
+      "to": "admin/result/takencourse/"
+    },
+    {
+      "from": "admin/result/takencourse/",
+      "to": "admin/result/takencourse/add/"
+    },
+    {
+      "from": "admin/result/takencourse/add/",
+      "to": "admin/accounts/student/add/"
+    },
+    {
+      "from": "admin/result/takencourse/add/",
+      "to": "admin/course/course/add/"
+    },
+    {
+      "from": "admin/result/takencourse/add/",
+      "to": "admin/result/result/add/"
+    },
+    {
+      "from": "admin/result/takencourse/add/",
+      "to": "admin/result/takencourse/add/"
+    },
+    {
+      "from": "dashboard/",
+      "to": "search/"
+    },
+    {
+      "from": "item/13/delete/",
+      "to": "./"
+    },
+    {
+      "from": "programs/",
+      "to": "programs/"
+    },
+    {
+      "from": "programs/",
+      "to": "programs/?csrfmiddlewaretoken=p1&program_filter=p1"
+    },
+    {
+      "from": "programs/",
+      "to": "programs/add/"
+    },
+    {
+      "from": "programs/",
+      "to": "search/"
+    },
+    {
+      "from": "programs/13/course/add/",
+      "to": "programs/"
+    },
+    {
+      "from": "programs/13/course/add/",
+      "to": "programs/13/course/add/"
+    },
+    {
+      "from": "programs/13/course/add/",
+      "to": "search/"
+    },
+    {
+      "from": "programs/13/detail/",
+      "to": "programs/13/detail/"
+    },
+    {
+      "from": "programs/13/detail/",
+      "to": "programs/13/detail/?code=p1&name=p1&year=p1"
+    },
+    {
+      "from": "programs/13/detail/",
+      "to": "programs/course/delete/software-testing/"
+    },
+    {
+      "from": "programs/13/detail/",
+      "to": "programs/course/secure-software-engineering/edit/"
+    },
+    {
+      "from": "programs/13/detail/",
+      "to": "search/"
+    },
+    {
+      "from": "programs/13/detail/?code=p1&name=p1&year=p1",
+      "to": "programs/13/detail/"
+    },
+    {
+      "from": "programs/13/detail/?code=p1&name=p1&year=p1",
+      "to": "search/"
+    },
+    {
+      "from": "programs/?csrfmiddlewaretoken=p1&program_filter=p1",
+      "to": "programs/?csrfmiddlewaretoken=p1&program_filter=p1"
+    },
+    {
+      "from": "programs/?csrfmiddlewaretoken=p1&program_filter=p1",
+      "to": "search/"
+    },
+    {
+      "from": "programs/add/",
+      "to": "accounts/setting/"
+    },
+    {
+      "from": "programs/add/",
+      "to": "programs/"
+    },
+    {
+      "from": "programs/add/",
+      "to": "programs/add/"
+    },
+    {
+      "from": "programs/add/",
+      "to": "search/"
+    },
+    {
+      "from": "programs/course/delete/software-testing/",
+      "to": "programs/13/detail/"
+    },
+    {
+      "from": "programs/course/secure-software-engineering/edit/",
+      "to": "programs/13/course/add/"
+    },
+    {
+      "from": "programs/course/secure-software-engineering/edit/",
+      "to": "programs/13/detail/"
+    },
+    {
+      "from": "programs/course/secure-software-engineering/edit/",
+      "to": "programs/course/secure-software-engineering/edit/"
+    },
+    {
+      "from": "programs/course/secure-software-engineering/edit/",
+      "to": "search/"
+    },
+    {
+      "from": "quiz/marking_list/",
+      "to": "quiz/marking_list/"
+    },
+    {
+      "from": "quiz/marking_list/",
+      "to": "quiz/marking_list/?quiz_filter=p1&user_filter=p1"
+    },
+    {
+      "from": "quiz/marking_list/",
+      "to": "search/"
+    },
+    {
+      "from": "quiz/marking_list/?quiz_filter=p1&user_filter=p1",
+      "to": "accounts/students/"
+    },
+    {
+      "from": "quiz/marking_list/?quiz_filter=p1&user_filter=p1",
+      "to": "quiz/marking_list/?quiz_filter=p1&user_filter=p1"
+    },
+    {
+      "from": "quiz/marking_list/?quiz_filter=p1&user_filter=p1",
+      "to": "search/"
+    },
+    {
+      "from": "quiz/progress/",
+      "to": "quiz/marking_list/"
+    },
+    {
+      "from": "quiz/progress/",
+      "to": "search/"
+    },
+    {
+      "from": "search/",
+      "to": "search/"
+    },
+    {
+      "from": "search/",
+      "to": "semester/"
+    },
+    {
+      "from": "semester/",
+      "to": "search/"
+    },
+    {
+      "from": "semester/",
+      "to": "semester/add/"
+    },
+    {
+      "from": "semester/",
+      "to": "session/"
+    },
+    {
+      "from": "semester/add/",
+      "to": "search/"
+    },
+    {
+      "from": "semester/add/",
+      "to": "semester/add/"
+    },
+    {
+      "from": "session/",
+      "to": "quiz/progress/"
+    },
+    {
+      "from": "session/",
+      "to": "search/"
+    },
+    {
+      "from": "session/",
+      "to": "session/2/delete/"
+    },
+    {
+      "from": "session/",
+      "to": "session/add/"
+    },
+    {
+      "from": "session/2/delete/",
+      "to": "session/"
+    },
+    {
+      "from": "session/add/",
+      "to": "search/"
+    },
+    {
+      "from": "session/add/",
+      "to": "session/add/"
+    }
+  ],
+  "requests": {
+    "admin/": {
+      "method": "GET",
+      "params": {},
+      "referer": null
+    },
+    "accounts/login/?next=%2F": {
+      "method": "POST",
+      "params": {
+        "next": "/",
+        "csrfmiddlewaretoken": "hlAH9xQxUDG2KOl85YgXmVWVemfpPRG1SFoceAIDhT2PuZ3XeoC7CiZ38NVaa3rW",
+        "username": "admin",
+        "password": "admin"
+      },
+      "referer": null
+    },
+    "favicon.ico": {
+      "method": "GET",
+      "params": {},
+      "referer": null
+    },
+    "./": {
+      "method": "GET",
+      "params": {},
+      "referer": null
+    },
+    "admin/course/courseallocation/1/change/": {
+      "method": "GET",
+      "params": {},
+      "referer": "admin/"
+    },
+    "admin/result/takencourse/": {
+      "method": "POST",
+      "params": {
+        "csrfmiddlewaretoken": "Tu5hwcoAt30FCHoo10aAFE6l2tU895HSYNyDcsUzu4xApf9LtMxQQZv4RGSxUl3G",
+        "action": "value_bcf31d17",
+        "select_across": "0"
+      },
+      "referer": "admin/result/takencourse/"
+    },
+    "admin/result/takencourse/add/": {
+      "method": "POST",
+      "params": {
+        "csrfmiddlewaretoken": "v3YsVwTnDhxX3exaaJ0GAcAvbqPlmieSAmrOBMpmEi4SQMixCvnWLxZe0DNK7yAG",
+        "student": "2",
+        "course": "1",
+        "assignment": "0.0",
+        "mid_exam": "0.0",
+        "quiz": "0.0",
+        "attendance": "0.0",
+        "final_exam": "0.0",
+        "total": "0.0",
+        "grade": "value_cb5c031a",
+        "point": "0.0",
+        "comment": "comment_0db90afe",
+        "_save": "Save",
+        "_addanother": "Save and add another",
+        "_continue": "Save and continue editing"
+      },
+      "referer": "admin/result/takencourse/add/"
+    },
+    "admin/course/course/add/": {
+      "method": "POST",
+      "params": {
+        "csrfmiddlewaretoken": "YLOo47tgDi7D2M94zHPTdvWPYo7ad3EZ34hKKnZfEjEyPkUr1tc9oQlyNB5zYj0N",
+        "_popup": "1",
+        "_to_field": "id",
+        "slug": "value_539a34ca",
+        "title": "DRHL Test Title",
+        "code": "DRHL101",
+        "credit": "0",
+        "summary": "DRHL generated summary for access-control testing.",
+        "program": "1",
+        "level": "Bachloar",
+        "year": "1",
+        "semester": "First",
+        "is_elective": "false",
+        "_save": "Save"
+      },
+      "referer": "admin/course/course/add/"
+    },
+    "admin/course/program/add/": {
+      "method": "POST",
+      "params": {
+        "csrfmiddlewaretoken": "bp0pcNj9ofh6iA0PrbFez1KwuTjxO5TJgItLS3P8pgO158LcTX2uKm9fj6hWzlfx",
+        "_popup": "1",
+        "_to_field": "id",
+        "title": "DRHL Test Title",
+        "summary": "DRHL generated summary for access-control testing.",
+        "_save": "Save"
+      },
+      "referer": "admin/course/program/add/"
+    },
+    "admin/accounts/student/add/": {
+      "method": "POST",
+      "params": {
+        "csrfmiddlewaretoken": "HZbrTypvm9kh5z2nAChxkF5VSCELIDBzMiENzOVunaRcS7NK2oENv0uEHPCatTXn",
+        "_popup": "1",
+        "_to_field": "id",
+        "student": "2",
+        "level": "Bachloar",
+        "department": "1",
+        "_save": "Save"
+      },
+      "referer": "admin/accounts/student/add/"
+    },
+    "admin/accounts/user/add/": {
+      "method": "POST",
+      "params": {
+        "csrfmiddlewaretoken": "xos63YWnyUked7t7BL4tXv4GxkV7WQwqCHVsJesmzVR90Feu3xrJ8QtpmxTwH6Se",
+        "_popup": "1",
+        "_to_field": "id",
+        "password": "wojiaoliu456",
+        "last_login_0": "text_eb7eb907",
+        "last_login_1": "text_06888c91",
+        "groups": "value_0597b344",
+        "user_permissions": "value_50216e35",
+        "username": "drhl_user",
+        "first_name": "DRHL",
+        "last_name": "Tester",
+        "is_active": "on",
+        "date_joined_0": "2026-07-03",
+        "date_joined_1": "02:16:02",
+        "initial-date_joined_0": "2026-07-03",
+        "initial-date_joined_1": "02:16:02",
+        "phone": "13800000000",
+        "address": "DRHL test address",
+        "email": "drhl@example.test",
+        "_save": "Save"
+      },
+      "referer": "admin/accounts/user/add/"
+    },
+    "admin/auth/group/add/": {
+      "method": "POST",
+      "params": {
+        "csrfmiddlewaretoken": "bot032Em6Ddwzb9I2jVxmA2BifKxVuQWgHWmJial7EKrmJU5u5iNxVrk7sIWGKcK",
+        "_popup": "1",
+        "_to_field": "id",
+        "name": "DRHL Test Name",
+        "permissions_old": "value_2acd1f5e",
+        "permissions": "value_75c635a3",
+        "_save": "Save"
+      },
+      "referer": "admin/auth/group/add/"
+    },
+    "admin/result/result/add/": {
+      "method": "POST",
+      "params": {
+        "csrfmiddlewaretoken": "exrGi8aiCejQWiWG7C7F2bOQK8ZPgzMMjQU2YoGhDfQLJQH3zouVdwdzzlXe1P8A",
+        "student": "2",
+        "gpa": "1",
+        "cgpa": "1",
+        "semester": "First",
+        "session": "2025/2026",
+        "level": "Bachloar",
+        "_save": "Save",
+        "_addanother": "Save and add another",
+        "_continue": "Save and continue editing"
+      },
+      "referer": "admin/result/result/add/"
+    },
+    "admin/result/result/": {
+      "method": "POST",
+      "params": {
+        "csrfmiddlewaretoken": "4Hygl17HFJD3L0dbpQzD7eGtPQBrHn8Z901C1hDGGKaYyyYyRCWTiz5cE3zQsDuN",
+        "action": "value_ad77efa3",
+        "select_across": "0"
+      },
+      "referer": "admin/result/result/"
+    },
+    "admin/result/": {
+      "method": "GET",
+      "params": {},
+      "referer": "admin/result/result/"
+    },
+    "admin/password_change/": {
+      "method": "POST",
+      "params": {
+        "csrfmiddlewaretoken": "SGm4eQ3nB8fn9VHD2SzJGyydO2NklD2RXZPqU6zmC9MiWts0uEWZRTXWDfLJ6ToF",
+        "old_password": "wojiaoliu456",
+        "new_password1": "wojiaoliu456",
+        "new_password2": "wojiaoliu456"
+      },
+      "referer": "admin/password_change/"
+    },
+    "admin/quiz/progress/add/": {
+      "method": "POST",
+      "params": {
+        "csrfmiddlewaretoken": "gd6aDP98ZzckWgiQt40h5RhaVogNu1dnlwzwj5F70AJfJO3dVQnxgcGTKBecfhzb",
+        "user": "value_fee856ce",
+        "score": "80",
+        "_save": "Save",
+        "_addanother": "Save and add another",
+        "_continue": "Save and continue editing"
+      },
+      "referer": "admin/quiz/progress/add/"
+    },
+    "admin/quiz/progress/": {
+      "method": "POST",
+      "params": {
+        "csrfmiddlewaretoken": "OXsXCBfG21IghsMwAo4fCbVJwYo7qVexTgVjiRLF32fb40xT2arvNwkslbmwbbAl",
+        "action": "value_d9c8ad4b",
+        "select_across": "0"
+      },
+      "referer": "admin/quiz/progress/"
+    },
+    "admin/quiz/sitting/add/": {
+      "method": "POST",
+      "params": {
+        "csrfmiddlewaretoken": "b3oxPQDk3NMPmVtot6oAEAnVrVVCoWixgmRTv69j4OjK9teLVSLQPVMEg8T19cEl",
+        "user": "value_fe5e3c99",
+        "quiz": "value_1be2d5fe",
+        "course": "1",
+        "question_order": "value_3767b832",
+        "question_list": "value_1bd1c86b",
+        "incorrect_questions": "value_4152c93e",
+        "current_score": "1",
+        "user_answers": "{}",
+        "end_0": "value_7b310391",
+        "end_1": "value_832ae858",
+        "_save": "Save",
+        "_addanother": "Save and add another",
+        "_continue": "Save and continue editing"
+      },
+      "referer": "admin/quiz/sitting/add/"
+    },
+    "admin/quiz/quiz/add/": {
+      "method": "POST",
+      "params": {
+        "csrfmiddlewaretoken": "LeeCYQwe52tqbgdl7kd7QwuiBCpfy4miQxHYE62d630lYOYIz6An1RT1qPnEjkI6",
+        "_popup": "1",
+        "_to_field": "id",
+        "course": "1",
+        "title": "DRHL Test Title",
+        "slug": "value_6d3fc9b3",
+        "description": "DRHL generated description for access-control testing.",
+        "category": "value_283cb062",
+        "pass_mark": "50",
+        "questions_old": "value_377f3129",
+        "questions": "value_709fc1bf",
+        "_save": "Save"
+      },
+      "referer": "admin/quiz/quiz/add/"
+    },
+    "admin/quiz/sitting/": {
+      "method": "POST",
+      "params": {
+        "csrfmiddlewaretoken": "3aJug2PNEcXfXTZbKOs57iNTeXDsJIRc8tcQWilMFduaKrKycAPliDcC3aBRuYd0"
+      },
+      "referer": "admin/quiz/sitting/"
+    },
+    "admin/quiz/quiz/": {
+      "method": "POST",
+      "params": {
+        "csrfmiddlewaretoken": "YwH4m1mYpimRpHimRYwsVEM5P5DGt7fb3Paq2hSXqjTMcf3JjKTI6ZbOEiB5enBZ"
+      },
+      "referer": "admin/quiz/quiz/"
+    },
+    "admin/quiz/mcquestion/add/": {
+      "method": "POST",
+      "params": {
+        "csrfmiddlewaretoken": "K8f9Hcx7ePb2cbRpCqdrB2YunyO9EeptPrIvns36fQIXZJCM4cAHMnndcLMypuLh",
+        "content": "DRHL generated content for access-control testing.",
+        "quiz_old": "value_471be380",
+        "quiz": "value_614f2b46",
+        "explanation": "value_cc9393b7",
+        "choice_order": "value_484d8a0b",
+        "choice_set-TOTAL_FORMS": "3",
+        "choice_set-INITIAL_FORMS": "0",
+        "choice_set-MIN_NUM_FORMS": "0",
+        "choice_set-MAX_NUM_FORMS": "1000",
+        "choice_set-0-id": "1",
+        "choice_set-0-question": "value_ad98adf3",
+        "choice_set-0-choice": "value_5587bead",
+        "choice_set-1-id": "1",
+        "choice_set-1-question": "value_e2c0429c",
+        "choice_set-1-choice": "value_eb5a8bbe",
+        "choice_set-2-id": "1",
+        "choice_set-2-question": "value_b759c943",
+        "choice_set-2-choice": "value_cbcc3b67",
+        "choice_set-__prefix__-id": "1",
+        "choice_set-__prefix__-question": "value_fdd61bc1",
+        "choice_set-__prefix__-choice": "value_01e591fc",
+        "_save": "Save",
+        "_addanother": "Save and add another",
+        "_continue": "Save and continue editing"
+      },
+      "referer": "admin/quiz/mcquestion/add/"
+    },
+    "admin/quiz/mcquestion/": {
+      "method": "POST",
+      "params": {
+        "csrfmiddlewaretoken": "BzH0eA5Srkvm8bsx0ewH4oPkgrk9gW1zGSamUQBRsl2hVJdUs0TXfJe35Eiy1cnn"
+      },
+      "referer": "admin/quiz/mcquestion/"
+    },
+    "admin/quiz/essay_question/add/": {
+      "method": "POST",
+      "params": {
+        "csrfmiddlewaretoken": "CXrt1cE9jGY6PqJqTgDRbUApWhl40i2RHgUPHsa8kHv1CYuNl207mfZ8LujtLyoF",
+        "content": "DRHL generated content for access-control testing.",
+        "quiz_old": "value_4bbc4f45",
+        "quiz": "value_6d6e064e",
+        "explanation": "value_e39a87e8",
+        "_save": "Save",
+        "_addanother": "Save and add another",
+        "_continue": "Save and continue editing"
+      },
+      "referer": "admin/quiz/essay_question/add/"
+    },
+    "admin/quiz/essay_question/": {
+      "method": "POST",
+      "params": {
+        "csrfmiddlewaretoken": "OTcXb6V7enZ0c9jaFKrb409Ms3qtqQePTcFjRmr6fowVZH4x7wOrflyvhgoSb6AD",
+        "action": "value_4e5aa4a9",
+        "select_across": "0"
+      },
+      "referer": "admin/quiz/essay_question/"
+    },
+    "admin/quiz/": {
+      "method": "GET",
+      "params": {},
+      "referer": "admin/quiz/essay_question/"
+    },
+    "search/": {
+      "method": "GET",
+      "params": {
+        "q": "DRHL"
+      },
+      "referer": "add_item/"
+    },
+    "programs/13/detail/": {
+      "method": "GET",
+      "params": {
+        "name": "DRHL Test Name",
+        "code": "DRHL101",
+        "year": "1"
+      },
+      "referer": "programs/13/detail/"
+    },
+    "programs/13/detail/?code=p1&name=p1&year=p1": {
+      "method": "GET",
+      "params": {
+        "name": "DRHL Test Name",
+        "code": "DRHL101",
+        "year": "1"
+      },
+      "referer": "programs/13/detail/"
+    },
+    "programs/course/delete/software-testing/": {
+      "method": "GET",
+      "params": {},
+      "referer": "programs/13/detail/"
+    },
+    "programs/course/secure-software-engineering/edit/": {
+      "method": "POST",
+      "params": {
+        "csrfmiddlewaretoken": "52OcVtGHKlG1BOwFlbHLkARXZzFuO8ZOalhyBJcGLmdWomh2NX41vVgGOMDTzolC",
+        "title": "Secure Software Engineering",
+        "code": "DRHL206",
+        "summary": "Secure Software Engineering generated for DRHL access-control experiments.",
+        "program": "13",
+        "credit": "3",
+        "year": "4",
+        "semester": "Second",
+        "level": "Bachloar",
+        "is_elective": "false"
+      },
+      "referer": "programs/course/secure-software-engineering/edit/"
+    },
+    "programs/13/course/add/": {
+      "method": "POST",
+      "params": {
+        "csrfmiddlewaretoken": "dyb9DqTiHJbcAzPaj3fAIeJ8BSaZF9jEiREvjGphIKI7n7AxLPCQTz8Rq58oqpFs",
+        "title": "DRHL Test Title",
+        "code": "DRHL101",
+        "summary": "DRHL generated summary for access-control testing.",
+        "program": "13",
+        "credit": "0",
+        "year": "1",
+        "semester": "First",
+        "level": "Bachloar",
+        "is_elective": "false"
+      },
+      "referer": "programs/13/course/add/"
+    },
+    "programs/": {
+      "method": "GET",
+      "params": {
+        "csrfmiddlewaretoken": "15c2OKXZB4heZeo4J4O25uz4vO8rVyx66oFou0tYC5O9MM9rbQbigPYNk16QGOTU",
+        "program_filter": "value_6fed2064"
+      },
+      "referer": "programs/"
+    },
+    "programs/?csrfmiddlewaretoken=p1&program_filter=p1": {
+      "method": "GET",
+      "params": {
+        "csrfmiddlewaretoken": "pX4P3S6MRZfoTo2mjGARKE6N3IWB6o8NugxbJ8CLS0MjGWNJLsX7VZvwSVU0REuB",
+        "program_filter": "value_6fed2064"
+      },
+      "referer": "programs/?csrfmiddlewaretoken=p1&program_filter=p1"
+    },
+    "programs/add/": {
+      "method": "POST",
+      "params": {
+        "csrfmiddlewaretoken": "0fJ5tD4zUAnppMAWB8ko0TOPEMaggRvd5ycr9TAyVBUkcklj3UHEbedytZ8F17R1",
+        "title": "DRHL Test Title",
+        "summary": "DRHL generated summary for access-control testing."
+      },
+      "referer": "programs/add/"
+    },
+    "accounts/setting/": {
+      "method": "POST",
+      "params": {
+        "csrfmiddlewaretoken": "nYU5IOYj4YFoBw2J8yNpkvDvLtgucfskshnro4ui5Zcjo4N6AkaFvQ2eAGeTXvO8",
+        "email": "admin@qq.com",
+        "first_name": "DRHL",
+        "last_name": "Tester",
+        "phone": "13800000000",
+        "address": "DRHL test address"
+      },
+      "referer": "accounts/setting/"
+    },
+    "accounts/profile/": {
+      "method": "GET",
+      "params": {},
+      "referer": "accounts/setting/"
+    },
+    "accounts/change_password/": {
+      "method": "POST",
+      "params": {
+        "csrfmiddlewaretoken": "WpR92THtNbRuMDRuvfwKtzswuYtWNW4C1IkvI9dsOcopzbCRX1T0EURfjbrlycqq",
+        "old_password": "wojiaoliu456",
+        "new_password1": "wojiaoliu456",
+        "new_password2": "wojiaoliu456"
+      },
+      "referer": "accounts/change_password/"
+    },
+    "accounts/admin_panel/": {
+      "method": "GET",
+      "params": {},
+      "referer": "accounts/profile/"
+    },
+    "semester/": {
+      "method": "GET",
+      "params": {},
+      "referer": "search/"
+    },
+    "session/": {
+      "method": "GET",
+      "params": {},
+      "referer": "semester/"
+    },
+    "quiz/progress/": {
+      "method": "GET",
+      "params": {},
+      "referer": "session/"
+    },
+    "quiz/marking_list/": {
+      "method": "GET",
+      "params": {
+        "user_filter": "value_3836fc26",
+        "quiz_filter": "value_efb408ae"
+      },
+      "referer": "quiz/marking_list/"
+    },
+    "quiz/marking_list/?quiz_filter=p1&user_filter=p1": {
+      "method": "GET",
+      "params": {
+        "user_filter": "value_3836fc26",
+        "quiz_filter": "value_efb408ae"
+      },
+      "referer": "quiz/marking_list/?quiz_filter=p1&user_filter=p1"
+    },
+    "accounts/students/": {
+      "method": "GET",
+      "params": {
+        "student_id": "1",
+        "name": "DRHL Test Name",
+        "department": "1"
+      },
+      "referer": "accounts/students/"
+    },
+    "accounts/students/17/delete/": {
+      "method": "GET",
+      "params": {
+        "csrfmiddlewaretoken": "POKta0LGZdmQfjId5OKKOXC0esARgjm4U7dPQghF0eTL2RtAxA70Zi1J3Fyg1zIS"
+      },
+      "referer": "accounts/students/"
+    },
+    "accounts/students/18/delete/": {
+      "method": "GET",
+      "params": {
+        "csrfmiddlewaretoken": "WLlmVB1hRUJ1zeFH8JxLkMlOi9ymIy9H14OIBRxgSVgWmMq4AvU1v7Kx7mwLtOvv"
+      },
+      "referer": "accounts/students/"
+    },
+    "accounts/students/?department=p1&name=p1&student_id=p1": {
+      "method": "GET",
+      "params": {
+        "student_id": "1",
+        "name": "DRHL Test Name",
+        "department": "1"
+      },
+      "referer": "accounts/students/?department=p1&name=p1&student_id=p1"
+    },
+    "accounts/students/17/delete/?csrfmiddlewaretoken=p1": {
+      "method": "GET",
+      "params": {
+        "csrfmiddlewaretoken": "POKta0LGZdmQfjId5OKKOXC0esARgjm4U7dPQghF0eTL2RtAxA70Zi1J3Fyg1zIS"
+      },
+      "referer": "accounts/students/"
+    },
+    "accounts/student/19/edit/": {
+      "method": "POST",
+      "params": {
+        "csrfmiddlewaretoken": "UaIsHZ13qUo3SLgtpCe0HKOmtuH6Fk8fZtbOnfx2rVVYFj1QRoBgS5d5iHFvqAu3",
+        "email": "user2@qq.com",
+        "first_name": "l",
+        "last_name": "hll",
+        "phone": "18522255555",
+        "address": "wqeqwe"
+      },
+      "referer": "accounts/student/19/edit/"
+    },
+    "accounts/profile/19/detail/": {
+      "method": "GET",
+      "params": {},
+      "referer": "accounts/student/19/edit/"
+    },
+    "accounts/lecturers/": {
+      "method": "POST",
+      "params": {
+        "csrfmiddlewaretoken": "wPI9MiY9nDrSTbV4855BwqIRYndXBrrpB8bvsyu8oEYNGJGrARsRHL7ANAbmmHNd",
+        "id_no": "value_67d97e90",
+        "name": "DRHL Test Name",
+        "email": "drhl@example.test"
+      },
+      "referer": "accounts/lecturers/"
+    },
+    "dashboard/": {
+      "method": "GET",
+      "params": {},
+      "referer": "accounts/lecturers/"
+    },
+    "accounts/lecturer/add/": {
+      "method": "POST",
+      "params": {
+        "csrfmiddlewaretoken": "gHshxsz1KrBemrCtUjojDba4o1HDjowYl0VDdI50Ls899ZnQm5LzOwzNdeF24ESM",
+        "username": "drhl_user",
+        "password1": "wojiaoliu456",
+        "password2": "wojiaoliu456",
+        "first_name": "DRHL",
+        "last_name": "Tester",
+        "email": "drhl@example.test",
+        "address": "DRHL test address",
+        "phone": "13800000000"
+      },
+      "referer": "accounts/lecturer/add/"
+    },
+    "accounts/lecturers/20/delete/": {
+      "method": "GET",
+      "params": {
+        "csrfmiddlewaretoken": "efdJggc4hNs4NFNeKXU6s2BnliF97A7sjyG5WwI3iOZZAdyBcJhmDn06avDySQtg"
+      },
+      "referer": "accounts/lecturers/"
+    },
+    "accounts/student/add/": {
+      "method": "POST",
+      "params": {
+        "csrfmiddlewaretoken": "h95Jb2RlJnjVdbUAiFQ0aMn1LZNDXKesmsy5RinkKoQQ0JFXKrdgl7MKAcL2I0Ag",
+        "username": "drhl_user",
+        "password1": "wojiaoliu456",
+        "password2": "wojiaoliu456",
+        "first_name": "DRHL",
+        "last_name": "Tester",
+        "email": "drhl@example.test",
+        "address": "DRHL test address",
+        "phone": "13800000000",
+        "department": "1",
+        "level": "Bachloar"
+      },
+      "referer": "accounts/student/add/"
+    },
+    "session/2/delete/": {
+      "method": "GET",
+      "params": {},
+      "referer": "session/"
+    },
+    "session/add/": {
+      "method": "POST",
+      "params": {
+        "csrfmiddlewaretoken": "NZmlKkkGc7Qr7OFun8t0q9okd8QLQDFoSiPHqAQFd8nmUmqRPUQgBuN32lOaBT1c",
+        "session": "2025/2026",
+        "is_current_session": "false",
+        "next_session_begins": "value_690663ef"
+      },
+      "referer": "session/add/"
+    },
+    "semester/add/": {
+      "method": "POST",
+      "params": {
+        "csrfmiddlewaretoken": "TUEcQ2bHiMVJakQEsqONqwK5EBGSMmoXYd7ywiHGjNsEXSB1Ucb3BR9OtOEhxCKL",
+        "semester": "First",
+        "is_current_semester": "True",
+        "session": "2025/2026",
+        "next_semester_begins": "value_3d75e88e"
+      },
+      "referer": "semester/add/"
+    },
+    "item/13/delete/": {
+      "method": "GET",
+      "params": {},
+      "referer": "./"
+    },
+    "add_item/": {
+      "method": "POST",
+      "params": {
+        "csrfmiddlewaretoken": "vcHyvIO6tUBwPdo6v61kB2J9XmZBEppEAvaUbYk5uV8rCL9tXSoAMn8SMzX0pFLs",
+        "title": "DRHL Test Title",
+        "summary": "DRHL generated summary for access-control testing.",
+        "posted_as": "value_7f55105d"
+      },
+      "referer": "add_item/"
+    },
+    "admin/course/upload/add/": {
+      "method": "POST",
+      "params": {
+        "csrfmiddlewaretoken": "XhCLvHHovPk8gi1NsL1uOUZlhDDVxR5N2A57bXdnwQR33QMaUxoKZfo46QBki7rB",
+        "title": "DRHL Test Title",
+        "course": "1",
+        "_save": "Save",
+        "_addanother": "Save and add another",
+        "_continue": "Save and continue editing"
+      },
+      "referer": "admin/course/upload/add/"
+    },
+    "admin/course/upload/": {
+      "method": "POST",
+      "params": {
+        "csrfmiddlewaretoken": "N9pqisyx1gjMelfpURwgp9mhStWAZUH6SsSMYI4w2hQH1T0MmDTwAuL0HGUZKa3U"
+      },
+      "referer": "admin/course/upload/"
+    },
+    "admin/course/program/": {
+      "method": "POST",
+      "params": {
+        "csrfmiddlewaretoken": "43qaY3xWQDvUV5K4ZhO4VAmydBaBmE839mTwEj3VRE2PIDvrr3bk6VLh2O807UuR",
+        "action": "value_33795189",
+        "select_across": "0"
+      },
+      "referer": "admin/course/program/"
+    },
+    "admin/course/course/": {
+      "method": "POST",
+      "params": {
+        "csrfmiddlewaretoken": "sjdwoDuWLG3H32FqLxcBl0Ex7xBgzzxOxCGS4T0VMHACQAqNdjzRwl3gWKzFkPTC",
+        "action": "value_11f682d2",
+        "select_across": "0"
+      },
+      "referer": "admin/course/course/"
+    },
+    "admin/course/courseallocation/add/": {
+      "method": "POST",
+      "params": {
+        "csrfmiddlewaretoken": "3eOFf3BpDax8jb5768dLDeAYwOG6wVaX8xh1Vj7oEb436JQuyUA1OzZHl1EvhbwL",
+        "lecturer": "4",
+        "courses": "value_e9f925da",
+        "session": "2025/2026",
+        "_save": "Save",
+        "_addanother": "Save and add another",
+        "_continue": "Save and continue editing"
+      },
+      "referer": "admin/course/courseallocation/add/"
+    },
+    "admin/app/session/add/": {
+      "method": "POST",
+      "params": {
+        "csrfmiddlewaretoken": "zqQZkVMZYsXmH2YcaEBFgwSye77ewM3lEJjl0biYZtuhuAJzCqYVrRhh3k5Dh2p9",
+        "_popup": "1",
+        "_to_field": "id",
+        "session": "2025/2026",
+        "is_current_session": "false",
+        "next_session_begins": "value_af6a31ec",
+        "_save": "Save"
+      },
+      "referer": "admin/app/session/add/"
+    },
+    "admin/course/courseallocation/": {
+      "method": "POST",
+      "params": {
+        "csrfmiddlewaretoken": "Fycy8l8F46fIUUxLhRFopueAP6FXzoaNKRFUOBEE57MDHsi8JD2EAPDjEjDmkEwB",
+        "action": "value_835bca2c",
+        "select_across": "0"
+      },
+      "referer": "admin/course/courseallocation/"
+    },
+    "admin/course/": {
+      "method": "GET",
+      "params": {},
+      "referer": "admin/course/courseallocation/"
+    },
+    "admin/auth/group/": {
+      "method": "POST",
+      "params": {
+        "csrfmiddlewaretoken": "5oSJ0RNelREk06SjW0BfIXxNLyqmKRw0aHl5G7jdmSbfNEDGoMYvTiWwALoLv7SO",
+        "action": "value_f27d28e5",
+        "select_across": "0"
+      },
+      "referer": "admin/auth/group/"
+    },
+    "admin/auth/": {
+      "method": "GET",
+      "params": {},
+      "referer": "admin/auth/group/"
+    },
+    "admin/app/session/": {
+      "method": "POST",
+      "params": {
+        "csrfmiddlewaretoken": "LMQohJYPyZ427EEhfNk2EFzmw0DnnaqfQ5jKXZuOz0BXUcpEHzHiP0Y5ldBM8qM3",
+        "action": "value_a76ec735",
+        "select_across": "0"
+      },
+      "referer": "admin/app/session/"
+    },
+    "admin/app/semester/add/": {
+      "method": "POST",
+      "params": {
+        "csrfmiddlewaretoken": "jEP58T8QEBpRvh3vXVvDuj5iKRUn0Z7woXirO9EPFCWMiPOSpHSTFEu1z4SMLftk",
+        "semester": "First",
+        "is_current_semester": "false",
+        "session": "2025/2026",
+        "next_semester_begins": "value_addf4f0f",
+        "_save": "Save",
+        "_addanother": "Save and add another",
+        "_continue": "Save and continue editing"
+      },
+      "referer": "admin/app/semester/add/"
+    },
+    "admin/app/semester/": {
+      "method": "POST",
+      "params": {
+        "csrfmiddlewaretoken": "TIW3HQmgN8KnuXgbfxctTgBe3nicIs7UY1ppn6SfO9hihv1yHjzJ4B0XSAgBtItI",
+        "action": "value_2038231c",
+        "select_across": "0"
+      },
+      "referer": "admin/app/semester/"
+    },
+    "admin/app/newsandevents/add/": {
+      "method": "POST",
+      "params": {
+        "csrfmiddlewaretoken": "hBmXxy1na6rtRGSQHtmo4GmjtBDRfFJamUPjdOxmb7YoEeDd9fJEf1L2iOBg0V5Y",
+        "title": "DRHL Test Title",
+        "summary": "DRHL generated summary for access-control testing.",
+        "posted_as": "value_8cb7becd",
+        "_save": "Save",
+        "_addanother": "Save and add another",
+        "_continue": "Save and continue editing"
+      },
+      "referer": "admin/app/newsandevents/add/"
+    },
+    "admin/app/newsandevents/": {
+      "method": "POST",
+      "params": {
+        "csrfmiddlewaretoken": "Sp5TfSacZ0JGZyorr0mEws3WnWoba32QXIyfV8Gb01gBM69OTMJUHNsFc9mAVjoE",
+        "action": "value_39ba0da0",
+        "select_across": "0"
+      },
+      "referer": "admin/app/newsandevents/"
+    },
+    "admin/app/": {
+      "method": "GET",
+      "params": {},
+      "referer": "admin/app/newsandevents/"
+    },
+    "admin/accounts/user/": {
+      "method": "POST",
+      "params": {
+        "csrfmiddlewaretoken": "FU6ef3YG4qlm2S7nwz0KPneozbJmPx2MKdzAVjuF5rShPqSKYln00ID7ooHLANoA",
+        "action": "value_656b53d8",
+        "select_across": "0"
+      },
+      "referer": "admin/accounts/user/"
+    },
+    "admin/accounts/student/": {
+      "method": "POST",
+      "params": {
+        "csrfmiddlewaretoken": "mktqiuilMFvbvREIpNU5PLJTdW3AMiZ3rDWMYKOkNG26ipp5Rzhl068C291ZxylR",
+        "action": "value_65579f7c",
+        "select_across": "0"
+      },
+      "referer": "admin/accounts/student/"
+    },
+    "admin/accounts/parent/add/": {
+      "method": "POST",
+      "params": {
+        "csrfmiddlewaretoken": "Ht1frvj0Jr5CmNeaJKbweLof0k3H4wNVMMuB7LPZKsCx9lZxbwyMp6NYPx16PM9J",
+        "user": "value_b83d31cb",
+        "student": "2",
+        "first_name": "DRHL",
+        "last_name": "Tester",
+        "phone": "13800000000",
+        "email": "drhl@example.test",
+        "relation_ship": "value_16bbe148",
+        "_save": "Save",
+        "_addanother": "Save and add another",
+        "_continue": "Save and continue editing"
+      },
+      "referer": "admin/accounts/parent/add/"
+    },
+    "admin/accounts/parent/": {
+      "method": "POST",
+      "params": {
+        "csrfmiddlewaretoken": "GaOYyknRF3vipAJmD4ptyyNDQhlQRfY7LthkeATQG42dc8uJ5QMJJTcmFujfCvkV"
+      },
+      "referer": "admin/accounts/parent/"
+    },
+    "admin/accounts/": {
+      "method": "GET",
+      "params": {},
+      "referer": "admin/accounts/parent/"
+    },
+    "result/assessment/": {
+      "method": "GET",
+      "params": {},
+      "referer": null
+    },
+    "result/grade/": {
+      "method": "GET",
+      "params": {},
+      "referer": null
+    }
+  }
+}

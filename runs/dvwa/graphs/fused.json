@@ -1,0 +1,1612 @@
+{
+  "nodes": [
+    "./",
+    "about.php",
+    "config/config.inc.php",
+    "config/config.inc.php.dist",
+    "dvwa/includes/Parsedown.php",
+    "dvwa/includes/dvwaPage.inc.php",
+    "index.php",
+    "instructions.php",
+    "instructions.php?doc=p1",
+    "login.php",
+    "logout.php",
+    "phpinfo.php",
+    "security.php",
+    "setup.php",
+    "vulnerabilities/api/",
+    "vulnerabilities/api/bootstrap.php",
+    "vulnerabilities/api/gen_openapi.php",
+    "vulnerabilities/api/index.php",
+    "vulnerabilities/api/public/index.php",
+    "vulnerabilities/api/src/GenericController.php",
+    "vulnerabilities/api/src/HealthController.php",
+    "vulnerabilities/api/src/Helpers.php",
+    "vulnerabilities/api/src/Login.php",
+    "vulnerabilities/api/src/LoginController.php",
+    "vulnerabilities/api/src/Order.php",
+    "vulnerabilities/api/src/OrderController.php",
+    "vulnerabilities/api/src/Token.php",
+    "vulnerabilities/api/src/User.php",
+    "vulnerabilities/api/src/UserController.php",
+    "vulnerabilities/authbypass/",
+    "vulnerabilities/authbypass/change_user_details.php",
+    "vulnerabilities/authbypass/get_user_data.php",
+    "vulnerabilities/authbypass/index.php",
+    "vulnerabilities/brute/",
+    "vulnerabilities/brute/?Login=p1&password=p1&username=p1",
+    "vulnerabilities/brute/index.php",
+    "vulnerabilities/captcha/",
+    "vulnerabilities/captcha/index.php",
+    "vulnerabilities/cryptography/",
+    "vulnerabilities/cryptography/index.php",
+    "vulnerabilities/csp/",
+    "vulnerabilities/csp/index.php",
+    "vulnerabilities/csrf/",
+    "vulnerabilities/csrf/?Change=p1&password_conf=p1&password_new=p1",
+    "vulnerabilities/csrf/index.php",
+    "vulnerabilities/csrf/test_credentials.php",
+    "vulnerabilities/exec/",
+    "vulnerabilities/exec/index.php",
+    "vulnerabilities/fi/?page=file1.php",
+    "vulnerabilities/fi/?page=file2.php",
+    "vulnerabilities/fi/?page=file3.php",
+    "vulnerabilities/fi/?page=include.php",
+    "vulnerabilities/fi/file1.php",
+    "vulnerabilities/fi/file2.php",
+    "vulnerabilities/fi/file3.php",
+    "vulnerabilities/fi/file4.php",
+    "vulnerabilities/fi/include.php",
+    "vulnerabilities/fi/index.php",
+    "vulnerabilities/javascript/",
+    "vulnerabilities/javascript/index.php",
+    "vulnerabilities/open_redirect/",
+    "vulnerabilities/open_redirect/index.php",
+    "vulnerabilities/open_redirect/source/info.php?id=1",
+    "vulnerabilities/open_redirect/source/info.php?id=2",
+    "vulnerabilities/open_redirect/source/low.php?redirect=info.php%3Fid%3D1",
+    "vulnerabilities/open_redirect/source/low.php?redirect=info.php%3Fid%3D2",
+    "vulnerabilities/sqli/",
+    "vulnerabilities/sqli/?Submit=p1&id=1",
+    "vulnerabilities/sqli/index.php",
+    "vulnerabilities/sqli/session-input.php",
+    "vulnerabilities/sqli/test.php",
+    "vulnerabilities/sqli_blind/",
+    "vulnerabilities/sqli_blind/?Submit=p1&id=1",
+    "vulnerabilities/sqli_blind/cookie-input.php",
+    "vulnerabilities/sqli_blind/index.php",
+    "vulnerabilities/upload/",
+    "vulnerabilities/upload/index.php",
+    "vulnerabilities/view_help.php",
+    "vulnerabilities/view_source.php",
+    "vulnerabilities/view_source_all.php",
+    "vulnerabilities/weak_id/",
+    "vulnerabilities/weak_id/index.php",
+    "vulnerabilities/xss_d/",
+    "vulnerabilities/xss_d/?default=p1",
+    "vulnerabilities/xss_d/index.php",
+    "vulnerabilities/xss_r/",
+    "vulnerabilities/xss_r/?name=p1",
+    "vulnerabilities/xss_r/index.php",
+    "vulnerabilities/xss_s/",
+    "vulnerabilities/xss_s/index.php"
+  ],
+  "edges": [
+    {
+      "from": "about.php",
+      "to": "security.php"
+    },
+    {
+      "from": "config/config.inc.php.dist",
+      "to": "instructions.php"
+    },
+    {
+      "from": "index.php",
+      "to": "login.php"
+    },
+    {
+      "from": "instructions.php",
+      "to": "config/config.inc.php.dist"
+    },
+    {
+      "from": "instructions.php",
+      "to": "instructions.php?doc=p1"
+    },
+    {
+      "from": "instructions.php?doc=p1",
+      "to": "./"
+    },
+    {
+      "from": "login.php",
+      "to": "login.php"
+    },
+    {
+      "from": "security.php",
+      "to": "security.php"
+    },
+    {
+      "from": "security.php",
+      "to": "vulnerabilities/cryptography/"
+    },
+    {
+      "from": "setup.php",
+      "to": "instructions.php"
+    },
+    {
+      "from": "setup.php",
+      "to": "setup.php"
+    },
+    {
+      "from": "vulnerabilities/api/",
+      "to": "about.php"
+    },
+    {
+      "from": "vulnerabilities/authbypass/",
+      "to": "vulnerabilities/javascript/"
+    },
+    {
+      "from": "vulnerabilities/brute/",
+      "to": "setup.php"
+    },
+    {
+      "from": "vulnerabilities/brute/",
+      "to": "vulnerabilities/brute/"
+    },
+    {
+      "from": "vulnerabilities/brute/",
+      "to": "vulnerabilities/brute/?Login=p1&password=p1&username=p1"
+    },
+    {
+      "from": "vulnerabilities/brute/?Login=p1&password=p1&username=p1",
+      "to": "vulnerabilities/brute/?Login=p1&password=p1&username=p1"
+    },
+    {
+      "from": "vulnerabilities/captcha/",
+      "to": "vulnerabilities/captcha/"
+    },
+    {
+      "from": "vulnerabilities/captcha/",
+      "to": "vulnerabilities/upload/"
+    },
+    {
+      "from": "vulnerabilities/cryptography/",
+      "to": "vulnerabilities/cryptography/index.php"
+    },
+    {
+      "from": "vulnerabilities/cryptography/",
+      "to": "vulnerabilities/open_redirect/"
+    },
+    {
+      "from": "vulnerabilities/cryptography/index.php",
+      "to": "vulnerabilities/cryptography/index.php"
+    },
+    {
+      "from": "vulnerabilities/csp/",
+      "to": "vulnerabilities/csp/"
+    },
+    {
+      "from": "vulnerabilities/csp/",
+      "to": "vulnerabilities/xss_s/"
+    },
+    {
+      "from": "vulnerabilities/csrf/",
+      "to": "vulnerabilities/csrf/"
+    },
+    {
+      "from": "vulnerabilities/csrf/",
+      "to": "vulnerabilities/csrf/?Change=p1&password_conf=p1&password_new=p1"
+    },
+    {
+      "from": "vulnerabilities/csrf/",
+      "to": "vulnerabilities/exec/"
+    },
+    {
+      "from": "vulnerabilities/csrf/?Change=p1&password_conf=p1&password_new=p1",
+      "to": "vulnerabilities/csrf/?Change=p1&password_conf=p1&password_new=p1"
+    },
+    {
+      "from": "vulnerabilities/exec/",
+      "to": "vulnerabilities/brute/"
+    },
+    {
+      "from": "vulnerabilities/exec/",
+      "to": "vulnerabilities/exec/"
+    },
+    {
+      "from": "vulnerabilities/fi/?page=file3.php",
+      "to": "vulnerabilities/csrf/"
+    },
+    {
+      "from": "vulnerabilities/fi/?page=include.php",
+      "to": "vulnerabilities/fi/?page=file1.php"
+    },
+    {
+      "from": "vulnerabilities/fi/?page=include.php",
+      "to": "vulnerabilities/fi/?page=file2.php"
+    },
+    {
+      "from": "vulnerabilities/fi/?page=include.php",
+      "to": "vulnerabilities/fi/?page=file3.php"
+    },
+    {
+      "from": "vulnerabilities/javascript/",
+      "to": "vulnerabilities/csp/"
+    },
+    {
+      "from": "vulnerabilities/javascript/",
+      "to": "vulnerabilities/javascript/"
+    },
+    {
+      "from": "vulnerabilities/open_redirect/",
+      "to": "vulnerabilities/open_redirect/source/low.php?redirect=info.php%3Fid%3D1"
+    },
+    {
+      "from": "vulnerabilities/open_redirect/",
+      "to": "vulnerabilities/open_redirect/source/low.php?redirect=info.php%3Fid%3D2"
+    },
+    {
+      "from": "vulnerabilities/open_redirect/source/info.php?id=1",
+      "to": "vulnerabilities/open_redirect/source/info.php?id=1"
+    },
+    {
+      "from": "vulnerabilities/open_redirect/source/info.php?id=2",
+      "to": "vulnerabilities/authbypass/"
+    },
+    {
+      "from": "vulnerabilities/open_redirect/source/info.php?id=2",
+      "to": "vulnerabilities/open_redirect/source/info.php?id=2"
+    },
+    {
+      "from": "vulnerabilities/open_redirect/source/low.php?redirect=info.php%3Fid%3D1",
+      "to": "vulnerabilities/open_redirect/source/info.php?id=1"
+    },
+    {
+      "from": "vulnerabilities/open_redirect/source/low.php?redirect=info.php%3Fid%3D2",
+      "to": "vulnerabilities/open_redirect/source/info.php?id=2"
+    },
+    {
+      "from": "vulnerabilities/sqli/",
+      "to": "vulnerabilities/captcha/"
+    },
+    {
+      "from": "vulnerabilities/sqli/",
+      "to": "vulnerabilities/sqli/"
+    },
+    {
+      "from": "vulnerabilities/sqli/",
+      "to": "vulnerabilities/sqli/?Submit=p1&id=1"
+    },
+    {
+      "from": "vulnerabilities/sqli/?Submit=p1&id=1",
+      "to": "vulnerabilities/sqli/?Submit=p1&id=1"
+    },
+    {
+      "from": "vulnerabilities/sqli_blind/",
+      "to": "vulnerabilities/sqli/"
+    },
+    {
+      "from": "vulnerabilities/sqli_blind/",
+      "to": "vulnerabilities/sqli_blind/"
+    },
+    {
+      "from": "vulnerabilities/sqli_blind/",
+      "to": "vulnerabilities/sqli_blind/?Submit=p1&id=1"
+    },
+    {
+      "from": "vulnerabilities/sqli_blind/?Submit=p1&id=1",
+      "to": "vulnerabilities/sqli_blind/?Submit=p1&id=1"
+    },
+    {
+      "from": "vulnerabilities/upload/",
+      "to": "vulnerabilities/fi/?page=include.php"
+    },
+    {
+      "from": "vulnerabilities/upload/",
+      "to": "vulnerabilities/upload/"
+    },
+    {
+      "from": "vulnerabilities/weak_id/",
+      "to": "vulnerabilities/sqli_blind/"
+    },
+    {
+      "from": "vulnerabilities/weak_id/",
+      "to": "vulnerabilities/weak_id/"
+    },
+    {
+      "from": "vulnerabilities/xss_d/",
+      "to": "vulnerabilities/weak_id/"
+    },
+    {
+      "from": "vulnerabilities/xss_d/",
+      "to": "vulnerabilities/xss_d/"
+    },
+    {
+      "from": "vulnerabilities/xss_d/",
+      "to": "vulnerabilities/xss_d/?default=p1"
+    },
+    {
+      "from": "vulnerabilities/xss_d/?default=p1",
+      "to": "vulnerabilities/xss_d/?default=p1"
+    },
+    {
+      "from": "vulnerabilities/xss_r/",
+      "to": "vulnerabilities/xss_d/"
+    },
+    {
+      "from": "vulnerabilities/xss_r/",
+      "to": "vulnerabilities/xss_r/"
+    },
+    {
+      "from": "vulnerabilities/xss_r/",
+      "to": "vulnerabilities/xss_r/?name=p1"
+    },
+    {
+      "from": "vulnerabilities/xss_r/?name=p1",
+      "to": "vulnerabilities/xss_r/?name=p1"
+    },
+    {
+      "from": "vulnerabilities/xss_s/",
+      "to": "vulnerabilities/xss_r/"
+    },
+    {
+      "from": "vulnerabilities/xss_s/",
+      "to": "vulnerabilities/xss_s/"
+    }
+  ],
+  "static_edges": [
+    {
+      "from": "vulnerabilities/api/public/index.php",
+      "to": "vulnerabilities/api/bootstrap.php"
+    }
+  ],
+  "node_origins": {
+    "./": [
+      "dynamic"
+    ],
+    "about.php": [
+      "dynamic",
+      "static"
+    ],
+    "config/config.inc.php": [
+      "static"
+    ],
+    "config/config.inc.php.dist": [
+      "dynamic"
+    ],
+    "dvwa/includes/Parsedown.php": [
+      "static"
+    ],
+    "dvwa/includes/dvwaPage.inc.php": [
+      "static"
+    ],
+    "index.php": [
+      "dynamic",
+      "static"
+    ],
+    "instructions.php": [
+      "dynamic",
+      "static"
+    ],
+    "instructions.php?doc=p1": [
+      "dynamic"
+    ],
+    "login.php": [
+      "dynamic",
+      "static"
+    ],
+    "logout.php": [
+      "static"
+    ],
+    "phpinfo.php": [
+      "static"
+    ],
+    "security.php": [
+      "dynamic",
+      "static"
+    ],
+    "setup.php": [
+      "dynamic",
+      "static"
+    ],
+    "vulnerabilities/api/": [
+      "dynamic"
+    ],
+    "vulnerabilities/api/bootstrap.php": [
+      "static"
+    ],
+    "vulnerabilities/api/gen_openapi.php": [
+      "static"
+    ],
+    "vulnerabilities/api/index.php": [
+      "static"
+    ],
+    "vulnerabilities/api/public/index.php": [
+      "static"
+    ],
+    "vulnerabilities/api/src/GenericController.php": [
+      "static"
+    ],
+    "vulnerabilities/api/src/HealthController.php": [
+      "static"
+    ],
+    "vulnerabilities/api/src/Helpers.php": [
+      "static"
+    ],
+    "vulnerabilities/api/src/Login.php": [
+      "static"
+    ],
+    "vulnerabilities/api/src/LoginController.php": [
+      "static"
+    ],
+    "vulnerabilities/api/src/Order.php": [
+      "static"
+    ],
+    "vulnerabilities/api/src/OrderController.php": [
+      "static"
+    ],
+    "vulnerabilities/api/src/Token.php": [
+      "static"
+    ],
+    "vulnerabilities/api/src/User.php": [
+      "static"
+    ],
+    "vulnerabilities/api/src/UserController.php": [
+      "static"
+    ],
+    "vulnerabilities/authbypass/": [
+      "dynamic"
+    ],
+    "vulnerabilities/authbypass/change_user_details.php": [
+      "static"
+    ],
+    "vulnerabilities/authbypass/get_user_data.php": [
+      "static"
+    ],
+    "vulnerabilities/authbypass/index.php": [
+      "static"
+    ],
+    "vulnerabilities/brute/": [
+      "dynamic"
+    ],
+    "vulnerabilities/brute/?Login=p1&password=p1&username=p1": [
+      "dynamic"
+    ],
+    "vulnerabilities/brute/index.php": [
+      "static"
+    ],
+    "vulnerabilities/captcha/": [
+      "dynamic"
+    ],
+    "vulnerabilities/captcha/index.php": [
+      "static"
+    ],
+    "vulnerabilities/cryptography/": [
+      "dynamic"
+    ],
+    "vulnerabilities/cryptography/index.php": [
+      "dynamic",
+      "static"
+    ],
+    "vulnerabilities/csp/": [
+      "dynamic"
+    ],
+    "vulnerabilities/csp/index.php": [
+      "static"
+    ],
+    "vulnerabilities/csrf/": [
+      "dynamic"
+    ],
+    "vulnerabilities/csrf/?Change=p1&password_conf=p1&password_new=p1": [
+      "dynamic"
+    ],
+    "vulnerabilities/csrf/index.php": [
+      "static"
+    ],
+    "vulnerabilities/csrf/test_credentials.php": [
+      "static"
+    ],
+    "vulnerabilities/exec/": [
+      "dynamic"
+    ],
+    "vulnerabilities/exec/index.php": [
+      "static"
+    ],
+    "vulnerabilities/fi/?page=file1.php": [
+      "dynamic"
+    ],
+    "vulnerabilities/fi/?page=file2.php": [
+      "dynamic"
+    ],
+    "vulnerabilities/fi/?page=file3.php": [
+      "dynamic"
+    ],
+    "vulnerabilities/fi/?page=include.php": [
+      "dynamic"
+    ],
+    "vulnerabilities/fi/file1.php": [
+      "static"
+    ],
+    "vulnerabilities/fi/file2.php": [
+      "static"
+    ],
+    "vulnerabilities/fi/file3.php": [
+      "static"
+    ],
+    "vulnerabilities/fi/file4.php": [
+      "static"
+    ],
+    "vulnerabilities/fi/include.php": [
+      "static"
+    ],
+    "vulnerabilities/fi/index.php": [
+      "static"
+    ],
+    "vulnerabilities/javascript/": [
+      "dynamic"
+    ],
+    "vulnerabilities/javascript/index.php": [
+      "static"
+    ],
+    "vulnerabilities/open_redirect/": [
+      "dynamic"
+    ],
+    "vulnerabilities/open_redirect/index.php": [
+      "static"
+    ],
+    "vulnerabilities/open_redirect/source/info.php?id=1": [
+      "dynamic"
+    ],
+    "vulnerabilities/open_redirect/source/info.php?id=2": [
+      "dynamic"
+    ],
+    "vulnerabilities/open_redirect/source/low.php?redirect=info.php%3Fid%3D1": [
+      "dynamic"
+    ],
+    "vulnerabilities/open_redirect/source/low.php?redirect=info.php%3Fid%3D2": [
+      "dynamic"
+    ],
+    "vulnerabilities/sqli/": [
+      "dynamic"
+    ],
+    "vulnerabilities/sqli/?Submit=p1&id=1": [
+      "dynamic"
+    ],
+    "vulnerabilities/sqli/index.php": [
+      "static"
+    ],
+    "vulnerabilities/sqli/session-input.php": [
+      "static"
+    ],
+    "vulnerabilities/sqli/test.php": [
+      "static"
+    ],
+    "vulnerabilities/sqli_blind/": [
+      "dynamic"
+    ],
+    "vulnerabilities/sqli_blind/?Submit=p1&id=1": [
+      "dynamic"
+    ],
+    "vulnerabilities/sqli_blind/cookie-input.php": [
+      "static"
+    ],
+    "vulnerabilities/sqli_blind/index.php": [
+      "static"
+    ],
+    "vulnerabilities/upload/": [
+      "dynamic"
+    ],
+    "vulnerabilities/upload/index.php": [
+      "static"
+    ],
+    "vulnerabilities/view_help.php": [
+      "static"
+    ],
+    "vulnerabilities/view_source.php": [
+      "static"
+    ],
+    "vulnerabilities/view_source_all.php": [
+      "static"
+    ],
+    "vulnerabilities/weak_id/": [
+      "dynamic"
+    ],
+    "vulnerabilities/weak_id/index.php": [
+      "static"
+    ],
+    "vulnerabilities/xss_d/": [
+      "dynamic"
+    ],
+    "vulnerabilities/xss_d/?default=p1": [
+      "dynamic"
+    ],
+    "vulnerabilities/xss_d/index.php": [
+      "static"
+    ],
+    "vulnerabilities/xss_r/": [
+      "dynamic"
+    ],
+    "vulnerabilities/xss_r/?name=p1": [
+      "dynamic"
+    ],
+    "vulnerabilities/xss_r/index.php": [
+      "static"
+    ],
+    "vulnerabilities/xss_s/": [
+      "dynamic"
+    ],
+    "vulnerabilities/xss_s/index.php": [
+      "static"
+    ]
+  },
+  "access": {
+    "./": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {},
+          "referer": "instructions.php?doc=p1"
+        }
+      ]
+    },
+    "about.php": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {},
+          "referer": "vulnerabilities/api/"
+        }
+      ]
+    },
+    "config/config.inc.php.dist": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {},
+          "referer": "instructions.php"
+        }
+      ]
+    },
+    "index.php": {
+      "roles": [
+        "admin",
+        "visitor"
+      ],
+      "kinds": [
+        "admin",
+        "visitor"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {},
+          "referer": null
+        },
+        {
+          "role": "visitor",
+          "kind": "visitor",
+          "method": "GET",
+          "params": {},
+          "referer": null
+        }
+      ]
+    },
+    "instructions.php": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {},
+          "referer": "setup.php"
+        }
+      ]
+    },
+    "instructions.php?doc=p1": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {
+            "doc": "copying"
+          },
+          "referer": "instructions.php"
+        }
+      ]
+    },
+    "login.php": {
+      "roles": [
+        "visitor"
+      ],
+      "kinds": [
+        "visitor"
+      ],
+      "requests": [
+        {
+          "role": "visitor",
+          "kind": "visitor",
+          "method": "POST",
+          "params": {
+            "username": "text_2320b2c3",
+            "password": "12345678",
+            "Login": "Login",
+            "user_token": "237e615d266cf809d33e4cf6fe22e19f"
+          },
+          "referer": "login.php"
+        }
+      ]
+    },
+    "security.php": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "POST",
+          "params": {
+            "security": "low",
+            "seclev_submit": "Submit",
+            "user_token": "e01ee516a56950fffa6d24e080ed4250"
+          },
+          "referer": "security.php"
+        }
+      ]
+    },
+    "setup.php": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "POST",
+          "params": {
+            "create_db": "Create / Reset Database",
+            "user_token": "50e0dbad7873804dd8779e8867552e38"
+          },
+          "referer": "setup.php"
+        }
+      ]
+    },
+    "vulnerabilities/api/": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {},
+          "referer": null
+        }
+      ]
+    },
+    "vulnerabilities/authbypass/": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {},
+          "referer": "vulnerabilities/open_redirect/source/info.php?id=2"
+        }
+      ]
+    },
+    "vulnerabilities/brute/": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {
+            "username": "text_7385575f",
+            "password": "12345678",
+            "Login": "Login"
+          },
+          "referer": "vulnerabilities/brute/"
+        }
+      ]
+    },
+    "vulnerabilities/brute/?Login=p1&password=p1&username=p1": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {
+            "username": "text_27a5e144",
+            "password": "12345678",
+            "Login": "Login"
+          },
+          "referer": "vulnerabilities/brute/?Login=p1&password=p1&username=p1"
+        }
+      ]
+    },
+    "vulnerabilities/captcha/": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "POST",
+          "params": {
+            "step": "1",
+            "password_new": "12345678",
+            "password_conf": "12345678",
+            "Change": "Change"
+          },
+          "referer": "vulnerabilities/captcha/"
+        }
+      ]
+    },
+    "vulnerabilities/cryptography/": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {},
+          "referer": "security.php"
+        }
+      ]
+    },
+    "vulnerabilities/cryptography/index.php": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "POST",
+          "params": {
+            "password": "12345678"
+          },
+          "referer": "vulnerabilities/cryptography/index.php"
+        }
+      ]
+    },
+    "vulnerabilities/csp/": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "POST",
+          "params": {
+            "include": "value_de8e0182"
+          },
+          "referer": "vulnerabilities/csp/"
+        }
+      ]
+    },
+    "vulnerabilities/csrf/": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {
+            "password_new": "12345678",
+            "password_conf": "12345678",
+            "Change": "Change"
+          },
+          "referer": "vulnerabilities/csrf/"
+        }
+      ]
+    },
+    "vulnerabilities/csrf/?Change=p1&password_conf=p1&password_new=p1": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {
+            "password_new": "12345678",
+            "password_conf": "12345678",
+            "Change": "Change"
+          },
+          "referer": "vulnerabilities/csrf/?Change=p1&password_conf=p1&password_new=p1"
+        }
+      ]
+    },
+    "vulnerabilities/exec/": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "POST",
+          "params": {
+            "ip": "value_02511d4d",
+            "Submit": "Submit"
+          },
+          "referer": "vulnerabilities/exec/"
+        }
+      ]
+    },
+    "vulnerabilities/fi/?page=file1.php": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {
+            "page": "file1.php"
+          },
+          "referer": "vulnerabilities/fi/?page=include.php"
+        }
+      ]
+    },
+    "vulnerabilities/fi/?page=file2.php": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {
+            "page": "file2.php"
+          },
+          "referer": "vulnerabilities/fi/?page=include.php"
+        }
+      ]
+    },
+    "vulnerabilities/fi/?page=file3.php": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {
+            "page": "file3.php"
+          },
+          "referer": "vulnerabilities/fi/?page=include.php"
+        }
+      ]
+    },
+    "vulnerabilities/fi/?page=include.php": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {
+            "page": "include.php"
+          },
+          "referer": "vulnerabilities/upload/"
+        }
+      ]
+    },
+    "vulnerabilities/javascript/": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "POST",
+          "params": {
+            "token": "8b479aefbd90795395b3e7089ae0dc09",
+            "phrase": "ChangeMe",
+            "send": "Submit"
+          },
+          "referer": "vulnerabilities/javascript/"
+        }
+      ]
+    },
+    "vulnerabilities/open_redirect/": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {},
+          "referer": "vulnerabilities/cryptography/"
+        }
+      ]
+    },
+    "vulnerabilities/open_redirect/source/info.php?id=1": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {
+            "id": "1"
+          },
+          "referer": "vulnerabilities/open_redirect/source/low.php?redirect=info.php%3Fid%3D1"
+        }
+      ]
+    },
+    "vulnerabilities/open_redirect/source/info.php?id=2": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {
+            "id": "2"
+          },
+          "referer": "vulnerabilities/open_redirect/source/low.php?redirect=info.php%3Fid%3D2"
+        }
+      ]
+    },
+    "vulnerabilities/open_redirect/source/low.php?redirect=info.php%3Fid%3D1": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {
+            "redirect": "info.php?id=1"
+          },
+          "referer": "vulnerabilities/open_redirect/"
+        }
+      ]
+    },
+    "vulnerabilities/open_redirect/source/low.php?redirect=info.php%3Fid%3D2": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {
+            "redirect": "info.php?id=2"
+          },
+          "referer": "vulnerabilities/open_redirect/"
+        }
+      ]
+    },
+    "vulnerabilities/sqli/": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {
+            "id": "1",
+            "Submit": "Submit"
+          },
+          "referer": "vulnerabilities/sqli/"
+        }
+      ]
+    },
+    "vulnerabilities/sqli/?Submit=p1&id=1": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {
+            "id": "1",
+            "Submit": "Submit"
+          },
+          "referer": "vulnerabilities/sqli/?Submit=p1&id=1"
+        }
+      ]
+    },
+    "vulnerabilities/sqli_blind/": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {
+            "id": "1",
+            "Submit": "Submit"
+          },
+          "referer": "vulnerabilities/sqli_blind/"
+        }
+      ]
+    },
+    "vulnerabilities/sqli_blind/?Submit=p1&id=1": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {
+            "id": "1",
+            "Submit": "Submit"
+          },
+          "referer": "vulnerabilities/sqli_blind/?Submit=p1&id=1"
+        }
+      ]
+    },
+    "vulnerabilities/upload/": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "POST",
+          "params": {
+            "MAX_FILE_SIZE": "100000",
+            "Upload": "Upload"
+          },
+          "referer": "vulnerabilities/upload/"
+        }
+      ]
+    },
+    "vulnerabilities/weak_id/": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "POST",
+          "params": {},
+          "referer": "vulnerabilities/weak_id/"
+        }
+      ]
+    },
+    "vulnerabilities/xss_d/": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {
+            "default": "English"
+          },
+          "referer": "vulnerabilities/xss_d/"
+        }
+      ]
+    },
+    "vulnerabilities/xss_d/?default=p1": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {
+            "default": "English"
+          },
+          "referer": "vulnerabilities/xss_d/?default=p1"
+        }
+      ]
+    },
+    "vulnerabilities/xss_r/": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {
+            "name": "text_fb07a4e2"
+          },
+          "referer": "vulnerabilities/xss_r/"
+        }
+      ]
+    },
+    "vulnerabilities/xss_r/?name=p1": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {
+            "name": "text_e3205c12"
+          },
+          "referer": "vulnerabilities/xss_r/?name=p1"
+        }
+      ]
+    },
+    "vulnerabilities/xss_s/": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "POST",
+          "params": {
+            "txtName": "text_711d65d3",
+            "mtxMessage": "comment_c12986ef",
+            "btnSign": "Sign Guestbook",
+            "btnClear": "Clear Guestbook"
+          },
+          "referer": "vulnerabilities/xss_s/"
+        }
+      ]
+    }
+  },
+  "static_only": [
+    "config/config.inc.php",
+    "dvwa/includes/Parsedown.php",
+    "dvwa/includes/dvwaPage.inc.php",
+    "logout.php",
+    "phpinfo.php",
+    "vulnerabilities/api/bootstrap.php",
+    "vulnerabilities/api/gen_openapi.php",
+    "vulnerabilities/api/index.php",
+    "vulnerabilities/api/public/index.php",
+    "vulnerabilities/api/src/GenericController.php",
+    "vulnerabilities/api/src/HealthController.php",
+    "vulnerabilities/api/src/Helpers.php",
+    "vulnerabilities/api/src/Login.php",
+    "vulnerabilities/api/src/LoginController.php",
+    "vulnerabilities/api/src/Order.php",
+    "vulnerabilities/api/src/OrderController.php",
+    "vulnerabilities/api/src/Token.php",
+    "vulnerabilities/api/src/User.php",
+    "vulnerabilities/api/src/UserController.php",
+    "vulnerabilities/authbypass/change_user_details.php",
+    "vulnerabilities/authbypass/get_user_data.php",
+    "vulnerabilities/authbypass/index.php",
+    "vulnerabilities/brute/index.php",
+    "vulnerabilities/captcha/index.php",
+    "vulnerabilities/csp/index.php",
+    "vulnerabilities/csrf/index.php",
+    "vulnerabilities/csrf/test_credentials.php",
+    "vulnerabilities/exec/index.php",
+    "vulnerabilities/fi/file1.php",
+    "vulnerabilities/fi/file2.php",
+    "vulnerabilities/fi/file3.php",
+    "vulnerabilities/fi/file4.php",
+    "vulnerabilities/fi/include.php",
+    "vulnerabilities/fi/index.php",
+    "vulnerabilities/javascript/index.php",
+    "vulnerabilities/open_redirect/index.php",
+    "vulnerabilities/sqli/index.php",
+    "vulnerabilities/sqli/session-input.php",
+    "vulnerabilities/sqli/test.php",
+    "vulnerabilities/sqli_blind/cookie-input.php",
+    "vulnerabilities/sqli_blind/index.php",
+    "vulnerabilities/upload/index.php",
+    "vulnerabilities/view_help.php",
+    "vulnerabilities/view_source.php",
+    "vulnerabilities/view_source_all.php",
+    "vulnerabilities/weak_id/index.php",
+    "vulnerabilities/xss_d/index.php",
+    "vulnerabilities/xss_r/index.php",
+    "vulnerabilities/xss_s/index.php"
+  ],
+  "source_map": {
+    "about.php": "about.php",
+    "config/config.inc.php": "config/config.inc.php",
+    "dvwa/includes/Parsedown.php": "dvwa/includes/Parsedown.php",
+    "dvwa/includes/dvwaPage.inc.php": "dvwa/includes/dvwaPage.inc.php",
+    "index.php": "index.php",
+    "instructions.php": "instructions.php",
+    "login.php": "login.php",
+    "logout.php": "logout.php",
+    "phpinfo.php": "phpinfo.php",
+    "security.php": "security.php",
+    "setup.php": "setup.php",
+    "vulnerabilities/api/bootstrap.php": "vulnerabilities/api/bootstrap.php",
+    "vulnerabilities/api/gen_openapi.php": "vulnerabilities/api/gen_openapi.php",
+    "vulnerabilities/api/index.php": "vulnerabilities/api/index.php",
+    "vulnerabilities/api/public/index.php": "vulnerabilities/api/public/index.php",
+    "vulnerabilities/api/src/GenericController.php": "vulnerabilities/api/src/GenericController.php",
+    "vulnerabilities/api/src/HealthController.php": "vulnerabilities/api/src/HealthController.php",
+    "vulnerabilities/api/src/Helpers.php": "vulnerabilities/api/src/Helpers.php",
+    "vulnerabilities/api/src/Login.php": "vulnerabilities/api/src/Login.php",
+    "vulnerabilities/api/src/LoginController.php": "vulnerabilities/api/src/LoginController.php",
+    "vulnerabilities/api/src/Order.php": "vulnerabilities/api/src/Order.php",
+    "vulnerabilities/api/src/OrderController.php": "vulnerabilities/api/src/OrderController.php",
+    "vulnerabilities/api/src/Token.php": "vulnerabilities/api/src/Token.php",
+    "vulnerabilities/api/src/User.php": "vulnerabilities/api/src/User.php",
+    "vulnerabilities/api/src/UserController.php": "vulnerabilities/api/src/UserController.php",
+    "vulnerabilities/authbypass/change_user_details.php": "vulnerabilities/authbypass/change_user_details.php",
+    "vulnerabilities/authbypass/get_user_data.php": "vulnerabilities/authbypass/get_user_data.php",
+    "vulnerabilities/authbypass/index.php": "vulnerabilities/authbypass/index.php",
+    "vulnerabilities/brute/index.php": "vulnerabilities/brute/index.php",
+    "vulnerabilities/captcha/index.php": "vulnerabilities/captcha/index.php",
+    "vulnerabilities/cryptography/index.php": "vulnerabilities/cryptography/index.php",
+    "vulnerabilities/csp/index.php": "vulnerabilities/csp/index.php",
+    "vulnerabilities/csrf/index.php": "vulnerabilities/csrf/index.php",
+    "vulnerabilities/csrf/test_credentials.php": "vulnerabilities/csrf/test_credentials.php",
+    "vulnerabilities/exec/index.php": "vulnerabilities/exec/index.php",
+    "vulnerabilities/fi/file1.php": "vulnerabilities/fi/file1.php",
+    "vulnerabilities/fi/file2.php": "vulnerabilities/fi/file2.php",
+    "vulnerabilities/fi/file3.php": "vulnerabilities/fi/file3.php",
+    "vulnerabilities/fi/file4.php": "vulnerabilities/fi/file4.php",
+    "vulnerabilities/fi/include.php": "vulnerabilities/fi/include.php",
+    "vulnerabilities/fi/index.php": "vulnerabilities/fi/index.php",
+    "vulnerabilities/javascript/index.php": "vulnerabilities/javascript/index.php",
+    "vulnerabilities/open_redirect/index.php": "vulnerabilities/open_redirect/index.php",
+    "vulnerabilities/sqli/index.php": "vulnerabilities/sqli/index.php",
+    "vulnerabilities/sqli/session-input.php": "vulnerabilities/sqli/session-input.php",
+    "vulnerabilities/sqli/test.php": "vulnerabilities/sqli/test.php",
+    "vulnerabilities/sqli_blind/cookie-input.php": "vulnerabilities/sqli_blind/cookie-input.php",
+    "vulnerabilities/sqli_blind/index.php": "vulnerabilities/sqli_blind/index.php",
+    "vulnerabilities/upload/index.php": "vulnerabilities/upload/index.php",
+    "vulnerabilities/view_help.php": "vulnerabilities/view_help.php",
+    "vulnerabilities/view_source.php": "vulnerabilities/view_source.php",
+    "vulnerabilities/view_source_all.php": "vulnerabilities/view_source_all.php",
+    "vulnerabilities/weak_id/index.php": "vulnerabilities/weak_id/index.php",
+    "vulnerabilities/xss_d/index.php": "vulnerabilities/xss_d/index.php",
+    "vulnerabilities/xss_r/index.php": "vulnerabilities/xss_r/index.php",
+    "vulnerabilities/xss_s/index.php": "vulnerabilities/xss_s/index.php"
+  },
+  "static_classifications": {
+    "observed": [
+      "about.php",
+      "index.php",
+      "instructions.php",
+      "login.php",
+      "security.php",
+      "setup.php",
+      "vulnerabilities/cryptography/index.php"
+    ],
+    "internal_reachable": [],
+    "public_unobserved": [
+      "config/config.inc.php",
+      "dvwa/includes/Parsedown.php",
+      "dvwa/includes/dvwaPage.inc.php",
+      "logout.php",
+      "phpinfo.php",
+      "vulnerabilities/api/bootstrap.php",
+      "vulnerabilities/api/gen_openapi.php",
+      "vulnerabilities/api/index.php",
+      "vulnerabilities/api/public/index.php",
+      "vulnerabilities/api/src/GenericController.php",
+      "vulnerabilities/api/src/HealthController.php",
+      "vulnerabilities/api/src/Helpers.php",
+      "vulnerabilities/api/src/Login.php",
+      "vulnerabilities/api/src/LoginController.php",
+      "vulnerabilities/api/src/Order.php",
+      "vulnerabilities/api/src/OrderController.php",
+      "vulnerabilities/api/src/Token.php",
+      "vulnerabilities/api/src/User.php",
+      "vulnerabilities/api/src/UserController.php",
+      "vulnerabilities/authbypass/change_user_details.php",
+      "vulnerabilities/authbypass/get_user_data.php",
+      "vulnerabilities/authbypass/index.php",
+      "vulnerabilities/brute/index.php",
+      "vulnerabilities/captcha/index.php",
+      "vulnerabilities/csp/index.php",
+      "vulnerabilities/csrf/index.php",
+      "vulnerabilities/csrf/test_credentials.php",
+      "vulnerabilities/exec/index.php",
+      "vulnerabilities/fi/file1.php",
+      "vulnerabilities/fi/file2.php",
+      "vulnerabilities/fi/file3.php",
+      "vulnerabilities/fi/file4.php",
+      "vulnerabilities/fi/include.php",
+      "vulnerabilities/fi/index.php",
+      "vulnerabilities/javascript/index.php",
+      "vulnerabilities/open_redirect/index.php",
+      "vulnerabilities/sqli/index.php",
+      "vulnerabilities/sqli/session-input.php",
+      "vulnerabilities/sqli/test.php",
+      "vulnerabilities/sqli_blind/cookie-input.php",
+      "vulnerabilities/sqli_blind/index.php",
+      "vulnerabilities/upload/index.php",
+      "vulnerabilities/view_help.php",
+      "vulnerabilities/view_source.php",
+      "vulnerabilities/view_source_all.php",
+      "vulnerabilities/weak_id/index.php",
+      "vulnerabilities/xss_d/index.php",
+      "vulnerabilities/xss_r/index.php",
+      "vulnerabilities/xss_s/index.php"
+    ],
+    "support_unreachable": []
+  }
+}

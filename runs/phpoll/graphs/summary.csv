@@ -1,0 +1,4 @@
+﻿graph,nodes,edges
+dynamic,11,12
+static,23,23
+fused,23,12

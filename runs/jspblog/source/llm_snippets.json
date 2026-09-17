@@ -1,0 +1,13 @@
+{
+  "summary": {
+    "source_items": 1,
+    "llm_items": 1,
+    "items_removed": 0
+  },
+  "snippets": [
+    {
+      "path": "admin/auth.jsp",
+      "if_framework": "if (drhlLoggedIn == null || !drhlLoggedIn.equals(\"true\")) {\n    response.sendRedirect(\"index.jsp\");\n    return;\n}"
+    }
+  ]
+}

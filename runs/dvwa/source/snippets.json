@@ -1,0 +1,461 @@
+{
+  "snippets": [
+    {
+      "path": "about.php",
+      "kind": "guard_call",
+      "start_line": 6,
+      "end_line": 6,
+      "function": "dvwapagestartup",
+      "code": "dvwaPageStartup( array( ) )",
+      "parameter_ids": [
+        "dvwa/includes/dvwaPage.inc.php:LCP13"
+      ],
+      "function_ids": [
+        "dvwa/includes/dvwaPage.inc.php:LCF3"
+      ]
+    },
+    {
+      "path": "dvwa/includes/dvwaPage.inc.php",
+      "kind": "validation_function",
+      "start_line": 132,
+      "end_line": 138,
+      "function": "dvwaPageStartup",
+      "code": "function dvwaPageStartup( $pActions ) {\n\tif (in_array('authenticated', $pActions)) {\n\t\tif( !dvwaIsLoggedIn()) {\n\t\t\tdvwaRedirect( DVWA_WEB_PAGE_TO_ROOT . 'login.php' );\n\t\t}\n\t}\n}",
+      "parameter_ids": [
+        "dvwa/includes/dvwaPage.inc.php:LCP13"
+      ],
+      "function_ids": [
+        "dvwa/includes/dvwaPage.inc.php:LCF3"
+      ]
+    },
+    {
+      "path": "dvwa/includes/dvwaPage.inc.php",
+      "kind": "conditional",
+      "start_line": 134,
+      "end_line": 136,
+      "condition": "( !dvwaIsLoggedIn())",
+      "terminations": [
+        {
+          "kind": "redirect",
+          "line": 135,
+          "code": "dvwaRedirect( DVWA_WEB_PAGE_TO_ROOT . 'login.php' );",
+          "denial_text": false
+        }
+      ],
+      "code": "if( !dvwaIsLoggedIn()) {\n\t\t\tdvwaRedirect( DVWA_WEB_PAGE_TO_ROOT . 'login.php' );\n\t\t}",
+      "parameter_ids": [
+        "dvwa/includes/dvwaPage.inc.php:LCP13"
+      ],
+      "function_ids": [
+        "dvwa/includes/dvwaPage.inc.php:LCF3"
+      ],
+      "if_framework": "if (!dvwaIsLoggedIn()) {\n    dvwaRedirect( DVWA_WEB_PAGE_TO_ROOT . 'login.php' );\n}"
+    },
+    {
+      "path": "index.php",
+      "kind": "guard_call",
+      "start_line": 6,
+      "end_line": 6,
+      "function": "dvwapagestartup",
+      "code": "dvwaPageStartup( array( 'authenticated' ) )",
+      "parameter_ids": [
+        "dvwa/includes/dvwaPage.inc.php:LCP13"
+      ],
+      "function_ids": [
+        "dvwa/includes/dvwaPage.inc.php:LCF3"
+      ]
+    },
+    {
+      "path": "instructions.php",
+      "kind": "guard_call",
+      "start_line": 7,
+      "end_line": 7,
+      "function": "dvwapagestartup",
+      "code": "dvwaPageStartup( array( ) )",
+      "parameter_ids": [
+        "dvwa/includes/dvwaPage.inc.php:LCP13"
+      ],
+      "function_ids": [
+        "dvwa/includes/dvwaPage.inc.php:LCF3"
+      ]
+    },
+    {
+      "path": "login.php",
+      "kind": "guard_call",
+      "start_line": 6,
+      "end_line": 6,
+      "function": "dvwapagestartup",
+      "code": "dvwaPageStartup( array( ) )",
+      "parameter_ids": [
+        "dvwa/includes/dvwaPage.inc.php:LCP13"
+      ],
+      "function_ids": [
+        "dvwa/includes/dvwaPage.inc.php:LCF3"
+      ]
+    },
+    {
+      "path": "logout.php",
+      "kind": "guard_call",
+      "start_line": 6,
+      "end_line": 6,
+      "function": "dvwapagestartup",
+      "code": "dvwaPageStartup( array( ) )",
+      "parameter_ids": [
+        "dvwa/includes/dvwaPage.inc.php:LCP13"
+      ],
+      "function_ids": [
+        "dvwa/includes/dvwaPage.inc.php:LCF3"
+      ]
+    },
+    {
+      "path": "phpinfo.php",
+      "kind": "guard_call",
+      "start_line": 6,
+      "end_line": 6,
+      "function": "dvwapagestartup",
+      "code": "dvwaPageStartup( array( 'authenticated') )",
+      "parameter_ids": [
+        "dvwa/includes/dvwaPage.inc.php:LCP13"
+      ],
+      "function_ids": [
+        "dvwa/includes/dvwaPage.inc.php:LCF3"
+      ]
+    },
+    {
+      "path": "security.php",
+      "kind": "guard_call",
+      "start_line": 6,
+      "end_line": 6,
+      "function": "dvwapagestartup",
+      "code": "dvwaPageStartup( array( 'authenticated') )",
+      "parameter_ids": [
+        "dvwa/includes/dvwaPage.inc.php:LCP13"
+      ],
+      "function_ids": [
+        "dvwa/includes/dvwaPage.inc.php:LCF3"
+      ]
+    },
+    {
+      "path": "setup.php",
+      "kind": "guard_call",
+      "start_line": 6,
+      "end_line": 6,
+      "function": "dvwapagestartup",
+      "code": "dvwaPageStartup( array( ) )",
+      "parameter_ids": [
+        "dvwa/includes/dvwaPage.inc.php:LCP13"
+      ],
+      "function_ids": [
+        "dvwa/includes/dvwaPage.inc.php:LCF3"
+      ]
+    },
+    {
+      "path": "vulnerabilities/brute/index.php",
+      "kind": "guard_call",
+      "start_line": 6,
+      "end_line": 6,
+      "function": "dvwapagestartup",
+      "code": "dvwaPageStartup( array( 'authenticated' ) )",
+      "parameter_ids": [
+        "dvwa/includes/dvwaPage.inc.php:LCP13"
+      ],
+      "function_ids": [
+        "dvwa/includes/dvwaPage.inc.php:LCF3"
+      ]
+    },
+    {
+      "path": "vulnerabilities/captcha/index.php",
+      "kind": "guard_call",
+      "start_line": 7,
+      "end_line": 7,
+      "function": "dvwapagestartup",
+      "code": "dvwaPageStartup( array( 'authenticated' ) )",
+      "parameter_ids": [
+        "dvwa/includes/dvwaPage.inc.php:LCP13"
+      ],
+      "function_ids": [
+        "dvwa/includes/dvwaPage.inc.php:LCF3"
+      ]
+    },
+    {
+      "path": "vulnerabilities/cryptography/index.php",
+      "kind": "guard_call",
+      "start_line": 6,
+      "end_line": 6,
+      "function": "dvwapagestartup",
+      "code": "dvwaPageStartup( array( 'authenticated' ) )",
+      "parameter_ids": [
+        "dvwa/includes/dvwaPage.inc.php:LCP13"
+      ],
+      "function_ids": [
+        "dvwa/includes/dvwaPage.inc.php:LCF3"
+      ]
+    },
+    {
+      "path": "vulnerabilities/csp/index.php",
+      "kind": "guard_call",
+      "start_line": 6,
+      "end_line": 6,
+      "function": "dvwapagestartup",
+      "code": "dvwaPageStartup( array( 'authenticated' ) )",
+      "parameter_ids": [
+        "dvwa/includes/dvwaPage.inc.php:LCP13"
+      ],
+      "function_ids": [
+        "dvwa/includes/dvwaPage.inc.php:LCF3"
+      ]
+    },
+    {
+      "path": "vulnerabilities/csrf/index.php",
+      "kind": "guard_call",
+      "start_line": 6,
+      "end_line": 6,
+      "function": "dvwapagestartup",
+      "code": "dvwaPageStartup( array( 'authenticated' ) )",
+      "parameter_ids": [
+        "dvwa/includes/dvwaPage.inc.php:LCP13"
+      ],
+      "function_ids": [
+        "dvwa/includes/dvwaPage.inc.php:LCF3"
+      ]
+    },
+    {
+      "path": "vulnerabilities/csrf/test_credentials.php",
+      "kind": "guard_call",
+      "start_line": 6,
+      "end_line": 6,
+      "function": "dvwapagestartup",
+      "code": "dvwaPageStartup( array( 'authenticated' ) )",
+      "parameter_ids": [
+        "dvwa/includes/dvwaPage.inc.php:LCP13"
+      ],
+      "function_ids": [
+        "dvwa/includes/dvwaPage.inc.php:LCF3"
+      ]
+    },
+    {
+      "path": "vulnerabilities/exec/index.php",
+      "kind": "guard_call",
+      "start_line": 6,
+      "end_line": 6,
+      "function": "dvwapagestartup",
+      "code": "dvwaPageStartup( array( 'authenticated' ) )",
+      "parameter_ids": [
+        "dvwa/includes/dvwaPage.inc.php:LCP13"
+      ],
+      "function_ids": [
+        "dvwa/includes/dvwaPage.inc.php:LCF3"
+      ]
+    },
+    {
+      "path": "vulnerabilities/fi/index.php",
+      "kind": "guard_call",
+      "start_line": 6,
+      "end_line": 6,
+      "function": "dvwapagestartup",
+      "code": "dvwaPageStartup( array( 'authenticated' ) )",
+      "parameter_ids": [
+        "dvwa/includes/dvwaPage.inc.php:LCP13"
+      ],
+      "function_ids": [
+        "dvwa/includes/dvwaPage.inc.php:LCF3"
+      ]
+    },
+    {
+      "path": "vulnerabilities/javascript/index.php",
+      "kind": "guard_call",
+      "start_line": 6,
+      "end_line": 6,
+      "function": "dvwapagestartup",
+      "code": "dvwaPageStartup( array( 'authenticated' ) )",
+      "parameter_ids": [
+        "dvwa/includes/dvwaPage.inc.php:LCP13"
+      ],
+      "function_ids": [
+        "dvwa/includes/dvwaPage.inc.php:LCF3"
+      ]
+    },
+    {
+      "path": "vulnerabilities/open_redirect/index.php",
+      "kind": "guard_call",
+      "start_line": 6,
+      "end_line": 6,
+      "function": "dvwapagestartup",
+      "code": "dvwaPageStartup( array( 'authenticated' ) )",
+      "parameter_ids": [
+        "dvwa/includes/dvwaPage.inc.php:LCP13"
+      ],
+      "function_ids": [
+        "dvwa/includes/dvwaPage.inc.php:LCF3"
+      ]
+    },
+    {
+      "path": "vulnerabilities/sqli/index.php",
+      "kind": "guard_call",
+      "start_line": 6,
+      "end_line": 6,
+      "function": "dvwapagestartup",
+      "code": "dvwaPageStartup( array( 'authenticated' ) )",
+      "parameter_ids": [
+        "dvwa/includes/dvwaPage.inc.php:LCP13"
+      ],
+      "function_ids": [
+        "dvwa/includes/dvwaPage.inc.php:LCF3"
+      ]
+    },
+    {
+      "path": "vulnerabilities/sqli/session-input.php",
+      "kind": "guard_call",
+      "start_line": 6,
+      "end_line": 6,
+      "function": "dvwapagestartup",
+      "code": "dvwaPageStartup( array( 'authenticated' ) )",
+      "parameter_ids": [
+        "dvwa/includes/dvwaPage.inc.php:LCP13"
+      ],
+      "function_ids": [
+        "dvwa/includes/dvwaPage.inc.php:LCF3"
+      ]
+    },
+    {
+      "path": "vulnerabilities/sqli_blind/cookie-input.php",
+      "kind": "guard_call",
+      "start_line": 6,
+      "end_line": 6,
+      "function": "dvwapagestartup",
+      "code": "dvwaPageStartup( array( 'authenticated' ) )",
+      "parameter_ids": [
+        "dvwa/includes/dvwaPage.inc.php:LCP13"
+      ],
+      "function_ids": [
+        "dvwa/includes/dvwaPage.inc.php:LCF3"
+      ]
+    },
+    {
+      "path": "vulnerabilities/sqli_blind/index.php",
+      "kind": "guard_call",
+      "start_line": 6,
+      "end_line": 6,
+      "function": "dvwapagestartup",
+      "code": "dvwaPageStartup( array( 'authenticated' ) )",
+      "parameter_ids": [
+        "dvwa/includes/dvwaPage.inc.php:LCP13"
+      ],
+      "function_ids": [
+        "dvwa/includes/dvwaPage.inc.php:LCF3"
+      ]
+    },
+    {
+      "path": "vulnerabilities/upload/index.php",
+      "kind": "guard_call",
+      "start_line": 6,
+      "end_line": 6,
+      "function": "dvwapagestartup",
+      "code": "dvwaPageStartup( array( 'authenticated' ) )",
+      "parameter_ids": [
+        "dvwa/includes/dvwaPage.inc.php:LCP13"
+      ],
+      "function_ids": [
+        "dvwa/includes/dvwaPage.inc.php:LCF3"
+      ]
+    },
+    {
+      "path": "vulnerabilities/view_help.php",
+      "kind": "guard_call",
+      "start_line": 6,
+      "end_line": 6,
+      "function": "dvwapagestartup",
+      "code": "dvwaPageStartup( array( 'authenticated' ) )",
+      "parameter_ids": [
+        "dvwa/includes/dvwaPage.inc.php:LCP13"
+      ],
+      "function_ids": [
+        "dvwa/includes/dvwaPage.inc.php:LCF3"
+      ]
+    },
+    {
+      "path": "vulnerabilities/view_source.php",
+      "kind": "guard_call",
+      "start_line": 6,
+      "end_line": 6,
+      "function": "dvwapagestartup",
+      "code": "dvwaPageStartup( array( 'authenticated' ) )",
+      "parameter_ids": [
+        "dvwa/includes/dvwaPage.inc.php:LCP13"
+      ],
+      "function_ids": [
+        "dvwa/includes/dvwaPage.inc.php:LCF3"
+      ]
+    },
+    {
+      "path": "vulnerabilities/view_source_all.php",
+      "kind": "guard_call",
+      "start_line": 6,
+      "end_line": 6,
+      "function": "dvwapagestartup",
+      "code": "dvwaPageStartup( array( 'authenticated' ) )",
+      "parameter_ids": [
+        "dvwa/includes/dvwaPage.inc.php:LCP13"
+      ],
+      "function_ids": [
+        "dvwa/includes/dvwaPage.inc.php:LCF3"
+      ]
+    },
+    {
+      "path": "vulnerabilities/weak_id/index.php",
+      "kind": "guard_call",
+      "start_line": 6,
+      "end_line": 6,
+      "function": "dvwapagestartup",
+      "code": "dvwaPageStartup( array( 'authenticated' ) )",
+      "parameter_ids": [
+        "dvwa/includes/dvwaPage.inc.php:LCP13"
+      ],
+      "function_ids": [
+        "dvwa/includes/dvwaPage.inc.php:LCF3"
+      ]
+    },
+    {
+      "path": "vulnerabilities/xss_d/index.php",
+      "kind": "guard_call",
+      "start_line": 6,
+      "end_line": 6,
+      "function": "dvwapagestartup",
+      "code": "dvwaPageStartup( array( 'authenticated' ) )",
+      "parameter_ids": [
+        "dvwa/includes/dvwaPage.inc.php:LCP13"
+      ],
+      "function_ids": [
+        "dvwa/includes/dvwaPage.inc.php:LCF3"
+      ]
+    },
+    {
+      "path": "vulnerabilities/xss_r/index.php",
+      "kind": "guard_call",
+      "start_line": 6,
+      "end_line": 6,
+      "function": "dvwapagestartup",
+      "code": "dvwaPageStartup( array( 'authenticated' ) )",
+      "parameter_ids": [
+        "dvwa/includes/dvwaPage.inc.php:LCP13"
+      ],
+      "function_ids": [
+        "dvwa/includes/dvwaPage.inc.php:LCF3"
+      ]
+    },
+    {
+      "path": "vulnerabilities/xss_s/index.php",
+      "kind": "guard_call",
+      "start_line": 6,
+      "end_line": 6,
+      "function": "dvwapagestartup",
+      "code": "dvwaPageStartup( array( 'authenticated' ) )",
+      "parameter_ids": [
+        "dvwa/includes/dvwaPage.inc.php:LCP13"
+      ],
+      "function_ids": [
+        "dvwa/includes/dvwaPage.inc.php:LCF3"
+      ]
+    }
+  ]
+}

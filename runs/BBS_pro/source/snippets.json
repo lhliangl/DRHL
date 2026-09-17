@@ -1,0 +1,40 @@
+{
+  "snippets": [
+    {
+      "path": "app01/views.py",
+      "kind": "validation_function",
+      "start_line": 15,
+      "end_line": 27,
+      "function": "acc_login",
+      "code": "def acc_login(request):\r\n    username = request.POST.get('username')\r\n    password = request.POST.get('password')\r\n\r\n    user = auth.authenticate(username=username, password=password)\r\n    print username, '->', password\r\n\r\n    if user is not None:\r\n        auth.login(request, user)\r\n\r\n        return HttpResponseRedirect('/')\r\n    else:\r\n        return render_to_response('login.html', {'login_err': 'Wrong username or password.'})",
+      "parameter_ids": [
+        "app01/views.py:LCP1"
+      ],
+      "function_ids": [
+        "app01/views.py:LCF5"
+      ]
+    },
+    {
+      "path": "app01/views.py",
+      "kind": "conditional",
+      "start_line": 22,
+      "end_line": 27,
+      "condition": "user is not None",
+      "terminations": [
+        {
+          "kind": "configured_denial",
+          "line": 27,
+          "code": "return render_to_response('login.html', {'login_err': 'Wrong username or password.'})"
+        }
+      ],
+      "code": "if user is not None:\r\n        auth.login(request, user)\r\n\r\n        return HttpResponseRedirect('/')\r\n    else:\r\n        return render_to_response('login.html', {'login_err': 'Wrong username or password.'})",
+      "parameter_ids": [
+        "app01/views.py:LCP1"
+      ],
+      "function_ids": [
+        "app01/views.py:LCF5"
+      ],
+      "if_framework": "if user is not None:\n    return render_to_response('login.html', {'login_err': 'Wrong username or password.'})"
+    }
+  ]
+}

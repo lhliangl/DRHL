@@ -1,0 +1,203 @@
+{
+  "vectors": [
+    {
+      "category": "static_only",
+      "page": "cookies/conta.php",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "static_only",
+      "page": "cookies/contatutto.php",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "static_only",
+      "page": "cookies/resetta_cookie.php",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "static_only",
+      "page": "cookies/risultati_perc.php",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "static_only",
+      "page": "cookies/setta_cookie.php",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/band_editor.php",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "language": "2"
+        },
+        "referer": "admin/votanti.php"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/config_editor.php",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/index.php",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/modifica_band.php",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "nome_band_0": "value_7720ffa9",
+          "voti_0": "0",
+          "check_0": "on",
+          "id_0": "67"
+        },
+        "referer": "admin/band_editor.php"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/modifica_configurazione.php",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "titolo_posizione": "khVdupYw",
+          "titolo_tipologia": "PcPlI7Kk",
+          "titolo_punteggio": "Q226OhVz",
+          "max_voti": "0",
+          "risultati_pixel": "1",
+          "barra1": "#000A1A",
+          "barra2": "#0EFC0C",
+          "barra3": "#040C00",
+          "barra4": "#55010E",
+          "intervallo_tempo": "0",
+          "percorso_link": "W2LyZv8a",
+          "oggetto_email": "eAtkck4c",
+          "testo_email": "jdwauiqddgIV7hFsEKJgwXqHeJ3qYrn1abFykI",
+          "domini": "m9MhKNOx",
+          "testo_submit": "eeN5lMQV",
+          "valid_email": "Rjfuo6ik",
+          "messaggio_conferma_mail": "esnaFXi2",
+          "messaggio_domini": "s2AJYwcN",
+          "messaggio_ip": "azcnQuju",
+          "messaggio_giavotato": "EZUSbRM1",
+          "messaggio_sgamo": "Cx293jNv",
+          "login": "admin3",
+          "password": "123456",
+          "old_login": "admin3",
+          "old_password": "123456"
+        },
+        "referer": "admin/config_editor.php"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/modifica_votanti.php",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "checkall": "on"
+        },
+        "referer": "admin/votanti.php"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/risultati_config.php",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "language": "2"
+        },
+        "referer": null
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/votanti.php",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "indietro_di": "day",
+          "candidate": "--- ALL ---"
+        },
+        "referer": "admin/votanti.php"
+      },
+      "identity_parameters": []
+    }
+  ]
+}

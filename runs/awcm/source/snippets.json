@@ -1,0 +1,452 @@
+{
+  "snippets": [
+    {
+      "path": "blocks/login.php",
+      "kind": "conditional",
+      "start_line": 3,
+      "end_line": 54,
+      "condition": "($member == 'no')",
+      "terminations": [],
+      "code": "if ($member == 'no') {\n?>\n\n\t<form action=\"login.php?do\" method=\"post\">\n\t<table width=\"100%\">\n\t<tr>\n\t<td>\n\t<input type=\"text\" value=\"<?php echo $lang_your_email; ?>\" onfocus=\"if (this.value == '<?php echo $lang_your_email; ?>') this.value = '';\" onblur=\"if (this.value == '') this.value = '<?php echo $lang_your_email; ?>';\" class=\"textfield\" name=\"email\" size=\"15\" />\n\t<input type=\"password\" onfocus=\"if (this.value == '********') this.value = '';\" onblur=\"if (this.value == '') this.value = '********';\" class=\"textfield\" name=\"password\" value=\"********\" size=\"15\" />\n\t<input type=\"submit\" value=\"<?php echo $lang_login; ?>\" class=\"a_button\"/>\n\t<br />\n\t<input type=\"checkbox\" name=\"remember\" class=\"textfield\" value=\"yes\"><?php echo $lang_remember_me; ?> | <a href=\"register.php\"><?php echo $lang_register; ?></a>\n\t</td>\n\t</tr>\n\t</table>\n\t</form>\n\n<?php\n} else {\n\n?>\n<table width=\"100%\" cellspacing=\"0\" cellpadding=\"0\">\n<tr><td>\n<?php\nprint $lang_welcome;\nprint '&nbsp;&nbsp;';\nf_find_member($member,'username');\n$mysql_08765876549762_query = mysql_query(\"SELECT reciever FROM awcm_member_pms WHERE reciever = '$member'\");\n$mysql_08765876549762_total = mysql_num_rows($mysql_08765876549762_query);\n?>\n<div class=\"text_small\">\n<?php if($mysql_08765876549762_total > \"0\") { ?>\n<a href=\"member_cp_pm.php\"><span class=\"text_focus\">\n<?php } ?>\n<?php print $lang_private_msgs; ?> : [<?php print $mysql_08765876549762_total; ?>]\n<?php if($mysql_08765876549762_total > \"0\") { ?>\n</span></a>\n<?php } ?>\n\n</div>\n</td></tr>\n<tr><td><a href=\"member_cp.php\"><span>\n<table cellspacing=\"0\" cellpadding=\"0\" width=\"100%\" class=\"button_1\" onmouseover=\"this.className='button_1_hover'\" onmouseout=\"this.className='button_1'\"><tr><td width=\"1\"><img src=\"themes/<?php echo $theme_file; ?>/icons/user_cp.gif\" height=\"20\" width=\"20\" /></td><td align=\"center\"><a href=\"member_cp.php\"><?php print $lang_member_control_panel; ?></a></td></tr></table>\n</span></a></td></tr>\n\n<tr><td><a href=\"logout.php\"><span>\n<table cellspacing=\"0\" cellpadding=\"0\" width=\"100%\" class=\"button_1\" onmouseover=\"this.className='button_1_hover'\" onmouseout=\"this.className='button_1'\"><tr><td width=\"1\"><img src=\"themes/<?php echo $theme_file; ?>/icons/x.gif\" height=\"20\" width=\"20\" /></td><td align=\"center\"><a href=\"logout.php\"><?php print $lang_logout; ?></a></td></tr></table>\n</span></a></td></tr>\n\n</table>\n<?php\n}",
+      "parameter_ids": [
+        "blocks/login.php:LCP29"
+      ],
+      "function_ids": []
+    },
+    {
+      "path": "blocks/login.php",
+      "kind": "database_operation",
+      "start_line": 30,
+      "end_line": 30,
+      "code": "$mysql_08765876549762_query = mysql_query(\"SELECT reciever FROM awcm_member_pms WHERE reciever = '$member'\");",
+      "database_relations": [
+        {
+          "table": "awcm_member_pms",
+          "field": "reciever",
+          "line": 30
+        }
+      ],
+      "related_conditions": [
+        {
+          "start_line": 3,
+          "end_line": 54,
+          "condition": "($member == 'no')"
+        }
+      ],
+      "parameter_ids": [
+        "blocks/login.php:LCP29"
+      ],
+      "function_ids": []
+    },
+    {
+      "path": "blocks/top_login.php",
+      "kind": "conditional",
+      "start_line": 3,
+      "end_line": 48,
+      "condition": "($member == 'no')",
+      "terminations": [],
+      "code": "if ($member == 'no') {\n?>\n\n\t<form action=\"login.php?do\" method=\"post\" style=\"margin:0;\">\n\t<table width=\"100%\">\n\t<tr><td width=\"25 \"><img src=\"themes/<?php echo $theme_file; ?>/icons/user_cp.gif\" height=\"20\" width=\"20\" /></td>\n\t<td>\n\t<input type=\"text\" value=\"<?php echo $lang_your_email; ?>\" onfocus=\"if (this.value == '<?php echo $lang_your_email; ?>') this.value = '';\" onblur=\"if (this.value == '') this.value = '<?php echo $lang_your_email; ?>';\" class=\"textfield\" name=\"email\" size=\"15\" />\n\t<input type=\"password\" onfocus=\"if (this.value == '********') this.value = '';\" onblur=\"if (this.value == '') this.value = '********';\" class=\"textfield\" name=\"password\" value=\"********\" size=\"15\" />\n\t<input type=\"submit\" value=\"<?php echo $lang_login; ?>\" class=\"a_button\"/>\n\t\n\t<input type=\"checkbox\" name=\"remember\" class=\"textfield\" value=\"yes\"><?php echo $lang_remember_me; ?> | <a href=\"register.php\"><?php echo $lang_register; ?></a>\n\t</td>\n\t</tr>\n\t</table>\n\t</form>\n\n<?php\n} else {\n\n?>\n<table width=\"100%\" cellspacing=\"0\" cellpadding=\"0\">\n<tr><td width=\"25\"><img src=\"themes/<?php echo $theme_file; ?>/icons/user_cp.gif\" height=\"20\" width=\"20\" /></td><td>\n<?php\nprint $lang_welcome;\nprint '&nbsp;&nbsp;';\nf_find_member($member,'username');\n$mysql_08765876549762_query = mysql_query(\"SELECT reciever FROM awcm_member_pms WHERE reciever = '$member'\");\n$mysql_08765876549762_total = mysql_num_rows($mysql_08765876549762_query);\n?>\n&nbsp;&nbsp;\n<?php if($mysql_08765876549762_total > \"0\") { ?>\n<a href=\"member_cp_pm.php\" class=\"text_small\"><span class=\"text_focus\">\n<?php } ?>\n<?php print $lang_private_msgs; ?> : [<?php print $mysql_08765876549762_total; ?>]\n<?php if($mysql_08765876549762_total > \"0\") { ?>\n</span></a>\n<?php } ?>&nbsp;&nbsp;\n<a href=\"member_cp.php\"><?php print $lang_member_control_panel; ?></a>\n &nbsp;&nbsp; \n <a href=\"logout.php\" class=\"text_small\"><?php print $lang_logout; ?></a>\n</td><td align=\"center\"></td></tr></table>\n\n\n<?php\n}",
+      "parameter_ids": [
+        "blocks/top_login.php:LCP45"
+      ],
+      "function_ids": []
+    },
+    {
+      "path": "blocks/top_login.php",
+      "kind": "database_operation",
+      "start_line": 30,
+      "end_line": 30,
+      "code": "$mysql_08765876549762_query = mysql_query(\"SELECT reciever FROM awcm_member_pms WHERE reciever = '$member'\");",
+      "database_relations": [
+        {
+          "table": "awcm_member_pms",
+          "field": "reciever",
+          "line": 30
+        }
+      ],
+      "related_conditions": [
+        {
+          "start_line": 3,
+          "end_line": 48,
+          "condition": "($member == 'no')"
+        }
+      ],
+      "parameter_ids": [
+        "blocks/top_login.php:LCP45"
+      ],
+      "function_ids": []
+    },
+    {
+      "path": "common.php",
+      "kind": "database_operation",
+      "start_line": 11,
+      "end_line": 11,
+      "code": "$mysql_f_find_member_query = mysql_query(\"SELECT * FROM awcm_members WHERE id = '$id'\");",
+      "database_relations": [
+        {
+          "table": "awcm_members",
+          "field": "id",
+          "line": 11
+        }
+      ],
+      "related_conditions": [
+        {
+          "start_line": 18,
+          "end_line": 22,
+          "condition": "($id == '0')"
+        },
+        {
+          "start_line": 20,
+          "end_line": 22,
+          "condition": "($id == 'no')"
+        },
+        {
+          "start_line": 25,
+          "end_line": 27,
+          "condition": "($id == '0')"
+        }
+      ],
+      "parameter_ids": [
+        "common.php:LCP54"
+      ],
+      "function_ids": []
+    },
+    {
+      "path": "common.php",
+      "kind": "conditional",
+      "start_line": 18,
+      "end_line": 22,
+      "condition": "($id == '0')",
+      "terminations": [],
+      "code": "if($id == '0') {\n\t\t\tprint $lang_guest;\n\t\t} elseif ($id == 'no') {\n\t\t\tprint $lang_guest;\n\t\t}",
+      "parameter_ids": [
+        "common.php:LCP54"
+      ],
+      "function_ids": []
+    },
+    {
+      "path": "common.php",
+      "kind": "conditional",
+      "start_line": 20,
+      "end_line": 22,
+      "condition": "($id == 'no')",
+      "terminations": [],
+      "code": "elseif ($id == 'no') {\n\t\t\tprint $lang_guest;\n\t\t}",
+      "parameter_ids": [
+        "common.php:LCP54"
+      ],
+      "function_ids": []
+    },
+    {
+      "path": "common.php",
+      "kind": "conditional",
+      "start_line": 25,
+      "end_line": 27,
+      "condition": "($id == '0')",
+      "terminations": [],
+      "code": "if($id == '0') {\n\t\t\tprint $lang_guest;\n\t\t}",
+      "parameter_ids": [
+        "common.php:LCP54"
+      ],
+      "function_ids": []
+    },
+    {
+      "path": "control.php",
+      "kind": "conditional",
+      "start_line": 12,
+      "end_line": 475,
+      "condition": "($member_level !== 'admin')",
+      "terminations": [
+        {
+          "kind": "configured_denial",
+          "line": 12,
+          "code": "exit;",
+          "denial_text": false
+        }
+      ],
+      "code": "if($member_level !== 'admin') { exit; } else {\n$gid = $_GET['id'];\n$gdel = $_GET['del'];\n$gedit = $_GET['edit'];\n$gdo = $_GET['do'];\n\n//weblinks\nif($gdel == 'website') {\n$op = mysql_query(\"DELETE FROM awcm_weblinks_sites WHERE id = '$gid'\");\nif($op) {\nprint '<script>window.location=\"notify.php?v=done_i\"</script>';\n}\n}\nif($gdo == 'editsite') {\n$op = mysql_query(\"UPDATE awcm_weblinks_sites SET name = '$_POST[name]', cat = '$_POST[cat]', descr = '$_POST[descr]', url = '$_POST[url]', email = '$_POST[email]' WHERE id = '$gid'\");\nif($op) {\nprint '<script>window.location=\"weblinks_site.php?id='.$gid.'\"</script>';\n}\n}\n//weblinks-end\n\n//flashs\nif($gdel == 'flash') {\n$op = mysql_query(\"DELETE FROM awcm_flashs_flashs WHERE id = '$gid'\");\nif($op) {\nprint '<script>window.location=\"notify.php?v=done_i\"</script>';\n} }\nif($gdo == 'editflash') {\n$op = mysql_query(\"UPDATE awcm_flashs_flashs SET title = '$_POST[title]', cat = '$_POST[cat]', image = '$_POST[image]', url = '$_POST[url]' WHERE id = '$gid'\") or die(mysql_error());\nif($op) {\nprint '<script>window.location=\"flash.php?id='.$gid.'\"</script>';\n}\n}\n\n//flashs-end\n\n//images\nif($gdel == 'img') {\nmysql_query(\"DELETE FROM awcm_images_images WHERE id = '$gid'\");\n}\nif($gdo == 'editimage') {\n$op = mysql_query(\"UPDATE awcm_images_images SET url = '$_POST[url]', descr = '$_POST[descr]', cat = '$_POST[cat]', thumb = '$_POST[thumb]' WHERE id = '$gid'\") or die(mysql_error());\n\nif($op) {\n\tprint '<div width=\"100%\" class=\"greenbox\">'.$lang_done.'</div>';\n}\n}\n//images-end\n\n//videos\nif($gdel == 'video') {\n$op = mysql_query(\"DELETE FROM awcm_videos_videos WHERE id = '$gid'\");\nif($op) {\nprint '<script>window.location=\"notify.php?v=done_i\"</script>';\n}\n}\nif($gdo == 'editvideo') {\n$mysql_74623452vid_query = mysql_query(\"SELECT id,image FROM awcm_videos_videos WHERE id = '$gid'\");\n$mysql_74623452vid_row = mysql_fetch_array($mysql_74623452vid_query);\n    $fileName = $_FILES['image']['name'];\r\n    $tmpName  = $_FILES['image']['tmp_name'];\r\n    $fileSize = $_FILES['image']['size'];\r\n    $fileType = $_FILES['image']['type'];\r\n    $fo = @fopen($tmpName, \"r\");\r\n    $data = @fread($fo, filesize($tmpName));\r\n    $data = addslashes($data);\nif($data == \"\") {\n$op = mysql_query(\"UPDATE awcm_videos_videos SET title = '$_POST[title]', descr = '$_POST[descr]', cat = '$_POST[cat]', url = '$_POST[url]', time = '$_POST[time]', allow_coments = '$_POST[allow_coments]' WHERE id = '$gid'\");\n} else {\n$op = mysql_query(\"UPDATE awcm_videos_videos SET title = '$_POST[title]', descr = '$_POST[descr]', cat = '$_POST[cat]', url = '$_POST[url]', time = '$_POST[time]', allow_coments = '$_POST[allow_coments]', image = '$data' WHERE id = '$gid'\");\n}\n\nif($op) {\nprint '<script>window.location=\"notify.php?v=done_i\"</script>';\n}\n}\nif($gdel == 'videocmnt') {\nmysql_query(\"DELETE FROM awcm_videos_coments WHERE id = '$gid'\");\n}\n//videos-end\n\n//sounds\nif($gdel == 'sound') {\n$op = mysql_query(\"DELETE FROM awcm_sounds_sounds WHERE id ='$gid'\");\nif($op) {\nprint '<script>window.location=\"notify.php?v=done\"</script>';\n}\n}\nif($gdo == 'editsound') {\n$op = mysql_query(\"UPDATE awcm_sounds_sounds SET title = '$_POST[title]', cat = '$_POST[cat]', url = '$_POST[url]', image = '$_POST[image]',descr = '$_POST[descr]' WHERE id = '$gid'\");\nif($op) {\nprint '<script>window.location=\"sound_cat.php?id='.$_POST[cat].'\"</script>';\n}\n}\n//sounds-end\n\n//programs\nif($gdel == 'program') {\n$op = mysql_query(\"DELETE FROM awcm_pro_pro WHERE id = '$gid'\");\nif($op){\nprint '<script>window.location=\"notify.php?v=done_i\"</script>';\n}\n}\nif($gdo == 'editprogram') {\n$op = mysql_query(\"UPDATE awcm_pro_pro SET name = '$_POST[name]', cat = '$_POST[cat]', descr = '$_POST[descr]', screanshot_yn = '$_POST[screanshot_yn]', screanshot_url = '$_POST[screanshot_url]', url = '$_POST[url]', size = '$_POST[size]', company = '$_POST[company]', license = '$_POST[license]', capability = '$_POST[capability]' WHERE id = '$gid'\");\nif($op) {\nprint '<script>window.location=\"program.php?id='.$gid.'\"</script>';\n}\n}\n//programs-end\n\n//topics\nif($gdo == 'edittopic') {\n$op = mysql_query(\"UPDATE awcm_topics_topics SET cat = '$_POST[cat]', title = '$_POST[title]', content = '$_POST[topic]', allow_coments = '$_POST[comets]', image = '$_POST[image]' WHERE id = '$gid'\");\nif($op) {\nprint '<script>window.location=\"topic.php?id='.$gid.'\"</script>';\n}\n}\nif($gdel == 'topiccmnt') {\nmysql_query(\"DELETE FROM awcm_topics_coments WHERE id = '$gid'\");\n}\n//topics-end\n\n//news\nif($gdo == 'editnews') {\n$op = mysql_query(\"UPDATE awcm_news_news SET cat = '$_POST[cat]', title = '$_POST[title]', content = '$_POST[topic]', allow_coments = '$_POST[comets]', image = '$_POST[image]' WHERE id = '$gid'\");\nif($op) {\nprint '<script>window.location=\"news_show.php?id='.$gid.'\"</script>';\n}\n}\nif($gdel == 'newscmnt') {\nmysql_query(\"DELETE FROM awcm_news_coments WHERE id = '$gid'\");\n}\n//news-end\n\n//lesson\nif($gdo == 'editles') {\n$op = mysql_query(\"UPDATE awcm_lessons_lessons SET cat = '$_POST[cat]', title = '$_POST[title]', content = '$_POST[topic]', allow_coments = '$_POST[comets]' WHERE id = '$gid'\");\nif($op) {\nprint '<script>window.location=\"lesson.php?id='.$gid.'\"</script>';\n}\n}\n//lessons-end\n\ninclude (\"includes/window_top.php\");\n//weblinks\nif($gedit == 'website') {\n$mysql_5690y70916sits_query = mysql_query(\"SELECT * FROM awcm_weblinks_sites WHERE id = '$gid'\");\n$mysql_5690y70916sits_row   = mysql_fetch_array($mysql_5690y70916sits_query);\n$mysql_weblinks_cat_addpg_query = mysql_query(\"SELECT id,title FROM awcm_weblinks_cat ORDER BY id DESC\");;\n?>\n<form action=\"?do=editsite&id=<?php echo $gid; ?>\" method=\"post\">\n<table cellspacing=\"0\" cellpadding=\"0\" class=\"table_1\" width=\"100%\">\n<tr class=\"gradient_1\"><td align=\"<?php print $theme_settings['text_position']; ?>\" colspan=\"3\"><?php print $lang_edit; ?> - <?php print $mysql_5690y70916sits_row['name']; ?></td></tr>\n<tr><td width=\"30%\"><?php print $lang_site_name; ?></td><td width=\"1\">:</td><td><input name=\"name\" class=\"textfield\" size=\"35\" value=\"<?php print $mysql_5690y70916sits_row['name']; ?>\" /></td></tr>\n<tr><td><?php print $lang_category; ?></td><td>:</td><td>\n<select name=\"cat\">\n<?php while($row = mysql_fetch_array($mysql_weblinks_cat_addpg_query)) { ?>\n<option value=\"<?php echo $row['id']; ?>\" <?php if($mysql_5690y70916sits_row['cat'] == $row[id]) { print 'SELECTED'; } ?>><?php print $row['title']; ?></option>\n<?php } ?>\n</select>\n</td></tr>\n<tr><td><?php print $lang_url; ?></td><td>:</td><td><input dir=\"ltr\" name=\"url\" type=\"text\" class=\"textfield\" size=\"35\" value=\"<?php print $mysql_5690y70916sits_row['url']; ?>\" /></td></tr>\n<tr><td valign=\"top\"><?php print $lang_short_desc; ?></td><td valign=\"top\">:</td><td><textarea name=\"descr\" class=\"textfield\" cols=\"50\" cols=\"7\"><?php print $mysql_5690y70916sits_row['descr']; ?></textarea></td></tr>\n<tr><td><?php print $lang_your_email; ?></td><td>:</td><td><input name=\"email\" value=\"<?php print $mysql_5690y70916sits_row['email']; ?>\" dir=\"ltr\" class=\"textfield\" type=\"text\" /></td></tr>\n\n<tr><td></td><td></td><td><input type=\"submit\" value=\"<?php print $lang_edit; ?>\" class=\"a_button\" /></td></tr>\n</table>\n</form>\n<?php\n}\n//weblinks-end\n\n//flashs\nif($gedit == 'flash') {\n$mysql_834560937623_flsh_query = mysql_query(\"SELECT * FROM awcm_flashs_flashs WHERE id = '$gid'\");\n$mysql_834560937623_flsh_row   = mysql_fetch_array($mysql_834560937623_flsh_query);\n$mysql_flashs_cat_sflshlstctgries_query = mysql_query(\"SELECT id,title FROM awcm_flashs_cat ORDER BY id DESC\");\n?>\n<form action=\"?do=editflash&id=<?php echo $gid; ?>\" method=\"post\" style=\"margin:0;\">\n<table cellspacing=\"0\" cellpadding=\"0\" class=\"table_1\" width=\"100%\">\n<tr class=\"gradient_1\"><td colspan=\"3\" align=\"<?php print $theme_settings['text_position']; ?>\"><?php print $lang_edit; ?> - <?php echo $mysql_834560937623_flsh_row['title']; ?></td></tr>\n<tr><td width=\"30%\"><?php print $lang_added_by; ?></td><td width=\"1\">:</td><td><?php f_find_member($mysql_834560937623_flsh_row[author],username); ?></td></tr>\n<tr><td><?php print $lang_title; ?></td><td>:</td><td><input class=\"textfield\" name=\"title\" type=\"text\" size=\"30\" value=\"<?php echo $mysql_834560937623_flsh_row['title']; ?>\" /></td></tr>\n<tr><td><?php echo $lang_category; ?></td><td>:</td><td>\n<select name=\"cat\">\n<?php while($row = mysql_fetch_array($mysql_flashs_cat_sflshlstctgries_query)) { ?>\n<option value=\"<?php echo $row['id']; ?>\" <?php if($mysql_834560937623_flsh_row['cat'] == $row[id]) { print 'SELECTED'; } ?>><?php echo $row['title']; ?></option>\n<?php } ?>\n</select>\n</td></tr>\n<tr><td><?php echo $lang_url; ?></td><td>:</td><td><input name=\"url\" class=\"textfield\" size=\"40\" type=\"text\" value=\"<?php echo $mysql_834560937623_flsh_row['url']; ?>\"/></td></tr>\n<tr><td><?php echo $lang_image; ?></td><td>:</td><td><input name=\"image\" class=\"textfield\" size=\"40\" type=\"text\" value=\"<?php echo $mysql_834560937623_flsh_row['image']; ?>\" /></td></tr>\n\n<tr><td></td><td></td><td><input value=\"<?php echo $lang_edit; ?>\" type=\"submit\" class=\"a_button\" /></td></tr>\n</table>\n</form>\n<?php\n}\n//flashs-end\n\n//images\nif($gedit == 'img') {\n$mysql_96y725765y6img_query = mysql_query(\"SELECT * FROM awcm_images_images WHERE id = '$gid'\");\n$mysql_96y725765y6img_row   = mysql_fetch_array($mysql_96y725765y6img_query);\n$awcm_images_cat_sipg_query = mysql_query('SELECT id,title FROM awcm_images_cat ORDER BY id DESC');\n?>\n<form action=\"control.php?frame&do=editimage&id=<?php echo $mysql_96y725765y6img_row['id']; ?>\" method=\"post\" style=\"margin:0;\">\n<table class=\"table_2\" width=\"100%\" height=\"100%\">\n<tr><td class=\"gradient_2\" align=\"center\" colspan=\"3\"><?php print $lang_edit; ?> - <?php print $mysql_96y725765y6img_row['descr']; ?></td></tr>\n<tr><td width=\"30%\"><?php print $lang_added_by; ?></td><td width=\"1\">:</td><td><?php f_find_member($mysql_96y725765y6img_row['author'],username); ?>\n<tr><td><?php print $lang_url; ?></td><td>:</td><td><input class=\"textfield\" name=\"url\" value=\"<?php echo $mysql_96y725765y6img_row['url']; ?>\" size=\"40\" /></td></tr>\n<tr><td><?php print $lang_short_desc; ?></td><td>:</td><td><textarea class=\"textfield\" cols=\"40\" rows=\"2\" name=\"descr\"><?php echo $mysql_96y725765y6img_row['descr']; ?></textarea></td></tr>\n<tr><td><?php print $lang_category; ?></td><td>:</td><td>\n<select name=\"cat\">\n<?php while($row = mysql_fetch_array($awcm_images_cat_sipg_query)) { ?>\n<option value=\"<?php echo $row['id']; ?>\" <?php if($mysql_96y725765y6img_row['cat'] == $row[id]) { print 'SELECTED'; } ?>><?php print $row['title']; ?></option>\n<?php } ?>\n</select>\n</td></tr>\n<tr><td><?php print $lang_thumb; ?><div class=\"text_small\">(<?php print $lang_optional; ?>)</div></td><td valign=\"top\">:</td><td valign=\"top\"><input class=\"textfield\" size=\"40\" name=\"thumb\" value=\"<?php echo $mysql_96y725765y6img_row['thumb']; ?>\" /></td></tr>\n\n<tr><td></td><td></td><td><input class=\"a_button\" value=\"<?php print $lang_edit; ?>\" type=\"submit\" /></td></tr>\n<tr><td colsan=\"3\" height=\"100%\"></td></tr>\n</table>\n</form>\n\n<?php\n}\n//images-end\n\n//videos\nif($gedit == 'video') {\n$mysql_417894589vds_query = mysql_query(\"SELECT * FROM awcm_videos_videos WHERE id = '$gid'\");\n$mysql_417894589vds_row   = mysql_fetch_array($mysql_417894589vds_query);\n$mysql_videos_cat_sndvdiopg_query = mysql_query(\"SELECT id,title FROM awcm_videos_cat ORDER BY id DESC\");\n?>\n<form action=\"?do=editvideo&id=<?php print $gid; ?>\" method=\"post\" enctype=\"multipart/form-data\">\n<table cellspacing=\"0\" cellpadding=\"0\" class=\"table_1\" width=\"100%\">\n<tr class=\"gradient_1\"><td align=\"<?php print $theme_settings['text_position']; ?>\" colspan=\"3\"><?php print $lang_edit; ?> - <?php print $mysql_417894589vds_row['title']; ?></td></tr>\n<tr><td>\n<table cellspacin=\"0\" cellpadding=\"0\">\n<tr><td width=\"30%\"><?php print $lang_added_by; ?></td><td width=\"1\">:</td><td><?php f_find_member($mysql_417894589vds_row['author'],username) ?></td></tr>\n<tr><td><?php print $lang_title; ?></td><td>:</td><td><input type=\"text\" name=\"title\" class=\"textfield\" size=\"35\" value=\"<?php echo $mysql_417894589vds_row['title']; ?>\" /></td></tr>\n<tr><td><?php print $lang_category; ?></td><td>:</td><td>\n<select name=\"cat\">\n<?php while($row = mysql_fetch_array($mysql_videos_cat_sndvdiopg_query)) { ?>\n<option value=\"<?php print $row['id']; ?>\" <?php if($mysql_417894589vds_row['cat'] == $row[id]) { print 'SELECTED'; } ?>><?php print $row['title']; ?></option>\n<?php } ?>\n</select>\n</td></tr>\n<tr><td><?php print $lang_allow_coments; ?></td><td>:</td><td>\n<select name=\"allow_coments\">\n<option value=\"yes\" <?php if($mysql_417894589vds_row['allow_coments'] == 'yes') { print 'SELECTED'; } ?>><?php print $lang_yes; ?></option>\n<option value=\"no\" <?php if($mysql_417894589vds_row['allow_coments'] == 'no') { print 'SELECTED'; } ?>><?php print $lang_no; ?></option>\n</select>\n</td></td>\n<tr><td valign=\"top\"><?php print $lang_short_desc; ?></td><td>:</td><td><textarea name=\"descr\" class=\"textfield\" cols=\"50\" rows=\"3\"><?php echo $mysql_417894589vds_row['descr']; ?></textarea></td></tr>\n<tr><td><?php print $lang_image; ?></td><td>:</td><td><input class=\"textfield\" type=\"file\" name=\"image\" /></td></tr>\n<tr><td valign=\"top\"><?php print $lang_url; ?></td><td valign=\"top\">:</td><td><input type=\"text\" class=\"textfield\" name=\"url\" size=\"40\" dir=\"ltr\" value=\"<?php echo $mysql_417894589vds_row['url']; ?>\" /><div class=\"text_small\"><?php print $lang_video_url_inf; ?></div></td></tr>\n<tr><td><?php print $lang_duration; ?></td><td>:</td><td><input class=\"textfield\" size=\"5\" name=\"time\" value=\"<?php print $mysql_417894589vds_row['time']; ?>\" /></td></tr>\n<tr><td></td><td></td><td><input type=\"submit\" class=\"a_button\" value=\"<?php print $lang_edit; ?>\" /></td></tr>\n\n</table>\n</td></tr>\n</table>\n</form>\n<?php\n}\n//videos-end\n\n//sounds\nif($gedit == 'sound') {\n$mysql_5843756806edtsnds_query = mysql_query(\"SELECT * FROM awcm_sounds_sounds WHERE id = '$gid'\");\n$mysql_5843756806edtsnds_row = mysql_fetch_array($mysql_5843756806edtsnds_query);\n$mysql_sounds_cat_15054_query = mysql_query(\"SELECT id,title FROM awcm_sounds_cat ORDER BY id DESC\");\n?>\n<form action=\"?do=editsound&id=<?php echo $gid; ?>\" method=\"POST\">\n<table cellspacing=\"0\" cellpadding=\"0\" class=\"table_1\" width=\"100%\">\n<tr class=\"gradient_1\"><td align=\"<?php print $theme_settings['text_position']; ?>\" colspan=\"3\"><?php print $lang_edit; ?> - <?php print $mysql_5843756806edtsnds_row['title']; ?></td></tr>\n<tr><td width=\"25%\"><?php print $lang_author; ?></td><td width=\"1\">:</td><td><?php f_find_member($mysql_5843756806edtsnds_row['author'],username); ?></td></tr>\n<tr><td><?php print $lang_title; ?></td><td width=\"1\">:</td><td><input type=\"text\" value=\"<?php print $mysql_5843756806edtsnds_row['title']; ?>\" name=\"title\" class=\"textfield\" size=\"35\" /></td></tr>\n<tr><td><?php print $lang_category; ?></td><td>:</td><td>\n<select name=\"cat\">\n<?php while($row = mysql_fetch_array($mysql_sounds_cat_15054_query)) { ?>\n<option value=\"<?php print $row['id']; ?>\" <?php if($mysql_5843756806edtsnds_row['cat'] == $row['id']) { print 'SELECTED'; } ?> ><?php print $row['title']; ?></option>\n<?php } ?>\n</select>\n</td></tr>\n<tr><td><?php print $lang_short_desc; ?></td><td>:</td><td><textarea cols=\"50\" rows=\"1\" class=\"textfield\" name=\"descr\"><?php print $mysql_5843756806edtsnds_row['descr']; ?></textarea></td></tr>\n<tr><td><?php print $lang_url; ?></td><td>:</td><td><input type=\"text\" dir=\"ltr\" class=\"textfield\" size=\"35\" value=\"<?php echo $mysql_5843756806edtsnds_row['url']; ?>\" name=\"url\" /></td></tr>\n<tr><td><?php print $lang_image; ?> <span class=\"text_small\">(<?php print $lang_optional; ?>)</span></td><td>:</td><td>\n<input type=\"text\" class=\"textfield\" size=\"35\" dir=\"ltr\" value=\"<?php echo $mysql_5843756806edtsnds_row['image']; ?>\" name=\"image\" />\n</td></tr>\n<tr><td></td><td></td><td><input class=\"a_button\" value=\"<?php print $lang_edit; ?>\" type=\"submit\"/></td></tr>\n</table>\n</form>\n<?php\n}\n//sounds-end\n\n//programs\nif($gedit == 'program') {\n$mysql_1465259edtpro_query = mysql_query(\"SELECT * FROM awcm_pro_pro WHERE id = '$gid'\");\n$mysql_1465259edtpro_row   = mysql_fetch_array($mysql_1465259edtpro_query);\n$awcm_pro_cat_sppg_query = mysql_query('SELECT id,title FROM awcm_pro_cat');\n?>\n<form action=\"?do=editprogram&id=<?php echo $gid; ?>\" method=\"POST\">\n<table cellspacing=\"0\" cellpadding=\"0\" class=\"table_1\" width=\"100%\">\n<tr class=\"gradient_1\"><td align=\"<?php print $theme_settings['text_position']; ?>\" colspan=\"2\"><?php print $lang_send_pro; ?></td></tr>\n<tr><td width=\"200\"><?php print $lang_added_by; ?></td><td><?php f_find_member($mysql_1465259edtpro_row[author],username); ?></td></tr>\n<tr><td><?php print $lang_program; ?></td><td><input name=\"name\" class=\"textfield\" size=\"30\" value=\"<?php print $mysql_1465259edtpro_row['name']; ?>\"/></td></tr>\n<tr><td><?php print $lang_category; ?></td><td>\n<select name=\"cat\">\n<?php while($row = mysql_fetch_array($awcm_pro_cat_sppg_query)) { ?>\n<option value=\"<?php echo $row['id']; ?>\" <?php if ($mysql_1465259edtpro_row['cat'] == $row['id']) { print 'SELECTED'; } ?>><?php echo $row['title']; ?></option>\n<?php } ?>\n</td></tr>\n<tr><td valign=\"top\"><?php print $lang_short_desc; ?></td><td><textarea name=\"descr\" cols=\"50\" rows=\"3\" class=\"textfield\"><?php print $mysql_1465259edtpro_row['descr']; ?></textarea></td></tr>\n<tr><td><?php print $lang_image; ?></td><td>\n<select name=\"screanshot_yn\">\n<option value=\"yes\" <?php if($mysql_1465259edtpro_row['screanshot_yn'] == 'yes') { print 'SELECTED'; } ?>><?php print $lang_yes; ?></option>\n<option value=\"no\" <?php if($mysql_1465259edtpro_row['screanshot_yn'] == 'no') { print 'SELECTED'; } ?>><?php print $lang_no; ?></option>\n</select>\n<input name=\"screanshot_url\" class=\"textfield\" size=\"23\" dir=\"ltr\" value=\"<?php echo $mysql_1465259edtpro_row['screanshot_url']; ?>\" />\n</td></tr>\n<tr><td><?php print $lang_url; ?></td><td><input name=\"url\" class=\"textfield\" size=\"30\" dir=\"ltr\" value=\"<?php echo $mysql_1465259edtpro_row['url']; ?>\"/></td></tr>\n<tr><td><?php print $lang_size; ?></td><td><input name=\"size\" class=\"textfield\" size=\"6\" value=\"<?php print $mysql_1465259edtpro_row['size']; ?>\"/></td></tr>\n<tr><td><?php print $lang_company; ?></td><td><input name=\"company\" class=\"textfield\" size=\"30\" value=\"<?php print $mysql_1465259edtpro_row['company']; ?>\"/></td></tr>\n<tr><td><?php print $lang_licene; ?></td><td><input name=\"license\" class=\"textfield\" size=\"20\"  value=\"<?php print $mysql_1465259edtpro_row['license']; ?>\"/></td></tr>\n<tr><td><?php print $lang_capability ; ?></td><td><input name=\"capability\" class=\"textfield\" size=\"30\" value=\"<?php print $mysql_1465259edtpro_row['capability']; ?>\"/></td></tr>\n<tr><td></td><td><input value=\"<?php print $lang_edit; ?>\" type=\"submit\" class=\"a_button\"/></td></tr>\n</table>\n</form>\n\n<?php\n}\n//programs-end\n\n//topics\nif($gdel == 'topic') {\necho 'fff';\n$op = mysql_query(\"DELETE FROM awcm_topics_topics WHERE id = '$gid'\");\nif($op) {\nprint '<script>window.location=\"notify.php?v=done_i\"</script>';\n}\n}\nif($gedit == 'topic') {\n$mysql_2868976166tpc_query = mysql_query(\"SELECT * FROM awcm_topics_topics WHERE id = '$gid'\");\n$mysql_2868976166tpc_row = mysql_fetch_array($mysql_2868976166tpc_query);\n$mysql_topics_stpg_query = mysql_query(\"SELECT * FROM awcm_topics_cat ORDER BY id DESC\");\n?>\n<form action=\"?do=edittopic&id=<?php echo $gid; ?>\" method=\"POST\">\n<table class=\"table_1\" cellspacing=\"0\" cellpadding=\"0\" width=\"100%\">\n<tr class=\"gradient_1\"><td align=\"<?php print $theme_settings['text_position']; ?>\" colspan=\"3\"><?php print $lang_edit; ?> - <?php print $mysql_2868976166tpc_row['title']; ?></td></tr>\n<tr><td width=\"20%\"><?php print $lang_author; ?></td><td width=\"1\">:</td><td><?php f_find_member($member,username); ?></td></tr>\n<tr><td><?php print $lang_title ?></td><td>:</td><td><input value=\"<?php print $mysql_2868976166tpc_row['title']; ?>\" size=\"30\" class=\"textfield\" name=\"title\" /></td></tr>\n<tr><td><?php print $lang_category; ?></td><td>:</td><td>\n<select name=\"cat\">\n<?php while($row = mysql_fetch_array($mysql_topics_stpg_query)) { ?>\n<option value=\"<?php echo $row['id']; ?>\" <?php if($mysql_2868976166tpc_row['cat'] == $row['id']) { echo 'SELECTED'; } ?>><?php print $row['title']; ?></option>\n<?php } ?>\n</select>\n</td></tr>\n<tr><td><?php print $lang_topic; ?></td><td>:</td><td><textarea class=\"textfield\" name=\"topic\" rows=\"11\"><?php print $mysql_2868976166tpc_row['content']; ?></textarea></td></tr>\n<tr><td><?php print $lang_image; ?><span class=\"text_small\">(<?php echo $lang_optional; ?>)</span></td><td>:</td><td><input type=\"text\" class=\"textfield\" size=\"40\" value=\"<?php print $mysql_2868976166tpc_row['image']; ?>\" name=\"image\"/></td></tr>\n<tr><td><?php print $lang_allow_coments; ?></td><td>:</td><td>\n<select name=\"comets\">\n<option value=\"yes\" <?php if($mysql_2868976166tpc_row['allow_coments'] == 'yes') { echo 'SELECTED'; } ?>><?php print $lang_yes; ?></option>\n<option value=\"no\" <?php if($mysql_2868976166tpc_row['allow_coments'] == 'no') { echo 'SELECTED'; } ?>><?php print $lang_no; ?></option>\n</select>\n</td></tr>\n<tr><td></td><td>:</td><td><input type=\"submit\" class=\"a_button\" value=\"<?php print $lang_edit; ?>\" /></td></tr>\n</table>\n</form>\n<?php\n}\n//topics-end\n\n//news\nif($gdel == 'news') {\necho 'fff';\n$op = mysql_query(\"DELETE FROM awcm_news_news WHERE id = '$gid'\");\nif($op) {\nprint '<script>window.location=\"notify.php?v=done_i\"</script>';\n}\n}\nif($gedit == 'news') {\n$mysql_2868976166tpc_query = mysql_query(\"SELECT * FROM awcm_news_news WHERE id = '$gid'\");\n$mysql_2868976166tpc_row = mysql_fetch_array($mysql_2868976166tpc_query);\n$mysql_topics_stpg_query = mysql_query(\"SELECT * FROM awcm_news_cat ORDER BY id DESC\");\n?>\n<form action=\"?do=editnews&id=<?php echo $gid; ?>\" method=\"POST\">\n<table class=\"table_1\" cellspacing=\"0\" cellpadding=\"0\" width=\"100%\">\n<tr class=\"gradient_1\"><td align=\"<?php print $theme_settings['text_position']; ?>\" colspan=\"3\"><?php print $lang_edit; ?> - <?php print $mysql_2868976166tpc_row['title']; ?></td></tr>\n<tr><td width=\"20%\"><?php print $lang_author; ?></td><td width=\"1\">:</td><td><?php f_find_member($member,username); ?></td></tr>\n<tr><td><?php print $lang_title ?></td><td>:</td><td><input value=\"<?php print $mysql_2868976166tpc_row['title']; ?>\" size=\"30\" class=\"textfield\" name=\"title\" /></td></tr>\n<tr><td><?php print $lang_category; ?></td><td>:</td><td>\n<select name=\"cat\">\n<?php while($row = mysql_fetch_array($mysql_topics_stpg_query)) { ?>\n<option value=\"<?php echo $row['id']; ?>\" <?php if($mysql_2868976166tpc_row['cat'] == $row['id']) { echo 'SELECTED'; } ?>><?php print $row['title']; ?></option>\n<?php } ?>\n</select>\n</td></tr>\n<tr><td><?php print $lang_topic; ?></td><td>:</td><td><textarea class=\"textfield\" name=\"topic\" rows=\"11\"><?php print $mysql_2868976166tpc_row['content']; ?></textarea></td></tr>\n<tr><td><?php print $lang_image; ?><span class=\"text_small\">(<?php echo $lang_optional; ?>)</span></td><td>:</td><td><input type=\"text\" class=\"textfield\" size=\"40\" value=\"<?php print $mysql_2868976166tpc_row['image']; ?>\" name=\"image\"/></td></tr>\n<tr><td><?php print $lang_allow_coments; ?></td><td>:</td><td>\n<select name=\"comets\">\n<option value=\"yes\" <?php if($mysql_2868976166tpc_row['allow_coments'] == 'yes') { echo 'SELECTED'; } ?>><?php print $lang_yes; ?></option>\n<option value=\"no\" <?php if($mysql_2868976166tpc_row['allow_coments'] == 'no') { echo 'SELECTED'; } ?>><?php print $lang_no; ?></option>\n</select>\n</td></tr>\n<tr><td></td><td>:</td><td><input type=\"submit\" class=\"a_button\" value=\"<?php print $lang_edit; ?>\" /></td></tr>\n</table>\n</form>\n<?php\n}\n//news-end\n\n//lessons\nif($gdel == 'lesson') {\necho 'fff';\n$op = mysql_query(\"DELETE FROM awcm_lessons_lessons WHERE id = '$gid'\");\nif($op) {\nprint '<script>window.location=\"notify.php?v=done_i\"</script>';\n}\n}\nif($gdel == 'lessoncmnt') {\nmysql_query(\"DELETE FROM awcm_lessons_coments WHERE id = '$gid'\");\n}\nif($gedit == 'lesson') {\n$mysql_2868976166tpc_query = mysql_query(\"SELECT * FROM awcm_lessons_lessons WHERE id = '$gid'\");\n$mysql_2868976166tpc_row = mysql_fetch_array($mysql_2868976166tpc_query);\n$mysql_topics_stpg_query = mysql_query(\"SELECT * FROM awcm_lessons_cat ORDER BY id DESC\");\n?>\n<form action=\"?do=editles&id=<?php echo $gid; ?>\" method=\"POST\">\n<table class=\"table_1\" cellspacing=\"0\" cellpadding=\"0\" width=\"100%\">\n<tr class=\"gradient_1\"><td align=\"<?php print $theme_settings['text_position']; ?>\" colspan=\"3\"><?php print $lang_edit; ?> - <?php print $mysql_2868976166tpc_row['title']; ?></td></tr>\n<tr><td width=\"20%\"><?php print $lang_author; ?></td><td width=\"1\">:</td><td><?php f_find_member($member,username); ?></td></tr>\n<tr><td><?php print $lang_title ?></td><td>:</td><td><input value=\"<?php print $mysql_2868976166tpc_row['title']; ?>\" size=\"30\" class=\"textfield\" name=\"title\" /></td></tr>\n<tr><td><?php print $lang_category; ?></td><td>:</td><td>\n<select name=\"cat\">\n<?php while($row = mysql_fetch_array($mysql_topics_stpg_query)) { ?>\n<option value=\"<?php echo $row['id']; ?>\" <?php if($mysql_2868976166tpc_row['cat'] == $row['id']) { echo 'SELECTED'; } ?>><?php print $row['title']; ?></option>\n<?php } ?>\n</select>\n</td></tr>\n<tr><td><?php print $lang_topic; ?></td><td>:</td><td><textarea class=\"textfield\" name=\"topic\" rows=\"11\"><?php print $mysql_2868976166tpc_row['content']; ?></textarea></td></tr>\n<tr><td><?php print $lang_allow_coments; ?></td><td>:</td><td>\n<select name=\"comets\">\n<option value=\"yes\" <?php if($mysql_2868976166tpc_row['allow_coments'] == 'yes') { echo 'SELECTED'; } ?>><?php print $lang_yes; ?></option>\n<option value=\"no\" <?php if($mysql_2868976166tpc_row['allow_coments'] == 'no') { echo 'SELECTED'; } ?>><?php print $lang_no; ?></option>\n</select>\n</td></tr>\n<tr><td></td><td>:</td><td><input type=\"submit\" class=\"a_button\" value=\"<?php print $lang_edit; ?>\" /></td></tr>\n</table>\n</form>\n<?php\n}\n//lessons-end\n\n\ninclude (\"includes/window_down.php\");\n}",
+      "parameter_ids": [
+        "control.php:LCP284"
+      ],
+      "function_ids": [],
+      "if_framework": "if ($member_level !== 'admin') {\n    exit;\n}"
+    },
+    {
+      "path": "control/common.php",
+      "kind": "conditional",
+      "start_line": 16,
+      "end_line": 19,
+      "condition": "($_SESSION['awcm_cp'] == 'yes')",
+      "terminations": [
+        {
+          "kind": "redirect",
+          "line": 17,
+          "code": "print '<meta http-equiv=\"refresh\" content=\"0;URL=login.php\"> ';",
+          "denial_text": false
+        },
+        {
+          "kind": "configured_denial",
+          "line": 18,
+          "code": "exit;",
+          "denial_text": false
+        }
+      ],
+      "code": "if($_SESSION['awcm_cp'] == 'yes') { } else {\n  print '<meta http-equiv=\"refresh\" content=\"0;URL=login.php\"> ';\nexit;\n}",
+      "parameter_ids": [
+        "control/common.php:LCP83"
+      ],
+      "function_ids": [],
+      "if_framework": "if ($_SESSION['awcm_cp'] == 'yes') {\n    print '<meta http-equiv=\"refresh\" content=\"0;URL=login.php\"> ';\n    exit;\n}"
+    },
+    {
+      "path": "control/common.php",
+      "kind": "database_operation",
+      "start_line": 74,
+      "end_line": 74,
+      "code": "$mysql_f_find_member_query = mysql_query(\"SELECT * FROM awcm_members WHERE id = '$id'\");",
+      "database_relations": [
+        {
+          "table": "awcm_members",
+          "field": "id",
+          "line": 74
+        }
+      ],
+      "related_conditions": [
+        {
+          "start_line": 81,
+          "end_line": 83,
+          "condition": "($id == '0')"
+        }
+      ],
+      "parameter_ids": [
+        "control/common.php:LCP87"
+      ],
+      "function_ids": []
+    },
+    {
+      "path": "control/common.php",
+      "kind": "conditional",
+      "start_line": 81,
+      "end_line": 83,
+      "condition": "($id == '0')",
+      "terminations": [],
+      "code": "if($id == '0') {\n\t\t\tprint $lang_guest;\n\t\t}",
+      "parameter_ids": [
+        "control/common.php:LCP87"
+      ],
+      "function_ids": []
+    },
+    {
+      "path": "header.php",
+      "kind": "conditional",
+      "start_line": 50,
+      "end_line": 62,
+      "condition": "(isset($_SESSION['awcm_member']))",
+      "terminations": [],
+      "code": "if(isset($_SESSION['awcm_member'])) {\n\t$member = $_SESSION['awcm_member'];\n} elseif (isset($_COOKIE['awcm_member'])) {\n\t$mysql_checkdookie51_member_query = mysql_query(\"SELECT password,id FROM awcm_members WHERE id = '$member_cok'\");\n\t$mysql_checkdookie51_member_row   = mysql_fetch_array($mysql_checkdookie51_member_query);\n\t$mysql_checkdookie51_member_total = mysql_num_rows($mysql_checkdookie51_member_query);\n\tif ($mysql_checkdookie51_member_total > 0) {\n\t\t$member = $mysql_checkdookie51_member_row['id'];\n\t\t$_SESSION['awcm_member'] = $mysql_checkdookie51_member_row['id'];\n\t}\n} else {\n\t$member = 'no';\n}",
+      "parameter_ids": [
+        "header.php:LCP324"
+      ],
+      "function_ids": []
+    },
+    {
+      "path": "header.php",
+      "kind": "conditional",
+      "start_line": 52,
+      "end_line": 60,
+      "condition": "(isset($_COOKIE['awcm_member']))",
+      "terminations": [],
+      "code": "elseif (isset($_COOKIE['awcm_member'])) {\n\t$mysql_checkdookie51_member_query = mysql_query(\"SELECT password,id FROM awcm_members WHERE id = '$member_cok'\");\n\t$mysql_checkdookie51_member_row   = mysql_fetch_array($mysql_checkdookie51_member_query);\n\t$mysql_checkdookie51_member_total = mysql_num_rows($mysql_checkdookie51_member_query);\n\tif ($mysql_checkdookie51_member_total > 0) {\n\t\t$member = $mysql_checkdookie51_member_row['id'];\n\t\t$_SESSION['awcm_member'] = $mysql_checkdookie51_member_row['id'];\n\t}\n}",
+      "parameter_ids": [
+        "header.php:LCP325"
+      ],
+      "function_ids": []
+    },
+    {
+      "path": "header.php",
+      "kind": "database_operation",
+      "start_line": 53,
+      "end_line": 53,
+      "code": "$mysql_checkdookie51_member_query = mysql_query(\"SELECT password,id FROM awcm_members WHERE id = '$member_cok'\");",
+      "database_relations": [
+        {
+          "table": "awcm_members",
+          "field": "id",
+          "line": 53
+        }
+      ],
+      "related_conditions": [
+        {
+          "start_line": 52,
+          "end_line": 60,
+          "condition": "(isset($_COOKIE['awcm_member']))"
+        }
+      ],
+      "parameter_ids": [
+        "header.php:LCP325"
+      ],
+      "function_ids": []
+    },
+    {
+      "path": "header.php",
+      "kind": "database_operation",
+      "start_line": 85,
+      "end_line": 85,
+      "code": "$mysql_onlinecheckide_query = mysql_query(\"SELECT memid FROM awcm_online WHERE memid = '$member'\");",
+      "database_relations": [
+        {
+          "table": "awcm_online",
+          "field": "memid",
+          "line": 85
+        }
+      ],
+      "related_conditions": [
+        {
+          "start_line": 50,
+          "end_line": 62,
+          "condition": "(isset($_SESSION['awcm_member']))"
+        }
+      ],
+      "parameter_ids": [
+        "header.php:LCP324"
+      ],
+      "function_ids": []
+    },
+    {
+      "path": "login.php",
+      "kind": "conditional",
+      "start_line": 15,
+      "end_line": 27,
+      "condition": "($mysql_login547_total == 0)",
+      "terminations": [
+        {
+          "kind": "redirect",
+          "line": 16,
+          "code": "print '<meta http-equiv=\"refresh\" content=\"0; URL=notify.php?v=login_failed\">';",
+          "denial_text": false
+        },
+        {
+          "kind": "redirect",
+          "line": 26,
+          "code": "print '<meta http-equiv=\"refresh\" content=\"0; URL=notify.php?v=login_done\">';",
+          "denial_text": false
+        }
+      ],
+      "code": "if($mysql_login547_total == 0) {\n\tprint '<meta http-equiv=\"refresh\" content=\"0; URL=notify.php?v=login_failed\">';\n} elseif ($mysql_login547_total == 1) {\n\tif($premember == 'yes') {\n$cookoie_v = $mysql_login547_row['id']+197;\n\t\t?>\n<iframe src =\"cookie_gen.php?name=awcm_member&content=<?php echo $cookoie_v; ?>\" width=\"1\" height=\"1\">\n</iframe>\n\t\t<?php\n\t}\n\t$_SESSION['awcm_member'] = $mysql_login547_row['id'];\n\tprint '<meta http-equiv=\"refresh\" content=\"0; URL=notify.php?v=login_done\">';\n}",
+      "parameter_ids": [
+        "login.php:LCP521"
+      ],
+      "function_ids": [],
+      "if_framework": "if ($mysql_login547_total == 0) {\n    print '<meta http-equiv=\"refresh\" content=\"0; URL=notify.php?v=login_failed\">';\n    print '<meta http-equiv=\"refresh\" content=\"0; URL=notify.php?v=login_done\">';\n}"
+    },
+    {
+      "path": "login.php",
+      "kind": "conditional",
+      "start_line": 17,
+      "end_line": 27,
+      "condition": "($mysql_login547_total == 1)",
+      "terminations": [
+        {
+          "kind": "redirect",
+          "line": 26,
+          "code": "print '<meta http-equiv=\"refresh\" content=\"0; URL=notify.php?v=login_done\">';",
+          "denial_text": false
+        }
+      ],
+      "code": "elseif ($mysql_login547_total == 1) {\n\tif($premember == 'yes') {\n$cookoie_v = $mysql_login547_row['id']+197;\n\t\t?>\n<iframe src =\"cookie_gen.php?name=awcm_member&content=<?php echo $cookoie_v; ?>\" width=\"1\" height=\"1\">\n</iframe>\n\t\t<?php\n\t}\n\t$_SESSION['awcm_member'] = $mysql_login547_row['id'];\n\tprint '<meta http-equiv=\"refresh\" content=\"0; URL=notify.php?v=login_done\">';\n}",
+      "parameter_ids": [
+        "login.php:LCP521"
+      ],
+      "function_ids": [],
+      "if_framework": "if ($mysql_login547_total == 1) {\n    print '<meta http-equiv=\"refresh\" content=\"0; URL=notify.php?v=login_done\">';\n}"
+    },
+    {
+      "path": "member_cp.php",
+      "kind": "conditional",
+      "start_line": 8,
+      "end_line": 11,
+      "condition": "($member == 'no')",
+      "terminations": [],
+      "code": "if($member == 'no') {\n print '<meta http-equiv=\"refresh\" content=\"0; URL=index.php\">';\nexit;\n}",
+      "parameter_ids": [
+        "member_cp.php:LCP526"
+      ],
+      "function_ids": []
+    },
+    {
+      "path": "member_cp.php",
+      "kind": "database_operation",
+      "start_line": 43,
+      "end_line": 43,
+      "code": "$update_query = mysql_query(\"UPDATE awcm_members set email = '$gemail', sex = '$gsex', country = '$country', signature = '$gsig', notes = '$gnotes' WHERE id = '$member'\");",
+      "database_relations": [
+        {
+          "table": "awcm_members",
+          "field": "id",
+          "line": 43
+        }
+      ],
+      "related_conditions": [
+        {
+          "start_line": 8,
+          "end_line": 11,
+          "condition": "($member == 'no')"
+        }
+      ],
+      "parameter_ids": [
+        "member_cp.php:LCP526"
+      ],
+      "function_ids": []
+    },
+    {
+      "path": "member_cp.php",
+      "kind": "database_operation",
+      "start_line": 45,
+      "end_line": 45,
+      "code": "$update_query = mysql_query(\"UPDATE awcm_members set email = '$gemail', password = '$gpass_md', sex = '$gsex', country = '$country', signature = '$gsig', notes = '$gnotes' WHERE id = '$member'\");",
+      "database_relations": [
+        {
+          "table": "awcm_members",
+          "field": "id",
+          "line": 45
+        }
+      ],
+      "related_conditions": [
+        {
+          "start_line": 8,
+          "end_line": 11,
+          "condition": "($member == 'no')"
+        }
+      ],
+      "parameter_ids": [
+        "member_cp.php:LCP526"
+      ],
+      "function_ids": []
+    },
+    {
+      "path": "member_cp.php",
+      "kind": "database_operation",
+      "start_line": 75,
+      "end_line": 75,
+      "code": "$mysql_member_pms_cppg_query = mysql_query(\"SELECT * FROM awcm_member_pms WHERE reciever = '$member'\");",
+      "database_relations": [
+        {
+          "table": "awcm_member_pms",
+          "field": "reciever",
+          "line": 75
+        }
+      ],
+      "related_conditions": [
+        {
+          "start_line": 8,
+          "end_line": 11,
+          "condition": "($member == 'no')"
+        }
+      ],
+      "parameter_ids": [
+        "member_cp.php:LCP526"
+      ],
+      "function_ids": []
+    }
+  ]
+}

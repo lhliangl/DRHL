@@ -1,0 +1,85 @@
+{
+  "role": "visitor",
+  "kind": "visitor",
+  "nodes": [
+    "./",
+    "accounts/login/?next=%2F",
+    "accounts/password_reset/",
+    "admin/",
+    "admin/login/?next=%2Fadmin%2F"
+  ],
+  "edges": [
+    {
+      "from": "./",
+      "to": "accounts/login/?next=%2F"
+    },
+    {
+      "from": "accounts/login/?next=%2F",
+      "to": "accounts/login/?next=%2F"
+    },
+    {
+      "from": "accounts/login/?next=%2F",
+      "to": "accounts/password_reset/"
+    },
+    {
+      "from": "accounts/password_reset/",
+      "to": "accounts/password_reset/"
+    },
+    {
+      "from": "accounts/password_reset/",
+      "to": "admin/"
+    },
+    {
+      "from": "admin/",
+      "to": "admin/login/?next=%2Fadmin%2F"
+    },
+    {
+      "from": "admin/login/?next=%2Fadmin%2F",
+      "to": "admin/login/?next=%2Fadmin%2F"
+    }
+  ],
+  "requests": {
+    "./": {
+      "method": "GET",
+      "params": {},
+      "referer": null
+    },
+    "accounts/login/?next=%2F": {
+      "method": "POST",
+      "params": {
+        "csrfmiddlewaretoken": "je2ebp3OaqmzKAfRX3vRKnG5pMe7YnCXLL5Dh7cTtFpLyN891LC8QtaYJ1Np0bsS",
+        "username": "drhl_user",
+        "password": "wojiaoliu456"
+      },
+      "referer": "accounts/login/?next=%2F"
+    },
+    "favicon.ico": {
+      "method": "GET",
+      "params": {},
+      "referer": null
+    },
+    "accounts/password_reset/": {
+      "method": "POST",
+      "params": {
+        "csrfmiddlewaretoken": "3H8iSQO1ibcAVWLI1l2lqHWmuoiufRtnvebHYyX6BqfMJ9E0539CwNqfODRMhFji",
+        "email": "drhl@example.test"
+      },
+      "referer": "accounts/password_reset/"
+    },
+    "admin/": {
+      "method": "GET",
+      "params": {},
+      "referer": "accounts/password_reset/"
+    },
+    "admin/login/?next=%2Fadmin%2F": {
+      "method": "POST",
+      "params": {
+        "csrfmiddlewaretoken": "G7AbfZ8btPr4le9zO6ocKpc705nobKPP8EDAlHhgM4ug9r2RSOvtQvG0kkWGdyFK",
+        "username": "drhl_user",
+        "password": "wojiaoliu456",
+        "next": "/admin/"
+      },
+      "referer": "admin/login/?next=%2Fadmin%2F"
+    }
+  }
+}

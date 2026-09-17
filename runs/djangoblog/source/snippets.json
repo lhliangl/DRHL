@@ -1,0 +1,35 @@
+{
+  "snippets": [
+    {
+      "path": "blog/views.py",
+      "kind": "database_operation",
+      "start_line": 6,
+      "end_line": 6,
+      "code": "Post.objects.filter(status=1)",
+      "database_relations": [
+        {
+          "table": "Post",
+          "field": "status",
+          "line": 6
+        }
+      ],
+      "related_conditions": [],
+      "parameter_ids": [
+        "blog/views.py:LCP1"
+      ],
+      "function_ids": []
+    },
+    {
+      "path": "blog/views.py",
+      "kind": "semantic_source",
+      "start_line": 6,
+      "end_line": 6,
+      "code": "Post.objects.filter(status=1)",
+      "semantic_evidence": [],
+      "parameter_ids": [
+        "blog/views.py:LCP1"
+      ],
+      "function_ids": []
+    }
+  ]
+}

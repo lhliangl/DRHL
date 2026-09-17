@@ -1,0 +1,1258 @@
+{
+  "role": "user2",
+  "kind": "user",
+  "nodes": [
+    "archive/index.php",
+    "archive/index.php/forum-2.html",
+    "archive/index.php/thread-1.html",
+    "archive/index.php?forum-1.html=p1",
+    "calendar.php",
+    "calendar.php?action=addevent&calendar=p1",
+    "calendar.php?action=addevent&calendar=p1&day=p1&month=p1&year=p1",
+    "calendar.php?action=addevent&calendar=p1&private=p1",
+    "calendar.php?action=dayview&calendar=p1&day=p1&month=p1&year=p1",
+    "calendar.php?action=weekview&calendar=p1&week=p1",
+    "calendar.php?calendar=p1",
+    "calendar.php?calendar=p1&month=p1&year=p1",
+    "forumdisplay.php",
+    "forumdisplay.php?fid=p1",
+    "index.php",
+    "member.php",
+    "member.php?action=emailuser&uid=p1",
+    "member.php?action=lostpw",
+    "member.php?action=profile&uid=p1",
+    "memberlist.php",
+    "memberlist.php?action=search",
+    "memberlist.php?username=p1&username_match=p1",
+    "misc.php",
+    "misc.php?action=help",
+    "misc.php?action=help&hid=p1",
+    "misc.php?action=markread",
+    "misc.php?action=syndication",
+    "online.php",
+    "online.php?action=today",
+    "private.php",
+    "private.php?action=advanced_search",
+    "private.php?action=delete&pmid=p1",
+    "private.php?action=dismiss_notice",
+    "private.php?action=empty",
+    "private.php?action=export",
+    "private.php?action=folders",
+    "private.php?action=read&pmid=p1",
+    "private.php?action=send",
+    "private.php?action=send&do=forward&pmid=p1",
+    "private.php?action=send&do=reply&pmid=p1",
+    "private.php?action=send&uid=p1",
+    "private.php?action=tracking",
+    "private.php?fid=p1",
+    "reputation.php",
+    "reputation.php?show=p1&sort=p1&uid=p1",
+    "reputation.php?uid=p1",
+    "search.php",
+    "search.php?action=finduser&uid=p1",
+    "search.php?action=finduserthreads&uid=p1",
+    "search.php?action=getdaily",
+    "search.php?action=getnew",
+    "search.php?action=results",
+    "showteam.php",
+    "showthread.php",
+    "showthread.php?tid=p1",
+    "stats.php",
+    "usercp.php",
+    "usercp.php?action=attachments",
+    "usercp.php?action=avatar",
+    "usercp.php?action=drafts",
+    "usercp.php?action=editlists",
+    "usercp.php?action=editsig",
+    "usercp.php?action=email",
+    "usercp.php?action=forumsubscriptions",
+    "usercp.php?action=options",
+    "usercp.php?action=password",
+    "usercp.php?action=profile",
+    "usercp.php?action=subscriptions",
+    "usercp.php?action=usergroups"
+  ],
+  "edges": [
+    {
+      "from": "archive/index.php",
+      "to": "archive/index.php?forum-1.html=p1"
+    },
+    {
+      "from": "calendar.php",
+      "to": "calendar.php"
+    },
+    {
+      "from": "calendar.php",
+      "to": "calendar.php?action=addevent&calendar=p1"
+    },
+    {
+      "from": "calendar.php",
+      "to": "calendar.php?action=addevent&calendar=p1&day=p1&month=p1&year=p1"
+    },
+    {
+      "from": "calendar.php",
+      "to": "calendar.php?action=addevent&calendar=p1&private=p1"
+    },
+    {
+      "from": "calendar.php",
+      "to": "calendar.php?action=dayview&calendar=p1&day=p1&month=p1&year=p1"
+    },
+    {
+      "from": "calendar.php",
+      "to": "calendar.php?action=weekview&calendar=p1&week=p1"
+    },
+    {
+      "from": "calendar.php",
+      "to": "calendar.php?calendar=p1"
+    },
+    {
+      "from": "calendar.php",
+      "to": "calendar.php?calendar=p1&month=p1&year=p1"
+    },
+    {
+      "from": "calendar.php?action=addevent&calendar=p1",
+      "to": "calendar.php"
+    },
+    {
+      "from": "calendar.php?action=addevent&calendar=p1&day=p1&month=p1&year=p1",
+      "to": "calendar.php"
+    },
+    {
+      "from": "calendar.php?action=addevent&calendar=p1&private=p1",
+      "to": "calendar.php"
+    },
+    {
+      "from": "calendar.php?action=dayview&calendar=p1&day=p1&month=p1&year=p1",
+      "to": "calendar.php"
+    },
+    {
+      "from": "calendar.php?action=dayview&calendar=p1&day=p1&month=p1&year=p1",
+      "to": "calendar.php?action=addevent&calendar=p1&day=p1&month=p1&year=p1"
+    },
+    {
+      "from": "calendar.php?action=weekview&calendar=p1&week=p1",
+      "to": "calendar.php"
+    },
+    {
+      "from": "calendar.php?calendar=p1",
+      "to": "calendar.php"
+    },
+    {
+      "from": "calendar.php?calendar=p1&month=p1&year=p1",
+      "to": "calendar.php"
+    },
+    {
+      "from": "forumdisplay.php",
+      "to": "forumdisplay.php?fid=p1"
+    },
+    {
+      "from": "forumdisplay.php?fid=p1",
+      "to": "archive/index.php/forum-2.html"
+    },
+    {
+      "from": "forumdisplay.php?fid=p1",
+      "to": "forumdisplay.php"
+    },
+    {
+      "from": "forumdisplay.php?fid=p1",
+      "to": "forumdisplay.php?fid=p1"
+    },
+    {
+      "from": "index.php",
+      "to": "index.php"
+    },
+    {
+      "from": "index.php",
+      "to": "misc.php?action=markread"
+    },
+    {
+      "from": "index.php",
+      "to": "online.php"
+    },
+    {
+      "from": "index.php",
+      "to": "showteam.php"
+    },
+    {
+      "from": "index.php",
+      "to": "stats.php"
+    },
+    {
+      "from": "member.php",
+      "to": "index.php"
+    },
+    {
+      "from": "member.php",
+      "to": "member.php"
+    },
+    {
+      "from": "member.php",
+      "to": "member.php?action=emailuser&uid=p1"
+    },
+    {
+      "from": "member.php",
+      "to": "member.php?action=lostpw"
+    },
+    {
+      "from": "member.php",
+      "to": "member.php?action=profile&uid=p1"
+    },
+    {
+      "from": "member.php?action=emailuser&uid=p1",
+      "to": "member.php"
+    },
+    {
+      "from": "member.php?action=lostpw",
+      "to": "member.php"
+    },
+    {
+      "from": "member.php?action=profile&uid=p1",
+      "to": "member.php"
+    },
+    {
+      "from": "member.php?action=profile&uid=p1",
+      "to": "member.php?action=emailuser&uid=p1"
+    },
+    {
+      "from": "member.php?action=profile&uid=p1",
+      "to": "private.php?action=send&uid=p1"
+    },
+    {
+      "from": "member.php?action=profile&uid=p1",
+      "to": "search.php?action=finduserthreads&uid=p1"
+    },
+    {
+      "from": "memberlist.php",
+      "to": "memberlist.php"
+    },
+    {
+      "from": "memberlist.php",
+      "to": "memberlist.php?action=search"
+    },
+    {
+      "from": "memberlist.php",
+      "to": "memberlist.php?username=p1&username_match=p1"
+    },
+    {
+      "from": "memberlist.php?action=search",
+      "to": "memberlist.php"
+    },
+    {
+      "from": "memberlist.php?username=p1&username_match=p1",
+      "to": "memberlist.php"
+    },
+    {
+      "from": "misc.php",
+      "to": "misc.php?action=help"
+    },
+    {
+      "from": "misc.php",
+      "to": "misc.php?action=help&hid=p1"
+    },
+    {
+      "from": "misc.php",
+      "to": "misc.php?action=syndication"
+    },
+    {
+      "from": "misc.php?action=help",
+      "to": "misc.php"
+    },
+    {
+      "from": "misc.php?action=help",
+      "to": "misc.php?action=help&hid=p1"
+    },
+    {
+      "from": "misc.php?action=help&hid=p1",
+      "to": "misc.php"
+    },
+    {
+      "from": "misc.php?action=syndication",
+      "to": "misc.php"
+    },
+    {
+      "from": "misc.php?action=syndication",
+      "to": "misc.php?action=syndication"
+    },
+    {
+      "from": "online.php",
+      "to": "online.php"
+    },
+    {
+      "from": "online.php",
+      "to": "online.php?action=today"
+    },
+    {
+      "from": "online.php?action=today",
+      "to": "online.php"
+    },
+    {
+      "from": "private.php",
+      "to": "private.php"
+    },
+    {
+      "from": "private.php",
+      "to": "private.php?action=advanced_search"
+    },
+    {
+      "from": "private.php",
+      "to": "private.php?action=empty"
+    },
+    {
+      "from": "private.php",
+      "to": "private.php?action=export"
+    },
+    {
+      "from": "private.php",
+      "to": "private.php?action=folders"
+    },
+    {
+      "from": "private.php",
+      "to": "private.php?action=read&pmid=p1"
+    },
+    {
+      "from": "private.php",
+      "to": "private.php?action=send"
+    },
+    {
+      "from": "private.php",
+      "to": "private.php?action=send&do=forward&pmid=p1"
+    },
+    {
+      "from": "private.php",
+      "to": "private.php?action=send&do=reply&pmid=p1"
+    },
+    {
+      "from": "private.php",
+      "to": "private.php?action=send&uid=p1"
+    },
+    {
+      "from": "private.php",
+      "to": "private.php?action=tracking"
+    },
+    {
+      "from": "private.php",
+      "to": "private.php?fid=p1"
+    },
+    {
+      "from": "private.php?action=advanced_search",
+      "to": "private.php"
+    },
+    {
+      "from": "private.php?action=dismiss_notice",
+      "to": "index.php"
+    },
+    {
+      "from": "private.php?action=empty",
+      "to": "private.php"
+    },
+    {
+      "from": "private.php?action=export",
+      "to": "private.php"
+    },
+    {
+      "from": "private.php?action=folders",
+      "to": "private.php"
+    },
+    {
+      "from": "private.php?action=read&pmid=p1",
+      "to": "private.php"
+    },
+    {
+      "from": "private.php?action=read&pmid=p1",
+      "to": "private.php?action=delete&pmid=p1"
+    },
+    {
+      "from": "private.php?action=read&pmid=p1",
+      "to": "private.php?action=send&do=forward&pmid=p1"
+    },
+    {
+      "from": "private.php?action=read&pmid=p1",
+      "to": "private.php?action=send&do=reply&pmid=p1"
+    },
+    {
+      "from": "private.php?action=send",
+      "to": "private.php"
+    },
+    {
+      "from": "private.php?action=send&do=forward&pmid=p1",
+      "to": "private.php"
+    },
+    {
+      "from": "private.php?action=send&do=reply&pmid=p1",
+      "to": "private.php"
+    },
+    {
+      "from": "private.php?action=send&uid=p1",
+      "to": "private.php"
+    },
+    {
+      "from": "private.php?action=send&uid=p1",
+      "to": "private.php?action=dismiss_notice"
+    },
+    {
+      "from": "private.php?action=send&uid=p1",
+      "to": "private.php?action=read&pmid=p1"
+    },
+    {
+      "from": "private.php?action=tracking",
+      "to": "private.php"
+    },
+    {
+      "from": "private.php?fid=p1",
+      "to": "private.php"
+    },
+    {
+      "from": "reputation.php",
+      "to": "reputation.php?show=p1&sort=p1&uid=p1"
+    },
+    {
+      "from": "reputation.php",
+      "to": "reputation.php?uid=p1"
+    },
+    {
+      "from": "reputation.php?show=p1&sort=p1&uid=p1",
+      "to": "reputation.php"
+    },
+    {
+      "from": "reputation.php?uid=p1",
+      "to": "reputation.php"
+    },
+    {
+      "from": "reputation.php?uid=p1",
+      "to": "reputation.php?show=p1&sort=p1&uid=p1"
+    },
+    {
+      "from": "search.php",
+      "to": "search.php"
+    },
+    {
+      "from": "search.php",
+      "to": "search.php?action=results"
+    },
+    {
+      "from": "search.php?action=getnew",
+      "to": "search.php?action=results"
+    },
+    {
+      "from": "search.php?action=results",
+      "to": "search.php"
+    },
+    {
+      "from": "showteam.php",
+      "to": "showteam.php"
+    },
+    {
+      "from": "showthread.php",
+      "to": "showthread.php?tid=p1"
+    },
+    {
+      "from": "showthread.php?tid=p1",
+      "to": "archive/index.php/thread-1.html"
+    },
+    {
+      "from": "showthread.php?tid=p1",
+      "to": "showthread.php"
+    },
+    {
+      "from": "showthread.php?tid=p1",
+      "to": "showthread.php?tid=p1"
+    },
+    {
+      "from": "stats.php",
+      "to": "stats.php"
+    },
+    {
+      "from": "usercp.php",
+      "to": "archive/index.php"
+    },
+    {
+      "from": "usercp.php",
+      "to": "calendar.php"
+    },
+    {
+      "from": "usercp.php",
+      "to": "member.php?action=profile&uid=p1"
+    },
+    {
+      "from": "usercp.php",
+      "to": "memberlist.php"
+    },
+    {
+      "from": "usercp.php",
+      "to": "misc.php?action=help"
+    },
+    {
+      "from": "usercp.php",
+      "to": "misc.php?action=syndication"
+    },
+    {
+      "from": "usercp.php",
+      "to": "private.php?action=folders"
+    },
+    {
+      "from": "usercp.php",
+      "to": "private.php?action=send"
+    },
+    {
+      "from": "usercp.php",
+      "to": "private.php?action=tracking"
+    },
+    {
+      "from": "usercp.php",
+      "to": "private.php?fid=p1"
+    },
+    {
+      "from": "usercp.php",
+      "to": "reputation.php?uid=p1"
+    },
+    {
+      "from": "usercp.php",
+      "to": "search.php"
+    },
+    {
+      "from": "usercp.php",
+      "to": "search.php?action=finduser&uid=p1"
+    },
+    {
+      "from": "usercp.php",
+      "to": "search.php?action=getdaily"
+    },
+    {
+      "from": "usercp.php",
+      "to": "search.php?action=getnew"
+    },
+    {
+      "from": "usercp.php",
+      "to": "usercp.php"
+    },
+    {
+      "from": "usercp.php",
+      "to": "usercp.php?action=attachments"
+    },
+    {
+      "from": "usercp.php",
+      "to": "usercp.php?action=avatar"
+    },
+    {
+      "from": "usercp.php",
+      "to": "usercp.php?action=drafts"
+    },
+    {
+      "from": "usercp.php",
+      "to": "usercp.php?action=editlists"
+    },
+    {
+      "from": "usercp.php",
+      "to": "usercp.php?action=editsig"
+    },
+    {
+      "from": "usercp.php",
+      "to": "usercp.php?action=email"
+    },
+    {
+      "from": "usercp.php",
+      "to": "usercp.php?action=forumsubscriptions"
+    },
+    {
+      "from": "usercp.php",
+      "to": "usercp.php?action=options"
+    },
+    {
+      "from": "usercp.php",
+      "to": "usercp.php?action=password"
+    },
+    {
+      "from": "usercp.php",
+      "to": "usercp.php?action=profile"
+    },
+    {
+      "from": "usercp.php",
+      "to": "usercp.php?action=subscriptions"
+    },
+    {
+      "from": "usercp.php",
+      "to": "usercp.php?action=usergroups"
+    },
+    {
+      "from": "usercp.php?action=attachments",
+      "to": "usercp.php"
+    },
+    {
+      "from": "usercp.php?action=avatar",
+      "to": "usercp.php"
+    },
+    {
+      "from": "usercp.php?action=drafts",
+      "to": "usercp.php"
+    },
+    {
+      "from": "usercp.php?action=editlists",
+      "to": "usercp.php"
+    },
+    {
+      "from": "usercp.php?action=editsig",
+      "to": "usercp.php"
+    },
+    {
+      "from": "usercp.php?action=email",
+      "to": "usercp.php"
+    },
+    {
+      "from": "usercp.php?action=forumsubscriptions",
+      "to": "usercp.php"
+    },
+    {
+      "from": "usercp.php?action=options",
+      "to": "usercp.php"
+    },
+    {
+      "from": "usercp.php?action=password",
+      "to": "member.php?action=lostpw"
+    },
+    {
+      "from": "usercp.php?action=password",
+      "to": "usercp.php"
+    },
+    {
+      "from": "usercp.php?action=profile",
+      "to": "usercp.php"
+    },
+    {
+      "from": "usercp.php?action=subscriptions",
+      "to": "usercp.php"
+    },
+    {
+      "from": "usercp.php?action=usergroups",
+      "to": "usercp.php"
+    }
+  ],
+  "requests": {
+    "usercp.php": {
+      "method": "GET",
+      "params": {
+        "action": "forumsubscriptions",
+        "my_post_key": "24fecc0863e67d44754900860ae033e3",
+        "language": "english"
+      },
+      "referer": "usercp.php?action=forumsubscriptions"
+    },
+    "index.php": {
+      "method": "GET",
+      "params": {
+        "my_post_key": "24fecc0863e67d44754900860ae033e3",
+        "language": "english"
+      },
+      "referer": "index.php"
+    },
+    "member.php": {
+      "method": "POST",
+      "params": {
+        "email": "drhl_2a93d466@example.test",
+        "action": "do_lostpw"
+      },
+      "referer": "member.php?action=lostpw"
+    },
+    "private.php": {
+      "method": "POST",
+      "params": {
+        "my_post_key": "24fecc0863e67d44754900860ae033e3",
+        "to": "value_47041dde",
+        "bcc": "value_6184fe87",
+        "subject": "Fw: text_92e1f2e0",
+        "icon": "-1",
+        "message_new": "[quote='user2']\ncomment_237dc549\n[/quote]",
+        "message": "[quote='user2']\ncomment_237dc549\n[/quote]",
+        "options[signature]": "1",
+        "options[savecopy]": "1",
+        "options[readreceipt]": "1",
+        "action": "do_send",
+        "pmid": "1",
+        "do": "forward",
+        "submit": "Send Message8QmjCcRTpi",
+        "saveasdraft": "Save as DraftX3LO4dhYwG",
+        "preview": "PreviewBp9VdWAviR"
+      },
+      "referer": "private.php?action=send&do=forward&pmid=p1"
+    },
+    "forumdisplay.php?fid=p1": {
+      "method": "POST",
+      "params": {
+        "pwverify": "DRHL_WRONG_FORUM_PASSWORD",
+        "submit": "Verify Forum Password"
+      },
+      "referer": "forumdisplay.php?fid=p1"
+    },
+    "forumdisplay.php": {
+      "method": "GET",
+      "params": {
+        "fid": "2",
+        "my_post_key": "24fecc0863e67d44754900860ae033e3",
+        "language": "english"
+      },
+      "referer": "forumdisplay.php?fid=p1"
+    },
+    "showthread.php?tid=p1": {
+      "method": "POST",
+      "params": {
+        "pwverify": "DRHL_WRONG_FORUM_PASSWORD",
+        "submit": "Verify Forum Password"
+      },
+      "referer": "showthread.php?tid=p1"
+    },
+    "showthread.php": {
+      "method": "GET",
+      "params": {
+        "tid": "1",
+        "my_post_key": "24fecc0863e67d44754900860ae033e3",
+        "language": "english"
+      },
+      "referer": "showthread.php?tid=p1"
+    },
+    "search.php": {
+      "method": "GET",
+      "params": {
+        "action": "results",
+        "sid": "b66e591d59e189d977c66b80441749cd",
+        "my_post_key": "24fecc0863e67d44754900860ae033e3",
+        "language": "english"
+      },
+      "referer": "search.php?action=results"
+    },
+    "xmlhttp.php?action=get_users&query=p1": {
+      "method": "GET",
+      "params": {
+        "action": "get_users",
+        "query": "value_88fcc80b"
+      },
+      "referer": "search.php"
+    },
+    "memberlist.php": {
+      "method": "POST",
+      "params": {
+        "username_match": "begins",
+        "username": "text_37550c2b",
+        "website": "http://example.test/",
+        "aim": "value_e7ceca4b",
+        "msn": "value_008c96a1",
+        "yahoo": "value_eec49f64",
+        "icq": "value_a33eaded",
+        "sort": "username",
+        "perpage": "15",
+        "submit": "Search"
+      },
+      "referer": "memberlist.php?action=search"
+    },
+    "calendar.php": {
+      "method": "POST",
+      "params": {
+        "my_post_key": "24fecc0863e67d44754900860ae033e3",
+        "name": "text_3a1bf774",
+        "calendar": "1",
+        "type": "single",
+        "single_day": "28",
+        "single_month": "6",
+        "single_year": "2026",
+        "start_day": "28",
+        "start_month": "6",
+        "start_year": "2026",
+        "start_time": "12:00",
+        "end_day": "28",
+        "end_month": "6",
+        "end_year": "2026",
+        "end_time": "12:00",
+        "timezone": "0",
+        "repeats": "0",
+        "repeats_1_days": "1",
+        "repeats_3_weeks": "1",
+        "repeats_4_type": "1",
+        "repeats_4_day": "1",
+        "repeats_4_months": "1",
+        "repeats_4_occurance": "1",
+        "repeats_4_weekday": "0",
+        "repeats_4_months2": "1",
+        "repeats_5_type": "1",
+        "repeats_5_day": "1",
+        "repeats_5_month": "1",
+        "repeats_5_years": "1",
+        "repeats_5_occurance": "1",
+        "repeats_5_weekday": "0",
+        "repeats_5_month2": "1",
+        "repeats_5_years2": "1",
+        "description_new": "comment_303d7f79",
+        "description": "comment_ba1cb953",
+        "action": "do_addevent"
+      },
+      "referer": "calendar.php?action=addevent&calendar=p1&day=p1&month=p1&year=p1"
+    },
+    "misc.php?action=help": {
+      "method": "GET",
+      "params": {
+        "action": "help"
+      },
+      "referer": "usercp.php"
+    },
+    "misc.php": {
+      "method": "GET",
+      "params": {
+        "action": "help",
+        "hid": "1",
+        "my_post_key": "24fecc0863e67d44754900860ae033e3",
+        "language": "english"
+      },
+      "referer": "misc.php?action=help&hid=p1"
+    },
+    "member.php?action=profile&uid=p1": {
+      "method": "GET",
+      "params": {
+        "action": "profile",
+        "uid": "3"
+      },
+      "referer": "usercp.php"
+    },
+    "search.php?action=getnew": {
+      "method": "GET",
+      "params": {
+        "action": "getnew"
+      },
+      "referer": "usercp.php"
+    },
+    "search.php?action=getdaily": {
+      "method": "GET",
+      "params": {
+        "action": "getdaily"
+      },
+      "referer": "usercp.php"
+    },
+    "private.php?action=send": {
+      "method": "GET",
+      "params": {
+        "action": "send"
+      },
+      "referer": "usercp.php"
+    },
+    "private.php?fid=p1": {
+      "method": "GET",
+      "params": {
+        "fid": "1"
+      },
+      "referer": "usercp.php"
+    },
+    "private.php?action=tracking": {
+      "method": "GET",
+      "params": {
+        "action": "tracking"
+      },
+      "referer": "usercp.php"
+    },
+    "private.php?action=folders": {
+      "method": "GET",
+      "params": {
+        "action": "folders"
+      },
+      "referer": "usercp.php"
+    },
+    "usercp.php?action=profile": {
+      "method": "GET",
+      "params": {
+        "action": "profile"
+      },
+      "referer": "usercp.php"
+    },
+    "usercp.php?action=password": {
+      "method": "GET",
+      "params": {
+        "action": "password"
+      },
+      "referer": "usercp.php"
+    },
+    "usercp.php?action=email": {
+      "method": "GET",
+      "params": {
+        "action": "email"
+      },
+      "referer": "usercp.php"
+    },
+    "usercp.php?action=avatar": {
+      "method": "GET",
+      "params": {
+        "action": "avatar"
+      },
+      "referer": "usercp.php"
+    },
+    "usercp.php?action=editsig": {
+      "method": "GET",
+      "params": {
+        "action": "editsig"
+      },
+      "referer": "usercp.php"
+    },
+    "usercp.php?action=options": {
+      "method": "GET",
+      "params": {
+        "action": "options"
+      },
+      "referer": "usercp.php"
+    },
+    "usercp.php?action=usergroups": {
+      "method": "GET",
+      "params": {
+        "action": "usergroups"
+      },
+      "referer": "usercp.php"
+    },
+    "usercp.php?action=editlists": {
+      "method": "GET",
+      "params": {
+        "action": "editlists"
+      },
+      "referer": "usercp.php"
+    },
+    "usercp.php?action=do_editlists&manage=buddy": {
+      "method": "POST",
+      "params": {
+        "action": "do_editlists",
+        "my_post_key": "24fecc0863e67d44754900860ae033e3",
+        "manage": "buddy",
+        "ajax": "1",
+        "add_username": "text_9bd4638a"
+      },
+      "referer": "usercp.php?action=editlists"
+    },
+    "usercp.php?action=do_editlists&manage=ignored": {
+      "method": "POST",
+      "params": {
+        "action": "do_editlists",
+        "my_post_key": "24fecc0863e67d44754900860ae033e3",
+        "manage": "ignored",
+        "ajax": "1",
+        "add_username": "text_9bd4638a"
+      },
+      "referer": "usercp.php?action=editlists"
+    },
+    "usercp.php?action=attachments": {
+      "method": "GET",
+      "params": {
+        "action": "attachments"
+      },
+      "referer": "usercp.php"
+    },
+    "usercp.php?action=drafts": {
+      "method": "GET",
+      "params": {
+        "action": "drafts"
+      },
+      "referer": "usercp.php"
+    },
+    "usercp.php?action=subscriptions": {
+      "method": "GET",
+      "params": {
+        "action": "subscriptions"
+      },
+      "referer": "usercp.php"
+    },
+    "usercp.php?action=forumsubscriptions": {
+      "method": "GET",
+      "params": {
+        "action": "forumsubscriptions"
+      },
+      "referer": "usercp.php"
+    },
+    "search.php?action=finduser&uid=p1": {
+      "method": "GET",
+      "params": {
+        "action": "finduser",
+        "uid": "3"
+      },
+      "referer": "usercp.php"
+    },
+    "reputation.php?uid=p1": {
+      "method": "GET",
+      "params": {
+        "uid": "3"
+      },
+      "referer": "usercp.php"
+    },
+    "reputation.php": {
+      "method": "GET",
+      "params": {
+        "uid": "3",
+        "show": "all",
+        "sort": "dateline",
+        "my_post_key": "24fecc0863e67d44754900860ae033e3",
+        "language": "english"
+      },
+      "referer": "reputation.php?show=p1&sort=p1&uid=p1"
+    },
+    "reputation.php?show=p1&sort=p1&uid=p1": {
+      "method": "GET",
+      "params": {
+        "uid": "3",
+        "show": "all",
+        "sort": "dateline"
+      },
+      "referer": "reputation.php?uid=p1"
+    },
+    "archive/index.php": {
+      "method": "GET",
+      "params": {},
+      "referer": "usercp.php"
+    },
+    "misc.php?action=syndication": {
+      "method": "POST",
+      "params": {
+        "forums[]": "all",
+        "version": "atom1.0",
+        "limit": "15",
+        "make": "Generate Syndication URL"
+      },
+      "referer": "misc.php?action=syndication"
+    },
+    "private.php?action=empty": {
+      "method": "GET",
+      "params": {
+        "action": "empty"
+      },
+      "referer": "private.php"
+    },
+    "private.php?action=export": {
+      "method": "GET",
+      "params": {
+        "action": "export"
+      },
+      "referer": "private.php"
+    },
+    "private.php?action=advanced_search": {
+      "method": "GET",
+      "params": {
+        "action": "advanced_search"
+      },
+      "referer": "private.php"
+    },
+    "archive/index.php/forum-2.html": {
+      "method": "GET",
+      "params": {},
+      "referer": "forumdisplay.php?fid=p1"
+    },
+    "archive/index.php/thread-1.html": {
+      "method": "GET",
+      "params": {},
+      "referer": "showthread.php?tid=p1"
+    },
+    "online.php": {
+      "method": "GET",
+      "params": {
+        "action": "today",
+        "my_post_key": "24fecc0863e67d44754900860ae033e3",
+        "language": "english"
+      },
+      "referer": "online.php?action=today"
+    },
+    "misc.php?action=markread": {
+      "method": "GET",
+      "params": {
+        "action": "markread",
+        "my_post_key": "24fecc0863e67d44754900860ae033e3"
+      },
+      "referer": "index.php"
+    },
+    "showteam.php": {
+      "method": "GET",
+      "params": {
+        "my_post_key": "24fecc0863e67d44754900860ae033e3",
+        "language": "english"
+      },
+      "referer": "showteam.php"
+    },
+    "stats.php": {
+      "method": "GET",
+      "params": {
+        "my_post_key": "24fecc0863e67d44754900860ae033e3",
+        "language": "english"
+      },
+      "referer": "stats.php"
+    },
+    "memberlist.php?username=p1&username_match=p1": {
+      "method": "GET",
+      "params": {
+        "username_match": "begins",
+        "username": "A"
+      },
+      "referer": "memberlist.php"
+    },
+    "memberlist.php?action=search": {
+      "method": "GET",
+      "params": {
+        "action": "search"
+      },
+      "referer": "memberlist.php"
+    },
+    "calendar.php?calendar=p1": {
+      "method": "GET",
+      "params": {
+        "calendar": "1"
+      },
+      "referer": "calendar.php"
+    },
+    "calendar.php?calendar=p1&month=p1&year=p1": {
+      "method": "GET",
+      "params": {
+        "calendar": "1",
+        "year": "2026",
+        "month": "6"
+      },
+      "referer": "calendar.php"
+    },
+    "calendar.php?action=weekview&calendar=p1&week=p1": {
+      "method": "GET",
+      "params": {
+        "action": "weekview",
+        "calendar": "1",
+        "week": "1782604800"
+      },
+      "referer": "calendar.php"
+    },
+    "calendar.php?action=dayview&calendar=p1&day=p1&month=p1&year=p1": {
+      "method": "GET",
+      "params": {
+        "action": "dayview",
+        "calendar": "1",
+        "year": "2026",
+        "month": "6",
+        "day": "28"
+      },
+      "referer": "calendar.php"
+    },
+    "calendar.php?action=addevent&calendar=p1": {
+      "method": "GET",
+      "params": {
+        "action": "addevent",
+        "calendar": "1"
+      },
+      "referer": "calendar.php"
+    },
+    "calendar.php?action=addevent&calendar=p1&private=p1": {
+      "method": "GET",
+      "params": {
+        "action": "addevent",
+        "calendar": "1",
+        "private": "1"
+      },
+      "referer": "calendar.php"
+    },
+    "misc.php?action=help&hid=p1": {
+      "method": "GET",
+      "params": {
+        "action": "help",
+        "hid": "1"
+      },
+      "referer": "misc.php?action=help"
+    },
+    "search.php?action=finduserthreads&uid=p1": {
+      "method": "GET",
+      "params": {
+        "action": "finduserthreads",
+        "uid": "3"
+      },
+      "referer": "member.php?action=profile&uid=p1"
+    },
+    "member.php?action=emailuser&uid=p1": {
+      "method": "GET",
+      "params": {
+        "action": "emailuser",
+        "uid": "3"
+      },
+      "referer": "member.php?action=profile&uid=p1"
+    },
+    "private.php?action=send&uid=p1": {
+      "method": "GET",
+      "params": {
+        "action": "send",
+        "uid": "3"
+      },
+      "referer": "member.php?action=profile&uid=p1"
+    },
+    "search.php?action=results": {
+      "method": "GET",
+      "params": {
+        "action": "results",
+        "sid": "b66e591d59e189d977c66b80441749cd"
+      },
+      "referer": "search.php?action=getnew"
+    },
+    "member.php?action=lostpw": {
+      "method": "GET",
+      "params": {
+        "action": "lostpw"
+      },
+      "referer": "usercp.php?action=password"
+    },
+    "archive/index.php?forum-1.html=p1": {
+      "method": "GET",
+      "params": {
+        "forum-1.html": ""
+      },
+      "referer": "archive/index.php"
+    },
+    "online.php?action=today": {
+      "method": "GET",
+      "params": {
+        "action": "today"
+      },
+      "referer": "online.php"
+    },
+    "calendar.php?action=addevent&calendar=p1&day=p1&month=p1&year=p1": {
+      "method": "GET",
+      "params": {
+        "action": "addevent",
+        "calendar": "1",
+        "day": "28",
+        "month": "6",
+        "year": "2026"
+      },
+      "referer": "calendar.php?action=dayview&calendar=p1&day=p1&month=p1&year=p1"
+    },
+    "private.php?action=dismiss_notice": {
+      "method": "GET",
+      "params": {
+        "action": "dismiss_notice",
+        "my_post_key": "24fecc0863e67d44754900860ae033e3"
+      },
+      "referer": "private.php?action=send&uid=p1"
+    },
+    "private.php?action=read&pmid=p1": {
+      "method": "GET",
+      "params": {
+        "action": "read",
+        "pmid": "1"
+      },
+      "referer": "private.php?action=send&uid=p1"
+    },
+    "private.php?action=send&do=reply&pmid=p1": {
+      "method": "GET",
+      "params": {
+        "action": "send",
+        "pmid": "1",
+        "do": "reply"
+      },
+      "referer": "private.php?action=read&pmid=p1"
+    },
+    "private.php?action=send&do=forward&pmid=p1": {
+      "method": "GET",
+      "params": {
+        "action": "send",
+        "pmid": "1",
+        "do": "forward"
+      },
+      "referer": "private.php?action=read&pmid=p1"
+    },
+    "private.php?action=delete&pmid=p1": {
+      "method": "GET",
+      "params": {
+        "action": "delete",
+        "pmid": "1",
+        "my_post_key": "24fecc0863e67d44754900860ae033e3"
+      },
+      "referer": "private.php?action=read&pmid=p1"
+    }
+  }
+}

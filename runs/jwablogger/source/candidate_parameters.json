@@ -1,0 +1,4872 @@
+{
+  "parameters": [
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/BlogManager.java:LCP1",
+      "path": "java/jwaBlogger/src/jwaBlogger/BlogManager.java",
+      "expression": "indexDirectory",
+      "aliases": [
+        "indexDirectory"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 195,
+          "condition": "(indexDirectory != null)"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/BlogManager.java:LCP2",
+      "path": "java/jwaBlogger/src/jwaBlogger/BlogManager.java",
+      "expression": "externalFeeds",
+      "aliases": [
+        "externalFeeds"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 198,
+          "condition": "(externalFeeds != null)"
+        },
+        {
+          "source": "conditional",
+          "line": 1312,
+          "condition": "(externalFeeds != null)"
+        }
+      ],
+      "condition_indexes": [
+        1,
+        106
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/BlogManager.java:LCP3",
+      "path": "java/jwaBlogger/src/jwaBlogger/BlogManager.java",
+      "expression": "indexSearcher",
+      "aliases": [
+        "indexSearcher"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 211,
+          "condition": "(indexSearcher != null)"
+        },
+        {
+          "source": "conditional",
+          "line": 757,
+          "condition": "(indexSearcher == null || !indexSearcher.getIndexReader().isCurrent())"
+        },
+        {
+          "source": "conditional",
+          "line": 761,
+          "condition": "(indexSearcher != null)"
+        }
+      ],
+      "condition_indexes": [
+        2,
+        56,
+        57
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/BlogManager.java:LCP4",
+      "path": "java/jwaBlogger/src/jwaBlogger/BlogManager.java",
+      "expression": "indexWriter",
+      "aliases": [
+        "indexWriter"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 214,
+          "condition": "(indexWriter != null)"
+        }
+      ],
+      "condition_indexes": [
+        3
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/BlogManager.java:LCP5",
+      "path": "java/jwaBlogger/src/jwaBlogger/BlogManager.java",
+      "expression": "captchaList",
+      "aliases": [
+        "captchaList"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 238,
+          "condition": "(captchaList.size() > 0)"
+        }
+      ],
+      "condition_indexes": [
+        4
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/BlogManager.java:LCP6",
+      "path": "java/jwaBlogger/src/jwaBlogger/BlogManager.java",
+      "expression": "element",
+      "aliases": [
+        "element"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 280,
+          "condition": "(element == null)"
+        },
+        {
+          "source": "conditional",
+          "line": 345,
+          "condition": "(element == null)"
+        },
+        {
+          "source": "conditional",
+          "line": 382,
+          "condition": "(element == null)"
+        }
+      ],
+      "condition_indexes": [
+        5,
+        11,
+        13
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/BlogManager.java:LCP7",
+      "path": "java/jwaBlogger/src/jwaBlogger/BlogManager.java",
+      "expression": "blogEntry",
+      "aliases": [
+        "blogEntry"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 284,
+          "condition": "(blogEntry != null)"
+        },
+        {
+          "source": "conditional",
+          "line": 300,
+          "condition": "(blogEntry == null)"
+        },
+        {
+          "source": "conditional",
+          "line": 303,
+          "condition": "(blogEntry != null && control != null)"
+        },
+        {
+          "source": "conditional",
+          "line": 330,
+          "condition": "(blogEntry == null)"
+        },
+        {
+          "source": "conditional",
+          "line": 333,
+          "condition": "(blogEntry != null && control != null)"
+        },
+        {
+          "source": "conditional",
+          "line": 463,
+          "condition": "(!blogEntry.getInternalName().equals(internalName))"
+        },
+        {
+          "source": "conditional",
+          "line": 502,
+          "condition": "(feedType.equalsIgnoreCase(\"rss_0.9\") && blogEntry.getTitle().length() > 100)"
+        },
+        {
+          "source": "conditional",
+          "line": 510,
+          "condition": "(risingOrPopular == 2 && blogEntry.getPopularTime() != null)"
+        },
+        {
+          "source": "conditional",
+          "line": 512,
+          "condition": "(risingOrPopular == 1 && blogEntry.getRisingTime() != null)"
+        },
+        {
+          "source": "conditional",
+          "line": 570,
+          "condition": "(blogEntryMapById.containsKey(blogEntry.getBlogEntryId()))"
+        },
+        {
+          "source": "conditional",
+          "line": 571,
+          "condition": "(blogEntry.getViews() == viewCountMinimum)"
+        },
+        {
+          "source": "conditional",
+          "line": 573,
+          "condition": "(blogEntry.getViews() == viewCountMaximum)"
+        },
+        {
+          "source": "conditional",
+          "line": 595,
+          "condition": "(blogEntryMapById.containsKey(blogEntry.getBlogEntryId()))"
+        },
+        {
+          "source": "conditional",
+          "line": 596,
+          "condition": "(blogEntry.getVotes() == voteCountMinimum)"
+        },
+        {
+          "source": "conditional",
+          "line": 598,
+          "condition": "(blogEntry.getVotes() == voteCountMaximum)"
+        },
+        {
+          "source": "conditional",
+          "line": 621,
+          "condition": "(blogEntry.getSpam() >= maxSpamCount)"
+        },
+        {
+          "source": "conditional",
+          "line": 775,
+          "condition": "(blogEntry != null)"
+        },
+        {
+          "source": "conditional",
+          "line": 795,
+          "condition": "(blogEntry.getDescription() != null && (blogEntryText.getBlogText() == null || blogEntryText.getBlogText().length() == 0))"
+        },
+        {
+          "source": "conditional",
+          "line": 804,
+          "condition": "(blogEntry.getDescription() == null || blogEntry.getDescription().length() == 0)"
+        },
+        {
+          "source": "conditional",
+          "line": 948,
+          "condition": "(blogEntry.getTags() != null)"
+        },
+        {
+          "source": "conditional",
+          "line": 1031,
+          "condition": "(!(blogEntry.getIsVisible().equals(\"false\") && blogEntry.getCreated().before(timeout)))"
+        }
+      ],
+      "condition_indexes": [
+        6,
+        7,
+        8,
+        9,
+        10,
+        20,
+        21,
+        22,
+        23,
+        28,
+        29,
+        30,
+        32,
+        33,
+        34,
+        36,
+        58,
+        60,
+        62,
+        71,
+        80
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/BlogManager.java:LCP8",
+      "path": "java/jwaBlogger/src/jwaBlogger/BlogManager.java",
+      "expression": "control",
+      "aliases": [
+        "control"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 303,
+          "condition": "(blogEntry != null && control != null)"
+        },
+        {
+          "source": "conditional",
+          "line": 333,
+          "condition": "(blogEntry != null && control != null)"
+        }
+      ],
+      "condition_indexes": [
+        8,
+        10
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/BlogManager.java:LCP9",
+      "path": "java/jwaBlogger/src/jwaBlogger/BlogManager.java",
+      "expression": "blogEntryText",
+      "aliases": [
+        "blogEntryText"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 349,
+          "condition": "(blogEntryText != null)"
+        },
+        {
+          "source": "conditional",
+          "line": 440,
+          "condition": "(blogEntryText.getBlogText() != null && blogEntryText.getBlogText().length() > 0)"
+        },
+        {
+          "source": "conditional",
+          "line": 526,
+          "condition": "(blogEntryText != null)"
+        },
+        {
+          "source": "conditional",
+          "line": 795,
+          "condition": "(blogEntry.getDescription() != null && (blogEntryText.getBlogText() == null || blogEntryText.getBlogText().length() == 0))"
+        },
+        {
+          "source": "conditional",
+          "line": 801,
+          "condition": "(blogEntryText.getBlogText() != null)"
+        },
+        {
+          "source": "conditional",
+          "line": 956,
+          "condition": "(addEntryToIndex && blogEntryText != null && blogEntryText.getBlogText() != null)"
+        }
+      ],
+      "condition_indexes": [
+        12,
+        17,
+        25,
+        60,
+        61,
+        73
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/BlogManager.java:LCP10",
+      "path": "java/jwaBlogger/src/jwaBlogger/BlogManager.java",
+      "expression": "commentMap",
+      "aliases": [
+        "commentMap"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 395,
+          "condition": "(commentMap != null)"
+        }
+      ],
+      "condition_indexes": [
+        14
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/BlogManager.java:LCP11",
+      "path": "java/jwaBlogger/src/jwaBlogger/BlogManager.java",
+      "expression": "comments",
+      "aliases": [
+        "comments"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 411,
+          "condition": "(comments != null)"
+        }
+      ],
+      "condition_indexes": [
+        15
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/BlogManager.java:LCP12",
+      "path": "java/jwaBlogger/src/jwaBlogger/BlogManager.java",
+      "expression": "trusted",
+      "aliases": [
+        "trusted"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 433,
+          "condition": "(! trusted)"
+        }
+      ],
+      "condition_indexes": [
+        16
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/BlogManager.java:LCP13",
+      "path": "java/jwaBlogger/src/jwaBlogger/BlogManager.java",
+      "expression": "blogEntryText.getBlogText()",
+      "aliases": [
+        "blogEntryText.getBlogText()"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 440,
+          "condition": "(blogEntryText.getBlogText() != null && blogEntryText.getBlogText().length() > 0)"
+        },
+        {
+          "source": "conditional",
+          "line": 795,
+          "condition": "(blogEntry.getDescription() != null && (blogEntryText.getBlogText() == null || blogEntryText.getBlogText().length() == 0))"
+        }
+      ],
+      "condition_indexes": [
+        17,
+        60
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/BlogManager.java:LCP14",
+      "path": "java/jwaBlogger/src/jwaBlogger/BlogManager.java",
+      "expression": "isPersistent",
+      "aliases": [
+        "isPersistent"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 446,
+          "condition": "(!isPersistent)"
+        }
+      ],
+      "condition_indexes": [
+        18
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/BlogManager.java:LCP15",
+      "path": "java/jwaBlogger/src/jwaBlogger/BlogManager.java",
+      "expression": "blogEntryQueue",
+      "aliases": [
+        "blogEntryQueue"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 454,
+          "condition": "(blogEntryQueue.size() > maxEntries)"
+        }
+      ],
+      "condition_indexes": [
+        19
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/BlogManager.java:LCP16",
+      "path": "java/jwaBlogger/src/jwaBlogger/BlogManager.java",
+      "expression": "maxEntries",
+      "aliases": [
+        "maxEntries"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 454,
+          "condition": "(blogEntryQueue.size() > maxEntries)"
+        }
+      ],
+      "condition_indexes": [
+        19
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/BlogManager.java:LCP17",
+      "path": "java/jwaBlogger/src/jwaBlogger/BlogManager.java",
+      "expression": "blogEntry.getInternalName()",
+      "aliases": [
+        "blogEntry.getInternalName()"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 463,
+          "condition": "(!blogEntry.getInternalName().equals(internalName))"
+        }
+      ],
+      "condition_indexes": [
+        20
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/BlogManager.java:LCP18",
+      "path": "java/jwaBlogger/src/jwaBlogger/BlogManager.java",
+      "expression": "internalName",
+      "aliases": [
+        "internalName"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 463,
+          "condition": "(!blogEntry.getInternalName().equals(internalName))"
+        }
+      ],
+      "condition_indexes": [
+        20
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/BlogManager.java:LCP19",
+      "path": "java/jwaBlogger/src/jwaBlogger/BlogManager.java",
+      "expression": "feedType",
+      "aliases": [
+        "feedType"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 502,
+          "condition": "(feedType.equalsIgnoreCase(\"rss_0.9\") && blogEntry.getTitle().length() > 100)"
+        }
+      ],
+      "condition_indexes": [
+        21
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/BlogManager.java:LCP20",
+      "path": "java/jwaBlogger/src/jwaBlogger/BlogManager.java",
+      "expression": "blogEntry.getTitle()",
+      "aliases": [
+        "blogEntry.getTitle()"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 502,
+          "condition": "(feedType.equalsIgnoreCase(\"rss_0.9\") && blogEntry.getTitle().length() > 100)"
+        }
+      ],
+      "condition_indexes": [
+        21
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/BlogManager.java:LCP21",
+      "path": "java/jwaBlogger/src/jwaBlogger/BlogManager.java",
+      "expression": "risingOrPopular",
+      "aliases": [
+        "risingOrPopular"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 510,
+          "condition": "(risingOrPopular == 2 && blogEntry.getPopularTime() != null)"
+        },
+        {
+          "source": "conditional",
+          "line": 512,
+          "condition": "(risingOrPopular == 1 && blogEntry.getRisingTime() != null)"
+        }
+      ],
+      "condition_indexes": [
+        22,
+        23
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/BlogManager.java:LCP22",
+      "path": "java/jwaBlogger/src/jwaBlogger/BlogManager.java",
+      "expression": "addEntryToFeed",
+      "aliases": [
+        "addEntryToFeed"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 522,
+          "condition": "(addEntryToFeed)"
+        }
+      ],
+      "condition_indexes": [
+        24
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/BlogManager.java:LCP23",
+      "path": "java/jwaBlogger/src/jwaBlogger/BlogManager.java",
+      "expression": "syndEntryList",
+      "aliases": [
+        "syndEntryList"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 541,
+          "condition": "(syndEntryList.size() == 0)"
+        }
+      ],
+      "condition_indexes": [
+        26
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/BlogManager.java:LCP24",
+      "path": "java/jwaBlogger/src/jwaBlogger/BlogManager.java",
+      "expression": "isAdmin",
+      "aliases": [
+        "isAdmin",
+        "administrator"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 561,
+          "condition": "(!isAdmin)"
+        },
+        {
+          "source": "conditional",
+          "line": 586,
+          "condition": "(!isAdmin)"
+        },
+        {
+          "source": "conditional",
+          "line": 611,
+          "condition": "(!isAdmin)"
+        },
+        {
+          "source": "conditional",
+          "line": 636,
+          "condition": "(!isAdmin)"
+        },
+        {
+          "source": "conditional",
+          "line": 653,
+          "condition": "(!isAdmin)"
+        }
+      ],
+      "condition_indexes": [
+        27,
+        31,
+        35,
+        37,
+        38
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/BlogManager.java:LCP25",
+      "path": "java/jwaBlogger/src/jwaBlogger/BlogManager.java",
+      "expression": "blogEntryMapById",
+      "aliases": [
+        "blogEntryMapById"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 570,
+          "condition": "(blogEntryMapById.containsKey(blogEntry.getBlogEntryId()))"
+        },
+        {
+          "source": "conditional",
+          "line": 595,
+          "condition": "(blogEntryMapById.containsKey(blogEntry.getBlogEntryId()))"
+        }
+      ],
+      "condition_indexes": [
+        28,
+        32
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/BlogManager.java:LCP26",
+      "path": "java/jwaBlogger/src/jwaBlogger/BlogManager.java",
+      "expression": "viewCountMinimum",
+      "aliases": [
+        "viewCountMinimum"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 571,
+          "condition": "(blogEntry.getViews() == viewCountMinimum)"
+        },
+        {
+          "source": "conditional",
+          "line": 1057,
+          "condition": "(entry.getRisingTime() == null && (entry.getVotes() >= voteCountMinimum || entry.getViews() >= viewCountMinimum))"
+        }
+      ],
+      "condition_indexes": [
+        29,
+        83
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/BlogManager.java:LCP27",
+      "path": "java/jwaBlogger/src/jwaBlogger/BlogManager.java",
+      "expression": "viewCountMaximum",
+      "aliases": [
+        "viewCountMaximum"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 573,
+          "condition": "(blogEntry.getViews() == viewCountMaximum)"
+        },
+        {
+          "source": "conditional",
+          "line": 1097,
+          "condition": "(entry.getPopularTime() == null && (entry.getVotes() >= voteCountMaximum || entry.getViews() >= viewCountMaximum))"
+        }
+      ],
+      "condition_indexes": [
+        30,
+        89
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/BlogManager.java:LCP28",
+      "path": "java/jwaBlogger/src/jwaBlogger/BlogManager.java",
+      "expression": "voteCountMinimum",
+      "aliases": [
+        "voteCountMinimum"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 596,
+          "condition": "(blogEntry.getVotes() == voteCountMinimum)"
+        },
+        {
+          "source": "conditional",
+          "line": 1057,
+          "condition": "(entry.getRisingTime() == null && (entry.getVotes() >= voteCountMinimum || entry.getViews() >= viewCountMinimum))"
+        }
+      ],
+      "condition_indexes": [
+        33,
+        83
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/BlogManager.java:LCP29",
+      "path": "java/jwaBlogger/src/jwaBlogger/BlogManager.java",
+      "expression": "voteCountMaximum",
+      "aliases": [
+        "voteCountMaximum"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 598,
+          "condition": "(blogEntry.getVotes() == voteCountMaximum)"
+        },
+        {
+          "source": "conditional",
+          "line": 1097,
+          "condition": "(entry.getPopularTime() == null && (entry.getVotes() >= voteCountMaximum || entry.getViews() >= viewCountMaximum))"
+        }
+      ],
+      "condition_indexes": [
+        34,
+        89
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/BlogManager.java:LCP30",
+      "path": "java/jwaBlogger/src/jwaBlogger/BlogManager.java",
+      "expression": "maxSpamCount",
+      "aliases": [
+        "maxSpamCount"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 621,
+          "condition": "(blogEntry.getSpam() >= maxSpamCount)"
+        }
+      ],
+      "condition_indexes": [
+        36
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/BlogManager.java:LCP31",
+      "path": "java/jwaBlogger/src/jwaBlogger/BlogManager.java",
+      "expression": "blogEntryComment",
+      "aliases": [
+        "blogEntryComment"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 663,
+          "condition": "(blogEntryComment.getSpam() >= maxCommentSpamCount)"
+        }
+      ],
+      "condition_indexes": [
+        39
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/BlogManager.java:LCP32",
+      "path": "java/jwaBlogger/src/jwaBlogger/BlogManager.java",
+      "expression": "maxCommentSpamCount",
+      "aliases": [
+        "maxCommentSpamCount"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 663,
+          "condition": "(blogEntryComment.getSpam() >= maxCommentSpamCount)"
+        }
+      ],
+      "condition_indexes": [
+        39
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/BlogManager.java:LCP33",
+      "path": "java/jwaBlogger/src/jwaBlogger/BlogManager.java",
+      "expression": "token",
+      "aliases": [
+        "token",
+        "lastToken"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 685,
+          "condition": "(token.equals(\" \") || stopWords.contains(token))"
+        },
+        {
+          "source": "conditional",
+          "line": 688,
+          "condition": "(token.equals(\"-\") || token.equals(\"+\"))"
+        },
+        {
+          "source": "conditional",
+          "line": 696,
+          "condition": "(lastToken != null && (lastToken.equals(\"-\") || lastToken.equals(\"+\")))"
+        },
+        {
+          "source": "conditional",
+          "line": 702,
+          "condition": "(token.equals(\"\\\"\") || token.equals(\"'\"))"
+        }
+      ],
+      "condition_indexes": [
+        40,
+        41,
+        43,
+        44
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/BlogManager.java:LCP34",
+      "path": "java/jwaBlogger/src/jwaBlogger/BlogManager.java",
+      "expression": "stopWords",
+      "aliases": [
+        "stopWords"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 685,
+          "condition": "(token.equals(\" \") || stopWords.contains(token))"
+        }
+      ],
+      "condition_indexes": [
+        40
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/BlogManager.java:LCP35",
+      "path": "java/jwaBlogger/src/jwaBlogger/BlogManager.java",
+      "expression": "phrase",
+      "aliases": [
+        "phrase"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 694,
+          "condition": "(!phrase)"
+        },
+        {
+          "source": "conditional",
+          "line": 704,
+          "condition": "(!phrase)"
+        },
+        {
+          "source": "conditional",
+          "line": 784,
+          "condition": "(phrase)"
+        }
+      ],
+      "condition_indexes": [
+        42,
+        45,
+        59
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/BlogManager.java:LCP36",
+      "path": "java/jwaBlogger/src/jwaBlogger/BlogManager.java",
+      "expression": "titlePhraseQuery.getTerms().length",
+      "aliases": [
+        "titlePhraseQuery.getTerms().length"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 718,
+          "condition": "(titlePhraseQuery.getTerms().length > 0)"
+        }
+      ],
+      "condition_indexes": [
+        46
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/BlogManager.java:LCP37",
+      "path": "java/jwaBlogger/src/jwaBlogger/BlogManager.java",
+      "expression": "titlePhraseQuery",
+      "aliases": [
+        "titlePhraseQuery"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 718,
+          "condition": "(titlePhraseQuery.getTerms().length > 0)"
+        }
+      ],
+      "condition_indexes": [
+        46
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/BlogManager.java:LCP38",
+      "path": "java/jwaBlogger/src/jwaBlogger/BlogManager.java",
+      "expression": "tagsPhraseQuery.getTerms().length",
+      "aliases": [
+        "tagsPhraseQuery.getTerms().length"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 721,
+          "condition": "(tagsPhraseQuery.getTerms().length > 0)"
+        }
+      ],
+      "condition_indexes": [
+        47
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/BlogManager.java:LCP39",
+      "path": "java/jwaBlogger/src/jwaBlogger/BlogManager.java",
+      "expression": "tagsPhraseQuery",
+      "aliases": [
+        "tagsPhraseQuery"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 721,
+          "condition": "(tagsPhraseQuery.getTerms().length > 0)"
+        }
+      ],
+      "condition_indexes": [
+        47
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/BlogManager.java:LCP40",
+      "path": "java/jwaBlogger/src/jwaBlogger/BlogManager.java",
+      "expression": "authorPhraseQuery.getTerms().length",
+      "aliases": [
+        "authorPhraseQuery.getTerms().length"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 724,
+          "condition": "(authorPhraseQuery.getTerms().length > 0)"
+        }
+      ],
+      "condition_indexes": [
+        48
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/BlogManager.java:LCP41",
+      "path": "java/jwaBlogger/src/jwaBlogger/BlogManager.java",
+      "expression": "authorPhraseQuery",
+      "aliases": [
+        "authorPhraseQuery"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 724,
+          "condition": "(authorPhraseQuery.getTerms().length > 0)"
+        }
+      ],
+      "condition_indexes": [
+        48
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/BlogManager.java:LCP42",
+      "path": "java/jwaBlogger/src/jwaBlogger/BlogManager.java",
+      "expression": "descriptionPhraseQuery.getTerms().length",
+      "aliases": [
+        "descriptionPhraseQuery.getTerms().length"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 727,
+          "condition": "(descriptionPhraseQuery.getTerms().length > 0)"
+        }
+      ],
+      "condition_indexes": [
+        49
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/BlogManager.java:LCP43",
+      "path": "java/jwaBlogger/src/jwaBlogger/BlogManager.java",
+      "expression": "descriptionPhraseQuery",
+      "aliases": [
+        "descriptionPhraseQuery"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 727,
+          "condition": "(descriptionPhraseQuery.getTerms().length > 0)"
+        }
+      ],
+      "condition_indexes": [
+        49
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/BlogManager.java:LCP44",
+      "path": "java/jwaBlogger/src/jwaBlogger/BlogManager.java",
+      "expression": "articlePhraseQuery.getTerms().length",
+      "aliases": [
+        "articlePhraseQuery.getTerms().length"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 730,
+          "condition": "(articlePhraseQuery.getTerms().length > 0)"
+        }
+      ],
+      "condition_indexes": [
+        50
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/BlogManager.java:LCP45",
+      "path": "java/jwaBlogger/src/jwaBlogger/BlogManager.java",
+      "expression": "articlePhraseQuery",
+      "aliases": [
+        "articlePhraseQuery"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 730,
+          "condition": "(articlePhraseQuery.getTerms().length > 0)"
+        }
+      ],
+      "condition_indexes": [
+        50
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/BlogManager.java:LCP46",
+      "path": "java/jwaBlogger/src/jwaBlogger/BlogManager.java",
+      "expression": "author",
+      "aliases": [
+        "author"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 740,
+          "condition": "(!author && !tags && !title && !description && !article || title)"
+        },
+        {
+          "source": "conditional",
+          "line": 743,
+          "condition": "(!author && !tags && !title && !description && !article || tags)"
+        },
+        {
+          "source": "conditional",
+          "line": 746,
+          "condition": "(author)"
+        }
+      ],
+      "condition_indexes": [
+        51,
+        52,
+        53
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/BlogManager.java:LCP47",
+      "path": "java/jwaBlogger/src/jwaBlogger/BlogManager.java",
+      "expression": "tags",
+      "aliases": [
+        "tags",
+        "externalFeed.addTags"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 740,
+          "condition": "(!author && !tags && !title && !description && !article || title)"
+        },
+        {
+          "source": "conditional",
+          "line": 743,
+          "condition": "(!author && !tags && !title && !description && !article || tags)"
+        },
+        {
+          "source": "conditional",
+          "line": 1362,
+          "condition": "(externalFeed.checkCategories(tags))"
+        }
+      ],
+      "condition_indexes": [
+        51,
+        52,
+        110
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/BlogManager.java:LCP48",
+      "path": "java/jwaBlogger/src/jwaBlogger/BlogManager.java",
+      "expression": "title",
+      "aliases": [
+        "title"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 740,
+          "condition": "(!author && !tags && !title && !description && !article || title)"
+        },
+        {
+          "source": "conditional",
+          "line": 743,
+          "condition": "(!author && !tags && !title && !description && !article || tags)"
+        }
+      ],
+      "condition_indexes": [
+        51,
+        52
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/BlogManager.java:LCP49",
+      "path": "java/jwaBlogger/src/jwaBlogger/BlogManager.java",
+      "expression": "description",
+      "aliases": [
+        "description"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 740,
+          "condition": "(!author && !tags && !title && !description && !article || title)"
+        },
+        {
+          "source": "conditional",
+          "line": 743,
+          "condition": "(!author && !tags && !title && !description && !article || tags)"
+        },
+        {
+          "source": "conditional",
+          "line": 749,
+          "condition": "(description)"
+        }
+      ],
+      "condition_indexes": [
+        51,
+        52,
+        54
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/BlogManager.java:LCP50",
+      "path": "java/jwaBlogger/src/jwaBlogger/BlogManager.java",
+      "expression": "article",
+      "aliases": [
+        "article"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 740,
+          "condition": "(!author && !tags && !title && !description && !article || title)"
+        },
+        {
+          "source": "conditional",
+          "line": 743,
+          "condition": "(!author && !tags && !title && !description && !article || tags)"
+        },
+        {
+          "source": "conditional",
+          "line": 752,
+          "condition": "(article)"
+        }
+      ],
+      "condition_indexes": [
+        51,
+        52,
+        55
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/BlogManager.java:LCP51",
+      "path": "java/jwaBlogger/src/jwaBlogger/BlogManager.java",
+      "expression": "indexSearcher.getIndexReader()",
+      "aliases": [
+        "indexSearcher.getIndexReader()"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 757,
+          "condition": "(indexSearcher == null || !indexSearcher.getIndexReader().isCurrent())"
+        }
+      ],
+      "condition_indexes": [
+        56
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/BlogManager.java:LCP52",
+      "path": "java/jwaBlogger/src/jwaBlogger/BlogManager.java",
+      "expression": "blogEntry.getDescription()",
+      "aliases": [
+        "blogEntry.getDescription()"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 804,
+          "condition": "(blogEntry.getDescription() == null || blogEntry.getDescription().length() == 0)"
+        }
+      ],
+      "condition_indexes": [
+        62
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/BlogManager.java:LCP53",
+      "path": "java/jwaBlogger/src/jwaBlogger/BlogManager.java",
+      "expression": "text",
+      "aliases": [
+        "text"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 808,
+          "condition": "(text.length() > 250)"
+        }
+      ],
+      "condition_indexes": [
+        63
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/BlogManager.java:LCP54",
+      "path": "java/jwaBlogger/src/jwaBlogger/BlogManager.java",
+      "expression": "blogEntryActivityQueue",
+      "aliases": [
+        "blogEntryActivityQueue"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 832,
+          "condition": "(blogEntryActivityQueue.size() > maxActivityQueueSize)"
+        }
+      ],
+      "condition_indexes": [
+        64
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/BlogManager.java:LCP55",
+      "path": "java/jwaBlogger/src/jwaBlogger/BlogManager.java",
+      "expression": "maxActivityQueueSize",
+      "aliases": [
+        "maxActivityQueueSize"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 832,
+          "condition": "(blogEntryActivityQueue.size() > maxActivityQueueSize)"
+        }
+      ],
+      "condition_indexes": [
+        64
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/BlogManager.java:LCP56",
+      "path": "java/jwaBlogger/src/jwaBlogger/BlogManager.java",
+      "expression": "blogEntryVotingQueue",
+      "aliases": [
+        "blogEntryVotingQueue"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 840,
+          "condition": "(blogEntryVotingQueue.size() > maxVotingQueueSize)"
+        }
+      ],
+      "condition_indexes": [
+        65
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/BlogManager.java:LCP57",
+      "path": "java/jwaBlogger/src/jwaBlogger/BlogManager.java",
+      "expression": "maxVotingQueueSize",
+      "aliases": [
+        "maxVotingQueueSize"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 840,
+          "condition": "(blogEntryVotingQueue.size() > maxVotingQueueSize)"
+        }
+      ],
+      "condition_indexes": [
+        65
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/BlogManager.java:LCP58",
+      "path": "java/jwaBlogger/src/jwaBlogger/BlogManager.java",
+      "expression": "str",
+      "aliases": [
+        "str"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 857,
+          "condition": "(!str.startsWith(\"#\") && str.length() > 0)"
+        },
+        {
+          "source": "conditional",
+          "line": 887,
+          "condition": "(!str.startsWith(\"#\") && str.length() > 0)"
+        },
+        {
+          "source": "conditional",
+          "line": 999,
+          "condition": "(!str.startsWith(\"#\") && str.length() > 0)"
+        },
+        {
+          "source": "conditional",
+          "line": 1194,
+          "condition": "(checkCategory(str.trim()))"
+        }
+      ],
+      "condition_indexes": [
+        66,
+        67,
+        78,
+        101
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/BlogManager.java:LCP59",
+      "path": "java/jwaBlogger/src/jwaBlogger/BlogManager.java",
+      "expression": "dir",
+      "aliases": [
+        "dir"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 908,
+          "condition": "(!dir.exists())"
+        }
+      ],
+      "condition_indexes": [
+        68
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/BlogManager.java:LCP60",
+      "path": "java/jwaBlogger/src/jwaBlogger/BlogManager.java",
+      "expression": "IndexWriter",
+      "aliases": [
+        "IndexWriter"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 914,
+          "condition": "(IndexWriter.isLocked(directory))"
+        }
+      ],
+      "condition_indexes": [
+        69
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/BlogManager.java:LCP61",
+      "path": "java/jwaBlogger/src/jwaBlogger/BlogManager.java",
+      "expression": "directory",
+      "aliases": [
+        "directory"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 914,
+          "condition": "(IndexWriter.isLocked(directory))"
+        }
+      ],
+      "condition_indexes": [
+        69
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/BlogManager.java:LCP62",
+      "path": "java/jwaBlogger/src/jwaBlogger/BlogManager.java",
+      "expression": "createIndex",
+      "aliases": [
+        "createIndex"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 919,
+          "condition": "(createIndex)"
+        }
+      ],
+      "condition_indexes": [
+        70
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/BlogManager.java:LCP63",
+      "path": "java/jwaBlogger/src/jwaBlogger/BlogManager.java",
+      "expression": "addDescriptionToIndex",
+      "aliases": [
+        "addDescriptionToIndex"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 951,
+          "condition": "(addDescriptionToIndex)"
+        }
+      ],
+      "condition_indexes": [
+        72
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/BlogManager.java:LCP64",
+      "path": "java/jwaBlogger/src/jwaBlogger/BlogManager.java",
+      "expression": "addEntryToIndex",
+      "aliases": [
+        "addEntryToIndex"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 956,
+          "condition": "(addEntryToIndex && blogEntryText != null && blogEntryText.getBlogText() != null)"
+        }
+      ],
+      "condition_indexes": [
+        73
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/BlogManager.java:LCP65",
+      "path": "java/jwaBlogger/src/jwaBlogger/BlogManager.java",
+      "expression": "blogEntry.wasUpdated",
+      "aliases": [
+        "blogEntry.wasUpdated"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 959,
+          "condition": "(blogEntry.wasUpdated)"
+        }
+      ],
+      "condition_indexes": [
+        74
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/BlogManager.java:LCP66",
+      "path": "java/jwaBlogger/src/jwaBlogger/BlogManager.java",
+      "expression": "Character",
+      "aliases": [
+        "Character"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 970,
+          "condition": "(Character.isLetterOrDigit(c) || Character.isSpaceChar(c))"
+        }
+      ],
+      "condition_indexes": [
+        75
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/BlogManager.java:LCP67",
+      "path": "java/jwaBlogger/src/jwaBlogger/BlogManager.java",
+      "expression": "c",
+      "aliases": [
+        "c",
+        "newStr"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 970,
+          "condition": "(Character.isLetterOrDigit(c) || Character.isSpaceChar(c))"
+        },
+        {
+          "source": "conditional",
+          "line": 978,
+          "condition": "(newStr.length() > 100)"
+        }
+      ],
+      "condition_indexes": [
+        75,
+        76
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/BlogManager.java:LCP68",
+      "path": "java/jwaBlogger/src/jwaBlogger/BlogManager.java",
+      "expression": "in",
+      "aliases": [
+        "in"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 988,
+          "condition": "(in != null)"
+        }
+      ],
+      "condition_indexes": [
+        77
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/BlogManager.java:LCP69",
+      "path": "java/jwaBlogger/src/jwaBlogger/BlogManager.java",
+      "expression": "strArr.length",
+      "aliases": [
+        "strArr.length"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 1003,
+          "condition": "(strArr.length == 5)"
+        }
+      ],
+      "condition_indexes": [
+        79
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/BlogManager.java:LCP70",
+      "path": "java/jwaBlogger/src/jwaBlogger/BlogManager.java",
+      "expression": "blogEntry.getIsVisible()",
+      "aliases": [
+        "blogEntry.getIsVisible()"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 1031,
+          "condition": "(!(blogEntry.getIsVisible().equals(\"false\") && blogEntry.getCreated().before(timeout)))"
+        }
+      ],
+      "condition_indexes": [
+        80
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/BlogManager.java:LCP71",
+      "path": "java/jwaBlogger/src/jwaBlogger/BlogManager.java",
+      "expression": "blogEntry.getCreated()",
+      "aliases": [
+        "blogEntry.getCreated()"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 1031,
+          "condition": "(!(blogEntry.getIsVisible().equals(\"false\") && blogEntry.getCreated().before(timeout)))"
+        }
+      ],
+      "condition_indexes": [
+        80
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/BlogManager.java:LCP72",
+      "path": "java/jwaBlogger/src/jwaBlogger/BlogManager.java",
+      "expression": "timeout",
+      "aliases": [
+        "timeout"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 1031,
+          "condition": "(!(blogEntry.getIsVisible().equals(\"false\") && blogEntry.getCreated().before(timeout)))"
+        }
+      ],
+      "condition_indexes": [
+        80
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/BlogManager.java:LCP73",
+      "path": "java/jwaBlogger/src/jwaBlogger/BlogManager.java",
+      "expression": "entry",
+      "aliases": [
+        "entry"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 1040,
+          "condition": "(entry.getRisingTime() == null)"
+        },
+        {
+          "source": "conditional",
+          "line": 1057,
+          "condition": "(entry.getRisingTime() == null && (entry.getVotes() >= voteCountMinimum || entry.getViews() >= viewCountMinimum))"
+        },
+        {
+          "source": "conditional",
+          "line": 1063,
+          "condition": "(entry.getRisingTime() != null)"
+        },
+        {
+          "source": "conditional",
+          "line": 1080,
+          "condition": "(entry.getPopularTime() == null)"
+        },
+        {
+          "source": "conditional",
+          "line": 1097,
+          "condition": "(entry.getPopularTime() == null && (entry.getVotes() >= voteCountMaximum || entry.getViews() >= viewCountMaximum))"
+        },
+        {
+          "source": "conditional",
+          "line": 1103,
+          "condition": "(entry.getPopularTime() != null)"
+        },
+        {
+          "source": "conditional",
+          "line": 1227,
+          "condition": "(entry.getTags() != null)"
+        }
+      ],
+      "condition_indexes": [
+        81,
+        83,
+        84,
+        87,
+        89,
+        90,
+        103
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/BlogManager.java:LCP74",
+      "path": "java/jwaBlogger/src/jwaBlogger/BlogManager.java",
+      "expression": "blogEntryRisingQueue",
+      "aliases": [
+        "blogEntryRisingQueue"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 1047,
+          "condition": "(blogEntryRisingQueue.size() > maxRisingEntries)"
+        }
+      ],
+      "condition_indexes": [
+        82
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/BlogManager.java:LCP75",
+      "path": "java/jwaBlogger/src/jwaBlogger/BlogManager.java",
+      "expression": "maxRisingEntries",
+      "aliases": [
+        "maxRisingEntries"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 1047,
+          "condition": "(blogEntryRisingQueue.size() > maxRisingEntries)"
+        },
+        {
+          "source": "conditional",
+          "line": 1071,
+          "condition": "(risingList.size() > maxRisingEntries)"
+        }
+      ],
+      "condition_indexes": [
+        82,
+        86
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/BlogManager.java:LCP76",
+      "path": "java/jwaBlogger/src/jwaBlogger/BlogManager.java",
+      "expression": "risingList",
+      "aliases": [
+        "risingList"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 1067,
+          "condition": "(risingList.size() > 0)"
+        },
+        {
+          "source": "conditional",
+          "line": 1071,
+          "condition": "(risingList.size() > maxRisingEntries)"
+        }
+      ],
+      "condition_indexes": [
+        85,
+        86
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/BlogManager.java:LCP77",
+      "path": "java/jwaBlogger/src/jwaBlogger/BlogManager.java",
+      "expression": "blogEntryPopularQueue",
+      "aliases": [
+        "blogEntryPopularQueue"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 1087,
+          "condition": "(blogEntryPopularQueue.size() > maxPopularEntries)"
+        }
+      ],
+      "condition_indexes": [
+        88
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/BlogManager.java:LCP78",
+      "path": "java/jwaBlogger/src/jwaBlogger/BlogManager.java",
+      "expression": "maxPopularEntries",
+      "aliases": [
+        "maxPopularEntries"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 1087,
+          "condition": "(blogEntryPopularQueue.size() > maxPopularEntries)"
+        },
+        {
+          "source": "conditional",
+          "line": 1111,
+          "condition": "(popularList.size() > maxPopularEntries)"
+        }
+      ],
+      "condition_indexes": [
+        88,
+        92
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/BlogManager.java:LCP79",
+      "path": "java/jwaBlogger/src/jwaBlogger/BlogManager.java",
+      "expression": "popularList",
+      "aliases": [
+        "popularList"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 1107,
+          "condition": "(popularList.size() > 0)"
+        },
+        {
+          "source": "conditional",
+          "line": 1111,
+          "condition": "(popularList.size() > maxPopularEntries)"
+        }
+      ],
+      "condition_indexes": [
+        91,
+        92
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/BlogManager.java:LCP80",
+      "path": "java/jwaBlogger/src/jwaBlogger/BlogManager.java",
+      "expression": "logger",
+      "aliases": [
+        "logger"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 1141,
+          "condition": "(logger.isLoggable(Level.FINE))"
+        },
+        {
+          "source": "conditional",
+          "line": 1170,
+          "condition": "(logger.isLoggable(Level.FINE))"
+        }
+      ],
+      "condition_indexes": [
+        93,
+        98
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/BlogManager.java:LCP81",
+      "path": "java/jwaBlogger/src/jwaBlogger/BlogManager.java",
+      "expression": "Level.FINE",
+      "aliases": [
+        "Level.FINE"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 1141,
+          "condition": "(logger.isLoggable(Level.FINE))"
+        },
+        {
+          "source": "conditional",
+          "line": 1170,
+          "condition": "(logger.isLoggable(Level.FINE))"
+        }
+      ],
+      "condition_indexes": [
+        93,
+        98
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/BlogManager.java:LCP82",
+      "path": "java/jwaBlogger/src/jwaBlogger/BlogManager.java",
+      "expression": "feedEntries",
+      "aliases": [
+        "feedEntries"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 1151,
+          "condition": "(feedEntries != null)"
+        },
+        {
+          "source": "conditional",
+          "line": 1166,
+          "condition": "(feedEntries != null)"
+        },
+        {
+          "source": "conditional",
+          "line": 1177,
+          "condition": "(feedEntries != null && feedEntries.size() > 0)"
+        }
+      ],
+      "condition_indexes": [
+        94,
+        97,
+        99
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/BlogManager.java:LCP83",
+      "path": "java/jwaBlogger/src/jwaBlogger/BlogManager.java",
+      "expression": "syndEntry",
+      "aliases": [
+        "syndEntry"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 1156,
+          "condition": "(syndEntry.getPublishedDate() != null)"
+        },
+        {
+          "source": "conditional",
+          "line": 1157,
+          "condition": "(syndEntry.getPublishedDate().before(lastEntry))"
+        },
+        {
+          "source": "conditional",
+          "line": 1325,
+          "condition": "(syndEntry != null)"
+        },
+        {
+          "source": "conditional",
+          "line": 1332,
+          "condition": "(syndEntry.getDescription() != null)"
+        }
+      ],
+      "condition_indexes": [
+        95,
+        96,
+        107,
+        108
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/BlogManager.java:LCP84",
+      "path": "java/jwaBlogger/src/jwaBlogger/BlogManager.java",
+      "expression": "syndEntry.getPublishedDate()",
+      "aliases": [
+        "syndEntry.getPublishedDate()"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 1157,
+          "condition": "(syndEntry.getPublishedDate().before(lastEntry))"
+        }
+      ],
+      "condition_indexes": [
+        96
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/BlogManager.java:LCP85",
+      "path": "java/jwaBlogger/src/jwaBlogger/BlogManager.java",
+      "expression": "lastEntry",
+      "aliases": [
+        "lastEntry"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 1157,
+          "condition": "(syndEntry.getPublishedDate().before(lastEntry))"
+        }
+      ],
+      "condition_indexes": [
+        96
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/BlogManager.java:LCP86",
+      "path": "java/jwaBlogger/src/jwaBlogger/BlogManager.java",
+      "expression": "allowedCategories",
+      "aliases": [
+        "allowedCategories",
+        "this.allowedCategories"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 1187,
+          "condition": "(allowedCategories.equalsIgnoreCase(\"all\"))"
+        }
+      ],
+      "condition_indexes": [
+        100
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/BlogManager.java:LCP87",
+      "path": "java/jwaBlogger/src/jwaBlogger/BlogManager.java",
+      "expression": "category",
+      "aliases": [
+        "category"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 1206,
+          "condition": "(category.equals(allowedCategory) || category.matches(allowedCategory))"
+        }
+      ],
+      "condition_indexes": [
+        102
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/BlogManager.java:LCP88",
+      "path": "java/jwaBlogger/src/jwaBlogger/BlogManager.java",
+      "expression": "allowedCategory",
+      "aliases": [
+        "allowedCategory"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 1206,
+          "condition": "(category.equals(allowedCategory) || category.matches(allowedCategory))"
+        }
+      ],
+      "condition_indexes": [
+        102
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/BlogManager.java:LCP89",
+      "path": "java/jwaBlogger/src/jwaBlogger/BlogManager.java",
+      "expression": "normalizedTag",
+      "aliases": [
+        "normalizedTag",
+        "tag"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 1234,
+          "condition": "(normalizedTag != null)"
+        }
+      ],
+      "condition_indexes": [
+        104
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/BlogManager.java:LCP90",
+      "path": "java/jwaBlogger/src/jwaBlogger/BlogManager.java",
+      "expression": "cloudEntry",
+      "aliases": [
+        "cloudEntry"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 1239,
+          "condition": "(cloudEntry == null)"
+        }
+      ],
+      "condition_indexes": [
+        105
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/BlogManager.java:LCP91",
+      "path": "java/jwaBlogger/src/jwaBlogger/BlogManager.java",
+      "expression": "externalFeed.useContent",
+      "aliases": [
+        "externalFeed.useContent"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 1351,
+          "condition": "(externalFeed.useContent)"
+        }
+      ],
+      "condition_indexes": [
+        109
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/BlogManager.java:LCP92",
+      "path": "java/jwaBlogger/src/jwaBlogger/BlogManager.java",
+      "expression": "externalFeed",
+      "aliases": [
+        "externalFeed"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 1362,
+          "condition": "(externalFeed.checkCategories(tags))"
+        }
+      ],
+      "condition_indexes": [
+        110
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/CountIterator.java:LCP93",
+      "path": "java/jwaBlogger/src/jwaBlogger/CountIterator.java",
+      "expression": "reverse",
+      "aliases": [
+        "reverse",
+        "this.reverse"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 38,
+          "condition": "(reverse)"
+        },
+        {
+          "source": "conditional",
+          "line": 44,
+          "condition": "(reverse)"
+        },
+        {
+          "source": "conditional",
+          "line": 52,
+          "condition": "((reverse && counter > 0) || (!reverse && counter < maxCount))"
+        }
+      ],
+      "condition_indexes": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/CountIterator.java:LCP94",
+      "path": "java/jwaBlogger/src/jwaBlogger/CountIterator.java",
+      "expression": "counter",
+      "aliases": [
+        "counter"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 52,
+          "condition": "((reverse && counter > 0) || (!reverse && counter < maxCount))"
+        }
+      ],
+      "condition_indexes": [
+        2
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/CountIterator.java:LCP95",
+      "path": "java/jwaBlogger/src/jwaBlogger/CountIterator.java",
+      "expression": "maxCount",
+      "aliases": [
+        "maxCount"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 52,
+          "condition": "((reverse && counter > 0) || (!reverse && counter < maxCount))"
+        }
+      ],
+      "condition_indexes": [
+        2
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/CountListIterator.java:LCP96",
+      "path": "java/jwaBlogger/src/jwaBlogger/CountListIterator.java",
+      "expression": "reverse",
+      "aliases": [
+        "reverse",
+        "this.reverse"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 34,
+          "condition": "(reverse)"
+        },
+        {
+          "source": "conditional",
+          "line": 47,
+          "condition": "(reverse)"
+        },
+        {
+          "source": "conditional",
+          "line": 56,
+          "condition": "(reverse)"
+        }
+      ],
+      "condition_indexes": [
+        0,
+        1,
+        3
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/CountListIterator.java:LCP97",
+      "path": "java/jwaBlogger/src/jwaBlogger/CountListIterator.java",
+      "expression": "counter",
+      "aliases": [
+        "counter"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 55,
+          "condition": "(counter < maxCount)"
+        }
+      ],
+      "condition_indexes": [
+        2
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/CountListIterator.java:LCP98",
+      "path": "java/jwaBlogger/src/jwaBlogger/CountListIterator.java",
+      "expression": "maxCount",
+      "aliases": [
+        "maxCount",
+        "this.maxCount"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 55,
+          "condition": "(counter < maxCount)"
+        }
+      ],
+      "condition_indexes": [
+        2
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/HtmlValidator.java:LCP99",
+      "path": "java/jwaBlogger/src/jwaBlogger/HtmlValidator.java",
+      "expression": "inputStream",
+      "aliases": [
+        "inputStream"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 38,
+          "condition": "(inputStream != null)"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/HtmlValidator.java:LCP100",
+      "path": "java/jwaBlogger/src/jwaBlogger/HtmlValidator.java",
+      "expression": "str",
+      "aliases": [
+        "str"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 48,
+          "condition": "(!str.startsWith(\"#\") && str.length() > 0)"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/HtmlValidator.java:LCP101",
+      "path": "java/jwaBlogger/src/jwaBlogger/HtmlValidator.java",
+      "expression": "attributes",
+      "aliases": [
+        "attributes",
+        "this.attributes"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 104,
+          "condition": "(attributes != null && (attributes.contains(\"all\") || attributes.contains(attribute)))"
+        }
+      ],
+      "condition_indexes": [
+        2
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/HtmlValidator.java:LCP102",
+      "path": "java/jwaBlogger/src/jwaBlogger/HtmlValidator.java",
+      "expression": "attribute",
+      "aliases": [
+        "attribute"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 104,
+          "condition": "(attributes != null && (attributes.contains(\"all\") || attributes.contains(attribute)))"
+        }
+      ],
+      "condition_indexes": [
+        2
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/JerichoParser.java:LCP103",
+      "path": "java/jwaBlogger/src/jwaBlogger/JerichoParser.java",
+      "expression": "returnTextOnly",
+      "aliases": [
+        "returnTextOnly"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 46,
+          "condition": "(returnTextOnly)"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/JerichoParser.java:LCP104",
+      "path": "java/jwaBlogger/src/jwaBlogger/JerichoParser.java",
+      "expression": "segment",
+      "aliases": [
+        "segment"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 60,
+          "condition": "(segment instanceof Tag)"
+        },
+        {
+          "source": "conditional",
+          "line": 68,
+          "condition": "(segment instanceof StartTag)"
+        }
+      ],
+      "condition_indexes": [
+        1,
+        3
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/JerichoParser.java:LCP105",
+      "path": "java/jwaBlogger/src/jwaBlogger/JerichoParser.java",
+      "expression": "tagName",
+      "aliases": [
+        "tagName"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 64,
+          "condition": "(isTagAllowed(tagName))"
+        }
+      ],
+      "condition_indexes": [
+        2
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/JerichoParser.java:LCP106",
+      "path": "java/jwaBlogger/src/jwaBlogger/JerichoParser.java",
+      "expression": "allowedAttributes",
+      "aliases": [
+        "allowedAttributes"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 74,
+          "condition": "(!allowedAttributes.attributeAllowed(attribute.getName()))"
+        }
+      ],
+      "condition_indexes": [
+        4
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/JerichoParser.java:LCP107",
+      "path": "java/jwaBlogger/src/jwaBlogger/JerichoParser.java",
+      "expression": "attribute",
+      "aliases": [
+        "attribute"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 74,
+          "condition": "(!allowedAttributes.attributeAllowed(attribute.getName()))"
+        }
+      ],
+      "condition_indexes": [
+        4
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/JerichoParser.java:LCP108",
+      "path": "java/jwaBlogger/src/jwaBlogger/JerichoParser.java",
+      "expression": "stringBuilder",
+      "aliases": [
+        "stringBuilder"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 84,
+          "condition": "(stringBuilder.length() > 0 && stringBuilder.charAt(stringBuilder.length() - 1) != ' ')"
+        }
+      ],
+      "condition_indexes": [
+        5
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/webApp/AppUtils.java:LCP109",
+      "path": "java/jwaBlogger/src/jwaBlogger/webApp/AppUtils.java",
+      "expression": "properties.getProperty(\"useDataSource\",\"false\")",
+      "aliases": [
+        "properties.getProperty(\"useDataSource\",\"false\")"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 54,
+          "condition": "(properties.getProperty(\"useDataSource\",\"false\").equals(\"true\"))"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/webApp/AppUtils.java:LCP110",
+      "path": "java/jwaBlogger/src/jwaBlogger/webApp/AppUtils.java",
+      "expression": "properties",
+      "aliases": [
+        "properties"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 54,
+          "condition": "(properties.getProperty(\"useDataSource\",\"false\").equals(\"true\"))"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/webApp/Blogger.java:LCP111",
+      "path": "java/jwaBlogger/src/jwaBlogger/webApp/Blogger.java",
+      "expression": "remoteUser",
+      "aliases": [
+        "remoteUser",
+        "value"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 54,
+          "condition": "(serverInterface.getRemoteUser() == null && serverInterface.getCookie(\"autoLogin\") != null)"
+        },
+        {
+          "source": "conditional",
+          "line": 95,
+          "condition": "(remoteUser != null)"
+        },
+        {
+          "source": "conditional",
+          "line": 311,
+          "condition": "(serverInterface.getRemoteUser() != null && blogManager.getProperties().getProperty(\"allowCookieLogin\", \"false\").equals(\"true\"))"
+        },
+        {
+          "source": "conditional",
+          "line": 354,
+          "condition": "(value == null)"
+        }
+      ],
+      "condition_indexes": [
+        0,
+        3,
+        16,
+        18
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/webApp/Blogger.java:LCP112",
+      "path": "java/jwaBlogger/src/jwaBlogger/webApp/Blogger.java",
+      "expression": "autoLogin",
+      "aliases": [
+        "autoLogin"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 54,
+          "condition": "(serverInterface.getRemoteUser() == null && serverInterface.getCookie(\"autoLogin\") != null)"
+        },
+        {
+          "source": "conditional",
+          "line": 313,
+          "condition": "(serverInterface.getParameter(\"autoLogin\", \"false\").equals(\"true\"))"
+        }
+      ],
+      "condition_indexes": [
+        0,
+        17
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/webApp/Blogger.java:LCP113",
+      "path": "java/jwaBlogger/src/jwaBlogger/webApp/Blogger.java",
+      "expression": "ajax",
+      "aliases": [
+        "ajax"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 68,
+          "condition": "(serverInterface.getParameter(\"ajax\") != null)"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/webApp/Blogger.java:LCP114",
+      "path": "java/jwaBlogger/src/jwaBlogger/webApp/Blogger.java",
+      "expression": "str",
+      "aliases": [
+        "str"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 81,
+          "condition": "(str.length() > 0)"
+        },
+        {
+          "source": "conditional",
+          "line": 163,
+          "condition": "(str.length() > 0)"
+        },
+        {
+          "source": "conditional",
+          "line": 200,
+          "condition": "(str.length() > 0)"
+        },
+        {
+          "source": "conditional",
+          "line": 267,
+          "condition": "(str.length() > 0)"
+        }
+      ],
+      "condition_indexes": [
+        2,
+        5,
+        8,
+        13
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/webApp/Blogger.java:LCP115",
+      "path": "java/jwaBlogger/src/jwaBlogger/webApp/Blogger.java",
+      "expression": "switchToWysiwyg",
+      "aliases": [
+        "switchToWysiwyg"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 104,
+          "condition": "(switchToWysiwyg || switchToTextarea)"
+        }
+      ],
+      "condition_indexes": [
+        4
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/webApp/Blogger.java:LCP116",
+      "path": "java/jwaBlogger/src/jwaBlogger/webApp/Blogger.java",
+      "expression": "switchToTextarea",
+      "aliases": [
+        "switchToTextarea"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 104,
+          "condition": "(switchToWysiwyg || switchToTextarea)"
+        }
+      ],
+      "condition_indexes": [
+        4
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/webApp/Blogger.java:LCP117",
+      "path": "java/jwaBlogger/src/jwaBlogger/webApp/Blogger.java",
+      "expression": "numberPages",
+      "aliases": [
+        "numberPages"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 187,
+          "condition": "(numberPages > 1)"
+        },
+        {
+          "source": "conditional",
+          "line": 190,
+          "condition": "(numberPages == 0)"
+        }
+      ],
+      "condition_indexes": [
+        6,
+        7
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/webApp/Blogger.java:LCP118",
+      "path": "java/jwaBlogger/src/jwaBlogger/webApp/Blogger.java",
+      "expression": "email",
+      "aliases": [
+        "email"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 218,
+          "condition": "(email == null || !email.equalsIgnoreCase(user.getEmail()))"
+        }
+      ],
+      "condition_indexes": [
+        9
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/webApp/Blogger.java:LCP119",
+      "path": "java/jwaBlogger/src/jwaBlogger/webApp/Blogger.java",
+      "expression": "user",
+      "aliases": [
+        "user"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 218,
+          "condition": "(email == null || !email.equalsIgnoreCase(user.getEmail()))"
+        },
+        {
+          "source": "conditional",
+          "line": 220,
+          "condition": "(Validator.isNotEmptyOrNull(user.getPassword()))"
+        },
+        {
+          "source": "conditional",
+          "line": 225,
+          "condition": "(WebAppInterface.register((BlogManager)serverInterface.getServletContext().getAttribute(\"blogManager\"), user, \n                                             serverInterface.getAbsoluteUrl(serverInterface.getServletRequest().getContextPath() + \"/blogger/verify/\")))"
+        }
+      ],
+      "condition_indexes": [
+        9,
+        10,
+        11
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/webApp/Blogger.java:LCP120",
+      "path": "java/jwaBlogger/src/jwaBlogger/webApp/Blogger.java",
+      "expression": "Validator",
+      "aliases": [
+        "Validator"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 220,
+          "condition": "(Validator.isNotEmptyOrNull(user.getPassword()))"
+        }
+      ],
+      "condition_indexes": [
+        10
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/webApp/Blogger.java:LCP121",
+      "path": "java/jwaBlogger/src/jwaBlogger/webApp/Blogger.java",
+      "expression": "WebAppInterface",
+      "aliases": [
+        "WebAppInterface"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 225,
+          "condition": "(WebAppInterface.register((BlogManager)serverInterface.getServletContext().getAttribute(\"blogManager\"), user, \n                                             serverInterface.getAbsoluteUrl(serverInterface.getServletRequest().getContextPath() + \"/blogger/verify/\")))"
+        },
+        {
+          "source": "conditional",
+          "line": 243,
+          "condition": "(WebAppInterface.verify((BlogManager)serverInterface.getServletContext().getAttribute(\"blogManager\"), serverInterface.getPathArguments()))"
+        }
+      ],
+      "condition_indexes": [
+        11,
+        12
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/webApp/Blogger.java:LCP122",
+      "path": "java/jwaBlogger/src/jwaBlogger/webApp/Blogger.java",
+      "expression": "blogManager",
+      "aliases": [
+        "blogManager"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 225,
+          "condition": "(WebAppInterface.register((BlogManager)serverInterface.getServletContext().getAttribute(\"blogManager\"), user, \n                                             serverInterface.getAbsoluteUrl(serverInterface.getServletRequest().getContextPath() + \"/blogger/verify/\")))"
+        },
+        {
+          "source": "conditional",
+          "line": 243,
+          "condition": "(WebAppInterface.verify((BlogManager)serverInterface.getServletContext().getAttribute(\"blogManager\"), serverInterface.getPathArguments()))"
+        },
+        {
+          "source": "conditional",
+          "line": 311,
+          "condition": "(serverInterface.getRemoteUser() != null && blogManager.getProperties().getProperty(\"allowCookieLogin\", \"false\").equals(\"true\"))"
+        }
+      ],
+      "condition_indexes": [
+        11,
+        12,
+        16
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/webApp/Blogger.java:LCP123",
+      "path": "java/jwaBlogger/src/jwaBlogger/webApp/Blogger.java",
+      "expression": "serverInterface",
+      "aliases": [
+        "serverInterface"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 225,
+          "condition": "(WebAppInterface.register((BlogManager)serverInterface.getServletContext().getAttribute(\"blogManager\"), user, \n                                             serverInterface.getAbsoluteUrl(serverInterface.getServletRequest().getContextPath() + \"/blogger/verify/\")))"
+        },
+        {
+          "source": "conditional",
+          "line": 243,
+          "condition": "(WebAppInterface.verify((BlogManager)serverInterface.getServletContext().getAttribute(\"blogManager\"), serverInterface.getPathArguments()))"
+        }
+      ],
+      "condition_indexes": [
+        11,
+        12
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/webApp/Blogger.java:LCP124",
+      "path": "java/jwaBlogger/src/jwaBlogger/webApp/Blogger.java",
+      "expression": "serverInterface.getServletRequest()",
+      "aliases": [
+        "serverInterface.getServletRequest()"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 225,
+          "condition": "(WebAppInterface.register((BlogManager)serverInterface.getServletContext().getAttribute(\"blogManager\"), user, \n                                             serverInterface.getAbsoluteUrl(serverInterface.getServletRequest().getContextPath() + \"/blogger/verify/\")))"
+        }
+      ],
+      "condition_indexes": [
+        11
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/webApp/Blogger.java:LCP125",
+      "path": "java/jwaBlogger/src/jwaBlogger/webApp/Blogger.java",
+      "expression": "roles",
+      "aliases": [
+        "roles"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 282,
+          "condition": "(roles != null)"
+        },
+        {
+          "source": "conditional",
+          "line": 299,
+          "condition": "(roles != null)"
+        }
+      ],
+      "condition_indexes": [
+        14,
+        15
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/webApp/Blogger.java:LCP126",
+      "path": "java/jwaBlogger/src/jwaBlogger/webApp/Blogger.java",
+      "expression": "blogManager.getProperties().getProperty(\"allowCookieLogin\", \"false\")",
+      "aliases": [
+        "blogManager.getProperties().getProperty(\"allowCookieLogin\", \"false\")"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 311,
+          "condition": "(serverInterface.getRemoteUser() != null && blogManager.getProperties().getProperty(\"allowCookieLogin\", \"false\").equals(\"true\"))"
+        }
+      ],
+      "condition_indexes": [
+        16
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/webApp/Blogger.java:LCP127",
+      "path": "java/jwaBlogger/src/jwaBlogger/webApp/Blogger.java",
+      "expression": "blogManager.getProperties()",
+      "aliases": [
+        "blogManager.getProperties()"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 311,
+          "condition": "(serverInterface.getRemoteUser() != null && blogManager.getProperties().getProperty(\"allowCookieLogin\", \"false\").equals(\"true\"))"
+        }
+      ],
+      "condition_indexes": [
+        16
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/webApp/Blogger.java:LCP128",
+      "path": "java/jwaBlogger/src/jwaBlogger/webApp/Blogger.java",
+      "expression": "serverInterface.getParameter(\"autoLogin\", \"false\")",
+      "aliases": [
+        "serverInterface.getParameter(\"autoLogin\", \"false\")"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 313,
+          "condition": "(serverInterface.getParameter(\"autoLogin\", \"false\").equals(\"true\"))"
+        }
+      ],
+      "condition_indexes": [
+        17
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/webApp/Blogger.java:LCP129",
+      "path": "java/jwaBlogger/src/jwaBlogger/webApp/Blogger.java",
+      "expression": "cookie",
+      "aliases": [
+        "cookie",
+        "pc"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 358,
+          "condition": "(cookie != null)"
+        }
+      ],
+      "condition_indexes": [
+        19
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/WebAppInterface.java:LCP130",
+      "path": "java/jwaBlogger/src/jwaBlogger/WebAppInterface.java",
+      "expression": "entryType",
+      "aliases": [
+        "entryType",
+        "c"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 40,
+          "condition": "(entryType != null)"
+        },
+        {
+          "source": "conditional",
+          "line": 42,
+          "condition": "(entryType.equalsIgnoreCase(\"fresh\"))"
+        },
+        {
+          "source": "conditional",
+          "line": 47,
+          "condition": "(entryType.equalsIgnoreCase(\"older\"))"
+        },
+        {
+          "source": "conditional",
+          "line": 49,
+          "condition": "(entryType.equalsIgnoreCase(\"rising\"))"
+        },
+        {
+          "source": "conditional",
+          "line": 54,
+          "condition": "(entryType.equalsIgnoreCase(\"popular\"))"
+        },
+        {
+          "source": "conditional",
+          "line": 59,
+          "condition": "(entryType.equalsIgnoreCase(\"voting\"))"
+        },
+        {
+          "source": "conditional",
+          "line": 64,
+          "condition": "(entryType.equalsIgnoreCase(\"activity\"))"
+        },
+        {
+          "source": "conditional",
+          "line": 69,
+          "condition": "(entryType.equalsIgnoreCase(\"search\"))"
+        },
+        {
+          "source": "conditional",
+          "line": 437,
+          "condition": "(entryType != null)"
+        },
+        {
+          "source": "conditional",
+          "line": 439,
+          "condition": "(entryType.equalsIgnoreCase(\"fresh\"))"
+        },
+        {
+          "source": "conditional",
+          "line": 441,
+          "condition": "(entryType.equalsIgnoreCase(\"older\"))"
+        },
+        {
+          "source": "conditional",
+          "line": 443,
+          "condition": "(entryType.equalsIgnoreCase(\"rising\"))"
+        },
+        {
+          "source": "conditional",
+          "line": 448,
+          "condition": "(entryType.equalsIgnoreCase(\"popular\"))"
+        },
+        {
+          "source": "conditional",
+          "line": 453,
+          "condition": "(entryType.equalsIgnoreCase(\"voting\"))"
+        },
+        {
+          "source": "conditional",
+          "line": 455,
+          "condition": "(entryType.equalsIgnoreCase(\"activity\"))"
+        }
+      ],
+      "condition_indexes": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/WebAppInterface.java:LCP131",
+      "path": "java/jwaBlogger/src/jwaBlogger/WebAppInterface.java",
+      "expression": "collection",
+      "aliases": [
+        "collection",
+        "searchList"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 85,
+          "condition": "(collection != null)"
+        },
+        {
+          "source": "conditional",
+          "line": 87,
+          "condition": "(offset < 0 || offset > collection.size())"
+        },
+        {
+          "source": "conditional",
+          "line": 95,
+          "condition": "(collection instanceof Queue)"
+        }
+      ],
+      "condition_indexes": [
+        8,
+        9,
+        10
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/WebAppInterface.java:LCP132",
+      "path": "java/jwaBlogger/src/jwaBlogger/WebAppInterface.java",
+      "expression": "offset",
+      "aliases": [
+        "offset"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 87,
+          "condition": "(offset < 0 || offset > collection.size())"
+        }
+      ],
+      "condition_indexes": [
+        9
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/WebAppInterface.java:LCP133",
+      "path": "java/jwaBlogger/src/jwaBlogger/WebAppInterface.java",
+      "expression": "numberPages",
+      "aliases": [
+        "numberPages"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 105,
+          "condition": "(numberPages != null)"
+        },
+        {
+          "source": "conditional",
+          "line": 311,
+          "condition": "(numberPages > 1)"
+        }
+      ],
+      "condition_indexes": [
+        11,
+        43
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/WebAppInterface.java:LCP134",
+      "path": "java/jwaBlogger/src/jwaBlogger/WebAppInterface.java",
+      "expression": "textarea",
+      "aliases": [
+        "textarea"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 118,
+          "condition": "(request.getParameter(\"textarea\") == null && request.getParameter(\"wysiwyg\") == null)"
+        }
+      ],
+      "condition_indexes": [
+        12
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/WebAppInterface.java:LCP135",
+      "path": "java/jwaBlogger/src/jwaBlogger/WebAppInterface.java",
+      "expression": "wysiwyg",
+      "aliases": [
+        "wysiwyg"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 118,
+          "condition": "(request.getParameter(\"textarea\") == null && request.getParameter(\"wysiwyg\") == null)"
+        }
+      ],
+      "condition_indexes": [
+        12
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/WebAppInterface.java:LCP136",
+      "path": "java/jwaBlogger/src/jwaBlogger/WebAppInterface.java",
+      "expression": "remoteUser",
+      "aliases": [
+        "remoteUser"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 120,
+          "condition": "(remoteUser == null)"
+        },
+        {
+          "source": "conditional",
+          "line": 275,
+          "condition": "(remoteUser == null)"
+        },
+        {
+          "source": "conditional",
+          "line": 291,
+          "condition": "(Validator.isEmptyOrNull(blogEntryComment.getAuthor()) && remoteUser != null)"
+        },
+        {
+          "source": "conditional",
+          "line": 336,
+          "condition": "((Validator.isEmptyOrNull(user.getPassword()) || Validator.isEmptyOrNull(user.getPassword2())) && remoteUser == null)"
+        }
+      ],
+      "condition_indexes": [
+        13,
+        36,
+        41,
+        45
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/WebAppInterface.java:LCP137",
+      "path": "java/jwaBlogger/src/jwaBlogger/WebAppInterface.java",
+      "expression": "Validator",
+      "aliases": [
+        "Validator"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 123,
+          "condition": "(Validator.isEmptyOrNull(blogEntry.getTitle()))"
+        },
+        {
+          "source": "conditional",
+          "line": 126,
+          "condition": "(Validator.isEmptyOrNull(blogEntry.getTags()))"
+        },
+        {
+          "source": "conditional",
+          "line": 129,
+          "condition": "(Validator.isEmptyOrNull(blogEntry.getDescription()))"
+        },
+        {
+          "source": "conditional",
+          "line": 132,
+          "condition": "(Validator.isEmptyOrNull(blogEntry.getExternalUrl()))"
+        },
+        {
+          "source": "conditional",
+          "line": 136,
+          "condition": "(Validator.isNotEmptyOrNull(captchaId) && !blogManager.validateCaptcha(new Integer(captchaId), captchaAnswer))"
+        },
+        {
+          "source": "conditional",
+          "line": 276,
+          "condition": "(Validator.isEmptyOrNull(blogEntryComment.getAuthor()))"
+        },
+        {
+          "source": "conditional",
+          "line": 279,
+          "condition": "(Validator.isEmptyOrNull(blogEntryComment.getCommentText()))"
+        },
+        {
+          "source": "conditional",
+          "line": 283,
+          "condition": "(Validator.isNotEmptyOrNull(captchaId) && !blogManager.validateCaptcha(new Integer(captchaId), captchaAnswer))"
+        },
+        {
+          "source": "conditional",
+          "line": 291,
+          "condition": "(Validator.isEmptyOrNull(blogEntryComment.getAuthor()) && remoteUser != null)"
+        },
+        {
+          "source": "conditional",
+          "line": 299,
+          "condition": "(!Validator.isEmptyOrNull(request.getParameter(\"searchString\")))"
+        },
+        {
+          "source": "conditional",
+          "line": 333,
+          "condition": "(Validator.isEmptyOrNull(user.getUsername()))"
+        },
+        {
+          "source": "conditional",
+          "line": 336,
+          "condition": "((Validator.isEmptyOrNull(user.getPassword()) || Validator.isEmptyOrNull(user.getPassword2())) && remoteUser == null)"
+        },
+        {
+          "source": "conditional",
+          "line": 339,
+          "condition": "(Validator.isNotEmptyOrNull(user.getPassword()) && Validator.isNotEmptyOrNull(user.getPassword2()) && !user.getPassword().equals(user.getPassword2()))"
+        },
+        {
+          "source": "conditional",
+          "line": 342,
+          "condition": "(Validator.isEmptyOrNull(user.getFirstName()))"
+        },
+        {
+          "source": "conditional",
+          "line": 345,
+          "condition": "(Validator.isEmptyOrNull(user.getLastName()))"
+        },
+        {
+          "source": "conditional",
+          "line": 348,
+          "condition": "(Validator.isEmptyOrNull(user.getEmail()) || !Validator.isEmail(user.getEmail()))"
+        },
+        {
+          "source": "conditional",
+          "line": 482,
+          "condition": "(Validator.isEmptyOrNull(user.getUsername()))"
+        },
+        {
+          "source": "conditional",
+          "line": 485,
+          "condition": "(Validator.isEmptyOrNull(user.getPassword()))"
+        },
+        {
+          "source": "conditional",
+          "line": 486,
+          "condition": "(Validator.isEmptyOrNull(user.getUsername()) || user.getUsername().indexOf(':') == -1)"
+        },
+        {
+          "source": "conditional",
+          "line": 494,
+          "condition": "(Validator.isNotEmptyOrNull(user.getUsername()))"
+        },
+        {
+          "source": "conditional",
+          "line": 496,
+          "condition": "(user.getUsername().indexOf(':') > -1 && Validator.isEmptyOrNull(user.getPassword()))"
+        },
+        {
+          "source": "conditional",
+          "line": 502,
+          "condition": "(Validator.isNotEmptyOrNull(user.getPassword()))"
+        },
+        {
+          "source": "conditional",
+          "line": 535,
+          "condition": "(Validator.isNotEmptyOrNull(user.getUsername()) && blogManager.getProperties().getProperty(\"allowCookieLogin\", \"false\").equals(\"true\"))"
+        },
+        {
+          "source": "conditional",
+          "line": 537,
+          "condition": "(user.getUsername().indexOf(':') > -1 && Validator.isEmptyOrNull(user.getPassword()))"
+        },
+        {
+          "source": "conditional",
+          "line": 543,
+          "condition": "(Validator.isNotEmptyOrNull(user.getPassword()))"
+        }
+      ],
+      "condition_indexes": [
+        14,
+        15,
+        16,
+        17,
+        19,
+        37,
+        38,
+        40,
+        41,
+        42,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72,
+        78,
+        79,
+        80
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/WebAppInterface.java:LCP138",
+      "path": "java/jwaBlogger/src/jwaBlogger/WebAppInterface.java",
+      "expression": "blogEntry",
+      "aliases": [
+        "blogEntry"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 123,
+          "condition": "(Validator.isEmptyOrNull(blogEntry.getTitle()))"
+        },
+        {
+          "source": "conditional",
+          "line": 126,
+          "condition": "(Validator.isEmptyOrNull(blogEntry.getTags()))"
+        },
+        {
+          "source": "conditional",
+          "line": 129,
+          "condition": "(Validator.isEmptyOrNull(blogEntry.getDescription()))"
+        },
+        {
+          "source": "conditional",
+          "line": 132,
+          "condition": "(Validator.isEmptyOrNull(blogEntry.getExternalUrl()))"
+        },
+        {
+          "source": "conditional",
+          "line": 196,
+          "condition": "(blogEntry == null)"
+        },
+        {
+          "source": "conditional",
+          "line": 204,
+          "condition": "(blogEntry != null)"
+        },
+        {
+          "source": "conditional",
+          "line": 214,
+          "condition": "(blogEntry != null)"
+        },
+        {
+          "source": "conditional",
+          "line": 236,
+          "condition": "(blogEntry != null)"
+        },
+        {
+          "source": "conditional",
+          "line": 257,
+          "condition": "(blogEntry != null)"
+        }
+      ],
+      "condition_indexes": [
+        14,
+        15,
+        16,
+        17,
+        24,
+        26,
+        28,
+        31,
+        34
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/WebAppInterface.java:LCP139",
+      "path": "java/jwaBlogger/src/jwaBlogger/WebAppInterface.java",
+      "expression": "blogManager.getProperties().getProperty(\"useEntryCaptcha\", \"false\")",
+      "aliases": [
+        "blogManager.getProperties().getProperty(\"useEntryCaptcha\", \"false\")"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 135,
+          "condition": "(blogManager.getProperties().getProperty(\"useEntryCaptcha\", \"false\").equalsIgnoreCase(\"true\"))"
+        }
+      ],
+      "condition_indexes": [
+        18
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/WebAppInterface.java:LCP140",
+      "path": "java/jwaBlogger/src/jwaBlogger/WebAppInterface.java",
+      "expression": "blogManager.getProperties()",
+      "aliases": [
+        "blogManager.getProperties()"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 135,
+          "condition": "(blogManager.getProperties().getProperty(\"useEntryCaptcha\", \"false\").equalsIgnoreCase(\"true\"))"
+        },
+        {
+          "source": "conditional",
+          "line": 282,
+          "condition": "(blogManager.getProperties().getProperty(\"useCommentCaptcha\", \"false\").equalsIgnoreCase(\"true\"))"
+        },
+        {
+          "source": "conditional",
+          "line": 360,
+          "condition": "(blogManager.getProperties().getProperty(\"emailHost\") != null)"
+        },
+        {
+          "source": "conditional",
+          "line": 362,
+          "condition": "(blogManager.getProperties().getProperty(\"emailUser\") != null)"
+        },
+        {
+          "source": "conditional",
+          "line": 535,
+          "condition": "(Validator.isNotEmptyOrNull(user.getUsername()) && blogManager.getProperties().getProperty(\"allowCookieLogin\", \"false\").equals(\"true\"))"
+        }
+      ],
+      "condition_indexes": [
+        18,
+        39,
+        50,
+        51,
+        78
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/WebAppInterface.java:LCP141",
+      "path": "java/jwaBlogger/src/jwaBlogger/WebAppInterface.java",
+      "expression": "blogManager",
+      "aliases": [
+        "blogManager"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 135,
+          "condition": "(blogManager.getProperties().getProperty(\"useEntryCaptcha\", \"false\").equalsIgnoreCase(\"true\"))"
+        },
+        {
+          "source": "conditional",
+          "line": 136,
+          "condition": "(Validator.isNotEmptyOrNull(captchaId) && !blogManager.validateCaptcha(new Integer(captchaId), captchaAnswer))"
+        },
+        {
+          "source": "conditional",
+          "line": 282,
+          "condition": "(blogManager.getProperties().getProperty(\"useCommentCaptcha\", \"false\").equalsIgnoreCase(\"true\"))"
+        },
+        {
+          "source": "conditional",
+          "line": 283,
+          "condition": "(Validator.isNotEmptyOrNull(captchaId) && !blogManager.validateCaptcha(new Integer(captchaId), captchaAnswer))"
+        },
+        {
+          "source": "conditional",
+          "line": 360,
+          "condition": "(blogManager.getProperties().getProperty(\"emailHost\") != null)"
+        },
+        {
+          "source": "conditional",
+          "line": 362,
+          "condition": "(blogManager.getProperties().getProperty(\"emailUser\") != null)"
+        },
+        {
+          "source": "conditional",
+          "line": 535,
+          "condition": "(Validator.isNotEmptyOrNull(user.getUsername()) && blogManager.getProperties().getProperty(\"allowCookieLogin\", \"false\").equals(\"true\"))"
+        }
+      ],
+      "condition_indexes": [
+        18,
+        19,
+        39,
+        40,
+        50,
+        51,
+        78
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/WebAppInterface.java:LCP142",
+      "path": "java/jwaBlogger/src/jwaBlogger/WebAppInterface.java",
+      "expression": "captchaId",
+      "aliases": [
+        "captchaId"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 136,
+          "condition": "(Validator.isNotEmptyOrNull(captchaId) && !blogManager.validateCaptcha(new Integer(captchaId), captchaAnswer))"
+        },
+        {
+          "source": "conditional",
+          "line": 283,
+          "condition": "(Validator.isNotEmptyOrNull(captchaId) && !blogManager.validateCaptcha(new Integer(captchaId), captchaAnswer))"
+        }
+      ],
+      "condition_indexes": [
+        19,
+        40
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/WebAppInterface.java:LCP143",
+      "path": "java/jwaBlogger/src/jwaBlogger/WebAppInterface.java",
+      "expression": "captchaAnswer",
+      "aliases": [
+        "captchaAnswer"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 136,
+          "condition": "(Validator.isNotEmptyOrNull(captchaId) && !blogManager.validateCaptcha(new Integer(captchaId), captchaAnswer))"
+        },
+        {
+          "source": "conditional",
+          "line": 283,
+          "condition": "(Validator.isNotEmptyOrNull(captchaId) && !blogManager.validateCaptcha(new Integer(captchaId), captchaAnswer))"
+        }
+      ],
+      "condition_indexes": [
+        19,
+        40
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/WebAppInterface.java:LCP144",
+      "path": "java/jwaBlogger/src/jwaBlogger/WebAppInterface.java",
+      "expression": "blogEntryId",
+      "aliases": [
+        "blogEntryId"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 172,
+          "condition": "(blogEntryId == null)"
+        },
+        {
+          "source": "conditional",
+          "line": 193,
+          "condition": "(blogEntryId != null)"
+        }
+      ],
+      "condition_indexes": [
+        20,
+        23
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/WebAppInterface.java:LCP145",
+      "path": "java/jwaBlogger/src/jwaBlogger/WebAppInterface.java",
+      "expression": "switchToWysiwyg",
+      "aliases": [
+        "switchToWysiwyg"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 178,
+          "condition": "(!switchToWysiwyg && !switchToTextarea)"
+        },
+        {
+          "source": "conditional",
+          "line": 181,
+          "condition": "(switchToWysiwyg)"
+        }
+      ],
+      "condition_indexes": [
+        21,
+        22
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/WebAppInterface.java:LCP146",
+      "path": "java/jwaBlogger/src/jwaBlogger/WebAppInterface.java",
+      "expression": "switchToTextarea",
+      "aliases": [
+        "switchToTextarea"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 178,
+          "condition": "(!switchToWysiwyg && !switchToTextarea)"
+        }
+      ],
+      "condition_indexes": [
+        21
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/WebAppInterface.java:LCP147",
+      "path": "java/jwaBlogger/src/jwaBlogger/WebAppInterface.java",
+      "expression": "internalName",
+      "aliases": [
+        "internalName"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 200,
+          "condition": "(internalName != null)"
+        }
+      ],
+      "condition_indexes": [
+        25
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/WebAppInterface.java:LCP148",
+      "path": "java/jwaBlogger/src/jwaBlogger/WebAppInterface.java",
+      "expression": "entryId",
+      "aliases": [
+        "entryId"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 210,
+          "condition": "(entryId != null)"
+        },
+        {
+          "source": "conditional",
+          "line": 226,
+          "condition": "(entryId != null)"
+        },
+        {
+          "source": "conditional",
+          "line": 232,
+          "condition": "(entryId != null && commentId != null)"
+        },
+        {
+          "source": "conditional",
+          "line": 253,
+          "condition": "(entryId != null && commentId != null)"
+        }
+      ],
+      "condition_indexes": [
+        27,
+        29,
+        30,
+        33
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/WebAppInterface.java:LCP149",
+      "path": "java/jwaBlogger/src/jwaBlogger/WebAppInterface.java",
+      "expression": "commentId",
+      "aliases": [
+        "commentId"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 232,
+          "condition": "(entryId != null && commentId != null)"
+        },
+        {
+          "source": "conditional",
+          "line": 253,
+          "condition": "(entryId != null && commentId != null)"
+        }
+      ],
+      "condition_indexes": [
+        30,
+        33
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/WebAppInterface.java:LCP150",
+      "path": "java/jwaBlogger/src/jwaBlogger/WebAppInterface.java",
+      "expression": "blogEntryComment",
+      "aliases": [
+        "blogEntryComment"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 240,
+          "condition": "(blogEntryComment != null)"
+        },
+        {
+          "source": "conditional",
+          "line": 261,
+          "condition": "(blogEntryComment != null)"
+        },
+        {
+          "source": "conditional",
+          "line": 276,
+          "condition": "(Validator.isEmptyOrNull(blogEntryComment.getAuthor()))"
+        },
+        {
+          "source": "conditional",
+          "line": 279,
+          "condition": "(Validator.isEmptyOrNull(blogEntryComment.getCommentText()))"
+        },
+        {
+          "source": "conditional",
+          "line": 291,
+          "condition": "(Validator.isEmptyOrNull(blogEntryComment.getAuthor()) && remoteUser != null)"
+        }
+      ],
+      "condition_indexes": [
+        32,
+        35,
+        37,
+        38,
+        41
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/WebAppInterface.java:LCP151",
+      "path": "java/jwaBlogger/src/jwaBlogger/WebAppInterface.java",
+      "expression": "blogManager.getProperties().getProperty(\"useCommentCaptcha\", \"false\")",
+      "aliases": [
+        "blogManager.getProperties().getProperty(\"useCommentCaptcha\", \"false\")"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 282,
+          "condition": "(blogManager.getProperties().getProperty(\"useCommentCaptcha\", \"false\").equalsIgnoreCase(\"true\"))"
+        }
+      ],
+      "condition_indexes": [
+        39
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/WebAppInterface.java:LCP152",
+      "path": "java/jwaBlogger/src/jwaBlogger/WebAppInterface.java",
+      "expression": "searchString",
+      "aliases": [
+        "searchString"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 299,
+          "condition": "(!Validator.isEmptyOrNull(request.getParameter(\"searchString\")))"
+        },
+        {
+          "source": "conditional",
+          "line": 425,
+          "condition": "(request.getParameter(\"searchString\") != null)"
+        }
+      ],
+      "condition_indexes": [
+        42,
+        57
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/WebAppInterface.java:LCP153",
+      "path": "java/jwaBlogger/src/jwaBlogger/WebAppInterface.java",
+      "expression": "user",
+      "aliases": [
+        "user"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 333,
+          "condition": "(Validator.isEmptyOrNull(user.getUsername()))"
+        },
+        {
+          "source": "conditional",
+          "line": 336,
+          "condition": "((Validator.isEmptyOrNull(user.getPassword()) || Validator.isEmptyOrNull(user.getPassword2())) && remoteUser == null)"
+        },
+        {
+          "source": "conditional",
+          "line": 339,
+          "condition": "(Validator.isNotEmptyOrNull(user.getPassword()) && Validator.isNotEmptyOrNull(user.getPassword2()) && !user.getPassword().equals(user.getPassword2()))"
+        },
+        {
+          "source": "conditional",
+          "line": 342,
+          "condition": "(Validator.isEmptyOrNull(user.getFirstName()))"
+        },
+        {
+          "source": "conditional",
+          "line": 345,
+          "condition": "(Validator.isEmptyOrNull(user.getLastName()))"
+        },
+        {
+          "source": "conditional",
+          "line": 348,
+          "condition": "(Validator.isEmptyOrNull(user.getEmail()) || !Validator.isEmail(user.getEmail()))"
+        },
+        {
+          "source": "conditional",
+          "line": 397,
+          "condition": "(user != null)"
+        },
+        {
+          "source": "conditional",
+          "line": 398,
+          "condition": "(user.getVerified().equals(pathArgs[1]))"
+        },
+        {
+          "source": "conditional",
+          "line": 482,
+          "condition": "(Validator.isEmptyOrNull(user.getUsername()))"
+        },
+        {
+          "source": "conditional",
+          "line": 485,
+          "condition": "(Validator.isEmptyOrNull(user.getPassword()))"
+        },
+        {
+          "source": "conditional",
+          "line": 486,
+          "condition": "(Validator.isEmptyOrNull(user.getUsername()) || user.getUsername().indexOf(':') == -1)"
+        },
+        {
+          "source": "conditional",
+          "line": 494,
+          "condition": "(Validator.isNotEmptyOrNull(user.getUsername()))"
+        },
+        {
+          "source": "conditional",
+          "line": 496,
+          "condition": "(user.getUsername().indexOf(':') > -1 && Validator.isEmptyOrNull(user.getPassword()))"
+        },
+        {
+          "source": "conditional",
+          "line": 502,
+          "condition": "(Validator.isNotEmptyOrNull(user.getPassword()))"
+        },
+        {
+          "source": "conditional",
+          "line": 516,
+          "condition": "(user.getRole() != null)"
+        },
+        {
+          "source": "conditional",
+          "line": 519,
+          "condition": "(user.getVerified() != null && user.getVerified().equalsIgnoreCase(\"true\"))"
+        },
+        {
+          "source": "conditional",
+          "line": 522,
+          "condition": "(user.getTrusted() != null && user.getTrusted().equalsIgnoreCase(\"true\"))"
+        },
+        {
+          "source": "conditional",
+          "line": 535,
+          "condition": "(Validator.isNotEmptyOrNull(user.getUsername()) && blogManager.getProperties().getProperty(\"allowCookieLogin\", \"false\").equals(\"true\"))"
+        },
+        {
+          "source": "conditional",
+          "line": 537,
+          "condition": "(user.getUsername().indexOf(':') > -1 && Validator.isEmptyOrNull(user.getPassword()))"
+        },
+        {
+          "source": "conditional",
+          "line": 543,
+          "condition": "(Validator.isNotEmptyOrNull(user.getPassword()))"
+        },
+        {
+          "source": "conditional",
+          "line": 551,
+          "condition": "(user.getRole() != null)"
+        },
+        {
+          "source": "conditional",
+          "line": 554,
+          "condition": "(user.getVerified() != null && user.getVerified().equalsIgnoreCase(\"true\"))"
+        },
+        {
+          "source": "conditional",
+          "line": 557,
+          "condition": "(user.getTrusted() != null && user.getTrusted().equalsIgnoreCase(\"true\"))"
+        }
+      ],
+      "condition_indexes": [
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        52,
+        53,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        82,
+        83,
+        84
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/WebAppInterface.java:LCP154",
+      "path": "java/jwaBlogger/src/jwaBlogger/WebAppInterface.java",
+      "expression": "user.getPassword()",
+      "aliases": [
+        "user.getPassword()"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 339,
+          "condition": "(Validator.isNotEmptyOrNull(user.getPassword()) && Validator.isNotEmptyOrNull(user.getPassword2()) && !user.getPassword().equals(user.getPassword2()))"
+        }
+      ],
+      "condition_indexes": [
+        46
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/WebAppInterface.java:LCP155",
+      "path": "java/jwaBlogger/src/jwaBlogger/WebAppInterface.java",
+      "expression": "user.getVerified()",
+      "aliases": [
+        "user.getVerified()"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 398,
+          "condition": "(user.getVerified().equals(pathArgs[1]))"
+        },
+        {
+          "source": "conditional",
+          "line": 519,
+          "condition": "(user.getVerified() != null && user.getVerified().equalsIgnoreCase(\"true\"))"
+        },
+        {
+          "source": "conditional",
+          "line": 554,
+          "condition": "(user.getVerified() != null && user.getVerified().equalsIgnoreCase(\"true\"))"
+        }
+      ],
+      "condition_indexes": [
+        53,
+        76,
+        83
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/WebAppInterface.java:LCP156",
+      "path": "java/jwaBlogger/src/jwaBlogger/WebAppInterface.java",
+      "expression": "pathArgs[1]",
+      "aliases": [
+        "pathArgs[1]"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 398,
+          "condition": "(user.getVerified().equals(pathArgs[1]))"
+        }
+      ],
+      "condition_indexes": [
+        53
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/WebAppInterface.java:LCP157",
+      "path": "java/jwaBlogger/src/jwaBlogger/WebAppInterface.java",
+      "expression": "feedType",
+      "aliases": [
+        "feedType"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 414,
+          "condition": "(feedType.equals(\"rss\"))"
+        },
+        {
+          "source": "conditional",
+          "line": 416,
+          "condition": "(feedType.equals(\"atom\"))"
+        },
+        {
+          "source": "conditional",
+          "line": 419,
+          "condition": "(feedType.equalsIgnoreCase(\"rss_0.9\"))"
+        }
+      ],
+      "condition_indexes": [
+        54,
+        55,
+        56
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/WebAppInterface.java:LCP158",
+      "path": "java/jwaBlogger/src/jwaBlogger/WebAppInterface.java",
+      "expression": "iterator",
+      "aliases": [
+        "iterator"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 459,
+          "condition": "(iterator == null)"
+        }
+      ],
+      "condition_indexes": [
+        65
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/WebAppInterface.java:LCP159",
+      "path": "java/jwaBlogger/src/jwaBlogger/WebAppInterface.java",
+      "expression": "request",
+      "aliases": [
+        "request"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 469,
+          "condition": "(request.getQueryString() != null)"
+        }
+      ],
+      "condition_indexes": [
+        66
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/WebAppInterface.java:LCP160",
+      "path": "java/jwaBlogger/src/jwaBlogger/WebAppInterface.java",
+      "expression": "user.getUsername()",
+      "aliases": [
+        "user.getUsername()"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 486,
+          "condition": "(Validator.isEmptyOrNull(user.getUsername()) || user.getUsername().indexOf(':') == -1)"
+        },
+        {
+          "source": "conditional",
+          "line": 496,
+          "condition": "(user.getUsername().indexOf(':') > -1 && Validator.isEmptyOrNull(user.getPassword()))"
+        },
+        {
+          "source": "conditional",
+          "line": 537,
+          "condition": "(user.getUsername().indexOf(':') > -1 && Validator.isEmptyOrNull(user.getPassword()))"
+        }
+      ],
+      "condition_indexes": [
+        69,
+        71,
+        79
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/WebAppInterface.java:LCP161",
+      "path": "java/jwaBlogger/src/jwaBlogger/WebAppInterface.java",
+      "expression": "found",
+      "aliases": [
+        "found"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 506,
+          "condition": "(!found)"
+        },
+        {
+          "source": "conditional",
+          "line": 512,
+          "condition": "(found)"
+        },
+        {
+          "source": "conditional",
+          "line": 547,
+          "condition": "(found)"
+        }
+      ],
+      "condition_indexes": [
+        73,
+        74,
+        81
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/WebAppInterface.java:LCP162",
+      "path": "java/jwaBlogger/src/jwaBlogger/WebAppInterface.java",
+      "expression": "user.getTrusted()",
+      "aliases": [
+        "user.getTrusted()"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 522,
+          "condition": "(user.getTrusted() != null && user.getTrusted().equalsIgnoreCase(\"true\"))"
+        },
+        {
+          "source": "conditional",
+          "line": 557,
+          "condition": "(user.getTrusted() != null && user.getTrusted().equalsIgnoreCase(\"true\"))"
+        }
+      ],
+      "condition_indexes": [
+        77,
+        84
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/WebAppInterface.java:LCP163",
+      "path": "java/jwaBlogger/src/jwaBlogger/WebAppInterface.java",
+      "expression": "blogManager.getProperties().getProperty(\"allowCookieLogin\", \"false\")",
+      "aliases": [
+        "blogManager.getProperties().getProperty(\"allowCookieLogin\", \"false\")"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 535,
+          "condition": "(Validator.isNotEmptyOrNull(user.getUsername()) && blogManager.getProperties().getProperty(\"allowCookieLogin\", \"false\").equals(\"true\"))"
+        }
+      ],
+      "condition_indexes": [
+        78
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/WebAppInterface.java:LCP164",
+      "path": "java/jwaBlogger/src/jwaBlogger/WebAppInterface.java",
+      "expression": "str",
+      "aliases": [
+        "str"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 570,
+          "condition": "(str != null)"
+        },
+        {
+          "source": "conditional",
+          "line": 572,
+          "condition": "(str.endsWith(extension))"
+        }
+      ],
+      "condition_indexes": [
+        85,
+        86
+      ]
+    },
+    {
+      "id": "java/jwaBlogger/src/jwaBlogger/WebAppInterface.java:LCP165",
+      "path": "java/jwaBlogger/src/jwaBlogger/WebAppInterface.java",
+      "expression": "extension",
+      "aliases": [
+        "extension"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 572,
+          "condition": "(str.endsWith(extension))"
+        }
+      ],
+      "condition_indexes": [
+        86
+      ]
+    }
+  ]
+}

@@ -1,0 +1,163 @@
+{
+  "functions": [
+    {
+      "id": "admin/common.php:LCF1",
+      "path": "admin/common.php",
+      "name": "loginUser",
+      "parameters": [
+        "$username",
+        "$password"
+      ],
+      "body": "{\r\n\t$errorText = '';\r\n\t$validUser = false;\r\n\t\r\n// Check user existance\t\r\n\t\r\ninclude 'config.php';\r\n$con = mysqli_connect($dbhost,$dbuser,$dbpass,'',$dbport) OR DIE ('Unable to connect to database! Please try again later.');\r\n\r\nmysqli_select_db($con, $dbname) or die( \"Unable to select database\");\r\n$username = mysqli_real_escape_string($con, $username);   //转义特殊字符，username中有特殊字符就会被转义成新的username然后再进行增删改查操作\r\n$password = mysqli_real_escape_string($con, $password);\r\n$query=\" SELECT * FROM admin WHERE uname = '$username'\";\r\n$result=mysqli_query($con, $query);\r\n$num=mysqli_num_rows($result);\r\nmysqli_close($con);\r\n$i=0;\r\n\t//读取编号为number的数据\r\n\tfunction mysqli_result($result, $number, $field=0) {\r\n\t\tmysqli_data_seek($result, $number);   //查找编号为$number的数据放在$result中\r\n\t\t$row = mysqli_fetch_array($result);   // 读取数据\r\n\t\treturn $row[$field];\r\n\t}\r\n\r\nwhile ($i < $num) {\r\n$pword=mysqli_result($result,$i,\"pword\");\r\n$i++;\r\n}\r\n\r\n\r\n//if ($pword == md5($password)){\r\nif ($pword == md5($password.$salt)){\r\n\r\n$validUser= true;\r\n$_SESSION['userName'] = $username;\r\n} \r\n\r\nif ($validUser != true) $errorText = \"<center><font class=\\\"error\\\">Invalid username or password!</font> </center>\";\r\n    \r\nif ($validUser == true) $_SESSION['validUser'] = true;\r\nelse $_SESSION['validUser'] = false;\r\nreturn $errorText;\t\r\n}",
+      "start_line": 22,
+      "end_line": 64,
+      "code": "function loginUser($username,$password){\r\n\t$errorText = '';\r\n\t$validUser = false;\r\n\t\r\n// Check user existance\t\r\n\t\r\ninclude 'config.php';\r\n$con = mysqli_connect($dbhost,$dbuser,$dbpass,'',$dbport) OR DIE ('Unable to connect to database! Please try again later.');\r\n\r\nmysqli_select_db($con, $dbname) or die( \"Unable to select database\");\r\n$username = mysqli_real_escape_string($con, $username);   //转义特殊字符，username中有特殊字符就会被转义成新的username然后再进行增删改查操作\r\n$password = mysqli_real_escape_string($con, $password);\r\n$query=\" SELECT * FROM admin WHERE uname = '$username'\";\r\n$result=mysqli_query($con, $query);\r\n$num=mysqli_num_rows($result);\r\nmysqli_close($con);\r\n$i=0;\r\n\t//读取编号为number的数据\r\n\tfunction mysqli_result($result, $number, $field=0) {\r\n\t\tmysqli_data_seek($result, $number);   //查找编号为$number的数据放在$result中\r\n\t\t$row = mysqli_fetch_array($result);   // 读取数据\r\n\t\treturn $row[$field];\r\n\t}\r\n\r\nwhile ($i < $num) {\r\n$pword=mysqli_result($result,$i,\"pword\");\r\n$i++;\r\n}\r\n\r\n\r\n//if ($pword == md5($password)){\r\nif ($pword == md5($password.$salt)){\r\n\r\n$validUser= true;\r\n$_SESSION['userName'] = $username;\r\n} \r\n\r\nif ($validUser != true) $errorText = \"<center><font class=\\\"error\\\">Invalid username or password!</font> </center>\";\r\n    \r\nif ($validUser == true) $_SESSION['validUser'] = true;\r\nelse $_SESSION['validUser'] = false;\r\nreturn $errorText;\t\r\n}"
+    },
+    {
+      "id": "admin/common.php:LCF2",
+      "path": "admin/common.php",
+      "name": "mysqli_result",
+      "parameters": [
+        "$result",
+        "$number",
+        "$field=0"
+      ],
+      "body": "{\r\n\t\tmysqli_data_seek($result, $number);   //查找编号为$number的数据放在$result中\r\n\t\t$row = mysqli_fetch_array($result);   // 读取数据\r\n\t\treturn $row[$field];\r\n\t}",
+      "start_line": 40,
+      "end_line": 44,
+      "code": "function mysqli_result($result, $number, $field=0) {\r\n\t\tmysqli_data_seek($result, $number);   //查找编号为$number的数据放在$result中\r\n\t\t$row = mysqli_fetch_array($result);   // 读取数据\r\n\t\treturn $row[$field];\r\n\t}"
+    },
+    {
+      "id": "admin/common.php:LCF3",
+      "path": "admin/common.php",
+      "name": "logoutUser",
+      "parameters": [],
+      "body": "{\r\n\tunset($_SESSION['validUser']);\r\n\tunset($_SESSION['userName']);\r\n}",
+      "start_line": 66,
+      "end_line": 69,
+      "code": "function logoutUser(){\r\n\tunset($_SESSION['validUser']);\r\n\tunset($_SESSION['userName']);\r\n}"
+    },
+    {
+      "id": "admin/common.php:LCF4",
+      "path": "admin/common.php",
+      "name": "checkUser",
+      "parameters": [],
+      "body": "{\r\n\tif ((!isset($_SESSION['validUser'])) || ($_SESSION['validUser'] != true)){\r\n\t\theader('Location: login.php');\r\n\t}\r\n}",
+      "start_line": 71,
+      "end_line": 75,
+      "code": "function checkUser(){\r\n\tif ((!isset($_SESSION['validUser'])) || ($_SESSION['validUser'] != true)){\r\n\t\theader('Location: login.php');\r\n\t}\r\n}"
+    },
+    {
+      "id": "admin/db.php:LCF5",
+      "path": "admin/db.php",
+      "name": "mysqli_result",
+      "parameters": [
+        "$result",
+        "$number",
+        "$field=0"
+      ],
+      "body": "{\r\n        mysqli_data_seek($result, $number);\r\n        $row = mysqli_fetch_array($result);\r\n        return $row[$field];\r\n    }",
+      "start_line": 49,
+      "end_line": 53,
+      "code": "function mysqli_result($result, $number, $field=0) {\r\n        mysqli_data_seek($result, $number);\r\n        $row = mysqli_fetch_array($result);\r\n        return $row[$field];\r\n    }"
+    },
+    {
+      "id": "admin/delete.php:LCF6",
+      "path": "admin/delete.php",
+      "name": "mysqli_result",
+      "parameters": [
+        "$result",
+        "$number",
+        "$field=0"
+      ],
+      "body": "{\r\n    mysqli_data_seek($result, $number);\r\n    $row = mysqli_fetch_array($result);\r\n    return $row[$field];\r\n}",
+      "start_line": 46,
+      "end_line": 50,
+      "code": "function mysqli_result($result, $number, $field=0) {\r\n    mysqli_data_seek($result, $number);\r\n    $row = mysqli_fetch_array($result);\r\n    return $row[$field];\r\n}"
+    },
+    {
+      "id": "admin/index.php:LCF7",
+      "path": "admin/index.php",
+      "name": "mysqli_result",
+      "parameters": [
+        "$result",
+        "$number",
+        "$field=0"
+      ],
+      "body": "{\r\n      mysqli_data_seek($result, $number);\r\n      $row = mysqli_fetch_array($result);\r\n      return $row[$field];\r\n  }",
+      "start_line": 55,
+      "end_line": 59,
+      "code": "function mysqli_result($result, $number, $field=0) {\r\n      mysqli_data_seek($result, $number);\r\n      $row = mysqli_fetch_array($result);\r\n      return $row[$field];\r\n  }"
+    },
+    {
+      "id": "admin/list.php:LCF8",
+      "path": "admin/list.php",
+      "name": "mysqli_result",
+      "parameters": [
+        "$result",
+        "$number",
+        "$field=0"
+      ],
+      "body": "{\r\n    mysqli_data_seek($result, $number);\r\n    $row = mysqli_fetch_array($result);\r\n    return $row[$field];\r\n}",
+      "start_line": 83,
+      "end_line": 87,
+      "code": "function mysqli_result($result, $number, $field=0) {\r\n    mysqli_data_seek($result, $number);\r\n    $row = mysqli_fetch_array($result);\r\n    return $row[$field];\r\n}"
+    },
+    {
+      "id": "admin/message.php:LCF9",
+      "path": "admin/message.php",
+      "name": "mysqli_result",
+      "parameters": [
+        "$result",
+        "$number",
+        "$field=0"
+      ],
+      "body": "{\r\n    mysqli_data_seek($result, $number);\r\n    $row = mysqli_fetch_array($result);\r\n    return $row[$field];\r\n}",
+      "start_line": 46,
+      "end_line": 50,
+      "code": "function mysqli_result($result, $number, $field=0) {\r\n    mysqli_data_seek($result, $number);\r\n    $row = mysqli_fetch_array($result);\r\n    return $row[$field];\r\n}"
+    },
+    {
+      "id": "admin/setup.php:LCF10",
+      "path": "admin/setup.php",
+      "name": "mysqli_result",
+      "parameters": [
+        "$result",
+        "$number",
+        "$field=0"
+      ],
+      "body": "{\r\n        mysqli_data_seek($result, $number);\r\n        $row = mysqli_fetch_array($result);\r\n        return $row[$field];\r\n    }",
+      "start_line": 200,
+      "end_line": 204,
+      "code": "function mysqli_result($result, $number, $field=0) {\r\n        mysqli_data_seek($result, $number);\r\n        $row = mysqli_fetch_array($result);\r\n        return $row[$field];\r\n    }"
+    },
+    {
+      "id": "admin/users.php:LCF11",
+      "path": "admin/users.php",
+      "name": "mysqli_result",
+      "parameters": [
+        "$result",
+        "$number",
+        "$field=0"
+      ],
+      "body": "{\r\n    mysqli_data_seek($result, $number);\r\n    $row = mysqli_fetch_array($result);\r\n    return $row[$field];\r\n}",
+      "start_line": 56,
+      "end_line": 60,
+      "code": "function mysqli_result($result, $number, $field=0) {\r\n    mysqli_data_seek($result, $number);\r\n    $row = mysqli_fetch_array($result);\r\n    return $row[$field];\r\n}"
+    },
+    {
+      "id": "index.php:LCF12",
+      "path": "index.php",
+      "name": "mysqli_result",
+      "parameters": [
+        "$result",
+        "$number",
+        "$field=0"
+      ],
+      "body": "{\r\n     mysqli_data_seek($result, $number);\r\n     $row = mysqli_fetch_array($result);\r\n     return $row[$field];\r\n }",
+      "start_line": 69,
+      "end_line": 73,
+      "code": "function mysqli_result($result, $number, $field=0) {\r\n     mysqli_data_seek($result, $number);\r\n     $row = mysqli_fetch_array($result);\r\n     return $row[$field];\r\n }"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "functions": [
+    {
+      "id": "admin/modifica_configurazione.php:LCF1",
+      "path": "admin/modifica_configurazione.php",
+      "name": "str_split",
+      "parameters": [
+        "$string",
+        "$split_length=1"
+      ],
+      "body": "{\r\n       $count = strlen($string); \r\n       if($split_length < 1){\r\n           return false; \r\n       } elseif($split_length > $count){\r\n           return array($string);\r\n       } else {\r\n           $num = (int)ceil($count/$split_length); \r\n           $ret = array(); \r\n           for($i=0;$i<$num;$i++){ \r\n               $ret[] = substr($string,$i*$split_length,$split_length); \r\n           } \r\n           return $ret;\r\n       }     \r\n   }",
+      "start_line": 44,
+      "end_line": 58,
+      "code": "function str_split($string,$split_length=1){\r\n       $count = strlen($string); \r\n       if($split_length < 1){\r\n           return false; \r\n       } elseif($split_length > $count){\r\n           return array($string);\r\n       } else {\r\n           $num = (int)ceil($count/$split_length); \r\n           $ret = array(); \r\n           for($i=0;$i<$num;$i++){ \r\n               $ret[] = substr($string,$i*$split_length,$split_length); \r\n           } \r\n           return $ret;\r\n       }     \r\n   }"
+    }
+  ]
+}

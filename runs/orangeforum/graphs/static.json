@@ -1,0 +1,695 @@
+{
+  "nodes": [
+    "main.go",
+    "main_test.go",
+    "management.go",
+    "models/categories.go",
+    "models/comments.go",
+    "models/config.go",
+    "models/domains.go",
+    "models/migration.go",
+    "models/migration001.go",
+    "models/migration002.go",
+    "models/models.go",
+    "models/topics.go",
+    "models/users.go",
+    "models/utils.go",
+    "models_test.go",
+    "templates/teamplates.go",
+    "views/admin.go",
+    "views/auth.go",
+    "views/categories.go",
+    "views/comments.go",
+    "views/domains.go",
+    "views/index.go",
+    "views/static.go",
+    "views/topics.go",
+    "views/users.go",
+    "views/utils.go",
+    "views/views.go"
+  ],
+  "edges": [
+    {
+      "from": "main.go",
+      "to": "models/categories.go"
+    },
+    {
+      "from": "main.go",
+      "to": "models/comments.go"
+    },
+    {
+      "from": "main.go",
+      "to": "models/config.go"
+    },
+    {
+      "from": "main.go",
+      "to": "models/domains.go"
+    },
+    {
+      "from": "main.go",
+      "to": "models/migration.go"
+    },
+    {
+      "from": "main.go",
+      "to": "models/migration001.go"
+    },
+    {
+      "from": "main.go",
+      "to": "models/migration002.go"
+    },
+    {
+      "from": "main.go",
+      "to": "models/models.go"
+    },
+    {
+      "from": "main.go",
+      "to": "models/topics.go"
+    },
+    {
+      "from": "main.go",
+      "to": "models/users.go"
+    },
+    {
+      "from": "main.go",
+      "to": "models/utils.go"
+    },
+    {
+      "from": "main.go",
+      "to": "views/admin.go"
+    },
+    {
+      "from": "main.go",
+      "to": "views/auth.go"
+    },
+    {
+      "from": "main.go",
+      "to": "views/categories.go"
+    },
+    {
+      "from": "main.go",
+      "to": "views/comments.go"
+    },
+    {
+      "from": "main.go",
+      "to": "views/domains.go"
+    },
+    {
+      "from": "main.go",
+      "to": "views/index.go"
+    },
+    {
+      "from": "main.go",
+      "to": "views/static.go"
+    },
+    {
+      "from": "main.go",
+      "to": "views/topics.go"
+    },
+    {
+      "from": "main.go",
+      "to": "views/users.go"
+    },
+    {
+      "from": "main.go",
+      "to": "views/utils.go"
+    },
+    {
+      "from": "main.go",
+      "to": "views/views.go"
+    },
+    {
+      "from": "main_test.go",
+      "to": "models/categories.go"
+    },
+    {
+      "from": "main_test.go",
+      "to": "models/comments.go"
+    },
+    {
+      "from": "main_test.go",
+      "to": "models/config.go"
+    },
+    {
+      "from": "main_test.go",
+      "to": "models/domains.go"
+    },
+    {
+      "from": "main_test.go",
+      "to": "models/migration.go"
+    },
+    {
+      "from": "main_test.go",
+      "to": "models/migration001.go"
+    },
+    {
+      "from": "main_test.go",
+      "to": "models/migration002.go"
+    },
+    {
+      "from": "main_test.go",
+      "to": "models/models.go"
+    },
+    {
+      "from": "main_test.go",
+      "to": "models/topics.go"
+    },
+    {
+      "from": "main_test.go",
+      "to": "models/users.go"
+    },
+    {
+      "from": "main_test.go",
+      "to": "models/utils.go"
+    },
+    {
+      "from": "main_test.go",
+      "to": "views/admin.go"
+    },
+    {
+      "from": "main_test.go",
+      "to": "views/auth.go"
+    },
+    {
+      "from": "main_test.go",
+      "to": "views/categories.go"
+    },
+    {
+      "from": "main_test.go",
+      "to": "views/comments.go"
+    },
+    {
+      "from": "main_test.go",
+      "to": "views/domains.go"
+    },
+    {
+      "from": "main_test.go",
+      "to": "views/index.go"
+    },
+    {
+      "from": "main_test.go",
+      "to": "views/static.go"
+    },
+    {
+      "from": "main_test.go",
+      "to": "views/topics.go"
+    },
+    {
+      "from": "main_test.go",
+      "to": "views/users.go"
+    },
+    {
+      "from": "main_test.go",
+      "to": "views/utils.go"
+    },
+    {
+      "from": "main_test.go",
+      "to": "views/views.go"
+    },
+    {
+      "from": "management.go",
+      "to": "models/categories.go"
+    },
+    {
+      "from": "management.go",
+      "to": "models/comments.go"
+    },
+    {
+      "from": "management.go",
+      "to": "models/config.go"
+    },
+    {
+      "from": "management.go",
+      "to": "models/domains.go"
+    },
+    {
+      "from": "management.go",
+      "to": "models/migration.go"
+    },
+    {
+      "from": "management.go",
+      "to": "models/migration001.go"
+    },
+    {
+      "from": "management.go",
+      "to": "models/migration002.go"
+    },
+    {
+      "from": "management.go",
+      "to": "models/models.go"
+    },
+    {
+      "from": "management.go",
+      "to": "models/topics.go"
+    },
+    {
+      "from": "management.go",
+      "to": "models/users.go"
+    },
+    {
+      "from": "management.go",
+      "to": "models/utils.go"
+    },
+    {
+      "from": "models_test.go",
+      "to": "models/categories.go"
+    },
+    {
+      "from": "models_test.go",
+      "to": "models/comments.go"
+    },
+    {
+      "from": "models_test.go",
+      "to": "models/config.go"
+    },
+    {
+      "from": "models_test.go",
+      "to": "models/domains.go"
+    },
+    {
+      "from": "models_test.go",
+      "to": "models/migration.go"
+    },
+    {
+      "from": "models_test.go",
+      "to": "models/migration001.go"
+    },
+    {
+      "from": "models_test.go",
+      "to": "models/migration002.go"
+    },
+    {
+      "from": "models_test.go",
+      "to": "models/models.go"
+    },
+    {
+      "from": "models_test.go",
+      "to": "models/topics.go"
+    },
+    {
+      "from": "models_test.go",
+      "to": "models/users.go"
+    },
+    {
+      "from": "models_test.go",
+      "to": "models/utils.go"
+    },
+    {
+      "from": "views/admin.go",
+      "to": "models/categories.go"
+    },
+    {
+      "from": "views/admin.go",
+      "to": "models/comments.go"
+    },
+    {
+      "from": "views/admin.go",
+      "to": "models/config.go"
+    },
+    {
+      "from": "views/admin.go",
+      "to": "models/domains.go"
+    },
+    {
+      "from": "views/admin.go",
+      "to": "models/migration.go"
+    },
+    {
+      "from": "views/admin.go",
+      "to": "models/migration001.go"
+    },
+    {
+      "from": "views/admin.go",
+      "to": "models/migration002.go"
+    },
+    {
+      "from": "views/admin.go",
+      "to": "models/models.go"
+    },
+    {
+      "from": "views/admin.go",
+      "to": "models/topics.go"
+    },
+    {
+      "from": "views/admin.go",
+      "to": "models/users.go"
+    },
+    {
+      "from": "views/admin.go",
+      "to": "models/utils.go"
+    },
+    {
+      "from": "views/admin.go",
+      "to": "templates/teamplates.go"
+    },
+    {
+      "from": "views/auth.go",
+      "to": "models/categories.go"
+    },
+    {
+      "from": "views/auth.go",
+      "to": "models/comments.go"
+    },
+    {
+      "from": "views/auth.go",
+      "to": "models/config.go"
+    },
+    {
+      "from": "views/auth.go",
+      "to": "models/domains.go"
+    },
+    {
+      "from": "views/auth.go",
+      "to": "models/migration.go"
+    },
+    {
+      "from": "views/auth.go",
+      "to": "models/migration001.go"
+    },
+    {
+      "from": "views/auth.go",
+      "to": "models/migration002.go"
+    },
+    {
+      "from": "views/auth.go",
+      "to": "models/models.go"
+    },
+    {
+      "from": "views/auth.go",
+      "to": "models/topics.go"
+    },
+    {
+      "from": "views/auth.go",
+      "to": "models/users.go"
+    },
+    {
+      "from": "views/auth.go",
+      "to": "models/utils.go"
+    },
+    {
+      "from": "views/auth.go",
+      "to": "templates/teamplates.go"
+    },
+    {
+      "from": "views/comments.go",
+      "to": "models/categories.go"
+    },
+    {
+      "from": "views/comments.go",
+      "to": "models/comments.go"
+    },
+    {
+      "from": "views/comments.go",
+      "to": "models/config.go"
+    },
+    {
+      "from": "views/comments.go",
+      "to": "models/domains.go"
+    },
+    {
+      "from": "views/comments.go",
+      "to": "models/migration.go"
+    },
+    {
+      "from": "views/comments.go",
+      "to": "models/migration001.go"
+    },
+    {
+      "from": "views/comments.go",
+      "to": "models/migration002.go"
+    },
+    {
+      "from": "views/comments.go",
+      "to": "models/models.go"
+    },
+    {
+      "from": "views/comments.go",
+      "to": "models/topics.go"
+    },
+    {
+      "from": "views/comments.go",
+      "to": "models/users.go"
+    },
+    {
+      "from": "views/comments.go",
+      "to": "models/utils.go"
+    },
+    {
+      "from": "views/comments.go",
+      "to": "templates/teamplates.go"
+    },
+    {
+      "from": "views/domains.go",
+      "to": "models/categories.go"
+    },
+    {
+      "from": "views/domains.go",
+      "to": "models/comments.go"
+    },
+    {
+      "from": "views/domains.go",
+      "to": "models/config.go"
+    },
+    {
+      "from": "views/domains.go",
+      "to": "models/domains.go"
+    },
+    {
+      "from": "views/domains.go",
+      "to": "models/migration.go"
+    },
+    {
+      "from": "views/domains.go",
+      "to": "models/migration001.go"
+    },
+    {
+      "from": "views/domains.go",
+      "to": "models/migration002.go"
+    },
+    {
+      "from": "views/domains.go",
+      "to": "models/models.go"
+    },
+    {
+      "from": "views/domains.go",
+      "to": "models/topics.go"
+    },
+    {
+      "from": "views/domains.go",
+      "to": "models/users.go"
+    },
+    {
+      "from": "views/domains.go",
+      "to": "models/utils.go"
+    },
+    {
+      "from": "views/index.go",
+      "to": "models/categories.go"
+    },
+    {
+      "from": "views/index.go",
+      "to": "models/comments.go"
+    },
+    {
+      "from": "views/index.go",
+      "to": "models/config.go"
+    },
+    {
+      "from": "views/index.go",
+      "to": "models/domains.go"
+    },
+    {
+      "from": "views/index.go",
+      "to": "models/migration.go"
+    },
+    {
+      "from": "views/index.go",
+      "to": "models/migration001.go"
+    },
+    {
+      "from": "views/index.go",
+      "to": "models/migration002.go"
+    },
+    {
+      "from": "views/index.go",
+      "to": "models/models.go"
+    },
+    {
+      "from": "views/index.go",
+      "to": "models/topics.go"
+    },
+    {
+      "from": "views/index.go",
+      "to": "models/users.go"
+    },
+    {
+      "from": "views/index.go",
+      "to": "models/utils.go"
+    },
+    {
+      "from": "views/index.go",
+      "to": "templates/teamplates.go"
+    },
+    {
+      "from": "views/static.go",
+      "to": "templates/teamplates.go"
+    },
+    {
+      "from": "views/topics.go",
+      "to": "models/categories.go"
+    },
+    {
+      "from": "views/topics.go",
+      "to": "models/comments.go"
+    },
+    {
+      "from": "views/topics.go",
+      "to": "models/config.go"
+    },
+    {
+      "from": "views/topics.go",
+      "to": "models/domains.go"
+    },
+    {
+      "from": "views/topics.go",
+      "to": "models/migration.go"
+    },
+    {
+      "from": "views/topics.go",
+      "to": "models/migration001.go"
+    },
+    {
+      "from": "views/topics.go",
+      "to": "models/migration002.go"
+    },
+    {
+      "from": "views/topics.go",
+      "to": "models/models.go"
+    },
+    {
+      "from": "views/topics.go",
+      "to": "models/topics.go"
+    },
+    {
+      "from": "views/topics.go",
+      "to": "models/users.go"
+    },
+    {
+      "from": "views/topics.go",
+      "to": "models/utils.go"
+    },
+    {
+      "from": "views/topics.go",
+      "to": "templates/teamplates.go"
+    },
+    {
+      "from": "views/users.go",
+      "to": "models/categories.go"
+    },
+    {
+      "from": "views/users.go",
+      "to": "models/comments.go"
+    },
+    {
+      "from": "views/users.go",
+      "to": "models/config.go"
+    },
+    {
+      "from": "views/users.go",
+      "to": "models/domains.go"
+    },
+    {
+      "from": "views/users.go",
+      "to": "models/migration.go"
+    },
+    {
+      "from": "views/users.go",
+      "to": "models/migration001.go"
+    },
+    {
+      "from": "views/users.go",
+      "to": "models/migration002.go"
+    },
+    {
+      "from": "views/users.go",
+      "to": "models/models.go"
+    },
+    {
+      "from": "views/users.go",
+      "to": "models/topics.go"
+    },
+    {
+      "from": "views/users.go",
+      "to": "models/users.go"
+    },
+    {
+      "from": "views/users.go",
+      "to": "models/utils.go"
+    },
+    {
+      "from": "views/users.go",
+      "to": "templates/teamplates.go"
+    }
+  ],
+  "url_to_source": {
+    "./": "views/index.go",
+    "admin": "views/admin.go",
+    "admin/categories/p1": "views/admin.go",
+    "admin/mods/create": "views/admin.go",
+    "admin/mods/delete": "views/admin.go",
+    "auth/changepass": "views/auth.go",
+    "auth/logout": "views/auth.go",
+    "auth/otsignin": "views/auth.go",
+    "auth/otsignin/p1": "views/auth.go",
+    "auth/signin": "views/auth.go",
+    "auth/signup": "views/auth.go",
+    "auth/signup/p1": "views/auth.go",
+    "categories/p1": "views/topics.go",
+    "categories/p1/topics/new": "views/topics.go",
+    "categories/p1/topics/p1": "views/topics.go",
+    "categories/p1/topics/p1/comments/new": "views/comments.go",
+    "categories/p1/topics/p1/comments/p1/edit": "views/comments.go",
+    "categories/p1/topics/p1/edit": "views/topics.go",
+    "static/favicon.png": "views/static.go",
+    "static/logo.png": "views/static.go",
+    "static/orangeforum.css": "views/static.go",
+    "static/orangeforum.js": "views/static.go",
+    "users/p1": "views/users.go"
+  },
+  "classifications": {
+    "observed": [
+      "views/admin.go",
+      "views/auth.go",
+      "views/index.go"
+    ],
+    "internal_reachable": [
+      "models/categories.go",
+      "models/comments.go",
+      "models/config.go",
+      "models/domains.go",
+      "models/migration.go",
+      "models/migration001.go",
+      "models/migration002.go",
+      "models/models.go",
+      "models/topics.go",
+      "models/users.go",
+      "models/utils.go",
+      "templates/teamplates.go"
+    ],
+    "public_unobserved": [
+      "views/comments.go",
+      "views/static.go",
+      "views/topics.go",
+      "views/users.go"
+    ],
+    "support_unreachable": [
+      "main.go",
+      "main_test.go",
+      "management.go",
+      "models_test.go",
+      "views/categories.go",
+      "views/domains.go",
+      "views/utils.go",
+      "views/views.go"
+    ]
+  }
+}

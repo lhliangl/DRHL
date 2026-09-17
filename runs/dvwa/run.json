@@ -1,0 +1,27 @@
+{
+  "status": "completed",
+  "started_at": "2026-06-30T11:27:49.346073+00:00",
+  "config": "D:\\project\\python\\DRHL\\configs\\dvwa.json",
+  "artifacts": {
+    "dynamic_graph": "D:\\project\\python\\DRHL\\runs\\dvwa\\graphs\\dynamic.json",
+    "static_graph": "D:\\project\\python\\DRHL\\runs\\dvwa\\graphs\\static.json",
+    "candidate_parameters": "D:\\project\\python\\DRHL\\runs\\dvwa\\source\\candidate_parameters.json",
+    "candidate_functions": "D:\\project\\python\\DRHL\\runs\\dvwa\\source\\candidate_functions.json",
+    "access_control_parameters": "D:\\project\\python\\DRHL\\runs\\dvwa\\source\\parameters.json",
+    "access_control_functions": "D:\\project\\python\\DRHL\\runs\\dvwa\\source\\functions.json",
+    "access_control_snippets": "D:\\project\\python\\DRHL\\runs\\dvwa\\source\\snippets.json",
+    "fused_graph": "D:\\project\\python\\DRHL\\runs\\dvwa\\graphs\\fused.json",
+    "graph_summary": "D:\\project\\python\\DRHL\\runs\\dvwa\\graphs\\summary.json",
+    "graph_summary_csv": "D:\\project\\python\\DRHL\\runs\\dvwa\\graphs\\summary.csv",
+    "attack_vectors": "D:\\project\\python\\DRHL\\runs\\dvwa\\analysis\\vectors.json",
+    "findings": "D:\\project\\python\\DRHL\\runs\\dvwa\\analysis\\findings.json",
+    "repairs": "D:\\project\\python\\DRHL\\runs\\dvwa\\repair\\manifest.json",
+    "repair_report": "D:\\project\\python\\DRHL\\runs\\dvwa\\repair\\repair_report.md",
+    "metrics_json": "D:\\project\\python\\DRHL\\runs\\dvwa\\metrics\\summary.json",
+    "metrics_csv": "D:\\project\\python\\DRHL\\runs\\dvwa\\metrics\\summary.csv",
+    "llm_access_control_snippets": "D:\\project\\python\\DRHL\\runs\\dvwa\\source\\llm_snippets.json"
+  },
+  "finished_at": "2026-06-30T11:30:54.653107+00:00",
+  "repair_rerun_started_at": "2026-09-12T12:16:54.559574+00:00",
+  "repair_rerun_finished_at": "2026-09-12T12:18:36.412067+00:00"
+}

@@ -1,0 +1,1170 @@
+{
+  "functions": [
+    {
+      "id": "dvwa/includes/dvwaPage.inc.php:LCF1",
+      "path": "dvwa/includes/dvwaPage.inc.php",
+      "name": "dvwa_start_session",
+      "parameters": [],
+      "body": "{\n\t// This will setup the session cookie based on\n\t// the security level.\n\n\t$security_level = dvwaSecurityLevelGet();\n\tif ($security_level == 'impossible') {\n\t\t$httponly = true;\n\t\t$samesite = \"Strict\";\n\t}\n\telse {\n\t\t$httponly = false;\n\t\t$samesite = \"\";\n\t}\n\n\t$maxlifetime = 86400;\n\t$secure = false;\n\t$domain = parse_url($_SERVER['HTTP_HOST'], PHP_URL_HOST);\n\n\t/*\n\t * Need to do this as you can't update the settings of a session\n\t * while it is open. So check if one is open, close it if needed\n\t * then update the values and start it again.\n\t*/\n\tif (session_status() == PHP_SESSION_ACTIVE) {\n\t\tsession_write_close();\n\t}\n\n\tsession_set_cookie_params([\n\t\t'lifetime' => $maxlifetime,\n\t\t'path' => '/',\n\t\t'domain' => $domain,\n\t\t'secure' => $secure,\n\t\t'httponly' => $httponly,\n\t\t'samesite' => $samesite\n\t]);\n\n\t/*\n\t * We need to force a new Set-Cookie header with the updated flags by updating\n\t * the session id, either regenerating it or setting it to a value, because\n\t * session_start() might not generate a Set-Cookie header if a cookie already\n\t * exists.\n\t *\n\t * For impossible security level, we regenerate the session id, PHP will\n\t * generate a new random id. This is good security practice because it\n\t * prevents the reuse of a previous unauthenticated id that an attacker\n\t * might have knowledge of (aka session fixation attack).\n   *\n\t * For lower levels, we want to allow session fixation attacks, so if an id\n\t * already exists, we don't want it to change after authentication. We thus\n\t * set the id to its previous value using session_id(), which will force\n\t * the Set-Cookie header.\n\t*/\n\tif ($security_level == 'impossible') {\n\t\tsession_start();\n\t\tsession_regenerate_id(); // force a new id to be generated\n\t}\n\telse {\n\t\tif (isset($_COOKIE[session_name()])) // if a session id already exists\n\t\t\tsession_id($_COOKIE[session_name()]); // we keep the same id\n\t\tsession_start(); // otherwise a new one will be generated here\n\t}\n}",
+      "start_line": 45,
+      "end_line": 106,
+      "code": "function dvwa_start_session() {\n\t// This will setup the session cookie based on\n\t// the security level.\n\n\t$security_level = dvwaSecurityLevelGet();\n\tif ($security_level == 'impossible') {\n\t\t$httponly = true;\n\t\t$samesite = \"Strict\";\n\t}\n\telse {\n\t\t$httponly = false;\n\t\t$samesite = \"\";\n\t}\n\n\t$maxlifetime = 86400;\n\t$secure = false;\n\t$domain = parse_url($_SERVER['HTTP_HOST'], PHP_URL_HOST);\n\n\t/*\n\t * Need to do this as you can't update the settings of a session\n\t * while it is open. So check if one is open, close it if needed\n\t * then update the values and start it again.\n\t*/\n\tif (session_status() == PHP_SESSION_ACTIVE) {\n\t\tsession_write_close();\n\t}\n\n\tsession_set_cookie_params([\n\t\t'lifetime' => $maxlifetime,\n\t\t'path' => '/',\n\t\t'domain' => $domain,\n\t\t'secure' => $secure,\n\t\t'httponly' => $httponly,\n\t\t'samesite' => $samesite\n\t]);\n\n\t/*\n\t * We need to force a new Set-Cookie header with the updated flags by updating\n\t * the session id, either regenerating it or setting it to a value, because\n\t * session_start() might not generate a Set-Cookie header if a cookie already\n\t * exists.\n\t *\n\t * For impossible security level, we regenerate the session id, PHP will\n\t * generate a new random id. This is good security practice because it\n\t * prevents the reuse of a previous unauthenticated id that an attacker\n\t * might have knowledge of (aka session fixation attack).\n   *\n\t * For lower levels, we want to allow session fixation attacks, so if an id\n\t * already exists, we don't want it to change after authentication. We thus\n\t * set the id to its previous value using session_id(), which will force\n\t * the Set-Cookie header.\n\t*/\n\tif ($security_level == 'impossible') {\n\t\tsession_start();\n\t\tsession_regenerate_id(); // force a new id to be generated\n\t}\n\telse {\n\t\tif (isset($_COOKIE[session_name()])) // if a session id already exists\n\t\t\tsession_id($_COOKIE[session_name()]); // we keep the same id\n\t\tsession_start(); // otherwise a new one will be generated here\n\t}\n}"
+    },
+    {
+      "id": "dvwa/includes/dvwaPage.inc.php:LCF2",
+      "path": "dvwa/includes/dvwaPage.inc.php",
+      "name": "dvwaSessionGrab",
+      "parameters": [],
+      "body": "{\n\tif( !isset( $_SESSION[ 'dvwa' ] ) ) {\n\t\t$_SESSION[ 'dvwa' ] = array();\n\t}\n\treturn $_SESSION[ 'dvwa' ];\n}",
+      "start_line": 124,
+      "end_line": 129,
+      "code": "function &dvwaSessionGrab() {\n\tif( !isset( $_SESSION[ 'dvwa' ] ) ) {\n\t\t$_SESSION[ 'dvwa' ] = array();\n\t}\n\treturn $_SESSION[ 'dvwa' ];\n}"
+    },
+    {
+      "id": "dvwa/includes/dvwaPage.inc.php:LCF3",
+      "path": "dvwa/includes/dvwaPage.inc.php",
+      "name": "dvwaPageStartup",
+      "parameters": [
+        "$pActions"
+      ],
+      "body": "{\n\tif (in_array('authenticated', $pActions)) {\n\t\tif( !dvwaIsLoggedIn()) {\n\t\t\tdvwaRedirect( DVWA_WEB_PAGE_TO_ROOT . 'login.php' );\n\t\t}\n\t}\n}",
+      "start_line": 132,
+      "end_line": 138,
+      "code": "function dvwaPageStartup( $pActions ) {\n\tif (in_array('authenticated', $pActions)) {\n\t\tif( !dvwaIsLoggedIn()) {\n\t\t\tdvwaRedirect( DVWA_WEB_PAGE_TO_ROOT . 'login.php' );\n\t\t}\n\t}\n}"
+    },
+    {
+      "id": "dvwa/includes/dvwaPage.inc.php:LCF4",
+      "path": "dvwa/includes/dvwaPage.inc.php",
+      "name": "dvwaLogin",
+      "parameters": [
+        "$pUsername"
+      ],
+      "body": "{\n\t$dvwaSession =& dvwaSessionGrab();\n\t$dvwaSession[ 'username' ] = $pUsername;\n}",
+      "start_line": 140,
+      "end_line": 143,
+      "code": "function dvwaLogin( $pUsername ) {\n\t$dvwaSession =& dvwaSessionGrab();\n\t$dvwaSession[ 'username' ] = $pUsername;\n}"
+    },
+    {
+      "id": "dvwa/includes/dvwaPage.inc.php:LCF5",
+      "path": "dvwa/includes/dvwaPage.inc.php",
+      "name": "dvwaIsLoggedIn",
+      "parameters": [],
+      "body": "{\n\tglobal $_DVWA;\n\n\tif (array_key_exists(\"disable_authentication\", $_DVWA) && $_DVWA['disable_authentication']) {\n\t\treturn true;\n\t}\n\t$dvwaSession =& dvwaSessionGrab();\n\treturn isset( $dvwaSession[ 'username' ] );\n}",
+      "start_line": 146,
+      "end_line": 154,
+      "code": "function dvwaIsLoggedIn() {\n\tglobal $_DVWA;\n\n\tif (array_key_exists(\"disable_authentication\", $_DVWA) && $_DVWA['disable_authentication']) {\n\t\treturn true;\n\t}\n\t$dvwaSession =& dvwaSessionGrab();\n\treturn isset( $dvwaSession[ 'username' ] );\n}"
+    },
+    {
+      "id": "dvwa/includes/dvwaPage.inc.php:LCF6",
+      "path": "dvwa/includes/dvwaPage.inc.php",
+      "name": "dvwaLogout",
+      "parameters": [],
+      "body": "{\n\t$dvwaSession =& dvwaSessionGrab();\n\tunset( $dvwaSession[ 'username' ] );\n}",
+      "start_line": 157,
+      "end_line": 160,
+      "code": "function dvwaLogout() {\n\t$dvwaSession =& dvwaSessionGrab();\n\tunset( $dvwaSession[ 'username' ] );\n}"
+    },
+    {
+      "id": "dvwa/includes/dvwaPage.inc.php:LCF7",
+      "path": "dvwa/includes/dvwaPage.inc.php",
+      "name": "dvwaPageReload",
+      "parameters": [],
+      "body": "{\n\tif  ( array_key_exists( 'HTTP_X_FORWARDED_PREFIX' , $_SERVER )) {\n\t\tdvwaRedirect( $_SERVER[ 'HTTP_X_FORWARDED_PREFIX' ] . $_SERVER[ 'PHP_SELF' ] );\n\t}\n\telse {\n\t\tdvwaRedirect( $_SERVER[ 'PHP_SELF' ] );\n\t}\n}",
+      "start_line": 163,
+      "end_line": 170,
+      "code": "function dvwaPageReload() {\n\tif  ( array_key_exists( 'HTTP_X_FORWARDED_PREFIX' , $_SERVER )) {\n\t\tdvwaRedirect( $_SERVER[ 'HTTP_X_FORWARDED_PREFIX' ] . $_SERVER[ 'PHP_SELF' ] );\n\t}\n\telse {\n\t\tdvwaRedirect( $_SERVER[ 'PHP_SELF' ] );\n\t}\n}"
+    },
+    {
+      "id": "dvwa/includes/dvwaPage.inc.php:LCF8",
+      "path": "dvwa/includes/dvwaPage.inc.php",
+      "name": "dvwaCurrentUser",
+      "parameters": [],
+      "body": "{\n\t$dvwaSession =& dvwaSessionGrab();\n\treturn ( isset( $dvwaSession[ 'username' ]) ? $dvwaSession[ 'username' ] : 'Unknown') ;\n}",
+      "start_line": 172,
+      "end_line": 175,
+      "code": "function dvwaCurrentUser() {\n\t$dvwaSession =& dvwaSessionGrab();\n\treturn ( isset( $dvwaSession[ 'username' ]) ? $dvwaSession[ 'username' ] : 'Unknown') ;\n}"
+    },
+    {
+      "id": "dvwa/includes/dvwaPage.inc.php:LCF9",
+      "path": "dvwa/includes/dvwaPage.inc.php",
+      "name": "dvwaPageNewGrab",
+      "parameters": [],
+      "body": "{\n\t$returnArray = array(\n\t\t'title'           => 'Damn Vulnerable Web Application (DVWA)',\n\t\t'title_separator' => ' :: ',\n\t\t'body'            => '',\n\t\t'page_id'         => '',\n\t\t'help_button'     => '',\n\t\t'source_button'   => '',\n\t);\n\treturn $returnArray;\n}",
+      "start_line": 179,
+      "end_line": 189,
+      "code": "function &dvwaPageNewGrab() {\n\t$returnArray = array(\n\t\t'title'           => 'Damn Vulnerable Web Application (DVWA)',\n\t\t'title_separator' => ' :: ',\n\t\t'body'            => '',\n\t\t'page_id'         => '',\n\t\t'help_button'     => '',\n\t\t'source_button'   => '',\n\t);\n\treturn $returnArray;\n}"
+    },
+    {
+      "id": "dvwa/includes/dvwaPage.inc.php:LCF10",
+      "path": "dvwa/includes/dvwaPage.inc.php",
+      "name": "dvwaThemeGet",
+      "parameters": [],
+      "body": "{\n\tif (isset($_COOKIE['theme'])) {\n\t\treturn $_COOKIE[ 'theme' ];\n\t}\n\treturn 'light';\n}",
+      "start_line": 192,
+      "end_line": 197,
+      "code": "function dvwaThemeGet() {\n\tif (isset($_COOKIE['theme'])) {\n\t\treturn $_COOKIE[ 'theme' ];\n\t}\n\treturn 'light';\n}"
+    },
+    {
+      "id": "dvwa/includes/dvwaPage.inc.php:LCF11",
+      "path": "dvwa/includes/dvwaPage.inc.php",
+      "name": "dvwaSecurityLevelGet",
+      "parameters": [],
+      "body": "{\n\tglobal $_DVWA;\n\n\t// If there is a security cookie, that takes priority.\n\tif (isset($_COOKIE['security'])) {\n\t\treturn $_COOKIE[ 'security' ];\n\t}\n\n\t// If not, check to see if authentication is disabled, if it is, use\n\t// the default security level.\n\tif (array_key_exists(\"disable_authentication\", $_DVWA) && $_DVWA['disable_authentication']) {\n\t\treturn $_DVWA[ 'default_security_level' ];\n\t}\n\n\t// Worse case, set the level to impossible.\n\treturn 'impossible';\n}",
+      "start_line": 200,
+      "end_line": 216,
+      "code": "function dvwaSecurityLevelGet() {\n\tglobal $_DVWA;\n\n\t// If there is a security cookie, that takes priority.\n\tif (isset($_COOKIE['security'])) {\n\t\treturn $_COOKIE[ 'security' ];\n\t}\n\n\t// If not, check to see if authentication is disabled, if it is, use\n\t// the default security level.\n\tif (array_key_exists(\"disable_authentication\", $_DVWA) && $_DVWA['disable_authentication']) {\n\t\treturn $_DVWA[ 'default_security_level' ];\n\t}\n\n\t// Worse case, set the level to impossible.\n\treturn 'impossible';\n}"
+    },
+    {
+      "id": "dvwa/includes/dvwaPage.inc.php:LCF12",
+      "path": "dvwa/includes/dvwaPage.inc.php",
+      "name": "dvwaSecurityLevelSet",
+      "parameters": [
+        "$pSecurityLevel"
+      ],
+      "body": "{\n\tif( $pSecurityLevel == 'impossible' ) {\n\t\t$httponly = true;\n\t}\n\telse {\n\t\t$httponly = false;\n\t}\n\n\tsetcookie( 'security', $pSecurityLevel, 0, \"/\", \"\", false, $httponly );\n\t$_COOKIE['security'] = $pSecurityLevel;\n}",
+      "start_line": 219,
+      "end_line": 229,
+      "code": "function dvwaSecurityLevelSet( $pSecurityLevel ) {\n\tif( $pSecurityLevel == 'impossible' ) {\n\t\t$httponly = true;\n\t}\n\telse {\n\t\t$httponly = false;\n\t}\n\n\tsetcookie( 'security', $pSecurityLevel, 0, \"/\", \"\", false, $httponly );\n\t$_COOKIE['security'] = $pSecurityLevel;\n}"
+    },
+    {
+      "id": "dvwa/includes/dvwaPage.inc.php:LCF13",
+      "path": "dvwa/includes/dvwaPage.inc.php",
+      "name": "dvwaLocaleGet",
+      "parameters": [],
+      "body": "{\n\t$dvwaSession =& dvwaSessionGrab();\n\treturn $dvwaSession[ 'locale' ];\n}",
+      "start_line": 231,
+      "end_line": 234,
+      "code": "function dvwaLocaleGet() {\n\t$dvwaSession =& dvwaSessionGrab();\n\treturn $dvwaSession[ 'locale' ];\n}"
+    },
+    {
+      "id": "dvwa/includes/dvwaPage.inc.php:LCF14",
+      "path": "dvwa/includes/dvwaPage.inc.php",
+      "name": "dvwaSQLiDBGet",
+      "parameters": [],
+      "body": "{\n\tglobal $_DVWA;\n\treturn $_DVWA['SQLI_DB'];\n}",
+      "start_line": 236,
+      "end_line": 239,
+      "code": "function dvwaSQLiDBGet() {\n\tglobal $_DVWA;\n\treturn $_DVWA['SQLI_DB'];\n}"
+    },
+    {
+      "id": "dvwa/includes/dvwaPage.inc.php:LCF15",
+      "path": "dvwa/includes/dvwaPage.inc.php",
+      "name": "dvwaLocaleSet",
+      "parameters": [
+        "$pLocale"
+      ],
+      "body": "{\n\t$dvwaSession =& dvwaSessionGrab();\n\t$locales = array('en', 'zh');\n\tif( in_array( $pLocale, $locales) ) {\n\t\t$dvwaSession[ 'locale' ] = $pLocale;\n\t} else {\n\t\t$dvwaSession[ 'locale' ] = 'en';\n\t}\n}",
+      "start_line": 241,
+      "end_line": 249,
+      "code": "function dvwaLocaleSet( $pLocale ) {\n\t$dvwaSession =& dvwaSessionGrab();\n\t$locales = array('en', 'zh');\n\tif( in_array( $pLocale, $locales) ) {\n\t\t$dvwaSession[ 'locale' ] = $pLocale;\n\t} else {\n\t\t$dvwaSession[ 'locale' ] = 'en';\n\t}\n}"
+    },
+    {
+      "id": "dvwa/includes/dvwaPage.inc.php:LCF16",
+      "path": "dvwa/includes/dvwaPage.inc.php",
+      "name": "dvwaMessagePush",
+      "parameters": [
+        "$pMessage"
+      ],
+      "body": "{\n\t$dvwaSession =& dvwaSessionGrab();\n\tif( !isset( $dvwaSession[ 'messages' ] ) ) {\n\t\t$dvwaSession[ 'messages' ] = array();\n\t}\n\t$dvwaSession[ 'messages' ][] = $pMessage;\n}",
+      "start_line": 253,
+      "end_line": 259,
+      "code": "function dvwaMessagePush( $pMessage ) {\n\t$dvwaSession =& dvwaSessionGrab();\n\tif( !isset( $dvwaSession[ 'messages' ] ) ) {\n\t\t$dvwaSession[ 'messages' ] = array();\n\t}\n\t$dvwaSession[ 'messages' ][] = $pMessage;\n}"
+    },
+    {
+      "id": "dvwa/includes/dvwaPage.inc.php:LCF17",
+      "path": "dvwa/includes/dvwaPage.inc.php",
+      "name": "dvwaMessagePop",
+      "parameters": [],
+      "body": "{\n\t$dvwaSession =& dvwaSessionGrab();\n\tif( !isset( $dvwaSession[ 'messages' ] ) || count( $dvwaSession[ 'messages' ] ) == 0 ) {\n\t\treturn false;\n\t}\n\treturn array_shift( $dvwaSession[ 'messages' ] );\n}",
+      "start_line": 262,
+      "end_line": 268,
+      "code": "function dvwaMessagePop() {\n\t$dvwaSession =& dvwaSessionGrab();\n\tif( !isset( $dvwaSession[ 'messages' ] ) || count( $dvwaSession[ 'messages' ] ) == 0 ) {\n\t\treturn false;\n\t}\n\treturn array_shift( $dvwaSession[ 'messages' ] );\n}"
+    },
+    {
+      "id": "dvwa/includes/dvwaPage.inc.php:LCF18",
+      "path": "dvwa/includes/dvwaPage.inc.php",
+      "name": "messagesPopAllToHtml",
+      "parameters": [],
+      "body": "{\n\t$messagesHtml = '';\n\twhile( $message = dvwaMessagePop() ) {   // TODO- sharpen!\n\t\t$messagesHtml .= \"<div class=\\\"message\\\">{$message}</div>\";\n\t}\n\n\treturn $messagesHtml;\n}",
+      "start_line": 271,
+      "end_line": 278,
+      "code": "function messagesPopAllToHtml() {\n\t$messagesHtml = '';\n\twhile( $message = dvwaMessagePop() ) {   // TODO- sharpen!\n\t\t$messagesHtml .= \"<div class=\\\"message\\\">{$message}</div>\";\n\t}\n\n\treturn $messagesHtml;\n}"
+    },
+    {
+      "id": "dvwa/includes/dvwaPage.inc.php:LCF19",
+      "path": "dvwa/includes/dvwaPage.inc.php",
+      "name": "dvwaHtmlEcho",
+      "parameters": [
+        "$pPage"
+      ],
+      "body": "{\n\t$menuBlocks = array();\n\n\t$menuBlocks[ 'home' ] = array();\n\tif( dvwaIsLoggedIn() ) {\n\t\t$menuBlocks[ 'home' ][] = array( 'id' => 'home', 'name' => 'Home', 'url' => '.' );\n\t\t$menuBlocks[ 'home' ][] = array( 'id' => 'instructions', 'name' => 'Instructions', 'url' => 'instructions.php' );\n\t\t$menuBlocks[ 'home' ][] = array( 'id' => 'setup', 'name' => 'Setup / Reset DB', 'url' => 'setup.php' );\n\t}\n\telse {\n\t\t$menuBlocks[ 'home' ][] = array( 'id' => 'setup', 'name' => 'Setup DVWA', 'url' => 'setup.php' );\n\t\t$menuBlocks[ 'home' ][] = array( 'id' => 'instructions', 'name' => 'Instructions', 'url' => 'instructions.php' );\n\t}\n\n\tif( dvwaIsLoggedIn() ) {\n\t\t$menuBlocks[ 'vulnerabilities' ] = array();\n\t\t$menuBlocks[ 'vulnerabilities' ][] = array( 'id' => 'brute', 'name' => 'Brute Force', 'url' => 'vulnerabilities/brute/' );\n\t\t$menuBlocks[ 'vulnerabilities' ][] = array( 'id' => 'exec', 'name' => 'Command Injection', 'url' => 'vulnerabilities/exec/' );\n\t\t$menuBlocks[ 'vulnerabilities' ][] = array( 'id' => 'csrf', 'name' => 'CSRF', 'url' => 'vulnerabilities/csrf/' );\n\t\t$menuBlocks[ 'vulnerabilities' ][] = array( 'id' => 'fi', 'name' => 'File Inclusion', 'url' => 'vulnerabilities/fi/.?page=include.php' );\n\t\t$menuBlocks[ 'vulnerabilities' ][] = array( 'id' => 'upload', 'name' => 'File Upload', 'url' => 'vulnerabilities/upload/' );\n\t\t$menuBlocks[ 'vulnerabilities' ][] = array( 'id' => 'captcha', 'name' => 'Insecure CAPTCHA', 'url' => 'vulnerabilities/captcha/' );\n\t\t$menuBlocks[ 'vulnerabilities' ][] = array( 'id' => 'sqli', 'name' => 'SQL Injection', 'url' => 'vulnerabilities/sqli/' );\n\t\t$menuBlocks[ 'vulnerabilities' ][] = array( 'id' => 'sqli_blind', 'name' => 'SQL Injection (Blind)', 'url' => 'vulnerabilities/sqli_blind/' );\n\t\t$menuBlocks[ 'vulnerabilities' ][] = array( 'id' => 'weak_id', 'name' => 'Weak Session IDs', 'url' => 'vulnerabilities/weak_id/' );\n\t\t$menuBlocks[ 'vulnerabilities' ][] = array( 'id' => 'xss_d', 'name' => 'XSS (DOM)', 'url' => 'vulnerabilities/xss_d/' );\n\t\t$menuBlocks[ 'vulnerabilities' ][] = array( 'id' => 'xss_r', 'name' => 'XSS (Reflected)', 'url' => 'vulnerabilities/xss_r/' );\n\t\t$menuBlocks[ 'vulnerabilities' ][] = array( 'id' => 'xss_s', 'name' => 'XSS (Stored)', 'url' => 'vulnerabilities/xss_s/' );\n\t\t$menuBlocks[ 'vulnerabilities' ][] = array( 'id' => 'csp', 'name' => 'CSP Bypass', 'url' => 'vulnerabilities/csp/' );\n\t\t$menuBlocks[ 'vulnerabilities' ][] = array( 'id' => 'javascript', 'name' => 'JavaScript', 'url' => 'vulnerabilities/javascript/' );\n\t\tif (dvwaCurrentUser() == \"admin\") {\n\t\t\t$menuBlocks[ 'vulnerabilities' ][] = array( 'id' => 'authbypass', 'name' => 'Authorisation Bypass', 'url' => 'vulnerabilities/authbypass/' );\n\t\t}\n\t\t$menuBlocks[ 'vulnerabilities' ][] = array( 'id' => 'open_redirect', 'name' => 'Open HTTP Redirect', 'url' => 'vulnerabilities/open_redirect/' );\n\t\t$menuBlocks[ 'vulnerabilities' ][] = array( 'id' => 'encryption', 'name' => 'Cryptography', 'url' => 'vulnerabilities/cryptography/' );\n\t\t$menuBlocks[ 'vulnerabilities' ][] = array( 'id' => 'api', 'name' => 'API', 'url' => 'vulnerabilities/api/' );\n\t}\n\n\t$menuBlocks[ 'meta' ] = array();\n\tif( dvwaIsLoggedIn() ) {\n\t\t$menuBlocks[ 'meta' ][] = array( 'id' => 'security', 'name' => 'DVWA Security', 'url' => 'security.php' );\n\t\t$menuBlocks[ 'meta' ][] = array( 'id' => 'phpinfo', 'name' => 'PHP Info', 'url' => 'phpinfo.php' );\n\t}\n\t$menuBlocks[ 'meta' ][] = array( 'id' => 'about', 'name' => 'About', 'url' => 'about.php' );\n\n\tif( dvwaIsLoggedIn() ) {\n\t\t$menuBlocks[ 'logout' ] = array();\n\t\t$menuBlocks[ 'logout' ][] = array( 'id' => 'logout', 'name' => 'Logout', 'url' => 'logout.php' );\n\t}\n\n\t$menuHtml = '';\n\n\tforeach( $menuBlocks as $menuBlock ) {\n\t\t$menuBlockHtml = '';\n\t\tforeach( $menuBlock as $menuItem ) {\n\t\t\t$selectedClass = ( $menuItem[ 'id' ] == $pPage[ 'page_id' ] ) ? 'selected' : '';\n\t\t\t$fixedUrl = DVWA_WEB_PAGE_TO_ROOT.$menuItem[ 'url' ];\n\t\t\t$menuBlockHtml .= \"<li class=\\\"{$selectedClass}\\\"><a href=\\\"{$fixedUrl}\\\">{$menuItem[ 'name' ]}</a></li>\\n\";\n\t\t}\n\t\t$menuHtml .= \"<ul class=\\\"menuBlocks\\\">{$menuBlockHtml}</ul>\";\n\t}\n\n\t// Get security cookie --\n\t$securityLevelHtml = '';\n\tswitch( dvwaSecurityLevelGet() ) {\n\t\tcase 'low':\n\t\t\t$securityLevelHtml = 'low';\n\t\t\tbreak;\n\t\tcase 'medium':\n\t\t\t$securityLevelHtml = 'medium';\n\t\t\tbreak;\n\t\tcase 'high':\n\t\t\t$securityLevelHtml = 'high';\n\t\t\tbreak;\n\t\tdefault:\n\t\t\t$securityLevelHtml = 'impossible';\n\t\t\tbreak;\n\t}\n\t// -- END (security cookie)\n\n\t$userInfoHtml = '<em>Username:</em> ' . ( dvwaCurrentUser() );\n\t$securityLevelHtml = \"<em>Security Level:</em> {$securityLevelHtml}\";\n\t$localeHtml = '<em>Locale:</em> ' . ( dvwaLocaleGet() );\n\t$sqliDbHtml = '<em>SQLi DB:</em> ' . ( dvwaSQLiDBGet() );\n\n\n\t$messagesHtml = messagesPopAllToHtml();\n\tif( $messagesHtml ) {\n\t\t$messagesHtml = \"<div class=\\\"body_padded\\\">{$messagesHtml}</div>\";\n\t}\n\n\t$systemInfoHtml = \"\";\n\tif( dvwaIsLoggedIn() )\n\t\t$systemInfoHtml = \"<div align=\\\"left\\\">{$userInfoHtml}<br />{$securityLevelHtml}<br />{$localeHtml}<br />{$sqliDbHtml}</div>\";\n\tif( $pPage[ 'source_button' ] ) {\n\t\t$systemInfoHtml = dvwaButtonSourceHtmlGet( $pPage[ 'source_button' ] ) . \" $systemInfoHtml\";\n\t}\n\tif( $pPage[ 'help_button' ] ) {\n\t\t$systemInfoHtml = dvwaButtonHelpHtmlGet( $pPage[ 'help_button' ] ) . \" $systemInfoHtml\";\n\t}\n\n\t// Send Headers + main HTML code\n\tHeader( 'Cache-Control: no-cache, must-revalidate');   // HTTP/1.1\n\tHeader( 'Content-Type: text/html;charset=utf-8' );     // TODO- proper XHTML headers...\n\tHeader( 'Expires: Tue, 23 Jun 2009 12:00:00 GMT' );    // Date in the past\n\n\techo \"<!DOCTYPE html>\n\n<html lang=\\\"en-GB\\\">\n\n\t<head>\n\t\t<meta http-equiv=\\\"Content-Type\\\" content=\\\"text/html; charset=UTF-8\\\" />\n\n\t\t<title>{$pPage[ 'title' ]}</title>\n\n\t\t<link rel=\\\"stylesheet\\\" type=\\\"text/css\\\" href=\\\"\" . DVWA_WEB_PAGE_TO_ROOT . \"dvwa/css/main.css\\\" />\n\n\t\t<link rel=\\\"icon\\\" type=\\\"\\image/ico\\\" href=\\\"\" . DVWA_WEB_PAGE_TO_ROOT . \"favicon.ico\\\" />\n\n\t\t<script type=\\\"text/javascript\\\" src=\\\"\" . DVWA_WEB_PAGE_TO_ROOT . \"dvwa/js/dvwaPage.js\\\"></script>\n\n\t</head>\n\n\t<body class=\\\"home \" . dvwaThemeGet() . \"\\\">\n\t\t<div id=\\\"container\\\">\n\n\t\t\t<div id=\\\"header\\\">\n\n\t\t\t\t<img src=\\\"\" . DVWA_WEB_PAGE_TO_ROOT . \"dvwa/images/logo.png\\\" alt=\\\"Damn Vulnerable Web Application\\\" />\n                <a href=\\\"#\\\" onclick=\\\"javascript:toggleTheme();\\\" class=\\\"theme-icon\\\" title=\\\"Toggle theme between light and dark.\\\">\n                    <img src=\\\"\" . DVWA_WEB_PAGE_TO_ROOT . \"dvwa/images/theme-light-dark.png\\\" alt=\\\"Damn Vulnerable Web Application\\\" />\n                </a>\n\t\t\t</div>\n\n\t\t\t<div id=\\\"main_menu\\\">\n\n\t\t\t\t<div id=\\\"main_menu_padded\\\">\n\t\t\t\t{$menuHtml}\n\t\t\t\t</div>\n\n\t\t\t</div>\n\n\t\t\t<div id=\\\"main_body\\\">\n\n\t\t\t\t{$pPage[ 'body' ]}\n\t\t\t\t<br /><br />\n\t\t\t\t{$messagesHtml}\n\n\t\t\t</div>\n\n\t\t\t<div class=\\\"clear\\\">\n\t\t\t</div>\n\n\t\t\t<div id=\\\"system_info\\\">\n\t\t\t\t{$systemInfoHtml}\n\t\t\t</div>\n\n\t\t\t<div id=\\\"footer\\\">\n\n\t\t\t\t<p>Damn Vulnerable Web Application (DVWA)</p>\n\t\t\t\t<script src='\" . DVWA_WEB_PAGE_TO_ROOT . \"dvwa/js/add_event_listeners.js'></script>\n\n\t\t\t</div>\n\n\t\t</div>\n\n\t</body>\n\n</html>\";\n}",
+      "start_line": 282,
+      "end_line": 451,
+      "code": "function dvwaHtmlEcho( $pPage ) {\n\t$menuBlocks = array();\n\n\t$menuBlocks[ 'home' ] = array();\n\tif( dvwaIsLoggedIn() ) {\n\t\t$menuBlocks[ 'home' ][] = array( 'id' => 'home', 'name' => 'Home', 'url' => '.' );\n\t\t$menuBlocks[ 'home' ][] = array( 'id' => 'instructions', 'name' => 'Instructions', 'url' => 'instructions.php' );\n\t\t$menuBlocks[ 'home' ][] = array( 'id' => 'setup', 'name' => 'Setup / Reset DB', 'url' => 'setup.php' );\n\t}\n\telse {\n\t\t$menuBlocks[ 'home' ][] = array( 'id' => 'setup', 'name' => 'Setup DVWA', 'url' => 'setup.php' );\n\t\t$menuBlocks[ 'home' ][] = array( 'id' => 'instructions', 'name' => 'Instructions', 'url' => 'instructions.php' );\n\t}\n\n\tif( dvwaIsLoggedIn() ) {\n\t\t$menuBlocks[ 'vulnerabilities' ] = array();\n\t\t$menuBlocks[ 'vulnerabilities' ][] = array( 'id' => 'brute', 'name' => 'Brute Force', 'url' => 'vulnerabilities/brute/' );\n\t\t$menuBlocks[ 'vulnerabilities' ][] = array( 'id' => 'exec', 'name' => 'Command Injection', 'url' => 'vulnerabilities/exec/' );\n\t\t$menuBlocks[ 'vulnerabilities' ][] = array( 'id' => 'csrf', 'name' => 'CSRF', 'url' => 'vulnerabilities/csrf/' );\n\t\t$menuBlocks[ 'vulnerabilities' ][] = array( 'id' => 'fi', 'name' => 'File Inclusion', 'url' => 'vulnerabilities/fi/.?page=include.php' );\n\t\t$menuBlocks[ 'vulnerabilities' ][] = array( 'id' => 'upload', 'name' => 'File Upload', 'url' => 'vulnerabilities/upload/' );\n\t\t$menuBlocks[ 'vulnerabilities' ][] = array( 'id' => 'captcha', 'name' => 'Insecure CAPTCHA', 'url' => 'vulnerabilities/captcha/' );\n\t\t$menuBlocks[ 'vulnerabilities' ][] = array( 'id' => 'sqli', 'name' => 'SQL Injection', 'url' => 'vulnerabilities/sqli/' );\n\t\t$menuBlocks[ 'vulnerabilities' ][] = array( 'id' => 'sqli_blind', 'name' => 'SQL Injection (Blind)', 'url' => 'vulnerabilities/sqli_blind/' );\n\t\t$menuBlocks[ 'vulnerabilities' ][] = array( 'id' => 'weak_id', 'name' => 'Weak Session IDs', 'url' => 'vulnerabilities/weak_id/' );\n\t\t$menuBlocks[ 'vulnerabilities' ][] = array( 'id' => 'xss_d', 'name' => 'XSS (DOM)', 'url' => 'vulnerabilities/xss_d/' );\n\t\t$menuBlocks[ 'vulnerabilities' ][] = array( 'id' => 'xss_r', 'name' => 'XSS (Reflected)', 'url' => 'vulnerabilities/xss_r/' );\n\t\t$menuBlocks[ 'vulnerabilities' ][] = array( 'id' => 'xss_s', 'name' => 'XSS (Stored)', 'url' => 'vulnerabilities/xss_s/' );\n\t\t$menuBlocks[ 'vulnerabilities' ][] = array( 'id' => 'csp', 'name' => 'CSP Bypass', 'url' => 'vulnerabilities/csp/' );\n\t\t$menuBlocks[ 'vulnerabilities' ][] = array( 'id' => 'javascript', 'name' => 'JavaScript', 'url' => 'vulnerabilities/javascript/' );\n\t\tif (dvwaCurrentUser() == \"admin\") {\n\t\t\t$menuBlocks[ 'vulnerabilities' ][] = array( 'id' => 'authbypass', 'name' => 'Authorisation Bypass', 'url' => 'vulnerabilities/authbypass/' );\n\t\t}\n\t\t$menuBlocks[ 'vulnerabilities' ][] = array( 'id' => 'open_redirect', 'name' => 'Open HTTP Redirect', 'url' => 'vulnerabilities/open_redirect/' );\n\t\t$menuBlocks[ 'vulnerabilities' ][] = array( 'id' => 'encryption', 'name' => 'Cryptography', 'url' => 'vulnerabilities/cryptography/' );\n\t\t$menuBlocks[ 'vulnerabilities' ][] = array( 'id' => 'api', 'name' => 'API', 'url' => 'vulnerabilities/api/' );\n\t}\n\n\t$menuBlocks[ 'meta' ] = array();\n\tif( dvwaIsLoggedIn() ) {\n\t\t$menuBlocks[ 'meta' ][] = array( 'id' => 'security', 'name' => 'DVWA Security', 'url' => 'security.php' );\n\t\t$menuBlocks[ 'meta' ][] = array( 'id' => 'phpinfo', 'name' => 'PHP Info', 'url' => 'phpinfo.php' );\n\t}\n\t$menuBlocks[ 'meta' ][] = array( 'id' => 'about', 'name' => 'About', 'url' => 'about.php' );\n\n\tif( dvwaIsLoggedIn() ) {\n\t\t$menuBlocks[ 'logout' ] = array();\n\t\t$menuBlocks[ 'logout' ][] = array( 'id' => 'logout', 'name' => 'Logout', 'url' => 'logout.php' );\n\t}\n\n\t$menuHtml = '';\n\n\tforeach( $menuBlocks as $menuBlock ) {\n\t\t$menuBlockHtml = '';\n\t\tforeach( $menuBlock as $menuItem ) {\n\t\t\t$selectedClass = ( $menuItem[ 'id' ] == $pPage[ 'page_id' ] ) ? 'selected' : '';\n\t\t\t$fixedUrl = DVWA_WEB_PAGE_TO_ROOT.$menuItem[ 'url' ];\n\t\t\t$menuBlockHtml .= \"<li class=\\\"{$selectedClass}\\\"><a href=\\\"{$fixedUrl}\\\">{$menuItem[ 'name' ]}</a></li>\\n\";\n\t\t}\n\t\t$menuHtml .= \"<ul class=\\\"menuBlocks\\\">{$menuBlockHtml}</ul>\";\n\t}\n\n\t// Get security cookie --\n\t$securityLevelHtml = '';\n\tswitch( dvwaSecurityLevelGet() ) {\n\t\tcase 'low':\n\t\t\t$securityLevelHtml = 'low';\n\t\t\tbreak;\n\t\tcase 'medium':\n\t\t\t$securityLevelHtml = 'medium';\n\t\t\tbreak;\n\t\tcase 'high':\n\t\t\t$securityLevelHtml = 'high';\n\t\t\tbreak;\n\t\tdefault:\n\t\t\t$securityLevelHtml = 'impossible';\n\t\t\tbreak;\n\t}\n\t// -- END (security cookie)\n\n\t$userInfoHtml = '<em>Username:</em> ' . ( dvwaCurrentUser() );\n\t$securityLevelHtml = \"<em>Security Level:</em> {$securityLevelHtml}\";\n\t$localeHtml = '<em>Locale:</em> ' . ( dvwaLocaleGet() );\n\t$sqliDbHtml = '<em>SQLi DB:</em> ' . ( dvwaSQLiDBGet() );\n\n\n\t$messagesHtml = messagesPopAllToHtml();\n\tif( $messagesHtml ) {\n\t\t$messagesHtml = \"<div class=\\\"body_padded\\\">{$messagesHtml}</div>\";\n\t}\n\n\t$systemInfoHtml = \"\";\n\tif( dvwaIsLoggedIn() )\n\t\t$systemInfoHtml = \"<div align=\\\"left\\\">{$userInfoHtml}<br />{$securityLevelHtml}<br />{$localeHtml}<br />{$sqliDbHtml}</div>\";\n\tif( $pPage[ 'source_button' ] ) {\n\t\t$systemInfoHtml = dvwaButtonSourceHtmlGet( $pPage[ 'source_button' ] ) . \" $systemInfoHtml\";\n\t}\n\tif( $pPage[ 'help_button' ] ) {\n\t\t$systemInfoHtml = dvwaButtonHelpHtmlGet( $pPage[ 'help_button' ] ) . \" $systemInfoHtml\";\n\t}\n\n\t// Send Headers + main HTML code\n\tHeader( 'Cache-Control: no-cache, must-revalidate');   // HTTP/1.1\n\tHeader( 'Content-Type: text/html;charset=utf-8' );     // TODO- proper XHTML headers...\n\tHeader( 'Expires: Tue, 23 Jun 2009 12:00:00 GMT' );    // Date in the past\n\n\techo \"<!DOCTYPE html>\n\n<html lang=\\\"en-GB\\\">\n\n\t<head>\n\t\t<meta http-equiv=\\\"Content-Type\\\" content=\\\"text/html; charset=UTF-8\\\" />\n\n\t\t<title>{$pPage[ 'title' ]}</title>\n\n\t\t<link rel=\\\"stylesheet\\\" type=\\\"text/css\\\" href=\\\"\" . DVWA_WEB_PAGE_TO_ROOT . \"dvwa/css/main.css\\\" />\n\n\t\t<link rel=\\\"icon\\\" type=\\\"\\image/ico\\\" href=\\\"\" . DVWA_WEB_PAGE_TO_ROOT . \"favicon.ico\\\" />\n\n\t\t<script type=\\\"text/javascript\\\" src=\\\"\" . DVWA_WEB_PAGE_TO_ROOT . \"dvwa/js/dvwaPage.js\\\"></script>\n\n\t</head>\n\n\t<body class=\\\"home \" . dvwaThemeGet() . \"\\\">\n\t\t<div id=\\\"container\\\">\n\n\t\t\t<div id=\\\"header\\\">\n\n\t\t\t\t<img src=\\\"\" . DVWA_WEB_PAGE_TO_ROOT . \"dvwa/images/logo.png\\\" alt=\\\"Damn Vulnerable Web Application\\\" />\n                <a href=\\\"#\\\" onclick=\\\"javascript:toggleTheme();\\\" class=\\\"theme-icon\\\" title=\\\"Toggle theme between light and dark.\\\">\n                    <img src=\\\"\" . DVWA_WEB_PAGE_TO_ROOT . \"dvwa/images/theme-light-dark.png\\\" alt=\\\"Damn Vulnerable Web Application\\\" />\n                </a>\n\t\t\t</div>\n\n\t\t\t<div id=\\\"main_menu\\\">\n\n\t\t\t\t<div id=\\\"main_menu_padded\\\">\n\t\t\t\t{$menuHtml}\n\t\t\t\t</div>\n\n\t\t\t</div>\n\n\t\t\t<div id=\\\"main_body\\\">\n\n\t\t\t\t{$pPage[ 'body' ]}\n\t\t\t\t<br /><br />\n\t\t\t\t{$messagesHtml}\n\n\t\t\t</div>\n\n\t\t\t<div class=\\\"clear\\\">\n\t\t\t</div>\n\n\t\t\t<div id=\\\"system_info\\\">\n\t\t\t\t{$systemInfoHtml}\n\t\t\t</div>\n\n\t\t\t<div id=\\\"footer\\\">\n\n\t\t\t\t<p>Damn Vulnerable Web Application (DVWA)</p>\n\t\t\t\t<script src='\" . DVWA_WEB_PAGE_TO_ROOT . \"dvwa/js/add_event_listeners.js'></script>\n\n\t\t\t</div>\n\n\t\t</div>\n\n\t</body>\n\n</html>\";\n}"
+    },
+    {
+      "id": "dvwa/includes/dvwaPage.inc.php:LCF20",
+      "path": "dvwa/includes/dvwaPage.inc.php",
+      "name": "dvwaHelpHtmlEcho",
+      "parameters": [
+        "$pPage"
+      ],
+      "body": "{\n\t// Send Headers\n\tHeader( 'Cache-Control: no-cache, must-revalidate');   // HTTP/1.1\n\tHeader( 'Content-Type: text/html;charset=utf-8' );     // TODO- proper XHTML headers...\n\tHeader( 'Expires: Tue, 23 Jun 2009 12:00:00 GMT' );    // Date in the past\n\n\techo \"<!DOCTYPE html>\n\n<html lang=\\\"en-GB\\\">\n\n\t<head>\n\n\t\t<meta http-equiv=\\\"Content-Type\\\" content=\\\"text/html; charset=UTF-8\\\" />\n\n\t\t<title>{$pPage[ 'title' ]}</title>\n\n\t\t<link rel=\\\"stylesheet\\\" type=\\\"text/css\\\" href=\\\"\" . DVWA_WEB_PAGE_TO_ROOT . \"dvwa/css/help.css\\\" />\n\n\t\t<link rel=\\\"icon\\\" type=\\\"\\image/ico\\\" href=\\\"\" . DVWA_WEB_PAGE_TO_ROOT . \"favicon.ico\\\" />\n\n\t</head>\n\n\t<body class=\\\"\" . dvwaThemeGet() . \"\\\">\n\n\t<div id=\\\"container\\\">\n\n\t\t\t{$pPage[ 'body' ]}\n\n\t\t</div>\n\n\t</body>\n\n</html>\";\n}",
+      "start_line": 454,
+      "end_line": 487,
+      "code": "function dvwaHelpHtmlEcho( $pPage ) {\n\t// Send Headers\n\tHeader( 'Cache-Control: no-cache, must-revalidate');   // HTTP/1.1\n\tHeader( 'Content-Type: text/html;charset=utf-8' );     // TODO- proper XHTML headers...\n\tHeader( 'Expires: Tue, 23 Jun 2009 12:00:00 GMT' );    // Date in the past\n\n\techo \"<!DOCTYPE html>\n\n<html lang=\\\"en-GB\\\">\n\n\t<head>\n\n\t\t<meta http-equiv=\\\"Content-Type\\\" content=\\\"text/html; charset=UTF-8\\\" />\n\n\t\t<title>{$pPage[ 'title' ]}</title>\n\n\t\t<link rel=\\\"stylesheet\\\" type=\\\"text/css\\\" href=\\\"\" . DVWA_WEB_PAGE_TO_ROOT . \"dvwa/css/help.css\\\" />\n\n\t\t<link rel=\\\"icon\\\" type=\\\"\\image/ico\\\" href=\\\"\" . DVWA_WEB_PAGE_TO_ROOT . \"favicon.ico\\\" />\n\n\t</head>\n\n\t<body class=\\\"\" . dvwaThemeGet() . \"\\\">\n\n\t<div id=\\\"container\\\">\n\n\t\t\t{$pPage[ 'body' ]}\n\n\t\t</div>\n\n\t</body>\n\n</html>\";\n}"
+    },
+    {
+      "id": "dvwa/includes/dvwaPage.inc.php:LCF21",
+      "path": "dvwa/includes/dvwaPage.inc.php",
+      "name": "dvwaSourceHtmlEcho",
+      "parameters": [
+        "$pPage"
+      ],
+      "body": "{\n\t// Send Headers\n\tHeader( 'Cache-Control: no-cache, must-revalidate');   // HTTP/1.1\n\tHeader( 'Content-Type: text/html;charset=utf-8' );     // TODO- proper XHTML headers...\n\tHeader( 'Expires: Tue, 23 Jun 2009 12:00:00 GMT' );    // Date in the past\n\n\techo \"<!DOCTYPE html>\n\n<html lang=\\\"en-GB\\\">\n\n\t<head>\n\n\t\t<meta http-equiv=\\\"Content-Type\\\" content=\\\"text/html; charset=UTF-8\\\" />\n\n\t\t<title>{$pPage[ 'title' ]}</title>\n\n\t\t<link rel=\\\"stylesheet\\\" type=\\\"text/css\\\" href=\\\"\" . DVWA_WEB_PAGE_TO_ROOT . \"dvwa/css/source.css\\\" />\n\n\t\t<link rel=\\\"icon\\\" type=\\\"\\image/ico\\\" href=\\\"\" . DVWA_WEB_PAGE_TO_ROOT . \"favicon.ico\\\" />\n\n\t</head>\n\n\t<body class=\\\"\" . dvwaThemeGet() . \"\\\">\n\n\t\t<div id=\\\"container\\\">\n\n\t\t\t{$pPage[ 'body' ]}\n\n\t\t</div>\n\n\t</body>\n\n</html>\";\n}",
+      "start_line": 490,
+      "end_line": 523,
+      "code": "function dvwaSourceHtmlEcho( $pPage ) {\n\t// Send Headers\n\tHeader( 'Cache-Control: no-cache, must-revalidate');   // HTTP/1.1\n\tHeader( 'Content-Type: text/html;charset=utf-8' );     // TODO- proper XHTML headers...\n\tHeader( 'Expires: Tue, 23 Jun 2009 12:00:00 GMT' );    // Date in the past\n\n\techo \"<!DOCTYPE html>\n\n<html lang=\\\"en-GB\\\">\n\n\t<head>\n\n\t\t<meta http-equiv=\\\"Content-Type\\\" content=\\\"text/html; charset=UTF-8\\\" />\n\n\t\t<title>{$pPage[ 'title' ]}</title>\n\n\t\t<link rel=\\\"stylesheet\\\" type=\\\"text/css\\\" href=\\\"\" . DVWA_WEB_PAGE_TO_ROOT . \"dvwa/css/source.css\\\" />\n\n\t\t<link rel=\\\"icon\\\" type=\\\"\\image/ico\\\" href=\\\"\" . DVWA_WEB_PAGE_TO_ROOT . \"favicon.ico\\\" />\n\n\t</head>\n\n\t<body class=\\\"\" . dvwaThemeGet() . \"\\\">\n\n\t\t<div id=\\\"container\\\">\n\n\t\t\t{$pPage[ 'body' ]}\n\n\t\t</div>\n\n\t</body>\n\n</html>\";\n}"
+    },
+    {
+      "id": "dvwa/includes/dvwaPage.inc.php:LCF22",
+      "path": "dvwa/includes/dvwaPage.inc.php",
+      "name": "dvwaExternalLinkUrlGet",
+      "parameters": [
+        "$pLink",
+        "$text=null"
+      ],
+      "body": "{\n\tif(is_null( $text ) || $text == \"\") {\n\t\treturn '<a href=\"' . $pLink . '\" target=\"_blank\">' . $pLink . '</a>';\n\t}\n\telse {\n\t\treturn '<a href=\"' . $pLink . '\" target=\"_blank\">' . $text . '</a>';\n\t}\n}",
+      "start_line": 526,
+      "end_line": 533,
+      "code": "function dvwaExternalLinkUrlGet( $pLink,$text=null ) {\n\tif(is_null( $text ) || $text == \"\") {\n\t\treturn '<a href=\"' . $pLink . '\" target=\"_blank\">' . $pLink . '</a>';\n\t}\n\telse {\n\t\treturn '<a href=\"' . $pLink . '\" target=\"_blank\">' . $text . '</a>';\n\t}\n}"
+    },
+    {
+      "id": "dvwa/includes/dvwaPage.inc.php:LCF23",
+      "path": "dvwa/includes/dvwaPage.inc.php",
+      "name": "dvwaButtonHelpHtmlGet",
+      "parameters": [
+        "$pId"
+      ],
+      "body": "{\n\t$security = dvwaSecurityLevelGet();\n\t$locale = dvwaLocaleGet();\n\treturn \"<input type=\\\"button\\\" value=\\\"View Help\\\" class=\\\"popup_button\\\" id='help_button' data-help-url='\" . DVWA_WEB_PAGE_TO_ROOT . \"vulnerabilities/view_help.php?id={$pId}&security={$security}&locale={$locale}' )\\\">\";\n}",
+      "start_line": 536,
+      "end_line": 540,
+      "code": "function dvwaButtonHelpHtmlGet( $pId ) {\n\t$security = dvwaSecurityLevelGet();\n\t$locale = dvwaLocaleGet();\n\treturn \"<input type=\\\"button\\\" value=\\\"View Help\\\" class=\\\"popup_button\\\" id='help_button' data-help-url='\" . DVWA_WEB_PAGE_TO_ROOT . \"vulnerabilities/view_help.php?id={$pId}&security={$security}&locale={$locale}' )\\\">\";\n}"
+    },
+    {
+      "id": "dvwa/includes/dvwaPage.inc.php:LCF24",
+      "path": "dvwa/includes/dvwaPage.inc.php",
+      "name": "dvwaButtonSourceHtmlGet",
+      "parameters": [
+        "$pId"
+      ],
+      "body": "{\n\t$security = dvwaSecurityLevelGet();\n\treturn \"<input type=\\\"button\\\" value=\\\"View Source\\\" class=\\\"popup_button\\\" id='source_button' data-source-url='\" . DVWA_WEB_PAGE_TO_ROOT . \"vulnerabilities/view_source.php?id={$pId}&security={$security}' )\\\">\";\n}",
+      "start_line": 543,
+      "end_line": 546,
+      "code": "function dvwaButtonSourceHtmlGet( $pId ) {\n\t$security = dvwaSecurityLevelGet();\n\treturn \"<input type=\\\"button\\\" value=\\\"View Source\\\" class=\\\"popup_button\\\" id='source_button' data-source-url='\" . DVWA_WEB_PAGE_TO_ROOT . \"vulnerabilities/view_source.php?id={$pId}&security={$security}' )\\\">\";\n}"
+    },
+    {
+      "id": "dvwa/includes/dvwaPage.inc.php:LCF25",
+      "path": "dvwa/includes/dvwaPage.inc.php",
+      "name": "dvwaDatabaseConnect",
+      "parameters": [],
+      "body": "{\n\tglobal $_DVWA;\n\tglobal $DBMS;\n\t//global $DBMS_connError;\n\tglobal $db;\n\tglobal $sqlite_db_connection;\n\n\tif( $DBMS == 'MySQL' ) {\n\t\tif( !@($GLOBALS[\"___mysqli_ston\"] = mysqli_connect( $_DVWA[ 'db_server' ],  $_DVWA[ 'db_user' ],  $_DVWA[ 'db_password' ], \"\", $_DVWA[ 'db_port' ] ))\n\t\t|| !@((bool)mysqli_query($GLOBALS[\"___mysqli_ston\"], \"USE \" . $_DVWA[ 'db_database' ])) ) {\n\t\t\t//die( $DBMS_connError );\n\t\t\tdvwaLogout();\n\t\t\tdvwaMessagePush( 'Unable to connect to the database.<br />' . mysqli_error($GLOBALS[\"___mysqli_ston\"]));\n\t\t\tdvwaRedirect( DVWA_WEB_PAGE_TO_ROOT . 'setup.php' );\n\t\t}\n\t\t// MySQL PDO Prepared Statements (for impossible levels)\n\t\t$db = new PDO('mysql:host=' . $_DVWA[ 'db_server' ].';dbname=' . $_DVWA[ 'db_database' ].';port=' . $_DVWA['db_port'] . ';charset=utf8', $_DVWA[ 'db_user' ], $_DVWA[ 'db_password' ]);\n\t\t$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);\n\t\t$db->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);\n\t}\n\telseif( $DBMS == 'PGSQL' ) {\n\t\t//$dbconn = pg_connect(\"host={$_DVWA[ 'db_server' ]} dbname={$_DVWA[ 'db_database' ]} user={$_DVWA[ 'db_user' ]} password={$_DVWA[ 'db_password' ])}\"\n\t\t//or die( $DBMS_connError );\n\t\tdvwaMessagePush( 'PostgreSQL is not currently supported.' );\n\t\tdvwaPageReload();\n\t}\n\telse {\n\t\tdie ( \"Unknown {$DBMS} selected.\" );\n\t}\n\n\tif ($_DVWA['SQLI_DB'] == SQLITE) {\n\t\t$location = DVWA_WEB_PAGE_TO_ROOT . \"database/\" . $_DVWA['SQLITE_DB'];\n\t\t$sqlite_db_connection = new SQLite3($location);\n\t\t$sqlite_db_connection->enableExceptions(true);\n\t#\tprint \"sqlite db setup\";\n\t}\n}",
+      "start_line": 561,
+      "end_line": 597,
+      "code": "function dvwaDatabaseConnect() {\n\tglobal $_DVWA;\n\tglobal $DBMS;\n\t//global $DBMS_connError;\n\tglobal $db;\n\tglobal $sqlite_db_connection;\n\n\tif( $DBMS == 'MySQL' ) {\n\t\tif( !@($GLOBALS[\"___mysqli_ston\"] = mysqli_connect( $_DVWA[ 'db_server' ],  $_DVWA[ 'db_user' ],  $_DVWA[ 'db_password' ], \"\", $_DVWA[ 'db_port' ] ))\n\t\t|| !@((bool)mysqli_query($GLOBALS[\"___mysqli_ston\"], \"USE \" . $_DVWA[ 'db_database' ])) ) {\n\t\t\t//die( $DBMS_connError );\n\t\t\tdvwaLogout();\n\t\t\tdvwaMessagePush( 'Unable to connect to the database.<br />' . mysqli_error($GLOBALS[\"___mysqli_ston\"]));\n\t\t\tdvwaRedirect( DVWA_WEB_PAGE_TO_ROOT . 'setup.php' );\n\t\t}\n\t\t// MySQL PDO Prepared Statements (for impossible levels)\n\t\t$db = new PDO('mysql:host=' . $_DVWA[ 'db_server' ].';dbname=' . $_DVWA[ 'db_database' ].';port=' . $_DVWA['db_port'] . ';charset=utf8', $_DVWA[ 'db_user' ], $_DVWA[ 'db_password' ]);\n\t\t$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);\n\t\t$db->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);\n\t}\n\telseif( $DBMS == 'PGSQL' ) {\n\t\t//$dbconn = pg_connect(\"host={$_DVWA[ 'db_server' ]} dbname={$_DVWA[ 'db_database' ]} user={$_DVWA[ 'db_user' ]} password={$_DVWA[ 'db_password' ])}\"\n\t\t//or die( $DBMS_connError );\n\t\tdvwaMessagePush( 'PostgreSQL is not currently supported.' );\n\t\tdvwaPageReload();\n\t}\n\telse {\n\t\tdie ( \"Unknown {$DBMS} selected.\" );\n\t}\n\n\tif ($_DVWA['SQLI_DB'] == SQLITE) {\n\t\t$location = DVWA_WEB_PAGE_TO_ROOT . \"database/\" . $_DVWA['SQLITE_DB'];\n\t\t$sqlite_db_connection = new SQLite3($location);\n\t\t$sqlite_db_connection->enableExceptions(true);\n\t#\tprint \"sqlite db setup\";\n\t}\n}"
+    },
+    {
+      "id": "dvwa/includes/dvwaPage.inc.php:LCF26",
+      "path": "dvwa/includes/dvwaPage.inc.php",
+      "name": "dvwaRedirect",
+      "parameters": [
+        "$pLocation"
+      ],
+      "body": "{\n\tsession_commit();\n\theader( \"Location: {$pLocation}\" );\n\texit;\n}",
+      "start_line": 602,
+      "end_line": 606,
+      "code": "function dvwaRedirect( $pLocation ) {\n\tsession_commit();\n\theader( \"Location: {$pLocation}\" );\n\texit;\n}"
+    },
+    {
+      "id": "dvwa/includes/dvwaPage.inc.php:LCF27",
+      "path": "dvwa/includes/dvwaPage.inc.php",
+      "name": "dvwaGuestbook",
+      "parameters": [],
+      "body": "{\n\t$query  = \"SELECT name, comment FROM guestbook\";\n\t$result = mysqli_query($GLOBALS[\"___mysqli_ston\"],  $query );\n\n\t$guestbook = '';\n\n\twhile( $row = mysqli_fetch_row( $result ) ) {\n\t\tif( dvwaSecurityLevelGet() == 'impossible' ) {\n\t\t\t$name    = htmlspecialchars( $row[0] );\n\t\t\t$comment = htmlspecialchars( $row[1] );\n\t\t}\n\t\telse {\n\t\t\t$name    = $row[0];\n\t\t\t$comment = $row[1];\n\t\t}\n\n\t\t$guestbook .= \"<div id=\\\"guestbook_comments\\\">Name: {$name}<br />\" . \"Message: {$comment}<br /></div>\\n\";\n\t}\n\treturn $guestbook;\n}",
+      "start_line": 609,
+      "end_line": 628,
+      "code": "function dvwaGuestbook() {\n\t$query  = \"SELECT name, comment FROM guestbook\";\n\t$result = mysqli_query($GLOBALS[\"___mysqli_ston\"],  $query );\n\n\t$guestbook = '';\n\n\twhile( $row = mysqli_fetch_row( $result ) ) {\n\t\tif( dvwaSecurityLevelGet() == 'impossible' ) {\n\t\t\t$name    = htmlspecialchars( $row[0] );\n\t\t\t$comment = htmlspecialchars( $row[1] );\n\t\t}\n\t\telse {\n\t\t\t$name    = $row[0];\n\t\t\t$comment = $row[1];\n\t\t}\n\n\t\t$guestbook .= \"<div id=\\\"guestbook_comments\\\">Name: {$name}<br />\" . \"Message: {$comment}<br /></div>\\n\";\n\t}\n\treturn $guestbook;\n}"
+    },
+    {
+      "id": "dvwa/includes/dvwaPage.inc.php:LCF28",
+      "path": "dvwa/includes/dvwaPage.inc.php",
+      "name": "checkToken",
+      "parameters": [
+        "$user_token",
+        "$session_token",
+        "$returnURL"
+      ],
+      "body": "{  # Validate the given (CSRF) token\n\tglobal $_DVWA;\n\n\tif (array_key_exists(\"disable_authentication\", $_DVWA) && $_DVWA['disable_authentication']) {\n\t\treturn true;\n\t}\n\n\tif( $user_token !== $session_token || !isset( $session_token ) ) {\n\t\tdvwaMessagePush( 'CSRF token is incorrect' );\n\t\tdvwaRedirect( $returnURL );\n\t}\n}",
+      "start_line": 633,
+      "end_line": 644,
+      "code": "function checkToken( $user_token, $session_token, $returnURL ) {  # Validate the given (CSRF) token\n\tglobal $_DVWA;\n\n\tif (array_key_exists(\"disable_authentication\", $_DVWA) && $_DVWA['disable_authentication']) {\n\t\treturn true;\n\t}\n\n\tif( $user_token !== $session_token || !isset( $session_token ) ) {\n\t\tdvwaMessagePush( 'CSRF token is incorrect' );\n\t\tdvwaRedirect( $returnURL );\n\t}\n}"
+    },
+    {
+      "id": "dvwa/includes/dvwaPage.inc.php:LCF29",
+      "path": "dvwa/includes/dvwaPage.inc.php",
+      "name": "generateSessionToken",
+      "parameters": [],
+      "body": "{  # Generate a brand new (CSRF) token\n\tif( isset( $_SESSION[ 'session_token' ] ) ) {\n\t\tdestroySessionToken();\n\t}\n\t$_SESSION[ 'session_token' ] = md5( uniqid() );\n}",
+      "start_line": 646,
+      "end_line": 651,
+      "code": "function generateSessionToken() {  # Generate a brand new (CSRF) token\n\tif( isset( $_SESSION[ 'session_token' ] ) ) {\n\t\tdestroySessionToken();\n\t}\n\t$_SESSION[ 'session_token' ] = md5( uniqid() );\n}"
+    },
+    {
+      "id": "dvwa/includes/dvwaPage.inc.php:LCF30",
+      "path": "dvwa/includes/dvwaPage.inc.php",
+      "name": "destroySessionToken",
+      "parameters": [],
+      "body": "{  # Destroy any session with the name 'session_token'\n\tunset( $_SESSION[ 'session_token' ] );\n}",
+      "start_line": 653,
+      "end_line": 655,
+      "code": "function destroySessionToken() {  # Destroy any session with the name 'session_token'\n\tunset( $_SESSION[ 'session_token' ] );\n}"
+    },
+    {
+      "id": "dvwa/includes/dvwaPage.inc.php:LCF31",
+      "path": "dvwa/includes/dvwaPage.inc.php",
+      "name": "tokenField",
+      "parameters": [],
+      "body": "{  # Return a field for the (CSRF) token\n\treturn \"<input type='hidden' name='user_token' value='{$_SESSION[ 'session_token' ]}' />\";\n}",
+      "start_line": 657,
+      "end_line": 659,
+      "code": "function tokenField() {  # Return a field for the (CSRF) token\n\treturn \"<input type='hidden' name='user_token' value='{$_SESSION[ 'session_token' ]}' />\";\n}"
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCF32",
+      "path": "dvwa/includes/Parsedown.php",
+      "name": "text",
+      "parameters": [
+        "$text"
+      ],
+      "body": "{\n        $Elements = $this->textElements($text);\n\n        # convert to markup\n        $markup = $this->elements($Elements);\n\n        # trim line breaks\n        $markup = trim($markup, \"\\n\");\n\n        return $markup;\n    }",
+      "start_line": 24,
+      "end_line": 35,
+      "code": "function text($text)\n    {\n        $Elements = $this->textElements($text);\n\n        # convert to markup\n        $markup = $this->elements($Elements);\n\n        # trim line breaks\n        $markup = trim($markup, \"\\n\");\n\n        return $markup;\n    }"
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCF33",
+      "path": "dvwa/includes/Parsedown.php",
+      "name": "textElements",
+      "parameters": [
+        "$text"
+      ],
+      "body": "{\n        # make sure no definitions are set\n        $this->DefinitionData = array();\n\n        # standardize line breaks\n        $text = str_replace(array(\"\\r\\n\", \"\\r\"), \"\\n\", $text);\n\n        # remove surrounding line breaks\n        $text = trim($text, \"\\n\");\n\n        # split text into lines\n        $lines = explode(\"\\n\", $text);\n\n        # iterate through lines to identify blocks\n        return $this->linesElements($lines);\n    }",
+      "start_line": 37,
+      "end_line": 53,
+      "code": "protected function textElements($text)\n    {\n        # make sure no definitions are set\n        $this->DefinitionData = array();\n\n        # standardize line breaks\n        $text = str_replace(array(\"\\r\\n\", \"\\r\"), \"\\n\", $text);\n\n        # remove surrounding line breaks\n        $text = trim($text, \"\\n\");\n\n        # split text into lines\n        $lines = explode(\"\\n\", $text);\n\n        # iterate through lines to identify blocks\n        return $this->linesElements($lines);\n    }"
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCF34",
+      "path": "dvwa/includes/Parsedown.php",
+      "name": "setBreaksEnabled",
+      "parameters": [
+        "$breaksEnabled"
+      ],
+      "body": "{\n        $this->breaksEnabled = $breaksEnabled;\n\n        return $this;\n    }",
+      "start_line": 59,
+      "end_line": 64,
+      "code": "function setBreaksEnabled($breaksEnabled)\n    {\n        $this->breaksEnabled = $breaksEnabled;\n\n        return $this;\n    }"
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCF35",
+      "path": "dvwa/includes/Parsedown.php",
+      "name": "setMarkupEscaped",
+      "parameters": [
+        "$markupEscaped"
+      ],
+      "body": "{\n        $this->markupEscaped = $markupEscaped;\n\n        return $this;\n    }",
+      "start_line": 68,
+      "end_line": 73,
+      "code": "function setMarkupEscaped($markupEscaped)\n    {\n        $this->markupEscaped = $markupEscaped;\n\n        return $this;\n    }"
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCF36",
+      "path": "dvwa/includes/Parsedown.php",
+      "name": "setUrlsLinked",
+      "parameters": [
+        "$urlsLinked"
+      ],
+      "body": "{\n        $this->urlsLinked = $urlsLinked;\n\n        return $this;\n    }",
+      "start_line": 77,
+      "end_line": 82,
+      "code": "function setUrlsLinked($urlsLinked)\n    {\n        $this->urlsLinked = $urlsLinked;\n\n        return $this;\n    }"
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCF37",
+      "path": "dvwa/includes/Parsedown.php",
+      "name": "setSafeMode",
+      "parameters": [
+        "$safeMode"
+      ],
+      "body": "{\n        $this->safeMode = (bool) $safeMode;\n\n        return $this;\n    }",
+      "start_line": 86,
+      "end_line": 91,
+      "code": "function setSafeMode($safeMode)\n    {\n        $this->safeMode = (bool) $safeMode;\n\n        return $this;\n    }"
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCF38",
+      "path": "dvwa/includes/Parsedown.php",
+      "name": "setStrictMode",
+      "parameters": [
+        "$strictMode"
+      ],
+      "body": "{\n        $this->strictMode = (bool) $strictMode;\n\n        return $this;\n    }",
+      "start_line": 95,
+      "end_line": 100,
+      "code": "function setStrictMode($strictMode)\n    {\n        $this->strictMode = (bool) $strictMode;\n\n        return $this;\n    }"
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCF39",
+      "path": "dvwa/includes/Parsedown.php",
+      "name": "lines",
+      "parameters": [
+        "array $lines"
+      ],
+      "body": "{\n        return $this->elements($this->linesElements($lines));\n    }",
+      "start_line": 162,
+      "end_line": 165,
+      "code": "protected function lines(array $lines)\n    {\n        return $this->elements($this->linesElements($lines));\n    }"
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCF40",
+      "path": "dvwa/includes/Parsedown.php",
+      "name": "linesElements",
+      "parameters": [
+        "array $lines"
+      ],
+      "body": "{\n        $Elements = array();\n        $CurrentBlock = null;\n\n        foreach ($lines as $line)\n        {\n            if (chop($line) === '')\n            {\n                if (isset($CurrentBlock))\n                {\n                    $CurrentBlock['interrupted'] = (isset($CurrentBlock['interrupted'])\n                        ? $CurrentBlock['interrupted'] + 1 : 1\n                    );\n                }\n\n                continue;\n            }\n\n            while (($beforeTab = strstr($line, \"\\t\", true)) !== false)\n            {\n                $shortage = 4 - mb_strlen($beforeTab, 'utf-8') % 4;\n\n                $line = $beforeTab\n                    . str_repeat(' ', $shortage)\n                    . substr($line, strlen($beforeTab) + 1)\n                ;\n            }\n\n            $indent = strspn($line, ' ');\n\n            $text = $indent > 0 ? substr($line, $indent) : $line;\n\n            # ~\n\n            $Line = array('body' => $line, 'indent' => $indent, 'text' => $text);\n\n            # ~\n\n            if (isset($CurrentBlock['continuable']))\n            {\n                $methodName = 'block' . $CurrentBlock['type'] . 'Continue';\n                $Block = $this->$methodName($Line, $CurrentBlock);\n\n                if (isset($Block))\n                {\n                    $CurrentBlock = $Block;\n\n                    continue;\n                }\n                else\n                {\n                    if ($this->isBlockCompletable($CurrentBlock['type']))\n                    {\n                        $methodName = 'block' . $CurrentBlock['type'] . 'Complete';\n                        $CurrentBlock = $this->$methodName($CurrentBlock);\n                    }\n                }\n            }\n\n            # ~\n\n            $marker = $text[0];\n\n            # ~\n\n            $blockTypes = $this->unmarkedBlockTypes;\n\n            if (isset($this->BlockTypes[$marker]))\n            {\n                foreach ($this->BlockTypes[$marker] as $blockType)\n                {\n                    $blockTypes []= $blockType;\n                }\n            }\n\n            #\n            # ~\n\n            foreach ($blockTypes as $blockType)\n            {\n                $Block = $this->{\"block$blockType\"}($Line, $CurrentBlock);\n\n                if (isset($Block))\n                {\n                    $Block['type'] = $blockType;\n\n                    if ( ! isset($Block['identified']))\n                    {\n                        if (isset($CurrentBlock))\n                        {\n                            $Elements[] = $this->extractElement($CurrentBlock);\n                        }\n\n                        $Block['identified'] = true;\n                    }\n\n                    if ($this->isBlockContinuable($blockType))\n                    {\n                        $Block['continuable'] = true;\n                    }\n\n                    $CurrentBlock = $Block;\n\n                    continue 2;\n                }\n            }\n\n            # ~\n\n            if (isset($CurrentBlock) and $CurrentBlock['type'] === 'Paragraph')\n            {\n                $Block = $this->paragraphContinue($Line, $CurrentBlock);\n            }\n\n            if (isset($Block))\n            {\n                $CurrentBlock = $Block;\n            }\n            else\n            {\n                if (isset($CurrentBlock))\n                {\n                    $Elements[] = $this->extractElement($CurrentBlock);\n                }\n\n                $CurrentBlock = $this->paragraph($Line);\n\n                $CurrentBlock['identified'] = true;\n            }\n        }\n\n        # ~\n\n        if (isset($CurrentBlock['continuable']) and $this->isBlockCompletable($CurrentBlock['type']))\n        {\n            $methodName = 'block' . $CurrentBlock['type'] . 'Complete';\n            $CurrentBlock = $this->$methodName($CurrentBlock);\n        }\n\n        # ~\n\n        if (isset($CurrentBlock))\n        {\n            $Elements[] = $this->extractElement($CurrentBlock);\n        }\n\n        # ~\n\n        return $Elements;\n    }",
+      "start_line": 167,
+      "end_line": 317,
+      "code": "protected function linesElements(array $lines)\n    {\n        $Elements = array();\n        $CurrentBlock = null;\n\n        foreach ($lines as $line)\n        {\n            if (chop($line) === '')\n            {\n                if (isset($CurrentBlock))\n                {\n                    $CurrentBlock['interrupted'] = (isset($CurrentBlock['interrupted'])\n                        ? $CurrentBlock['interrupted'] + 1 : 1\n                    );\n                }\n\n                continue;\n            }\n\n            while (($beforeTab = strstr($line, \"\\t\", true)) !== false)\n            {\n                $shortage = 4 - mb_strlen($beforeTab, 'utf-8') % 4;\n\n                $line = $beforeTab\n                    . str_repeat(' ', $shortage)\n                    . substr($line, strlen($beforeTab) + 1)\n                ;\n            }\n\n            $indent = strspn($line, ' ');\n\n            $text = $indent > 0 ? substr($line, $indent) : $line;\n\n            # ~\n\n            $Line = array('body' => $line, 'indent' => $indent, 'text' => $text);\n\n            # ~\n\n            if (isset($CurrentBlock['continuable']))\n            {\n                $methodName = 'block' . $CurrentBlock['type'] . 'Continue';\n                $Block = $this->$methodName($Line, $CurrentBlock);\n\n                if (isset($Block))\n                {\n                    $CurrentBlock = $Block;\n\n                    continue;\n                }\n                else\n                {\n                    if ($this->isBlockCompletable($CurrentBlock['type']))\n                    {\n                        $methodName = 'block' . $CurrentBlock['type'] . 'Complete';\n                        $CurrentBlock = $this->$methodName($CurrentBlock);\n                    }\n                }\n            }\n\n            # ~\n\n            $marker = $text[0];\n\n            # ~\n\n            $blockTypes = $this->unmarkedBlockTypes;\n\n            if (isset($this->BlockTypes[$marker]))\n            {\n                foreach ($this->BlockTypes[$marker] as $blockType)\n                {\n                    $blockTypes []= $blockType;\n                }\n            }\n\n            #\n            # ~\n\n            foreach ($blockTypes as $blockType)\n            {\n                $Block = $this->{\"block$blockType\"}($Line, $CurrentBlock);\n\n                if (isset($Block))\n                {\n                    $Block['type'] = $blockType;\n\n                    if ( ! isset($Block['identified']))\n                    {\n                        if (isset($CurrentBlock))\n                        {\n                            $Elements[] = $this->extractElement($CurrentBlock);\n                        }\n\n                        $Block['identified'] = true;\n                    }\n\n                    if ($this->isBlockContinuable($blockType))\n                    {\n                        $Block['continuable'] = true;\n                    }\n\n                    $CurrentBlock = $Block;\n\n                    continue 2;\n                }\n            }\n\n            # ~\n\n            if (isset($CurrentBlock) and $CurrentBlock['type'] === 'Paragraph')\n            {\n                $Block = $this->paragraphContinue($Line, $CurrentBlock);\n            }\n\n            if (isset($Block))\n            {\n                $CurrentBlock = $Block;\n            }\n            else\n            {\n                if (isset($CurrentBlock))\n                {\n                    $Elements[] = $this->extractElement($CurrentBlock);\n                }\n\n                $CurrentBlock = $this->paragraph($Line);\n\n                $CurrentBlock['identified'] = true;\n            }\n        }\n\n        # ~\n\n        if (isset($CurrentBlock['continuable']) and $this->isBlockCompletable($CurrentBlock['type']))\n        {\n            $methodName = 'block' . $CurrentBlock['type'] . 'Complete';\n            $CurrentBlock = $this->$methodName($CurrentBlock);\n        }\n\n        # ~\n\n        if (isset($CurrentBlock))\n        {\n            $Elements[] = $this->extractElement($CurrentBlock);\n        }\n\n        # ~\n\n        return $Elements;\n    }"
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCF41",
+      "path": "dvwa/includes/Parsedown.php",
+      "name": "extractElement",
+      "parameters": [
+        "array $Component"
+      ],
+      "body": "{\n        if ( ! isset($Component['element']))\n        {\n            if (isset($Component['markup']))\n            {\n                $Component['element'] = array('rawHtml' => $Component['markup']);\n            }\n            elseif (isset($Component['hidden']))\n            {\n                $Component['element'] = array();\n            }\n        }\n\n        return $Component['element'];\n    }",
+      "start_line": 319,
+      "end_line": 334,
+      "code": "protected function extractElement(array $Component)\n    {\n        if ( ! isset($Component['element']))\n        {\n            if (isset($Component['markup']))\n            {\n                $Component['element'] = array('rawHtml' => $Component['markup']);\n            }\n            elseif (isset($Component['hidden']))\n            {\n                $Component['element'] = array();\n            }\n        }\n\n        return $Component['element'];\n    }"
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCF42",
+      "path": "dvwa/includes/Parsedown.php",
+      "name": "isBlockContinuable",
+      "parameters": [
+        "$Type"
+      ],
+      "body": "{\n        return method_exists($this, 'block' . $Type . 'Continue');\n    }",
+      "start_line": 336,
+      "end_line": 339,
+      "code": "protected function isBlockContinuable($Type)\n    {\n        return method_exists($this, 'block' . $Type . 'Continue');\n    }"
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCF43",
+      "path": "dvwa/includes/Parsedown.php",
+      "name": "isBlockCompletable",
+      "parameters": [
+        "$Type"
+      ],
+      "body": "{\n        return method_exists($this, 'block' . $Type . 'Complete');\n    }",
+      "start_line": 341,
+      "end_line": 344,
+      "code": "protected function isBlockCompletable($Type)\n    {\n        return method_exists($this, 'block' . $Type . 'Complete');\n    }"
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCF44",
+      "path": "dvwa/includes/Parsedown.php",
+      "name": "blockCode",
+      "parameters": [
+        "$Line",
+        "$Block = null"
+      ],
+      "body": "{\n        if (isset($Block) and $Block['type'] === 'Paragraph' and ! isset($Block['interrupted']))\n        {\n            return;\n        }\n\n        if ($Line['indent'] >= 4)\n        {\n            $text = substr($Line['body'], 4);\n\n            $Block = array(\n                'element' => array(\n                    'name' => 'pre',\n                    'element' => array(\n                        'name' => 'code',\n                        'text' => $text,\n                    ),\n                ),\n            );\n\n            return $Block;\n        }\n    }",
+      "start_line": 349,
+      "end_line": 372,
+      "code": "protected function blockCode($Line, $Block = null)\n    {\n        if (isset($Block) and $Block['type'] === 'Paragraph' and ! isset($Block['interrupted']))\n        {\n            return;\n        }\n\n        if ($Line['indent'] >= 4)\n        {\n            $text = substr($Line['body'], 4);\n\n            $Block = array(\n                'element' => array(\n                    'name' => 'pre',\n                    'element' => array(\n                        'name' => 'code',\n                        'text' => $text,\n                    ),\n                ),\n            );\n\n            return $Block;\n        }\n    }"
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCF45",
+      "path": "dvwa/includes/Parsedown.php",
+      "name": "blockCodeContinue",
+      "parameters": [
+        "$Line",
+        "$Block"
+      ],
+      "body": "{\n        if ($Line['indent'] >= 4)\n        {\n            if (isset($Block['interrupted']))\n            {\n                $Block['element']['element']['text'] .= str_repeat(\"\\n\", $Block['interrupted']);\n\n                unset($Block['interrupted']);\n            }\n\n            $Block['element']['element']['text'] .= \"\\n\";\n\n            $text = substr($Line['body'], 4);\n\n            $Block['element']['element']['text'] .= $text;\n\n            return $Block;\n        }\n    }",
+      "start_line": 374,
+      "end_line": 393,
+      "code": "protected function blockCodeContinue($Line, $Block)\n    {\n        if ($Line['indent'] >= 4)\n        {\n            if (isset($Block['interrupted']))\n            {\n                $Block['element']['element']['text'] .= str_repeat(\"\\n\", $Block['interrupted']);\n\n                unset($Block['interrupted']);\n            }\n\n            $Block['element']['element']['text'] .= \"\\n\";\n\n            $text = substr($Line['body'], 4);\n\n            $Block['element']['element']['text'] .= $text;\n\n            return $Block;\n        }\n    }"
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCF46",
+      "path": "dvwa/includes/Parsedown.php",
+      "name": "blockCodeComplete",
+      "parameters": [
+        "$Block"
+      ],
+      "body": "{\n        return $Block;\n    }",
+      "start_line": 395,
+      "end_line": 398,
+      "code": "protected function blockCodeComplete($Block)\n    {\n        return $Block;\n    }"
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCF47",
+      "path": "dvwa/includes/Parsedown.php",
+      "name": "blockComment",
+      "parameters": [
+        "$Line"
+      ],
+      "body": "{\n        if ($this->markupEscaped or $this->safeMode)\n        {\n            return;\n        }\n\n        if (strpos($Line['text'], '<!--') === 0)\n        {\n            $Block = array(\n                'element' => array(\n                    'rawHtml' => $Line['body'],\n                    'autobreak' => true,\n                ),\n            );\n\n            if (strpos($Line['text'], '-->') !== false)\n            {\n                $Block['closed'] = true;\n            }\n\n            return $Block;\n        }\n    }",
+      "start_line": 403,
+      "end_line": 426,
+      "code": "protected function blockComment($Line)\n    {\n        if ($this->markupEscaped or $this->safeMode)\n        {\n            return;\n        }\n\n        if (strpos($Line['text'], '<!--') === 0)\n        {\n            $Block = array(\n                'element' => array(\n                    'rawHtml' => $Line['body'],\n                    'autobreak' => true,\n                ),\n            );\n\n            if (strpos($Line['text'], '-->') !== false)\n            {\n                $Block['closed'] = true;\n            }\n\n            return $Block;\n        }\n    }"
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCF48",
+      "path": "dvwa/includes/Parsedown.php",
+      "name": "blockCommentContinue",
+      "parameters": [
+        "$Line",
+        "array $Block"
+      ],
+      "body": "{\n        if (isset($Block['closed']))\n        {\n            return;\n        }\n\n        $Block['element']['rawHtml'] .= \"\\n\" . $Line['body'];\n\n        if (strpos($Line['text'], '-->') !== false)\n        {\n            $Block['closed'] = true;\n        }\n\n        return $Block;\n    }",
+      "start_line": 428,
+      "end_line": 443,
+      "code": "protected function blockCommentContinue($Line, array $Block)\n    {\n        if (isset($Block['closed']))\n        {\n            return;\n        }\n\n        $Block['element']['rawHtml'] .= \"\\n\" . $Line['body'];\n\n        if (strpos($Line['text'], '-->') !== false)\n        {\n            $Block['closed'] = true;\n        }\n\n        return $Block;\n    }"
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCF49",
+      "path": "dvwa/includes/Parsedown.php",
+      "name": "blockFencedCode",
+      "parameters": [
+        "$Line"
+      ],
+      "body": "{\n        $marker = $Line['text'][0];\n\n        $openerLength = strspn($Line['text'], $marker);\n\n        if ($openerLength < 3)\n        {\n            return;\n        }\n\n        $infostring = trim(substr($Line['text'], $openerLength), \"\\t \");\n\n        if (strpos($infostring, '`') !== false)\n        {\n            return;\n        }\n\n        $Element = array(\n            'name' => 'code',\n            'text' => '',\n        );\n\n        if ($infostring !== '')\n        {\n            /**\n             * https://www.w3.org/TR/2011/WD-html5-20110525/elements.html#classes\n             * Every HTML element may have a class attribute specified.\n             * The attribute, if specified, must have a value that is a set\n             * of space-separated tokens representing the various classes\n             * that the element belongs to.\n             * [...]\n             * The space characters, for the purposes of this specification,\n             * are U+0020 SPACE, U+0009 CHARACTER TABULATION (tab),\n             * U+000A LINE FEED (LF), U+000C FORM FEED (FF), and\n             * U+000D CARRIAGE RETURN (CR).\n             */\n            $language = substr($infostring, 0, strcspn($infostring, \" \\t\\n\\f\\r\"));\n\n            $Element['attributes'] = array('class' => \"language-$language\");\n        }\n\n        $Block = array(\n            'char' => $marker,\n            'openerLength' => $openerLength,\n            'element' => array(\n                'name' => 'pre',\n                'element' => $Element,\n            ),\n        );\n\n        return $Block;\n    }",
+      "start_line": 448,
+      "end_line": 500,
+      "code": "protected function blockFencedCode($Line)\n    {\n        $marker = $Line['text'][0];\n\n        $openerLength = strspn($Line['text'], $marker);\n\n        if ($openerLength < 3)\n        {\n            return;\n        }\n\n        $infostring = trim(substr($Line['text'], $openerLength), \"\\t \");\n\n        if (strpos($infostring, '`') !== false)\n        {\n            return;\n        }\n\n        $Element = array(\n            'name' => 'code',\n            'text' => '',\n        );\n\n        if ($infostring !== '')\n        {\n            /**\n             * https://www.w3.org/TR/2011/WD-html5-20110525/elements.html#classes\n             * Every HTML element may have a class attribute specified.\n             * The attribute, if specified, must have a value that is a set\n             * of space-separated tokens representing the various classes\n             * that the element belongs to.\n             * [...]\n             * The space characters, for the purposes of this specification,\n             * are U+0020 SPACE, U+0009 CHARACTER TABULATION (tab),\n             * U+000A LINE FEED (LF), U+000C FORM FEED (FF), and\n             * U+000D CARRIAGE RETURN (CR).\n             */\n            $language = substr($infostring, 0, strcspn($infostring, \" \\t\\n\\f\\r\"));\n\n            $Element['attributes'] = array('class' => \"language-$language\");\n        }\n\n        $Block = array(\n            'char' => $marker,\n            'openerLength' => $openerLength,\n            'element' => array(\n                'name' => 'pre',\n                'element' => $Element,\n            ),\n        );\n\n        return $Block;\n    }"
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCF50",
+      "path": "dvwa/includes/Parsedown.php",
+      "name": "blockFencedCodeContinue",
+      "parameters": [
+        "$Line",
+        "$Block"
+      ],
+      "body": "{\n        if (isset($Block['complete']))\n        {\n            return;\n        }\n\n        if (isset($Block['interrupted']))\n        {\n            $Block['element']['element']['text'] .= str_repeat(\"\\n\", $Block['interrupted']);\n\n            unset($Block['interrupted']);\n        }\n\n        if (($len = strspn($Line['text'], $Block['char'])) >= $Block['openerLength']\n            and chop(substr($Line['text'], $len), ' ') === ''\n        ) {\n            $Block['element']['element']['text'] = substr($Block['element']['element']['text'], 1);\n\n            $Block['complete'] = true;\n\n            return $Block;\n        }\n\n        $Block['element']['element']['text'] .= \"\\n\" . $Line['body'];\n\n        return $Block;\n    }",
+      "start_line": 502,
+      "end_line": 529,
+      "code": "protected function blockFencedCodeContinue($Line, $Block)\n    {\n        if (isset($Block['complete']))\n        {\n            return;\n        }\n\n        if (isset($Block['interrupted']))\n        {\n            $Block['element']['element']['text'] .= str_repeat(\"\\n\", $Block['interrupted']);\n\n            unset($Block['interrupted']);\n        }\n\n        if (($len = strspn($Line['text'], $Block['char'])) >= $Block['openerLength']\n            and chop(substr($Line['text'], $len), ' ') === ''\n        ) {\n            $Block['element']['element']['text'] = substr($Block['element']['element']['text'], 1);\n\n            $Block['complete'] = true;\n\n            return $Block;\n        }\n\n        $Block['element']['element']['text'] .= \"\\n\" . $Line['body'];\n\n        return $Block;\n    }"
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCF51",
+      "path": "dvwa/includes/Parsedown.php",
+      "name": "blockFencedCodeComplete",
+      "parameters": [
+        "$Block"
+      ],
+      "body": "{\n        return $Block;\n    }",
+      "start_line": 531,
+      "end_line": 534,
+      "code": "protected function blockFencedCodeComplete($Block)\n    {\n        return $Block;\n    }"
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCF52",
+      "path": "dvwa/includes/Parsedown.php",
+      "name": "blockHeader",
+      "parameters": [
+        "$Line"
+      ],
+      "body": "{\n        $level = strspn($Line['text'], '#');\n\n        if ($level > 6)\n        {\n            return;\n        }\n\n        $text = trim($Line['text'], '#');\n\n        if ($this->strictMode and isset($text[0]) and $text[0] !== ' ')\n        {\n            return;\n        }\n\n        $text = trim($text, ' ');\n\n        $Block = array(\n            'element' => array(\n                'name' => 'h' . $level,\n                'handler' => array(\n                    'function' => 'lineElements',\n                    'argument' => $text,\n                    'destination' => 'elements',\n                )\n            ),\n        );\n\n        return $Block;\n    }",
+      "start_line": 539,
+      "end_line": 569,
+      "code": "protected function blockHeader($Line)\n    {\n        $level = strspn($Line['text'], '#');\n\n        if ($level > 6)\n        {\n            return;\n        }\n\n        $text = trim($Line['text'], '#');\n\n        if ($this->strictMode and isset($text[0]) and $text[0] !== ' ')\n        {\n            return;\n        }\n\n        $text = trim($text, ' ');\n\n        $Block = array(\n            'element' => array(\n                'name' => 'h' . $level,\n                'handler' => array(\n                    'function' => 'lineElements',\n                    'argument' => $text,\n                    'destination' => 'elements',\n                )\n            ),\n        );\n\n        return $Block;\n    }"
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCF53",
+      "path": "dvwa/includes/Parsedown.php",
+      "name": "blockList",
+      "parameters": [
+        "$Line",
+        "array $CurrentBlock = null"
+      ],
+      "body": "{\n        list($name, $pattern) = $Line['text'][0] <= '-' ? array('ul', '[*+-]') : array('ol', '[0-9]{1,9}+[.\\)]');\n\n        if (preg_match('/^('.$pattern.'([ ]++|$))(.*+)/', $Line['text'], $matches))\n        {\n            $contentIndent = strlen($matches[2]);\n\n            if ($contentIndent >= 5)\n            {\n                $contentIndent -= 1;\n                $matches[1] = substr($matches[1], 0, -$contentIndent);\n                $matches[3] = str_repeat(' ', $contentIndent) . $matches[3];\n            }\n            elseif ($contentIndent === 0)\n            {\n                $matches[1] .= ' ';\n            }\n\n            $markerWithoutWhitespace = strstr($matches[1], ' ', true);\n\n            $Block = array(\n                'indent' => $Line['indent'],\n                'pattern' => $pattern,\n                'data' => array(\n                    'type' => $name,\n                    'marker' => $matches[1],\n                    'markerType' => ($name === 'ul' ? $markerWithoutWhitespace : substr($markerWithoutWhitespace, -1)),\n                ),\n                'element' => array(\n                    'name' => $name,\n                    'elements' => array(),\n                ),\n            );\n            $Block['data']['markerTypeRegex'] = preg_quote($Block['data']['markerType'], '/');\n\n            if ($name === 'ol')\n            {\n                $listStart = ltrim(strstr($matches[1], $Block['data']['markerType'], true), '0') ?: '0';\n\n                if ($listStart !== '1')\n                {\n                    if (\n                        isset($CurrentBlock)\n                        and $CurrentBlock['type'] === 'Paragraph'\n                        and ! isset($CurrentBlock['interrupted'])\n                    ) {\n                        return;\n                    }\n\n                    $Block['element']['attributes'] = array('start' => $listStart);\n                }\n            }\n\n            $Block['li'] = array(\n                'name' => 'li',\n                'handler' => array(\n                    'function' => 'li',\n                    'argument' => !empty($matches[3]) ? array($matches[3]) : array(),\n                    'destination' => 'elements'\n                )\n            );\n\n            $Block['element']['elements'] []= & $Block['li'];\n\n            return $Block;\n        }\n    }",
+      "start_line": 574,
+      "end_line": 641,
+      "code": "protected function blockList($Line, array $CurrentBlock = null)\n    {\n        list($name, $pattern) = $Line['text'][0] <= '-' ? array('ul', '[*+-]') : array('ol', '[0-9]{1,9}+[.\\)]');\n\n        if (preg_match('/^('.$pattern.'([ ]++|$))(.*+)/', $Line['text'], $matches))\n        {\n            $contentIndent = strlen($matches[2]);\n\n            if ($contentIndent >= 5)\n            {\n                $contentIndent -= 1;\n                $matches[1] = substr($matches[1], 0, -$contentIndent);\n                $matches[3] = str_repeat(' ', $contentIndent) . $matches[3];\n            }\n            elseif ($contentIndent === 0)\n            {\n                $matches[1] .= ' ';\n            }\n\n            $markerWithoutWhitespace = strstr($matches[1], ' ', true);\n\n            $Block = array(\n                'indent' => $Line['indent'],\n                'pattern' => $pattern,\n                'data' => array(\n                    'type' => $name,\n                    'marker' => $matches[1],\n                    'markerType' => ($name === 'ul' ? $markerWithoutWhitespace : substr($markerWithoutWhitespace, -1)),\n                ),\n                'element' => array(\n                    'name' => $name,\n                    'elements' => array(),\n                ),\n            );\n            $Block['data']['markerTypeRegex'] = preg_quote($Block['data']['markerType'], '/');\n\n            if ($name === 'ol')\n            {\n                $listStart = ltrim(strstr($matches[1], $Block['data']['markerType'], true), '0') ?: '0';\n\n                if ($listStart !== '1')\n                {\n                    if (\n                        isset($CurrentBlock)\n                        and $CurrentBlock['type'] === 'Paragraph'\n                        and ! isset($CurrentBlock['interrupted'])\n                    ) {\n                        return;\n                    }\n\n                    $Block['element']['attributes'] = array('start' => $listStart);\n                }\n            }\n\n            $Block['li'] = array(\n                'name' => 'li',\n                'handler' => array(\n                    'function' => 'li',\n                    'argument' => !empty($matches[3]) ? array($matches[3]) : array(),\n                    'destination' => 'elements'\n                )\n            );\n\n            $Block['element']['elements'] []= & $Block['li'];\n\n            return $Block;\n        }\n    }"
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCF54",
+      "path": "dvwa/includes/Parsedown.php",
+      "name": "blockListContinue",
+      "parameters": [
+        "$Line",
+        "array $Block"
+      ],
+      "body": "{\n        if (isset($Block['interrupted']) and empty($Block['li']['handler']['argument']))\n        {\n            return null;\n        }\n\n        $requiredIndent = ($Block['indent'] + strlen($Block['data']['marker']));\n\n        if ($Line['indent'] < $requiredIndent\n            and (\n                (\n                    $Block['data']['type'] === 'ol'\n                    and preg_match('/^[0-9]++'.$Block['data']['markerTypeRegex'].'(?:[ ]++(.*)|$)/', $Line['text'], $matches)\n                ) or (\n                    $Block['data']['type'] === 'ul'\n                    and preg_match('/^'.$Block['data']['markerTypeRegex'].'(?:[ ]++(.*)|$)/', $Line['text'], $matches)\n                )\n            )\n        ) {\n            if (isset($Block['interrupted']))\n            {\n                $Block['li']['handler']['argument'] []= '';\n\n                $Block['loose'] = true;\n\n                unset($Block['interrupted']);\n            }\n\n            unset($Block['li']);\n\n            $text = isset($matches[1]) ? $matches[1] : '';\n\n            $Block['indent'] = $Line['indent'];\n\n            $Block['li'] = array(\n                'name' => 'li',\n                'handler' => array(\n                    'function' => 'li',\n                    'argument' => array($text),\n                    'destination' => 'elements'\n                )\n            );\n\n            $Block['element']['elements'] []= & $Block['li'];\n\n            return $Block;\n        }\n        elseif ($Line['indent'] < $requiredIndent and $this->blockList($Line))\n        {\n            return null;\n        }\n\n        if ($Line['text'][0] === '[' and $this->blockReference($Line))\n        {\n            return $Block;\n        }\n\n        if ($Line['indent'] >= $requiredIndent)\n        {\n            if (isset($Block['interrupted']))\n            {\n                $Block['li']['handler']['argument'] []= '';\n\n                $Block['loose'] = true;\n\n                unset($Block['interrupted']);\n            }\n\n            $text = substr($Line['body'], $requiredIndent);\n\n            $Block['li']['handler']['argument'] []= $text;\n\n            return $Block;\n        }\n\n        if ( ! isset($Block['interrupted']))\n        {\n            $text = preg_replace('/^[ ]{0,'.$requiredIndent.'}+/', '', $Line['body']);\n\n            $Block['li']['handler']['argument'] []= $text;\n\n            return $Block;\n        }\n    }",
+      "start_line": 643,
+      "end_line": 727,
+      "code": "protected function blockListContinue($Line, array $Block)\n    {\n        if (isset($Block['interrupted']) and empty($Block['li']['handler']['argument']))\n        {\n            return null;\n        }\n\n        $requiredIndent = ($Block['indent'] + strlen($Block['data']['marker']));\n\n        if ($Line['indent'] < $requiredIndent\n            and (\n                (\n                    $Block['data']['type'] === 'ol'\n                    and preg_match('/^[0-9]++'.$Block['data']['markerTypeRegex'].'(?:[ ]++(.*)|$)/', $Line['text'], $matches)\n                ) or (\n                    $Block['data']['type'] === 'ul'\n                    and preg_match('/^'.$Block['data']['markerTypeRegex'].'(?:[ ]++(.*)|$)/', $Line['text'], $matches)\n                )\n            )\n        ) {\n            if (isset($Block['interrupted']))\n            {\n                $Block['li']['handler']['argument'] []= '';\n\n                $Block['loose'] = true;\n\n                unset($Block['interrupted']);\n            }\n\n            unset($Block['li']);\n\n            $text = isset($matches[1]) ? $matches[1] : '';\n\n            $Block['indent'] = $Line['indent'];\n\n            $Block['li'] = array(\n                'name' => 'li',\n                'handler' => array(\n                    'function' => 'li',\n                    'argument' => array($text),\n                    'destination' => 'elements'\n                )\n            );\n\n            $Block['element']['elements'] []= & $Block['li'];\n\n            return $Block;\n        }\n        elseif ($Line['indent'] < $requiredIndent and $this->blockList($Line))\n        {\n            return null;\n        }\n\n        if ($Line['text'][0] === '[' and $this->blockReference($Line))\n        {\n            return $Block;\n        }\n\n        if ($Line['indent'] >= $requiredIndent)\n        {\n            if (isset($Block['interrupted']))\n            {\n                $Block['li']['handler']['argument'] []= '';\n\n                $Block['loose'] = true;\n\n                unset($Block['interrupted']);\n            }\n\n            $text = substr($Line['body'], $requiredIndent);\n\n            $Block['li']['handler']['argument'] []= $text;\n\n            return $Block;\n        }\n\n        if ( ! isset($Block['interrupted']))\n        {\n            $text = preg_replace('/^[ ]{0,'.$requiredIndent.'}+/', '', $Line['body']);\n\n            $Block['li']['handler']['argument'] []= $text;\n\n            return $Block;\n        }\n    }"
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCF55",
+      "path": "dvwa/includes/Parsedown.php",
+      "name": "blockListComplete",
+      "parameters": [
+        "array $Block"
+      ],
+      "body": "{\n        if (isset($Block['loose']))\n        {\n            foreach ($Block['element']['elements'] as &$li)\n            {\n                if (end($li['handler']['argument']) !== '')\n                {\n                    $li['handler']['argument'] []= '';\n                }\n            }\n        }\n\n        return $Block;\n    }",
+      "start_line": 729,
+      "end_line": 743,
+      "code": "protected function blockListComplete(array $Block)\n    {\n        if (isset($Block['loose']))\n        {\n            foreach ($Block['element']['elements'] as &$li)\n            {\n                if (end($li['handler']['argument']) !== '')\n                {\n                    $li['handler']['argument'] []= '';\n                }\n            }\n        }\n\n        return $Block;\n    }"
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCF56",
+      "path": "dvwa/includes/Parsedown.php",
+      "name": "blockQuote",
+      "parameters": [
+        "$Line"
+      ],
+      "body": "{\n        if (preg_match('/^>[ ]?+(.*+)/', $Line['text'], $matches))\n        {\n            $Block = array(\n                'element' => array(\n                    'name' => 'blockquote',\n                    'handler' => array(\n                        'function' => 'linesElements',\n                        'argument' => (array) $matches[1],\n                        'destination' => 'elements',\n                    )\n                ),\n            );\n\n            return $Block;\n        }\n    }",
+      "start_line": 748,
+      "end_line": 765,
+      "code": "protected function blockQuote($Line)\n    {\n        if (preg_match('/^>[ ]?+(.*+)/', $Line['text'], $matches))\n        {\n            $Block = array(\n                'element' => array(\n                    'name' => 'blockquote',\n                    'handler' => array(\n                        'function' => 'linesElements',\n                        'argument' => (array) $matches[1],\n                        'destination' => 'elements',\n                    )\n                ),\n            );\n\n            return $Block;\n        }\n    }"
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCF57",
+      "path": "dvwa/includes/Parsedown.php",
+      "name": "blockQuoteContinue",
+      "parameters": [
+        "$Line",
+        "array $Block"
+      ],
+      "body": "{\n        if (isset($Block['interrupted']))\n        {\n            return;\n        }\n\n        if ($Line['text'][0] === '>' and preg_match('/^>[ ]?+(.*+)/', $Line['text'], $matches))\n        {\n            $Block['element']['handler']['argument'] []= $matches[1];\n\n            return $Block;\n        }\n\n        if ( ! isset($Block['interrupted']))\n        {\n            $Block['element']['handler']['argument'] []= $Line['text'];\n\n            return $Block;\n        }\n    }",
+      "start_line": 767,
+      "end_line": 787,
+      "code": "protected function blockQuoteContinue($Line, array $Block)\n    {\n        if (isset($Block['interrupted']))\n        {\n            return;\n        }\n\n        if ($Line['text'][0] === '>' and preg_match('/^>[ ]?+(.*+)/', $Line['text'], $matches))\n        {\n            $Block['element']['handler']['argument'] []= $matches[1];\n\n            return $Block;\n        }\n\n        if ( ! isset($Block['interrupted']))\n        {\n            $Block['element']['handler']['argument'] []= $Line['text'];\n\n            return $Block;\n        }\n    }"
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCF58",
+      "path": "dvwa/includes/Parsedown.php",
+      "name": "blockRule",
+      "parameters": [
+        "$Line"
+      ],
+      "body": "{\n        $marker = $Line['text'][0];\n\n        if (substr_count($Line['text'], $marker) >= 3 and chop($Line['text'], \" $marker\") === '')\n        {\n            $Block = array(\n                'element' => array(\n                    'name' => 'hr',\n                ),\n            );\n\n            return $Block;\n        }\n    }",
+      "start_line": 792,
+      "end_line": 806,
+      "code": "protected function blockRule($Line)\n    {\n        $marker = $Line['text'][0];\n\n        if (substr_count($Line['text'], $marker) >= 3 and chop($Line['text'], \" $marker\") === '')\n        {\n            $Block = array(\n                'element' => array(\n                    'name' => 'hr',\n                ),\n            );\n\n            return $Block;\n        }\n    }"
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCF59",
+      "path": "dvwa/includes/Parsedown.php",
+      "name": "blockSetextHeader",
+      "parameters": [
+        "$Line",
+        "array $Block = null"
+      ],
+      "body": "{\n        if ( ! isset($Block) or $Block['type'] !== 'Paragraph' or isset($Block['interrupted']))\n        {\n            return;\n        }\n\n        if ($Line['indent'] < 4 and chop(chop($Line['text'], ' '), $Line['text'][0]) === '')\n        {\n            $Block['element']['name'] = $Line['text'][0] === '=' ? 'h1' : 'h2';\n\n            return $Block;\n        }\n    }",
+      "start_line": 811,
+      "end_line": 824,
+      "code": "protected function blockSetextHeader($Line, array $Block = null)\n    {\n        if ( ! isset($Block) or $Block['type'] !== 'Paragraph' or isset($Block['interrupted']))\n        {\n            return;\n        }\n\n        if ($Line['indent'] < 4 and chop(chop($Line['text'], ' '), $Line['text'][0]) === '')\n        {\n            $Block['element']['name'] = $Line['text'][0] === '=' ? 'h1' : 'h2';\n\n            return $Block;\n        }\n    }"
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCF60",
+      "path": "dvwa/includes/Parsedown.php",
+      "name": "blockMarkup",
+      "parameters": [
+        "$Line"
+      ],
+      "body": "{\n        if ($this->markupEscaped or $this->safeMode)\n        {\n            return;\n        }\n\n        if (preg_match('/^<[\\/]?+(\\w*)(?:[ ]*+'.$this->regexHtmlAttribute.')*+[ ]*+(\\/)?>/', $Line['text'], $matches))\n        {\n            $element = strtolower($matches[1]);\n\n            if (in_array($element, $this->textLevelElements))\n            {\n                return;\n            }\n\n            $Block = array(\n                'name' => $matches[1],\n                'element' => array(\n                    'rawHtml' => $Line['text'],\n                    'autobreak' => true,\n                ),\n            );\n\n            return $Block;\n        }\n    }",
+      "start_line": 829,
+      "end_line": 855,
+      "code": "protected function blockMarkup($Line)\n    {\n        if ($this->markupEscaped or $this->safeMode)\n        {\n            return;\n        }\n\n        if (preg_match('/^<[\\/]?+(\\w*)(?:[ ]*+'.$this->regexHtmlAttribute.')*+[ ]*+(\\/)?>/', $Line['text'], $matches))\n        {\n            $element = strtolower($matches[1]);\n\n            if (in_array($element, $this->textLevelElements))\n            {\n                return;\n            }\n\n            $Block = array(\n                'name' => $matches[1],\n                'element' => array(\n                    'rawHtml' => $Line['text'],\n                    'autobreak' => true,\n                ),\n            );\n\n            return $Block;\n        }\n    }"
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCF61",
+      "path": "dvwa/includes/Parsedown.php",
+      "name": "blockMarkupContinue",
+      "parameters": [
+        "$Line",
+        "array $Block"
+      ],
+      "body": "{\n        if (isset($Block['closed']) or isset($Block['interrupted']))\n        {\n            return;\n        }\n\n        $Block['element']['rawHtml'] .= \"\\n\" . $Line['body'];\n\n        return $Block;\n    }",
+      "start_line": 857,
+      "end_line": 867,
+      "code": "protected function blockMarkupContinue($Line, array $Block)\n    {\n        if (isset($Block['closed']) or isset($Block['interrupted']))\n        {\n            return;\n        }\n\n        $Block['element']['rawHtml'] .= \"\\n\" . $Line['body'];\n\n        return $Block;\n    }"
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCF62",
+      "path": "dvwa/includes/Parsedown.php",
+      "name": "blockReference",
+      "parameters": [
+        "$Line"
+      ],
+      "body": "{\n        if (strpos($Line['text'], ']') !== false\n            and preg_match('/^\\[(.+?)\\]:[ ]*+<?(\\S+?)>?(?:[ ]+[\"\\'(](.+)[\"\\')])?[ ]*+$/', $Line['text'], $matches)\n        ) {\n            $id = strtolower($matches[1]);\n\n            $Data = array(\n                'url' => $matches[2],\n                'title' => isset($matches[3]) ? $matches[3] : null,\n            );\n\n            $this->DefinitionData['Reference'][$id] = $Data;\n\n            $Block = array(\n                'element' => array(),\n            );\n\n            return $Block;\n        }\n    }",
+      "start_line": 872,
+      "end_line": 892,
+      "code": "protected function blockReference($Line)\n    {\n        if (strpos($Line['text'], ']') !== false\n            and preg_match('/^\\[(.+?)\\]:[ ]*+<?(\\S+?)>?(?:[ ]+[\"\\'(](.+)[\"\\')])?[ ]*+$/', $Line['text'], $matches)\n        ) {\n            $id = strtolower($matches[1]);\n\n            $Data = array(\n                'url' => $matches[2],\n                'title' => isset($matches[3]) ? $matches[3] : null,\n            );\n\n            $this->DefinitionData['Reference'][$id] = $Data;\n\n            $Block = array(\n                'element' => array(),\n            );\n\n            return $Block;\n        }\n    }"
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCF63",
+      "path": "dvwa/includes/Parsedown.php",
+      "name": "blockTable",
+      "parameters": [
+        "$Line",
+        "array $Block = null"
+      ],
+      "body": "{\n        if ( ! isset($Block) or $Block['type'] !== 'Paragraph' or isset($Block['interrupted']))\n        {\n            return;\n        }\n\n        if (\n            strpos($Block['element']['handler']['argument'], '|') === false\n            and strpos($Line['text'], '|') === false\n            and strpos($Line['text'], ':') === false\n            or strpos($Block['element']['handler']['argument'], \"\\n\") !== false\n        ) {\n            return;\n        }\n\n        if (chop($Line['text'], ' -:|') !== '')\n        {\n            return;\n        }\n\n        $alignments = array();\n\n        $divider = $Line['text'];\n\n        $divider = trim($divider);\n        $divider = trim($divider, '|');\n\n        $dividerCells = explode('|', $divider);\n\n        foreach ($dividerCells as $dividerCell)\n        {\n            $dividerCell = trim($dividerCell);\n\n            if ($dividerCell === '')\n            {\n                return;\n            }\n\n            $alignment = null;\n\n            if ($dividerCell[0] === ':')\n            {\n                $alignment = 'left';\n            }\n\n            if (substr($dividerCell, - 1) === ':')\n            {\n                $alignment = $alignment === 'left' ? 'center' : 'right';\n            }\n\n            $alignments []= $alignment;\n        }\n\n        # ~\n\n        $HeaderElements = array();\n\n        $header = $Block['element']['handler']['argument'];\n\n        $header = trim($header);\n        $header = trim($header, '|');\n\n        $headerCells = explode('|', $header);\n\n        if (count($headerCells) !== count($alignments))\n        {\n            return;\n        }\n\n        foreach ($headerCells as $index => $headerCell)\n        {\n            $headerCell = trim($headerCell);\n\n            $HeaderElement = array(\n                'name' => 'th',\n                'handler' => array(\n                    'function' => 'lineElements',\n                    'argument' => $headerCell,\n                    'destination' => 'elements',\n                )\n            );\n\n            if (isset($alignments[$index]))\n            {\n                $alignment = $alignments[$index];\n\n                $HeaderElement['attributes'] = array(\n                    'style' => \"text-align: $alignment;\",\n                );\n            }\n\n            $HeaderElements []= $HeaderElement;\n        }\n\n        # ~\n\n        $Block = array(\n            'alignments' => $alignments,\n            'identified' => true,\n            'element' => array(\n                'name' => 'table',\n                'elements' => array(),\n            ),\n        );\n\n        $Block['element']['elements'] []= array(\n            'name' => 'thead',\n        );\n\n        $Block['element']['elements'] []= array(\n            'name' => 'tbody',\n            'elements' => array(),\n        );\n\n        $Block['element']['elements'][0]['elements'] []= array(\n            'name' => 'tr',\n            'elements' => $HeaderElements,\n        );\n\n        return $Block;\n    }",
+      "start_line": 897,
+      "end_line": 1018,
+      "code": "protected function blockTable($Line, array $Block = null)\n    {\n        if ( ! isset($Block) or $Block['type'] !== 'Paragraph' or isset($Block['interrupted']))\n        {\n            return;\n        }\n\n        if (\n            strpos($Block['element']['handler']['argument'], '|') === false\n            and strpos($Line['text'], '|') === false\n            and strpos($Line['text'], ':') === false\n            or strpos($Block['element']['handler']['argument'], \"\\n\") !== false\n        ) {\n            return;\n        }\n\n        if (chop($Line['text'], ' -:|') !== '')\n        {\n            return;\n        }\n\n        $alignments = array();\n\n        $divider = $Line['text'];\n\n        $divider = trim($divider);\n        $divider = trim($divider, '|');\n\n        $dividerCells = explode('|', $divider);\n\n        foreach ($dividerCells as $dividerCell)\n        {\n            $dividerCell = trim($dividerCell);\n\n            if ($dividerCell === '')\n            {\n                return;\n            }\n\n            $alignment = null;\n\n            if ($dividerCell[0] === ':')\n            {\n                $alignment = 'left';\n            }\n\n            if (substr($dividerCell, - 1) === ':')\n            {\n                $alignment = $alignment === 'left' ? 'center' : 'right';\n            }\n\n            $alignments []= $alignment;\n        }\n\n        # ~\n\n        $HeaderElements = array();\n\n        $header = $Block['element']['handler']['argument'];\n\n        $header = trim($header);\n        $header = trim($header, '|');\n\n        $headerCells = explode('|', $header);\n\n        if (count($headerCells) !== count($alignments))\n        {\n            return;\n        }\n\n        foreach ($headerCells as $index => $headerCell)\n        {\n            $headerCell = trim($headerCell);\n\n            $HeaderElement = array(\n                'name' => 'th',\n                'handler' => array(\n                    'function' => 'lineElements',\n                    'argument' => $headerCell,\n                    'destination' => 'elements',\n                )\n            );\n\n            if (isset($alignments[$index]))\n            {\n                $alignment = $alignments[$index];\n\n                $HeaderElement['attributes'] = array(\n                    'style' => \"text-align: $alignment;\",\n                );\n            }\n\n            $HeaderElements []= $HeaderElement;\n        }\n\n        # ~\n\n        $Block = array(\n            'alignments' => $alignments,\n            'identified' => true,\n            'element' => array(\n                'name' => 'table',\n                'elements' => array(),\n            ),\n        );\n\n        $Block['element']['elements'] []= array(\n            'name' => 'thead',\n        );\n\n        $Block['element']['elements'] []= array(\n            'name' => 'tbody',\n            'elements' => array(),\n        );\n\n        $Block['element']['elements'][0]['elements'] []= array(\n            'name' => 'tr',\n            'elements' => $HeaderElements,\n        );\n\n        return $Block;\n    }"
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCF64",
+      "path": "dvwa/includes/Parsedown.php",
+      "name": "blockTableContinue",
+      "parameters": [
+        "$Line",
+        "array $Block"
+      ],
+      "body": "{\n        if (isset($Block['interrupted']))\n        {\n            return;\n        }\n\n        if (count($Block['alignments']) === 1 or $Line['text'][0] === '|' or strpos($Line['text'], '|'))\n        {\n            $Elements = array();\n\n            $row = $Line['text'];\n\n            $row = trim($row);\n            $row = trim($row, '|');\n\n            preg_match_all('/(?:(\\\\\\\\[|])|[^|`]|`[^`]++`|`)++/', $row, $matches);\n\n            $cells = array_slice($matches[0], 0, count($Block['alignments']));\n\n            foreach ($cells as $index => $cell)\n            {\n                $cell = trim($cell);\n\n                $Element = array(\n                    'name' => 'td',\n                    'handler' => array(\n                        'function' => 'lineElements',\n                        'argument' => $cell,\n                        'destination' => 'elements',\n                    )\n                );\n\n                if (isset($Block['alignments'][$index]))\n                {\n                    $Element['attributes'] = array(\n                        'style' => 'text-align: ' . $Block['alignments'][$index] . ';',\n                    );\n                }\n\n                $Elements []= $Element;\n            }\n\n            $Element = array(\n                'name' => 'tr',\n                'elements' => $Elements,\n            );\n\n            $Block['element']['elements'][1]['elements'] []= $Element;\n\n            return $Block;\n        }\n    }",
+      "start_line": 1020,
+      "end_line": 1072,
+      "code": "protected function blockTableContinue($Line, array $Block)\n    {\n        if (isset($Block['interrupted']))\n        {\n            return;\n        }\n\n        if (count($Block['alignments']) === 1 or $Line['text'][0] === '|' or strpos($Line['text'], '|'))\n        {\n            $Elements = array();\n\n            $row = $Line['text'];\n\n            $row = trim($row);\n            $row = trim($row, '|');\n\n            preg_match_all('/(?:(\\\\\\\\[|])|[^|`]|`[^`]++`|`)++/', $row, $matches);\n\n            $cells = array_slice($matches[0], 0, count($Block['alignments']));\n\n            foreach ($cells as $index => $cell)\n            {\n                $cell = trim($cell);\n\n                $Element = array(\n                    'name' => 'td',\n                    'handler' => array(\n                        'function' => 'lineElements',\n                        'argument' => $cell,\n                        'destination' => 'elements',\n                    )\n                );\n\n                if (isset($Block['alignments'][$index]))\n                {\n                    $Element['attributes'] = array(\n                        'style' => 'text-align: ' . $Block['alignments'][$index] . ';',\n                    );\n                }\n\n                $Elements []= $Element;\n            }\n\n            $Element = array(\n                'name' => 'tr',\n                'elements' => $Elements,\n            );\n\n            $Block['element']['elements'][1]['elements'] []= $Element;\n\n            return $Block;\n        }\n    }"
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCF65",
+      "path": "dvwa/includes/Parsedown.php",
+      "name": "paragraph",
+      "parameters": [
+        "$Line"
+      ],
+      "body": "{\n        return array(\n            'type' => 'Paragraph',\n            'element' => array(\n                'name' => 'p',\n                'handler' => array(\n                    'function' => 'lineElements',\n                    'argument' => $Line['text'],\n                    'destination' => 'elements',\n                ),\n            ),\n        );\n    }",
+      "start_line": 1078,
+      "end_line": 1091,
+      "code": "protected function paragraph($Line)\n    {\n        return array(\n            'type' => 'Paragraph',\n            'element' => array(\n                'name' => 'p',\n                'handler' => array(\n                    'function' => 'lineElements',\n                    'argument' => $Line['text'],\n                    'destination' => 'elements',\n                ),\n            ),\n        );\n    }"
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCF66",
+      "path": "dvwa/includes/Parsedown.php",
+      "name": "paragraphContinue",
+      "parameters": [
+        "$Line",
+        "array $Block"
+      ],
+      "body": "{\n        if (isset($Block['interrupted']))\n        {\n            return;\n        }\n\n        $Block['element']['handler']['argument'] .= \"\\n\".$Line['text'];\n\n        return $Block;\n    }",
+      "start_line": 1093,
+      "end_line": 1103,
+      "code": "protected function paragraphContinue($Line, array $Block)\n    {\n        if (isset($Block['interrupted']))\n        {\n            return;\n        }\n\n        $Block['element']['handler']['argument'] .= \"\\n\".$Line['text'];\n\n        return $Block;\n    }"
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCF67",
+      "path": "dvwa/includes/Parsedown.php",
+      "name": "line",
+      "parameters": [
+        "$text",
+        "$nonNestables = array()"
+      ],
+      "body": "{\n        return $this->elements($this->lineElements($text, $nonNestables));\n    }",
+      "start_line": 1130,
+      "end_line": 1133,
+      "code": "public function line($text, $nonNestables = array())\n    {\n        return $this->elements($this->lineElements($text, $nonNestables));\n    }"
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCF68",
+      "path": "dvwa/includes/Parsedown.php",
+      "name": "lineElements",
+      "parameters": [
+        "$text",
+        "$nonNestables = array()"
+      ],
+      "body": "{\n        # standardize line breaks\n        $text = str_replace(array(\"\\r\\n\", \"\\r\"), \"\\n\", $text);\n\n        $Elements = array();\n\n        $nonNestables = (empty($nonNestables)\n            ? array()\n            : array_combine($nonNestables, $nonNestables)\n        );\n\n        # $excerpt is based on the first occurrence of a marker\n\n        while ($excerpt = strpbrk($text, $this->inlineMarkerList))\n        {\n            $marker = $excerpt[0];\n\n            $markerPosition = strlen($text) - strlen($excerpt);\n\n            $Excerpt = array('text' => $excerpt, 'context' => $text);\n\n            foreach ($this->InlineTypes[$marker] as $inlineType)\n            {\n                # check to see if the current inline type is nestable in the current context\n\n                if (isset($nonNestables[$inlineType]))\n                {\n                    continue;\n                }\n\n                $Inline = $this->{\"inline$inlineType\"}($Excerpt);\n\n                if ( ! isset($Inline))\n                {\n                    continue;\n                }\n\n                # makes sure that the inline belongs to \"our\" marker\n\n                if (isset($Inline['position']) and $Inline['position'] > $markerPosition)\n                {\n                    continue;\n                }\n\n                # sets a default inline position\n\n                if ( ! isset($Inline['position']))\n                {\n                    $Inline['position'] = $markerPosition;\n                }\n\n                # cause the new element to 'inherit' our non nestables\n\n\n                $Inline['element']['nonNestables'] = isset($Inline['element']['nonNestables'])\n                    ? array_merge($Inline['element']['nonNestables'], $nonNestables)\n                    : $nonNestables\n                ;\n\n                # the text that comes before the inline\n                $unmarkedText = substr($text, 0, $Inline['position']);\n\n                # compile the unmarked text\n                $InlineText = $this->inlineText($unmarkedText);\n                $Elements[] = $InlineText['element'];\n\n                # compile the inline\n                $Elements[] = $this->extractElement($Inline);\n\n                # remove the examined text\n                $text = substr($text, $Inline['position'] + $Inline['extent']);\n\n                continue 2;\n            }\n\n            # the marker does not belong to an inline\n\n            $unmarkedText = substr($text, 0, $markerPosition + 1);\n\n            $InlineText = $this->inlineText($unmarkedText);\n            $Elements[] = $InlineText['element'];\n\n            $text = substr($text, $markerPosition + 1);\n        }\n\n        $InlineText = $this->inlineText($text);\n        $Elements[] = $InlineText['element'];\n\n        foreach ($Elements as &$Element)\n        {\n            if ( ! isset($Element['autobreak']))\n            {\n                $Element['autobreak'] = false;\n            }\n        }\n\n        return $Elements;\n    }",
+      "start_line": 1135,
+      "end_line": 1233,
+      "code": "protected function lineElements($text, $nonNestables = array())\n    {\n        # standardize line breaks\n        $text = str_replace(array(\"\\r\\n\", \"\\r\"), \"\\n\", $text);\n\n        $Elements = array();\n\n        $nonNestables = (empty($nonNestables)\n            ? array()\n            : array_combine($nonNestables, $nonNestables)\n        );\n\n        # $excerpt is based on the first occurrence of a marker\n\n        while ($excerpt = strpbrk($text, $this->inlineMarkerList))\n        {\n            $marker = $excerpt[0];\n\n            $markerPosition = strlen($text) - strlen($excerpt);\n\n            $Excerpt = array('text' => $excerpt, 'context' => $text);\n\n            foreach ($this->InlineTypes[$marker] as $inlineType)\n            {\n                # check to see if the current inline type is nestable in the current context\n\n                if (isset($nonNestables[$inlineType]))\n                {\n                    continue;\n                }\n\n                $Inline = $this->{\"inline$inlineType\"}($Excerpt);\n\n                if ( ! isset($Inline))\n                {\n                    continue;\n                }\n\n                # makes sure that the inline belongs to \"our\" marker\n\n                if (isset($Inline['position']) and $Inline['position'] > $markerPosition)\n                {\n                    continue;\n                }\n\n                # sets a default inline position\n\n                if ( ! isset($Inline['position']))\n                {\n                    $Inline['position'] = $markerPosition;\n                }\n\n                # cause the new element to 'inherit' our non nestables\n\n\n                $Inline['element']['nonNestables'] = isset($Inline['element']['nonNestables'])\n                    ? array_merge($Inline['element']['nonNestables'], $nonNestables)\n                    : $nonNestables\n                ;\n\n                # the text that comes before the inline\n                $unmarkedText = substr($text, 0, $Inline['position']);\n\n                # compile the unmarked text\n                $InlineText = $this->inlineText($unmarkedText);\n                $Elements[] = $InlineText['element'];\n\n                # compile the inline\n                $Elements[] = $this->extractElement($Inline);\n\n                # remove the examined text\n                $text = substr($text, $Inline['position'] + $Inline['extent']);\n\n                continue 2;\n            }\n\n            # the marker does not belong to an inline\n\n            $unmarkedText = substr($text, 0, $markerPosition + 1);\n\n            $InlineText = $this->inlineText($unmarkedText);\n            $Elements[] = $InlineText['element'];\n\n            $text = substr($text, $markerPosition + 1);\n        }\n\n        $InlineText = $this->inlineText($text);\n        $Elements[] = $InlineText['element'];\n\n        foreach ($Elements as &$Element)\n        {\n            if ( ! isset($Element['autobreak']))\n            {\n                $Element['autobreak'] = false;\n            }\n        }\n\n        return $Elements;\n    }"
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCF69",
+      "path": "dvwa/includes/Parsedown.php",
+      "name": "inlineText",
+      "parameters": [
+        "$text"
+      ],
+      "body": "{\n        $Inline = array(\n            'extent' => strlen($text),\n            'element' => array(),\n        );\n\n        $Inline['element']['elements'] = self::pregReplaceElements(\n            $this->breaksEnabled ? '/[ ]*+\\n/' : '/(?:[ ]*+\\\\\\\\|[ ]{2,}+)\\n/',\n            array(\n                array('name' => 'br'),\n                array('text' => \"\\n\"),\n            ),\n            $text\n        );\n\n        return $Inline;\n    }",
+      "start_line": 1239,
+      "end_line": 1256,
+      "code": "protected function inlineText($text)\n    {\n        $Inline = array(\n            'extent' => strlen($text),\n            'element' => array(),\n        );\n\n        $Inline['element']['elements'] = self::pregReplaceElements(\n            $this->breaksEnabled ? '/[ ]*+\\n/' : '/(?:[ ]*+\\\\\\\\|[ ]{2,}+)\\n/',\n            array(\n                array('name' => 'br'),\n                array('text' => \"\\n\"),\n            ),\n            $text\n        );\n\n        return $Inline;\n    }"
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCF70",
+      "path": "dvwa/includes/Parsedown.php",
+      "name": "inlineCode",
+      "parameters": [
+        "$Excerpt"
+      ],
+      "body": "{\n        $marker = $Excerpt['text'][0];\n\n        if (preg_match('/^(['.$marker.']++)[ ]*+(.+?)[ ]*+(?<!['.$marker.'])\\1(?!'.$marker.')/s', $Excerpt['text'], $matches))\n        {\n            $text = $matches[2];\n            $text = preg_replace('/[ ]*+\\n/', ' ', $text);\n\n            return array(\n                'extent' => strlen($matches[0]),\n                'element' => array(\n                    'name' => 'code',\n                    'text' => $text,\n                ),\n            );\n        }\n    }",
+      "start_line": 1258,
+      "end_line": 1275,
+      "code": "protected function inlineCode($Excerpt)\n    {\n        $marker = $Excerpt['text'][0];\n\n        if (preg_match('/^(['.$marker.']++)[ ]*+(.+?)[ ]*+(?<!['.$marker.'])\\1(?!'.$marker.')/s', $Excerpt['text'], $matches))\n        {\n            $text = $matches[2];\n            $text = preg_replace('/[ ]*+\\n/', ' ', $text);\n\n            return array(\n                'extent' => strlen($matches[0]),\n                'element' => array(\n                    'name' => 'code',\n                    'text' => $text,\n                ),\n            );\n        }\n    }"
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCF71",
+      "path": "dvwa/includes/Parsedown.php",
+      "name": "inlineEmailTag",
+      "parameters": [
+        "$Excerpt"
+      ],
+      "body": "{\n        $hostnameLabel = '[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?';\n\n        $commonMarkEmail = '[a-zA-Z0-9.!#$%&\\'*+\\/=?^_`{|}~-]++@'\n            . $hostnameLabel . '(?:\\.' . $hostnameLabel . ')*';\n\n        if (strpos($Excerpt['text'], '>') !== false\n            and preg_match(\"/^<((mailto:)?$commonMarkEmail)>/i\", $Excerpt['text'], $matches)\n        ){\n            $url = $matches[1];\n\n            if ( ! isset($matches[2]))\n            {\n                $url = \"mailto:$url\";\n            }\n\n            return array(\n                'extent' => strlen($matches[0]),\n                'element' => array(\n                    'name' => 'a',\n                    'text' => $matches[1],\n                    'attributes' => array(\n                        'href' => $url,\n                    ),\n                ),\n            );\n        }\n    }",
+      "start_line": 1277,
+      "end_line": 1305,
+      "code": "protected function inlineEmailTag($Excerpt)\n    {\n        $hostnameLabel = '[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?';\n\n        $commonMarkEmail = '[a-zA-Z0-9.!#$%&\\'*+\\/=?^_`{|}~-]++@'\n            . $hostnameLabel . '(?:\\.' . $hostnameLabel . ')*';\n\n        if (strpos($Excerpt['text'], '>') !== false\n            and preg_match(\"/^<((mailto:)?$commonMarkEmail)>/i\", $Excerpt['text'], $matches)\n        ){\n            $url = $matches[1];\n\n            if ( ! isset($matches[2]))\n            {\n                $url = \"mailto:$url\";\n            }\n\n            return array(\n                'extent' => strlen($matches[0]),\n                'element' => array(\n                    'name' => 'a',\n                    'text' => $matches[1],\n                    'attributes' => array(\n                        'href' => $url,\n                    ),\n                ),\n            );\n        }\n    }"
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCF72",
+      "path": "dvwa/includes/Parsedown.php",
+      "name": "inlineEmphasis",
+      "parameters": [
+        "$Excerpt"
+      ],
+      "body": "{\n        if ( ! isset($Excerpt['text'][1]))\n        {\n            return;\n        }\n\n        $marker = $Excerpt['text'][0];\n\n        if ($Excerpt['text'][1] === $marker and preg_match($this->StrongRegex[$marker], $Excerpt['text'], $matches))\n        {\n            $emphasis = 'strong';\n        }\n        elseif (preg_match($this->EmRegex[$marker], $Excerpt['text'], $matches))\n        {\n            $emphasis = 'em';\n        }\n        else\n        {\n            return;\n        }\n\n        return array(\n            'extent' => strlen($matches[0]),\n            'element' => array(\n                'name' => $emphasis,\n                'handler' => array(\n                    'function' => 'lineElements',\n                    'argument' => $matches[1],\n                    'destination' => 'elements',\n                )\n            ),\n        );\n    }",
+      "start_line": 1307,
+      "end_line": 1340,
+      "code": "protected function inlineEmphasis($Excerpt)\n    {\n        if ( ! isset($Excerpt['text'][1]))\n        {\n            return;\n        }\n\n        $marker = $Excerpt['text'][0];\n\n        if ($Excerpt['text'][1] === $marker and preg_match($this->StrongRegex[$marker], $Excerpt['text'], $matches))\n        {\n            $emphasis = 'strong';\n        }\n        elseif (preg_match($this->EmRegex[$marker], $Excerpt['text'], $matches))\n        {\n            $emphasis = 'em';\n        }\n        else\n        {\n            return;\n        }\n\n        return array(\n            'extent' => strlen($matches[0]),\n            'element' => array(\n                'name' => $emphasis,\n                'handler' => array(\n                    'function' => 'lineElements',\n                    'argument' => $matches[1],\n                    'destination' => 'elements',\n                )\n            ),\n        );\n    }"
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCF73",
+      "path": "dvwa/includes/Parsedown.php",
+      "name": "inlineEscapeSequence",
+      "parameters": [
+        "$Excerpt"
+      ],
+      "body": "{\n        if (isset($Excerpt['text'][1]) and in_array($Excerpt['text'][1], $this->specialCharacters))\n        {\n            return array(\n                'element' => array('rawHtml' => $Excerpt['text'][1]),\n                'extent' => 2,\n            );\n        }\n    }",
+      "start_line": 1342,
+      "end_line": 1351,
+      "code": "protected function inlineEscapeSequence($Excerpt)\n    {\n        if (isset($Excerpt['text'][1]) and in_array($Excerpt['text'][1], $this->specialCharacters))\n        {\n            return array(\n                'element' => array('rawHtml' => $Excerpt['text'][1]),\n                'extent' => 2,\n            );\n        }\n    }"
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCF74",
+      "path": "dvwa/includes/Parsedown.php",
+      "name": "inlineImage",
+      "parameters": [
+        "$Excerpt"
+      ],
+      "body": "{\n        if ( ! isset($Excerpt['text'][1]) or $Excerpt['text'][1] !== '[')\n        {\n            return;\n        }\n\n        $Excerpt['text']= substr($Excerpt['text'], 1);\n\n        $Link = $this->inlineLink($Excerpt);\n\n        if ($Link === null)\n        {\n            return;\n        }\n\n        $Inline = array(\n            'extent' => $Link['extent'] + 1,\n            'element' => array(\n                'name' => 'img',\n                'attributes' => array(\n                    'src' => $Link['element']['attributes']['href'],\n                    'alt' => $Link['element']['handler']['argument'],\n                ),\n                'autobreak' => true,\n            ),\n        );\n\n        $Inline['element']['attributes'] += $Link['element']['attributes'];\n\n        unset($Inline['element']['attributes']['href']);\n\n        return $Inline;\n    }",
+      "start_line": 1353,
+      "end_line": 1386,
+      "code": "protected function inlineImage($Excerpt)\n    {\n        if ( ! isset($Excerpt['text'][1]) or $Excerpt['text'][1] !== '[')\n        {\n            return;\n        }\n\n        $Excerpt['text']= substr($Excerpt['text'], 1);\n\n        $Link = $this->inlineLink($Excerpt);\n\n        if ($Link === null)\n        {\n            return;\n        }\n\n        $Inline = array(\n            'extent' => $Link['extent'] + 1,\n            'element' => array(\n                'name' => 'img',\n                'attributes' => array(\n                    'src' => $Link['element']['attributes']['href'],\n                    'alt' => $Link['element']['handler']['argument'],\n                ),\n                'autobreak' => true,\n            ),\n        );\n\n        $Inline['element']['attributes'] += $Link['element']['attributes'];\n\n        unset($Inline['element']['attributes']['href']);\n\n        return $Inline;\n    }"
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCF75",
+      "path": "dvwa/includes/Parsedown.php",
+      "name": "inlineLink",
+      "parameters": [
+        "$Excerpt"
+      ],
+      "body": "{\n        $Element = array(\n            'name' => 'a',\n            'handler' => array(\n                'function' => 'lineElements',\n                'argument' => null,\n                'destination' => 'elements',\n            ),\n            'nonNestables' => array('Url', 'Link'),\n            'attributes' => array(\n                'href' => null,\n                'title' => null,\n            ),\n        );\n\n        $extent = 0;\n\n        $remainder = $Excerpt['text'];\n\n        if (preg_match('/\\[((?:[^][]++|(?R))*+)\\]/', $remainder, $matches))\n        {\n            $Element['handler']['argument'] = $matches[1];\n\n            $extent += strlen($matches[0]);\n\n            $remainder = substr($remainder, $extent);\n        }\n        else\n        {\n            return;\n        }\n\n        if (preg_match('/^[(]\\s*+((?:[^ ()]++|[(][^ )]+[)])++)(?:[ ]+(\"[^\"]*+\"|\\'[^\\']*+\\'))?\\s*+[)]/', $remainder, $matches))\n        {\n            $Element['attributes']['href'] = $matches[1];\n\n            if (isset($matches[2]))\n            {\n                $Element['attributes']['title'] = substr($matches[2], 1, - 1);\n            }\n\n            $extent += strlen($matches[0]);\n        }\n        else\n        {\n            if (preg_match('/^\\s*\\[(.*?)\\]/', $remainder, $matches))\n            {\n                $definition = strlen($matches[1]) ? $matches[1] : $Element['handler']['argument'];\n                $definition = strtolower($definition);\n\n                $extent += strlen($matches[0]);\n            }\n            else\n            {\n                $definition = strtolower($Element['handler']['argument']);\n            }\n\n            if ( ! isset($this->DefinitionData['Reference'][$definition]))\n            {\n                return;\n            }\n\n            $Definition = $this->DefinitionData['Reference'][$definition];\n\n            $Element['attributes']['href'] = $Definition['url'];\n            $Element['attributes']['title'] = $Definition['title'];\n        }\n\n        return array(\n            'extent' => $extent,\n            'element' => $Element,\n        );\n    }",
+      "start_line": 1388,
+      "end_line": 1461,
+      "code": "protected function inlineLink($Excerpt)\n    {\n        $Element = array(\n            'name' => 'a',\n            'handler' => array(\n                'function' => 'lineElements',\n                'argument' => null,\n                'destination' => 'elements',\n            ),\n            'nonNestables' => array('Url', 'Link'),\n            'attributes' => array(\n                'href' => null,\n                'title' => null,\n            ),\n        );\n\n        $extent = 0;\n\n        $remainder = $Excerpt['text'];\n\n        if (preg_match('/\\[((?:[^][]++|(?R))*+)\\]/', $remainder, $matches))\n        {\n            $Element['handler']['argument'] = $matches[1];\n\n            $extent += strlen($matches[0]);\n\n            $remainder = substr($remainder, $extent);\n        }\n        else\n        {\n            return;\n        }\n\n        if (preg_match('/^[(]\\s*+((?:[^ ()]++|[(][^ )]+[)])++)(?:[ ]+(\"[^\"]*+\"|\\'[^\\']*+\\'))?\\s*+[)]/', $remainder, $matches))\n        {\n            $Element['attributes']['href'] = $matches[1];\n\n            if (isset($matches[2]))\n            {\n                $Element['attributes']['title'] = substr($matches[2], 1, - 1);\n            }\n\n            $extent += strlen($matches[0]);\n        }\n        else\n        {\n            if (preg_match('/^\\s*\\[(.*?)\\]/', $remainder, $matches))\n            {\n                $definition = strlen($matches[1]) ? $matches[1] : $Element['handler']['argument'];\n                $definition = strtolower($definition);\n\n                $extent += strlen($matches[0]);\n            }\n            else\n            {\n                $definition = strtolower($Element['handler']['argument']);\n            }\n\n            if ( ! isset($this->DefinitionData['Reference'][$definition]))\n            {\n                return;\n            }\n\n            $Definition = $this->DefinitionData['Reference'][$definition];\n\n            $Element['attributes']['href'] = $Definition['url'];\n            $Element['attributes']['title'] = $Definition['title'];\n        }\n\n        return array(\n            'extent' => $extent,\n            'element' => $Element,\n        );\n    }"
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCF76",
+      "path": "dvwa/includes/Parsedown.php",
+      "name": "inlineMarkup",
+      "parameters": [
+        "$Excerpt"
+      ],
+      "body": "{\n        if ($this->markupEscaped or $this->safeMode or strpos($Excerpt['text'], '>') === false)\n        {\n            return;\n        }\n\n        if ($Excerpt['text'][1] === '/' and preg_match('/^<\\/\\w[\\w-]*+[ ]*+>/s', $Excerpt['text'], $matches))\n        {\n            return array(\n                'element' => array('rawHtml' => $matches[0]),\n                'extent' => strlen($matches[0]),\n            );\n        }\n\n        if ($Excerpt['text'][1] === '!' and preg_match('/^<!---?[^>-](?:-?+[^-])*-->/s', $Excerpt['text'], $matches))\n        {\n            return array(\n                'element' => array('rawHtml' => $matches[0]),\n                'extent' => strlen($matches[0]),\n            );\n        }\n\n        if ($Excerpt['text'][1] !== ' ' and preg_match('/^<\\w[\\w-]*+(?:[ ]*+'.$this->regexHtmlAttribute.')*+[ ]*+\\/?>/s', $Excerpt['text'], $matches))\n        {\n            return array(\n                'element' => array('rawHtml' => $matches[0]),\n                'extent' => strlen($matches[0]),\n            );\n        }\n    }",
+      "start_line": 1463,
+      "end_line": 1493,
+      "code": "protected function inlineMarkup($Excerpt)\n    {\n        if ($this->markupEscaped or $this->safeMode or strpos($Excerpt['text'], '>') === false)\n        {\n            return;\n        }\n\n        if ($Excerpt['text'][1] === '/' and preg_match('/^<\\/\\w[\\w-]*+[ ]*+>/s', $Excerpt['text'], $matches))\n        {\n            return array(\n                'element' => array('rawHtml' => $matches[0]),\n                'extent' => strlen($matches[0]),\n            );\n        }\n\n        if ($Excerpt['text'][1] === '!' and preg_match('/^<!---?[^>-](?:-?+[^-])*-->/s', $Excerpt['text'], $matches))\n        {\n            return array(\n                'element' => array('rawHtml' => $matches[0]),\n                'extent' => strlen($matches[0]),\n            );\n        }\n\n        if ($Excerpt['text'][1] !== ' ' and preg_match('/^<\\w[\\w-]*+(?:[ ]*+'.$this->regexHtmlAttribute.')*+[ ]*+\\/?>/s', $Excerpt['text'], $matches))\n        {\n            return array(\n                'element' => array('rawHtml' => $matches[0]),\n                'extent' => strlen($matches[0]),\n            );\n        }\n    }"
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCF77",
+      "path": "dvwa/includes/Parsedown.php",
+      "name": "inlineSpecialCharacter",
+      "parameters": [
+        "$Excerpt"
+      ],
+      "body": "{\n        if (substr($Excerpt['text'], 1, 1) !== ' ' and strpos($Excerpt['text'], ';') !== false\n            and preg_match('/^&(#?+[0-9a-zA-Z]++);/', $Excerpt['text'], $matches)\n        ) {\n            return array(\n                'element' => array('rawHtml' => '&' . $matches[1] . ';'),\n                'extent' => strlen($matches[0]),\n            );\n        }\n\n        return;\n    }",
+      "start_line": 1495,
+      "end_line": 1507,
+      "code": "protected function inlineSpecialCharacter($Excerpt)\n    {\n        if (substr($Excerpt['text'], 1, 1) !== ' ' and strpos($Excerpt['text'], ';') !== false\n            and preg_match('/^&(#?+[0-9a-zA-Z]++);/', $Excerpt['text'], $matches)\n        ) {\n            return array(\n                'element' => array('rawHtml' => '&' . $matches[1] . ';'),\n                'extent' => strlen($matches[0]),\n            );\n        }\n\n        return;\n    }"
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCF78",
+      "path": "dvwa/includes/Parsedown.php",
+      "name": "inlineStrikethrough",
+      "parameters": [
+        "$Excerpt"
+      ],
+      "body": "{\n        if ( ! isset($Excerpt['text'][1]))\n        {\n            return;\n        }\n\n        if ($Excerpt['text'][1] === '~' and preg_match('/^~~(?=\\S)(.+?)(?<=\\S)~~/', $Excerpt['text'], $matches))\n        {\n            return array(\n                'extent' => strlen($matches[0]),\n                'element' => array(\n                    'name' => 'del',\n                    'handler' => array(\n                        'function' => 'lineElements',\n                        'argument' => $matches[1],\n                        'destination' => 'elements',\n                    )\n                ),\n            );\n        }\n    }",
+      "start_line": 1509,
+      "end_line": 1530,
+      "code": "protected function inlineStrikethrough($Excerpt)\n    {\n        if ( ! isset($Excerpt['text'][1]))\n        {\n            return;\n        }\n\n        if ($Excerpt['text'][1] === '~' and preg_match('/^~~(?=\\S)(.+?)(?<=\\S)~~/', $Excerpt['text'], $matches))\n        {\n            return array(\n                'extent' => strlen($matches[0]),\n                'element' => array(\n                    'name' => 'del',\n                    'handler' => array(\n                        'function' => 'lineElements',\n                        'argument' => $matches[1],\n                        'destination' => 'elements',\n                    )\n                ),\n            );\n        }\n    }"
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCF79",
+      "path": "dvwa/includes/Parsedown.php",
+      "name": "inlineUrl",
+      "parameters": [
+        "$Excerpt"
+      ],
+      "body": "{\n        if ($this->urlsLinked !== true or ! isset($Excerpt['text'][2]) or $Excerpt['text'][2] !== '/')\n        {\n            return;\n        }\n\n        if (strpos($Excerpt['context'], 'http') !== false\n            and preg_match('/\\bhttps?+:[\\/]{2}[^\\s<]+\\b\\/*+/ui', $Excerpt['context'], $matches, PREG_OFFSET_CAPTURE)\n        ) {\n            $url = $matches[0][0];\n\n            $Inline = array(\n                'extent' => strlen($matches[0][0]),\n                'position' => $matches[0][1],\n                'element' => array(\n                    'name' => 'a',\n                    'text' => $url,\n                    'attributes' => array(\n                        'href' => $url,\n                    ),\n                ),\n            );\n\n            return $Inline;\n        }\n    }",
+      "start_line": 1532,
+      "end_line": 1558,
+      "code": "protected function inlineUrl($Excerpt)\n    {\n        if ($this->urlsLinked !== true or ! isset($Excerpt['text'][2]) or $Excerpt['text'][2] !== '/')\n        {\n            return;\n        }\n\n        if (strpos($Excerpt['context'], 'http') !== false\n            and preg_match('/\\bhttps?+:[\\/]{2}[^\\s<]+\\b\\/*+/ui', $Excerpt['context'], $matches, PREG_OFFSET_CAPTURE)\n        ) {\n            $url = $matches[0][0];\n\n            $Inline = array(\n                'extent' => strlen($matches[0][0]),\n                'position' => $matches[0][1],\n                'element' => array(\n                    'name' => 'a',\n                    'text' => $url,\n                    'attributes' => array(\n                        'href' => $url,\n                    ),\n                ),\n            );\n\n            return $Inline;\n        }\n    }"
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCF80",
+      "path": "dvwa/includes/Parsedown.php",
+      "name": "inlineUrlTag",
+      "parameters": [
+        "$Excerpt"
+      ],
+      "body": "{\n        if (strpos($Excerpt['text'], '>') !== false and preg_match('/^<(\\w++:\\/{2}[^ >]++)>/i', $Excerpt['text'], $matches))\n        {\n            $url = $matches[1];\n\n            return array(\n                'extent' => strlen($matches[0]),\n                'element' => array(\n                    'name' => 'a',\n                    'text' => $url,\n                    'attributes' => array(\n                        'href' => $url,\n                    ),\n                ),\n            );\n        }\n    }",
+      "start_line": 1560,
+      "end_line": 1577,
+      "code": "protected function inlineUrlTag($Excerpt)\n    {\n        if (strpos($Excerpt['text'], '>') !== false and preg_match('/^<(\\w++:\\/{2}[^ >]++)>/i', $Excerpt['text'], $matches))\n        {\n            $url = $matches[1];\n\n            return array(\n                'extent' => strlen($matches[0]),\n                'element' => array(\n                    'name' => 'a',\n                    'text' => $url,\n                    'attributes' => array(\n                        'href' => $url,\n                    ),\n                ),\n            );\n        }\n    }"
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCF81",
+      "path": "dvwa/includes/Parsedown.php",
+      "name": "unmarkedText",
+      "parameters": [
+        "$text"
+      ],
+      "body": "{\n        $Inline = $this->inlineText($text);\n        return $this->element($Inline['element']);\n    }",
+      "start_line": 1581,
+      "end_line": 1585,
+      "code": "protected function unmarkedText($text)\n    {\n        $Inline = $this->inlineText($text);\n        return $this->element($Inline['element']);\n    }"
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCF82",
+      "path": "dvwa/includes/Parsedown.php",
+      "name": "handle",
+      "parameters": [
+        "array $Element"
+      ],
+      "body": "{\n        if (isset($Element['handler']))\n        {\n            if (!isset($Element['nonNestables']))\n            {\n                $Element['nonNestables'] = array();\n            }\n\n            if (is_string($Element['handler']))\n            {\n                $function = $Element['handler'];\n                $argument = $Element['text'];\n                unset($Element['text']);\n                $destination = 'rawHtml';\n            }\n            else\n            {\n                $function = $Element['handler']['function'];\n                $argument = $Element['handler']['argument'];\n                $destination = $Element['handler']['destination'];\n            }\n\n            $Element[$destination] = $this->{$function}($argument, $Element['nonNestables']);\n\n            if ($destination === 'handler')\n            {\n                $Element = $this->handle($Element);\n            }\n\n            unset($Element['handler']);\n        }\n\n        return $Element;\n    }",
+      "start_line": 1591,
+      "end_line": 1625,
+      "code": "protected function handle(array $Element)\n    {\n        if (isset($Element['handler']))\n        {\n            if (!isset($Element['nonNestables']))\n            {\n                $Element['nonNestables'] = array();\n            }\n\n            if (is_string($Element['handler']))\n            {\n                $function = $Element['handler'];\n                $argument = $Element['text'];\n                unset($Element['text']);\n                $destination = 'rawHtml';\n            }\n            else\n            {\n                $function = $Element['handler']['function'];\n                $argument = $Element['handler']['argument'];\n                $destination = $Element['handler']['destination'];\n            }\n\n            $Element[$destination] = $this->{$function}($argument, $Element['nonNestables']);\n\n            if ($destination === 'handler')\n            {\n                $Element = $this->handle($Element);\n            }\n\n            unset($Element['handler']);\n        }\n\n        return $Element;\n    }"
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCF83",
+      "path": "dvwa/includes/Parsedown.php",
+      "name": "handleElementRecursive",
+      "parameters": [
+        "array $Element"
+      ],
+      "body": "{\n        return $this->elementApplyRecursive(array($this, 'handle'), $Element);\n    }",
+      "start_line": 1627,
+      "end_line": 1630,
+      "code": "protected function handleElementRecursive(array $Element)\n    {\n        return $this->elementApplyRecursive(array($this, 'handle'), $Element);\n    }"
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCF84",
+      "path": "dvwa/includes/Parsedown.php",
+      "name": "handleElementsRecursive",
+      "parameters": [
+        "array $Elements"
+      ],
+      "body": "{\n        return $this->elementsApplyRecursive(array($this, 'handle'), $Elements);\n    }",
+      "start_line": 1632,
+      "end_line": 1635,
+      "code": "protected function handleElementsRecursive(array $Elements)\n    {\n        return $this->elementsApplyRecursive(array($this, 'handle'), $Elements);\n    }"
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCF85",
+      "path": "dvwa/includes/Parsedown.php",
+      "name": "elementApplyRecursive",
+      "parameters": [
+        "$closure",
+        "array $Element"
+      ],
+      "body": "{\n        $Element = call_user_func($closure, $Element);\n\n        if (isset($Element['elements']))\n        {\n            $Element['elements'] = $this->elementsApplyRecursive($closure, $Element['elements']);\n        }\n        elseif (isset($Element['element']))\n        {\n            $Element['element'] = $this->elementApplyRecursive($closure, $Element['element']);\n        }\n\n        return $Element;\n    }",
+      "start_line": 1637,
+      "end_line": 1651,
+      "code": "protected function elementApplyRecursive($closure, array $Element)\n    {\n        $Element = call_user_func($closure, $Element);\n\n        if (isset($Element['elements']))\n        {\n            $Element['elements'] = $this->elementsApplyRecursive($closure, $Element['elements']);\n        }\n        elseif (isset($Element['element']))\n        {\n            $Element['element'] = $this->elementApplyRecursive($closure, $Element['element']);\n        }\n\n        return $Element;\n    }"
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCF86",
+      "path": "dvwa/includes/Parsedown.php",
+      "name": "elementApplyRecursiveDepthFirst",
+      "parameters": [
+        "$closure",
+        "array $Element"
+      ],
+      "body": "{\n        if (isset($Element['elements']))\n        {\n            $Element['elements'] = $this->elementsApplyRecursiveDepthFirst($closure, $Element['elements']);\n        }\n        elseif (isset($Element['element']))\n        {\n            $Element['element'] = $this->elementsApplyRecursiveDepthFirst($closure, $Element['element']);\n        }\n\n        $Element = call_user_func($closure, $Element);\n\n        return $Element;\n    }",
+      "start_line": 1653,
+      "end_line": 1667,
+      "code": "protected function elementApplyRecursiveDepthFirst($closure, array $Element)\n    {\n        if (isset($Element['elements']))\n        {\n            $Element['elements'] = $this->elementsApplyRecursiveDepthFirst($closure, $Element['elements']);\n        }\n        elseif (isset($Element['element']))\n        {\n            $Element['element'] = $this->elementsApplyRecursiveDepthFirst($closure, $Element['element']);\n        }\n\n        $Element = call_user_func($closure, $Element);\n\n        return $Element;\n    }"
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCF87",
+      "path": "dvwa/includes/Parsedown.php",
+      "name": "elementsApplyRecursive",
+      "parameters": [
+        "$closure",
+        "array $Elements"
+      ],
+      "body": "{\n        foreach ($Elements as &$Element)\n        {\n            $Element = $this->elementApplyRecursive($closure, $Element);\n        }\n\n        return $Elements;\n    }",
+      "start_line": 1669,
+      "end_line": 1677,
+      "code": "protected function elementsApplyRecursive($closure, array $Elements)\n    {\n        foreach ($Elements as &$Element)\n        {\n            $Element = $this->elementApplyRecursive($closure, $Element);\n        }\n\n        return $Elements;\n    }"
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCF88",
+      "path": "dvwa/includes/Parsedown.php",
+      "name": "elementsApplyRecursiveDepthFirst",
+      "parameters": [
+        "$closure",
+        "array $Elements"
+      ],
+      "body": "{\n        foreach ($Elements as &$Element)\n        {\n            $Element = $this->elementApplyRecursiveDepthFirst($closure, $Element);\n        }\n\n        return $Elements;\n    }",
+      "start_line": 1679,
+      "end_line": 1687,
+      "code": "protected function elementsApplyRecursiveDepthFirst($closure, array $Elements)\n    {\n        foreach ($Elements as &$Element)\n        {\n            $Element = $this->elementApplyRecursiveDepthFirst($closure, $Element);\n        }\n\n        return $Elements;\n    }"
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCF89",
+      "path": "dvwa/includes/Parsedown.php",
+      "name": "element",
+      "parameters": [
+        "array $Element"
+      ],
+      "body": "{\n        if ($this->safeMode)\n        {\n            $Element = $this->sanitiseElement($Element);\n        }\n\n        # identity map if element has no handler\n        $Element = $this->handle($Element);\n\n        $hasName = isset($Element['name']);\n\n        $markup = '';\n\n        if ($hasName)\n        {\n            $markup .= '<' . $Element['name'];\n\n            if (isset($Element['attributes']))\n            {\n                foreach ($Element['attributes'] as $name => $value)\n                {\n                    if ($value === null)\n                    {\n                        continue;\n                    }\n\n                    $markup .= \" $name=\\\"\".self::escape($value).'\"';\n                }\n            }\n        }\n\n        $permitRawHtml = false;\n\n        if (isset($Element['text']))\n        {\n            $text = $Element['text'];\n        }\n        // very strongly consider an alternative if you're writing an\n        // extension\n        elseif (isset($Element['rawHtml']))\n        {\n            $text = $Element['rawHtml'];\n\n            $allowRawHtmlInSafeMode = isset($Element['allowRawHtmlInSafeMode']) && $Element['allowRawHtmlInSafeMode'];\n            $permitRawHtml = !$this->safeMode || $allowRawHtmlInSafeMode;\n        }\n\n        $hasContent = isset($text) || isset($Element['element']) || isset($Element['elements']);\n\n        if ($hasContent)\n        {\n            $markup .= $hasName ? '>' : '';\n\n            if (isset($Element['elements']))\n            {\n                $markup .= $this->elements($Element['elements']);\n            }\n            elseif (isset($Element['element']))\n            {\n                $markup .= $this->element($Element['element']);\n            }\n            else\n            {\n                if (!$permitRawHtml)\n                {\n                    $markup .= self::escape($text, true);\n                }\n                else\n                {\n                    $markup .= $text;\n                }\n            }\n\n            $markup .= $hasName ? '</' . $Element['name'] . '>' : '';\n        }\n        elseif ($hasName)\n        {\n            $markup .= ' />';\n        }\n\n        return $markup;\n    }",
+      "start_line": 1689,
+      "end_line": 1771,
+      "code": "protected function element(array $Element)\n    {\n        if ($this->safeMode)\n        {\n            $Element = $this->sanitiseElement($Element);\n        }\n\n        # identity map if element has no handler\n        $Element = $this->handle($Element);\n\n        $hasName = isset($Element['name']);\n\n        $markup = '';\n\n        if ($hasName)\n        {\n            $markup .= '<' . $Element['name'];\n\n            if (isset($Element['attributes']))\n            {\n                foreach ($Element['attributes'] as $name => $value)\n                {\n                    if ($value === null)\n                    {\n                        continue;\n                    }\n\n                    $markup .= \" $name=\\\"\".self::escape($value).'\"';\n                }\n            }\n        }\n\n        $permitRawHtml = false;\n\n        if (isset($Element['text']))\n        {\n            $text = $Element['text'];\n        }\n        // very strongly consider an alternative if you're writing an\n        // extension\n        elseif (isset($Element['rawHtml']))\n        {\n            $text = $Element['rawHtml'];\n\n            $allowRawHtmlInSafeMode = isset($Element['allowRawHtmlInSafeMode']) && $Element['allowRawHtmlInSafeMode'];\n            $permitRawHtml = !$this->safeMode || $allowRawHtmlInSafeMode;\n        }\n\n        $hasContent = isset($text) || isset($Element['element']) || isset($Element['elements']);\n\n        if ($hasContent)\n        {\n            $markup .= $hasName ? '>' : '';\n\n            if (isset($Element['elements']))\n            {\n                $markup .= $this->elements($Element['elements']);\n            }\n            elseif (isset($Element['element']))\n            {\n                $markup .= $this->element($Element['element']);\n            }\n            else\n            {\n                if (!$permitRawHtml)\n                {\n                    $markup .= self::escape($text, true);\n                }\n                else\n                {\n                    $markup .= $text;\n                }\n            }\n\n            $markup .= $hasName ? '</' . $Element['name'] . '>' : '';\n        }\n        elseif ($hasName)\n        {\n            $markup .= ' />';\n        }\n\n        return $markup;\n    }"
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCF90",
+      "path": "dvwa/includes/Parsedown.php",
+      "name": "elements",
+      "parameters": [
+        "array $Elements"
+      ],
+      "body": "{\n        $markup = '';\n\n        $autoBreak = true;\n\n        foreach ($Elements as $Element)\n        {\n            if (empty($Element))\n            {\n                continue;\n            }\n\n            $autoBreakNext = (isset($Element['autobreak'])\n                ? $Element['autobreak'] : isset($Element['name'])\n            );\n            // (autobreak === false) covers both sides of an element\n            $autoBreak = !$autoBreak ? $autoBreak : $autoBreakNext;\n\n            $markup .= ($autoBreak ? \"\\n\" : '') . $this->element($Element);\n            $autoBreak = $autoBreakNext;\n        }\n\n        $markup .= $autoBreak ? \"\\n\" : '';\n\n        return $markup;\n    }",
+      "start_line": 1773,
+      "end_line": 1799,
+      "code": "protected function elements(array $Elements)\n    {\n        $markup = '';\n\n        $autoBreak = true;\n\n        foreach ($Elements as $Element)\n        {\n            if (empty($Element))\n            {\n                continue;\n            }\n\n            $autoBreakNext = (isset($Element['autobreak'])\n                ? $Element['autobreak'] : isset($Element['name'])\n            );\n            // (autobreak === false) covers both sides of an element\n            $autoBreak = !$autoBreak ? $autoBreak : $autoBreakNext;\n\n            $markup .= ($autoBreak ? \"\\n\" : '') . $this->element($Element);\n            $autoBreak = $autoBreakNext;\n        }\n\n        $markup .= $autoBreak ? \"\\n\" : '';\n\n        return $markup;\n    }"
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCF91",
+      "path": "dvwa/includes/Parsedown.php",
+      "name": "li",
+      "parameters": [
+        "$lines"
+      ],
+      "body": "{\n        $Elements = $this->linesElements($lines);\n\n        if ( ! in_array('', $lines)\n            and isset($Elements[0]) and isset($Elements[0]['name'])\n            and $Elements[0]['name'] === 'p'\n        ) {\n            unset($Elements[0]['name']);\n        }\n\n        return $Elements;\n    }",
+      "start_line": 1803,
+      "end_line": 1815,
+      "code": "protected function li($lines)\n    {\n        $Elements = $this->linesElements($lines);\n\n        if ( ! in_array('', $lines)\n            and isset($Elements[0]) and isset($Elements[0]['name'])\n            and $Elements[0]['name'] === 'p'\n        ) {\n            unset($Elements[0]['name']);\n        }\n\n        return $Elements;\n    }"
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCF92",
+      "path": "dvwa/includes/Parsedown.php",
+      "name": "pregReplaceElements",
+      "parameters": [
+        "$regexp",
+        "$Elements",
+        "$text"
+      ],
+      "body": "{\n        $newElements = array();\n\n        while (preg_match($regexp, $text, $matches, PREG_OFFSET_CAPTURE))\n        {\n            $offset = $matches[0][1];\n            $before = substr($text, 0, $offset);\n            $after = substr($text, $offset + strlen($matches[0][0]));\n\n            $newElements[] = array('text' => $before);\n\n            foreach ($Elements as $Element)\n            {\n                $newElements[] = $Element;\n            }\n\n            $text = $after;\n        }\n\n        $newElements[] = array('text' => $text);\n\n        return $newElements;\n    }",
+      "start_line": 1825,
+      "end_line": 1848,
+      "code": "protected static function pregReplaceElements($regexp, $Elements, $text)\n    {\n        $newElements = array();\n\n        while (preg_match($regexp, $text, $matches, PREG_OFFSET_CAPTURE))\n        {\n            $offset = $matches[0][1];\n            $before = substr($text, 0, $offset);\n            $after = substr($text, $offset + strlen($matches[0][0]));\n\n            $newElements[] = array('text' => $before);\n\n            foreach ($Elements as $Element)\n            {\n                $newElements[] = $Element;\n            }\n\n            $text = $after;\n        }\n\n        $newElements[] = array('text' => $text);\n\n        return $newElements;\n    }"
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCF93",
+      "path": "dvwa/includes/Parsedown.php",
+      "name": "parse",
+      "parameters": [
+        "$text"
+      ],
+      "body": "{\n        $markup = $this->text($text);\n\n        return $markup;\n    }",
+      "start_line": 1854,
+      "end_line": 1859,
+      "code": "function parse($text)\n    {\n        $markup = $this->text($text);\n\n        return $markup;\n    }"
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCF94",
+      "path": "dvwa/includes/Parsedown.php",
+      "name": "sanitiseElement",
+      "parameters": [
+        "array $Element"
+      ],
+      "body": "{\n        static $goodAttribute = '/^[a-zA-Z0-9][a-zA-Z0-9-_]*+$/';\n        static $safeUrlNameToAtt  = array(\n            'a'   => 'href',\n            'img' => 'src',\n        );\n\n        if ( ! isset($Element['name']))\n        {\n            unset($Element['attributes']);\n            return $Element;\n        }\n\n        if (isset($safeUrlNameToAtt[$Element['name']]))\n        {\n            $Element = $this->filterUnsafeUrlInAttribute($Element, $safeUrlNameToAtt[$Element['name']]);\n        }\n\n        if ( ! empty($Element['attributes']))\n        {\n            foreach ($Element['attributes'] as $att => $val)\n            {\n                # filter out badly parsed attribute\n                if ( ! preg_match($goodAttribute, $att))\n                {\n                    unset($Element['attributes'][$att]);\n                }\n                # dump onevent attribute\n                elseif (self::striAtStart($att, 'on'))\n                {\n                    unset($Element['attributes'][$att]);\n                }\n            }\n        }\n\n        return $Element;\n    }",
+      "start_line": 1861,
+      "end_line": 1898,
+      "code": "protected function sanitiseElement(array $Element)\n    {\n        static $goodAttribute = '/^[a-zA-Z0-9][a-zA-Z0-9-_]*+$/';\n        static $safeUrlNameToAtt  = array(\n            'a'   => 'href',\n            'img' => 'src',\n        );\n\n        if ( ! isset($Element['name']))\n        {\n            unset($Element['attributes']);\n            return $Element;\n        }\n\n        if (isset($safeUrlNameToAtt[$Element['name']]))\n        {\n            $Element = $this->filterUnsafeUrlInAttribute($Element, $safeUrlNameToAtt[$Element['name']]);\n        }\n\n        if ( ! empty($Element['attributes']))\n        {\n            foreach ($Element['attributes'] as $att => $val)\n            {\n                # filter out badly parsed attribute\n                if ( ! preg_match($goodAttribute, $att))\n                {\n                    unset($Element['attributes'][$att]);\n                }\n                # dump onevent attribute\n                elseif (self::striAtStart($att, 'on'))\n                {\n                    unset($Element['attributes'][$att]);\n                }\n            }\n        }\n\n        return $Element;\n    }"
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCF95",
+      "path": "dvwa/includes/Parsedown.php",
+      "name": "filterUnsafeUrlInAttribute",
+      "parameters": [
+        "array $Element",
+        "$attribute"
+      ],
+      "body": "{\n        foreach ($this->safeLinksWhitelist as $scheme)\n        {\n            if (self::striAtStart($Element['attributes'][$attribute], $scheme))\n            {\n                return $Element;\n            }\n        }\n\n        $Element['attributes'][$attribute] = str_replace(':', '%3A', $Element['attributes'][$attribute]);\n\n        return $Element;\n    }",
+      "start_line": 1900,
+      "end_line": 1913,
+      "code": "protected function filterUnsafeUrlInAttribute(array $Element, $attribute)\n    {\n        foreach ($this->safeLinksWhitelist as $scheme)\n        {\n            if (self::striAtStart($Element['attributes'][$attribute], $scheme))\n            {\n                return $Element;\n            }\n        }\n\n        $Element['attributes'][$attribute] = str_replace(':', '%3A', $Element['attributes'][$attribute]);\n\n        return $Element;\n    }"
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCF96",
+      "path": "dvwa/includes/Parsedown.php",
+      "name": "escape",
+      "parameters": [
+        "$text",
+        "$allowQuotes = false"
+      ],
+      "body": "{\n        return htmlspecialchars($text, $allowQuotes ? ENT_NOQUOTES : ENT_QUOTES, 'UTF-8');\n    }",
+      "start_line": 1919,
+      "end_line": 1922,
+      "code": "protected static function escape($text, $allowQuotes = false)\n    {\n        return htmlspecialchars($text, $allowQuotes ? ENT_NOQUOTES : ENT_QUOTES, 'UTF-8');\n    }"
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCF97",
+      "path": "dvwa/includes/Parsedown.php",
+      "name": "striAtStart",
+      "parameters": [
+        "$string",
+        "$needle"
+      ],
+      "body": "{\n        $len = strlen($needle);\n\n        if ($len > strlen($string))\n        {\n            return false;\n        }\n        else\n        {\n            return strtolower(substr($string, 0, $len)) === strtolower($needle);\n        }\n    }",
+      "start_line": 1924,
+      "end_line": 1936,
+      "code": "protected static function striAtStart($string, $needle)\n    {\n        $len = strlen($needle);\n\n        if ($len > strlen($string))\n        {\n            return false;\n        }\n        else\n        {\n            return strtolower(substr($string, 0, $len)) === strtolower($needle);\n        }\n    }"
+    },
+    {
+      "id": "dvwa/includes/Parsedown.php:LCF98",
+      "path": "dvwa/includes/Parsedown.php",
+      "name": "instance",
+      "parameters": [
+        "$name = 'default'"
+      ],
+      "body": "{\n        if (isset(self::$instances[$name]))\n        {\n            return self::$instances[$name];\n        }\n\n        $instance = new static();\n\n        self::$instances[$name] = $instance;\n\n        return $instance;\n    }",
+      "start_line": 1938,
+      "end_line": 1950,
+      "code": "static function instance($name = 'default')\n    {\n        if (isset(self::$instances[$name]))\n        {\n            return self::$instances[$name];\n        }\n\n        $instance = new static();\n\n        self::$instances[$name] = $instance;\n\n        return $instance;\n    }"
+    }
+  ]
+}

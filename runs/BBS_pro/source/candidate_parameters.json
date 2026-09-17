@@ -1,0 +1,150 @@
+{
+  "parameters": [
+    {
+      "id": "app01/views.py:LCP1",
+      "path": "app01/views.py",
+      "expression": "user",
+      "aliases": [
+        "user",
+        "request.user"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 22,
+          "condition": "user is not None"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "app01/views.py:LCP2",
+      "path": "app01/views.py",
+      "expression": "User.objects.filter(username=new_username).count",
+      "aliases": [
+        "User.objects.filter(username=new_username).count"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 45,
+          "condition": "User.objects.filter(username=new_username).count()"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "app01/views.py:LCP3",
+      "path": "app01/views.py",
+      "expression": "User.objects.filter",
+      "aliases": [
+        "User.objects.filter"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 45,
+          "condition": "User.objects.filter(username=new_username).count()"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "app01/views.py:LCP4",
+      "path": "app01/views.py",
+      "expression": "username",
+      "aliases": [
+        "username",
+        "new_username",
+        "request.POST.username"
+      ],
+      "database_relations": [
+        {
+          "table": "User",
+          "field": "username",
+          "line": 31
+        },
+        {
+          "table": "User",
+          "field": "username",
+          "line": 45
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 45,
+          "condition": "User.objects.filter(username=new_username).count()"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ]
+    },
+    {
+      "id": "app01/views.py:LCP5",
+      "path": "app01/views.py",
+      "expression": "found",
+      "aliases": [
+        "found"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 50,
+          "condition": "found"
+        }
+      ],
+      "condition_indexes": [
+        2
+      ]
+    },
+    {
+      "id": "manage.py:LCP6",
+      "path": "manage.py",
+      "expression": "__name__",
+      "aliases": [
+        "__name__"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 5,
+          "condition": "__name__ == \"__main__\""
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    }
+  ]
+}

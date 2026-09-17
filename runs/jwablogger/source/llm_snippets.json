@@ -1,0 +1,33 @@
+{
+  "summary": {
+    "source_items": 6,
+    "llm_items": 6,
+    "items_removed": 0
+  },
+  "snippets": [
+    {
+      "path": "java/jwaBlogger/src/jwaBlogger/BlogManager.java",
+      "code": "if (! trusted)\n          validateAndFixHtml(blogEntry, blogEntryText);"
+    },
+    {
+      "path": "java/jwaBlogger/src/jwaBlogger/BlogManager.java",
+      "code": "if (!isAdmin)\n              getDatabaseManager().parameterizedUpdate(\"insert into view_control values(?, ?, null)\", blogEntry.getBlogEntryId(), control);"
+    },
+    {
+      "path": "java/jwaBlogger/src/jwaBlogger/BlogManager.java",
+      "code": "if (!isAdmin)\n              getDatabaseManager().parameterizedUpdate(\"insert into vote_control values(?, ?, null)\", blogEntry.getBlogEntryId(), control);"
+    },
+    {
+      "path": "java/jwaBlogger/src/jwaBlogger/BlogManager.java",
+      "code": "if (!isAdmin)\n              getDatabaseManager().parameterizedUpdate(\"insert into spam_control values(?, ?, null)\", blogEntry.getBlogEntryId(), control);"
+    },
+    {
+      "path": "java/jwaBlogger/src/jwaBlogger/BlogManager.java",
+      "code": "if(!isAdmin)\n              getDatabaseManager().parameterizedUpdate(\"insert into comment_vote_control values(?, ?, null)\", blogEntryComment.getBlogEntryCommentId(), control);"
+    },
+    {
+      "path": "java/jwaBlogger/src/jwaBlogger/BlogManager.java",
+      "code": "if (!isAdmin)\n              getDatabaseManager().parameterizedUpdate(\"insert into comment_spam_control values(?, ?, null)\", blogEntryComment.getBlogEntryCommentId(), control);"
+    }
+  ]
+}

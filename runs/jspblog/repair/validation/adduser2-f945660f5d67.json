@@ -1,0 +1,146 @@
+{
+  "category": "admin_only",
+  "page": "admin/adduser2.jsp",
+  "source": "D:\\tomcat9\\webapps\\blog\\admin\\adduser2.jsp",
+  "output": "D:\\project\\python\\DRHL\\runs\\jspblog\\repair\\files\\attempt-1\\admin\\adduser2.jsp",
+  "status": "successful_repair",
+  "message": "syntax/compile, vulnerability blocking, and regression validation all passed",
+  "engine": "llm",
+  "plan": "{\"missing_check\": \"Missing inclusion/execution of the admin authentication guard defined in admin/auth.jsp.\", \"insertion_location\": \"At the very beginning of admin/adduser2.jsp, immediately after the `<%@page contentType=\\\"text/html\\\"%>` directive and before the `<html>` tag, so the guard runs before any HTML output or database operations.\", \"recommended_guard\": \"<%@ include file=\\\"auth.jsp\\\" %>\", \"reused_project_semantics\": \"admin/auth.jsp defines the guard: if (drhlLoggedIn == null || !drhlLoggedIn.equals(\\\"true\\\")) { response.sendRedirect(\\\"index.jsp\\\"); return; } — it uses the `drhlLoggedIn` flag and sentinel `\\\"true\\\"`, denying by redirecting to `index.jsp` and returning.\", \"reason\": \"admin/adduser2.jsp is an admin-only entry that performs database inserts. Without the project's auth guard, a visitor can access it directly. Including the existing auth.jsp guard blocks unauthorized users before any sensitive operation while leaving admin access intact because the guard only rejects when `drhlLoggedIn` is not `\\\"true\\\"`.\"}",
+  "prompt_artifact": "D:\\project\\python\\DRHL\\runs\\jspblog\\repair\\prompts\\adduser2-attempt1-6426be209d9c.json",
+  "attempts": 1,
+  "patches_generated": 1,
+  "syntax_compile_ok": 1,
+  "exploit_blocked": 1,
+  "regression_passed": 1,
+  "database_validation_applied": 1,
+  "database_validation_passed": 1,
+  "successful": true,
+  "validation_artifact": "D:\\project\\python\\DRHL\\runs\\jspblog\\repair\\validation\\adduser2-f945660f5d67.json",
+  "attempt_details": [
+    {
+      "attempt": 1,
+      "output": "D:\\project\\python\\DRHL\\runs\\jspblog\\repair\\files\\attempt-1\\admin\\adduser2.jsp",
+      "syntax_compile_ok": true,
+      "exploit_blocked": true,
+      "regression_passed": true,
+      "successful": true,
+      "message": "syntax=(syntax check disabled by configuration); deployment=(source patch applied); vulnerability_blocking=(response=True; database=passed; evidence=visitor:not_vulnerable); regression=(response=True; database=passed; evidence=authorized status=200; denial=[])",
+      "prompt_artifact": "D:\\project\\python\\DRHL\\runs\\jspblog\\repair\\prompts\\adduser2-attempt1-6426be209d9c.json",
+      "plan": "{\"missing_check\": \"Missing inclusion/execution of the admin authentication guard defined in admin/auth.jsp.\", \"insertion_location\": \"At the very beginning of admin/adduser2.jsp, immediately after the `<%@page contentType=\\\"text/html\\\"%>` directive and before the `<html>` tag, so the guard runs before any HTML output or database operations.\", \"recommended_guard\": \"<%@ include file=\\\"auth.jsp\\\" %>\", \"reused_project_semantics\": \"admin/auth.jsp defines the guard: if (drhlLoggedIn == null || !drhlLoggedIn.equals(\\\"true\\\")) { response.sendRedirect(\\\"index.jsp\\\"); return; } — it uses the `drhlLoggedIn` flag and sentinel `\\\"true\\\"`, denying by redirecting to `index.jsp` and returning.\", \"reason\": \"admin/adduser2.jsp is an admin-only entry that performs database inserts. Without the project's auth guard, a visitor can access it directly. Including the existing auth.jsp guard blocks unauthorized users before any sensitive operation while leaving admin access intact because the guard only rejects when `drhlLoggedIn` is not `\\\"true\\\"`.\"}",
+      "database_validation_passed": true,
+      "database_validation": {
+        "oracle_version": 2,
+        "scope": "repair_only",
+        "applicable": true,
+        "passed": true,
+        "status": "passed",
+        "dimensions": {
+          "vulnerability_blocking": {
+            "phase": "attack",
+            "applicable": true,
+            "passed": true
+          },
+          "regression": {
+            "phase": "authorized",
+            "applicable": true,
+            "passed": true
+          }
+        },
+        "scenarios": [
+          {
+            "name": "jspblog-add-user-admin-create",
+            "operation": "create",
+            "passed": true,
+            "phases": [
+              {
+                "phase": "attack",
+                "role": "visitor",
+                "session_before_setup": false,
+                "setup_sql": [],
+                "session_requests": [],
+                "request": {
+                  "method": "POST",
+                  "page": "admin/adduser2.jsp",
+                  "params": {
+                    "author": "DRHLR_a27e3dbd33e8",
+                    "name": "DRHLR_a27e3dbd33e8",
+                    "submit": "Add"
+                  },
+                  "referer": "admin/adduser.jsp",
+                  "cookie_names": []
+                },
+                "response": {
+                  "status_code": 302,
+                  "url": "http://localhost:8080/blog/admin/adduser2.jsp",
+                  "body_length": 0
+                },
+                "query": "SELECT COUNT(*) FROM user WHERE author='DRHLR_a27e3dbd33e8'",
+                "observed": "0",
+                "assertions": [
+                  {
+                    "type": "scalar_zero",
+                    "expected": "0",
+                    "observed": "0",
+                    "passed": true
+                  }
+                ],
+                "passed": true
+              },
+              {
+                "phase": "authorized",
+                "role": "admin",
+                "session_before_setup": false,
+                "setup_sql": [],
+                "session_requests": [],
+                "request": {
+                  "method": "POST",
+                  "page": "admin/adduser2.jsp",
+                  "params": {
+                    "author": "DRHLR_a27e3dbd33e8",
+                    "name": "DRHLR_a27e3dbd33e8",
+                    "submit": "Add"
+                  },
+                  "referer": "admin/adduser.jsp",
+                  "cookie_names": []
+                },
+                "response": {
+                  "status_code": 200,
+                  "url": "http://localhost:8080/blog/admin/adduser2.jsp",
+                  "body_length": 396
+                },
+                "query": "SELECT COUNT(*) FROM user WHERE author='DRHLR_a27e3dbd33e8'",
+                "observed": "1",
+                "assertions": [
+                  {
+                    "type": "scalar_nonzero",
+                    "expected": "nonzero",
+                    "observed": "1",
+                    "passed": true
+                  }
+                ],
+                "passed": true
+              }
+            ]
+          }
+        ],
+        "combined_dimensions": {
+          "vulnerability_blocking": {
+            "passed": true,
+            "response_oracle_applicable": true,
+            "response_oracle_passed": true,
+            "database_oracle_applicable": true,
+            "database_oracle_passed": true
+          },
+          "regression": {
+            "passed": true,
+            "response_oracle_applicable": true,
+            "response_oracle_passed": true,
+            "database_oracle_applicable": true,
+            "database_oracle_passed": true
+          }
+        }
+      }
+    }
+  ]
+}

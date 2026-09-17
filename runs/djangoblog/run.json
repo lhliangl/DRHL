@@ -1,0 +1,27 @@
+{
+  "status": "completed",
+  "started_at": "2026-07-02T12:38:51.001803+00:00",
+  "config": "D:\\project\\python\\DRHL\\configs\\djangoblog.json",
+  "artifacts": {
+    "dynamic_graph": "D:\\project\\python\\DRHL\\runs\\djangoblog\\graphs\\dynamic.json",
+    "static_graph": "D:\\project\\python\\DRHL\\runs\\djangoblog\\graphs\\static.json",
+    "candidate_parameters": "D:\\project\\python\\DRHL\\runs\\djangoblog\\source\\candidate_parameters.json",
+    "candidate_functions": "D:\\project\\python\\DRHL\\runs\\djangoblog\\source\\candidate_functions.json",
+    "access_control_parameters": "D:\\project\\python\\DRHL\\runs\\djangoblog\\source\\parameters.json",
+    "access_control_functions": "D:\\project\\python\\DRHL\\runs\\djangoblog\\source\\functions.json",
+    "access_control_snippets": "D:\\project\\python\\DRHL\\runs\\djangoblog\\source\\snippets.json",
+    "fused_graph": "D:\\project\\python\\DRHL\\runs\\djangoblog\\graphs\\fused.json",
+    "graph_summary": "D:\\project\\python\\DRHL\\runs\\djangoblog\\graphs\\summary.json",
+    "graph_summary_csv": "D:\\project\\python\\DRHL\\runs\\djangoblog\\graphs\\summary.csv",
+    "attack_vectors": "D:\\project\\python\\DRHL\\runs\\djangoblog\\analysis\\vectors.json",
+    "findings": "D:\\project\\python\\DRHL\\runs\\djangoblog\\analysis\\findings.json",
+    "repairs": "D:\\project\\python\\DRHL\\runs\\djangoblog\\repair\\manifest.json",
+    "repair_report": "D:\\project\\python\\DRHL\\runs\\djangoblog\\repair\\repair_report.md",
+    "metrics_json": "D:\\project\\python\\DRHL\\runs\\djangoblog\\metrics\\summary.json",
+    "metrics_csv": "D:\\project\\python\\DRHL\\runs\\djangoblog\\metrics\\summary.csv",
+    "llm_access_control_snippets": "D:\\project\\python\\DRHL\\runs\\djangoblog\\source\\llm_snippets.json"
+  },
+  "finished_at": "2026-07-02T12:42:16.785007+00:00",
+  "repair_rerun_started_at": "2026-09-13T06:31:28.122407+00:00",
+  "repair_rerun_finished_at": "2026-09-13T06:34:55.604397+00:00"
+}

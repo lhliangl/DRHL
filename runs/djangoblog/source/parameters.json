@@ -1,0 +1,40 @@
+{
+  "parameters": [
+    {
+      "id": "blog/views.py:LCP1",
+      "path": "blog/views.py",
+      "expression": "Post.status",
+      "aliases": [
+        "Post.status"
+      ],
+      "database_relations": [
+        {
+          "table": "Post",
+          "field": "status",
+          "line": 6
+        }
+      ],
+      "sources": [
+        "database"
+      ],
+      "locations": [
+        {
+          "source": "database",
+          "line": 6,
+          "condition": "Post.objects.filter(status=1)"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ],
+      "validation_evidence": [
+        {
+          "kind": "database_field",
+          "table": "Post",
+          "field": "status",
+          "line": 6
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,157 @@
+{
+  "vectors": [
+    {
+      "category": "admin_only",
+      "page": "admin/addnews.jsp",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": "admin/editnews.jsp"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/addnews2.jsp",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "author": "drhl@example.test",
+          "headline": "DRHL Test News",
+          "date": "Wed Jul 01 21:05:20 CST 2026",
+          "body": "DRHL generated body for access-control testing.",
+          "submit": "Add"
+        },
+        "referer": "admin/addnews.jsp"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/adduser.jsp",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": "admin/index.jsp"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/adduser2.jsp",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "author": "drhl@example.test",
+          "name": "DRHL Tester",
+          "submit": "Add"
+        },
+        "referer": "admin/adduser.jsp"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/admin.jsp",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/delnews.jsp",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": "admin/index.jsp"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/deluser.jsp",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": "admin/index.jsp"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/editnews.jsp",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": "admin/index.jsp"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/editnews2.jsp?body=p1&headline=AokwZT",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "headline": "AokwZT",
+          "body": "DRHL generated body for access-control testing."
+        },
+        "referer": "admin/editnews.jsp"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/edituser.jsp",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": "admin/index.jsp"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    }
+  ]
+}

@@ -1,0 +1,4942 @@
+{
+  "nodes": [
+    "./",
+    "about.php",
+    "article.php",
+    "article.php?action=delete&do=comments&id=p1",
+    "article.php?do=comments&id=p1",
+    "article.php?do=edit&id=p1",
+    "article.php?do=editp&id=p1",
+    "article.php?do=p",
+    "etc.php",
+    "help.php",
+    "inc/..",
+    "inc/auth.php",
+    "inc/captcha.php",
+    "inc/config.php",
+    "inc/errors.php",
+    "inc/function.php",
+    "inc/global_files.php",
+    "inc/head_data.php",
+    "inc/header.php",
+    "inc/page_desc.php",
+    "inc/themecontrol.php",
+    "inc/wysiwyg/license.txt",
+    "index.php",
+    "index.php?do=permissiondenied",
+    "install/..",
+    "install/../index.php",
+    "install/index.php",
+    "install/install.inc.php",
+    "install/install.tmp.php",
+    "install/upgrade.php",
+    "login.php",
+    "manage.php",
+    "manage.php?do=deleteitems",
+    "manage.php?do=search",
+    "manage.php?sort=active%2Fasc",
+    "manage.php?sort=active%2Fdesc",
+    "manage.php?sort=article_author%2Fasc",
+    "manage.php?sort=article_author%2Fdesc",
+    "manage.php?sort=article_cat%2Fasc",
+    "manage.php?sort=article_cat%2Fdesc",
+    "manage.php?sort=article_title%2Fasc",
+    "manage.php?sort=article_title%2Fdesc",
+    "manage.php?sort=timestamp%2Fasc",
+    "manage.php?sort=timestamp%2Fdesc",
+    "manage.php?v=",
+    "manage.php?v=32",
+    "manage.php?v=admin",
+    "manage.php?v=all",
+    "manage.php?v=register",
+    "manage.php?v=unactive",
+    "manage.php?v=unapproved",
+    "manage.php?v=user1",
+    "manage.php?v=user2",
+    "preferences.php",
+    "preferences.php?action=delete&do=ban",
+    "preferences.php?action=deleteitems&do=categories",
+    "preferences.php?action=edit&do=categories&id=p1",
+    "preferences.php?action=edit&do=templates&tid=9",
+    "preferences.php?action=editp&do=templates",
+    "preferences.php?action=new&do=categories",
+    "preferences.php?action=new&do=templates",
+    "preferences.php?action=newp&do=ban",
+    "preferences.php?action=newp&do=templates",
+    "preferences.php?action=p&do=wizard",
+    "preferences.php?action=restore&do=backup",
+    "preferences.php?action=switch&do=templates",
+    "preferences.php?action=switch&do=themes",
+    "preferences.php?action=update&do=comments",
+    "preferences.php?action=update&do=display",
+    "preferences.php?action=update&do=globalmessage",
+    "preferences.php?action=update&do=line",
+    "preferences.php?action=update&do=rss",
+    "preferences.php?action=update&do=timestamp",
+    "preferences.php?action=update&do=wysiwyg",
+    "preferences.php?do=backup",
+    "preferences.php?do=ban",
+    "preferences.php?do=categories",
+    "preferences.php?do=comments",
+    "preferences.php?do=display",
+    "preferences.php?do=globalmessage",
+    "preferences.php?do=line",
+    "preferences.php?do=rss",
+    "preferences.php?do=sef",
+    "preferences.php?do=syslog",
+    "preferences.php?do=syslog&sort=description%2Fasc",
+    "preferences.php?do=syslog&sort=description%2Fdesc",
+    "preferences.php?do=syslog&sort=page%2Fasc",
+    "preferences.php?do=syslog&sort=page%2Fdesc",
+    "preferences.php?do=syslog&sort=task%2Fasc",
+    "preferences.php?do=syslog&sort=task%2Fdesc",
+    "preferences.php?do=syslog&sort=timestamp%2Fasc",
+    "preferences.php?do=syslog&sort=timestamp%2Fdesc",
+    "preferences.php?do=syslog&sort=user%2Fasc",
+    "preferences.php?do=syslog&sort=user%2Fdesc",
+    "preferences.php?do=templates",
+    "preferences.php?do=themes",
+    "preferences.php?do=timestamp",
+    "preferences.php?do=wizard",
+    "preferences.php?do=wysiwyg",
+    "shownews.php",
+    "showtitle.php",
+    "user.php",
+    "user.php?action=delall&do=loginrec",
+    "user.php?do=deleteranks",
+    "user.php?do=deleteusers",
+    "user.php?do=edit&id=p1",
+    "user.php?do=editp",
+    "user.php?do=editrank&id=p1",
+    "user.php?do=erankp",
+    "user.php?do=loginrec",
+    "user.php?do=new",
+    "user.php?do=newp",
+    "user.php?do=newrank",
+    "user.php?do=nrankp",
+    "user.php?do=ranks"
+  ],
+  "edges": [
+    {
+      "from": "./",
+      "to": "user.php?do=loginrec"
+    },
+    {
+      "from": "article.php",
+      "to": "article.php?do=p"
+    },
+    {
+      "from": "article.php",
+      "to": "index.php?do=permissiondenied"
+    },
+    {
+      "from": "article.php?action=delete&do=comments&id=p1",
+      "to": "article.php?action=delete&do=comments&id=p1"
+    },
+    {
+      "from": "article.php?do=comments&id=p1",
+      "to": "./"
+    },
+    {
+      "from": "article.php?do=comments&id=p1",
+      "to": "article.php?action=delete&do=comments&id=p1"
+    },
+    {
+      "from": "article.php?do=edit&id=p1",
+      "to": "article.php?do=editp&id=p1"
+    },
+    {
+      "from": "article.php?do=edit&id=p1",
+      "to": "index.php"
+    },
+    {
+      "from": "article.php?do=edit&id=p1",
+      "to": "index.php?do=permissiondenied"
+    },
+    {
+      "from": "article.php?do=editp&id=p1",
+      "to": "article.php?do=editp&id=p1"
+    },
+    {
+      "from": "article.php?do=p",
+      "to": "article.php?do=p"
+    },
+    {
+      "from": "index.php",
+      "to": "manage.php?v=unactive"
+    },
+    {
+      "from": "index.php",
+      "to": "manage.php?v=unapproved"
+    },
+    {
+      "from": "index.php",
+      "to": "user.php?do=loginrec"
+    },
+    {
+      "from": "index.php?do=permissiondenied",
+      "to": "article.php"
+    },
+    {
+      "from": "index.php?do=permissiondenied",
+      "to": "manage.php"
+    },
+    {
+      "from": "index.php?do=permissiondenied",
+      "to": "preferences.php"
+    },
+    {
+      "from": "index.php?do=permissiondenied",
+      "to": "preferences.php?do=globalmessage"
+    },
+    {
+      "from": "index.php?do=permissiondenied",
+      "to": "user.php"
+    },
+    {
+      "from": "manage.php",
+      "to": "article.php"
+    },
+    {
+      "from": "manage.php",
+      "to": "manage.php"
+    },
+    {
+      "from": "manage.php",
+      "to": "manage.php?do=deleteitems"
+    },
+    {
+      "from": "manage.php",
+      "to": "manage.php?do=search"
+    },
+    {
+      "from": "manage.php",
+      "to": "manage.php?v="
+    },
+    {
+      "from": "manage.php",
+      "to": "manage.php?v=user1"
+    },
+    {
+      "from": "manage.php?do=deleteitems",
+      "to": "index.php?do=permissiondenied"
+    },
+    {
+      "from": "manage.php?do=deleteitems",
+      "to": "manage.php"
+    },
+    {
+      "from": "manage.php?do=search",
+      "to": "manage.php"
+    },
+    {
+      "from": "manage.php?sort=active%2Fasc",
+      "to": "manage.php"
+    },
+    {
+      "from": "manage.php?sort=active%2Fasc",
+      "to": "manage.php?do=deleteitems"
+    },
+    {
+      "from": "manage.php?sort=active%2Fasc",
+      "to": "manage.php?do=search"
+    },
+    {
+      "from": "manage.php?sort=active%2Fasc",
+      "to": "manage.php?sort=article_author%2Fasc"
+    },
+    {
+      "from": "manage.php?sort=active%2Fdesc",
+      "to": "manage.php"
+    },
+    {
+      "from": "manage.php?sort=active%2Fdesc",
+      "to": "manage.php?do=deleteitems"
+    },
+    {
+      "from": "manage.php?sort=active%2Fdesc",
+      "to": "manage.php?do=search"
+    },
+    {
+      "from": "manage.php?sort=article_author%2Fasc",
+      "to": "manage.php"
+    },
+    {
+      "from": "manage.php?sort=article_author%2Fasc",
+      "to": "manage.php?do=deleteitems"
+    },
+    {
+      "from": "manage.php?sort=article_author%2Fasc",
+      "to": "manage.php?do=search"
+    },
+    {
+      "from": "manage.php?sort=article_author%2Fasc",
+      "to": "manage.php?sort=timestamp%2Fasc"
+    },
+    {
+      "from": "manage.php?sort=article_author%2Fdesc",
+      "to": "manage.php"
+    },
+    {
+      "from": "manage.php?sort=article_author%2Fdesc",
+      "to": "manage.php?do=deleteitems"
+    },
+    {
+      "from": "manage.php?sort=article_author%2Fdesc",
+      "to": "manage.php?do=search"
+    },
+    {
+      "from": "manage.php?sort=article_cat%2Fasc",
+      "to": "manage.php"
+    },
+    {
+      "from": "manage.php?sort=article_cat%2Fasc",
+      "to": "manage.php?do=deleteitems"
+    },
+    {
+      "from": "manage.php?sort=article_cat%2Fasc",
+      "to": "manage.php?do=search"
+    },
+    {
+      "from": "manage.php?sort=article_cat%2Fasc",
+      "to": "manage.php?sort=article_title%2Fasc"
+    },
+    {
+      "from": "manage.php?sort=article_cat%2Fdesc",
+      "to": "manage.php"
+    },
+    {
+      "from": "manage.php?sort=article_cat%2Fdesc",
+      "to": "manage.php?do=deleteitems"
+    },
+    {
+      "from": "manage.php?sort=article_cat%2Fdesc",
+      "to": "manage.php?do=search"
+    },
+    {
+      "from": "manage.php?sort=article_title%2Fasc",
+      "to": "manage.php"
+    },
+    {
+      "from": "manage.php?sort=article_title%2Fasc",
+      "to": "manage.php?do=deleteitems"
+    },
+    {
+      "from": "manage.php?sort=article_title%2Fasc",
+      "to": "manage.php?do=search"
+    },
+    {
+      "from": "manage.php?sort=article_title%2Fasc",
+      "to": "manage.php?sort=active%2Fdesc"
+    },
+    {
+      "from": "manage.php?sort=article_title%2Fasc",
+      "to": "manage.php?sort=article_author%2Fdesc"
+    },
+    {
+      "from": "manage.php?sort=article_title%2Fasc",
+      "to": "manage.php?sort=article_cat%2Fdesc"
+    },
+    {
+      "from": "manage.php?sort=article_title%2Fasc",
+      "to": "manage.php?sort=article_title%2Fdesc"
+    },
+    {
+      "from": "manage.php?sort=article_title%2Fasc",
+      "to": "manage.php?sort=timestamp%2Fdesc"
+    },
+    {
+      "from": "manage.php?sort=article_title%2Fasc",
+      "to": "preferences.php?do=categories"
+    },
+    {
+      "from": "manage.php?sort=article_title%2Fdesc",
+      "to": "manage.php"
+    },
+    {
+      "from": "manage.php?sort=article_title%2Fdesc",
+      "to": "manage.php?do=deleteitems"
+    },
+    {
+      "from": "manage.php?sort=article_title%2Fdesc",
+      "to": "manage.php?do=search"
+    },
+    {
+      "from": "manage.php?sort=timestamp%2Fasc",
+      "to": "manage.php"
+    },
+    {
+      "from": "manage.php?sort=timestamp%2Fasc",
+      "to": "manage.php?do=deleteitems"
+    },
+    {
+      "from": "manage.php?sort=timestamp%2Fasc",
+      "to": "manage.php?do=search"
+    },
+    {
+      "from": "manage.php?sort=timestamp%2Fasc",
+      "to": "manage.php?sort=article_cat%2Fasc"
+    },
+    {
+      "from": "manage.php?sort=timestamp%2Fdesc",
+      "to": "manage.php"
+    },
+    {
+      "from": "manage.php?sort=timestamp%2Fdesc",
+      "to": "manage.php?do=deleteitems"
+    },
+    {
+      "from": "manage.php?sort=timestamp%2Fdesc",
+      "to": "manage.php?do=search"
+    },
+    {
+      "from": "manage.php?v=",
+      "to": "manage.php"
+    },
+    {
+      "from": "manage.php?v=",
+      "to": "manage.php?do=deleteitems"
+    },
+    {
+      "from": "manage.php?v=",
+      "to": "manage.php?do=search"
+    },
+    {
+      "from": "manage.php?v=32",
+      "to": "article.php?do=edit&id=p1"
+    },
+    {
+      "from": "manage.php?v=32",
+      "to": "manage.php"
+    },
+    {
+      "from": "manage.php?v=32",
+      "to": "manage.php?do=deleteitems"
+    },
+    {
+      "from": "manage.php?v=32",
+      "to": "manage.php?do=search"
+    },
+    {
+      "from": "manage.php?v=admin",
+      "to": "manage.php"
+    },
+    {
+      "from": "manage.php?v=admin",
+      "to": "manage.php?do=deleteitems"
+    },
+    {
+      "from": "manage.php?v=admin",
+      "to": "manage.php?do=search"
+    },
+    {
+      "from": "manage.php?v=admin",
+      "to": "manage.php?v=32"
+    },
+    {
+      "from": "manage.php?v=all",
+      "to": "manage.php"
+    },
+    {
+      "from": "manage.php?v=all",
+      "to": "manage.php?do=deleteitems"
+    },
+    {
+      "from": "manage.php?v=all",
+      "to": "manage.php?do=search"
+    },
+    {
+      "from": "manage.php?v=all",
+      "to": "manage.php?sort=active%2Fasc"
+    },
+    {
+      "from": "manage.php?v=register",
+      "to": "manage.php"
+    },
+    {
+      "from": "manage.php?v=register",
+      "to": "manage.php?do=deleteitems"
+    },
+    {
+      "from": "manage.php?v=register",
+      "to": "manage.php?do=search"
+    },
+    {
+      "from": "manage.php?v=unactive",
+      "to": "manage.php"
+    },
+    {
+      "from": "manage.php?v=unactive",
+      "to": "manage.php?do=deleteitems"
+    },
+    {
+      "from": "manage.php?v=unactive",
+      "to": "manage.php?do=search"
+    },
+    {
+      "from": "manage.php?v=unapproved",
+      "to": "manage.php"
+    },
+    {
+      "from": "manage.php?v=unapproved",
+      "to": "manage.php?do=deleteitems"
+    },
+    {
+      "from": "manage.php?v=unapproved",
+      "to": "manage.php?do=search"
+    },
+    {
+      "from": "manage.php?v=unapproved",
+      "to": "manage.php?v=user1"
+    },
+    {
+      "from": "manage.php?v=unapproved",
+      "to": "manage.php?v=user2"
+    },
+    {
+      "from": "manage.php?v=user1",
+      "to": "manage.php"
+    },
+    {
+      "from": "manage.php?v=user1",
+      "to": "manage.php?do=deleteitems"
+    },
+    {
+      "from": "manage.php?v=user1",
+      "to": "manage.php?do=search"
+    },
+    {
+      "from": "manage.php?v=user1",
+      "to": "manage.php?v=all"
+    },
+    {
+      "from": "manage.php?v=user1",
+      "to": "manage.php?v=user2"
+    },
+    {
+      "from": "manage.php?v=user2",
+      "to": "manage.php"
+    },
+    {
+      "from": "manage.php?v=user2",
+      "to": "manage.php?do=deleteitems"
+    },
+    {
+      "from": "manage.php?v=user2",
+      "to": "manage.php?do=search"
+    },
+    {
+      "from": "manage.php?v=user2",
+      "to": "manage.php?v=all"
+    },
+    {
+      "from": "manage.php?v=user2",
+      "to": "manage.php?v=user1"
+    },
+    {
+      "from": "preferences.php",
+      "to": "index.php?do=permissiondenied"
+    },
+    {
+      "from": "preferences.php",
+      "to": "preferences.php?do=backup"
+    },
+    {
+      "from": "preferences.php",
+      "to": "preferences.php?do=comments"
+    },
+    {
+      "from": "preferences.php",
+      "to": "preferences.php?do=display"
+    },
+    {
+      "from": "preferences.php",
+      "to": "preferences.php?do=line"
+    },
+    {
+      "from": "preferences.php",
+      "to": "preferences.php?do=rss"
+    },
+    {
+      "from": "preferences.php",
+      "to": "preferences.php?do=sef"
+    },
+    {
+      "from": "preferences.php",
+      "to": "preferences.php?do=syslog"
+    },
+    {
+      "from": "preferences.php",
+      "to": "preferences.php?do=templates"
+    },
+    {
+      "from": "preferences.php",
+      "to": "preferences.php?do=themes"
+    },
+    {
+      "from": "preferences.php",
+      "to": "preferences.php?do=timestamp"
+    },
+    {
+      "from": "preferences.php",
+      "to": "preferences.php?do=wizard"
+    },
+    {
+      "from": "preferences.php",
+      "to": "preferences.php?do=wysiwyg"
+    },
+    {
+      "from": "preferences.php",
+      "to": "user.php?action=delall&do=loginrec"
+    },
+    {
+      "from": "preferences.php?action=delete&do=ban",
+      "to": "preferences.php?action=delete&do=ban"
+    },
+    {
+      "from": "preferences.php?action=deleteitems&do=categories",
+      "to": "preferences.php?action=deleteitems&do=categories"
+    },
+    {
+      "from": "preferences.php?action=edit&do=categories&id=p1",
+      "to": "manage.php"
+    },
+    {
+      "from": "preferences.php?action=edit&do=categories&id=p1",
+      "to": "preferences.php?action=deleteitems&do=categories"
+    },
+    {
+      "from": "preferences.php?action=edit&do=categories&id=p1",
+      "to": "preferences.php?action=new&do=categories"
+    },
+    {
+      "from": "preferences.php?action=edit&do=templates&tid=9",
+      "to": "preferences.php?action=editp&do=templates"
+    },
+    {
+      "from": "preferences.php?action=editp&do=templates",
+      "to": "preferences.php?action=editp&do=templates"
+    },
+    {
+      "from": "preferences.php?action=new&do=categories",
+      "to": "preferences.php?action=deleteitems&do=categories"
+    },
+    {
+      "from": "preferences.php?action=new&do=categories",
+      "to": "preferences.php?action=new&do=categories"
+    },
+    {
+      "from": "preferences.php?action=new&do=templates",
+      "to": "preferences.php?action=newp&do=templates"
+    },
+    {
+      "from": "preferences.php?action=newp&do=ban",
+      "to": "preferences.php?action=delete&do=ban"
+    },
+    {
+      "from": "preferences.php?action=newp&do=ban",
+      "to": "preferences.php?action=newp&do=ban"
+    },
+    {
+      "from": "preferences.php?action=newp&do=templates",
+      "to": "preferences.php?action=newp&do=templates"
+    },
+    {
+      "from": "preferences.php?action=p&do=wizard",
+      "to": "preferences.php?action=p&do=wizard"
+    },
+    {
+      "from": "preferences.php?action=restore&do=backup",
+      "to": "preferences.php?action=restore&do=backup"
+    },
+    {
+      "from": "preferences.php?action=switch&do=templates",
+      "to": "preferences.php?action=switch&do=templates"
+    },
+    {
+      "from": "preferences.php?action=switch&do=themes",
+      "to": "preferences.php?action=switch&do=themes"
+    },
+    {
+      "from": "preferences.php?action=update&do=comments",
+      "to": "preferences.php?action=update&do=comments"
+    },
+    {
+      "from": "preferences.php?action=update&do=display",
+      "to": "preferences.php?action=update&do=display"
+    },
+    {
+      "from": "preferences.php?action=update&do=globalmessage",
+      "to": "preferences.php?action=update&do=globalmessage"
+    },
+    {
+      "from": "preferences.php?action=update&do=line",
+      "to": "preferences.php?action=update&do=line"
+    },
+    {
+      "from": "preferences.php?action=update&do=rss",
+      "to": "preferences.php?action=update&do=rss"
+    },
+    {
+      "from": "preferences.php?action=update&do=timestamp",
+      "to": "preferences.php?action=update&do=timestamp"
+    },
+    {
+      "from": "preferences.php?action=update&do=wysiwyg",
+      "to": "preferences.php?action=update&do=wysiwyg"
+    },
+    {
+      "from": "preferences.php?do=backup",
+      "to": "preferences.php?action=restore&do=backup"
+    },
+    {
+      "from": "preferences.php?do=ban",
+      "to": "preferences.php?action=delete&do=ban"
+    },
+    {
+      "from": "preferences.php?do=ban",
+      "to": "preferences.php?action=newp&do=ban"
+    },
+    {
+      "from": "preferences.php?do=categories",
+      "to": "index.php?do=permissiondenied"
+    },
+    {
+      "from": "preferences.php?do=categories",
+      "to": "preferences.php?action=deleteitems&do=categories"
+    },
+    {
+      "from": "preferences.php?do=categories",
+      "to": "preferences.php?action=edit&do=categories&id=p1"
+    },
+    {
+      "from": "preferences.php?do=categories",
+      "to": "preferences.php?action=new&do=categories"
+    },
+    {
+      "from": "preferences.php?do=comments",
+      "to": "preferences.php?action=update&do=comments"
+    },
+    {
+      "from": "preferences.php?do=display",
+      "to": "preferences.php?action=update&do=display"
+    },
+    {
+      "from": "preferences.php?do=globalmessage",
+      "to": "index.php?do=permissiondenied"
+    },
+    {
+      "from": "preferences.php?do=globalmessage",
+      "to": "preferences.php"
+    },
+    {
+      "from": "preferences.php?do=globalmessage",
+      "to": "preferences.php?action=update&do=globalmessage"
+    },
+    {
+      "from": "preferences.php?do=line",
+      "to": "preferences.php?action=update&do=line"
+    },
+    {
+      "from": "preferences.php?do=line",
+      "to": "preferences.php?do=ban"
+    },
+    {
+      "from": "preferences.php?do=rss",
+      "to": "preferences.php?action=update&do=rss"
+    },
+    {
+      "from": "preferences.php?do=syslog",
+      "to": "preferences.php?do=syslog&sort=page%2Fdesc"
+    },
+    {
+      "from": "preferences.php?do=syslog&sort=description%2Fasc",
+      "to": "preferences.php?do=syslog&sort=task%2Fdesc"
+    },
+    {
+      "from": "preferences.php?do=syslog&sort=description%2Fdesc",
+      "to": "preferences.php?do=syslog&sort=description%2Fasc"
+    },
+    {
+      "from": "preferences.php?do=syslog&sort=page%2Fasc",
+      "to": "preferences.php?do=syslog&sort=timestamp%2Fdesc"
+    },
+    {
+      "from": "preferences.php?do=syslog&sort=page%2Fdesc",
+      "to": "preferences.php?do=syslog&sort=page%2Fasc"
+    },
+    {
+      "from": "preferences.php?do=syslog&sort=task%2Fdesc",
+      "to": "preferences.php?do=syslog&sort=task%2Fasc"
+    },
+    {
+      "from": "preferences.php?do=syslog&sort=timestamp%2Fasc",
+      "to": "preferences.php?do=syslog&sort=user%2Fdesc"
+    },
+    {
+      "from": "preferences.php?do=syslog&sort=timestamp%2Fdesc",
+      "to": "preferences.php?do=syslog&sort=timestamp%2Fasc"
+    },
+    {
+      "from": "preferences.php?do=syslog&sort=user%2Fasc",
+      "to": "preferences.php?do=syslog&sort=description%2Fdesc"
+    },
+    {
+      "from": "preferences.php?do=syslog&sort=user%2Fdesc",
+      "to": "preferences.php?do=syslog&sort=user%2Fasc"
+    },
+    {
+      "from": "preferences.php?do=templates",
+      "to": "preferences.php?action=edit&do=templates&tid=9"
+    },
+    {
+      "from": "preferences.php?do=templates",
+      "to": "preferences.php?action=new&do=templates"
+    },
+    {
+      "from": "preferences.php?do=templates",
+      "to": "preferences.php?action=switch&do=templates"
+    },
+    {
+      "from": "preferences.php?do=themes",
+      "to": "preferences.php?action=switch&do=themes"
+    },
+    {
+      "from": "preferences.php?do=timestamp",
+      "to": "preferences.php?action=update&do=timestamp"
+    },
+    {
+      "from": "preferences.php?do=wizard",
+      "to": "preferences.php?action=p&do=wizard"
+    },
+    {
+      "from": "preferences.php?do=wysiwyg",
+      "to": "inc/wysiwyg/license.txt"
+    },
+    {
+      "from": "preferences.php?do=wysiwyg",
+      "to": "preferences.php?action=update&do=wysiwyg"
+    },
+    {
+      "from": "user.php",
+      "to": "manage.php?v=admin"
+    },
+    {
+      "from": "user.php",
+      "to": "manage.php?v=register"
+    },
+    {
+      "from": "user.php",
+      "to": "user.php?do=deleteusers"
+    },
+    {
+      "from": "user.php",
+      "to": "user.php?do=edit&id=p1"
+    },
+    {
+      "from": "user.php",
+      "to": "user.php?do=editrank&id=p1"
+    },
+    {
+      "from": "user.php",
+      "to": "user.php?do=new"
+    },
+    {
+      "from": "user.php",
+      "to": "user.php?do=newrank"
+    },
+    {
+      "from": "user.php",
+      "to": "user.php?do=ranks"
+    },
+    {
+      "from": "user.php?action=delall&do=loginrec",
+      "to": "manage.php?do=deleteitems"
+    },
+    {
+      "from": "user.php?action=delall&do=loginrec",
+      "to": "user.php"
+    },
+    {
+      "from": "user.php?do=deleteranks",
+      "to": "user.php?do=ranks"
+    },
+    {
+      "from": "user.php?do=deleteusers",
+      "to": "index.php?do=permissiondenied"
+    },
+    {
+      "from": "user.php?do=deleteusers",
+      "to": "user.php"
+    },
+    {
+      "from": "user.php?do=edit&id=p1",
+      "to": "index.php?do=permissiondenied"
+    },
+    {
+      "from": "user.php?do=edit&id=p1",
+      "to": "user.php?do=editp"
+    },
+    {
+      "from": "user.php?do=editp",
+      "to": "user.php?do=editp"
+    },
+    {
+      "from": "user.php?do=editrank&id=p1",
+      "to": "index.php?do=permissiondenied"
+    },
+    {
+      "from": "user.php?do=editrank&id=p1",
+      "to": "user.php?do=erankp"
+    },
+    {
+      "from": "user.php?do=editrank&id=p1",
+      "to": "user.php?do=newrank"
+    },
+    {
+      "from": "user.php?do=erankp",
+      "to": "user.php?do=erankp"
+    },
+    {
+      "from": "user.php?do=loginrec",
+      "to": "index.php?do=permissiondenied"
+    },
+    {
+      "from": "user.php?do=loginrec",
+      "to": "manage.php?do=deleteitems"
+    },
+    {
+      "from": "user.php?do=loginrec",
+      "to": "user.php?do=editrank&id=p1"
+    },
+    {
+      "from": "user.php?do=new",
+      "to": "index.php?do=permissiondenied"
+    },
+    {
+      "from": "user.php?do=new",
+      "to": "user.php?do=newp"
+    },
+    {
+      "from": "user.php?do=newp",
+      "to": "user.php?do=newp"
+    },
+    {
+      "from": "user.php?do=newrank",
+      "to": "index.php?do=permissiondenied"
+    },
+    {
+      "from": "user.php?do=newrank",
+      "to": "preferences.php?do=globalmessage"
+    },
+    {
+      "from": "user.php?do=newrank",
+      "to": "user.php?do=nrankp"
+    },
+    {
+      "from": "user.php?do=nrankp",
+      "to": "user.php?do=nrankp"
+    },
+    {
+      "from": "user.php?do=ranks",
+      "to": "index.php?do=permissiondenied"
+    },
+    {
+      "from": "user.php?do=ranks",
+      "to": "user.php?do=deleteranks"
+    }
+  ],
+  "static_edges": [
+    {
+      "from": "about.php",
+      "to": "inc/header.php",
+      "kind": "dependency"
+    },
+    {
+      "from": "about.php",
+      "to": "inc/themecontrol.php",
+      "kind": "dependency"
+    },
+    {
+      "from": "article.php",
+      "to": "inc/header.php",
+      "kind": "dependency"
+    },
+    {
+      "from": "article.php",
+      "to": "inc/themecontrol.php",
+      "kind": "dependency"
+    },
+    {
+      "from": "etc.php",
+      "to": "inc/header.php",
+      "kind": "dependency"
+    },
+    {
+      "from": "etc.php",
+      "to": "shownews.php",
+      "kind": "dependency"
+    },
+    {
+      "from": "inc/header.php",
+      "to": "inc/auth.php",
+      "kind": "dependency"
+    },
+    {
+      "from": "inc/header.php",
+      "to": "inc/config.php",
+      "kind": "dependency"
+    },
+    {
+      "from": "inc/header.php",
+      "to": "inc/errors.php",
+      "kind": "dependency"
+    },
+    {
+      "from": "inc/header.php",
+      "to": "inc/function.php",
+      "kind": "dependency"
+    },
+    {
+      "from": "inc/header.php",
+      "to": "inc/global_files.php",
+      "kind": "dependency"
+    },
+    {
+      "from": "inc/header.php",
+      "to": "inc/head_data.php",
+      "kind": "dependency"
+    },
+    {
+      "from": "inc/themecontrol.php",
+      "to": "inc/page_desc.php",
+      "kind": "dependency"
+    },
+    {
+      "from": "index.php",
+      "to": "inc/header.php",
+      "kind": "dependency"
+    },
+    {
+      "from": "index.php",
+      "to": "inc/themecontrol.php",
+      "kind": "dependency"
+    },
+    {
+      "from": "install/index.php",
+      "to": "install/install.inc.php",
+      "kind": "dependency"
+    },
+    {
+      "from": "install/index.php",
+      "to": "install/install.tmp.php",
+      "kind": "dependency"
+    },
+    {
+      "from": "install/install.inc.php",
+      "to": "inc/errors.php",
+      "kind": "dependency"
+    },
+    {
+      "from": "install/upgrade.php",
+      "to": "inc/config.php",
+      "kind": "dependency"
+    },
+    {
+      "from": "install/upgrade.php",
+      "to": "install/install.tmp.php",
+      "kind": "dependency"
+    },
+    {
+      "from": "login.php",
+      "to": "inc/header.php",
+      "kind": "dependency"
+    },
+    {
+      "from": "login.php",
+      "to": "inc/themecontrol.php",
+      "kind": "dependency"
+    },
+    {
+      "from": "manage.php",
+      "to": "inc/header.php",
+      "kind": "dependency"
+    },
+    {
+      "from": "manage.php",
+      "to": "inc/themecontrol.php",
+      "kind": "dependency"
+    },
+    {
+      "from": "preferences.php",
+      "to": "inc/header.php",
+      "kind": "dependency"
+    },
+    {
+      "from": "preferences.php",
+      "to": "inc/themecontrol.php",
+      "kind": "dependency"
+    },
+    {
+      "from": "shownews.php",
+      "to": "inc/captcha.php",
+      "kind": "dependency"
+    },
+    {
+      "from": "shownews.php",
+      "to": "inc/config.php",
+      "kind": "dependency"
+    },
+    {
+      "from": "showtitle.php",
+      "to": "inc/config.php",
+      "kind": "dependency"
+    },
+    {
+      "from": "user.php",
+      "to": "inc/header.php",
+      "kind": "dependency"
+    },
+    {
+      "from": "user.php",
+      "to": "inc/themecontrol.php",
+      "kind": "dependency"
+    },
+    {
+      "from": "about.php",
+      "to": "about.php",
+      "kind": "http"
+    },
+    {
+      "from": "about.php",
+      "to": "help.php",
+      "kind": "http"
+    },
+    {
+      "from": "article.php",
+      "to": "article.php",
+      "kind": "http"
+    },
+    {
+      "from": "article.php",
+      "to": "index.php",
+      "kind": "http"
+    },
+    {
+      "from": "help.php",
+      "to": "preferences.php",
+      "kind": "http"
+    },
+    {
+      "from": "inc/errors.php",
+      "to": "index.php",
+      "kind": "http"
+    },
+    {
+      "from": "index.php",
+      "to": "article.php",
+      "kind": "http"
+    },
+    {
+      "from": "install/index.php",
+      "to": "index.php",
+      "kind": "http"
+    },
+    {
+      "from": "install/index.php",
+      "to": "install/index.php",
+      "kind": "http"
+    },
+    {
+      "from": "install/index.php",
+      "to": "install/upgrade.php",
+      "kind": "http"
+    },
+    {
+      "from": "install/install.tmp.php",
+      "to": "index.php",
+      "kind": "http"
+    },
+    {
+      "from": "install/install.tmp.php",
+      "to": "install/index.php",
+      "kind": "http"
+    },
+    {
+      "from": "login.php",
+      "to": "index.php",
+      "kind": "http"
+    },
+    {
+      "from": "login.php",
+      "to": "login.php",
+      "kind": "http"
+    },
+    {
+      "from": "manage.php",
+      "to": "article.php",
+      "kind": "http"
+    },
+    {
+      "from": "manage.php",
+      "to": "index.php",
+      "kind": "http"
+    },
+    {
+      "from": "manage.php",
+      "to": "manage.php",
+      "kind": "http"
+    },
+    {
+      "from": "preferences.php",
+      "to": "index.php",
+      "kind": "http"
+    },
+    {
+      "from": "preferences.php",
+      "to": "preferences.php",
+      "kind": "http"
+    },
+    {
+      "from": "preferences.php",
+      "to": "user.php",
+      "kind": "http"
+    },
+    {
+      "from": "user.php",
+      "to": "index.php",
+      "kind": "http"
+    },
+    {
+      "from": "user.php",
+      "to": "manage.php",
+      "kind": "http"
+    },
+    {
+      "from": "user.php",
+      "to": "user.php",
+      "kind": "http"
+    }
+  ],
+  "node_origins": {
+    "./": [
+      "dynamic"
+    ],
+    "about.php": [
+      "static"
+    ],
+    "article.php": [
+      "dynamic",
+      "static"
+    ],
+    "article.php?action=delete&do=comments&id=p1": [
+      "dynamic"
+    ],
+    "article.php?do=comments&id=p1": [
+      "dynamic"
+    ],
+    "article.php?do=edit&id=p1": [
+      "dynamic"
+    ],
+    "article.php?do=editp&id=p1": [
+      "dynamic"
+    ],
+    "article.php?do=p": [
+      "dynamic"
+    ],
+    "etc.php": [
+      "static"
+    ],
+    "help.php": [
+      "static"
+    ],
+    "inc/..": [
+      "static"
+    ],
+    "inc/auth.php": [
+      "static"
+    ],
+    "inc/captcha.php": [
+      "static"
+    ],
+    "inc/config.php": [
+      "static"
+    ],
+    "inc/errors.php": [
+      "static"
+    ],
+    "inc/function.php": [
+      "static"
+    ],
+    "inc/global_files.php": [
+      "static"
+    ],
+    "inc/head_data.php": [
+      "static"
+    ],
+    "inc/header.php": [
+      "static"
+    ],
+    "inc/page_desc.php": [
+      "static"
+    ],
+    "inc/themecontrol.php": [
+      "static"
+    ],
+    "inc/wysiwyg/license.txt": [
+      "dynamic"
+    ],
+    "index.php": [
+      "dynamic",
+      "static"
+    ],
+    "index.php?do=permissiondenied": [
+      "dynamic"
+    ],
+    "install/..": [
+      "static"
+    ],
+    "install/../index.php": [
+      "static"
+    ],
+    "install/index.php": [
+      "static"
+    ],
+    "install/install.inc.php": [
+      "static"
+    ],
+    "install/install.tmp.php": [
+      "static"
+    ],
+    "install/upgrade.php": [
+      "static"
+    ],
+    "login.php": [
+      "static"
+    ],
+    "manage.php": [
+      "dynamic",
+      "static"
+    ],
+    "manage.php?do=deleteitems": [
+      "dynamic"
+    ],
+    "manage.php?do=search": [
+      "dynamic"
+    ],
+    "manage.php?sort=active%2Fasc": [
+      "dynamic"
+    ],
+    "manage.php?sort=active%2Fdesc": [
+      "dynamic"
+    ],
+    "manage.php?sort=article_author%2Fasc": [
+      "dynamic"
+    ],
+    "manage.php?sort=article_author%2Fdesc": [
+      "dynamic"
+    ],
+    "manage.php?sort=article_cat%2Fasc": [
+      "dynamic"
+    ],
+    "manage.php?sort=article_cat%2Fdesc": [
+      "dynamic"
+    ],
+    "manage.php?sort=article_title%2Fasc": [
+      "dynamic"
+    ],
+    "manage.php?sort=article_title%2Fdesc": [
+      "dynamic"
+    ],
+    "manage.php?sort=timestamp%2Fasc": [
+      "dynamic"
+    ],
+    "manage.php?sort=timestamp%2Fdesc": [
+      "dynamic"
+    ],
+    "manage.php?v=": [
+      "dynamic"
+    ],
+    "manage.php?v=32": [
+      "dynamic"
+    ],
+    "manage.php?v=admin": [
+      "dynamic"
+    ],
+    "manage.php?v=all": [
+      "dynamic"
+    ],
+    "manage.php?v=register": [
+      "dynamic"
+    ],
+    "manage.php?v=unactive": [
+      "dynamic"
+    ],
+    "manage.php?v=unapproved": [
+      "dynamic"
+    ],
+    "manage.php?v=user1": [
+      "dynamic"
+    ],
+    "manage.php?v=user2": [
+      "dynamic"
+    ],
+    "preferences.php": [
+      "dynamic",
+      "static"
+    ],
+    "preferences.php?action=delete&do=ban": [
+      "dynamic"
+    ],
+    "preferences.php?action=deleteitems&do=categories": [
+      "dynamic"
+    ],
+    "preferences.php?action=edit&do=categories&id=p1": [
+      "dynamic"
+    ],
+    "preferences.php?action=edit&do=templates&tid=9": [
+      "dynamic"
+    ],
+    "preferences.php?action=editp&do=templates": [
+      "dynamic"
+    ],
+    "preferences.php?action=new&do=categories": [
+      "dynamic"
+    ],
+    "preferences.php?action=new&do=templates": [
+      "dynamic"
+    ],
+    "preferences.php?action=newp&do=ban": [
+      "dynamic"
+    ],
+    "preferences.php?action=newp&do=templates": [
+      "dynamic"
+    ],
+    "preferences.php?action=p&do=wizard": [
+      "dynamic"
+    ],
+    "preferences.php?action=restore&do=backup": [
+      "dynamic"
+    ],
+    "preferences.php?action=switch&do=templates": [
+      "dynamic"
+    ],
+    "preferences.php?action=switch&do=themes": [
+      "dynamic"
+    ],
+    "preferences.php?action=update&do=comments": [
+      "dynamic"
+    ],
+    "preferences.php?action=update&do=display": [
+      "dynamic"
+    ],
+    "preferences.php?action=update&do=globalmessage": [
+      "dynamic"
+    ],
+    "preferences.php?action=update&do=line": [
+      "dynamic"
+    ],
+    "preferences.php?action=update&do=rss": [
+      "dynamic"
+    ],
+    "preferences.php?action=update&do=timestamp": [
+      "dynamic"
+    ],
+    "preferences.php?action=update&do=wysiwyg": [
+      "dynamic"
+    ],
+    "preferences.php?do=backup": [
+      "dynamic"
+    ],
+    "preferences.php?do=ban": [
+      "dynamic"
+    ],
+    "preferences.php?do=categories": [
+      "dynamic"
+    ],
+    "preferences.php?do=comments": [
+      "dynamic"
+    ],
+    "preferences.php?do=display": [
+      "dynamic"
+    ],
+    "preferences.php?do=globalmessage": [
+      "dynamic"
+    ],
+    "preferences.php?do=line": [
+      "dynamic"
+    ],
+    "preferences.php?do=rss": [
+      "dynamic"
+    ],
+    "preferences.php?do=sef": [
+      "dynamic"
+    ],
+    "preferences.php?do=syslog": [
+      "dynamic"
+    ],
+    "preferences.php?do=syslog&sort=description%2Fasc": [
+      "dynamic"
+    ],
+    "preferences.php?do=syslog&sort=description%2Fdesc": [
+      "dynamic"
+    ],
+    "preferences.php?do=syslog&sort=page%2Fasc": [
+      "dynamic"
+    ],
+    "preferences.php?do=syslog&sort=page%2Fdesc": [
+      "dynamic"
+    ],
+    "preferences.php?do=syslog&sort=task%2Fasc": [
+      "dynamic"
+    ],
+    "preferences.php?do=syslog&sort=task%2Fdesc": [
+      "dynamic"
+    ],
+    "preferences.php?do=syslog&sort=timestamp%2Fasc": [
+      "dynamic"
+    ],
+    "preferences.php?do=syslog&sort=timestamp%2Fdesc": [
+      "dynamic"
+    ],
+    "preferences.php?do=syslog&sort=user%2Fasc": [
+      "dynamic"
+    ],
+    "preferences.php?do=syslog&sort=user%2Fdesc": [
+      "dynamic"
+    ],
+    "preferences.php?do=templates": [
+      "dynamic"
+    ],
+    "preferences.php?do=themes": [
+      "dynamic"
+    ],
+    "preferences.php?do=timestamp": [
+      "dynamic"
+    ],
+    "preferences.php?do=wizard": [
+      "dynamic"
+    ],
+    "preferences.php?do=wysiwyg": [
+      "dynamic"
+    ],
+    "shownews.php": [
+      "static"
+    ],
+    "showtitle.php": [
+      "static"
+    ],
+    "user.php": [
+      "dynamic",
+      "static"
+    ],
+    "user.php?action=delall&do=loginrec": [
+      "dynamic"
+    ],
+    "user.php?do=deleteranks": [
+      "dynamic"
+    ],
+    "user.php?do=deleteusers": [
+      "dynamic"
+    ],
+    "user.php?do=edit&id=p1": [
+      "dynamic"
+    ],
+    "user.php?do=editp": [
+      "dynamic"
+    ],
+    "user.php?do=editrank&id=p1": [
+      "dynamic"
+    ],
+    "user.php?do=erankp": [
+      "dynamic"
+    ],
+    "user.php?do=loginrec": [
+      "dynamic"
+    ],
+    "user.php?do=new": [
+      "dynamic"
+    ],
+    "user.php?do=newp": [
+      "dynamic"
+    ],
+    "user.php?do=newrank": [
+      "dynamic"
+    ],
+    "user.php?do=nrankp": [
+      "dynamic"
+    ],
+    "user.php?do=ranks": [
+      "dynamic"
+    ]
+  },
+  "access": {
+    "./": {
+      "roles": [
+        "admin",
+        "user1",
+        "user2"
+      ],
+      "kinds": [
+        "admin",
+        "user"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {},
+          "referer": "article.php?do=comments&id=p1"
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "GET",
+          "params": {},
+          "referer": "article.php?do=comments&id=p1"
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "GET",
+          "params": {},
+          "referer": "article.php?do=comments&id=p1"
+        }
+      ]
+    },
+    "article.php": {
+      "roles": [
+        "admin",
+        "register",
+        "user1",
+        "user2"
+      ],
+      "kinds": [
+        "admin",
+        "user"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {},
+          "referer": "manage.php"
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "GET",
+          "params": {},
+          "referer": "manage.php"
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "GET",
+          "params": {},
+          "referer": "manage.php"
+        },
+        {
+          "role": "register",
+          "kind": "user",
+          "method": "GET",
+          "params": {},
+          "referer": "index.php?do=permissiondenied"
+        }
+      ]
+    },
+    "article.php?action=delete&do=comments&id=p1": {
+      "roles": [
+        "admin",
+        "user1",
+        "user2"
+      ],
+      "kinds": [
+        "admin",
+        "user"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "POST",
+          "params": {
+            "5": "5",
+            "20": "20"
+          },
+          "referer": "article.php?do=comments&id=p1"
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "POST",
+          "params": {
+            "5": "5",
+            "20": "20"
+          },
+          "referer": "article.php?do=comments&id=p1"
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "POST",
+          "params": {
+            "3": "3",
+            "18": "18"
+          },
+          "referer": "article.php?do=comments&id=p1"
+        }
+      ]
+    },
+    "article.php?do=comments&id=p1": {
+      "roles": [
+        "admin",
+        "user1",
+        "user2"
+      ],
+      "kinds": [
+        "admin",
+        "user"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {
+            "do": "comments",
+            "id": "6"
+          },
+          "referer": null
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "do": "comments",
+            "id": "6"
+          },
+          "referer": null
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "do": "comments",
+            "id": "4"
+          },
+          "referer": null
+        }
+      ]
+    },
+    "article.php?do=edit&id=p1": {
+      "roles": [
+        "admin",
+        "register",
+        "user1",
+        "user2"
+      ],
+      "kinds": [
+        "admin",
+        "user"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {
+            "id": "2",
+            "do": "edit"
+          },
+          "referer": "manage.php?v=32"
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "id": "2",
+            "do": "edit"
+          },
+          "referer": "manage.php?v=32"
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "id": "2",
+            "do": "edit"
+          },
+          "referer": "manage.php?v=32"
+        },
+        {
+          "role": "register",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "id": "2",
+            "do": "edit"
+          },
+          "referer": "manage.php?v=32"
+        }
+      ]
+    },
+    "article.php?do=editp&id=p1": {
+      "roles": [
+        "admin",
+        "user1",
+        "user2"
+      ],
+      "kinds": [
+        "admin",
+        "user"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "POST",
+          "params": {
+            "article_title": "DRHL PHPNS Seed Article 01 - admin",
+            "article_subtitle": "admin owned seed",
+            "article_cat": "32",
+            "article_text": "DRHL phpns admin article main text 01",
+            "mce_editor_0_formatSelect": "value_0a9d0fe6",
+            "article_exptext": "DRHL phpns admin article extended text 01",
+            "start_date": "06/28/2026",
+            "end_date": "07/09/2026",
+            "id": "2",
+            "submit": "Save article",
+            "preview": "Preview article"
+          },
+          "referer": "article.php?do=edit&id=p1"
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "POST",
+          "params": {
+            "article_title": "DRHL PHPNS Seed Article 01 - admin",
+            "article_subtitle": "admin owned seed",
+            "article_cat": "32",
+            "article_text": "DRHL phpns admin article main text 01",
+            "mce_editor_0_formatSelect": "value_0a9d0fe6",
+            "article_exptext": "DRHL phpns admin article extended text 01",
+            "start_date": "06/28/2026",
+            "end_date": "07/09/2026",
+            "id": "2",
+            "submit": "Save article",
+            "preview": "Preview article"
+          },
+          "referer": "article.php?do=edit&id=p1"
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "POST",
+          "params": {
+            "article_title": "DRHL PHPNS Seed Article 01 - admin",
+            "article_subtitle": "admin owned seed",
+            "article_cat": "32",
+            "article_text": "DRHL phpns admin article main text 01",
+            "mce_editor_0_formatSelect": "value_0a9d0fe6",
+            "article_exptext": "DRHL phpns admin article extended text 01",
+            "start_date": "06/28/2026",
+            "end_date": "07/09/2026",
+            "id": "2",
+            "submit": "Save article",
+            "preview": "Preview article"
+          },
+          "referer": "article.php?do=edit&id=p1"
+        }
+      ]
+    },
+    "article.php?do=p": {
+      "roles": [
+        "admin",
+        "user1",
+        "user2"
+      ],
+      "kinds": [
+        "admin",
+        "user"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "POST",
+          "params": {
+            "article_title": "text_e0a5bf7f",
+            "article_subtitle": "text_e7fcbddb",
+            "article_cat": "all",
+            "article_text": "value_5fe5b1bf",
+            "mce_editor_0_formatSelect": "value_fc5ae954",
+            "article_exptext": "value_8eff4ff4",
+            "start_date": "2026-01-01",
+            "end_date": "2026-01-01",
+            "submit": "Save article",
+            "preview": "Preview article"
+          },
+          "referer": "article.php?do=p"
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "POST",
+          "params": {
+            "article_title": "text_e0a5bf7f",
+            "article_subtitle": "text_e7fcbddb",
+            "article_cat": "all",
+            "article_text": "value_5fe5b1bf",
+            "mce_editor_0_formatSelect": "value_fc5ae954",
+            "article_exptext": "value_8eff4ff4",
+            "start_date": "2026-01-01",
+            "end_date": "2026-01-01",
+            "submit": "Save article",
+            "preview": "Preview article"
+          },
+          "referer": "article.php?do=p"
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "POST",
+          "params": {
+            "article_title": "text_e0a5bf7f",
+            "article_subtitle": "text_e7fcbddb",
+            "article_cat": "all",
+            "article_text": "value_5fe5b1bf",
+            "mce_editor_0_formatSelect": "value_fc5ae954",
+            "article_exptext": "value_8eff4ff4",
+            "start_date": "2026-01-01",
+            "end_date": "2026-01-01",
+            "submit": "Save article",
+            "preview": "Preview article"
+          },
+          "referer": "article.php?do=p"
+        }
+      ]
+    },
+    "inc/wysiwyg/license.txt": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {},
+          "referer": "preferences.php?do=wysiwyg"
+        }
+      ]
+    },
+    "index.php": {
+      "roles": [
+        "admin",
+        "register",
+        "user1",
+        "user2"
+      ],
+      "kinds": [
+        "admin",
+        "user"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {},
+          "referer": null
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "GET",
+          "params": {},
+          "referer": null
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "GET",
+          "params": {},
+          "referer": null
+        },
+        {
+          "role": "register",
+          "kind": "user",
+          "method": "GET",
+          "params": {},
+          "referer": null
+        }
+      ]
+    },
+    "index.php?do=permissiondenied": {
+      "roles": [
+        "register",
+        "user1",
+        "user2"
+      ],
+      "kinds": [
+        "user"
+      ],
+      "requests": [
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "do": "permissiondenied"
+          },
+          "referer": "user.php?do=loginrec"
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "do": "permissiondenied"
+          },
+          "referer": "user.php?do=loginrec"
+        },
+        {
+          "role": "register",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "do": "permissiondenied"
+          },
+          "referer": "user.php?do=loginrec"
+        }
+      ]
+    },
+    "manage.php": {
+      "roles": [
+        "admin",
+        "register",
+        "user1",
+        "user2"
+      ],
+      "kinds": [
+        "admin",
+        "user"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {
+            "v": "value_8950aefd"
+          },
+          "referer": "manage.php"
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "v": "value_8950aefd"
+          },
+          "referer": "manage.php?v=register"
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "v": "value_8950aefd"
+          },
+          "referer": "manage.php?v=register"
+        },
+        {
+          "role": "register",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "v": "value_8950aefd"
+          },
+          "referer": "manage.php?v=unactive"
+        }
+      ]
+    },
+    "manage.php?do=deleteitems": {
+      "roles": [
+        "admin",
+        "register",
+        "user1",
+        "user2"
+      ],
+      "kinds": [
+        "admin",
+        "user"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "POST",
+          "params": {
+            "1": "1",
+            "9": "9",
+            "8": "8",
+            "7": "7",
+            "6": "6",
+            "5": "5",
+            "4": "4",
+            "3": "3",
+            "2": "2"
+          },
+          "referer": "manage.php"
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "POST",
+          "params": {
+            "query": "click here to start the search...",
+            "category": "all"
+          },
+          "referer": "manage.php?v=register"
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "POST",
+          "params": {
+            "query": "click here to start the search...",
+            "category": "all"
+          },
+          "referer": "manage.php?v=register"
+        },
+        {
+          "role": "register",
+          "kind": "user",
+          "method": "POST",
+          "params": {
+            "query": "click here to start the search...",
+            "category": "all"
+          },
+          "referer": "manage.php?v=unactive"
+        }
+      ]
+    },
+    "manage.php?do=search": {
+      "roles": [
+        "admin",
+        "register",
+        "user1",
+        "user2"
+      ],
+      "kinds": [
+        "admin",
+        "user"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "POST",
+          "params": {
+            "query": "click here to start the search...",
+            "category": "all"
+          },
+          "referer": "manage.php"
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "POST",
+          "params": {
+            "query": "click here to start the search...",
+            "category": "all"
+          },
+          "referer": "manage.php?v=register"
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "POST",
+          "params": {
+            "query": "click here to start the search...",
+            "category": "all"
+          },
+          "referer": "manage.php?v=register"
+        },
+        {
+          "role": "register",
+          "kind": "user",
+          "method": "POST",
+          "params": {
+            "query": "click here to start the search...",
+            "category": "all"
+          },
+          "referer": "manage.php?v=unactive"
+        }
+      ]
+    },
+    "manage.php?sort=active%2Fasc": {
+      "roles": [
+        "admin",
+        "register",
+        "user1",
+        "user2"
+      ],
+      "kinds": [
+        "admin",
+        "user"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {
+            "sort": "active/asc"
+          },
+          "referer": "manage.php?v=all"
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "sort": "active/asc"
+          },
+          "referer": "manage.php?v=all"
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "sort": "active/asc"
+          },
+          "referer": "manage.php?v=all"
+        },
+        {
+          "role": "register",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "sort": "active/asc"
+          },
+          "referer": "manage.php?v=all"
+        }
+      ]
+    },
+    "manage.php?sort=active%2Fdesc": {
+      "roles": [
+        "admin",
+        "register",
+        "user1",
+        "user2"
+      ],
+      "kinds": [
+        "admin",
+        "user"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {
+            "sort": "active/desc"
+          },
+          "referer": "manage.php?sort=article_title%2Fasc"
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "sort": "active/desc"
+          },
+          "referer": "manage.php?sort=article_title%2Fasc"
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "sort": "active/desc"
+          },
+          "referer": "manage.php?sort=article_title%2Fasc"
+        },
+        {
+          "role": "register",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "sort": "active/desc"
+          },
+          "referer": "manage.php?sort=article_title%2Fasc"
+        }
+      ]
+    },
+    "manage.php?sort=article_author%2Fasc": {
+      "roles": [
+        "admin",
+        "register",
+        "user1",
+        "user2"
+      ],
+      "kinds": [
+        "admin",
+        "user"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {
+            "sort": "article_author/asc"
+          },
+          "referer": "manage.php?sort=active%2Fasc"
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "sort": "article_author/asc"
+          },
+          "referer": "manage.php?sort=active%2Fasc"
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "sort": "article_author/asc"
+          },
+          "referer": "manage.php?sort=active%2Fasc"
+        },
+        {
+          "role": "register",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "sort": "article_author/asc"
+          },
+          "referer": "manage.php?sort=active%2Fasc"
+        }
+      ]
+    },
+    "manage.php?sort=article_author%2Fdesc": {
+      "roles": [
+        "admin",
+        "register",
+        "user1",
+        "user2"
+      ],
+      "kinds": [
+        "admin",
+        "user"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {
+            "sort": "article_author/desc"
+          },
+          "referer": "manage.php?sort=article_title%2Fasc"
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "sort": "article_author/desc"
+          },
+          "referer": "manage.php?sort=article_title%2Fasc"
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "sort": "article_author/desc"
+          },
+          "referer": "manage.php?sort=article_title%2Fasc"
+        },
+        {
+          "role": "register",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "sort": "article_author/desc"
+          },
+          "referer": "manage.php?sort=article_title%2Fasc"
+        }
+      ]
+    },
+    "manage.php?sort=article_cat%2Fasc": {
+      "roles": [
+        "admin",
+        "register",
+        "user1",
+        "user2"
+      ],
+      "kinds": [
+        "admin",
+        "user"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {
+            "sort": "article_cat/asc"
+          },
+          "referer": "manage.php?sort=timestamp%2Fasc"
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "sort": "article_cat/asc"
+          },
+          "referer": "manage.php?sort=timestamp%2Fasc"
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "sort": "article_cat/asc"
+          },
+          "referer": "manage.php?sort=timestamp%2Fasc"
+        },
+        {
+          "role": "register",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "sort": "article_cat/asc"
+          },
+          "referer": "manage.php?sort=timestamp%2Fasc"
+        }
+      ]
+    },
+    "manage.php?sort=article_cat%2Fdesc": {
+      "roles": [
+        "admin",
+        "register",
+        "user1",
+        "user2"
+      ],
+      "kinds": [
+        "admin",
+        "user"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {
+            "sort": "article_cat/desc"
+          },
+          "referer": "manage.php?sort=article_title%2Fasc"
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "sort": "article_cat/desc"
+          },
+          "referer": "manage.php?sort=article_title%2Fasc"
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "sort": "article_cat/desc"
+          },
+          "referer": "manage.php?sort=article_title%2Fasc"
+        },
+        {
+          "role": "register",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "sort": "article_cat/desc"
+          },
+          "referer": "manage.php?sort=article_title%2Fasc"
+        }
+      ]
+    },
+    "manage.php?sort=article_title%2Fasc": {
+      "roles": [
+        "admin",
+        "register",
+        "user1",
+        "user2"
+      ],
+      "kinds": [
+        "admin",
+        "user"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {
+            "sort": "article_title/asc"
+          },
+          "referer": "manage.php?sort=article_cat%2Fasc"
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "sort": "article_title/asc"
+          },
+          "referer": "manage.php?sort=article_cat%2Fasc"
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "sort": "article_title/asc"
+          },
+          "referer": "manage.php?sort=article_cat%2Fasc"
+        },
+        {
+          "role": "register",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "sort": "article_title/asc"
+          },
+          "referer": "manage.php?sort=article_cat%2Fasc"
+        }
+      ]
+    },
+    "manage.php?sort=article_title%2Fdesc": {
+      "roles": [
+        "admin",
+        "register",
+        "user1",
+        "user2"
+      ],
+      "kinds": [
+        "admin",
+        "user"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {
+            "sort": "article_title/desc"
+          },
+          "referer": "manage.php?sort=article_title%2Fasc"
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "sort": "article_title/desc"
+          },
+          "referer": "manage.php?sort=article_title%2Fasc"
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "sort": "article_title/desc"
+          },
+          "referer": "manage.php?sort=article_title%2Fasc"
+        },
+        {
+          "role": "register",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "sort": "article_title/desc"
+          },
+          "referer": "manage.php?sort=article_title%2Fasc"
+        }
+      ]
+    },
+    "manage.php?sort=timestamp%2Fasc": {
+      "roles": [
+        "admin",
+        "register",
+        "user1",
+        "user2"
+      ],
+      "kinds": [
+        "admin",
+        "user"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {
+            "sort": "timestamp/asc"
+          },
+          "referer": "manage.php?sort=article_author%2Fasc"
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "sort": "timestamp/asc"
+          },
+          "referer": "manage.php?sort=article_author%2Fasc"
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "sort": "timestamp/asc"
+          },
+          "referer": "manage.php?sort=article_author%2Fasc"
+        },
+        {
+          "role": "register",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "sort": "timestamp/asc"
+          },
+          "referer": "manage.php?sort=article_author%2Fasc"
+        }
+      ]
+    },
+    "manage.php?sort=timestamp%2Fdesc": {
+      "roles": [
+        "admin",
+        "register",
+        "user1",
+        "user2"
+      ],
+      "kinds": [
+        "admin",
+        "user"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {
+            "sort": "timestamp/desc"
+          },
+          "referer": "manage.php?sort=article_title%2Fasc"
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "sort": "timestamp/desc"
+          },
+          "referer": "manage.php?sort=article_title%2Fasc"
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "sort": "timestamp/desc"
+          },
+          "referer": "manage.php?sort=article_title%2Fasc"
+        },
+        {
+          "role": "register",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "sort": "timestamp/desc"
+          },
+          "referer": "manage.php?sort=article_title%2Fasc"
+        }
+      ]
+    },
+    "manage.php?v=": {
+      "roles": [
+        "admin",
+        "register",
+        "user1",
+        "user2"
+      ],
+      "kinds": [
+        "admin",
+        "user"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {
+            "v": ""
+          },
+          "referer": "manage.php?v=admin"
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "v": ""
+          },
+          "referer": "manage.php?v=admin"
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "v": ""
+          },
+          "referer": "manage.php?v=admin"
+        },
+        {
+          "role": "register",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "v": ""
+          },
+          "referer": "manage.php?v=admin"
+        }
+      ]
+    },
+    "manage.php?v=32": {
+      "roles": [
+        "admin",
+        "register",
+        "user1",
+        "user2"
+      ],
+      "kinds": [
+        "admin",
+        "user"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {
+            "v": "32"
+          },
+          "referer": "manage.php?v=admin"
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "v": "32"
+          },
+          "referer": "manage.php?v=admin"
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "v": "32"
+          },
+          "referer": "manage.php?v=admin"
+        },
+        {
+          "role": "register",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "v": "32"
+          },
+          "referer": "manage.php?v=admin"
+        }
+      ]
+    },
+    "manage.php?v=admin": {
+      "roles": [
+        "admin",
+        "register",
+        "user1",
+        "user2"
+      ],
+      "kinds": [
+        "admin",
+        "user"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {
+            "v": "admin"
+          },
+          "referer": "user.php"
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "v": "admin"
+          },
+          "referer": "user.php"
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "v": "admin"
+          },
+          "referer": "user.php"
+        },
+        {
+          "role": "register",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "v": "admin"
+          },
+          "referer": "user.php"
+        }
+      ]
+    },
+    "manage.php?v=all": {
+      "roles": [
+        "admin",
+        "register",
+        "user1",
+        "user2"
+      ],
+      "kinds": [
+        "admin",
+        "user"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {
+            "v": "all"
+          },
+          "referer": "manage.php?v=user2"
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "v": "all"
+          },
+          "referer": "manage.php?v=user2"
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "v": "all"
+          },
+          "referer": "manage.php?v=user1"
+        },
+        {
+          "role": "register",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "v": "all"
+          },
+          "referer": "manage.php?v=user2"
+        }
+      ]
+    },
+    "manage.php?v=register": {
+      "roles": [
+        "admin",
+        "register",
+        "user1",
+        "user2"
+      ],
+      "kinds": [
+        "admin",
+        "user"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {
+            "v": "register"
+          },
+          "referer": "user.php"
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "v": "register"
+          },
+          "referer": "user.php"
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "v": "register"
+          },
+          "referer": "user.php"
+        },
+        {
+          "role": "register",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "v": "register"
+          },
+          "referer": "user.php"
+        }
+      ]
+    },
+    "manage.php?v=unactive": {
+      "roles": [
+        "admin",
+        "register",
+        "user1",
+        "user2"
+      ],
+      "kinds": [
+        "admin",
+        "user"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {
+            "v": "unactive"
+          },
+          "referer": "index.php"
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "v": "unactive"
+          },
+          "referer": "index.php"
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "v": "unactive"
+          },
+          "referer": "index.php"
+        },
+        {
+          "role": "register",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "v": "unactive"
+          },
+          "referer": "index.php"
+        }
+      ]
+    },
+    "manage.php?v=unapproved": {
+      "roles": [
+        "admin",
+        "register",
+        "user1",
+        "user2"
+      ],
+      "kinds": [
+        "admin",
+        "user"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {
+            "v": "unapproved"
+          },
+          "referer": "index.php"
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "v": "unapproved"
+          },
+          "referer": "index.php"
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "v": "unapproved"
+          },
+          "referer": "index.php"
+        },
+        {
+          "role": "register",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "v": "unapproved"
+          },
+          "referer": "index.php"
+        }
+      ]
+    },
+    "manage.php?v=user1": {
+      "roles": [
+        "admin",
+        "register",
+        "user1",
+        "user2"
+      ],
+      "kinds": [
+        "admin",
+        "user"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {
+            "v": "user1"
+          },
+          "referer": "manage.php?v=unapproved"
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "v": "user1"
+          },
+          "referer": "manage.php?v=unapproved"
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "v": "user1"
+          },
+          "referer": "manage.php?v=user2"
+        },
+        {
+          "role": "register",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "v": "user1"
+          },
+          "referer": "manage.php"
+        }
+      ]
+    },
+    "manage.php?v=user2": {
+      "roles": [
+        "admin",
+        "register",
+        "user1",
+        "user2"
+      ],
+      "kinds": [
+        "admin",
+        "user"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {
+            "v": "user2"
+          },
+          "referer": "manage.php?v=user1"
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "v": "user2"
+          },
+          "referer": "manage.php?v=user1"
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "v": "user2"
+          },
+          "referer": "manage.php?v=unapproved"
+        },
+        {
+          "role": "register",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "v": "user2"
+          },
+          "referer": "manage.php?v=user1"
+        }
+      ]
+    },
+    "preferences.php": {
+      "roles": [
+        "admin",
+        "register",
+        "user1",
+        "user2"
+      ],
+      "kinds": [
+        "admin",
+        "user"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {},
+          "referer": "preferences.php?do=globalmessage"
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "GET",
+          "params": {},
+          "referer": "index.php?do=permissiondenied"
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "GET",
+          "params": {},
+          "referer": "index.php?do=permissiondenied"
+        },
+        {
+          "role": "register",
+          "kind": "user",
+          "method": "GET",
+          "params": {},
+          "referer": "index.php?do=permissiondenied"
+        }
+      ]
+    },
+    "preferences.php?action=delete&do=ban": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "POST",
+          "params": {
+            "do": "ban",
+            "action": "delete"
+          },
+          "referer": "preferences.php?do=ban"
+        }
+      ]
+    },
+    "preferences.php?action=deleteitems&do=categories": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "POST",
+          "params": {
+            "32": "32",
+            "33": "33",
+            "move_cat": "32"
+          },
+          "referer": "preferences.php?action=edit&do=categories&id=p1"
+        }
+      ]
+    },
+    "preferences.php?action=edit&do=categories&id=p1": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {
+            "do": "categories",
+            "action": "edit",
+            "id": "33"
+          },
+          "referer": "preferences.php?do=categories"
+        }
+      ]
+    },
+    "preferences.php?action=edit&do=templates&tid=9": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {
+            "do": "templates",
+            "action": "edit",
+            "tid": "9"
+          },
+          "referer": "preferences.php?do=templates"
+        }
+      ]
+    },
+    "preferences.php?action=editp&do=templates": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "POST",
+          "params": {
+            "template_name": "Default",
+            "template_desc": "This is the default phpns template.",
+            "html_article": "<div style=\"margin-bottom: 30px; min-height: 130px;\">\n <h2 style=\"margin-bottom: 0pt\"><a href=\"{article_href}\" style=\"text-decoration: none;\">{title}</a></h2>\n  <h4 style=\"margin: 0 0 0 3em; font-weight: normal;\"><em>Posted by <a href=\"#\">{author}</a></em></h4>\n <div style=\"float:right; padding: 0 0 10px 10px\">{reddit} {digg}</div>\n {main_article}\n <div>\n  {full_story}\n\n  <div id=\"comments\" style=\"text-align: right;\">\n  <strong><a href=\"{article_href}#comments\">{comment_count} comments</a></strong>\n  </div>\n </div>\n</div>",
+            "html_comment": "<div style=\"background: #eee; font: caption; margin: 20px 0 0 5%; padding: 5px;\">\n <div style=\"border: 1px solid #ccc; padding: 3px; background: #ccc; margin-bottom: 5px;\"> \n  <div style=\"text-align: right; float: right\"> {timestamp}</div>  \n <strong>Posted by  <a href=\"{website}\">{author}</a></strong> as {ip}\n </div>\n {comment}\n</div>",
+            "html_form": "<div style=\"font: caption; margin-left: 5%;\">\n<form style=\"margin-top: 50px;\" action=\"{action}\" method=\"post\">\n<input type=\"text\" name=\"name\" id=\"name\" /> <label for=\"name\">Name (required)</label><br />\n<input type=\"text\" name=\"email\" id=\"email\" /> <label for=\"email\">Email (not published) (required)</label><br />\n<input type=\"text\" name=\"website\" id=\"website\" /> <label for=\"website\">Website</label><br />\n<textarea name=\"comment\" style=\"width:100%; height: 150px\"></textarea><br />\n<input type=\"text\" name=\"captcha\" style=\"width: 100px\" /> <label for=\"captcha\"><strong>What is {captcha_question}?</strong></label><br />\n{hidden_data}\n{captcha_answer}\n<input type=\"submit\" value=\"Submit comment\" id=\"submit\" />\n</form>\n</div>",
+            "html_pagination": "<a style=\"padding: 3px; margin: 10px; border: 1px solid #888;\" href=\"{previous_page}\">Previous Page</a> {middle_pages} <a  style=\"padding: 3px; margin: 10px; border: 1px solid #888;\" href=\"{next_page}\">Next Page</a>",
+            "id": "9",
+            "submit": "Save template"
+          },
+          "referer": "preferences.php?action=edit&do=templates&tid=9"
+        }
+      ]
+    },
+    "preferences.php?action=new&do=categories": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "POST",
+          "params": {
+            "name": "text_2bf414aa",
+            "description": "comment_28917b7c",
+            "parent": "value_f623b0ed"
+          },
+          "referer": "preferences.php?action=edit&do=categories&id=p1"
+        }
+      ]
+    },
+    "preferences.php?action=new&do=templates": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {
+            "do": "templates",
+            "action": "new"
+          },
+          "referer": "preferences.php?do=templates"
+        }
+      ]
+    },
+    "preferences.php?action=newp&do=ban": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "POST",
+          "params": {
+            "ip": "value_533649fd",
+            "reason": "value_25180934"
+          },
+          "referer": "preferences.php?do=ban"
+        }
+      ]
+    },
+    "preferences.php?action=newp&do=templates": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "POST",
+          "params": {
+            "template_name": "text_bf7899b6",
+            "template_desc": "value_b77dff2f",
+            "html_article": "value_33c245ef",
+            "html_comment": "comment_87a8cfca",
+            "html_form": "value_8f1f2810",
+            "html_pagination": "value_8b7ac47a",
+            "submit": "Save template"
+          },
+          "referer": "preferences.php?action=new&do=templates"
+        }
+      ]
+    },
+    "preferences.php?action=p&do=wizard": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "POST",
+          "params": {
+            "category": "0",
+            "template": "value_c6d51e57",
+            "display_limit": "value_79365d38",
+            "order": "value_b21b48af",
+            "offset": "value_511a2256",
+            "items_per_page": "value_877487cc"
+          },
+          "referer": "preferences.php?do=wizard"
+        }
+      ]
+    },
+    "preferences.php?action=restore&do=backup": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "POST",
+          "params": {
+            "do": "backup",
+            "action": "restore",
+            "------WebKitFormBoundary1BoqdBpFDmql2pwU\r\nContent-Disposition: form-data; name": "\"file\"; filename=\"\"\r\nContent-Type: application/octet-stream\r\n\r\n\r\n------WebKitFormBoundary1BoqdBpFDmql2pwU--\r\n"
+          },
+          "referer": "preferences.php?do=backup"
+        }
+      ]
+    },
+    "preferences.php?action=switch&do=templates": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "POST",
+          "params": {
+            "select": "9"
+          },
+          "referer": "preferences.php?do=templates"
+        }
+      ]
+    },
+    "preferences.php?action=switch&do=themes": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "POST",
+          "params": {
+            "path": "default"
+          },
+          "referer": "preferences.php?do=themes"
+        }
+      ]
+    },
+    "preferences.php?action=update&do=comments": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "POST",
+          "params": {
+            "def_comlimit": "100000",
+            "def_comenabled": "1",
+            "def_comorder": "asc"
+          },
+          "referer": "preferences.php?do=comments"
+        }
+      ]
+    },
+    "preferences.php?action=update&do=display": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "POST",
+          "params": {
+            "def_limit": "10",
+            "def_order": "desc",
+            "def_offset": "0",
+            "def_items_per_page": "10",
+            "timestamp_format": "l F d, Y  g:i a"
+          },
+          "referer": "preferences.php?do=display"
+        }
+      ]
+    },
+    "preferences.php?action=update&do=globalmessage": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "POST",
+          "params": {
+            "message": "Welcome to the phpns admin panel! Click 'change message' to modify/delete this message."
+          },
+          "referer": "preferences.php?do=globalmessage"
+        }
+      ]
+    },
+    "preferences.php?action=update&do=line": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "POST",
+          "params": {
+            "line": "yes"
+          },
+          "referer": "preferences.php?do=line"
+        }
+      ]
+    },
+    "preferences.php?action=update&do=rss": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "POST",
+          "params": {
+            "def_rsslimit": "3",
+            "def_rssorder": "desc",
+            "def_rssenabled": "1",
+            "def_rsstitle": "phpns rss feed",
+            "def_rssdesc": "An RSS feed from phpns articles."
+          },
+          "referer": "preferences.php?do=rss"
+        }
+      ]
+    },
+    "preferences.php?action=update&do=timestamp": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "POST",
+          "params": {
+            "sys_time_format": "l F d, Y  g:i a"
+          },
+          "referer": "preferences.php?do=timestamp"
+        }
+      ]
+    },
+    "preferences.php?action=update&do=wysiwyg": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "POST",
+          "params": {
+            "wysiwyg": "yes"
+          },
+          "referer": "preferences.php?do=wysiwyg"
+        }
+      ]
+    },
+    "preferences.php?do=backup": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {
+            "do": "backup"
+          },
+          "referer": "preferences.php"
+        }
+      ]
+    },
+    "preferences.php?do=ban": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {
+            "do": "ban"
+          },
+          "referer": "preferences.php?do=line"
+        }
+      ]
+    },
+    "preferences.php?do=categories": {
+      "roles": [
+        "admin",
+        "register",
+        "user1",
+        "user2"
+      ],
+      "kinds": [
+        "admin",
+        "user"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {
+            "do": "categories"
+          },
+          "referer": "manage.php?sort=article_title%2Fasc"
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "do": "categories"
+          },
+          "referer": "manage.php?sort=article_title%2Fasc"
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "do": "categories"
+          },
+          "referer": "manage.php?sort=article_title%2Fasc"
+        },
+        {
+          "role": "register",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "do": "categories"
+          },
+          "referer": "manage.php?sort=article_title%2Fasc"
+        }
+      ]
+    },
+    "preferences.php?do=comments": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {
+            "do": "comments"
+          },
+          "referer": "preferences.php"
+        }
+      ]
+    },
+    "preferences.php?do=display": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {
+            "do": "display"
+          },
+          "referer": "preferences.php"
+        }
+      ]
+    },
+    "preferences.php?do=globalmessage": {
+      "roles": [
+        "admin",
+        "register",
+        "user1",
+        "user2"
+      ],
+      "kinds": [
+        "admin",
+        "user"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {
+            "do": "globalmessage"
+          },
+          "referer": "user.php?do=newrank"
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "do": "globalmessage"
+          },
+          "referer": "index.php?do=permissiondenied"
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "do": "globalmessage"
+          },
+          "referer": "index.php?do=permissiondenied"
+        },
+        {
+          "role": "register",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "do": "globalmessage"
+          },
+          "referer": "index.php?do=permissiondenied"
+        }
+      ]
+    },
+    "preferences.php?do=line": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {
+            "do": "line"
+          },
+          "referer": "preferences.php"
+        }
+      ]
+    },
+    "preferences.php?do=rss": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {
+            "do": "rss"
+          },
+          "referer": "preferences.php"
+        }
+      ]
+    },
+    "preferences.php?do=sef": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {
+            "do": "sef"
+          },
+          "referer": "preferences.php"
+        }
+      ]
+    },
+    "preferences.php?do=syslog": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {
+            "do": "syslog"
+          },
+          "referer": "preferences.php"
+        }
+      ]
+    },
+    "preferences.php?do=syslog&sort=description%2Fasc": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {
+            "do": "syslog",
+            "sort": "description/asc"
+          },
+          "referer": "preferences.php?do=syslog&sort=description%2Fdesc"
+        }
+      ]
+    },
+    "preferences.php?do=syslog&sort=description%2Fdesc": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {
+            "do": "syslog",
+            "sort": "description/desc"
+          },
+          "referer": "preferences.php?do=syslog&sort=user%2Fasc"
+        }
+      ]
+    },
+    "preferences.php?do=syslog&sort=page%2Fasc": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {
+            "do": "syslog",
+            "sort": "page/asc"
+          },
+          "referer": "preferences.php?do=syslog&sort=page%2Fdesc"
+        }
+      ]
+    },
+    "preferences.php?do=syslog&sort=page%2Fdesc": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {
+            "do": "syslog",
+            "sort": "page/desc"
+          },
+          "referer": "preferences.php?do=syslog"
+        }
+      ]
+    },
+    "preferences.php?do=syslog&sort=task%2Fasc": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {
+            "do": "syslog",
+            "sort": "task/asc"
+          },
+          "referer": "preferences.php?do=syslog&sort=task%2Fdesc"
+        }
+      ]
+    },
+    "preferences.php?do=syslog&sort=task%2Fdesc": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {
+            "do": "syslog",
+            "sort": "task/desc"
+          },
+          "referer": "preferences.php?do=syslog&sort=description%2Fasc"
+        }
+      ]
+    },
+    "preferences.php?do=syslog&sort=timestamp%2Fasc": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {
+            "do": "syslog",
+            "sort": "timestamp/asc"
+          },
+          "referer": "preferences.php?do=syslog&sort=timestamp%2Fdesc"
+        }
+      ]
+    },
+    "preferences.php?do=syslog&sort=timestamp%2Fdesc": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {
+            "do": "syslog",
+            "sort": "timestamp/desc"
+          },
+          "referer": "preferences.php?do=syslog&sort=page%2Fasc"
+        }
+      ]
+    },
+    "preferences.php?do=syslog&sort=user%2Fasc": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {
+            "do": "syslog",
+            "sort": "user/asc"
+          },
+          "referer": "preferences.php?do=syslog&sort=user%2Fdesc"
+        }
+      ]
+    },
+    "preferences.php?do=syslog&sort=user%2Fdesc": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {
+            "do": "syslog",
+            "sort": "user/desc"
+          },
+          "referer": "preferences.php?do=syslog&sort=timestamp%2Fasc"
+        }
+      ]
+    },
+    "preferences.php?do=templates": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {
+            "do": "templates"
+          },
+          "referer": "preferences.php"
+        }
+      ]
+    },
+    "preferences.php?do=themes": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {
+            "do": "themes"
+          },
+          "referer": "preferences.php"
+        }
+      ]
+    },
+    "preferences.php?do=timestamp": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {
+            "do": "timestamp"
+          },
+          "referer": "preferences.php"
+        }
+      ]
+    },
+    "preferences.php?do=wizard": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {
+            "do": "wizard"
+          },
+          "referer": "preferences.php"
+        }
+      ]
+    },
+    "preferences.php?do=wysiwyg": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {
+            "do": "wysiwyg"
+          },
+          "referer": "preferences.php"
+        }
+      ]
+    },
+    "user.php": {
+      "roles": [
+        "admin",
+        "register",
+        "user1",
+        "user2"
+      ],
+      "kinds": [
+        "admin",
+        "user"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {},
+          "referer": "user.php?action=delall&do=loginrec"
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "GET",
+          "params": {},
+          "referer": "index.php?do=permissiondenied"
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "GET",
+          "params": {},
+          "referer": "index.php?do=permissiondenied"
+        },
+        {
+          "role": "register",
+          "kind": "user",
+          "method": "GET",
+          "params": {},
+          "referer": "index.php?do=permissiondenied"
+        }
+      ]
+    },
+    "user.php?action=delall&do=loginrec": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {
+            "do": "loginrec",
+            "action": "delall"
+          },
+          "referer": "preferences.php"
+        }
+      ]
+    },
+    "user.php?do=deleteranks": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "POST",
+          "params": {
+            "3": "3",
+            "2": "2",
+            "1": "1"
+          },
+          "referer": "user.php?do=ranks"
+        }
+      ]
+    },
+    "user.php?do=deleteusers": {
+      "roles": [
+        "admin",
+        "register",
+        "user1",
+        "user2"
+      ],
+      "kinds": [
+        "admin",
+        "user"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "POST",
+          "params": {
+            "11": "11",
+            "10": "10",
+            "9": "9",
+            "8": "8"
+          },
+          "referer": "user.php"
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "POST",
+          "params": {
+            "11": "11",
+            "10": "10",
+            "9": "9",
+            "8": "8"
+          },
+          "referer": "user.php"
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "POST",
+          "params": {
+            "11": "11",
+            "10": "10",
+            "9": "9",
+            "8": "8"
+          },
+          "referer": "user.php"
+        },
+        {
+          "role": "register",
+          "kind": "user",
+          "method": "POST",
+          "params": {
+            "11": "11",
+            "10": "10",
+            "9": "9",
+            "8": "8"
+          },
+          "referer": "user.php"
+        }
+      ]
+    },
+    "user.php?do=edit&id=p1": {
+      "roles": [
+        "admin",
+        "register",
+        "user1",
+        "user2"
+      ],
+      "kinds": [
+        "admin",
+        "user"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {
+            "id": "8",
+            "do": "edit"
+          },
+          "referer": "user.php"
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "id": "8",
+            "do": "edit"
+          },
+          "referer": "user.php"
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "id": "8",
+            "do": "edit"
+          },
+          "referer": "user.php"
+        },
+        {
+          "role": "register",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "id": "8",
+            "do": "edit"
+          },
+          "referer": "user.php"
+        }
+      ]
+    },
+    "user.php?do=editp": {
+      "roles": [
+        "admin",
+        "user1",
+        "user2"
+      ],
+      "kinds": [
+        "admin",
+        "user"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "POST",
+          "params": {
+            "rank": "1",
+            "username_": "admin",
+            "fullname": "admin",
+            "password_": "12345678",
+            "cpassword_": "12345678",
+            "email": "drhl_5ea47308@example.test",
+            "msn": "value_e8dd4baf",
+            "aim": "value_baf612e3",
+            "yahoo": "value_82bddfed",
+            "skype": "value_973636a8",
+            "id": "8",
+            "original_username": "admin"
+          },
+          "referer": "user.php?do=edit&id=p1"
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "POST",
+          "params": {
+            "rank": "1",
+            "username_": "admin",
+            "fullname": "admin",
+            "password_": "12345678",
+            "cpassword_": "12345678",
+            "email": "drhl_5ea47308@example.test",
+            "msn": "value_e8dd4baf",
+            "aim": "value_baf612e3",
+            "yahoo": "value_82bddfed",
+            "skype": "value_973636a8",
+            "id": "8",
+            "original_username": "admin"
+          },
+          "referer": "user.php?do=edit&id=p1"
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "POST",
+          "params": {
+            "rank": "1",
+            "username_": "admin",
+            "fullname": "admin",
+            "password_": "12345678",
+            "cpassword_": "12345678",
+            "email": "drhl_5ea47308@example.test",
+            "msn": "value_e8dd4baf",
+            "aim": "value_baf612e3",
+            "yahoo": "value_82bddfed",
+            "skype": "value_973636a8",
+            "id": "8",
+            "original_username": "admin"
+          },
+          "referer": "user.php?do=edit&id=p1"
+        }
+      ]
+    },
+    "user.php?do=editrank&id=p1": {
+      "roles": [
+        "admin",
+        "register",
+        "user1",
+        "user2"
+      ],
+      "kinds": [
+        "admin",
+        "user"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {
+            "do": "editrank",
+            "id": "2"
+          },
+          "referer": "user.php?do=loginrec"
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "id": "1",
+            "do": "editrank"
+          },
+          "referer": "user.php"
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "id": "1",
+            "do": "editrank"
+          },
+          "referer": "user.php"
+        },
+        {
+          "role": "register",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "id": "1",
+            "do": "editrank"
+          },
+          "referer": "user.php"
+        }
+      ]
+    },
+    "user.php?do=erankp": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "POST",
+          "params": {
+            "rank_title": "register",
+            "rank_desc": "Only some functions can be used",
+            "createranks": "disallow",
+            "manageranks": "disallow",
+            "loginrecords": "disallow",
+            "preferences": "disallow",
+            "loggingin": "allow",
+            "createarticles": "disallow",
+            "approve": "disallow",
+            "editarticles": "disallow",
+            "deletearticles": "disallow",
+            "createusers": "disallow",
+            "editusers": "disallow",
+            "deleteusers": "disallow",
+            "id": "2"
+          },
+          "referer": "user.php?do=editrank&id=p1"
+        }
+      ]
+    },
+    "user.php?do=loginrec": {
+      "roles": [
+        "admin",
+        "register",
+        "user1",
+        "user2"
+      ],
+      "kinds": [
+        "admin",
+        "user"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {
+            "do": "loginrec"
+          },
+          "referer": "./"
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "do": "loginrec"
+          },
+          "referer": "./"
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "do": "loginrec"
+          },
+          "referer": "./"
+        },
+        {
+          "role": "register",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "do": "loginrec"
+          },
+          "referer": "index.php"
+        }
+      ]
+    },
+    "user.php?do=new": {
+      "roles": [
+        "admin",
+        "register",
+        "user1",
+        "user2"
+      ],
+      "kinds": [
+        "admin",
+        "user"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {
+            "do": "new"
+          },
+          "referer": "user.php"
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "do": "new"
+          },
+          "referer": "user.php"
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "do": "new"
+          },
+          "referer": "user.php"
+        },
+        {
+          "role": "register",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "do": "new"
+          },
+          "referer": "user.php"
+        }
+      ]
+    },
+    "user.php?do=newp": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "POST",
+          "params": {
+            "rank": "1",
+            "username_": "text_ab530ebd",
+            "fullname": "text_f8acc1c7",
+            "password_": "12345678",
+            "cpassword_": "12345678",
+            "email": "drhl_5ae1d044@example.test",
+            "msn": "value_ff0fb32e",
+            "aim": "value_ca31d450",
+            "yahoo": "value_3c12df0b",
+            "skype": "value_19480bee"
+          },
+          "referer": "user.php?do=new"
+        }
+      ]
+    },
+    "user.php?do=newrank": {
+      "roles": [
+        "admin",
+        "register",
+        "user1",
+        "user2"
+      ],
+      "kinds": [
+        "admin",
+        "user"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {
+            "do": "newrank"
+          },
+          "referer": "user.php?do=editrank&id=p1"
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "do": "newrank"
+          },
+          "referer": "user.php"
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "do": "newrank"
+          },
+          "referer": "user.php"
+        },
+        {
+          "role": "register",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "do": "newrank"
+          },
+          "referer": "user.php"
+        }
+      ]
+    },
+    "user.php?do=nrankp": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "POST",
+          "params": {
+            "rank_title": "text_9782446e",
+            "rank_desc": "value_6c90d0a1",
+            "createranks": "value_9e9b3b69",
+            "manageranks": "value_9f7db5cd",
+            "loginrecords": "value_10346d3c",
+            "preferences": "value_8d585d5e",
+            "loggingin": "value_4983df07",
+            "createarticles": "value_a9daebc1",
+            "approve": "value_912c06c9",
+            "editarticles": "value_2f0fff29",
+            "deletearticles": "value_cf185554",
+            "createusers": "value_ae54f285",
+            "editusers": "value_e60acf28",
+            "deleteusers": "value_80236c40"
+          },
+          "referer": "user.php?do=newrank"
+        }
+      ]
+    },
+    "user.php?do=ranks": {
+      "roles": [
+        "admin",
+        "register",
+        "user1",
+        "user2"
+      ],
+      "kinds": [
+        "admin",
+        "user"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {
+            "do": "ranks"
+          },
+          "referer": "user.php"
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "do": "ranks"
+          },
+          "referer": "user.php"
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "do": "ranks"
+          },
+          "referer": "user.php"
+        },
+        {
+          "role": "register",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "do": "ranks"
+          },
+          "referer": "user.php"
+        }
+      ]
+    }
+  },
+  "static_only": [
+    "about.php",
+    "etc.php",
+    "help.php",
+    "inc/..",
+    "install/..",
+    "install/../index.php",
+    "install/index.php",
+    "install/install.inc.php",
+    "install/install.tmp.php",
+    "install/upgrade.php",
+    "login.php",
+    "shownews.php",
+    "showtitle.php"
+  ],
+  "static_detection_pages": [
+    "inc/auth.php",
+    "inc/captcha.php",
+    "inc/config.php",
+    "inc/errors.php",
+    "inc/function.php",
+    "inc/global_files.php",
+    "inc/head_data.php",
+    "inc/header.php",
+    "inc/page_desc.php",
+    "inc/themecontrol.php",
+    "install/..",
+    "install/../index.php",
+    "install/index.php",
+    "install/install.inc.php",
+    "install/install.tmp.php",
+    "install/upgrade.php"
+  ],
+  "source_map": {
+    "about.php": "about.php",
+    "article.php": "article.php",
+    "etc.php": "etc.php",
+    "help.php": "help.php",
+    "inc/..": "index.php",
+    "index.php": "index.php",
+    "install/..": "index.php",
+    "install/../index.php": "index.php",
+    "install/index.php": "install/index.php",
+    "install/install.inc.php": "install/install.inc.php",
+    "install/install.tmp.php": "install/install.tmp.php",
+    "install/upgrade.php": "install/upgrade.php",
+    "login.php": "login.php",
+    "manage.php": "manage.php",
+    "preferences.php": "preferences.php",
+    "shownews.php": "shownews.php",
+    "showtitle.php": "showtitle.php",
+    "user.php": "user.php",
+    "inc/auth.php": "inc/auth.php",
+    "inc/captcha.php": "inc/captcha.php",
+    "inc/function.php": "inc/function.php",
+    "inc/global_files.php": "inc/global_files.php",
+    "inc/config.php": "inc/config.php",
+    "inc/head_data.php": "inc/head_data.php",
+    "inc/header.php": "inc/header.php",
+    "inc/errors.php": "inc/errors.php",
+    "inc/page_desc.php": "inc/page_desc.php",
+    "inc/themecontrol.php": "inc/themecontrol.php"
+  },
+  "static_classifications": {
+    "UP": [
+      "about.php",
+      "article.php",
+      "etc.php",
+      "help.php",
+      "inc/..",
+      "index.php",
+      "install/..",
+      "install/../index.php",
+      "install/index.php",
+      "install/install.inc.php",
+      "install/install.tmp.php",
+      "install/upgrade.php",
+      "login.php",
+      "manage.php",
+      "preferences.php",
+      "shownews.php",
+      "showtitle.php",
+      "user.php"
+    ],
+    "CP": [
+      "inc/auth.php",
+      "inc/captcha.php",
+      "inc/config.php",
+      "inc/errors.php",
+      "inc/function.php",
+      "inc/global_files.php",
+      "inc/head_data.php",
+      "inc/header.php",
+      "inc/page_desc.php",
+      "inc/themecontrol.php"
+    ],
+    "UP_prime0": [
+      "article.php",
+      "index.php",
+      "manage.php",
+      "preferences.php",
+      "user.php"
+    ],
+    "UPdiff1": [
+      "about.php",
+      "etc.php",
+      "help.php",
+      "inc/..",
+      "login.php",
+      "shownews.php",
+      "showtitle.php"
+    ],
+    "UPdiff2": [
+      "install/..",
+      "install/../index.php",
+      "install/index.php",
+      "install/install.inc.php",
+      "install/install.tmp.php",
+      "install/upgrade.php"
+    ],
+    "UPdiff": [
+      "about.php",
+      "etc.php",
+      "help.php",
+      "inc/..",
+      "install/..",
+      "install/../index.php",
+      "install/index.php",
+      "install/install.inc.php",
+      "install/install.tmp.php",
+      "install/upgrade.php",
+      "login.php",
+      "shownews.php",
+      "showtitle.php"
+    ],
+    "observed": [
+      "article.php",
+      "index.php",
+      "manage.php",
+      "preferences.php",
+      "user.php"
+    ],
+    "internal_reachable": [
+      "inc/auth.php",
+      "inc/config.php",
+      "inc/errors.php",
+      "inc/function.php",
+      "inc/global_files.php",
+      "inc/head_data.php",
+      "inc/header.php",
+      "inc/page_desc.php",
+      "inc/themecontrol.php"
+    ],
+    "public_unobserved": [
+      "about.php",
+      "etc.php",
+      "help.php",
+      "inc/..",
+      "install/..",
+      "install/../index.php",
+      "install/index.php",
+      "install/install.inc.php",
+      "install/install.tmp.php",
+      "install/upgrade.php",
+      "login.php",
+      "shownews.php",
+      "showtitle.php"
+    ],
+    "support_unreachable": [
+      "inc/captcha.php"
+    ]
+  }
+}

@@ -1,0 +1,590 @@
+{
+  "nodes": [
+    "admin/band_editor.php",
+    "admin/config_editor.php",
+    "admin/elabora_cookie.php",
+    "admin/index.php",
+    "admin/localization.php",
+    "admin/modifica_band.php",
+    "admin/modifica_configurazione.php",
+    "admin/modifica_votanti.php",
+    "admin/risultati_config.php",
+    "admin/votanti.php",
+    "config/config.php",
+    "config/config_db.php",
+    "cookies/conta.php",
+    "cookies/contatutto.php",
+    "cookies/crypt.php",
+    "cookies/elabora_voto.php",
+    "cookies/elabora_voto_mail.php",
+    "cookies/elabora_voto_new.php",
+    "cookies/resetta_cookie.php",
+    "cookies/risultati_perc.php",
+    "cookies/setta_cookie.php",
+    "phpoll.php",
+    "risultati.php"
+  ],
+  "edges": [
+    {
+      "from": "admin/band_editor.php",
+      "to": "admin/config_editor.php"
+    },
+    {
+      "from": "admin/band_editor.php",
+      "to": "admin/modifica_band.php"
+    },
+    {
+      "from": "admin/config_editor.php",
+      "to": "admin/modifica_configurazione.php"
+    },
+    {
+      "from": "admin/modifica_band.php",
+      "to": "admin/band_editor.php"
+    },
+    {
+      "from": "admin/modifica_configurazione.php",
+      "to": "admin/config_editor.php"
+    },
+    {
+      "from": "admin/modifica_votanti.php",
+      "to": "admin/votanti.php"
+    },
+    {
+      "from": "admin/risultati_config.php",
+      "to": "admin/votanti.php"
+    },
+    {
+      "from": "admin/votanti.php",
+      "to": "admin/band_editor.php"
+    },
+    {
+      "from": "admin/votanti.php",
+      "to": "admin/modifica_votanti.php"
+    },
+    {
+      "from": "admin/votanti.php",
+      "to": "admin/votanti.php"
+    },
+    {
+      "from": "cookies/elabora_voto_mail.php",
+      "to": "risultati.php"
+    },
+    {
+      "from": "phpoll.php",
+      "to": "cookies/elabora_voto_mail.php"
+    }
+  ],
+  "static_edges": [
+    {
+      "from": "admin/band_editor.php",
+      "to": "admin/localization.php"
+    },
+    {
+      "from": "admin/band_editor.php",
+      "to": "config/config.php"
+    },
+    {
+      "from": "admin/config_editor.php",
+      "to": "admin/localization.php"
+    },
+    {
+      "from": "admin/config_editor.php",
+      "to": "config/config.php"
+    },
+    {
+      "from": "admin/elabora_cookie.php",
+      "to": "config/config.php"
+    },
+    {
+      "from": "admin/index.php",
+      "to": "admin/localization.php"
+    },
+    {
+      "from": "admin/index.php",
+      "to": "config/config.php"
+    },
+    {
+      "from": "admin/modifica_band.php",
+      "to": "admin/localization.php"
+    },
+    {
+      "from": "admin/modifica_band.php",
+      "to": "config/config.php"
+    },
+    {
+      "from": "admin/modifica_configurazione.php",
+      "to": "config/config.php"
+    },
+    {
+      "from": "admin/modifica_votanti.php",
+      "to": "config/config.php"
+    },
+    {
+      "from": "admin/risultati_config.php",
+      "to": "admin/localization.php"
+    },
+    {
+      "from": "admin/risultati_config.php",
+      "to": "config/config.php"
+    },
+    {
+      "from": "admin/votanti.php",
+      "to": "admin/localization.php"
+    },
+    {
+      "from": "admin/votanti.php",
+      "to": "config/config.php"
+    },
+    {
+      "from": "config/config.php",
+      "to": "config/config_db.php"
+    },
+    {
+      "from": "cookies/elabora_voto.php",
+      "to": "config/config.php"
+    },
+    {
+      "from": "cookies/elabora_voto_mail.php",
+      "to": "config/config.php"
+    },
+    {
+      "from": "cookies/elabora_voto_mail.php",
+      "to": "cookies/crypt.php"
+    },
+    {
+      "from": "cookies/elabora_voto_new.php",
+      "to": "config/config.php"
+    },
+    {
+      "from": "cookies/elabora_voto_new.php",
+      "to": "cookies/crypt.php"
+    },
+    {
+      "from": "phpoll.php",
+      "to": "config/config.php"
+    },
+    {
+      "from": "risultati.php",
+      "to": "config/config.php"
+    }
+  ],
+  "node_origins": {
+    "admin/band_editor.php": [
+      "dynamic",
+      "static"
+    ],
+    "admin/config_editor.php": [
+      "dynamic",
+      "static"
+    ],
+    "admin/elabora_cookie.php": [
+      "static"
+    ],
+    "admin/index.php": [
+      "dynamic",
+      "static"
+    ],
+    "admin/localization.php": [
+      "static"
+    ],
+    "admin/modifica_band.php": [
+      "dynamic",
+      "static"
+    ],
+    "admin/modifica_configurazione.php": [
+      "dynamic",
+      "static"
+    ],
+    "admin/modifica_votanti.php": [
+      "dynamic",
+      "static"
+    ],
+    "admin/risultati_config.php": [
+      "dynamic",
+      "static"
+    ],
+    "admin/votanti.php": [
+      "dynamic",
+      "static"
+    ],
+    "config/config.php": [
+      "static"
+    ],
+    "config/config_db.php": [
+      "static"
+    ],
+    "cookies/conta.php": [
+      "static"
+    ],
+    "cookies/contatutto.php": [
+      "static"
+    ],
+    "cookies/crypt.php": [
+      "static"
+    ],
+    "cookies/elabora_voto.php": [
+      "static"
+    ],
+    "cookies/elabora_voto_mail.php": [
+      "dynamic",
+      "static"
+    ],
+    "cookies/elabora_voto_new.php": [
+      "static"
+    ],
+    "cookies/resetta_cookie.php": [
+      "static"
+    ],
+    "cookies/risultati_perc.php": [
+      "static"
+    ],
+    "cookies/setta_cookie.php": [
+      "static"
+    ],
+    "phpoll.php": [
+      "dynamic",
+      "static"
+    ],
+    "risultati.php": [
+      "dynamic",
+      "static"
+    ]
+  },
+  "access": {
+    "admin/band_editor.php": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {
+            "language": "2"
+          },
+          "referer": "admin/votanti.php"
+        }
+      ]
+    },
+    "admin/config_editor.php": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {},
+          "referer": null
+        }
+      ]
+    },
+    "admin/index.php": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {},
+          "referer": null
+        }
+      ]
+    },
+    "admin/modifica_band.php": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "POST",
+          "params": {
+            "nome_band_0": "value_7720ffa9",
+            "voti_0": "0",
+            "check_0": "on",
+            "id_0": "67"
+          },
+          "referer": "admin/band_editor.php"
+        }
+      ]
+    },
+    "admin/modifica_configurazione.php": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "POST",
+          "params": {
+            "titolo_posizione": "khVdupYw",
+            "titolo_tipologia": "PcPlI7Kk",
+            "titolo_punteggio": "Q226OhVz",
+            "max_voti": "0",
+            "risultati_pixel": "1",
+            "barra1": "#000A1A",
+            "barra2": "#0EFC0C",
+            "barra3": "#040C00",
+            "barra4": "#55010E",
+            "intervallo_tempo": "0",
+            "percorso_link": "W2LyZv8a",
+            "oggetto_email": "eAtkck4c",
+            "testo_email": "jdwauiqddgIV7hFsEKJgwXqHeJ3qYrn1abFykI",
+            "domini": "m9MhKNOx",
+            "testo_submit": "eeN5lMQV",
+            "valid_email": "Rjfuo6ik",
+            "messaggio_conferma_mail": "esnaFXi2",
+            "messaggio_domini": "s2AJYwcN",
+            "messaggio_ip": "azcnQuju",
+            "messaggio_giavotato": "EZUSbRM1",
+            "messaggio_sgamo": "Cx293jNv",
+            "login": "admin3",
+            "password": "123456",
+            "old_login": "admin3",
+            "old_password": "123456"
+          },
+          "referer": "admin/config_editor.php"
+        }
+      ]
+    },
+    "admin/modifica_votanti.php": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "POST",
+          "params": {
+            "checkall": "on"
+          },
+          "referer": "admin/votanti.php"
+        }
+      ]
+    },
+    "admin/risultati_config.php": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {
+            "language": "2"
+          },
+          "referer": null
+        }
+      ]
+    },
+    "admin/votanti.php": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "POST",
+          "params": {
+            "indietro_di": "day",
+            "candidate": "--- ALL ---"
+          },
+          "referer": "admin/votanti.php"
+        }
+      ]
+    },
+    "cookies/elabora_voto_mail.php": {
+      "roles": [
+        "admin",
+        "visitor"
+      ],
+      "kinds": [
+        "admin",
+        "visitor"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "POST",
+          "params": {
+            "email": "drhl_6be992bf@example.test",
+            "submit_voto": "eeN5lMQV"
+          },
+          "referer": "phpoll.php"
+        },
+        {
+          "role": "visitor",
+          "kind": "visitor",
+          "method": "POST",
+          "params": {
+            "email": "drhl_6be992bf@example.test",
+            "submit_voto": "eeN5lMQV"
+          },
+          "referer": "phpoll.php"
+        }
+      ]
+    },
+    "phpoll.php": {
+      "roles": [
+        "admin",
+        "visitor"
+      ],
+      "kinds": [
+        "admin",
+        "visitor"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {},
+          "referer": null
+        },
+        {
+          "role": "visitor",
+          "kind": "visitor",
+          "method": "GET",
+          "params": {},
+          "referer": null
+        }
+      ]
+    },
+    "risultati.php": {
+      "roles": [
+        "admin",
+        "visitor"
+      ],
+      "kinds": [
+        "admin",
+        "visitor"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {},
+          "referer": "phpoll.php"
+        },
+        {
+          "role": "visitor",
+          "kind": "visitor",
+          "method": "GET",
+          "params": {},
+          "referer": "phpoll.php"
+        }
+      ]
+    }
+  },
+  "static_only": [
+    "admin/elabora_cookie.php",
+    "admin/localization.php",
+    "config/config.php",
+    "config/config_db.php",
+    "cookies/conta.php",
+    "cookies/contatutto.php",
+    "cookies/crypt.php",
+    "cookies/elabora_voto.php",
+    "cookies/elabora_voto_new.php",
+    "cookies/resetta_cookie.php",
+    "cookies/risultati_perc.php",
+    "cookies/setta_cookie.php"
+  ],
+  "source_map": {
+    "admin/band_editor.php": "admin/band_editor.php",
+    "admin/config_editor.php": "admin/config_editor.php",
+    "admin/elabora_cookie.php": "admin/elabora_cookie.php",
+    "admin/index.php": "admin/index.php",
+    "admin/localization.php": "admin/localization.php",
+    "admin/modifica_band.php": "admin/modifica_band.php",
+    "admin/modifica_configurazione.php": "admin/modifica_configurazione.php",
+    "admin/modifica_votanti.php": "admin/modifica_votanti.php",
+    "admin/risultati_config.php": "admin/risultati_config.php",
+    "admin/votanti.php": "admin/votanti.php",
+    "config/config.php": "config/config.php",
+    "config/config_db.php": "config/config_db.php",
+    "cookies/conta.php": "cookies/conta.php",
+    "cookies/contatutto.php": "cookies/contatutto.php",
+    "cookies/crypt.php": "cookies/crypt.php",
+    "cookies/elabora_voto.php": "cookies/elabora_voto.php",
+    "cookies/elabora_voto_mail.php": "cookies/elabora_voto_mail.php",
+    "cookies/elabora_voto_new.php": "cookies/elabora_voto_new.php",
+    "cookies/resetta_cookie.php": "cookies/resetta_cookie.php",
+    "cookies/risultati_perc.php": "cookies/risultati_perc.php",
+    "cookies/setta_cookie.php": "cookies/setta_cookie.php",
+    "phpoll.php": "phpoll.php",
+    "risultati.php": "risultati.php"
+  },
+  "static_classifications": {
+    "observed": [
+      "admin/band_editor.php",
+      "admin/config_editor.php",
+      "admin/index.php",
+      "admin/modifica_band.php",
+      "admin/modifica_configurazione.php",
+      "admin/modifica_votanti.php",
+      "admin/risultati_config.php",
+      "admin/votanti.php",
+      "cookies/elabora_voto_mail.php",
+      "phpoll.php",
+      "risultati.php"
+    ],
+    "internal_reachable": [
+      "admin/localization.php",
+      "config/config.php",
+      "config/config_db.php",
+      "cookies/crypt.php"
+    ],
+    "public_unobserved": [
+      "admin/elabora_cookie.php",
+      "admin/localization.php",
+      "config/config.php",
+      "config/config_db.php",
+      "cookies/conta.php",
+      "cookies/contatutto.php",
+      "cookies/crypt.php",
+      "cookies/elabora_voto.php",
+      "cookies/elabora_voto_new.php",
+      "cookies/resetta_cookie.php",
+      "cookies/risultati_perc.php",
+      "cookies/setta_cookie.php"
+    ],
+    "support_unreachable": []
+  }
+}

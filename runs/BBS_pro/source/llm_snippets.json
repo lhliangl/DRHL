@@ -1,0 +1,17 @@
+{
+  "summary": {
+    "source_items": 2,
+    "llm_items": 2,
+    "items_removed": 0
+  },
+  "snippets": [
+    {
+      "path": "app01/views.py",
+      "code": "def acc_login(request):\n    username = request.POST.get('username')\n    password = request.POST.get('password')\n\n    user = auth.authenticate(username=username, password=password)\n    print username, '->', password\n\n    if user is not None:\n        auth.login(request, user)\n\n        return HttpResponseRedirect('/')\n    else:\n        return render_to_response('login.html', {'login_err': 'Wrong username or password.'})"
+    },
+    {
+      "path": "app01/views.py",
+      "if_framework": "if user is not None:\n    return render_to_response('login.html', {'login_err': 'Wrong username or password.'})"
+    }
+  ]
+}

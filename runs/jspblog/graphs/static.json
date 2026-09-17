@@ -1,0 +1,53 @@
+{
+  "nodes": [
+    "admin/addnews.jsp",
+    "admin/addnews2.jsp",
+    "admin/adduser.jsp",
+    "admin/adduser2.jsp",
+    "admin/admin.jsp",
+    "admin/auth.jsp",
+    "admin/editnews.jsp",
+    "admin/editnews2.jsp",
+    "admin/index.jsp",
+    "admin/index2.jsp",
+    "index.jsp"
+  ],
+  "edges": [
+    {
+      "from": "admin/index2.jsp",
+      "to": "admin/admin.jsp"
+    }
+  ],
+  "url_to_source": {
+    "admin/addnews.jsp": "admin/addnews.jsp",
+    "admin/addnews2.jsp": "admin/addnews2.jsp",
+    "admin/adduser.jsp": "admin/adduser.jsp",
+    "admin/adduser2.jsp": "admin/adduser2.jsp",
+    "admin/admin.jsp": "admin/admin.jsp",
+    "admin/auth.jsp": "admin/auth.jsp",
+    "admin/editnews.jsp": "admin/editnews.jsp",
+    "admin/editnews2.jsp": "admin/editnews2.jsp",
+    "admin/index.jsp": "admin/index.jsp",
+    "admin/index2.jsp": "admin/index2.jsp",
+    "index.jsp": "index.jsp"
+  },
+  "classifications": {
+    "observed": [
+      "admin/addnews.jsp",
+      "admin/addnews2.jsp",
+      "admin/adduser.jsp",
+      "admin/adduser2.jsp",
+      "admin/admin.jsp",
+      "admin/editnews.jsp",
+      "admin/editnews2.jsp",
+      "admin/index.jsp",
+      "admin/index2.jsp",
+      "index.jsp"
+    ],
+    "internal_reachable": [],
+    "public_unobserved": [
+      "admin/auth.jsp"
+    ],
+    "support_unreachable": []
+  }
+}

@@ -1,0 +1,330 @@
+{
+  "role": "user2",
+  "kind": "user",
+  "nodes": [
+    "./",
+    "accounts/change_password/",
+    "accounts/profile/",
+    "accounts/setting/",
+    "programs/",
+    "programs/13/detail/",
+    "programs/13/detail/?code=p1&name=p1&year=p1",
+    "programs/?csrfmiddlewaretoken=p1&program_filter=p1",
+    "programs/course/drop/",
+    "programs/course/registration/",
+    "programs/course/software-testing/detail/",
+    "programs/my_courses/",
+    "quiz/progress/",
+    "quiz/software-testing/quizzes/",
+    "result/assessment/",
+    "result/grade/",
+    "result/registration/form/",
+    "search/"
+  ],
+  "edges": [
+    {
+      "from": "./",
+      "to": "accounts/profile/"
+    },
+    {
+      "from": "./",
+      "to": "search/"
+    },
+    {
+      "from": "accounts/change_password/",
+      "to": "./"
+    },
+    {
+      "from": "accounts/change_password/",
+      "to": "accounts/change_password/"
+    },
+    {
+      "from": "accounts/change_password/",
+      "to": "search/"
+    },
+    {
+      "from": "accounts/profile/",
+      "to": "programs/my_courses/"
+    },
+    {
+      "from": "accounts/profile/",
+      "to": "search/"
+    },
+    {
+      "from": "accounts/setting/",
+      "to": "accounts/change_password/"
+    },
+    {
+      "from": "accounts/setting/",
+      "to": "accounts/profile/"
+    },
+    {
+      "from": "accounts/setting/",
+      "to": "accounts/setting/"
+    },
+    {
+      "from": "accounts/setting/",
+      "to": "search/"
+    },
+    {
+      "from": "programs/",
+      "to": "programs/"
+    },
+    {
+      "from": "programs/",
+      "to": "programs/?csrfmiddlewaretoken=p1&program_filter=p1"
+    },
+    {
+      "from": "programs/",
+      "to": "search/"
+    },
+    {
+      "from": "programs/13/detail/",
+      "to": "programs/13/detail/"
+    },
+    {
+      "from": "programs/13/detail/",
+      "to": "programs/13/detail/?code=p1&name=p1&year=p1"
+    },
+    {
+      "from": "programs/13/detail/",
+      "to": "programs/course/software-testing/detail/"
+    },
+    {
+      "from": "programs/13/detail/",
+      "to": "search/"
+    },
+    {
+      "from": "programs/13/detail/?code=p1&name=p1&year=p1",
+      "to": "programs/13/detail/"
+    },
+    {
+      "from": "programs/13/detail/?code=p1&name=p1&year=p1",
+      "to": "search/"
+    },
+    {
+      "from": "programs/?csrfmiddlewaretoken=p1&program_filter=p1",
+      "to": "programs/?csrfmiddlewaretoken=p1&program_filter=p1"
+    },
+    {
+      "from": "programs/?csrfmiddlewaretoken=p1&program_filter=p1",
+      "to": "search/"
+    },
+    {
+      "from": "programs/course/drop/",
+      "to": "programs/course/registration/"
+    },
+    {
+      "from": "programs/course/registration/",
+      "to": "programs/course/drop/"
+    },
+    {
+      "from": "programs/course/registration/",
+      "to": "programs/course/registration/"
+    },
+    {
+      "from": "programs/course/registration/",
+      "to": "result/grade/"
+    },
+    {
+      "from": "programs/course/registration/",
+      "to": "result/registration/form/"
+    },
+    {
+      "from": "programs/course/registration/",
+      "to": "search/"
+    },
+    {
+      "from": "programs/course/software-testing/detail/",
+      "to": "accounts/setting/"
+    },
+    {
+      "from": "programs/course/software-testing/detail/",
+      "to": "quiz/software-testing/quizzes/"
+    },
+    {
+      "from": "programs/course/software-testing/detail/",
+      "to": "search/"
+    },
+    {
+      "from": "programs/my_courses/",
+      "to": "search/"
+    },
+    {
+      "from": "quiz/progress/",
+      "to": "programs/"
+    },
+    {
+      "from": "quiz/progress/",
+      "to": "search/"
+    },
+    {
+      "from": "quiz/software-testing/quizzes/",
+      "to": "search/"
+    },
+    {
+      "from": "result/assessment/",
+      "to": "programs/13/detail/"
+    },
+    {
+      "from": "result/assessment/",
+      "to": "search/"
+    },
+    {
+      "from": "result/grade/",
+      "to": "quiz/progress/"
+    },
+    {
+      "from": "result/grade/",
+      "to": "search/"
+    },
+    {
+      "from": "search/",
+      "to": "programs/course/registration/"
+    },
+    {
+      "from": "search/",
+      "to": "search/"
+    }
+  ],
+  "requests": {
+    "result/assessment/": {
+      "method": "GET",
+      "params": {},
+      "referer": null
+    },
+    "accounts/login/?next=%2F": {
+      "method": "POST",
+      "params": {
+        "next": "/",
+        "csrfmiddlewaretoken": "lDOuJaXIzLLqUgAEOlDyKZvFUV8DQqASHweG79oYhgtX7U5SjjIIibDj5O1cWiSO",
+        "username": "user2",
+        "password": "wojiaoliu456"
+      },
+      "referer": null
+    },
+    "favicon.ico": {
+      "method": "GET",
+      "params": {},
+      "referer": null
+    },
+    "./": {
+      "method": "GET",
+      "params": {},
+      "referer": null
+    },
+    "search/": {
+      "method": "GET",
+      "params": {
+        "q": "DRHL"
+      },
+      "referer": "quiz/software-testing/quizzes/"
+    },
+    "programs/13/detail/": {
+      "method": "GET",
+      "params": {
+        "name": "DRHL Test Name",
+        "code": "DRHL101",
+        "year": "1"
+      },
+      "referer": "programs/13/detail/"
+    },
+    "programs/13/detail/?code=p1&name=p1&year=p1": {
+      "method": "GET",
+      "params": {
+        "name": "DRHL Test Name",
+        "code": "DRHL101",
+        "year": "1"
+      },
+      "referer": "programs/13/detail/"
+    },
+    "programs/course/software-testing/detail/": {
+      "method": "GET",
+      "params": {},
+      "referer": "programs/13/detail/"
+    },
+    "accounts/setting/": {
+      "method": "POST",
+      "params": {
+        "csrfmiddlewaretoken": "HwsI51QfrWUY078737l4tmNYdfDNeSLnggDGuxsSH18StLlIDdL37QDK5WSxlCkv",
+        "email": "user2@qq.com",
+        "first_name": "l",
+        "last_name": "hll",
+        "phone": "18522255555",
+        "address": "wqeqwe"
+      },
+      "referer": "accounts/setting/"
+    },
+    "accounts/profile/": {
+      "method": "GET",
+      "params": {},
+      "referer": "accounts/setting/"
+    },
+    "accounts/change_password/": {
+      "method": "POST",
+      "params": {
+        "csrfmiddlewaretoken": "uR8sUKUtRJXh7hdAEwUJ65qxU9BwEEmK3Bjqjgw67ObbAVqbeCkIKzgjMQQgLoVS",
+        "old_password": "wojiaoliu456",
+        "new_password1": "wojiaoliu456",
+        "new_password2": "wojiaoliu456"
+      },
+      "referer": "accounts/change_password/"
+    },
+    "programs/my_courses/": {
+      "method": "GET",
+      "params": {},
+      "referer": "accounts/profile/"
+    },
+    "programs/course/registration/": {
+      "method": "POST",
+      "params": {
+        "csrfmiddlewaretoken": "CYCPuIzuK2MEAlI7j4Ajo8Ni5uldHP5obINNTeb7070y3ZVITa0i2CD4XbAXOzEw"
+      },
+      "referer": "programs/course/registration/"
+    },
+    "programs/course/drop/": {
+      "method": "POST",
+      "params": {
+        "csrfmiddlewaretoken": "M1Sr9SkKQb3XH9yThYxyI8Ck91FNtM2llL3pyoWn6ghRaNLuR4XxmCs61IUxAwBt",
+        "6": "on"
+      },
+      "referer": "programs/course/registration/"
+    },
+    "result/registration/form/": {
+      "method": "GET",
+      "params": {},
+      "referer": "programs/course/registration/"
+    },
+    "result/grade/": {
+      "method": "GET",
+      "params": {},
+      "referer": "programs/course/registration/"
+    },
+    "quiz/progress/": {
+      "method": "GET",
+      "params": {},
+      "referer": "result/grade/"
+    },
+    "programs/": {
+      "method": "GET",
+      "params": {
+        "csrfmiddlewaretoken": "RSjnjPn0CRFn9AGzQrmT6oTFyiCGJtGNqCulIlZDSWThCeTaqxMSKSJrqZRqQdfV",
+        "program_filter": "value_6fed2064"
+      },
+      "referer": "programs/"
+    },
+    "programs/?csrfmiddlewaretoken=p1&program_filter=p1": {
+      "method": "GET",
+      "params": {
+        "csrfmiddlewaretoken": "MNyi3NOjZreoS4pLbsFFOVYByvKP5mutlxJgsjqWfwsilICmLy5EspOnqcZzc63B",
+        "program_filter": "value_6fed2064"
+      },
+      "referer": "programs/?csrfmiddlewaretoken=p1&program_filter=p1"
+    },
+    "quiz/software-testing/quizzes/": {
+      "method": "GET",
+      "params": {},
+      "referer": "programs/course/software-testing/detail/"
+    }
+  }
+}

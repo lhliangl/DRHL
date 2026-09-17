@@ -1,0 +1,27 @@
+{
+  "status": "completed",
+  "started_at": "2026-06-29T02:07:02.257362+00:00",
+  "config": "D:\\project\\python\\DRHL\\configs\\events_lister.json",
+  "artifacts": {
+    "dynamic_graph": "D:\\project\\python\\DRHL\\runs\\events_lister\\graphs\\dynamic.json",
+    "static_graph": "D:\\project\\python\\DRHL\\runs\\events_lister\\graphs\\static.json",
+    "candidate_parameters": "D:\\project\\python\\DRHL\\runs\\events_lister\\source\\candidate_parameters.json",
+    "candidate_functions": "D:\\project\\python\\DRHL\\runs\\events_lister\\source\\candidate_functions.json",
+    "access_control_parameters": "D:\\project\\python\\DRHL\\runs\\events_lister\\source\\parameters.json",
+    "access_control_functions": "D:\\project\\python\\DRHL\\runs\\events_lister\\source\\functions.json",
+    "access_control_snippets": "D:\\project\\python\\DRHL\\runs\\events_lister\\source\\snippets.json",
+    "fused_graph": "D:\\project\\python\\DRHL\\runs\\events_lister\\graphs\\fused.json",
+    "graph_summary": "D:\\project\\python\\DRHL\\runs\\events_lister\\graphs\\summary.json",
+    "graph_summary_csv": "D:\\project\\python\\DRHL\\runs\\events_lister\\graphs\\summary.csv",
+    "attack_vectors": "D:\\project\\python\\DRHL\\runs\\events_lister\\analysis\\vectors.json",
+    "findings": "D:\\project\\python\\DRHL\\runs\\events_lister\\analysis\\findings.json",
+    "repairs": "D:\\project\\python\\DRHL\\runs\\events_lister\\repair\\manifest.json",
+    "repair_report": "D:\\project\\python\\DRHL\\runs\\events_lister\\repair\\repair_report.md",
+    "metrics_json": "D:\\project\\python\\DRHL\\runs\\events_lister\\metrics\\summary.json",
+    "metrics_csv": "D:\\project\\python\\DRHL\\runs\\events_lister\\metrics\\summary.csv",
+    "llm_access_control_snippets": "D:\\project\\python\\DRHL\\runs\\events_lister\\source\\llm_snippets.json"
+  },
+  "finished_at": "2026-06-29T02:09:36.212027+00:00",
+  "repair_rerun_started_at": "2026-09-16T08:22:10.705424+00:00",
+  "repair_rerun_finished_at": "2026-09-16T08:23:57.573761+00:00"
+}

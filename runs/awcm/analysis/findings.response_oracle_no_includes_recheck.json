@@ -1,0 +1,598 @@
+{
+  "summary": {
+    "vulnerable": 14,
+    "not_vulnerable": 28
+  },
+  "findings": [
+    {
+      "category": "static_only",
+      "page": "control/db_backup.php",
+      "actor": "visitor",
+      "status": "vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 200 without redirect or denial marker"
+      ],
+      "error": null
+    },
+    {
+      "category": "static_only",
+      "page": "control/security.php",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "static page response body was empty; treated as not vulnerable"
+      ],
+      "error": null
+    },
+    {
+      "category": "static_only",
+      "page": "cookie_gen.php",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "static page response body was empty; treated as not vulnerable"
+      ],
+      "error": null
+    },
+    {
+      "category": "static_only",
+      "page": "install/index.php",
+      "actor": "visitor",
+      "status": "vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 200 without redirect or denial marker"
+      ],
+      "error": null
+    },
+    {
+      "category": "static_only",
+      "page": "languages/ar.php",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "static page response body was empty; treated as not vulnerable"
+      ],
+      "error": null
+    },
+    {
+      "category": "static_only",
+      "page": "languages/en.php",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "static page response body was empty; treated as not vulnerable"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "m_cp_avatar.php?KeepThis=true&TB_iframe=true&height=p1&width=p1",
+      "actor": "visitor",
+      "status": "vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 200 without redirect or denial marker"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "m_cp_avatar.php?do=",
+      "actor": "visitor",
+      "status": "vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 200 without redirect or denial marker"
+      ],
+      "error": null
+    },
+    {
+      "category": "vertical",
+      "page": "member.php?id=p1",
+      "actor": "user1",
+      "status": "vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 200 without redirect or denial marker"
+      ],
+      "error": null
+    },
+    {
+      "category": "horizontal",
+      "page": "member.php?id=p1",
+      "actor": "user1",
+      "status": "vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 200 without redirect or denial marker",
+        "horizontal override: id=3"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "member_cp.php",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "login form in response"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "member_cp.php?do=",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "login form in response"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "member_cp_pm.php",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "login form in response"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "member_cp_pm.php?new=",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "login form in response"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "member_cp_pm.php?new=&send=p1",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: incorrect",
+        "login form in response"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "member_cp_pm.php?v=p1",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "login form in response"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "send_flash.php",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "login form in response"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "send_flash.php",
+      "actor": "user1",
+      "status": "vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 200 without redirect or denial marker"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "send_flash.php",
+      "actor": "user2",
+      "status": "vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 200 without redirect or denial marker"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "send_flash.php?do=",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "login form in response"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "send_flash.php?do=",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: incorrect"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "send_flash.php?do=",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: incorrect"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "send_image.php?KeepThis=true&TB_iframe=true&height=p1&width=p1",
+      "actor": "visitor",
+      "status": "vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 200 without redirect or denial marker"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "send_image.php?KeepThis=true&TB_iframe=true&height=p1&width=p1",
+      "actor": "user1",
+      "status": "vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 200 without redirect or denial marker"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "send_image.php?KeepThis=true&TB_iframe=true&height=p1&width=p1",
+      "actor": "user2",
+      "status": "vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 200 without redirect or denial marker"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "send_image.php?do=",
+      "actor": "visitor",
+      "status": "vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 200 without redirect or denial marker"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "send_image.php?do=",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: incorrect"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "send_image.php?do=",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: incorrect"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "send_lesson.php",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "login form in response"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "send_lesson.php?do=",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "login form in response"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "send_news.php",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "login form in response"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "send_news.php?do=",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "login form in response"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "send_pro.php",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "login form in response"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "send_pro.php?do=",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "login form in response"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "send_topic.php",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "login form in response"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "send_topic.php?do=",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "login form in response"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "send_video.php",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "login form in response"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "send_video.php",
+      "actor": "user1",
+      "status": "vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 200 without redirect or denial marker"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "send_video.php",
+      "actor": "user2",
+      "status": "vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 200 without redirect or denial marker"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "send_video.php?do=",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "login form in response"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "send_video.php?do=",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: incorrect"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "send_video.php?do=",
+      "actor": "user2",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: incorrect"
+      ],
+      "error": null
+    }
+  ]
+}

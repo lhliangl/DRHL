@@ -1,0 +1,1467 @@
+{
+  "summary": {
+    "vulnerable": 7,
+    "not_vulnerable": 97
+  },
+  "findings": [
+    {
+      "category": "static_only",
+      "page": "install/..",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/phpns/login.php"
+      ],
+      "error": null
+    },
+    {
+      "category": "static_only",
+      "page": "install/../index.php",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/phpns/login.php"
+      ],
+      "error": null
+    },
+    {
+      "category": "static_only",
+      "page": "install/index.php",
+      "actor": "visitor",
+      "status": "vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 200 without redirect or denial marker"
+      ],
+      "error": null
+    },
+    {
+      "category": "static_only",
+      "page": "install/install.inc.php",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "static-only page did not match configured high-risk standalone patterns"
+      ],
+      "error": null
+    },
+    {
+      "category": "static_only",
+      "page": "install/install.tmp.php",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "static-only page did not match configured high-risk standalone patterns"
+      ],
+      "error": null
+    },
+    {
+      "category": "static_only",
+      "page": "install/upgrade.php",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "./",
+      "actor": "register",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": null,
+      "evidence": [
+        "oracle=response-cascade",
+        "configured authenticated-public page; ordinary authenticated users are allowed"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "article.php",
+      "actor": "register",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/phpns/index.php?do=permissiondenied"
+      ],
+      "error": null
+    },
+    {
+      "category": "vertical",
+      "page": "article.php?action=delete&do=comments&id=6",
+      "actor": "register",
+      "status": "vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 200 without redirect or denial marker"
+      ],
+      "error": null
+    },
+    {
+      "category": "vertical",
+      "page": "article.php?do=comments&id=6",
+      "actor": "register",
+      "status": "vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 200 without redirect or denial marker"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "article.php?do=edit&id=p1",
+      "actor": "register",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/phpns/index.php?do=permissiondenied"
+      ],
+      "error": null
+    },
+    {
+      "category": "vertical",
+      "page": "article.php?do=edit&id=6",
+      "actor": "register",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/phpns/index.php?do=permissiondenied"
+      ],
+      "error": null
+    },
+    {
+      "category": "horizontal",
+      "page": "article.php?do=edit&id=p1",
+      "actor": "user1",
+      "status": "vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 200 without redirect or denial marker",
+        "horizontal override: id=6"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "article.php?do=editp&id=p1",
+      "actor": "register",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/phpns/index.php?do=permissiondenied"
+      ],
+      "error": null
+    },
+    {
+      "category": "vertical",
+      "page": "article.php?do=editp&id=6",
+      "actor": "register",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/phpns/index.php?do=permissiondenied"
+      ],
+      "error": null
+    },
+    {
+      "category": "horizontal",
+      "page": "article.php?do=editp&id=p1",
+      "actor": "user1",
+      "status": "vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 200 without redirect or denial marker",
+        "horizontal override: id=6"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "article.php?do=p",
+      "actor": "register",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/phpns/index.php?do=permissiondenied"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "index.php",
+      "actor": "register",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": null,
+      "evidence": [
+        "oracle=response-cascade",
+        "configured public page; successful access is not a vulnerability"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "index.php?do=permissiondenied",
+      "actor": "register",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": null,
+      "evidence": [
+        "oracle=response-cascade",
+        "configured public page; successful access is not a vulnerability"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "manage.php",
+      "actor": "register",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": null,
+      "evidence": [
+        "oracle=response-cascade",
+        "configured authenticated-public page; ordinary authenticated users are allowed"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "manage.php?do=deleteitems",
+      "actor": "register",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/phpns/index.php?do=permissiondenied"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "manage.php?sort=active%2Fasc",
+      "actor": "register",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": null,
+      "evidence": [
+        "oracle=response-cascade",
+        "configured authenticated-public page; ordinary authenticated users are allowed"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "manage.php?sort=active%2Fdesc",
+      "actor": "register",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": null,
+      "evidence": [
+        "oracle=response-cascade",
+        "configured authenticated-public page; ordinary authenticated users are allowed"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "manage.php?sort=article_author%2Fasc",
+      "actor": "register",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": null,
+      "evidence": [
+        "oracle=response-cascade",
+        "configured authenticated-public page; ordinary authenticated users are allowed"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "manage.php?sort=article_author%2Fdesc",
+      "actor": "register",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": null,
+      "evidence": [
+        "oracle=response-cascade",
+        "configured authenticated-public page; ordinary authenticated users are allowed"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "manage.php?sort=article_cat%2Fasc",
+      "actor": "register",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": null,
+      "evidence": [
+        "oracle=response-cascade",
+        "configured authenticated-public page; ordinary authenticated users are allowed"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "manage.php?sort=article_cat%2Fdesc",
+      "actor": "register",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": null,
+      "evidence": [
+        "oracle=response-cascade",
+        "configured authenticated-public page; ordinary authenticated users are allowed"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "manage.php?sort=article_title%2Fasc",
+      "actor": "register",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": null,
+      "evidence": [
+        "oracle=response-cascade",
+        "configured authenticated-public page; ordinary authenticated users are allowed"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "manage.php?sort=article_title%2Fdesc",
+      "actor": "register",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": null,
+      "evidence": [
+        "oracle=response-cascade",
+        "configured authenticated-public page; ordinary authenticated users are allowed"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "manage.php?sort=timestamp%2Fasc",
+      "actor": "register",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": null,
+      "evidence": [
+        "oracle=response-cascade",
+        "configured authenticated-public page; ordinary authenticated users are allowed"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "manage.php?sort=timestamp%2Fdesc",
+      "actor": "register",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": null,
+      "evidence": [
+        "oracle=response-cascade",
+        "configured authenticated-public page; ordinary authenticated users are allowed"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "manage.php?v=",
+      "actor": "register",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": null,
+      "evidence": [
+        "oracle=response-cascade",
+        "configured authenticated-public page; ordinary authenticated users are allowed"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "manage.php?v=32",
+      "actor": "register",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": null,
+      "evidence": [
+        "oracle=response-cascade",
+        "configured authenticated-public page; ordinary authenticated users are allowed"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "manage.php?v=admin",
+      "actor": "register",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": null,
+      "evidence": [
+        "oracle=response-cascade",
+        "configured authenticated-public page; ordinary authenticated users are allowed"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "manage.php?v=all",
+      "actor": "register",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": null,
+      "evidence": [
+        "oracle=response-cascade",
+        "configured authenticated-public page; ordinary authenticated users are allowed"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "manage.php?v=register",
+      "actor": "register",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": null,
+      "evidence": [
+        "oracle=response-cascade",
+        "configured authenticated-public page; ordinary authenticated users are allowed"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "manage.php?v=unactive",
+      "actor": "register",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": null,
+      "evidence": [
+        "oracle=response-cascade",
+        "configured authenticated-public page; ordinary authenticated users are allowed"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "manage.php?v=unapproved",
+      "actor": "register",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": null,
+      "evidence": [
+        "oracle=response-cascade",
+        "configured authenticated-public page; ordinary authenticated users are allowed"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "manage.php?v=user1",
+      "actor": "register",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": null,
+      "evidence": [
+        "oracle=response-cascade",
+        "configured authenticated-public page; ordinary authenticated users are allowed"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "manage.php?v=user2",
+      "actor": "register",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": null,
+      "evidence": [
+        "oracle=response-cascade",
+        "configured authenticated-public page; ordinary authenticated users are allowed"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "preferences.php",
+      "actor": "register",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/phpns/index.php?do=permissiondenied"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "preferences.php?action=delete&do=ban",
+      "actor": "register",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/phpns/index.php?do=permissiondenied"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "preferences.php?action=deleteitems&do=categories",
+      "actor": "register",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/phpns/index.php?do=permissiondenied"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "preferences.php?action=edit&do=categories&id=p1",
+      "actor": "register",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/phpns/index.php?do=permissiondenied"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "preferences.php?action=edit&do=templates&tid=9",
+      "actor": "register",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/phpns/index.php?do=permissiondenied"
+      ],
+      "error": null
+    },
+    {
+      "category": "horizontal",
+      "page": "preferences.php?action=edit&do=templates&tid=9",
+      "actor": "user",
+      "status": "not_vulnerable",
+      "confidence": "none",
+      "method": "GET",
+      "http_status": null,
+      "evidence": [
+        "no horizontal override value was configured; treated as not vulnerable by binary reporting policy"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "preferences.php?action=editp&do=templates",
+      "actor": "register",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/phpns/index.php?do=permissiondenied"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "preferences.php?action=new&do=categories",
+      "actor": "register",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/phpns/index.php?do=permissiondenied"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "preferences.php?action=new&do=templates",
+      "actor": "register",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/phpns/index.php?do=permissiondenied"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "preferences.php?action=newp&do=ban",
+      "actor": "register",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/phpns/index.php?do=permissiondenied"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "preferences.php?action=newp&do=templates",
+      "actor": "register",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/phpns/index.php?do=permissiondenied"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "preferences.php?action=p&do=wizard",
+      "actor": "register",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/phpns/index.php?do=permissiondenied"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "preferences.php?action=restore&do=backup",
+      "actor": "register",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/phpns/index.php?do=permissiondenied"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "preferences.php?action=switch&do=templates",
+      "actor": "register",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/phpns/index.php?do=permissiondenied"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "preferences.php?action=switch&do=themes",
+      "actor": "register",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/phpns/index.php?do=permissiondenied"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "preferences.php?action=update&do=comments",
+      "actor": "register",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/phpns/index.php?do=permissiondenied"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "preferences.php?action=update&do=display",
+      "actor": "register",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/phpns/index.php?do=permissiondenied"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "preferences.php?action=update&do=globalmessage",
+      "actor": "register",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/phpns/index.php?do=permissiondenied"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "preferences.php?action=update&do=line",
+      "actor": "register",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/phpns/index.php?do=permissiondenied"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "preferences.php?action=update&do=rss",
+      "actor": "register",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/phpns/index.php?do=permissiondenied"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "preferences.php?action=update&do=timestamp",
+      "actor": "register",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/phpns/index.php?do=permissiondenied"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "preferences.php?action=update&do=wysiwyg",
+      "actor": "register",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/phpns/index.php?do=permissiondenied"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "preferences.php?do=backup",
+      "actor": "register",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/phpns/index.php?do=permissiondenied"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "preferences.php?do=ban",
+      "actor": "register",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/phpns/index.php?do=permissiondenied"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "preferences.php?do=categories",
+      "actor": "register",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/phpns/index.php?do=permissiondenied"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "preferences.php?do=comments",
+      "actor": "register",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/phpns/index.php?do=permissiondenied"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "preferences.php?do=display",
+      "actor": "register",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/phpns/index.php?do=permissiondenied"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "preferences.php?do=globalmessage",
+      "actor": "register",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/phpns/index.php?do=permissiondenied"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "preferences.php?do=line",
+      "actor": "register",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/phpns/index.php?do=permissiondenied"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "preferences.php?do=rss",
+      "actor": "register",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/phpns/index.php?do=permissiondenied"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "preferences.php?do=sef",
+      "actor": "register",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/phpns/index.php?do=permissiondenied"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "preferences.php?do=syslog",
+      "actor": "register",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/phpns/index.php?do=permissiondenied"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "preferences.php?do=syslog&sort=description%2Fasc",
+      "actor": "register",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/phpns/index.php?do=permissiondenied"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "preferences.php?do=syslog&sort=description%2Fdesc",
+      "actor": "register",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/phpns/index.php?do=permissiondenied"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "preferences.php?do=syslog&sort=page%2Fasc",
+      "actor": "register",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/phpns/index.php?do=permissiondenied"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "preferences.php?do=syslog&sort=page%2Fdesc",
+      "actor": "register",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/phpns/index.php?do=permissiondenied"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "preferences.php?do=syslog&sort=task%2Fasc",
+      "actor": "register",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/phpns/index.php?do=permissiondenied"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "preferences.php?do=syslog&sort=task%2Fdesc",
+      "actor": "register",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/phpns/index.php?do=permissiondenied"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "preferences.php?do=syslog&sort=timestamp%2Fasc",
+      "actor": "register",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/phpns/index.php?do=permissiondenied"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "preferences.php?do=syslog&sort=timestamp%2Fdesc",
+      "actor": "register",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/phpns/index.php?do=permissiondenied"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "preferences.php?do=syslog&sort=user%2Fasc",
+      "actor": "register",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/phpns/index.php?do=permissiondenied"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "preferences.php?do=syslog&sort=user%2Fdesc",
+      "actor": "register",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/phpns/index.php?do=permissiondenied"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "preferences.php?do=templates",
+      "actor": "register",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/phpns/index.php?do=permissiondenied"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "preferences.php?do=themes",
+      "actor": "register",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/phpns/index.php?do=permissiondenied"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "preferences.php?do=timestamp",
+      "actor": "register",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/phpns/index.php?do=permissiondenied"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "preferences.php?do=wizard",
+      "actor": "register",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/phpns/index.php?do=permissiondenied"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "preferences.php?do=wysiwyg",
+      "actor": "register",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/phpns/index.php?do=permissiondenied"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "user.php",
+      "actor": "register",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": null,
+      "evidence": [
+        "oracle=response-cascade",
+        "configured authenticated-public page; ordinary authenticated users are allowed"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "user.php?action=delall&do=loginrec",
+      "actor": "register",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/phpns/index.php?do=permissiondenied"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "user.php?do=deleteranks",
+      "actor": "register",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/phpns/index.php?do=permissiondenied"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "user.php?do=deleteusers",
+      "actor": "register",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/phpns/index.php?do=permissiondenied"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "user.php?do=edit&id=p1",
+      "actor": "register",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/phpns/index.php?do=permissiondenied"
+      ],
+      "error": null
+    },
+    {
+      "category": "horizontal",
+      "page": "user.php?do=edit&id=p1",
+      "actor": "user1",
+      "status": "vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 200 without redirect or denial marker",
+        "horizontal override: id=6"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "user.php?do=editp",
+      "actor": "register",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/phpns/index.php?do=permissiondenied"
+      ],
+      "error": null
+    },
+    {
+      "category": "horizontal",
+      "page": "user.php?do=editp",
+      "actor": "user1",
+      "status": "vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 200 without redirect or denial marker",
+        "horizontal override: id=6"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "user.php?do=editrank&id=p1",
+      "actor": "register",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/phpns/index.php?do=permissiondenied"
+      ],
+      "error": null
+    },
+    {
+      "category": "horizontal",
+      "page": "user.php?do=editrank&id=p1",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/phpns/index.php?do=permissiondenied",
+        "horizontal override: id=6"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "user.php?do=erankp",
+      "actor": "register",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/phpns/index.php?do=permissiondenied"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "user.php?do=loginrec",
+      "actor": "register",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/phpns/index.php?do=permissiondenied"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "user.php?do=new",
+      "actor": "register",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/phpns/index.php?do=permissiondenied"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "user.php?do=newp",
+      "actor": "register",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/phpns/index.php?do=permissiondenied"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "user.php?do=newrank",
+      "actor": "register",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/phpns/index.php?do=permissiondenied"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "user.php?do=nrankp",
+      "actor": "register",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/phpns/index.php?do=permissiondenied"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "user.php?do=ranks",
+      "actor": "register",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 302,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial redirect: http://localhost/phpns/index.php?do=permissiondenied"
+      ],
+      "error": null
+    }
+  ]
+}

@@ -1,0 +1,408 @@
+{
+  "nodes": [
+    "admin/index.php",
+    "admin/phpinfo.php",
+    "admin/phpinfo.php?=p1",
+    "admin/settings.php",
+    "credits.php",
+    "index.php",
+    "info.php",
+    "login.php",
+    "password_change.php",
+    "portal.php",
+    "reset.php",
+    "security_level_set.php",
+    "training.php",
+    "user_extra.php",
+    "user_new.php"
+  ],
+  "edges": [
+    {
+      "from": "admin/phpinfo.php",
+      "to": "admin/phpinfo.php?=p1"
+    },
+    {
+      "from": "credits.php",
+      "to": "credits.php"
+    },
+    {
+      "from": "credits.php",
+      "to": "portal.php"
+    },
+    {
+      "from": "credits.php",
+      "to": "reset.php"
+    },
+    {
+      "from": "index.php",
+      "to": "login.php"
+    },
+    {
+      "from": "index.php",
+      "to": "portal.php"
+    },
+    {
+      "from": "info.php",
+      "to": "user_new.php"
+    },
+    {
+      "from": "login.php",
+      "to": "login.php"
+    },
+    {
+      "from": "login.php",
+      "to": "training.php"
+    },
+    {
+      "from": "password_change.php",
+      "to": "password_change.php"
+    },
+    {
+      "from": "password_change.php",
+      "to": "portal.php"
+    },
+    {
+      "from": "portal.php",
+      "to": "portal.php"
+    },
+    {
+      "from": "reset.php",
+      "to": "portal.php"
+    },
+    {
+      "from": "reset.php",
+      "to": "reset.php"
+    },
+    {
+      "from": "reset.php",
+      "to": "security_level_set.php"
+    },
+    {
+      "from": "security_level_set.php",
+      "to": "portal.php"
+    },
+    {
+      "from": "security_level_set.php",
+      "to": "security_level_set.php"
+    },
+    {
+      "from": "security_level_set.php",
+      "to": "user_extra.php"
+    },
+    {
+      "from": "training.php",
+      "to": "info.php"
+    },
+    {
+      "from": "user_extra.php",
+      "to": "password_change.php"
+    },
+    {
+      "from": "user_extra.php",
+      "to": "portal.php"
+    },
+    {
+      "from": "user_extra.php",
+      "to": "user_extra.php"
+    },
+    {
+      "from": "user_new.php",
+      "to": "login.php"
+    },
+    {
+      "from": "user_new.php",
+      "to": "user_new.php"
+    }
+  ],
+  "access": {
+    "admin/index.php": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {},
+          "referer": null
+        }
+      ]
+    },
+    "admin/phpinfo.php": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {},
+          "referer": null
+        }
+      ]
+    },
+    "admin/phpinfo.php?=p1": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {
+            "": "PHPB8B5F2A0-3C92-11d3-A3A9-4C7B08C10000"
+          },
+          "referer": "admin/phpinfo.php"
+        }
+      ]
+    },
+    "admin/settings.php": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {},
+          "referer": null
+        }
+      ]
+    },
+    "credits.php": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "POST",
+          "params": {
+            "bug": "0"
+          },
+          "referer": "credits.php"
+        }
+      ]
+    },
+    "index.php": {
+      "roles": [
+        "admin",
+        "visitor"
+      ],
+      "kinds": [
+        "admin",
+        "visitor"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {},
+          "referer": null
+        },
+        {
+          "role": "visitor",
+          "kind": "visitor",
+          "method": "GET",
+          "params": {},
+          "referer": null
+        }
+      ]
+    },
+    "info.php": {
+      "roles": [
+        "visitor"
+      ],
+      "kinds": [
+        "visitor"
+      ],
+      "requests": [
+        {
+          "role": "visitor",
+          "kind": "visitor",
+          "method": "GET",
+          "params": {},
+          "referer": "training.php"
+        }
+      ]
+    },
+    "login.php": {
+      "roles": [
+        "visitor"
+      ],
+      "kinds": [
+        "visitor"
+      ],
+      "requests": [
+        {
+          "role": "visitor",
+          "kind": "visitor",
+          "method": "POST",
+          "params": {
+            "login": "value_3a867721",
+            "password": "12345678",
+            "security_level": "0"
+          },
+          "referer": "login.php"
+        }
+      ]
+    },
+    "password_change.php": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "POST",
+          "params": {
+            "bug": "0"
+          },
+          "referer": "password_change.php"
+        }
+      ]
+    },
+    "portal.php": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "POST",
+          "params": {
+            "bug": "0"
+          },
+          "referer": "portal.php"
+        }
+      ]
+    },
+    "reset.php": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "POST",
+          "params": {
+            "bug": "0"
+          },
+          "referer": "reset.php"
+        }
+      ]
+    },
+    "security_level_set.php": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "POST",
+          "params": {
+            "bug": "0"
+          },
+          "referer": "security_level_set.php"
+        }
+      ]
+    },
+    "training.php": {
+      "roles": [
+        "visitor"
+      ],
+      "kinds": [
+        "visitor"
+      ],
+      "requests": [
+        {
+          "role": "visitor",
+          "kind": "visitor",
+          "method": "GET",
+          "params": {},
+          "referer": "login.php"
+        }
+      ]
+    },
+    "user_extra.php": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "POST",
+          "params": {
+            "bug": "0"
+          },
+          "referer": "user_extra.php"
+        }
+      ]
+    },
+    "user_new.php": {
+      "roles": [
+        "visitor"
+      ],
+      "kinds": [
+        "visitor"
+      ],
+      "requests": [
+        {
+          "role": "visitor",
+          "kind": "visitor",
+          "method": "POST",
+          "params": {
+            "login": "value_08e22487",
+            "email": "drhl_fee3388d@example.test",
+            "password": "12345678",
+            "password_conf": "12345678",
+            "secret": "value_79d93e0a",
+            "mail_activation": "on"
+          },
+          "referer": "user_new.php"
+        }
+      ]
+    }
+  }
+}

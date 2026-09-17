@@ -1,0 +1,973 @@
+{
+  "summary": {
+    "Repair Items": 6,
+    "Total Repair Attempts": 7,
+    "Patch Generation Attempts": 7,
+    "Patches Generated": 7,
+    "Failed Patches": 1,
+    "Syntax / Compile OK": 7,
+    "Exploit Blocked": 7,
+    "Regression Passed": 6,
+    "Database Validation Applied": 6,
+    "Database Validation Passed": 5,
+    "Successful Repairs": 6,
+    "Failed Repairs": 0,
+    "Successful on Attempt 1": 5,
+    "Successful on Attempt 2": 1,
+    "Successful on Attempt 3": 0
+  },
+  "repairs": [
+    {
+      "category": "horizontal",
+      "page": "forum/index.jsp?page=editmessage&forum_id=0&thread_id=0&reply_id=2&start=0",
+      "source": "D:\\tomcat9\\webapps\\JsForum\\forum\\editmessage.jsp",
+      "output": "D:\\project\\python\\DRHL\\runs\\jsforum\\repair\\files\\attempt-1\\forum\\editmessage.jsp",
+      "status": "successful_repair",
+      "message": "syntax/compile, vulnerability blocking, and regression validation all passed",
+      "engine": "llm",
+      "plan": "{\"missing_check\": \"Ownership check for the requested reply_id: verify that the message being edited belongs to sessionUsername unless sessionType is Admin.\", \"insertion_location\": \"In forum/editmessage.jsp inside the try block, after the while loop that reads the message (and after capturing the message owner's username from the user column), and immediately after db.close() but before message = FilterBack.filterAll(message) and before any HTML output.\", \"recommended_guard\": \"During the ResultSet loop, capture the owner: String messageUser = rs.getString(\\\"user\\\");. Then after db.close(), insert: if(sessionUsername != null && !sessionType.equals(\\\"Admin\\\") && !sessionUsername.equals(messageUser)) { response.sendRedirect(Variable.getForumPath() + \\\"index.jsp\\\"); return; }\", \"reused_project_semantics\": \"sessionUsername and sessionType for authentication/role, the \\\"Admin\\\" sentinel for privileged bypass (as in DeleteForum.java, ChangeMessage.java), forum_message.user as the owner identity, response.sendRedirect(Variable.getForumPath() + \\\"index.jsp\\\") as the denial/redirect style (as in DeleteForum.java/DeleteThread.java), and the ownership comparison pattern from ChangeMessage.java where non-admin updates include AND user=sessionUsername, and from message.jsp using sessionUsername.equals(user).\", \"reason\": \"This is a horizontal access control issue: the attacker (user1) can override reply_id to a message owned by user2, and the page displays the message content and edit form without verifying ownership. The current code only checks sessionUsername != null, which is insufficient. The guard compares the message owner with sessionUsername while preserving the Admin bypass, consistent with the application's existing role and ownership enforcement.\"}",
+      "prompt_artifact": "D:\\project\\python\\DRHL\\runs\\jsforum\\repair\\prompts\\editmessage-attempt1-dc8f9c222fdb.json",
+      "attempts": 1,
+      "patches_generated": 1,
+      "syntax_compile_ok": 1,
+      "exploit_blocked": 1,
+      "regression_passed": 1,
+      "database_validation_applied": 0,
+      "database_validation_passed": 0,
+      "successful": true,
+      "validation_artifact": "D:\\project\\python\\DRHL\\runs\\jsforum\\repair\\validation\\editmessage-468847795c60.json",
+      "attempt_details": [
+        {
+          "attempt": 1,
+          "output": "D:\\project\\python\\DRHL\\runs\\jsforum\\repair\\files\\attempt-1\\forum\\editmessage.jsp",
+          "syntax_compile_ok": true,
+          "exploit_blocked": true,
+          "regression_passed": true,
+          "successful": true,
+          "message": "syntax=(JSP syntax/compile validation deferred to Tomcat/Jasper runtime request); deployment=(source patch applied); vulnerability_blocking=(response=True; database=passed; evidence=user1:not_vulnerable); regression=(response=True; database=passed; evidence=authorized status=200; denial=[])",
+          "prompt_artifact": "D:\\project\\python\\DRHL\\runs\\jsforum\\repair\\prompts\\editmessage-attempt1-dc8f9c222fdb.json",
+          "plan": "{\"missing_check\": \"Ownership check for the requested reply_id: verify that the message being edited belongs to sessionUsername unless sessionType is Admin.\", \"insertion_location\": \"In forum/editmessage.jsp inside the try block, after the while loop that reads the message (and after capturing the message owner's username from the user column), and immediately after db.close() but before message = FilterBack.filterAll(message) and before any HTML output.\", \"recommended_guard\": \"During the ResultSet loop, capture the owner: String messageUser = rs.getString(\\\"user\\\");. Then after db.close(), insert: if(sessionUsername != null && !sessionType.equals(\\\"Admin\\\") && !sessionUsername.equals(messageUser)) { response.sendRedirect(Variable.getForumPath() + \\\"index.jsp\\\"); return; }\", \"reused_project_semantics\": \"sessionUsername and sessionType for authentication/role, the \\\"Admin\\\" sentinel for privileged bypass (as in DeleteForum.java, ChangeMessage.java), forum_message.user as the owner identity, response.sendRedirect(Variable.getForumPath() + \\\"index.jsp\\\") as the denial/redirect style (as in DeleteForum.java/DeleteThread.java), and the ownership comparison pattern from ChangeMessage.java where non-admin updates include AND user=sessionUsername, and from message.jsp using sessionUsername.equals(user).\", \"reason\": \"This is a horizontal access control issue: the attacker (user1) can override reply_id to a message owned by user2, and the page displays the message content and edit form without verifying ownership. The current code only checks sessionUsername != null, which is insufficient. The guard compares the message owner with sessionUsername while preserving the Admin bypass, consistent with the application's existing role and ownership enforcement.\"}",
+          "database_validation_passed": true,
+          "database_validation": {
+            "oracle_version": 2,
+            "scope": "repair_only",
+            "applicable": false,
+            "passed": true,
+            "status": "response_only",
+            "display_as_passed": true,
+            "message": "database validation intentionally skipped; response oracle retained",
+            "dimensions": {
+              "vulnerability_blocking": {
+                "phase": "attack",
+                "applicable": false,
+                "passed": true
+              },
+              "regression": {
+                "phase": "authorized",
+                "applicable": false,
+                "passed": true
+              }
+            },
+            "scenarios": [],
+            "combined_dimensions": {
+              "vulnerability_blocking": {
+                "passed": true,
+                "response_oracle_applicable": true,
+                "response_oracle_passed": true,
+                "database_oracle_applicable": false,
+                "database_oracle_passed": true
+              },
+              "regression": {
+                "passed": true,
+                "response_oracle_applicable": true,
+                "response_oracle_passed": true,
+                "database_oracle_applicable": false,
+                "database_oracle_passed": true
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "category": "admin_only",
+      "page": "servlet/forum.AddForum",
+      "source": "D:\\tomcat9\\webapps\\JsForum\\WEB-INF\\classes\\forum\\AddForum.java",
+      "output": "D:\\project\\python\\DRHL\\runs\\jsforum\\repair\\files\\attempt-1\\WEB-INF\\classes\\forum\\AddForum.java",
+      "status": "successful_repair",
+      "message": "syntax/compile, vulnerability blocking, and regression validation all passed",
+      "engine": "llm",
+      "plan": "{\"missing_check\": \"if(sessionType.equals(\\\"Admin\\\")){\", \"insertion_location\": \"In AddForum.doPost, inside the try block at the very beginning, before `int lastforum_id = ...` and before any db.connect() or parameter parsing.\", \"recommended_guard\": \"String sessionType = (String) session.getAttribute(\\\"type\\\");\\nif(sessionType.equals(\\\"Admin\\\")){\", \"reused_project_semantics\": \"Admin role is checked via `sessionType.equals(\\\"Admin\\\")` where `sessionType` is the session attribute `type` (as used in DeleteForum.java, DeleteThread.java, ChangeMessage.java, and forum JSPs). Unauthorized non-admin users are simply not granted access; no explicit redirect is used for admin-only servlets.\", \"reason\": \"AddForum performs a privileged write (creating a forum) but lacks the admin role check present in analogous delete/change servlets. An attacker with role user1 can POST and create forums. Adding the existing `sessionType.equals(\\\"Admin\\\")` guard before any parameter parsing or DB operations blocks unauthorized access while preserving admin functionality.\"}",
+      "prompt_artifact": "D:\\project\\python\\DRHL\\runs\\jsforum\\repair\\prompts\\AddForum-attempt1-632c045ee5f2.json",
+      "attempts": 1,
+      "patches_generated": 1,
+      "syntax_compile_ok": 1,
+      "exploit_blocked": 1,
+      "regression_passed": 1,
+      "database_validation_applied": 1,
+      "database_validation_passed": 1,
+      "successful": true,
+      "validation_artifact": "D:\\project\\python\\DRHL\\runs\\jsforum\\repair\\validation\\AddForum-b2ef539c0e43.json",
+      "attempt_details": [
+        {
+          "attempt": 1,
+          "output": "D:\\project\\python\\DRHL\\runs\\jsforum\\repair\\files\\attempt-1\\WEB-INF\\classes\\forum\\AddForum.java",
+          "syntax_compile_ok": true,
+          "exploit_blocked": true,
+          "regression_passed": true,
+          "successful": true,
+          "message": "syntax=(javac exited with 0); deployment=(javac=(javac exited with 0); reload=(touched D:\\tomcat9\\webapps\\JsForum\\WEB-INF\\web.xml)); vulnerability_blocking=(response=True; database=passed; evidence=user1:not_vulnerable; user2:not_vulnerable; visitor:not_vulnerable); regression=(response=True; database=passed; evidence=authorized status=302; denial=[]; authorized success redirect accepted)",
+          "prompt_artifact": "D:\\project\\python\\DRHL\\runs\\jsforum\\repair\\prompts\\AddForum-attempt1-632c045ee5f2.json",
+          "plan": "{\"missing_check\": \"if(sessionType.equals(\\\"Admin\\\")){\", \"insertion_location\": \"In AddForum.doPost, inside the try block at the very beginning, before `int lastforum_id = ...` and before any db.connect() or parameter parsing.\", \"recommended_guard\": \"String sessionType = (String) session.getAttribute(\\\"type\\\");\\nif(sessionType.equals(\\\"Admin\\\")){\", \"reused_project_semantics\": \"Admin role is checked via `sessionType.equals(\\\"Admin\\\")` where `sessionType` is the session attribute `type` (as used in DeleteForum.java, DeleteThread.java, ChangeMessage.java, and forum JSPs). Unauthorized non-admin users are simply not granted access; no explicit redirect is used for admin-only servlets.\", \"reason\": \"AddForum performs a privileged write (creating a forum) but lacks the admin role check present in analogous delete/change servlets. An attacker with role user1 can POST and create forums. Adding the existing `sessionType.equals(\\\"Admin\\\")` guard before any parameter parsing or DB operations blocks unauthorized access while preserving admin functionality.\"}",
+          "database_validation_passed": true,
+          "database_validation": {
+            "oracle_version": 2,
+            "scope": "repair_only",
+            "applicable": true,
+            "passed": true,
+            "status": "passed",
+            "dimensions": {
+              "vulnerability_blocking": {
+                "phase": "attack",
+                "applicable": true,
+                "passed": true
+              },
+              "regression": {
+                "phase": "authorized",
+                "applicable": true,
+                "passed": true
+              }
+            },
+            "scenarios": [
+              {
+                "name": "jsforum-add-forum-admin-create",
+                "operation": "create",
+                "passed": true,
+                "phases": [
+                  {
+                    "phase": "attack",
+                    "role": "user1",
+                    "session_before_setup": false,
+                    "setup_sql": [],
+                    "session_requests": [],
+                    "request": {
+                      "method": "POST",
+                      "page": "servlet/forum.AddForum",
+                      "params": {
+                        "lastforum_id": "1",
+                        "title": "DRHLR_33ecc37a4b0a",
+                        "forum_info": "DRHL repair oracle unauthorized forum"
+                      },
+                      "referer": "forum/index.jsp",
+                      "cookie_names": []
+                    },
+                    "response": {
+                      "status_code": 200,
+                      "url": "http://localhost:8080/JsForum/servlet/forum.AddForum",
+                      "body_length": 0
+                    },
+                    "query": "SELECT COUNT(*) FROM forum_forums WHERE title='DRHLR_33ecc37a4b0a'",
+                    "observed": "0",
+                    "assertions": [
+                      {
+                        "type": "scalar_zero",
+                        "expected": "0",
+                        "observed": "0",
+                        "passed": true
+                      }
+                    ],
+                    "passed": true
+                  },
+                  {
+                    "phase": "authorized",
+                    "role": "admin",
+                    "session_before_setup": false,
+                    "setup_sql": [],
+                    "session_requests": [],
+                    "request": {
+                      "method": "POST",
+                      "page": "servlet/forum.AddForum",
+                      "params": {
+                        "lastforum_id": "1",
+                        "title": "DRHLR_33ecc37a4b0a",
+                        "forum_info": "DRHL repair oracle authorized forum"
+                      },
+                      "referer": "forum/index.jsp",
+                      "cookie_names": []
+                    },
+                    "response": {
+                      "status_code": 302,
+                      "url": "http://localhost:8080/JsForum/servlet/forum.AddForum",
+                      "body_length": 0
+                    },
+                    "query": "SELECT COUNT(*) FROM forum_forums WHERE title='DRHLR_33ecc37a4b0a'",
+                    "observed": "1",
+                    "assertions": [
+                      {
+                        "type": "scalar_nonzero",
+                        "expected": "nonzero",
+                        "observed": "1",
+                        "passed": true
+                      }
+                    ],
+                    "passed": true
+                  }
+                ]
+              }
+            ],
+            "combined_dimensions": {
+              "vulnerability_blocking": {
+                "passed": true,
+                "response_oracle_applicable": false,
+                "response_oracle_passed": true,
+                "database_oracle_applicable": true,
+                "database_oracle_passed": true
+              },
+              "regression": {
+                "passed": true,
+                "response_oracle_applicable": false,
+                "response_oracle_passed": true,
+                "database_oracle_applicable": true,
+                "database_oracle_passed": true
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "category": "authenticated_only",
+      "page": "servlet/forum.AddReply",
+      "source": "D:\\tomcat9\\webapps\\JsForum\\WEB-INF\\classes\\forum\\AddReply.java",
+      "output": "D:\\project\\python\\DRHL\\runs\\jsforum\\repair\\files\\attempt-2\\WEB-INF\\classes\\forum\\AddReply.java",
+      "status": "successful_repair",
+      "message": "syntax/compile, vulnerability blocking, and regression validation all passed",
+      "engine": "llm",
+      "plan": "{\"missing_check\": \"sessionUsername != null\", \"insertion_location\": \"forum.AddReply.doPost, after String user = request.getParameter(\\\"user\\\"); and immediately before db.connect();, wrapping the DB insert and success redirect.\", \"recommended_guard\": \"HttpSession session = request.getSession();\\nString sessionUsername = (String) session.getAttribute(\\\"userName\\\");\\nif(sessionUsername != null){\\n    // existing db.connect(); db.query(INSERT...); db.close(); response.sendRedirect(...);\\n}\", \"reused_project_semantics\": \"Uses the project's existing sessionUsername session variable and the logged-in sentinel pattern from forum/profile.jsp (`<% if( sessionUsername != null){%>`). Does not reuse sessionType.equals(\\\"Admin\\\") because the policy is authenticated_only, not admin-only, and does not compare ownership because identity_parameters is empty.\", \"reason\": \"AddReply has no session/authentication guard, so a visitor can POST directly to servlet/forum.AddReply and cause the INSERT and success redirect. Adding the sessionUsername != null guard before db.connect() blocks unauthenticated visitors while allowing authorized user1/user2 sessions to continue.\"}",
+      "prompt_artifact": "D:\\project\\python\\DRHL\\runs\\jsforum\\repair\\prompts\\AddReply-attempt2-1638bd202556.json",
+      "attempts": 2,
+      "patches_generated": 2,
+      "syntax_compile_ok": 2,
+      "exploit_blocked": 2,
+      "regression_passed": 1,
+      "database_validation_applied": 2,
+      "database_validation_passed": 1,
+      "successful": true,
+      "validation_artifact": "D:\\project\\python\\DRHL\\runs\\jsforum\\repair\\validation\\AddReply-bb18e73eb2db.json",
+      "attempt_details": [
+        {
+          "attempt": 1,
+          "output": "D:\\project\\python\\DRHL\\runs\\jsforum\\repair\\files\\attempt-1\\WEB-INF\\classes\\forum\\AddReply.java",
+          "syntax_compile_ok": true,
+          "exploit_blocked": true,
+          "regression_passed": false,
+          "successful": false,
+          "message": "syntax=(javac exited with 0); deployment=(javac=(javac exited with 0); reload=(touched D:\\tomcat9\\webapps\\JsForum\\WEB-INF\\web.xml)); vulnerability_blocking=(response=False; database=passed; evidence=visitor:vulnerable); regression=(response=True; database=failed; evidence=authorized status=302; denial=[]; authorized success redirect accepted)",
+          "prompt_artifact": "D:\\project\\python\\DRHL\\runs\\jsforum\\repair\\prompts\\AddReply-attempt1-344b9c0f245b.json",
+          "plan": "{\"missing_check\": \"Authentication check: AddReply does not verify that the request is from an authenticated forum user (sessionUsername) before processing the reply write.\", \"insertion_location\": \"At the very start of doPost, immediately after PrintWriter out = response.getWriter(); and before the try block that reads request parameters and executes db.connect()/db.query().\", \"recommended_guard\": \"Reuse the project's existing session guard context to obtain sessionUsername, then add: if (sessionUsername == null) { response.sendRedirect(Variable.getForumPath() + \\\"index.jsp\\\"); return; }. This blocks visitors before the INSERT while allowing authenticated user1/user2 sessions through.\", \"reused_project_semantics\": \"sessionUsername (the authenticated forum-user variable used by forum/profile.jsp and forum servlets), Variable.getForumPath() (the redirect base used by DeleteForum/DeleteReply/DeleteThread/ChangeMessage/AddReply), and response.sendRedirect(...) as the project's redirect style. No Admin-only or owner-only check is needed because the policy is authenticated_only with authorized_roles user1 and user2.\", \"reason\": \"A visitor has no sessionUsername, so the guard stops execution before db.connect() and before the INSERT, preventing the observed unauthorized write. Authenticated user1/user2 sessions have a non-null sessionUsername, so intended reply posting remains functional.\"}",
+          "database_validation_passed": false,
+          "database_validation": {
+            "oracle_version": 2,
+            "scope": "repair_only",
+            "applicable": true,
+            "passed": false,
+            "status": "failed",
+            "dimensions": {
+              "vulnerability_blocking": {
+                "phase": "attack",
+                "applicable": true,
+                "passed": true
+              },
+              "regression": {
+                "phase": "authorized",
+                "applicable": true,
+                "passed": false
+              }
+            },
+            "scenarios": [
+              {
+                "name": "jsforum-add-reply-authenticated-create",
+                "operation": "create",
+                "passed": false,
+                "phases": [
+                  {
+                    "phase": "attack",
+                    "role": "visitor",
+                    "session_before_setup": false,
+                    "setup_sql": [],
+                    "session_requests": [],
+                    "request": {
+                      "method": "POST",
+                      "page": "servlet/forum.AddReply",
+                      "params": {
+                        "forum_id": "0",
+                        "thread_id": "0",
+                        "lastReply_id": "3",
+                        "message": "DRHLR_0099b19ef751",
+                        "user": "user1",
+                        "start": "0"
+                      },
+                      "referer": "forum/index.jsp?page=message&forum_id=0&thread_id=0&start=0",
+                      "cookie_names": []
+                    },
+                    "response": {
+                      "status_code": 302,
+                      "url": "http://localhost:8080/JsForum/servlet/forum.AddReply",
+                      "body_length": 0
+                    },
+                    "query": "SELECT COUNT(*) FROM forum_message WHERE forum_id=0 AND thread_id=0 AND message='DRHLR_0099b19ef751'",
+                    "observed": "0",
+                    "assertions": [
+                      {
+                        "type": "scalar_zero",
+                        "expected": "0",
+                        "observed": "0",
+                        "passed": true
+                      }
+                    ],
+                    "passed": true
+                  },
+                  {
+                    "phase": "authorized",
+                    "role": "user1",
+                    "session_before_setup": false,
+                    "setup_sql": [],
+                    "session_requests": [],
+                    "request": {
+                      "method": "POST",
+                      "page": "servlet/forum.AddReply",
+                      "params": {
+                        "forum_id": "0",
+                        "thread_id": "0",
+                        "lastReply_id": "3",
+                        "message": "DRHLR_0099b19ef751",
+                        "user": "user1",
+                        "start": "0"
+                      },
+                      "referer": "forum/index.jsp?page=message&forum_id=0&thread_id=0&start=0",
+                      "cookie_names": []
+                    },
+                    "response": {
+                      "status_code": 302,
+                      "url": "http://localhost:8080/JsForum/servlet/forum.AddReply",
+                      "body_length": 0
+                    },
+                    "query": "SELECT COUNT(*) FROM forum_message WHERE forum_id=0 AND thread_id=0 AND message='DRHLR_0099b19ef751' AND user='user1'",
+                    "observed": "0",
+                    "assertions": [
+                      {
+                        "type": "scalar_nonzero",
+                        "expected": "nonzero",
+                        "observed": "0",
+                        "passed": false
+                      }
+                    ],
+                    "passed": false
+                  }
+                ]
+              }
+            ],
+            "combined_dimensions": {
+              "vulnerability_blocking": {
+                "passed": true,
+                "response_oracle_applicable": false,
+                "response_oracle_passed": false,
+                "database_oracle_applicable": true,
+                "database_oracle_passed": true
+              },
+              "regression": {
+                "passed": false,
+                "response_oracle_applicable": false,
+                "response_oracle_passed": true,
+                "database_oracle_applicable": true,
+                "database_oracle_passed": false
+              }
+            }
+          }
+        },
+        {
+          "attempt": 2,
+          "output": "D:\\project\\python\\DRHL\\runs\\jsforum\\repair\\files\\attempt-2\\WEB-INF\\classes\\forum\\AddReply.java",
+          "syntax_compile_ok": true,
+          "exploit_blocked": true,
+          "regression_passed": true,
+          "successful": true,
+          "message": "syntax=(javac exited with 0); deployment=(javac=(javac exited with 0); reload=(touched D:\\tomcat9\\webapps\\JsForum\\WEB-INF\\web.xml)); vulnerability_blocking=(response=False; database=passed; evidence=visitor:vulnerable); regression=(response=True; database=passed; evidence=authorized status=302; denial=[]; authorized success redirect accepted)",
+          "prompt_artifact": "D:\\project\\python\\DRHL\\runs\\jsforum\\repair\\prompts\\AddReply-attempt2-1638bd202556.json",
+          "plan": "{\"missing_check\": \"sessionUsername != null\", \"insertion_location\": \"forum.AddReply.doPost, after String user = request.getParameter(\\\"user\\\"); and immediately before db.connect();, wrapping the DB insert and success redirect.\", \"recommended_guard\": \"HttpSession session = request.getSession();\\nString sessionUsername = (String) session.getAttribute(\\\"userName\\\");\\nif(sessionUsername != null){\\n    // existing db.connect(); db.query(INSERT...); db.close(); response.sendRedirect(...);\\n}\", \"reused_project_semantics\": \"Uses the project's existing sessionUsername session variable and the logged-in sentinel pattern from forum/profile.jsp (`<% if( sessionUsername != null){%>`). Does not reuse sessionType.equals(\\\"Admin\\\") because the policy is authenticated_only, not admin-only, and does not compare ownership because identity_parameters is empty.\", \"reason\": \"AddReply has no session/authentication guard, so a visitor can POST directly to servlet/forum.AddReply and cause the INSERT and success redirect. Adding the sessionUsername != null guard before db.connect() blocks unauthenticated visitors while allowing authorized user1/user2 sessions to continue.\"}",
+          "database_validation_passed": true,
+          "database_validation": {
+            "oracle_version": 2,
+            "scope": "repair_only",
+            "applicable": true,
+            "passed": true,
+            "status": "passed",
+            "dimensions": {
+              "vulnerability_blocking": {
+                "phase": "attack",
+                "applicable": true,
+                "passed": true
+              },
+              "regression": {
+                "phase": "authorized",
+                "applicable": true,
+                "passed": true
+              }
+            },
+            "scenarios": [
+              {
+                "name": "jsforum-add-reply-authenticated-create",
+                "operation": "create",
+                "passed": true,
+                "phases": [
+                  {
+                    "phase": "attack",
+                    "role": "visitor",
+                    "session_before_setup": false,
+                    "setup_sql": [],
+                    "session_requests": [],
+                    "request": {
+                      "method": "POST",
+                      "page": "servlet/forum.AddReply",
+                      "params": {
+                        "forum_id": "0",
+                        "thread_id": "0",
+                        "lastReply_id": "3",
+                        "message": "DRHLR_bb415d3b85ea",
+                        "user": "user1",
+                        "start": "0"
+                      },
+                      "referer": "forum/index.jsp?page=message&forum_id=0&thread_id=0&start=0",
+                      "cookie_names": []
+                    },
+                    "response": {
+                      "status_code": 200,
+                      "url": "http://localhost:8080/JsForum/servlet/forum.AddReply",
+                      "body_length": 0
+                    },
+                    "query": "SELECT COUNT(*) FROM forum_message WHERE forum_id=0 AND thread_id=0 AND message='DRHLR_bb415d3b85ea'",
+                    "observed": "0",
+                    "assertions": [
+                      {
+                        "type": "scalar_zero",
+                        "expected": "0",
+                        "observed": "0",
+                        "passed": true
+                      }
+                    ],
+                    "passed": true
+                  },
+                  {
+                    "phase": "authorized",
+                    "role": "user1",
+                    "session_before_setup": false,
+                    "setup_sql": [],
+                    "session_requests": [],
+                    "request": {
+                      "method": "POST",
+                      "page": "servlet/forum.AddReply",
+                      "params": {
+                        "forum_id": "0",
+                        "thread_id": "0",
+                        "lastReply_id": "3",
+                        "message": "DRHLR_bb415d3b85ea",
+                        "user": "user1",
+                        "start": "0"
+                      },
+                      "referer": "forum/index.jsp?page=message&forum_id=0&thread_id=0&start=0",
+                      "cookie_names": []
+                    },
+                    "response": {
+                      "status_code": 302,
+                      "url": "http://localhost:8080/JsForum/servlet/forum.AddReply",
+                      "body_length": 0
+                    },
+                    "query": "SELECT COUNT(*) FROM forum_message WHERE forum_id=0 AND thread_id=0 AND message='DRHLR_bb415d3b85ea' AND user='user1'",
+                    "observed": "1",
+                    "assertions": [
+                      {
+                        "type": "scalar_nonzero",
+                        "expected": "nonzero",
+                        "observed": "1",
+                        "passed": true
+                      }
+                    ],
+                    "passed": true
+                  }
+                ]
+              }
+            ],
+            "combined_dimensions": {
+              "vulnerability_blocking": {
+                "passed": true,
+                "response_oracle_applicable": false,
+                "response_oracle_passed": false,
+                "database_oracle_applicable": true,
+                "database_oracle_passed": true
+              },
+              "regression": {
+                "passed": true,
+                "response_oracle_applicable": false,
+                "response_oracle_passed": true,
+                "database_oracle_applicable": true,
+                "database_oracle_passed": true
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "category": "horizontal",
+      "page": "servlet/forum.AddReply",
+      "source": "D:\\tomcat9\\webapps\\JsForum\\WEB-INF\\classes\\forum\\AddReply.java",
+      "output": "D:\\project\\python\\DRHL\\runs\\jsforum\\repair\\files\\attempt-1\\WEB-INF\\classes\\forum\\AddReply.java",
+      "status": "successful_repair",
+      "message": "syntax/compile, vulnerability blocking, and regression validation all passed",
+      "engine": "llm",
+      "plan": "{\"missing_check\": \"No ownership/role check on the client-supplied `user` parameter before inserting the reply; AddReply writes the reply to `forum_message` using `user` without verifying it against the session identity.\", \"insertion_location\": \"In `doPost`, after `String user = request.getParameter(\\\"user\\\");` and before `db.connect();` / the `INSERT INTO forum_message` query. If `sessionType` and `sessionUsername` are not already in scope in AddReply, add the same session-initialization guard context used by ChangeMessage/DeleteForum immediately before this point.\", \"recommended_guard\": \"Reuse the forum's existing guard variables and sentinel: `if (sessionType.equals(\\\"Admin\\\") || sessionUsername.equals(user)) { ... }` around the DB write and success redirect. For non-admins this allows only a reply posted under the current session username; Admin keeps the privileged-role bypass.\", \"reused_project_semantics\": \"Uses `sessionType` with sentinel `\\\"Admin\\\"` for privileged-role bypass, as in DeleteForum/DeleteReply/DeleteThread/ChangeMessage. Uses `sessionUsername.equals(user)` for horizontal ownership comparison, as in ChangeMessage's non-admin branch and message.jsp's `sessionUsername.equals(user)` checks.\", \"reason\": \"The attacker authenticated as user1 can POST `user=user2`, and AddReply inserts a reply as user2 because it never compares the requested identity with the session identity. The existing project pattern is Admin bypass plus owner match; adding this guard before the DB write blocks the horizontal override while preserving Admin posting and authorized self-posting.\"}",
+      "prompt_artifact": "D:\\project\\python\\DRHL\\runs\\jsforum\\repair\\prompts\\AddReply-attempt1-c3c4596f8415.json",
+      "attempts": 1,
+      "patches_generated": 1,
+      "syntax_compile_ok": 1,
+      "exploit_blocked": 1,
+      "regression_passed": 1,
+      "database_validation_applied": 1,
+      "database_validation_passed": 1,
+      "successful": true,
+      "validation_artifact": "D:\\project\\python\\DRHL\\runs\\jsforum\\repair\\validation\\AddReply-bb18e73eb2db.json",
+      "attempt_details": [
+        {
+          "attempt": 1,
+          "output": "D:\\project\\python\\DRHL\\runs\\jsforum\\repair\\files\\attempt-1\\WEB-INF\\classes\\forum\\AddReply.java",
+          "syntax_compile_ok": true,
+          "exploit_blocked": true,
+          "regression_passed": true,
+          "successful": true,
+          "message": "syntax=(javac exited with 0); deployment=(javac=(javac exited with 0); reload=(touched D:\\tomcat9\\webapps\\JsForum\\WEB-INF\\web.xml)); vulnerability_blocking=(response=False; database=passed; evidence=user1:vulnerable); regression=(response=True; database=passed; evidence=authorized status=302; denial=[]; authorized success redirect accepted)",
+          "prompt_artifact": "D:\\project\\python\\DRHL\\runs\\jsforum\\repair\\prompts\\AddReply-attempt1-c3c4596f8415.json",
+          "plan": "{\"missing_check\": \"No ownership/role check on the client-supplied `user` parameter before inserting the reply; AddReply writes the reply to `forum_message` using `user` without verifying it against the session identity.\", \"insertion_location\": \"In `doPost`, after `String user = request.getParameter(\\\"user\\\");` and before `db.connect();` / the `INSERT INTO forum_message` query. If `sessionType` and `sessionUsername` are not already in scope in AddReply, add the same session-initialization guard context used by ChangeMessage/DeleteForum immediately before this point.\", \"recommended_guard\": \"Reuse the forum's existing guard variables and sentinel: `if (sessionType.equals(\\\"Admin\\\") || sessionUsername.equals(user)) { ... }` around the DB write and success redirect. For non-admins this allows only a reply posted under the current session username; Admin keeps the privileged-role bypass.\", \"reused_project_semantics\": \"Uses `sessionType` with sentinel `\\\"Admin\\\"` for privileged-role bypass, as in DeleteForum/DeleteReply/DeleteThread/ChangeMessage. Uses `sessionUsername.equals(user)` for horizontal ownership comparison, as in ChangeMessage's non-admin branch and message.jsp's `sessionUsername.equals(user)` checks.\", \"reason\": \"The attacker authenticated as user1 can POST `user=user2`, and AddReply inserts a reply as user2 because it never compares the requested identity with the session identity. The existing project pattern is Admin bypass plus owner match; adding this guard before the DB write blocks the horizontal override while preserving Admin posting and authorized self-posting.\"}",
+          "database_validation_passed": true,
+          "database_validation": {
+            "oracle_version": 2,
+            "scope": "repair_only",
+            "applicable": true,
+            "passed": true,
+            "status": "passed",
+            "dimensions": {
+              "vulnerability_blocking": {
+                "phase": "attack",
+                "applicable": true,
+                "passed": true
+              },
+              "regression": {
+                "phase": "authorized",
+                "applicable": true,
+                "passed": true
+              }
+            },
+            "scenarios": [
+              {
+                "name": "jsforum-add-reply-horizontal-owner",
+                "operation": "create",
+                "passed": true,
+                "phases": [
+                  {
+                    "phase": "attack",
+                    "role": "user1",
+                    "session_before_setup": false,
+                    "setup_sql": [],
+                    "session_requests": [],
+                    "request": {
+                      "method": "POST",
+                      "page": "servlet/forum.AddReply",
+                      "params": {
+                        "forum_id": "0",
+                        "thread_id": "0",
+                        "lastReply_id": "3",
+                        "message": "DRHLR_4c5560ee1aed",
+                        "user": "user2",
+                        "start": "0"
+                      },
+                      "referer": "forum/index.jsp?page=message&forum_id=0&thread_id=0&start=0",
+                      "cookie_names": []
+                    },
+                    "response": {
+                      "status_code": 302,
+                      "url": "http://localhost:8080/JsForum/servlet/forum.AddReply",
+                      "body_length": 0
+                    },
+                    "query": "SELECT COUNT(*) FROM forum_message WHERE forum_id=0 AND thread_id=0 AND message='DRHLR_4c5560ee1aed' AND user='user2'",
+                    "observed": "0",
+                    "assertions": [
+                      {
+                        "type": "scalar_zero",
+                        "expected": "0",
+                        "observed": "0",
+                        "passed": true
+                      }
+                    ],
+                    "passed": true
+                  },
+                  {
+                    "phase": "authorized",
+                    "role": "user2",
+                    "session_before_setup": false,
+                    "setup_sql": [],
+                    "session_requests": [],
+                    "request": {
+                      "method": "POST",
+                      "page": "servlet/forum.AddReply",
+                      "params": {
+                        "forum_id": "0",
+                        "thread_id": "0",
+                        "lastReply_id": "3",
+                        "message": "DRHLR_4c5560ee1aed",
+                        "user": "user2",
+                        "start": "0"
+                      },
+                      "referer": "forum/index.jsp?page=message&forum_id=0&thread_id=0&start=0",
+                      "cookie_names": []
+                    },
+                    "response": {
+                      "status_code": 302,
+                      "url": "http://localhost:8080/JsForum/servlet/forum.AddReply",
+                      "body_length": 0
+                    },
+                    "query": "SELECT COUNT(*) FROM forum_message WHERE forum_id=0 AND thread_id=0 AND message='DRHLR_4c5560ee1aed' AND user='user2'",
+                    "observed": "1",
+                    "assertions": [
+                      {
+                        "type": "scalar_nonzero",
+                        "expected": "nonzero",
+                        "observed": "1",
+                        "passed": true
+                      }
+                    ],
+                    "passed": true
+                  }
+                ]
+              }
+            ],
+            "combined_dimensions": {
+              "vulnerability_blocking": {
+                "passed": true,
+                "response_oracle_applicable": false,
+                "response_oracle_passed": false,
+                "database_oracle_applicable": true,
+                "database_oracle_passed": true
+              },
+              "regression": {
+                "passed": true,
+                "response_oracle_applicable": false,
+                "response_oracle_passed": true,
+                "database_oracle_applicable": true,
+                "database_oracle_passed": true
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "category": "authenticated_only",
+      "page": "servlet/forum.AddThread",
+      "source": "D:\\tomcat9\\webapps\\JsForum\\WEB-INF\\classes\\forum\\AddThread.java",
+      "output": "D:\\project\\python\\DRHL\\runs\\jsforum\\repair\\files\\attempt-1\\WEB-INF\\classes\\forum\\AddThread.java",
+      "status": "successful_repair",
+      "message": "syntax/compile, vulnerability blocking, and regression validation all passed",
+      "engine": "llm",
+      "plan": "{\"missing_check\": \"Authentication check for logged-in user (sessionUsername != null) before processing AddThread POST.\", \"insertion_location\": \"At the very beginning of the doPost method, immediately after the method signature and before the existing PrintWriter out = response.getWriter(); line. Since doGet delegates to doPost, this covers both HTTP methods.\", \"recommended_guard\": \"HttpSession session = request.getSession();\\nString sessionUsername = (String) session.getAttribute(\\\"username\\\");\\nif (sessionUsername == null) {\\n    response.sendRedirect(Variable.getForumPath() + \\\"index.jsp\\\");\\n    return;\\n}\", \"reused_project_semantics\": \"Uses project's session auth variable sessionUsername (profile.jsp: if(sessionUsername != null)) and Variable.getForumPath() redirect helper (DeleteForum.java: response.sendRedirect(Variable.getForumPath() + \\\"index.jsp\\\")). Null is the unauthenticated sentinel.\", \"reason\": \"AddThread performs database INSERT operations without verifying the requester is logged in, so an unauthenticated visitor can create threads/messages. Placing the sessionUsername null check at the top of doPost blocks unauthorized requests before db.connect() and any query, while allowing any authenticated user to proceed.\"}",
+      "prompt_artifact": "D:\\project\\python\\DRHL\\runs\\jsforum\\repair\\prompts\\AddThread-attempt1-f2733f72633c.json",
+      "attempts": 1,
+      "patches_generated": 1,
+      "syntax_compile_ok": 1,
+      "exploit_blocked": 1,
+      "regression_passed": 1,
+      "database_validation_applied": 1,
+      "database_validation_passed": 1,
+      "successful": true,
+      "validation_artifact": "D:\\project\\python\\DRHL\\runs\\jsforum\\repair\\validation\\AddThread-e6acb86f3935.json",
+      "attempt_details": [
+        {
+          "attempt": 1,
+          "output": "D:\\project\\python\\DRHL\\runs\\jsforum\\repair\\files\\attempt-1\\WEB-INF\\classes\\forum\\AddThread.java",
+          "syntax_compile_ok": true,
+          "exploit_blocked": true,
+          "regression_passed": true,
+          "successful": true,
+          "message": "syntax=(javac exited with 0); deployment=(javac=(javac exited with 0); reload=(touched D:\\tomcat9\\webapps\\JsForum\\WEB-INF\\web.xml)); vulnerability_blocking=(response=False; database=passed; evidence=visitor:vulnerable); regression=(response=True; database=passed; evidence=authorized status=302; denial=[]; authorized success redirect accepted)",
+          "prompt_artifact": "D:\\project\\python\\DRHL\\runs\\jsforum\\repair\\prompts\\AddThread-attempt1-f2733f72633c.json",
+          "plan": "{\"missing_check\": \"Authentication check for logged-in user (sessionUsername != null) before processing AddThread POST.\", \"insertion_location\": \"At the very beginning of the doPost method, immediately after the method signature and before the existing PrintWriter out = response.getWriter(); line. Since doGet delegates to doPost, this covers both HTTP methods.\", \"recommended_guard\": \"HttpSession session = request.getSession();\\nString sessionUsername = (String) session.getAttribute(\\\"username\\\");\\nif (sessionUsername == null) {\\n    response.sendRedirect(Variable.getForumPath() + \\\"index.jsp\\\");\\n    return;\\n}\", \"reused_project_semantics\": \"Uses project's session auth variable sessionUsername (profile.jsp: if(sessionUsername != null)) and Variable.getForumPath() redirect helper (DeleteForum.java: response.sendRedirect(Variable.getForumPath() + \\\"index.jsp\\\")). Null is the unauthenticated sentinel.\", \"reason\": \"AddThread performs database INSERT operations without verifying the requester is logged in, so an unauthenticated visitor can create threads/messages. Placing the sessionUsername null check at the top of doPost blocks unauthorized requests before db.connect() and any query, while allowing any authenticated user to proceed.\"}",
+          "database_validation_passed": true,
+          "database_validation": {
+            "oracle_version": 2,
+            "scope": "repair_only",
+            "applicable": true,
+            "passed": true,
+            "status": "passed",
+            "dimensions": {
+              "vulnerability_blocking": {
+                "phase": "attack",
+                "applicable": true,
+                "passed": true
+              },
+              "regression": {
+                "phase": "authorized",
+                "applicable": true,
+                "passed": true
+              }
+            },
+            "scenarios": [
+              {
+                "name": "jsforum-add-thread-authenticated-create",
+                "operation": "create",
+                "passed": true,
+                "phases": [
+                  {
+                    "phase": "attack",
+                    "role": "visitor",
+                    "session_before_setup": false,
+                    "setup_sql": [],
+                    "session_requests": [],
+                    "request": {
+                      "method": "POST",
+                      "page": "servlet/forum.AddThread",
+                      "params": {
+                        "forum_id": "0",
+                        "lastThread_id": "2",
+                        "title": "DRHLR_fc188d5f1c68",
+                        "message": "DRHLR_fc188d5f1c68",
+                        "user": "user1"
+                      },
+                      "referer": "forum/index.jsp?page=thread&forum_id=0",
+                      "cookie_names": []
+                    },
+                    "response": {
+                      "status_code": 302,
+                      "url": "http://localhost:8080/JsForum/servlet/forum.AddThread",
+                      "body_length": 0
+                    },
+                    "query": "SELECT (SELECT COUNT(*) FROM forum_threads WHERE forum_id=0 AND title='DRHLR_fc188d5f1c68') + (SELECT COUNT(*) FROM forum_message WHERE forum_id=0 AND message='DRHLR_fc188d5f1c68')",
+                    "observed": "0",
+                    "assertions": [
+                      {
+                        "type": "scalar_zero",
+                        "expected": "0",
+                        "observed": "0",
+                        "passed": true
+                      }
+                    ],
+                    "passed": true
+                  },
+                  {
+                    "phase": "authorized",
+                    "role": "user1",
+                    "session_before_setup": false,
+                    "setup_sql": [],
+                    "session_requests": [],
+                    "request": {
+                      "method": "POST",
+                      "page": "servlet/forum.AddThread",
+                      "params": {
+                        "forum_id": "0",
+                        "lastThread_id": "2",
+                        "title": "DRHLR_fc188d5f1c68",
+                        "message": "DRHLR_fc188d5f1c68",
+                        "user": "user1"
+                      },
+                      "referer": "forum/index.jsp?page=thread&forum_id=0",
+                      "cookie_names": []
+                    },
+                    "response": {
+                      "status_code": 302,
+                      "url": "http://localhost:8080/JsForum/servlet/forum.AddThread",
+                      "body_length": 0
+                    },
+                    "query": "SELECT (SELECT COUNT(*) FROM forum_threads WHERE forum_id=0 AND title='DRHLR_fc188d5f1c68') + (SELECT COUNT(*) FROM forum_message WHERE forum_id=0 AND message='DRHLR_fc188d5f1c68' AND user='user1')",
+                    "observed": "2",
+                    "assertions": [
+                      {
+                        "type": "scalar_equals",
+                        "expected": "2",
+                        "observed": "2",
+                        "passed": true
+                      }
+                    ],
+                    "passed": true
+                  }
+                ]
+              }
+            ],
+            "combined_dimensions": {
+              "vulnerability_blocking": {
+                "passed": true,
+                "response_oracle_applicable": false,
+                "response_oracle_passed": false,
+                "database_oracle_applicable": true,
+                "database_oracle_passed": true
+              },
+              "regression": {
+                "passed": true,
+                "response_oracle_applicable": false,
+                "response_oracle_passed": true,
+                "database_oracle_applicable": true,
+                "database_oracle_passed": true
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "category": "horizontal",
+      "page": "servlet/forum.AddThread",
+      "source": "D:\\tomcat9\\webapps\\JsForum\\WEB-INF\\classes\\forum\\AddThread.java",
+      "output": "D:\\project\\python\\DRHL\\runs\\jsforum\\repair\\files\\attempt-1\\WEB-INF\\classes\\forum\\AddThread.java",
+      "status": "successful_repair",
+      "message": "syntax/compile, vulnerability blocking, and regression validation all passed",
+      "engine": "llm",
+      "plan": "{\"missing_check\": \"Ownership verification: ensure the requested 'user' parameter matches the authenticated session username, unless the session role is 'Admin'.\", \"insertion_location\": \"In doPost, after `String user = request.getParameter(\\\"user\\\");` and before `db.connect();`. The guard must wrap the existing sensitive operations from `db.connect();` through `response.sendRedirect(...);`, with the closing brace after that redirect.\", \"recommended_guard\": \"HttpSession session = request.getSession();\\nString sessionType = (String) session.getAttribute(\\\"type\\\");\\nString sessionUsername = (String) session.getAttribute(\\\"username\\\");\\nif (\\\"Admin\\\".equals(sessionType) || (sessionUsername != null && sessionUsername.equals(user))) {\\n    // existing code: db.connect(), INSERT queries, response.sendRedirect(...)\\n} else {\\n    response.sendRedirect(Variable.getForumPath() + \\\"index.jsp\\\");\\n    return;\\n}\", \"reused_project_semantics\": \"Reuses sessionType and sessionUsername variables, the 'Admin' sentinel string, the ownership comparison pattern from message.jsp and ChangeMessage.java (sessionUsername.equals(user)), and the null-check pattern from profile.jsp (sessionUsername != null).\", \"reason\": \"AddThread trusts the client-supplied 'user' parameter, allowing horizontal privilege escalation where user1 can post as user2. The guard restricts non-admin users to post only as themselves, preserving the existing Admin bypass and blocking unauthorized writes before database operations.\"}",
+      "prompt_artifact": "D:\\project\\python\\DRHL\\runs\\jsforum\\repair\\prompts\\AddThread-attempt1-7191eff82878.json",
+      "attempts": 1,
+      "patches_generated": 1,
+      "syntax_compile_ok": 1,
+      "exploit_blocked": 1,
+      "regression_passed": 1,
+      "database_validation_applied": 1,
+      "database_validation_passed": 1,
+      "successful": true,
+      "validation_artifact": "D:\\project\\python\\DRHL\\runs\\jsforum\\repair\\validation\\AddThread-e6acb86f3935.json",
+      "attempt_details": [
+        {
+          "attempt": 1,
+          "output": "D:\\project\\python\\DRHL\\runs\\jsforum\\repair\\files\\attempt-1\\WEB-INF\\classes\\forum\\AddThread.java",
+          "syntax_compile_ok": true,
+          "exploit_blocked": true,
+          "regression_passed": true,
+          "successful": true,
+          "message": "syntax=(javac exited with 0); deployment=(javac=(javac exited with 0); reload=(touched D:\\tomcat9\\webapps\\JsForum\\WEB-INF\\web.xml)); vulnerability_blocking=(response=False; database=passed; evidence=user1:vulnerable); regression=(response=True; database=passed; evidence=authorized status=302; denial=[]; authorized success redirect accepted)",
+          "prompt_artifact": "D:\\project\\python\\DRHL\\runs\\jsforum\\repair\\prompts\\AddThread-attempt1-7191eff82878.json",
+          "plan": "{\"missing_check\": \"Ownership verification: ensure the requested 'user' parameter matches the authenticated session username, unless the session role is 'Admin'.\", \"insertion_location\": \"In doPost, after `String user = request.getParameter(\\\"user\\\");` and before `db.connect();`. The guard must wrap the existing sensitive operations from `db.connect();` through `response.sendRedirect(...);`, with the closing brace after that redirect.\", \"recommended_guard\": \"HttpSession session = request.getSession();\\nString sessionType = (String) session.getAttribute(\\\"type\\\");\\nString sessionUsername = (String) session.getAttribute(\\\"username\\\");\\nif (\\\"Admin\\\".equals(sessionType) || (sessionUsername != null && sessionUsername.equals(user))) {\\n    // existing code: db.connect(), INSERT queries, response.sendRedirect(...)\\n} else {\\n    response.sendRedirect(Variable.getForumPath() + \\\"index.jsp\\\");\\n    return;\\n}\", \"reused_project_semantics\": \"Reuses sessionType and sessionUsername variables, the 'Admin' sentinel string, the ownership comparison pattern from message.jsp and ChangeMessage.java (sessionUsername.equals(user)), and the null-check pattern from profile.jsp (sessionUsername != null).\", \"reason\": \"AddThread trusts the client-supplied 'user' parameter, allowing horizontal privilege escalation where user1 can post as user2. The guard restricts non-admin users to post only as themselves, preserving the existing Admin bypass and blocking unauthorized writes before database operations.\"}",
+          "database_validation_passed": true,
+          "database_validation": {
+            "oracle_version": 2,
+            "scope": "repair_only",
+            "applicable": true,
+            "passed": true,
+            "status": "passed",
+            "dimensions": {
+              "vulnerability_blocking": {
+                "phase": "attack",
+                "applicable": true,
+                "passed": true
+              },
+              "regression": {
+                "phase": "authorized",
+                "applicable": true,
+                "passed": true
+              }
+            },
+            "scenarios": [
+              {
+                "name": "jsforum-add-thread-horizontal-owner",
+                "operation": "create",
+                "passed": true,
+                "phases": [
+                  {
+                    "phase": "attack",
+                    "role": "user1",
+                    "session_before_setup": false,
+                    "setup_sql": [],
+                    "session_requests": [],
+                    "request": {
+                      "method": "POST",
+                      "page": "servlet/forum.AddThread",
+                      "params": {
+                        "forum_id": "0",
+                        "lastThread_id": "2",
+                        "title": "DRHLR_9a0af96143e3",
+                        "message": "DRHLR_9a0af96143e3",
+                        "user": "user2"
+                      },
+                      "referer": "forum/index.jsp?page=thread&forum_id=0",
+                      "cookie_names": []
+                    },
+                    "response": {
+                      "status_code": 302,
+                      "url": "http://localhost:8080/JsForum/servlet/forum.AddThread",
+                      "body_length": 0
+                    },
+                    "query": "SELECT COUNT(*) FROM forum_message WHERE forum_id=0 AND reply_id=0 AND message='DRHLR_9a0af96143e3' AND user='user2'",
+                    "observed": "0",
+                    "assertions": [
+                      {
+                        "type": "scalar_zero",
+                        "expected": "0",
+                        "observed": "0",
+                        "passed": true
+                      }
+                    ],
+                    "passed": true
+                  },
+                  {
+                    "phase": "authorized",
+                    "role": "user2",
+                    "session_before_setup": false,
+                    "setup_sql": [],
+                    "session_requests": [],
+                    "request": {
+                      "method": "POST",
+                      "page": "servlet/forum.AddThread",
+                      "params": {
+                        "forum_id": "0",
+                        "lastThread_id": "2",
+                        "title": "DRHLR_9a0af96143e3",
+                        "message": "DRHLR_9a0af96143e3",
+                        "user": "user2"
+                      },
+                      "referer": "forum/index.jsp?page=thread&forum_id=0",
+                      "cookie_names": []
+                    },
+                    "response": {
+                      "status_code": 302,
+                      "url": "http://localhost:8080/JsForum/servlet/forum.AddThread",
+                      "body_length": 0
+                    },
+                    "query": "SELECT COUNT(*) FROM forum_message WHERE forum_id=0 AND reply_id=0 AND message='DRHLR_9a0af96143e3' AND user='user2'",
+                    "observed": "1",
+                    "assertions": [
+                      {
+                        "type": "scalar_nonzero",
+                        "expected": "nonzero",
+                        "observed": "1",
+                        "passed": true
+                      }
+                    ],
+                    "passed": true
+                  }
+                ]
+              }
+            ],
+            "combined_dimensions": {
+              "vulnerability_blocking": {
+                "passed": true,
+                "response_oracle_applicable": false,
+                "response_oracle_passed": false,
+                "database_oracle_applicable": true,
+                "database_oracle_passed": true
+              },
+              "regression": {
+                "passed": true,
+                "response_oracle_applicable": false,
+                "response_oracle_passed": true,
+                "database_oracle_applicable": true,
+                "database_oracle_passed": true
+              }
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

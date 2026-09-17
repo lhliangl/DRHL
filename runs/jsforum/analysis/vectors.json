@@ -1,0 +1,336 @@
+{
+  "vectors": [
+    {
+      "category": "static_only",
+      "page": "servlet/forum.Logout",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "forum/index.jsp?forum_id=p1&page=editmessage&reply_id=p1&thread_id=p1",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "page": "editmessage",
+          "forum_id": "0",
+          "thread_id": "0",
+          "reply_id": "4",
+          "start": "0"
+        },
+        "referer": "forum/index.jsp?forum_id=p1&page=message&thread_id=p1"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "horizontal",
+      "page": "forum/index.jsp?forum_id=p1&page=editmessage&reply_id=p1&thread_id=p1",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "page": "editmessage",
+          "forum_id": "0",
+          "thread_id": "0",
+          "reply_id": "4",
+          "start": "0"
+        },
+        "referer": "forum/index.jsp?forum_id=p1&page=message&thread_id=p1"
+      },
+      "identity_parameters": [
+        "reply_id"
+      ],
+      "page_overrides": [
+        "forum/index.jsp?page=editmessage&forum_id=0&thread_id=0&reply_id=2&start=0"
+      ]
+    },
+    {
+      "category": "authenticated_only",
+      "page": "forum/index.jsp?forum_id=p1&page=message&thread_id=p1",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "page": "message",
+          "forum_id": "0",
+          "thread_id": "0",
+          "start": "0"
+        },
+        "referer": "forum/index.jsp?forum_id=p1&page=thread"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "forum/index.jsp?forum_id=p1&page=thread",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "page": "thread",
+          "forum_id": "0"
+        },
+        "referer": null
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "forum/index.jsp?forum_id=p1&page=thread&thread_id=p1",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "page": "thread",
+          "forum_id": "0",
+          "thread_id": "0",
+          "start": "0"
+        },
+        "referer": "forum/index.jsp?forum_id=p1&page=editmessage&reply_id=p1&thread_id=p1"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "forum/index.jsp?page=profile",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "page": "profile"
+        },
+        "referer": "forum/index.jsp"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "admin_only",
+      "page": "servlet/forum.AddForum",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "lastforum_id": "2",
+          "title": "DRHL Test Topic",
+          "forum_info": "DRHL generated forum description."
+        },
+        "referer": "forum/index.jsp"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "servlet/forum.AddReply",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "forum_id": "0",
+          "thread_id": "0",
+          "lastReply_id": "3",
+          "user": "user1",
+          "start": "0",
+          "message": "DRHL generated forum message for access-control testing."
+        },
+        "referer": "forum/index.jsp?forum_id=p1&page=message&thread_id=p1"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "horizontal",
+      "page": "servlet/forum.AddReply",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "forum_id": "0",
+          "thread_id": "0",
+          "lastReply_id": "3",
+          "user": "user1",
+          "start": "0",
+          "message": "DRHL generated forum message for access-control testing."
+        },
+        "referer": "forum/index.jsp?forum_id=p1&page=message&thread_id=p1"
+      },
+      "identity_parameters": [
+        "user"
+      ],
+      "page_overrides": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "servlet/forum.AddThread",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "forum_id": "0",
+          "lastThread_id": "3",
+          "user": "user1",
+          "title": "DRHL Test Topic",
+          "message": "DRHL generated forum message for access-control testing."
+        },
+        "referer": "forum/index.jsp?forum_id=p1&page=thread&thread_id=p1"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "horizontal",
+      "page": "servlet/forum.AddThread",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "forum_id": "0",
+          "lastThread_id": "3",
+          "user": "user1",
+          "title": "DRHL Test Topic",
+          "message": "DRHL generated forum message for access-control testing."
+        },
+        "referer": "forum/index.jsp?forum_id=p1&page=thread&thread_id=p1"
+      },
+      "identity_parameters": [
+        "user"
+      ],
+      "page_overrides": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "servlet/forum.ChangeMessage",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "start": "0",
+          "forum_id": "0",
+          "thread_id": "0",
+          "reply_id": "4",
+          "message": "DRHL generated forum message for access-control testing."
+        },
+        "referer": "forum/index.jsp?forum_id=p1&page=editmessage&reply_id=p1&thread_id=p1"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "servlet/forum.ChangeProfile",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "avatar_list": "./avatars/avatar_1.jpg",
+          "link_avatar": "./avatars/avatar_34.jpg"
+        },
+        "referer": "forum/index.jsp?page=profile"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "admin_only",
+      "page": "servlet/forum.DeleteForum?forum_id=p1",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "forum_id": "1"
+        },
+        "referer": "forum/index.jsp"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "admin_only",
+      "page": "servlet/forum.DeleteReply?forum_id=p1&reply_id=p1&thread_id=p1",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "forum_id": "0",
+          "thread_id": "1",
+          "reply_id": "2",
+          "start": "0"
+        },
+        "referer": "forum/index.jsp?forum_id=p1&page=message&thread_id=p1"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "admin_only",
+      "page": "servlet/forum.DeleteThread?forum_id=p1&thread_id=p1",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "forum_id": "0",
+          "thread_id": "0"
+        },
+        "referer": "forum/index.jsp?forum_id=p1&page=thread"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    }
+  ]
+}

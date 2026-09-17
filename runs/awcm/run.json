@@ -1,0 +1,27 @@
+{
+  "status": "completed",
+  "started_at": "2026-06-29T02:19:20.591945+00:00",
+  "config": "D:\\project\\python\\DRHL\\configs\\awcm.json",
+  "artifacts": {
+    "dynamic_graph": "D:\\project\\python\\DRHL\\runs\\awcm\\graphs\\dynamic.json",
+    "static_graph": "D:\\project\\python\\DRHL\\runs\\awcm\\graphs\\static.json",
+    "candidate_parameters": "D:\\project\\python\\DRHL\\runs\\awcm\\source\\candidate_parameters.json",
+    "candidate_functions": "D:\\project\\python\\DRHL\\runs\\awcm\\source\\candidate_functions.json",
+    "access_control_parameters": "D:\\project\\python\\DRHL\\runs\\awcm\\source\\parameters.json",
+    "access_control_functions": "D:\\project\\python\\DRHL\\runs\\awcm\\source\\functions.json",
+    "access_control_snippets": "D:\\project\\python\\DRHL\\runs\\awcm\\source\\snippets.json",
+    "fused_graph": "D:\\project\\python\\DRHL\\runs\\awcm\\graphs\\fused.json",
+    "graph_summary": "D:\\project\\python\\DRHL\\runs\\awcm\\graphs\\summary.json",
+    "graph_summary_csv": "D:\\project\\python\\DRHL\\runs\\awcm\\graphs\\summary.csv",
+    "attack_vectors": "D:\\project\\python\\DRHL\\runs\\awcm\\analysis\\vectors.json",
+    "findings": "D:\\project\\python\\DRHL\\runs\\awcm\\analysis\\findings.json",
+    "repairs": "D:\\project\\python\\DRHL\\runs\\awcm\\repair\\manifest.json",
+    "repair_report": "D:\\project\\python\\DRHL\\runs\\awcm\\repair\\repair_report.md",
+    "metrics_json": "D:\\project\\python\\DRHL\\runs\\awcm\\metrics\\summary.json",
+    "metrics_csv": "D:\\project\\python\\DRHL\\runs\\awcm\\metrics\\summary.csv",
+    "llm_access_control_snippets": "D:\\project\\python\\DRHL\\runs\\awcm\\source\\llm_snippets.json"
+  },
+  "finished_at": "2026-06-29T02:46:39.714194+00:00",
+  "repair_rerun_started_at": "2026-09-12T11:11:50.713781+00:00",
+  "repair_rerun_finished_at": "2026-09-12T11:19:26.885010+00:00"
+}

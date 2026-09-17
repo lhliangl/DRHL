@@ -1,0 +1,39 @@
+{
+  "role": "visitor",
+  "kind": "visitor",
+  "nodes": [
+    "cookies/elabora_voto_mail.php",
+    "phpoll.php",
+    "risultati.php"
+  ],
+  "edges": [
+    {
+      "from": "cookies/elabora_voto_mail.php",
+      "to": "risultati.php"
+    },
+    {
+      "from": "phpoll.php",
+      "to": "cookies/elabora_voto_mail.php"
+    }
+  ],
+  "requests": {
+    "phpoll.php": {
+      "method": "GET",
+      "params": {},
+      "referer": null
+    },
+    "cookies/elabora_voto_mail.php": {
+      "method": "POST",
+      "params": {
+        "email": "drhl_6be992bf@example.test",
+        "submit_voto": "eeN5lMQV"
+      },
+      "referer": "phpoll.php"
+    },
+    "risultati.php": {
+      "method": "GET",
+      "params": {},
+      "referer": "phpoll.php"
+    }
+  }
+}

@@ -1,0 +1,425 @@
+{
+  "nodes": [
+    "./",
+    "acc_login/",
+    "acc_register/",
+    "admin/",
+    "bbs_pub/",
+    "bbs_sub/",
+    "category/p1/",
+    "detail/p1/",
+    "login/",
+    "logout/",
+    "register/",
+    "sub_comment/"
+  ],
+  "edges": [
+    {
+      "from": "./",
+      "to": "category/p1/"
+    },
+    {
+      "from": "./",
+      "to": "detail/p1/"
+    },
+    {
+      "from": "bbs_pub/",
+      "to": "bbs_sub/"
+    },
+    {
+      "from": "bbs_sub/",
+      "to": "bbs_sub/"
+    },
+    {
+      "from": "detail/p1/",
+      "to": "bbs_pub/"
+    },
+    {
+      "from": "detail/p1/",
+      "to": "login/"
+    },
+    {
+      "from": "detail/p1/",
+      "to": "sub_comment/"
+    },
+    {
+      "from": "login/",
+      "to": "./"
+    },
+    {
+      "from": "login/",
+      "to": "acc_login/"
+    },
+    {
+      "from": "login/",
+      "to": "register/"
+    },
+    {
+      "from": "register/",
+      "to": "acc_register/"
+    },
+    {
+      "from": "register/",
+      "to": "login/"
+    },
+    {
+      "from": "sub_comment/",
+      "to": "detail/p1/"
+    }
+  ],
+  "static_edges": [
+    {
+      "from": "BBS_Pro/urls.py",
+      "to": "app01/__init__.py"
+    },
+    {
+      "from": "BBS_Pro/urls.py",
+      "to": "app01/urls.py"
+    },
+    {
+      "from": "app01/admin.py",
+      "to": "app01/__init__.py"
+    }
+  ],
+  "node_origins": {
+    "./": [
+      "dynamic",
+      "static"
+    ],
+    "acc_login/": [
+      "dynamic",
+      "static"
+    ],
+    "acc_register/": [
+      "dynamic",
+      "static"
+    ],
+    "admin/": [
+      "static"
+    ],
+    "bbs_pub/": [
+      "dynamic",
+      "static"
+    ],
+    "bbs_sub/": [
+      "dynamic",
+      "static"
+    ],
+    "category/p1/": [
+      "dynamic",
+      "static"
+    ],
+    "detail/p1/": [
+      "dynamic",
+      "static"
+    ],
+    "login/": [
+      "dynamic",
+      "static"
+    ],
+    "logout/": [
+      "static"
+    ],
+    "register/": [
+      "dynamic",
+      "static"
+    ],
+    "sub_comment/": [
+      "dynamic",
+      "static"
+    ]
+  },
+  "access": {
+    "./": {
+      "roles": [
+        "admin",
+        "visitor"
+      ],
+      "kinds": [
+        "admin",
+        "visitor"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {},
+          "referer": null
+        },
+        {
+          "role": "visitor",
+          "kind": "visitor",
+          "method": "GET",
+          "params": {},
+          "referer": null
+        }
+      ]
+    },
+    "acc_login/": {
+      "roles": [
+        "admin",
+        "visitor"
+      ],
+      "kinds": [
+        "admin",
+        "visitor"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "POST",
+          "params": {
+            "username": "admin",
+            "password": "admin"
+          },
+          "referer": null
+        },
+        {
+          "role": "visitor",
+          "kind": "visitor",
+          "method": "POST",
+          "params": {
+            "username": "zhangsan",
+            "password": "123456"
+          },
+          "referer": "login/"
+        }
+      ]
+    },
+    "acc_register/": {
+      "roles": [
+        "admin",
+        "visitor"
+      ],
+      "kinds": [
+        "admin",
+        "visitor"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "POST",
+          "params": {
+            "username": "zhangsan",
+            "password": "123456"
+          },
+          "referer": "register/"
+        },
+        {
+          "role": "visitor",
+          "kind": "visitor",
+          "method": "POST",
+          "params": {
+            "username": "zhangsan",
+            "password": "123456"
+          },
+          "referer": "register/"
+        }
+      ]
+    },
+    "bbs_pub/": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {},
+          "referer": "detail/p1/"
+        }
+      ]
+    },
+    "bbs_sub/": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "POST",
+          "params": {
+            "category_select": "0",
+            "title": "DRHL BBS test title",
+            "summary": "DRHL generated summary for access-control testing.",
+            "content": "DRHL generated BBS content for access-control testing."
+          },
+          "referer": "bbs_pub/"
+        }
+      ]
+    },
+    "category/p1/": {
+      "roles": [
+        "admin",
+        "visitor"
+      ],
+      "kinds": [
+        "admin",
+        "visitor"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {},
+          "referer": "./"
+        },
+        {
+          "role": "visitor",
+          "kind": "visitor",
+          "method": "GET",
+          "params": {},
+          "referer": "./"
+        }
+      ]
+    },
+    "detail/p1/": {
+      "roles": [
+        "admin",
+        "visitor"
+      ],
+      "kinds": [
+        "admin",
+        "visitor"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {},
+          "referer": "./"
+        },
+        {
+          "role": "visitor",
+          "kind": "visitor",
+          "method": "GET",
+          "params": {},
+          "referer": "./"
+        }
+      ]
+    },
+    "login/": {
+      "roles": [
+        "admin",
+        "visitor"
+      ],
+      "kinds": [
+        "admin",
+        "visitor"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {},
+          "referer": null
+        },
+        {
+          "role": "visitor",
+          "kind": "visitor",
+          "method": "GET",
+          "params": {},
+          "referer": "detail/p1/"
+        }
+      ]
+    },
+    "register/": {
+      "roles": [
+        "admin",
+        "visitor"
+      ],
+      "kinds": [
+        "admin",
+        "visitor"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {},
+          "referer": null
+        },
+        {
+          "role": "visitor",
+          "kind": "visitor",
+          "method": "GET",
+          "params": {},
+          "referer": "login/"
+        }
+      ]
+    },
+    "sub_comment/": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "POST",
+          "params": {
+            "comment_content": "DRHL generated comment for access-control testing.",
+            "bbs_id": "28"
+          },
+          "referer": "detail/p1/"
+        }
+      ]
+    }
+  },
+  "static_only": [
+    "admin/",
+    "logout/"
+  ],
+  "source_map": {
+    "./": "app01/views.py",
+    "acc_login/": "app01/views.py",
+    "acc_register/": "app01/views.py",
+    "admin/": "BBS_Pro/urls.py",
+    "bbs_pub/": "app01/views.py",
+    "bbs_sub/": "app01/views.py",
+    "category/p1/": "app01/views.py",
+    "detail/p1/": "app01/views.py",
+    "login/": "app01/views.py",
+    "logout/": "app01/views.py",
+    "register/": "app01/views.py",
+    "sub_comment/": "app01/views.py"
+  },
+  "static_classifications": {
+    "observed": [
+      "app01/views.py"
+    ],
+    "internal_reachable": [],
+    "public_unobserved": [
+      "BBS_Pro/urls.py"
+    ],
+    "support_unreachable": [
+      "BBS_Pro/__init__.py",
+      "BBS_Pro/settings.py",
+      "BBS_Pro/wsgi.py",
+      "app01/__init__.py",
+      "app01/admin.py",
+      "app01/models.py",
+      "app01/tests.py",
+      "app01/urls.py",
+      "manage.py"
+    ]
+  }
+}

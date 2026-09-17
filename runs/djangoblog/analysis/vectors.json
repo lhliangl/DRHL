@@ -1,0 +1,356 @@
+{
+  "vectors": [
+    {
+      "category": "static_only",
+      "page": "<slug:slug>/",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "static_only",
+      "page": "blog/",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "admin/",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/auth/",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": "admin/auth/group/1/change/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/auth/group/",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "csrfmiddlewaretoken": "6UqEiQL4GZyBajSFVWmDLcWb1dPb6huyS5XUzbHcsHmsoTu53po0GkxVGxg7uv31",
+          "action": "value_f27d28e5",
+          "select_across": "0"
+        },
+        "referer": "admin/auth/group/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/auth/group/1/change/",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "csrfmiddlewaretoken": "vVjxSyChpOsvakDD3IO4csBmOA96qCQ7h6QN9TypbwgmoUf3bbQr7Ac6tUA2OQpA",
+          "name": "user",
+          "permissions_old": "value_6bd03ce3",
+          "permissions": "value_8b0397e7",
+          "_save": "Save",
+          "_addanother": "Save and add another",
+          "_continue": "Save and continue editing"
+        },
+        "referer": "admin/auth/group/1/change/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/auth/group/add/",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "csrfmiddlewaretoken": "n8strBueXYLCgZ6wOxNVpwy42ZrKRt1L9jZJIWqmJGztuzIWW0PikE9OHjSGfHAe",
+          "name": "text_0e134946",
+          "permissions_old": "value_2acd1f5e",
+          "permissions": "value_75c635a3",
+          "_save": "Save",
+          "_addanother": "Save and add another",
+          "_continue": "Save and continue editing"
+        },
+        "referer": "admin/auth/group/add/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/auth/user/",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "csrfmiddlewaretoken": "zIOZGP0qgDx0ts1GIPT7qo95blyBUQ2VlTlfXaWy2llRH2D6QiVulwKPQFZxi4Bo",
+          "action": "value_b497beb3",
+          "select_across": "0"
+        },
+        "referer": "admin/auth/user/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/auth/user/4/change/",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "csrfmiddlewaretoken": "Y1DvZiH3bW1ezvwUKPAILHkYhrb7hweRKcaLgDDbXEP5N58kSiC5GPVIWLC3FKNk",
+          "username": "user2",
+          "first_name": "DRHL",
+          "last_name": "Tester",
+          "email": "user1@gmail.com",
+          "is_active": "on",
+          "is_staff": "on",
+          "groups_old": "value_f684e9d7",
+          "groups": "value_6a762892",
+          "user_permissions_old": "value_e94cfed6",
+          "user_permissions": "value_8cafe15f",
+          "last_login_0": "text_2803226a",
+          "last_login_1": "text_65f3b773",
+          "date_joined_0": "2025-10-17",
+          "date_joined_1": "12:09:22",
+          "initial-date_joined_0": "2025-10-17",
+          "initial-date_joined_1": "12:09:22",
+          "_save": "Save",
+          "_addanother": "Save and add another",
+          "_continue": "Save and continue editing"
+        },
+        "referer": "admin/auth/user/4/change/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/auth/user/4/delete/",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "csrfmiddlewaretoken": "b5NL9LuWkUIPh4abdE6xCANtODfj8lS8Xgk1q6q46CwGvEMBl78UxIodtXGfwzrB",
+          "post": "yes"
+        },
+        "referer": "admin/auth/user/4/delete/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/auth/user/4/history/",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": "admin/auth/user/4/change/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/auth/user/4/password/",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "csrfmiddlewaretoken": "f54YQ8N474HMBLXmaBjWzz5B40VHp1QZ1gBe7tJcTMvDPlzMi4ljuHGlJkmDNfps",
+          "username": "user2",
+          "password1": "12345678",
+          "password2": "12345678"
+        },
+        "referer": "admin/auth/user/4/password/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/auth/user/add/",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "csrfmiddlewaretoken": "PhwRwHJF66dULmOXvIc8b3SvZt4O0HxeBs37N2FNSO1LZWqnDbev6btfENvKoV6H",
+          "_popup": "1",
+          "_to_field": "id",
+          "username": "admin",
+          "password1": "12345678",
+          "password2": "12345678",
+          "_save": "Save"
+        },
+        "referer": "admin/auth/user/add/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "admin/blog/",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": "admin/blog/post/1/change/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "admin/blog/post/",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "csrfmiddlewaretoken": "W6DMoNcipwqTS1EtFqjmmxzvVWBOA9XhG2ZSx3zlVCWojopp48DL0GfHfFHhsML3"
+        },
+        "referer": "admin/blog/post/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "admin/blog/post/1/change/",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "csrfmiddlewaretoken": "NnbuiEL81mdOkPwlr9iXpMucaU3AIjKExjxArU8bxsJjLchhQRCm3VaouD93AWyq"
+        },
+        "referer": "admin/blog/post/1/change/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/blog/post/5/change/",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "csrfmiddlewaretoken": "lJ8QGLQehZXZTaDdmFBODaAByoghFh7x7UF6X6Mm3HLQ7KfDu8DbyibldIHd3vG0",
+          "title": "eee",
+          "slug": "eee",
+          "author": "2",
+          "content": "eee",
+          "status": "0",
+          "_save": "Save",
+          "_addanother": "Save and add another",
+          "_continue": "Save and continue editing"
+        },
+        "referer": "admin/blog/post/5/change/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "admin/blog/post/add/",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "csrfmiddlewaretoken": "qjp0WLWBwrPeOxIZ8k3aKK6jIm7EjTA5cuWgd6SJi9D527kpgN5xFSH3nGyAH79y",
+          "title": "DRHL Django Post",
+          "slug": "drhl-django-post",
+          "author": "value_023a4540",
+          "content": "DRHL generated Django blog content for access-control testing.",
+          "status": "0",
+          "_save": "Save",
+          "_addanother": "Save and add another",
+          "_continue": "Save and continue editing"
+        },
+        "referer": "admin/blog/post/add/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "admin/password_change/",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "csrfmiddlewaretoken": "7y917ugTkmMmEzMhJA8lxPr2LMQPqoxDRuv7gKDWQsiR5Wxd8isKbY7e5vWii1lp",
+          "old_password": "12345678",
+          "new_password1": "12345678",
+          "new_password2": "12345678"
+        },
+        "referer": "admin/password_change/"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "eee/",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": []
+    }
+  ]
+}

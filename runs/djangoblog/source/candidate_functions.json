@@ -1,0 +1,16 @@
+{
+  "functions": [
+    {
+      "id": "blog/models.py:LCF1",
+      "path": "blog/models.py",
+      "name": "__str__",
+      "parameters": [
+        "self"
+      ],
+      "body": "return self.title",
+      "start_line": 22,
+      "end_line": 23,
+      "code": "def __str__(self):\n        return self.title"
+    }
+  ]
+}

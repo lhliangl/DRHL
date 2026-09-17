@@ -1,0 +1,496 @@
+{
+  "vectors": [
+    {
+      "category": "static_only",
+      "page": "control/db_backup.php",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "static_only",
+      "page": "control/security.php",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "static_only",
+      "page": "cookie_gen.php",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "static_only",
+      "page": "install/index.php",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "static_only",
+      "page": "languages/ar.php",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "static_only",
+      "page": "languages/en.php",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "m_cp_avatar.php?KeepThis=true&TB_iframe=true&height=p1&width=p1",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "KeepThis": "true",
+          "TB_iframe": "true",
+          "height": "400",
+          "width": "500"
+        },
+        "referer": "member_cp.php"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "vertical",
+      "page": "member.php?id=1",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "id": "1"
+        },
+        "referer": "online.php"
+      },
+      "identity_parameters": [
+        "id"
+      ],
+      "page_overrides": []
+    },
+    {
+      "category": "horizontal",
+      "page": "member.php?id=p1",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "id": "no"
+        },
+        "referer": "online.php"
+      },
+      "identity_parameters": [
+        "id"
+      ],
+      "page_overrides": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "member_cp.php",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": "online.php"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "member_cp.php?do=",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {},
+        "referer": "member_cp.php?do="
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "member_cp_pm.php",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "v": "member_cp_pm.php?t=recieved"
+        },
+        "referer": "member_cp_pm.php"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "member_cp_pm.php?new=",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "new": ""
+        },
+        "referer": "member_cp.php"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "member_cp_pm.php?new=&send=p1",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "to": "value_34978579",
+          "subject": "text_44a57164",
+          "msg": "value_8d921967",
+          "captcha": "value_ae719b9e"
+        },
+        "referer": "member_cp_pm.php?new=&send=p1"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "member_cp_pm.php?v=p1",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "v": "member_cp_pm.php?t=recieved"
+        },
+        "referer": "member_cp_pm.php"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "admin_only",
+      "page": "send_flash.php",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": "flash_lib.php"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "admin_only",
+      "page": "send_flash.php?do=",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "title": "text_9d4f9270",
+          "cat": "value_128bbed9",
+          "url": "http://example.test/",
+          "image": "value_1ea132ed",
+          "captcha": "value_69c6fbbd"
+        },
+        "referer": "send_flash.php"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "admin_only",
+      "page": "send_image.php?KeepThis=true&TB_iframe=true&height=p1&width=p1",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "KeepThis": "true",
+          "TB_iframe": "true",
+          "height": "400",
+          "width": "500"
+        },
+        "referer": "album.php"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "admin_only",
+      "page": "send_image.php?do=",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "url": "http://example.test/",
+          "descr": "value_e028cece",
+          "cat": "value_c524c6aa",
+          "thumb": "value_71d93fa4",
+          "captcha": "value_e2e4a172"
+        },
+        "referer": "send_image.php?KeepThis=true&TB_iframe=true&height=p1&width=p1"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "send_lesson.php",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": "lessons.php"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "send_lesson.php?do=",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "title": "text_78d76d8c",
+          "short_desc": "value_2e1a56eb",
+          "cat": "value_027de7f1",
+          "lesson": "value_f97a3e6f",
+          "comets": "yes",
+          "captcha": "value_ae764ae0"
+        },
+        "referer": "send_lesson.php?do="
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "send_news.php",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": "news.php"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "send_news.php?do=",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "title": "text_07e67152",
+          "cat": "value_e27929bd",
+          "new": "value_402dfb3f",
+          "image": "value_9e83e9dc",
+          "comets": "yes",
+          "captcha": "value_2c88d99b"
+        },
+        "referer": "send_news.php?do="
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "send_pro.php",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": "programs.php"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "send_pro.php?do=",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "name": "text_26937b36",
+          "cat": "value_2258232d",
+          "descr": "value_295bc69a",
+          "screanshot_yn": "yes",
+          "screanshot_url": "http://",
+          "url": "http://",
+          "size": "value_46b668d5",
+          "company": "org_0ebe40b1",
+          "license": "value_67346888",
+          "capability": "value_1964f97d",
+          "captcha": "value_c4a9de85"
+        },
+        "referer": "send_pro.php"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "send_topic.php",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": "topics.php"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "send_topic.php?do=",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "title": "text_8e316c3c",
+          "cat": "value_c03f5a86",
+          "topic": "value_fb8581c3",
+          "image": "value_af087cf5",
+          "comets": "yes",
+          "captcha": "value_ecefa7e7"
+        },
+        "referer": "send_topic.php?do="
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "admin_only",
+      "page": "send_video.php",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": "video_lib.php"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "admin_only",
+      "page": "send_video.php?do=",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "title": "text_8e0474ae",
+          "cat": "value_f0ca2d1f",
+          "allow_coments": "yes",
+          "descr": "value_04e159dd",
+          "url": "http://",
+          "time": "00:00",
+          "captcha": "value_0d87ac15"
+        },
+        "referer": "send_video.php"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    }
+  ]
+}

@@ -1,0 +1,213 @@
+{
+  "functions": [
+    {
+      "id": "app01/admin.py:LCF1",
+      "path": "app01/admin.py",
+      "name": "signature",
+      "parameters": [
+        "self",
+        "obj"
+      ],
+      "body": "return obj.author.signature",
+      "start_line": 11,
+      "end_line": 12,
+      "code": "def signature(self,obj):\n        return obj.author.signature"
+    },
+    {
+      "id": "app01/models.py:LCF2",
+      "path": "app01/models.py",
+      "name": "__unicode__",
+      "parameters": [
+        "self"
+      ],
+      "body": "return self.title",
+      "start_line": 17,
+      "end_line": 18,
+      "code": "def __unicode__(self):\n        return self.title"
+    },
+    {
+      "id": "app01/models.py:LCF3",
+      "path": "app01/models.py",
+      "name": "__unicode__",
+      "parameters": [
+        "self"
+      ],
+      "body": "return self.name",
+      "start_line": 24,
+      "end_line": 25,
+      "code": "def __unicode__(self):\n        return self.name"
+    },
+    {
+      "id": "app01/models.py:LCF4",
+      "path": "app01/models.py",
+      "name": "__unicode__",
+      "parameters": [
+        "self"
+      ],
+      "body": "return self.user.username",
+      "start_line": 32,
+      "end_line": 33,
+      "code": "def __unicode__(self):\n        return self.user.username"
+    },
+    {
+      "id": "app01/views.py:LCF5",
+      "path": "app01/views.py",
+      "name": "acc_login",
+      "parameters": [
+        "request"
+      ],
+      "body": "username = request.POST.get('username')\r\n    password = request.POST.get('password')\r\n\r\n    user = auth.authenticate(username=username, password=password)\r\n    print username, '->', password\r\n\r\n    if user is not None:\r\n        auth.login(request, user)\r\n\r\n        return HttpResponseRedirect('/')\r\n    else:\r\n        return render_to_response('login.html', {'login_err': 'Wrong username or password.'})",
+      "start_line": 15,
+      "end_line": 27,
+      "code": "def acc_login(request):\r\n    username = request.POST.get('username')\r\n    password = request.POST.get('password')\r\n\r\n    user = auth.authenticate(username=username, password=password)\r\n    print username, '->', password\r\n\r\n    if user is not None:\r\n        auth.login(request, user)\r\n\r\n        return HttpResponseRedirect('/')\r\n    else:\r\n        return render_to_response('login.html', {'login_err': 'Wrong username or password.'})"
+    },
+    {
+      "id": "app01/views.py:LCF6",
+      "path": "app01/views.py",
+      "name": "reset_password",
+      "parameters": [
+        "request",
+        "username",
+        "password"
+      ],
+      "body": "u = User.objects.get(username__exact=username)\r\n    u.set_password(password)\r\n    u.save()",
+      "start_line": 30,
+      "end_line": 33,
+      "code": "def reset_password(request, username, password):\r\n    u = User.objects.get(username__exact=username)\r\n    u.set_password(password)\r\n    u.save()"
+    },
+    {
+      "id": "app01/views.py:LCF7",
+      "path": "app01/views.py",
+      "name": "Register",
+      "parameters": [
+        "request"
+      ],
+      "body": "return render_to_response('register.html')",
+      "start_line": 36,
+      "end_line": 37,
+      "code": "def Register(request):\r\n    return render_to_response('register.html')"
+    },
+    {
+      "id": "app01/views.py:LCF8",
+      "path": "app01/views.py",
+      "name": "acc_register",
+      "parameters": [
+        "request"
+      ],
+      "body": "new_username = request.POST.get('username')\r\n    new_password = request.POST.get('password')\r\n\r\n    found = False\r\n    if User.objects.filter(username=new_username).count():\r\n        found = True\r\n    else:\r\n        found = False\r\n\r\n    if found:\r\n        return render_to_response('register.html', {'register_err': 'Username already exists'})\r\n\r\n    else:\r\n\r\n        new_user = User.objects.create_user(\r\n            username=new_username,\r\n            password=new_password\r\n        )\r\n\r\n        new_user.save()\r\n\r\n        models.BBS_user.objects.create(user=new_user)\r\n\r\n        user = auth.authenticate(username=new_username,\r\n                                 password=new_password\r\n                                 )\r\n\r\n        auth.login(request, user)\r\n\r\n        return HttpResponseRedirect('/')",
+      "start_line": 40,
+      "end_line": 70,
+      "code": "def acc_register(request):\r\n    new_username = request.POST.get('username')\r\n    new_password = request.POST.get('password')\r\n\r\n    found = False\r\n    if User.objects.filter(username=new_username).count():\r\n        found = True\r\n    else:\r\n        found = False\r\n\r\n    if found:\r\n        return render_to_response('register.html', {'register_err': 'Username already exists'})\r\n\r\n    else:\r\n\r\n        new_user = User.objects.create_user(\r\n            username=new_username,\r\n            password=new_password\r\n        )\r\n\r\n        new_user.save()\r\n\r\n        models.BBS_user.objects.create(user=new_user)\r\n\r\n        user = auth.authenticate(username=new_username,\r\n                                 password=new_password\r\n                                 )\r\n\r\n        auth.login(request, user)\r\n\r\n        return HttpResponseRedirect('/')"
+    },
+    {
+      "id": "app01/views.py:LCF9",
+      "path": "app01/views.py",
+      "name": "logout_view",
+      "parameters": [
+        "request"
+      ],
+      "body": "user = request.user\r\n    auth.logout(request)\r\n\r\n    return render_to_response('logout.html', {'username': user})",
+      "start_line": 73,
+      "end_line": 77,
+      "code": "def logout_view(request):\r\n    user = request.user\r\n    auth.logout(request)\r\n\r\n    return render_to_response('logout.html', {'username': user})"
+    },
+    {
+      "id": "app01/views.py:LCF10",
+      "path": "app01/views.py",
+      "name": "Login",
+      "parameters": [
+        "request"
+      ],
+      "body": "return render_to_response('login.html')",
+      "start_line": 86,
+      "end_line": 87,
+      "code": "def Login(request):\r\n    return render_to_response('login.html')"
+    },
+    {
+      "id": "app01/views.py:LCF11",
+      "path": "app01/views.py",
+      "name": "index",
+      "parameters": [
+        "request"
+      ],
+      "body": "bbs_list = models.BBS.objects.all()\r\n    bbs_categories = models.Category.objects.all()\r\n\r\n    return render_to_response('index.html', {\r\n        'bbs_list': bbs_list,\r\n        'user': request.user,\r\n        'bbs_category': bbs_categories,\r\n        'category_id': 0\r\n    })",
+      "start_line": 90,
+      "end_line": 99,
+      "code": "def index(request):\r\n    bbs_list = models.BBS.objects.all()\r\n    bbs_categories = models.Category.objects.all()\r\n\r\n    return render_to_response('index.html', {\r\n        'bbs_list': bbs_list,\r\n        'user': request.user,\r\n        'bbs_category': bbs_categories,\r\n        'category_id': 0\r\n    })"
+    },
+    {
+      "id": "app01/views.py:LCF12",
+      "path": "app01/views.py",
+      "name": "category",
+      "parameters": [
+        "request",
+        "cate_id"
+      ],
+      "body": "bbs_list = models.BBS.objects.filter(category__id=cate_id)\r\n    bbs_categories = models.Category.objects.all()\r\n\r\n    return render_to_response('index.html', {\r\n        'bbs_list': bbs_list,\r\n        'user': request.user,\r\n        'bbs_category': bbs_categories,\r\n        'category_id': int(cate_id)\r\n    })",
+      "start_line": 102,
+      "end_line": 111,
+      "code": "def category(request, cate_id):\r\n    bbs_list = models.BBS.objects.filter(category__id=cate_id)\r\n    bbs_categories = models.Category.objects.all()\r\n\r\n    return render_to_response('index.html', {\r\n        'bbs_list': bbs_list,\r\n        'user': request.user,\r\n        'bbs_category': bbs_categories,\r\n        'category_id': int(cate_id)\r\n    })"
+    },
+    {
+      "id": "app01/views.py:LCF13",
+      "path": "app01/views.py",
+      "name": "bbs_detail",
+      "parameters": [
+        "request",
+        "bbs_id"
+      ],
+      "body": "bbs_obj = models.BBS.objects.get(id=bbs_id)\r\n    return render_to_response('bbs_detail.html', {'bbs_obj': bbs_obj, 'user': request.user},\r\n                              context_instance=RequestContext(request))",
+      "start_line": 114,
+      "end_line": 117,
+      "code": "def bbs_detail(request, bbs_id):\r\n    bbs_obj = models.BBS.objects.get(id=bbs_id)\r\n    return render_to_response('bbs_detail.html', {'bbs_obj': bbs_obj, 'user': request.user},\r\n                              context_instance=RequestContext(request))"
+    },
+    {
+      "id": "app01/views.py:LCF14",
+      "path": "app01/views.py",
+      "name": "sub_comment",
+      "parameters": [
+        "request"
+      ],
+      "body": "bbs_id = request.POST.get('bbs_id')\r\n    comment = request.POST.get('comment_content')\r\n\r\n    # Write comment to DB\r\n    # Be careful about the names of the following parameters.\r\n    # Check django.contrib.contenttypes.models source code if necessary.\r\n    comments.models.Comment.objects.create(\r\n        content_type_id=7,\r\n        object_pk=bbs_id,  # Not object_id which is very confusing\r\n        site_id=1,\r\n        user=request.user,\r\n        comment=comment, )\r\n\r\n    return HttpResponseRedirect('/detail/%s' % bbs_id)",
+      "start_line": 120,
+      "end_line": 134,
+      "code": "def sub_comment(request):\r\n    bbs_id = request.POST.get('bbs_id')\r\n    comment = request.POST.get('comment_content')\r\n\r\n    # Write comment to DB\r\n    # Be careful about the names of the following parameters.\r\n    # Check django.contrib.contenttypes.models source code if necessary.\r\n    comments.models.Comment.objects.create(\r\n        content_type_id=7,\r\n        object_pk=bbs_id,  # Not object_id which is very confusing\r\n        site_id=1,\r\n        user=request.user,\r\n        comment=comment, )\r\n\r\n    return HttpResponseRedirect('/detail/%s' % bbs_id)"
+    },
+    {
+      "id": "app01/views.py:LCF15",
+      "path": "app01/views.py",
+      "name": "bbs_pub",
+      "parameters": [
+        "request"
+      ],
+      "body": "bbs_categories = models.Category.objects.all()\r\n    return render_to_response('bbs_pub.html', {\r\n        'bbs_pub': 1,\r\n        'bbs_category': bbs_categories,\r\n    })",
+      "start_line": 137,
+      "end_line": 142,
+      "code": "def bbs_pub(request):\r\n    bbs_categories = models.Category.objects.all()\r\n    return render_to_response('bbs_pub.html', {\r\n        'bbs_pub': 1,\r\n        'bbs_category': bbs_categories,\r\n    })"
+    },
+    {
+      "id": "app01/views.py:LCF16",
+      "path": "app01/views.py",
+      "name": "submit_bbs",
+      "parameters": [
+        "request"
+      ],
+      "body": "print request.POST\r\n    print models.BBS_user\r\n\r\n    bbs_category = request.POST.get('bbs_category')\r\n    models.BBS.objects.create(\r\n        title=request.POST.get('title'),\r\n        category=models.Category.objects.get(name=bbs_category),\r\n        content=request.POST.get('content'),\r\n        author=models.BBS_user.objects.get(user_username='root'),\r\n        modify_date=datetime.datetime.now()\r\n    )\r\n    bbs_content = request.POST.get('content')\r\n    return HttpResponse('Your article has been submitted!')",
+      "start_line": 145,
+      "end_line": 158,
+      "code": "def submit_bbs(request):\r\n    print request.POST\r\n    print models.BBS_user\r\n\r\n    bbs_category = request.POST.get('bbs_category')\r\n    models.BBS.objects.create(\r\n        title=request.POST.get('title'),\r\n        category=models.Category.objects.get(name=bbs_category),\r\n        content=request.POST.get('content'),\r\n        author=models.BBS_user.objects.get(user_username='root'),\r\n        modify_date=datetime.datetime.now()\r\n    )\r\n    bbs_content = request.POST.get('content')\r\n    return HttpResponse('Your article has been submitted!')"
+    },
+    {
+      "id": "app01/views.py:LCF17",
+      "path": "app01/views.py",
+      "name": "bbs_sub",
+      "parameters": [
+        "request"
+      ],
+      "body": "content = request.POST.get('content')\r\n    print \"content -->\", content\r\n\r\n    category_select_index = request.POST.get('category_select')\r\n    bbs_categories = models.Category.objects.all()\r\n    category_select = bbs_categories[int(category_select_index)]\r\n\r\n    title = request.POST.get('title')\r\n\r\n    summary = request.POST.get('summary')\r\n\r\n    category = models.Category.objects.get(name=category_select)\r\n\r\n    author, created = models.BBS_user.objects.get_or_create(user_id=request.user.pk)\r\n\r\n    models.BBS.objects.create(\r\n        title=title,\r\n        summary=summary,\r\n        content=content,\r\n        author=author,  # Save by parameter name\r\n        category=category,  # Save by parameter id (number)\r\n        view_count=1,\r\n        ranking=1,\r\n    )\r\n\r\n    return HttpResponseRedirect('/')",
+      "start_line": 161,
+      "end_line": 187,
+      "code": "def bbs_sub(request):\r\n    content = request.POST.get('content')\r\n    print \"content -->\", content\r\n\r\n    category_select_index = request.POST.get('category_select')\r\n    bbs_categories = models.Category.objects.all()\r\n    category_select = bbs_categories[int(category_select_index)]\r\n\r\n    title = request.POST.get('title')\r\n\r\n    summary = request.POST.get('summary')\r\n\r\n    category = models.Category.objects.get(name=category_select)\r\n\r\n    author, created = models.BBS_user.objects.get_or_create(user_id=request.user.pk)\r\n\r\n    models.BBS.objects.create(\r\n        title=title,\r\n        summary=summary,\r\n        content=content,\r\n        author=author,  # Save by parameter name\r\n        category=category,  # Save by parameter id (number)\r\n        view_count=1,\r\n        ranking=1,\r\n    )\r\n\r\n    return HttpResponseRedirect('/')"
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "parameters": [
+    {
+      "id": "include/users.php:LCP82",
+      "path": "include/users.php",
+      "expression": "$_SESSION['userid']",
+      "aliases": [
+        "$_SESSION['userid']",
+        "$userid"
+      ],
+      "database_relations": [
+        {
+          "table": "users",
+          "field": "",
+          "line": 75
+        }
+      ],
+      "sources": [
+        "database"
+      ],
+      "locations": [
+        {
+          "source": "database",
+          "line": 74,
+          "condition": "$_SESSION['userid']"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ],
+      "validation_evidence": [
+        {
+          "kind": "php_session_identity_key",
+          "key": "userid"
+        }
+      ]
+    },
+    {
+      "id": "include/users.php:LCP87",
+      "path": "include/users.php",
+      "expression": "$_SESSION['userid']",
+      "aliases": [
+        "$_SESSION['userid']"
+      ],
+      "database_relations": [
+        {
+          "table": "users",
+          "field": "",
+          "line": 75
+        }
+      ],
+      "sources": [
+        "database",
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "database",
+          "line": 1,
+          "condition": "$_SESSION['userid']"
+        },
+        {
+          "source": "database",
+          "line": 157,
+          "condition": "$_SESSION['userid']"
+        },
+        {
+          "source": "conditional",
+          "line": 153,
+          "condition": "(isset($_SESSION['userid']))"
+        }
+      ],
+      "condition_indexes": [
+        0,
+        1,
+        2
+      ],
+      "validation_evidence": [
+        {
+          "kind": "php_session_identity_key",
+          "key": "userid"
+        },
+        {
+          "kind": "php_session_identity_key",
+          "key": "userid"
+        }
+      ]
+    }
+  ]
+}

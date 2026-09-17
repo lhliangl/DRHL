@@ -1,0 +1,1569 @@
+{
+  "nodes": [
+    "./",
+    "admin",
+    "admin/categories/create",
+    "admin/categories/p1",
+    "admin/mods/create",
+    "admin/mods/delete",
+    "auth/changepass",
+    "auth/logout",
+    "auth/otsignin",
+    "auth/otsignin/p1",
+    "auth/signin",
+    "auth/signup",
+    "auth/signup/p1",
+    "categories/p1",
+    "categories/p1/",
+    "categories/p1/topics/new",
+    "categories/p1/topics/new/",
+    "categories/p1/topics/p1",
+    "categories/p1/topics/p1/",
+    "categories/p1/topics/p1/comments/new",
+    "categories/p1/topics/p1/comments/new/",
+    "categories/p1/topics/p1/comments/p1/edit",
+    "categories/p1/topics/p1/comments/p1/edit/",
+    "categories/p1/topics/p1/edit",
+    "categories/p1/topics/p1/edit/",
+    "static/favicon.png",
+    "static/logo.png",
+    "static/orangeforum.css",
+    "static/orangeforum.js",
+    "users/p1",
+    "users/p1/"
+  ],
+  "edges": [
+    {
+      "from": "./",
+      "to": "categories/p1/"
+    },
+    {
+      "from": "admin",
+      "to": "./"
+    },
+    {
+      "from": "admin",
+      "to": "admin"
+    },
+    {
+      "from": "admin",
+      "to": "admin/categories/create"
+    },
+    {
+      "from": "admin",
+      "to": "admin/categories/p1"
+    },
+    {
+      "from": "admin",
+      "to": "admin/mods/create"
+    },
+    {
+      "from": "admin",
+      "to": "admin/mods/delete"
+    },
+    {
+      "from": "admin/categories/p1",
+      "to": "admin"
+    },
+    {
+      "from": "admin/mods/create",
+      "to": "admin"
+    },
+    {
+      "from": "auth/changepass",
+      "to": "auth/changepass"
+    },
+    {
+      "from": "auth/changepass",
+      "to": "auth/signin"
+    },
+    {
+      "from": "auth/otsignin",
+      "to": "./"
+    },
+    {
+      "from": "auth/otsignin",
+      "to": "auth/otsignin"
+    },
+    {
+      "from": "auth/signin",
+      "to": "auth/otsignin"
+    },
+    {
+      "from": "auth/signin",
+      "to": "auth/signin"
+    },
+    {
+      "from": "auth/signup",
+      "to": "auth/signin"
+    },
+    {
+      "from": "auth/signup",
+      "to": "auth/signup"
+    },
+    {
+      "from": "categories/p1/",
+      "to": "categories/p1/topics/new/"
+    },
+    {
+      "from": "categories/p1/",
+      "to": "categories/p1/topics/p1/"
+    },
+    {
+      "from": "categories/p1/topics/new/",
+      "to": "auth/signin"
+    },
+    {
+      "from": "categories/p1/topics/new/",
+      "to": "categories/p1/topics/new/"
+    },
+    {
+      "from": "categories/p1/topics/new/",
+      "to": "categories/p1/topics/p1/"
+    },
+    {
+      "from": "categories/p1/topics/new/",
+      "to": "categories/p1/topics/p1/comments/new/"
+    },
+    {
+      "from": "categories/p1/topics/p1/",
+      "to": "categories/p1/topics/p1/comments/p1/edit/"
+    },
+    {
+      "from": "categories/p1/topics/p1/",
+      "to": "users/p1/"
+    },
+    {
+      "from": "categories/p1/topics/p1/comments/new/",
+      "to": "auth/signin"
+    },
+    {
+      "from": "categories/p1/topics/p1/comments/new/",
+      "to": "categories/p1/topics/p1/"
+    },
+    {
+      "from": "categories/p1/topics/p1/comments/new/",
+      "to": "categories/p1/topics/p1/comments/new/"
+    },
+    {
+      "from": "categories/p1/topics/p1/comments/new/",
+      "to": "categories/p1/topics/p1/edit/"
+    },
+    {
+      "from": "categories/p1/topics/p1/comments/p1/edit/",
+      "to": "categories/p1/topics/p1/"
+    },
+    {
+      "from": "categories/p1/topics/p1/comments/p1/edit/",
+      "to": "categories/p1/topics/p1/comments/p1/edit/"
+    },
+    {
+      "from": "categories/p1/topics/p1/edit/",
+      "to": "categories/p1/topics/p1/"
+    },
+    {
+      "from": "categories/p1/topics/p1/edit/",
+      "to": "categories/p1/topics/p1/edit/"
+    },
+    {
+      "from": "users/p1/",
+      "to": "./"
+    },
+    {
+      "from": "users/p1/",
+      "to": "admin"
+    },
+    {
+      "from": "users/p1/",
+      "to": "auth/changepass"
+    },
+    {
+      "from": "users/p1/",
+      "to": "auth/signup"
+    },
+    {
+      "from": "users/p1/",
+      "to": "users/p1/"
+    }
+  ],
+  "static_edges": [
+    {
+      "from": "main.go",
+      "to": "models/categories.go"
+    },
+    {
+      "from": "main.go",
+      "to": "models/comments.go"
+    },
+    {
+      "from": "main.go",
+      "to": "models/config.go"
+    },
+    {
+      "from": "main.go",
+      "to": "models/domains.go"
+    },
+    {
+      "from": "main.go",
+      "to": "models/migration.go"
+    },
+    {
+      "from": "main.go",
+      "to": "models/migration001.go"
+    },
+    {
+      "from": "main.go",
+      "to": "models/migration002.go"
+    },
+    {
+      "from": "main.go",
+      "to": "models/models.go"
+    },
+    {
+      "from": "main.go",
+      "to": "models/topics.go"
+    },
+    {
+      "from": "main.go",
+      "to": "models/users.go"
+    },
+    {
+      "from": "main.go",
+      "to": "models/utils.go"
+    },
+    {
+      "from": "main.go",
+      "to": "views/admin.go"
+    },
+    {
+      "from": "main.go",
+      "to": "views/auth.go"
+    },
+    {
+      "from": "main.go",
+      "to": "views/categories.go"
+    },
+    {
+      "from": "main.go",
+      "to": "views/comments.go"
+    },
+    {
+      "from": "main.go",
+      "to": "views/domains.go"
+    },
+    {
+      "from": "main.go",
+      "to": "views/index.go"
+    },
+    {
+      "from": "main.go",
+      "to": "views/static.go"
+    },
+    {
+      "from": "main.go",
+      "to": "views/topics.go"
+    },
+    {
+      "from": "main.go",
+      "to": "views/users.go"
+    },
+    {
+      "from": "main.go",
+      "to": "views/utils.go"
+    },
+    {
+      "from": "main.go",
+      "to": "views/views.go"
+    },
+    {
+      "from": "main_test.go",
+      "to": "models/categories.go"
+    },
+    {
+      "from": "main_test.go",
+      "to": "models/comments.go"
+    },
+    {
+      "from": "main_test.go",
+      "to": "models/config.go"
+    },
+    {
+      "from": "main_test.go",
+      "to": "models/domains.go"
+    },
+    {
+      "from": "main_test.go",
+      "to": "models/migration.go"
+    },
+    {
+      "from": "main_test.go",
+      "to": "models/migration001.go"
+    },
+    {
+      "from": "main_test.go",
+      "to": "models/migration002.go"
+    },
+    {
+      "from": "main_test.go",
+      "to": "models/models.go"
+    },
+    {
+      "from": "main_test.go",
+      "to": "models/topics.go"
+    },
+    {
+      "from": "main_test.go",
+      "to": "models/users.go"
+    },
+    {
+      "from": "main_test.go",
+      "to": "models/utils.go"
+    },
+    {
+      "from": "main_test.go",
+      "to": "views/admin.go"
+    },
+    {
+      "from": "main_test.go",
+      "to": "views/auth.go"
+    },
+    {
+      "from": "main_test.go",
+      "to": "views/categories.go"
+    },
+    {
+      "from": "main_test.go",
+      "to": "views/comments.go"
+    },
+    {
+      "from": "main_test.go",
+      "to": "views/domains.go"
+    },
+    {
+      "from": "main_test.go",
+      "to": "views/index.go"
+    },
+    {
+      "from": "main_test.go",
+      "to": "views/static.go"
+    },
+    {
+      "from": "main_test.go",
+      "to": "views/topics.go"
+    },
+    {
+      "from": "main_test.go",
+      "to": "views/users.go"
+    },
+    {
+      "from": "main_test.go",
+      "to": "views/utils.go"
+    },
+    {
+      "from": "main_test.go",
+      "to": "views/views.go"
+    },
+    {
+      "from": "management.go",
+      "to": "models/categories.go"
+    },
+    {
+      "from": "management.go",
+      "to": "models/comments.go"
+    },
+    {
+      "from": "management.go",
+      "to": "models/config.go"
+    },
+    {
+      "from": "management.go",
+      "to": "models/domains.go"
+    },
+    {
+      "from": "management.go",
+      "to": "models/migration.go"
+    },
+    {
+      "from": "management.go",
+      "to": "models/migration001.go"
+    },
+    {
+      "from": "management.go",
+      "to": "models/migration002.go"
+    },
+    {
+      "from": "management.go",
+      "to": "models/models.go"
+    },
+    {
+      "from": "management.go",
+      "to": "models/topics.go"
+    },
+    {
+      "from": "management.go",
+      "to": "models/users.go"
+    },
+    {
+      "from": "management.go",
+      "to": "models/utils.go"
+    },
+    {
+      "from": "models_test.go",
+      "to": "models/categories.go"
+    },
+    {
+      "from": "models_test.go",
+      "to": "models/comments.go"
+    },
+    {
+      "from": "models_test.go",
+      "to": "models/config.go"
+    },
+    {
+      "from": "models_test.go",
+      "to": "models/domains.go"
+    },
+    {
+      "from": "models_test.go",
+      "to": "models/migration.go"
+    },
+    {
+      "from": "models_test.go",
+      "to": "models/migration001.go"
+    },
+    {
+      "from": "models_test.go",
+      "to": "models/migration002.go"
+    },
+    {
+      "from": "models_test.go",
+      "to": "models/models.go"
+    },
+    {
+      "from": "models_test.go",
+      "to": "models/topics.go"
+    },
+    {
+      "from": "models_test.go",
+      "to": "models/users.go"
+    },
+    {
+      "from": "models_test.go",
+      "to": "models/utils.go"
+    },
+    {
+      "from": "views/admin.go",
+      "to": "models/categories.go"
+    },
+    {
+      "from": "views/admin.go",
+      "to": "models/comments.go"
+    },
+    {
+      "from": "views/admin.go",
+      "to": "models/config.go"
+    },
+    {
+      "from": "views/admin.go",
+      "to": "models/domains.go"
+    },
+    {
+      "from": "views/admin.go",
+      "to": "models/migration.go"
+    },
+    {
+      "from": "views/admin.go",
+      "to": "models/migration001.go"
+    },
+    {
+      "from": "views/admin.go",
+      "to": "models/migration002.go"
+    },
+    {
+      "from": "views/admin.go",
+      "to": "models/models.go"
+    },
+    {
+      "from": "views/admin.go",
+      "to": "models/topics.go"
+    },
+    {
+      "from": "views/admin.go",
+      "to": "models/users.go"
+    },
+    {
+      "from": "views/admin.go",
+      "to": "models/utils.go"
+    },
+    {
+      "from": "views/admin.go",
+      "to": "templates/teamplates.go"
+    },
+    {
+      "from": "views/auth.go",
+      "to": "models/categories.go"
+    },
+    {
+      "from": "views/auth.go",
+      "to": "models/comments.go"
+    },
+    {
+      "from": "views/auth.go",
+      "to": "models/config.go"
+    },
+    {
+      "from": "views/auth.go",
+      "to": "models/domains.go"
+    },
+    {
+      "from": "views/auth.go",
+      "to": "models/migration.go"
+    },
+    {
+      "from": "views/auth.go",
+      "to": "models/migration001.go"
+    },
+    {
+      "from": "views/auth.go",
+      "to": "models/migration002.go"
+    },
+    {
+      "from": "views/auth.go",
+      "to": "models/models.go"
+    },
+    {
+      "from": "views/auth.go",
+      "to": "models/topics.go"
+    },
+    {
+      "from": "views/auth.go",
+      "to": "models/users.go"
+    },
+    {
+      "from": "views/auth.go",
+      "to": "models/utils.go"
+    },
+    {
+      "from": "views/auth.go",
+      "to": "templates/teamplates.go"
+    },
+    {
+      "from": "views/comments.go",
+      "to": "models/categories.go"
+    },
+    {
+      "from": "views/comments.go",
+      "to": "models/comments.go"
+    },
+    {
+      "from": "views/comments.go",
+      "to": "models/config.go"
+    },
+    {
+      "from": "views/comments.go",
+      "to": "models/domains.go"
+    },
+    {
+      "from": "views/comments.go",
+      "to": "models/migration.go"
+    },
+    {
+      "from": "views/comments.go",
+      "to": "models/migration001.go"
+    },
+    {
+      "from": "views/comments.go",
+      "to": "models/migration002.go"
+    },
+    {
+      "from": "views/comments.go",
+      "to": "models/models.go"
+    },
+    {
+      "from": "views/comments.go",
+      "to": "models/topics.go"
+    },
+    {
+      "from": "views/comments.go",
+      "to": "models/users.go"
+    },
+    {
+      "from": "views/comments.go",
+      "to": "models/utils.go"
+    },
+    {
+      "from": "views/comments.go",
+      "to": "templates/teamplates.go"
+    },
+    {
+      "from": "views/domains.go",
+      "to": "models/categories.go"
+    },
+    {
+      "from": "views/domains.go",
+      "to": "models/comments.go"
+    },
+    {
+      "from": "views/domains.go",
+      "to": "models/config.go"
+    },
+    {
+      "from": "views/domains.go",
+      "to": "models/domains.go"
+    },
+    {
+      "from": "views/domains.go",
+      "to": "models/migration.go"
+    },
+    {
+      "from": "views/domains.go",
+      "to": "models/migration001.go"
+    },
+    {
+      "from": "views/domains.go",
+      "to": "models/migration002.go"
+    },
+    {
+      "from": "views/domains.go",
+      "to": "models/models.go"
+    },
+    {
+      "from": "views/domains.go",
+      "to": "models/topics.go"
+    },
+    {
+      "from": "views/domains.go",
+      "to": "models/users.go"
+    },
+    {
+      "from": "views/domains.go",
+      "to": "models/utils.go"
+    },
+    {
+      "from": "views/index.go",
+      "to": "models/categories.go"
+    },
+    {
+      "from": "views/index.go",
+      "to": "models/comments.go"
+    },
+    {
+      "from": "views/index.go",
+      "to": "models/config.go"
+    },
+    {
+      "from": "views/index.go",
+      "to": "models/domains.go"
+    },
+    {
+      "from": "views/index.go",
+      "to": "models/migration.go"
+    },
+    {
+      "from": "views/index.go",
+      "to": "models/migration001.go"
+    },
+    {
+      "from": "views/index.go",
+      "to": "models/migration002.go"
+    },
+    {
+      "from": "views/index.go",
+      "to": "models/models.go"
+    },
+    {
+      "from": "views/index.go",
+      "to": "models/topics.go"
+    },
+    {
+      "from": "views/index.go",
+      "to": "models/users.go"
+    },
+    {
+      "from": "views/index.go",
+      "to": "models/utils.go"
+    },
+    {
+      "from": "views/index.go",
+      "to": "templates/teamplates.go"
+    },
+    {
+      "from": "views/static.go",
+      "to": "templates/teamplates.go"
+    },
+    {
+      "from": "views/topics.go",
+      "to": "models/categories.go"
+    },
+    {
+      "from": "views/topics.go",
+      "to": "models/comments.go"
+    },
+    {
+      "from": "views/topics.go",
+      "to": "models/config.go"
+    },
+    {
+      "from": "views/topics.go",
+      "to": "models/domains.go"
+    },
+    {
+      "from": "views/topics.go",
+      "to": "models/migration.go"
+    },
+    {
+      "from": "views/topics.go",
+      "to": "models/migration001.go"
+    },
+    {
+      "from": "views/topics.go",
+      "to": "models/migration002.go"
+    },
+    {
+      "from": "views/topics.go",
+      "to": "models/models.go"
+    },
+    {
+      "from": "views/topics.go",
+      "to": "models/topics.go"
+    },
+    {
+      "from": "views/topics.go",
+      "to": "models/users.go"
+    },
+    {
+      "from": "views/topics.go",
+      "to": "models/utils.go"
+    },
+    {
+      "from": "views/topics.go",
+      "to": "templates/teamplates.go"
+    },
+    {
+      "from": "views/users.go",
+      "to": "models/categories.go"
+    },
+    {
+      "from": "views/users.go",
+      "to": "models/comments.go"
+    },
+    {
+      "from": "views/users.go",
+      "to": "models/config.go"
+    },
+    {
+      "from": "views/users.go",
+      "to": "models/domains.go"
+    },
+    {
+      "from": "views/users.go",
+      "to": "models/migration.go"
+    },
+    {
+      "from": "views/users.go",
+      "to": "models/migration001.go"
+    },
+    {
+      "from": "views/users.go",
+      "to": "models/migration002.go"
+    },
+    {
+      "from": "views/users.go",
+      "to": "models/models.go"
+    },
+    {
+      "from": "views/users.go",
+      "to": "models/topics.go"
+    },
+    {
+      "from": "views/users.go",
+      "to": "models/users.go"
+    },
+    {
+      "from": "views/users.go",
+      "to": "models/utils.go"
+    },
+    {
+      "from": "views/users.go",
+      "to": "templates/teamplates.go"
+    }
+  ],
+  "node_origins": {
+    "./": [
+      "dynamic",
+      "static"
+    ],
+    "admin": [
+      "dynamic",
+      "static"
+    ],
+    "admin/categories/create": [
+      "dynamic"
+    ],
+    "admin/categories/p1": [
+      "dynamic",
+      "static"
+    ],
+    "admin/mods/create": [
+      "dynamic",
+      "static"
+    ],
+    "admin/mods/delete": [
+      "dynamic",
+      "static"
+    ],
+    "auth/changepass": [
+      "dynamic",
+      "static"
+    ],
+    "auth/logout": [
+      "static"
+    ],
+    "auth/otsignin": [
+      "dynamic",
+      "static"
+    ],
+    "auth/otsignin/p1": [
+      "static"
+    ],
+    "auth/signin": [
+      "dynamic",
+      "static"
+    ],
+    "auth/signup": [
+      "dynamic",
+      "static"
+    ],
+    "auth/signup/p1": [
+      "static"
+    ],
+    "categories/p1": [
+      "static"
+    ],
+    "categories/p1/": [
+      "dynamic"
+    ],
+    "categories/p1/topics/new": [
+      "static"
+    ],
+    "categories/p1/topics/new/": [
+      "dynamic"
+    ],
+    "categories/p1/topics/p1": [
+      "static"
+    ],
+    "categories/p1/topics/p1/": [
+      "dynamic"
+    ],
+    "categories/p1/topics/p1/comments/new": [
+      "static"
+    ],
+    "categories/p1/topics/p1/comments/new/": [
+      "dynamic"
+    ],
+    "categories/p1/topics/p1/comments/p1/edit": [
+      "static"
+    ],
+    "categories/p1/topics/p1/comments/p1/edit/": [
+      "dynamic"
+    ],
+    "categories/p1/topics/p1/edit": [
+      "static"
+    ],
+    "categories/p1/topics/p1/edit/": [
+      "dynamic"
+    ],
+    "static/favicon.png": [
+      "static"
+    ],
+    "static/logo.png": [
+      "static"
+    ],
+    "static/orangeforum.css": [
+      "static"
+    ],
+    "static/orangeforum.js": [
+      "static"
+    ],
+    "users/p1": [
+      "static"
+    ],
+    "users/p1/": [
+      "dynamic"
+    ]
+  },
+  "access": {
+    "./": {
+      "roles": [
+        "admin",
+        "user1",
+        "user2",
+        "visitor"
+      ],
+      "kinds": [
+        "admin",
+        "user",
+        "visitor"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {},
+          "referer": null
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "GET",
+          "params": {},
+          "referer": null
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "GET",
+          "params": {},
+          "referer": "auth/otsignin"
+        },
+        {
+          "role": "visitor",
+          "kind": "visitor",
+          "method": "GET",
+          "params": {},
+          "referer": null
+        }
+      ]
+    },
+    "admin": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "POST",
+          "params": {
+            "gorilla.csrf.Token": "jmDnK5UXLkDKGySucETCcwWlQRg1xRxcI/0dftIKGZzLk8s+cY9JCOPZaFbCelSiKNsngxYyg69UYJt8l2PiGA==",
+            "forum_name": "Orange Forum",
+            "whitelisted_email_domains": "OTbSaF",
+            "logo": "IFTsCbw82RxYfJ7X4UBE",
+            "icon": "jlKuze5VSMND5CSljP8z",
+            "is_auto_user_creation_on_email_signin_enabled": "1",
+            "is_regular_signup_enabled": "1",
+            "is_regular_signin_enabled": "1",
+            "is_readonly": "1",
+            "is_private": "1",
+            "action": "Update"
+          },
+          "referer": "admin"
+        }
+      ]
+    },
+    "admin/categories/create": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "POST",
+          "params": {
+            "gorilla.csrf.Token": "nXrmqXwBmflYpDpfeBmFv4YJA3Tm6yjd+2ygPmyvcJ7Yicq8mJn+sXFmdqfKJxNuq3dl78Ucty6M8SY8KcaLGg==",
+            "name": "DRHL Test Name",
+            "description": "DRHL generated description for access-control testing.",
+            "action": "Add"
+          },
+          "referer": "admin"
+        }
+      ]
+    },
+    "admin/categories/p1": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "POST",
+          "params": {
+            "gorilla.csrf.Token": "w01AflKx21i1dbPLWo1L6ecq/DOtf1RDlj+KY6+yBoKGvmxrtim8EJy3/zPos904ylSaqI6Iy7Dhogxh6tv9Bg==",
+            "name": "wqe",
+            "description": "wqe",
+            "is_readonly": "1",
+            "is_private": "1",
+            "is_archived": "1",
+            "action": "Update"
+          },
+          "referer": "admin"
+        }
+      ]
+    },
+    "admin/mods/create": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "POST",
+          "params": {
+            "gorilla.csrf.Token": "lrp1xr2V1s3MCWnWkxjjP7ztfblmes8J5l+BbpObPWnTSVnTWQ2xheXLJS4hJnXukZMbIkWNUPqRwgds1vLG7Q==",
+            "mod_user_email": "user1@qq.com",
+            "action": "Add"
+          },
+          "referer": "admin"
+        }
+      ]
+    },
+    "admin/mods/delete": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "POST",
+          "params": {
+            "gorilla.csrf.Token": "NLRNjzbpOhlfpo9k3M0RDt44MWBs5BjhN7JN+F528iJxR2Ga0nFdUXZkw5xu84ff80ZX+08ThxJAL8v6Gx8Jpg==",
+            "mod_user_id": "2",
+            "action": "Remove"
+          },
+          "referer": "admin"
+        }
+      ]
+    },
+    "auth/changepass": {
+      "roles": [
+        "admin",
+        "user1",
+        "user2"
+      ],
+      "kinds": [
+        "admin",
+        "user"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "POST",
+          "params": {
+            "gorilla.csrf.Token": "xZFfipDIHG1cbBJdnUUXqxKjpqY4gja6fRgxG036arqcz7vhfRlVak9m2cENax1X6zk/0XtmR1JeBS9XKKu7FQ==",
+            "old_password": "12345678",
+            "password": "12345678",
+            "password2": "12345678",
+            "submit": "Change password"
+          },
+          "referer": "auth/changepass"
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "POST",
+          "params": {
+            "gorilla.csrf.Token": "KLB04ITCfzeXmKiQpdTVRlvgEg+AMwyab5DOzRi5UZtPY6PzzTowiTbHkHrD4wVnI1B5bgvAXmkseMhbipVJlg==",
+            "old_password": "12345678",
+            "password": "12345678",
+            "password2": "12345678",
+            "submit": "Change password"
+          },
+          "referer": "auth/changepass"
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "GET",
+          "params": {},
+          "referer": null
+        }
+      ]
+    },
+    "auth/otsignin": {
+      "roles": [
+        "user2",
+        "visitor"
+      ],
+      "kinds": [
+        "user",
+        "visitor"
+      ],
+      "requests": [
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "POST",
+          "params": {
+            "gorilla.csrf.Token": "bQG/a7lnoF0X8blQHiL+hQVxRzniwdinbCE0VC6neR745RH883EbYmyFx1xxikJN3gmzTkoc23tDYycWIyzQ9A==",
+            "next": "/forums/localhost/",
+            "email": "drhl@example.test",
+            "submit": "E-mail Signin Link"
+          },
+          "referer": "auth/otsignin"
+        },
+        {
+          "role": "visitor",
+          "kind": "visitor",
+          "method": "POST",
+          "params": {
+            "gorilla.csrf.Token": "Y/Gfv4KaqSaQzDEq2xyK+p814cGpabvDCy+TVRPzNaSMHab3MHX2EEsU1MUh3C2Rkj3cAhhCvXqYxAsZUhKlCQ==",
+            "next": "/forums/localhost/",
+            "email": "drhl@example.test",
+            "submit": "E-mail Signin Link"
+          },
+          "referer": "auth/otsignin"
+        }
+      ]
+    },
+    "auth/signin": {
+      "roles": [
+        "user2",
+        "visitor"
+      ],
+      "kinds": [
+        "user",
+        "visitor"
+      ],
+      "requests": [
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "POST",
+          "params": {
+            "gorilla.csrf.Token": "ov2XKngciYxsVq2dyTHCLO8vLbQLodgr1AEDVUJ6VJw3GTm9Mgoysxci05GmmX7kNFfZw6N82/f7QxAXT/H9dg==",
+            "next": "/forums/localhost/",
+            "email": "user2@qq.com",
+            "password": "12345678",
+            "submit": "Signin"
+          },
+          "referer": null
+        },
+        {
+          "role": "visitor",
+          "kind": "visitor",
+          "method": "POST",
+          "params": {
+            "gorilla.csrf.Token": "CZWp7NNZ4d63Xs/IHZi7hIlLUY/bsKiDZiDyHpmJ6krmeZCkYba+6GyGKifnWBzvhENsTGqbrjr1y2pS2Gh65w==",
+            "next": "/forums/localhost/",
+            "email": "drhl@example.test",
+            "password": "12345678",
+            "submit": "Signin"
+          },
+          "referer": "auth/signin"
+        }
+      ]
+    },
+    "auth/signup": {
+      "roles": [
+        "user2",
+        "visitor"
+      ],
+      "kinds": [
+        "user",
+        "visitor"
+      ],
+      "requests": [
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "POST",
+          "params": {
+            "gorilla.csrf.Token": "Z1pubBO5JANTRdtNT7NWY/ZXOb2WSXwTx/BHIDdeyxPyvsD7Wa+fPCgxpUEgG+qrLS/Nyj6Uf8/oslRiOtVi+Q==",
+            "next": "/forums/localhost/",
+            "email": "drhl@example.test",
+            "password": "12345678",
+            "password2": "12345678",
+            "submit": "Signup"
+          },
+          "referer": "auth/signup"
+        },
+        {
+          "role": "visitor",
+          "kind": "visitor",
+          "method": "POST",
+          "params": {
+            "gorilla.csrf.Token": "6ABTvie2Kvy/SIyQ6XaUlfj3FOqpH8FJ+jFvkHKEBbcH7Gr2lVl1ymSQaX8TtjP+9f8pKRg0x/Bp2vfcM2WVGg==",
+            "next": "/forums/localhost/",
+            "email": "drhl@example.test",
+            "password": "12345678",
+            "password2": "12345678",
+            "submit": "Signup"
+          },
+          "referer": "auth/signup"
+        }
+      ]
+    },
+    "categories/p1/": {
+      "roles": [
+        "admin",
+        "user1",
+        "user2",
+        "visitor"
+      ],
+      "kinds": [
+        "admin",
+        "user",
+        "visitor"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {},
+          "referer": null
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "GET",
+          "params": {},
+          "referer": "./"
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "GET",
+          "params": {},
+          "referer": "./"
+        },
+        {
+          "role": "visitor",
+          "kind": "visitor",
+          "method": "GET",
+          "params": {},
+          "referer": "./"
+        }
+      ]
+    },
+    "categories/p1/topics/new/": {
+      "roles": [
+        "admin",
+        "user1",
+        "user2",
+        "visitor"
+      ],
+      "kinds": [
+        "admin",
+        "user",
+        "visitor"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {},
+          "referer": null
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "POST",
+          "params": {
+            "gorilla.csrf.Token": "2Y7j/rtVlZZ8TNB4jHWe9X/S6mptPkxMJKI87Sfo1lMBWMVcDJDN/RPjlRfynaNdCNEPOo6fCf9Qsshe1BDbUQ==",
+            "title": "DRHL Test Topic",
+            "content": "DRHL generated content for access-control testing.",
+            "action": "Submit"
+          },
+          "referer": "categories/p1/topics/new/"
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "GET",
+          "params": {},
+          "referer": "categories/p1/"
+        },
+        {
+          "role": "visitor",
+          "kind": "visitor",
+          "method": "GET",
+          "params": {},
+          "referer": "categories/p1/"
+        }
+      ]
+    },
+    "categories/p1/topics/p1/": {
+      "roles": [
+        "admin",
+        "user1",
+        "user2",
+        "visitor"
+      ],
+      "kinds": [
+        "admin",
+        "user",
+        "visitor"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {},
+          "referer": null
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "GET",
+          "params": {},
+          "referer": "categories/p1/"
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "GET",
+          "params": {},
+          "referer": "categories/p1/"
+        },
+        {
+          "role": "visitor",
+          "kind": "visitor",
+          "method": "GET",
+          "params": {},
+          "referer": "categories/p1/"
+        }
+      ]
+    },
+    "categories/p1/topics/p1/comments/new/": {
+      "roles": [
+        "admin",
+        "user1",
+        "user2"
+      ],
+      "kinds": [
+        "admin",
+        "user"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {},
+          "referer": null
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "POST",
+          "params": {
+            "gorilla.csrf.Token": "svBR9lFTJ1GdZoH+ea6lMnYIJkI+nxUX8XlXb99YgbVqJndU5pZ/OvLJxJEHRpiaAQvDEt0+UKSFaaPcLKCMtw==",
+            "content": "DRHL generated content for access-control testing.",
+            "action": "Submit"
+          },
+          "referer": "categories/p1/topics/p1/comments/new/"
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "GET",
+          "params": {},
+          "referer": null
+        }
+      ]
+    },
+    "categories/p1/topics/p1/comments/p1/edit/": {
+      "roles": [
+        "user1"
+      ],
+      "kinds": [
+        "user"
+      ],
+      "requests": [
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "POST",
+          "params": {
+            "gorilla.csrf.Token": "6Mqz5/jBdrH4s/gOSlvP5dTmrcAGVkFCAKmwWYwFN1kwHJVFTwQu2pccvWE0s/JNo+VIkOX3BPF0uUTqf/06Ww==",
+            "content": "> wwww6EYFpUSJLbAHDn1LEgIjpFuofEGHiB",
+            "action": "Delete"
+          },
+          "referer": "categories/p1/topics/p1/comments/p1/edit/"
+        }
+      ]
+    },
+    "categories/p1/topics/p1/edit/": {
+      "roles": [
+        "admin",
+        "user1"
+      ],
+      "kinds": [
+        "admin",
+        "user"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {},
+          "referer": null
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "POST",
+          "params": {
+            "gorilla.csrf.Token": "gKi7tL82oSIjmM/k5UcFhoK5wOxAz4s7rHjOZ8KmZgdYfp0WCPP5SUw3ioubrzgu9bolvKNuzojYaDrUMV5rBQ==",
+            "title": "DRHL Test Topic",
+            "content": "DRHL generated content for access-control testing.",
+            "action": "Delete"
+          },
+          "referer": "categories/p1/topics/p1/edit/"
+        }
+      ]
+    },
+    "users/p1/": {
+      "roles": [
+        "admin",
+        "user1",
+        "user2",
+        "visitor"
+      ],
+      "kinds": [
+        "admin",
+        "user",
+        "visitor"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "POST",
+          "params": {
+            "gorilla.csrf.Token": "PFVuHZ2QizRQwhsPol2tcVRgzvwD4uz7n6tJvf+4U6R5pkIIeQjsfHkAV/cQYzugeR6oZyAVcwjoNs+/utGoIA==",
+            "display_name": "User2",
+            "email": "user2@qq.com",
+            "is_banned": "1",
+            "action": "Update"
+          },
+          "referer": "users/p1/"
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "GET",
+          "params": {},
+          "referer": null
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "GET",
+          "params": {},
+          "referer": null
+        },
+        {
+          "role": "visitor",
+          "kind": "visitor",
+          "method": "GET",
+          "params": {},
+          "referer": "categories/p1/topics/p1/"
+        }
+      ]
+    }
+  },
+  "static_only": [
+    "auth/logout",
+    "auth/otsignin/p1",
+    "auth/signup/p1",
+    "categories/p1",
+    "categories/p1/topics/new",
+    "categories/p1/topics/p1",
+    "categories/p1/topics/p1/comments/new",
+    "categories/p1/topics/p1/comments/p1/edit",
+    "categories/p1/topics/p1/edit",
+    "static/favicon.png",
+    "static/logo.png",
+    "static/orangeforum.css",
+    "static/orangeforum.js",
+    "users/p1"
+  ],
+  "source_map": {
+    "./": "views/index.go",
+    "admin": "views/admin.go",
+    "admin/categories/p1": "views/admin.go",
+    "admin/mods/create": "views/admin.go",
+    "admin/mods/delete": "views/admin.go",
+    "auth/changepass": "views/auth.go",
+    "auth/logout": "views/auth.go",
+    "auth/otsignin": "views/auth.go",
+    "auth/otsignin/p1": "views/auth.go",
+    "auth/signin": "views/auth.go",
+    "auth/signup": "views/auth.go",
+    "auth/signup/p1": "views/auth.go",
+    "categories/p1": "views/topics.go",
+    "categories/p1/topics/new": "views/topics.go",
+    "categories/p1/topics/p1": "views/topics.go",
+    "categories/p1/topics/p1/comments/new": "views/comments.go",
+    "categories/p1/topics/p1/comments/p1/edit": "views/comments.go",
+    "categories/p1/topics/p1/edit": "views/topics.go",
+    "static/favicon.png": "views/static.go",
+    "static/logo.png": "views/static.go",
+    "static/orangeforum.css": "views/static.go",
+    "static/orangeforum.js": "views/static.go",
+    "users/p1": "views/users.go"
+  },
+  "static_classifications": {
+    "observed": [
+      "views/admin.go",
+      "views/auth.go",
+      "views/index.go"
+    ],
+    "internal_reachable": [
+      "models/categories.go",
+      "models/comments.go",
+      "models/config.go",
+      "models/domains.go",
+      "models/migration.go",
+      "models/migration001.go",
+      "models/migration002.go",
+      "models/models.go",
+      "models/topics.go",
+      "models/users.go",
+      "models/utils.go",
+      "templates/teamplates.go"
+    ],
+    "public_unobserved": [
+      "views/comments.go",
+      "views/static.go",
+      "views/topics.go",
+      "views/users.go"
+    ],
+    "support_unreachable": [
+      "main.go",
+      "main_test.go",
+      "management.go",
+      "models_test.go",
+      "views/categories.go",
+      "views/domains.go",
+      "views/utils.go",
+      "views/views.go"
+    ]
+  }
+}

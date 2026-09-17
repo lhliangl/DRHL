@@ -1,0 +1,555 @@
+{
+  "vectors": [
+    {
+      "category": "static_only",
+      "page": "cart/add_coupon.php",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "cart/action.php?action=add&picid=18",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "action": "add",
+          "picid": "18"
+        },
+        "referer": "pictures/view.php?picid=18"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "cart/action.php?action=add&picid=19",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "action": "add",
+          "picid": "19"
+        },
+        "referer": "pictures/view.php?picid=19"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "cart/action.php?action=add&picid=20",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "action": "add",
+          "picid": "20"
+        },
+        "referer": "pictures/view.php?picid=20"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "cart/action.php?action=add&picid=21",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "action": "add",
+          "picid": "21"
+        },
+        "referer": null
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "cart/action.php?action=add&picid=22",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "action": "add",
+          "picid": "22"
+        },
+        "referer": "pictures/view.php?picid=22"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "cart/action.php?action=add&picid=23",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "action": "add",
+          "picid": "23"
+        },
+        "referer": "pictures/view.php?picid=23"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "cart/action.php?action=add&picid=24",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "action": "add",
+          "picid": "24"
+        },
+        "referer": "pictures/view.php?picid=24"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "cart/action.php?action=add&picid=46",
+      "authorized_roles": [
+        "user2"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "action": "add",
+          "picid": "46"
+        },
+        "referer": "pictures/view.php?picid=46"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "cart/action.php?action=add&picid=47",
+      "authorized_roles": [
+        "user1"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "action": "add",
+          "picid": "47"
+        },
+        "referer": "pictures/view.php?picid=47"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "cart/action.php?action=addcoupon",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "couponcode": "value_d6ff845c"
+        },
+        "referer": "cart/review.php"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "cart/action.php?action=delete",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "pics[]": "47"
+        },
+        "referer": "cart/review.php"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "cart/confirm.php",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": "cart/review.php"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "cart/review.php",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": "cart/action.php?action=add&picid=21"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "comments/add_comment.php",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "previewid": "79",
+          "picid": "46"
+        },
+        "referer": "comments/preview_comment.php"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "comments/delete_preview_comment.php",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "previewid": "79",
+          "picid": "46"
+        },
+        "referer": "comments/preview_comment.php"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "comments/preview_comment.php",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "text": "value_3c14cc2c",
+          "picid": "47"
+        },
+        "referer": "pictures/view.php?picid=47"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "error.php?msg=p1",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "msg": "You have no cart, nothing to delete!"
+        },
+        "referer": "cart/review.php"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "pictures/high_quality.php?key=MTE0MTkyMQ%3D%3D&picid=20",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "picid": "20",
+          "key": "MTE0MTkyMQ=="
+        },
+        "referer": null
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "pictures/high_quality.php?key=MzI0ODk4OA%3D%3D&picid=23",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "picid": "23",
+          "key": "MzI0ODk4OA=="
+        },
+        "referer": null
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "pictures/high_quality.php?key=NDAxNjQwNA%3D%3D&picid=19",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "picid": "19",
+          "key": "NDAxNjQwNA=="
+        },
+        "referer": "pictures/purchased.php"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "pictures/high_quality.php?key=NDg0MDUz&picid=24",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "picid": "24",
+          "key": "NDg0MDUz"
+        },
+        "referer": "pictures/purchased.php"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "pictures/high_quality.php?key=NTQ3MTg1Ng%3D%3D&picid=18",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "picid": "18",
+          "key": "NTQ3MTg1Ng=="
+        },
+        "referer": "pictures/purchased.php"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "pictures/high_quality.php?key=NzczMjk4OA%3D%3D&picid=21",
+      "authorized_roles": [
+        "user1"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "picid": "21",
+          "key": "NzczMjk4OA=="
+        },
+        "referer": "pictures/purchased.php"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "pictures/high_quality.php?key=ODE5Mjk0Nw%3D%3D&picid=22",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "picid": "22",
+          "key": "ODE5Mjk0Nw=="
+        },
+        "referer": "pictures/purchased.php"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "pictures/purchased.php",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": "users/home.php"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "pictures/view.php?picid=",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "picid": ""
+        },
+        "referer": "comments/delete_preview_comment.php"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "users/sample.php?userid=p1",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "userid": "4"
+        },
+        "referer": "users/home.php"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "horizontal",
+      "page": "users/sample.php?userid=p1",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "userid": "4"
+        },
+        "referer": "users/home.php"
+      },
+      "identity_parameters": [
+        "userid"
+      ],
+      "page_overrides": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "users/similar.php",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": "users/home.php"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "authenticated_only",
+      "page": "users/view.php?userid=p1",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "userid": "4"
+        },
+        "referer": "pictures/view.php?picid=46"
+      },
+      "identity_parameters": [],
+      "page_overrides": []
+    },
+    {
+      "category": "horizontal",
+      "page": "users/view.php?userid=p1",
+      "authorized_roles": [
+        "user1",
+        "user2"
+      ],
+      "request": {
+        "method": "GET",
+        "params": {
+          "userid": "4"
+        },
+        "referer": "pictures/view.php?picid=46"
+      },
+      "identity_parameters": [
+        "userid"
+      ],
+      "page_overrides": []
+    }
+  ]
+}

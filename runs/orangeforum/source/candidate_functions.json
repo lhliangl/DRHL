@@ -1,0 +1,1398 @@
+{
+  "functions": [
+    {
+      "id": "main.go:LCF1",
+      "path": "main.go",
+      "name": "main",
+      "parameters": [],
+      "body": "{\n\trand.Seed(time.Now().UnixNano())\n\n\tsecretKey := os.Getenv(\"SECRET_KEY\") // Ex: \"s6JM1e8JTAphtKNR2y27XA8kkAaXOSYB\" // 32 byte long\n\tdsn := os.Getenv(\"ORANGEFORUM_DSN\")\n\n\tport := flag.String(\"port\", \"9123\", \"Port to listen on\")\n\tshouldMigrate := flag.Bool(\"migrate\", false, \"Migrate DB\")\n\tcreateDomain := flag.Bool(\"createdomain\", false, \"Create domain (interactive)\")\n\tcreateSuperUser := flag.Bool(\"createsuperuser\", false, \"Create superuser (interactive)\")\n\tcreateUser := flag.Bool(\"createuser\", false, \"Create user (interactive)\")\n\tchangePasswd := flag.Bool(\"changepasswd\", false, \"Change password (interactive)\")\n\tmakeSuperUser := flag.Bool(\"makesuperuser\", false, \"Make user superuser\")\n\tremoveSuperUserPrivilege := flag.Bool(\"removesuperuser\", false, \"Remove superuser privilege\")\n\tdeleteDomain := flag.Bool(\"deletedomain\", false, \"Delete domain\")\n\tdeleteUser := flag.Bool(\"deleteuser\", false, \"Delete user\")\n\tsetSMTP := flag.Bool(\"setsmtp\", false, \"Set SMTP Settings\")\n\tdisableLogger := flag.Bool(\"disablelogger\", false, \"Disable HTTP request logger\")\n\n\tflag.Parse()\n\n\tif dsn == \"\" {\n\t\tdsn = \"postgres://dbuser:dbpass@localhost:5432/testdb\"\n\t\tglog.Warningf(\"Environment variable ORANGEFORUM_DSN not set. Using default dsn: %s\\n\", dsn)\n\t}\n\n\tdb := sqlx.MustConnect(\"pgx\", dsn)\n\tmodels.DB = db\n\n\tif *shouldMigrate {\n\t\terr := models.Migrate()\n\t\tif err != nil {\n\t\t\tglog.Error(err)\n\t\t}\n\t\treturn\n\t}\n\n\terr := models.IsMigrationNeeded()\n\tif err != nil {\n\t\tglog.Error(err)\n\t\treturn\n\t}\n\n\tif *createDomain {\n\t\tcommandCreateDomain()\n\t\treturn\n\t}\n\n\tif *createSuperUser {\n\t\tcommandCreateSuperUser()\n\t\treturn\n\t}\n\n\tif *changePasswd {\n\t\tcommandChangePasswd()\n\t\treturn\n\t}\n\n\tif *createUser {\n\t\tcommandCreateUser()\n\t\treturn\n\t}\n\n\tif *makeSuperUser {\n\t\tcommandMakeSuperUser()\n\t\treturn\n\t}\n\n\tif *removeSuperUserPrivilege {\n\t\tcommandRemoveSuperUserPrivilege()\n\t\treturn\n\t}\n\n\tif *deleteDomain {\n\t\tcommandDeleteDomain()\n\t\treturn\n\t}\n\n\tif *deleteUser {\n\t\tcommandDeleteUser()\n\t\treturn\n\t}\n\n\tif *setSMTP {\n\t\tcommandSetupSMTP()\n\t\treturn\n\t}\n\n\tif len(secretKey) != 32 {\n\t\tglog.Warningf(\"Secret key in environment variable SECRET_KEY does not have length 32. Using randomly generated key. This will invalidate any active sessions.\")\n\n\t\tvar letterRunes = []rune(\"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ\")\n\t\tb := make([]rune, 32)\n\t\tfor i := range b {\n\t\t\tb[i] = letterRunes[rand.Intn(len(letterRunes))]\n\t\t}\n\t\tsecretKey = string(b)\n\t}\n\n\tviews.SecretKey = secretKey\n\tr := views.GetRouter(false, *disableLogger)\n\n\tglog.Info(\"Starting server on port \" + *port)\n\thttp.ListenAndServe(\":\"+*port, r)\n}",
+      "start_line": 22,
+      "end_line": 126,
+      "code": "func main() {\n\trand.Seed(time.Now().UnixNano())\n\n\tsecretKey := os.Getenv(\"SECRET_KEY\") // Ex: \"s6JM1e8JTAphtKNR2y27XA8kkAaXOSYB\" // 32 byte long\n\tdsn := os.Getenv(\"ORANGEFORUM_DSN\")\n\n\tport := flag.String(\"port\", \"9123\", \"Port to listen on\")\n\tshouldMigrate := flag.Bool(\"migrate\", false, \"Migrate DB\")\n\tcreateDomain := flag.Bool(\"createdomain\", false, \"Create domain (interactive)\")\n\tcreateSuperUser := flag.Bool(\"createsuperuser\", false, \"Create superuser (interactive)\")\n\tcreateUser := flag.Bool(\"createuser\", false, \"Create user (interactive)\")\n\tchangePasswd := flag.Bool(\"changepasswd\", false, \"Change password (interactive)\")\n\tmakeSuperUser := flag.Bool(\"makesuperuser\", false, \"Make user superuser\")\n\tremoveSuperUserPrivilege := flag.Bool(\"removesuperuser\", false, \"Remove superuser privilege\")\n\tdeleteDomain := flag.Bool(\"deletedomain\", false, \"Delete domain\")\n\tdeleteUser := flag.Bool(\"deleteuser\", false, \"Delete user\")\n\tsetSMTP := flag.Bool(\"setsmtp\", false, \"Set SMTP Settings\")\n\tdisableLogger := flag.Bool(\"disablelogger\", false, \"Disable HTTP request logger\")\n\n\tflag.Parse()\n\n\tif dsn == \"\" {\n\t\tdsn = \"postgres://dbuser:dbpass@localhost:5432/testdb\"\n\t\tglog.Warningf(\"Environment variable ORANGEFORUM_DSN not set. Using default dsn: %s\\n\", dsn)\n\t}\n\n\tdb := sqlx.MustConnect(\"pgx\", dsn)\n\tmodels.DB = db\n\n\tif *shouldMigrate {\n\t\terr := models.Migrate()\n\t\tif err != nil {\n\t\t\tglog.Error(err)\n\t\t}\n\t\treturn\n\t}\n\n\terr := models.IsMigrationNeeded()\n\tif err != nil {\n\t\tglog.Error(err)\n\t\treturn\n\t}\n\n\tif *createDomain {\n\t\tcommandCreateDomain()\n\t\treturn\n\t}\n\n\tif *createSuperUser {\n\t\tcommandCreateSuperUser()\n\t\treturn\n\t}\n\n\tif *changePasswd {\n\t\tcommandChangePasswd()\n\t\treturn\n\t}\n\n\tif *createUser {\n\t\tcommandCreateUser()\n\t\treturn\n\t}\n\n\tif *makeSuperUser {\n\t\tcommandMakeSuperUser()\n\t\treturn\n\t}\n\n\tif *removeSuperUserPrivilege {\n\t\tcommandRemoveSuperUserPrivilege()\n\t\treturn\n\t}\n\n\tif *deleteDomain {\n\t\tcommandDeleteDomain()\n\t\treturn\n\t}\n\n\tif *deleteUser {\n\t\tcommandDeleteUser()\n\t\treturn\n\t}\n\n\tif *setSMTP {\n\t\tcommandSetupSMTP()\n\t\treturn\n\t}\n\n\tif len(secretKey) != 32 {\n\t\tglog.Warningf(\"Secret key in environment variable SECRET_KEY does not have length 32. Using randomly generated key. This will invalidate any active sessions.\")\n\n\t\tvar letterRunes = []rune(\"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ\")\n\t\tb := make([]rune, 32)\n\t\tfor i := range b {\n\t\t\tb[i] = letterRunes[rand.Intn(len(letterRunes))]\n\t\t}\n\t\tsecretKey = string(b)\n\t}\n\n\tviews.SecretKey = secretKey\n\tr := views.GetRouter(false, *disableLogger)\n\n\tglog.Info(\"Starting server on port \" + *port)\n\thttp.ListenAndServe(\":\"+*port, r)\n}"
+    },
+    {
+      "id": "management.go:LCF2",
+      "path": "management.go",
+      "name": "getCreds",
+      "parameters": [],
+      "body": "{\n\tvar domainName string\n\tfmt.Printf(\"Domain name: \")\n\tfmt.Scanf(\"%s\\n\", &domainName)\n\n\tdomainID := models.GetDomainIDByName(domainName)\n\tif domainID == nil {\n\t\tfmt.Printf(\"[ERROR] Invalid domain\\n\")\n\t\treturn -1, \"\", \"\", \"\"\n\t}\n\n\tvar email string\n\tfmt.Printf(\"E-mail: \")\n\tfmt.Scanf(\"%s\\n\", &email)\n\n\tif strings.Contains(email, \" \") || !strings.Contains(email, \"@\") {\n\t\tfmt.Printf(\"[ERROR] Invalid email\\n\")\n\t\treturn -1, \"\", \"\", \"\"\n\t}\n\n\tuserName := strings.Split(email, \"@\")[0]\n\tuserName = strings.Title(strings.ToLower(userName))\n\n\tfmt.Printf(\"Password: \")\n\tpassword, err := terminal.ReadPassword(int(syscall.Stdin))\n\tfmt.Printf(\"\\n\")\n\tif err != nil {\n\t\tfmt.Printf(\"[ERROR] %s\\n\", err)\n\t\treturn -1, \"\", \"\", \"\"\n\t}\n\tif len(password) < 8 {\n\t\tfmt.Printf(\"[ERROR] Password should have at least 8 characters.\\n\")\n\t\treturn -1, \"\", \"\", \"\"\n\t}\n\n\tfmt.Printf(\"Password (again): \")\n\tpassword2, err := terminal.ReadPassword(int(syscall.Stdin))\n\tfmt.Printf(\"\\n\")\n\tif err != nil {\n\t\tfmt.Printf(\"[ERROR] %s\\n\", err)\n\t}\n\n\tpass := string(password)\n\tpass2 := string(password2)\n\tif pass != pass2 {\n\t\tfmt.Printf(\"[ERROR] The two psasswords do not match.\\n\")\n\t\treturn -1, \"\", \"\", \"\"\n\t}\n\n\treturn *domainID, email, userName, pass\n}",
+      "start_line": 16,
+      "end_line": 66,
+      "code": "func getCreds() (int, string, string, string) {\n\tvar domainName string\n\tfmt.Printf(\"Domain name: \")\n\tfmt.Scanf(\"%s\\n\", &domainName)\n\n\tdomainID := models.GetDomainIDByName(domainName)\n\tif domainID == nil {\n\t\tfmt.Printf(\"[ERROR] Invalid domain\\n\")\n\t\treturn -1, \"\", \"\", \"\"\n\t}\n\n\tvar email string\n\tfmt.Printf(\"E-mail: \")\n\tfmt.Scanf(\"%s\\n\", &email)\n\n\tif strings.Contains(email, \" \") || !strings.Contains(email, \"@\") {\n\t\tfmt.Printf(\"[ERROR] Invalid email\\n\")\n\t\treturn -1, \"\", \"\", \"\"\n\t}\n\n\tuserName := strings.Split(email, \"@\")[0]\n\tuserName = strings.Title(strings.ToLower(userName))\n\n\tfmt.Printf(\"Password: \")\n\tpassword, err := terminal.ReadPassword(int(syscall.Stdin))\n\tfmt.Printf(\"\\n\")\n\tif err != nil {\n\t\tfmt.Printf(\"[ERROR] %s\\n\", err)\n\t\treturn -1, \"\", \"\", \"\"\n\t}\n\tif len(password) < 8 {\n\t\tfmt.Printf(\"[ERROR] Password should have at least 8 characters.\\n\")\n\t\treturn -1, \"\", \"\", \"\"\n\t}\n\n\tfmt.Printf(\"Password (again): \")\n\tpassword2, err := terminal.ReadPassword(int(syscall.Stdin))\n\tfmt.Printf(\"\\n\")\n\tif err != nil {\n\t\tfmt.Printf(\"[ERROR] %s\\n\", err)\n\t}\n\n\tpass := string(password)\n\tpass2 := string(password2)\n\tif pass != pass2 {\n\t\tfmt.Printf(\"[ERROR] The two psasswords do not match.\\n\")\n\t\treturn -1, \"\", \"\", \"\"\n\t}\n\n\treturn *domainID, email, userName, pass\n}"
+    },
+    {
+      "id": "management.go:LCF3",
+      "path": "management.go",
+      "name": "commandCreateSuperUser",
+      "parameters": [],
+      "body": "{\n\tfmt.Printf(\"Creating superuser...\\n\")\n\tdomainID, email, userName, passwd := getCreds()\n\tif userName != \"\" && passwd != \"\" {\n\t\tif err := models.CreateSuperUser(domainID, email, userName, passwd); err != nil {\n\t\t\tfmt.Printf(\"Error creating superuser: %s\\n\", err)\n\t\t}\n\t}\n}",
+      "start_line": 68,
+      "end_line": 76,
+      "code": "func commandCreateSuperUser() {\n\tfmt.Printf(\"Creating superuser...\\n\")\n\tdomainID, email, userName, passwd := getCreds()\n\tif userName != \"\" && passwd != \"\" {\n\t\tif err := models.CreateSuperUser(domainID, email, userName, passwd); err != nil {\n\t\t\tfmt.Printf(\"Error creating superuser: %s\\n\", err)\n\t\t}\n\t}\n}"
+    },
+    {
+      "id": "management.go:LCF4",
+      "path": "management.go",
+      "name": "commandCreateUser",
+      "parameters": [],
+      "body": "{\n\tfmt.Printf(\"Creating user...\\n\")\n\tdomainID, email, userName, passwd := getCreds()\n\tif userName != \"\" && passwd != \"\" {\n\t\tif err := models.CreateUser(domainID, email, userName, passwd); err != nil {\n\t\t\tfmt.Printf(\"Error creating superuser: %s\\n\", err)\n\t\t}\n\t}\n}",
+      "start_line": 78,
+      "end_line": 86,
+      "code": "func commandCreateUser() {\n\tfmt.Printf(\"Creating user...\\n\")\n\tdomainID, email, userName, passwd := getCreds()\n\tif userName != \"\" && passwd != \"\" {\n\t\tif err := models.CreateUser(domainID, email, userName, passwd); err != nil {\n\t\t\tfmt.Printf(\"Error creating superuser: %s\\n\", err)\n\t\t}\n\t}\n}"
+    },
+    {
+      "id": "management.go:LCF5",
+      "path": "management.go",
+      "name": "commandChangePasswd",
+      "parameters": [],
+      "body": "{\n\tfmt.Printf(\"Enter new credentials...\\n\")\n\tdomainID, email, _, passwd := getCreds()\n\tif passwd != \"\" {\n\t\tif err := models.ChangePasswd(domainID, email, passwd); err != nil {\n\t\t\tfmt.Printf(\"Error changing password: %s\\n\", err)\n\t\t}\n\t}\n}",
+      "start_line": 88,
+      "end_line": 96,
+      "code": "func commandChangePasswd() {\n\tfmt.Printf(\"Enter new credentials...\\n\")\n\tdomainID, email, _, passwd := getCreds()\n\tif passwd != \"\" {\n\t\tif err := models.ChangePasswd(domainID, email, passwd); err != nil {\n\t\t\tfmt.Printf(\"Error changing password: %s\\n\", err)\n\t\t}\n\t}\n}"
+    },
+    {
+      "id": "management.go:LCF6",
+      "path": "management.go",
+      "name": "commandCreateDomain",
+      "parameters": [],
+      "body": "{\n\tfmt.Printf(\"Creating domain...\\n\")\n\n\tvar domainName string\n\tfmt.Printf(\"Domain name: \")\n\tfmt.Scanf(\"%s\\n\", &domainName)\n\n\terr := models.CreateDomain(domainName)\n\tif err != nil {\n\t\tfmt.Printf(\"Error creating domain: %s\\n\", err)\n\t}\n}",
+      "start_line": 98,
+      "end_line": 109,
+      "code": "func commandCreateDomain() {\n\tfmt.Printf(\"Creating domain...\\n\")\n\n\tvar domainName string\n\tfmt.Printf(\"Domain name: \")\n\tfmt.Scanf(\"%s\\n\", &domainName)\n\n\terr := models.CreateDomain(domainName)\n\tif err != nil {\n\t\tfmt.Printf(\"Error creating domain: %s\\n\", err)\n\t}\n}"
+    },
+    {
+      "id": "management.go:LCF7",
+      "path": "management.go",
+      "name": "commandMakeSuperUser",
+      "parameters": [],
+      "body": "{\n\tvar domainName string\n\tfmt.Printf(\"Domain name: \")\n\tfmt.Scanf(\"%s\\n\", &domainName)\n\n\tdomain := models.GetDomainByName(domainName)\n\tif domain == nil {\n\t\tfmt.Printf(\"[ERROR] Invalid domain\\n\")\n\t\treturn\n\t}\n\n\tvar email string\n\tfmt.Printf(\"E-mail: \")\n\tfmt.Scanf(\"%s\\n\", &email)\n\n\tuser := models.GetUserByEmail(domain.DomainID, email)\n\tif user == nil {\n\t\tfmt.Printf(\"[ERROR] Invalid user\\n\")\n\t\treturn\n\t}\n\n\tmodels.UpdateUserSuperUser(user.UserID, true)\n}",
+      "start_line": 111,
+      "end_line": 133,
+      "code": "func commandMakeSuperUser() {\n\tvar domainName string\n\tfmt.Printf(\"Domain name: \")\n\tfmt.Scanf(\"%s\\n\", &domainName)\n\n\tdomain := models.GetDomainByName(domainName)\n\tif domain == nil {\n\t\tfmt.Printf(\"[ERROR] Invalid domain\\n\")\n\t\treturn\n\t}\n\n\tvar email string\n\tfmt.Printf(\"E-mail: \")\n\tfmt.Scanf(\"%s\\n\", &email)\n\n\tuser := models.GetUserByEmail(domain.DomainID, email)\n\tif user == nil {\n\t\tfmt.Printf(\"[ERROR] Invalid user\\n\")\n\t\treturn\n\t}\n\n\tmodels.UpdateUserSuperUser(user.UserID, true)\n}"
+    },
+    {
+      "id": "management.go:LCF8",
+      "path": "management.go",
+      "name": "commandRemoveSuperUserPrivilege",
+      "parameters": [],
+      "body": "{\n\tvar domainName string\n\tfmt.Printf(\"Domain name: \")\n\tfmt.Scanf(\"%s\\n\", &domainName)\n\n\tdomain := models.GetDomainByName(domainName)\n\tif domain == nil {\n\t\tfmt.Printf(\"[ERROR] Invalid domain\\n\")\n\t\treturn\n\t}\n\n\tvar email string\n\tfmt.Printf(\"E-mail: \")\n\tfmt.Scanf(\"%s\\n\", &email)\n\n\tuser := models.GetUserByEmail(domain.DomainID, email)\n\tif user == nil {\n\t\tfmt.Printf(\"[ERROR] Invalid user\\n\")\n\t\treturn\n\t}\n\n\tmodels.UpdateUserSuperUser(user.UserID, false)\n}",
+      "start_line": 135,
+      "end_line": 157,
+      "code": "func commandRemoveSuperUserPrivilege() {\n\tvar domainName string\n\tfmt.Printf(\"Domain name: \")\n\tfmt.Scanf(\"%s\\n\", &domainName)\n\n\tdomain := models.GetDomainByName(domainName)\n\tif domain == nil {\n\t\tfmt.Printf(\"[ERROR] Invalid domain\\n\")\n\t\treturn\n\t}\n\n\tvar email string\n\tfmt.Printf(\"E-mail: \")\n\tfmt.Scanf(\"%s\\n\", &email)\n\n\tuser := models.GetUserByEmail(domain.DomainID, email)\n\tif user == nil {\n\t\tfmt.Printf(\"[ERROR] Invalid user\\n\")\n\t\treturn\n\t}\n\n\tmodels.UpdateUserSuperUser(user.UserID, false)\n}"
+    },
+    {
+      "id": "management.go:LCF9",
+      "path": "management.go",
+      "name": "commandDeleteDomain",
+      "parameters": [],
+      "body": "{\n\tvar domainName string\n\tfmt.Printf(\"Domain name: \")\n\tfmt.Scanf(\"%s\\n\", &domainName)\n\n\tdomain := models.GetDomainByName(domainName)\n\tif domain == nil {\n\t\tfmt.Printf(\"[ERROR] Invalid domain\\n\")\n\t\treturn\n\t}\n\n\tmodels.DeleteDomainByID(domain.DomainID)\n}",
+      "start_line": 159,
+      "end_line": 171,
+      "code": "func commandDeleteDomain() {\n\tvar domainName string\n\tfmt.Printf(\"Domain name: \")\n\tfmt.Scanf(\"%s\\n\", &domainName)\n\n\tdomain := models.GetDomainByName(domainName)\n\tif domain == nil {\n\t\tfmt.Printf(\"[ERROR] Invalid domain\\n\")\n\t\treturn\n\t}\n\n\tmodels.DeleteDomainByID(domain.DomainID)\n}"
+    },
+    {
+      "id": "management.go:LCF10",
+      "path": "management.go",
+      "name": "commandDeleteUser",
+      "parameters": [],
+      "body": "{\n\tvar domainName string\n\tfmt.Printf(\"Domain name: \")\n\tfmt.Scanf(\"%s\\n\", &domainName)\n\n\tdomain := models.GetDomainByName(domainName)\n\tif domain == nil {\n\t\tfmt.Printf(\"[ERROR] Invalid domain\\n\")\n\t\treturn\n\t}\n\n\tvar email string\n\tfmt.Printf(\"E-mail: \")\n\tfmt.Scanf(\"%s\\n\", &email)\n\n\tuser := models.GetUserByEmail(domain.DomainID, email)\n\tif user == nil {\n\t\tfmt.Printf(\"[ERROR] Invalid user\\n\")\n\t\treturn\n\t}\n\n\tmodels.DeleteUserByID(user.UserID)\n}",
+      "start_line": 173,
+      "end_line": 195,
+      "code": "func commandDeleteUser() {\n\tvar domainName string\n\tfmt.Printf(\"Domain name: \")\n\tfmt.Scanf(\"%s\\n\", &domainName)\n\n\tdomain := models.GetDomainByName(domainName)\n\tif domain == nil {\n\t\tfmt.Printf(\"[ERROR] Invalid domain\\n\")\n\t\treturn\n\t}\n\n\tvar email string\n\tfmt.Printf(\"E-mail: \")\n\tfmt.Scanf(\"%s\\n\", &email)\n\n\tuser := models.GetUserByEmail(domain.DomainID, email)\n\tif user == nil {\n\t\tfmt.Printf(\"[ERROR] Invalid user\\n\")\n\t\treturn\n\t}\n\n\tmodels.DeleteUserByID(user.UserID)\n}"
+    },
+    {
+      "id": "management.go:LCF11",
+      "path": "management.go",
+      "name": "commandSetupSMTP",
+      "parameters": [],
+      "body": "{\n\tvar domainName string\n\tfmt.Printf(\"Domain name: \")\n\tfmt.Scanf(\"%s\\n\", &domainName)\n\n\tdomain := models.GetDomainByName(domainName)\n\tif domain == nil {\n\t\tfmt.Printf(\"[ERROR] Invalid domain\\n\")\n\t\treturn\n\t}\n\n\tvar smtpHost string\n\tfmt.Printf(\"SMTP Host: \")\n\tfmt.Scanf(\"%s\\n\", &smtpHost)\n\n\tvar smtpPort int\n\tfmt.Printf(\"SMTP Port: \")\n\tfmt.Scanf(\"%d\\n\", &smtpPort)\n\n\tvar smtpUser string\n\tfmt.Printf(\"SMTP User: \")\n\tfmt.Scanf(\"%s\\n\", &smtpUser)\n\n\tvar smtpPass string\n\tfmt.Printf(\"SMTP Password: \")\n\tfmt.Scanf(\"%s\\n\", &smtpPass)\n\n\tvar defaultFromEmail string\n\tfmt.Printf(\"Default from email: \")\n\tfmt.Scanf(\"%s\\n\", &defaultFromEmail)\n\n\tmodels.UpdateDomainSMTPByID(domain.DomainID, smtpHost, smtpPort, smtpUser, smtpPass, defaultFromEmail)\n}",
+      "start_line": 197,
+      "end_line": 229,
+      "code": "func commandSetupSMTP() {\n\tvar domainName string\n\tfmt.Printf(\"Domain name: \")\n\tfmt.Scanf(\"%s\\n\", &domainName)\n\n\tdomain := models.GetDomainByName(domainName)\n\tif domain == nil {\n\t\tfmt.Printf(\"[ERROR] Invalid domain\\n\")\n\t\treturn\n\t}\n\n\tvar smtpHost string\n\tfmt.Printf(\"SMTP Host: \")\n\tfmt.Scanf(\"%s\\n\", &smtpHost)\n\n\tvar smtpPort int\n\tfmt.Printf(\"SMTP Port: \")\n\tfmt.Scanf(\"%d\\n\", &smtpPort)\n\n\tvar smtpUser string\n\tfmt.Printf(\"SMTP User: \")\n\tfmt.Scanf(\"%s\\n\", &smtpUser)\n\n\tvar smtpPass string\n\tfmt.Printf(\"SMTP Password: \")\n\tfmt.Scanf(\"%s\\n\", &smtpPass)\n\n\tvar defaultFromEmail string\n\tfmt.Printf(\"Default from email: \")\n\tfmt.Scanf(\"%s\\n\", &defaultFromEmail)\n\n\tmodels.UpdateDomainSMTPByID(domain.DomainID, smtpHost, smtpPort, smtpUser, smtpPass, defaultFromEmail)\n}"
+    },
+    {
+      "id": "models/categories.go:LCF12",
+      "path": "models/categories.go",
+      "name": "IndexPageColorStr",
+      "parameters": [],
+      "body": "{\n\tcolors := []string{\"#666666\", \"#E74C3C\", \"#E67E22\", \"#F1C40F\", \"#2ECC71\", \"#3498DB\", \"#9B59B6\", \"#34495E\"}\n\treturn colors[c.CategoryID%len(colors)]\n}",
+      "start_line": 29,
+      "end_line": 32,
+      "code": "func (c *Category) IndexPageColorStr() string {\n\tcolors := []string{\"#666666\", \"#E74C3C\", \"#E67E22\", \"#F1C40F\", \"#2ECC71\", \"#3498DB\", \"#9B59B6\", \"#34495E\"}\n\treturn colors[c.CategoryID%len(colors)]\n}"
+    },
+    {
+      "id": "models/categories.go:LCF13",
+      "path": "models/categories.go",
+      "name": "NumTopicsStr",
+      "parameters": [],
+      "body": "{\n\treturn ApproxNumStr(c.NumTopics)\n}",
+      "start_line": 34,
+      "end_line": 36,
+      "code": "func (c *Category) NumTopicsStr() string {\n\treturn ApproxNumStr(c.NumTopics)\n}"
+    },
+    {
+      "id": "models/categories.go:LCF14",
+      "path": "models/categories.go",
+      "name": "CreateCategory",
+      "parameters": [
+        "domainID int",
+        "name string",
+        "description string"
+      ],
+      "body": "{\n\tvar id int\n\terr := DB.QueryRow(\"INSERT INTO categories(domain_id, name, description) VALUES($1, $2, $3) RETURNING category_id;\",\n\t\tdomainID, name, description,\n\t).Scan(&id)\n\tif err != nil {\n\t\tglog.Errorf(\"Error creating category: %s\\n\", err.Error())\n\t}\n\treturn id\n}",
+      "start_line": 38,
+      "end_line": 47,
+      "code": "func CreateCategory(domainID int, name string, description string) int {\n\tvar id int\n\terr := DB.QueryRow(\"INSERT INTO categories(domain_id, name, description) VALUES($1, $2, $3) RETURNING category_id;\",\n\t\tdomainID, name, description,\n\t).Scan(&id)\n\tif err != nil {\n\t\tglog.Errorf(\"Error creating category: %s\\n\", err.Error())\n\t}\n\treturn id\n}"
+    },
+    {
+      "id": "models/categories.go:LCF15",
+      "path": "models/categories.go",
+      "name": "GetCategoryByID",
+      "parameters": [
+        "categoryID int"
+      ],
+      "body": "{\n\tvar category Category\n\terr := DB.Get(&category, \"SELECT * FROM categories WHERE category_id = $1;\", categoryID)\n\tif err != nil {\n\t\tif err != sql.ErrNoRows {\n\t\t\tglog.Errorf(\"Error reading category: %s\", err.Error())\n\t\t}\n\t\treturn nil\n\t}\n\treturn &category\n}",
+      "start_line": 49,
+      "end_line": 59,
+      "code": "func GetCategoryByID(categoryID int) *Category {\n\tvar category Category\n\terr := DB.Get(&category, \"SELECT * FROM categories WHERE category_id = $1;\", categoryID)\n\tif err != nil {\n\t\tif err != sql.ErrNoRows {\n\t\t\tglog.Errorf(\"Error reading category: %s\", err.Error())\n\t\t}\n\t\treturn nil\n\t}\n\treturn &category\n}"
+    },
+    {
+      "id": "models/categories.go:LCF16",
+      "path": "models/categories.go",
+      "name": "GetCategoriesByDomainID",
+      "parameters": [
+        "domainID int"
+      ],
+      "body": "{\n\tcategories := []Category{}\n\terr := DB.Select(&categories, \"SELECT * FROM categories WHERE domain_id = $1 ORDER BY name;\", domainID)\n\tif err != nil {\n\t\tglog.Errorf(\"Error listing categories: %s\\n\", err.Error())\n\t}\n\treturn categories\n}",
+      "start_line": 61,
+      "end_line": 68,
+      "code": "func GetCategoriesByDomainID(domainID int) []Category {\n\tcategories := []Category{}\n\terr := DB.Select(&categories, \"SELECT * FROM categories WHERE domain_id = $1 ORDER BY name;\", domainID)\n\tif err != nil {\n\t\tglog.Errorf(\"Error listing categories: %s\\n\", err.Error())\n\t}\n\treturn categories\n}"
+    },
+    {
+      "id": "models/categories.go:LCF17",
+      "path": "models/categories.go",
+      "name": "UpdateCategoryByID",
+      "parameters": [
+        "categoryID int",
+        "name string",
+        "description string",
+        "isPrivate bool",
+        "isReadOnly bool",
+        "isArchived bool"
+      ],
+      "body": "{\n\tvar archivedAt interface{}\n\tif isArchived {\n\t\tarchivedAt = time.Now()\n\t}\n\t_, err := DB.Exec(`\n\t\tUPDATE categories SET \n\t\t\tname = $2,\n\t\t\tdescription = $3,\n\t\t\tis_private = $4,\n\t\t\tis_readonly = $5,\n\t\t\tarchived_at = $6\n\t\tWHERE\n\t\t\tcategory_id = $1;\n\t\t`,\n\t\tcategoryID, name, description, isPrivate, isReadOnly, archivedAt,\n\t)\n\n\tif err != nil {\n\t\tglog.Errorf(\"Error updating category: %s\\n\", err.Error())\n\t}\n}",
+      "start_line": 70,
+      "end_line": 91,
+      "code": "func UpdateCategoryByID(categoryID int, name string, description string, isPrivate bool, isReadOnly bool, isArchived bool) {\n\tvar archivedAt interface{}\n\tif isArchived {\n\t\tarchivedAt = time.Now()\n\t}\n\t_, err := DB.Exec(`\n\t\tUPDATE categories SET \n\t\t\tname = $2,\n\t\t\tdescription = $3,\n\t\t\tis_private = $4,\n\t\t\tis_readonly = $5,\n\t\t\tarchived_at = $6\n\t\tWHERE\n\t\t\tcategory_id = $1;\n\t\t`,\n\t\tcategoryID, name, description, isPrivate, isReadOnly, archivedAt,\n\t)\n\n\tif err != nil {\n\t\tglog.Errorf(\"Error updating category: %s\\n\", err.Error())\n\t}\n}"
+    },
+    {
+      "id": "models/comments.go:LCF18",
+      "path": "models/comments.go",
+      "name": "init",
+      "parameters": [],
+      "body": "{\n\tUGCPolicy.AllowAttrs(\"style\").Matching(regexp.MustCompile(\"^color:#[a-zA-Z0-9]+;background-color:#[a-zA-Z0-9]+$\")).OnElements(\"pre\")\n\tUGCPolicy.AllowAttrs(\"style\").Matching(regexp.MustCompile(\"^color:#[a-zA-Z0-9]+(;font-weight:[A-Za-z0-9]+)?$\")).OnElements(\"span\")\n}",
+      "start_line": 51,
+      "end_line": 54,
+      "code": "func init() {\n\tUGCPolicy.AllowAttrs(\"style\").Matching(regexp.MustCompile(\"^color:#[a-zA-Z0-9]+;background-color:#[a-zA-Z0-9]+$\")).OnElements(\"pre\")\n\tUGCPolicy.AllowAttrs(\"style\").Matching(regexp.MustCompile(\"^color:#[a-zA-Z0-9]+(;font-weight:[A-Za-z0-9]+)?$\")).OnElements(\"span\")\n}"
+    },
+    {
+      "id": "models/comments.go:LCF19",
+      "path": "models/comments.go",
+      "name": "CreatedAtStr",
+      "parameters": [],
+      "body": "{\n\treturn RelTimeNowStr(c.CreatedAt)\n}",
+      "start_line": 56,
+      "end_line": 58,
+      "code": "func (c *CommentWithUser) CreatedAtStr() string {\n\treturn RelTimeNowStr(c.CreatedAt)\n}"
+    },
+    {
+      "id": "models/comments.go:LCF20",
+      "path": "models/comments.go",
+      "name": "UserIconColorStr",
+      "parameters": [],
+      "body": "{\n\treturn UserIconColors[c.UserID%len(UserIconColors)]\n}",
+      "start_line": 60,
+      "end_line": 62,
+      "code": "func (c *CommentWithUser) UserIconColorStr() string {\n\treturn UserIconColors[c.UserID%len(UserIconColors)]\n}"
+    },
+    {
+      "id": "models/comments.go:LCF21",
+      "path": "models/comments.go",
+      "name": "ContentRenderMarkdown",
+      "parameters": [],
+      "body": "{\n\tcontent := strings.ReplaceAll(c.Content, \"\\r\\n\", \"\\n\")\n\tunsafe := blackfriday.Run([]byte(content), blackfriday.WithRenderer(ChromaRenderer))\n\thtml := UGCPolicy.SanitizeBytes(unsafe)\n\treturn template.HTML(string(html))\n}",
+      "start_line": 64,
+      "end_line": 69,
+      "code": "func (c CommentWithUser) ContentRenderMarkdown() template.HTML {\n\tcontent := strings.ReplaceAll(c.Content, \"\\r\\n\", \"\\n\")\n\tunsafe := blackfriday.Run([]byte(content), blackfriday.WithRenderer(ChromaRenderer))\n\thtml := UGCPolicy.SanitizeBytes(unsafe)\n\treturn template.HTML(string(html))\n}"
+    },
+    {
+      "id": "models/comments.go:LCF22",
+      "path": "models/comments.go",
+      "name": "CreateComment",
+      "parameters": [
+        "topicID int",
+        "userID int",
+        "content string",
+        "isSticky bool"
+      ],
+      "body": "{\n\tvar commentID int\n\terr := DB.QueryRow(\"INSERT INTO comments(topic_id, user_id, content, is_sticky) VALUES($1, $2, $3, $4) RETURNING comment_id;\",\n\t\ttopicID, userID, content, isSticky).Scan(&commentID)\n\tif err != nil {\n\t\tglog.Errorf(\"Error creating comment: %s\\n\", err.Error())\n\t\treturn -1\n\t}\n\t_, err2 := DB.Exec(\"UPDATE topics SET num_comments = (num_comments + 1) WHERE topic_id = $1;\", topicID)\n\tif err2 != nil {\n\t\tglog.Errorf(\"Error updating comment count: %s\\n\", err2.Error())\n\t}\n\t_, err3 := DB.Exec(\"UPDATE topics SET activity_at = current_timestamp WHERE topic_id = $1;\", topicID)\n\tif err3 != nil {\n\t\tglog.Errorf(\"Error updating activity time: %s\\n\", err3.Error())\n\t}\n\t_, err4 := DB.Exec(\"UPDATE users SET num_comments = (num_comments + 1) WHERE user_id = $1;\", userID)\n\tif err4 != nil {\n\t\tglog.Errorf(\"Error updating comment count: %s\\n\", err2.Error())\n\t}\n\treturn commentID\n}",
+      "start_line": 71,
+      "end_line": 92,
+      "code": "func CreateComment(topicID int, userID int, content string, isSticky bool) int {\n\tvar commentID int\n\terr := DB.QueryRow(\"INSERT INTO comments(topic_id, user_id, content, is_sticky) VALUES($1, $2, $3, $4) RETURNING comment_id;\",\n\t\ttopicID, userID, content, isSticky).Scan(&commentID)\n\tif err != nil {\n\t\tglog.Errorf(\"Error creating comment: %s\\n\", err.Error())\n\t\treturn -1\n\t}\n\t_, err2 := DB.Exec(\"UPDATE topics SET num_comments = (num_comments + 1) WHERE topic_id = $1;\", topicID)\n\tif err2 != nil {\n\t\tglog.Errorf(\"Error updating comment count: %s\\n\", err2.Error())\n\t}\n\t_, err3 := DB.Exec(\"UPDATE topics SET activity_at = current_timestamp WHERE topic_id = $1;\", topicID)\n\tif err3 != nil {\n\t\tglog.Errorf(\"Error updating activity time: %s\\n\", err3.Error())\n\t}\n\t_, err4 := DB.Exec(\"UPDATE users SET num_comments = (num_comments + 1) WHERE user_id = $1;\", userID)\n\tif err4 != nil {\n\t\tglog.Errorf(\"Error updating comment count: %s\\n\", err2.Error())\n\t}\n\treturn commentID\n}"
+    },
+    {
+      "id": "models/comments.go:LCF23",
+      "path": "models/comments.go",
+      "name": "GetCommentByID",
+      "parameters": [
+        "commentID int"
+      ],
+      "body": "{\n\tcomment := Comment{}\n\terr := DB.Get(&comment, \"SELECT * FROM comments WHERE comment_id = $1;\", commentID)\n\tif err != nil {\n\t\tif err != sql.ErrNoRows {\n\t\t\tglog.Errorf(\"Error reading comment: %s\", err.Error())\n\t\t}\n\t\treturn nil\n\t}\n\treturn &comment\n}",
+      "start_line": 94,
+      "end_line": 104,
+      "code": "func GetCommentByID(commentID int) *Comment {\n\tcomment := Comment{}\n\terr := DB.Get(&comment, \"SELECT * FROM comments WHERE comment_id = $1;\", commentID)\n\tif err != nil {\n\t\tif err != sql.ErrNoRows {\n\t\t\tglog.Errorf(\"Error reading comment: %s\", err.Error())\n\t\t}\n\t\treturn nil\n\t}\n\treturn &comment\n}"
+    },
+    {
+      "id": "models/comments.go:LCF24",
+      "path": "models/comments.go",
+      "name": "GetCommentsByTopicID",
+      "parameters": [
+        "topicID int"
+      ],
+      "body": "{\n\tvar comments []CommentWithUser\n\terr := DB.Select(&comments, `\n\tSELECT\n\t\tcomments.*, users.display_name, users.num_comments, users.is_superadmin, users.is_supermod\n\tFROM\n\t\tcomments INNER JOIN users ON comments.user_id = users.user_id\n\tWHERE\n\t\tcomments.topic_id = $1 ORDER BY comments.is_sticky DESC, comments.created_at;`,\n\t\ttopicID)\n\tif err != nil {\n\t\tif err != sql.ErrNoRows {\n\t\t\tglog.Errorf(\"Error reading comments: %s\\n\", err.Error())\n\t\t}\n\t}\n\treturn comments\n}",
+      "start_line": 106,
+      "end_line": 122,
+      "code": "func GetCommentsByTopicID(topicID int) []CommentWithUser {\n\tvar comments []CommentWithUser\n\terr := DB.Select(&comments, `\n\tSELECT\n\t\tcomments.*, users.display_name, users.num_comments, users.is_superadmin, users.is_supermod\n\tFROM\n\t\tcomments INNER JOIN users ON comments.user_id = users.user_id\n\tWHERE\n\t\tcomments.topic_id = $1 ORDER BY comments.is_sticky DESC, comments.created_at;`,\n\t\ttopicID)\n\tif err != nil {\n\t\tif err != sql.ErrNoRows {\n\t\t\tglog.Errorf(\"Error reading comments: %s\\n\", err.Error())\n\t\t}\n\t}\n\treturn comments\n}"
+    },
+    {
+      "id": "models/comments.go:LCF25",
+      "path": "models/comments.go",
+      "name": "UpdateCommentByID",
+      "parameters": [
+        "commentID int",
+        "content string",
+        "isSticky bool"
+      ],
+      "body": "{\n\t_, err := DB.Exec(\"UPDATE comments SET content = $2, is_sticky = $3 WHERE comment_id = $1;\", commentID, content, isSticky)\n\tif err != nil {\n\t\tglog.Errorf(\"Error updating comment: %s\\n\", err.Error())\n\t}\n}",
+      "start_line": 124,
+      "end_line": 129,
+      "code": "func UpdateCommentByID(commentID int, content string, isSticky bool) {\n\t_, err := DB.Exec(\"UPDATE comments SET content = $2, is_sticky = $3 WHERE comment_id = $1;\", commentID, content, isSticky)\n\tif err != nil {\n\t\tglog.Errorf(\"Error updating comment: %s\\n\", err.Error())\n\t}\n}"
+    },
+    {
+      "id": "models/comments.go:LCF26",
+      "path": "models/comments.go",
+      "name": "DeleteCommentByID",
+      "parameters": [
+        "commentID int",
+        "userID int",
+        "topicID int"
+      ],
+      "body": "{\n\t_, err := DB.Exec(\"DELETE FROM comments WHERE comment_id = $1;\", commentID)\n\tif err != nil {\n\t\tglog.Errorf(\"Error deleting comment: %s\\n\", err.Error())\n\t}\n\t_, err2 := DB.Exec(\"UPDATE topics SET num_comments = (num_comments - 1) WHERE topic_id = $1;\", topicID)\n\tif err2 != nil {\n\t\tglog.Errorf(\"Error updating comment count: %s\\n\", err2.Error())\n\t}\n\t_, err4 := DB.Exec(\"UPDATE users SET num_comments = (num_comments - 1) WHERE user_id = $1;\", userID)\n\tif err4 != nil {\n\t\tglog.Errorf(\"Error updating comment count: %s\\n\", err2.Error())\n\t}\n}",
+      "start_line": 131,
+      "end_line": 144,
+      "code": "func DeleteCommentByID(commentID int, userID int, topicID int) {\n\t_, err := DB.Exec(\"DELETE FROM comments WHERE comment_id = $1;\", commentID)\n\tif err != nil {\n\t\tglog.Errorf(\"Error deleting comment: %s\\n\", err.Error())\n\t}\n\t_, err2 := DB.Exec(\"UPDATE topics SET num_comments = (num_comments - 1) WHERE topic_id = $1;\", topicID)\n\tif err2 != nil {\n\t\tglog.Errorf(\"Error updating comment count: %s\\n\", err2.Error())\n\t}\n\t_, err4 := DB.Exec(\"UPDATE users SET num_comments = (num_comments - 1) WHERE user_id = $1;\", userID)\n\tif err4 != nil {\n\t\tglog.Errorf(\"Error updating comment count: %s\\n\", err2.Error())\n\t}\n}"
+    },
+    {
+      "id": "models/config.go:LCF27",
+      "path": "models/config.go",
+      "name": "GetDBVersion",
+      "parameters": [],
+      "body": "{\n\tver := GetConfigValue(DBVersion)\n\tiver, err := strconv.Atoi(ver)\n\tif err != nil {\n\t\treturn -1\n\t}\n\treturn iver\n}",
+      "start_line": 17,
+      "end_line": 24,
+      "code": "func GetDBVersion() int {\n\tver := GetConfigValue(DBVersion)\n\tiver, err := strconv.Atoi(ver)\n\tif err != nil {\n\t\treturn -1\n\t}\n\treturn iver\n}"
+    },
+    {
+      "id": "models/config.go:LCF28",
+      "path": "models/config.go",
+      "name": "GetConfigValue",
+      "parameters": [
+        "key string"
+      ],
+      "body": "{\n\tvar val string\n\terr := DB.Get(&val, \"SELECT val FROM configs WHERE name=$1;\", key)\n\tif err != nil {\n\t\treturn \"\"\n\t}\n\treturn val\n}",
+      "start_line": 26,
+      "end_line": 33,
+      "code": "func GetConfigValue(key string) string {\n\tvar val string\n\terr := DB.Get(&val, \"SELECT val FROM configs WHERE name=$1;\", key)\n\tif err != nil {\n\t\treturn \"\"\n\t}\n\treturn val\n}"
+    },
+    {
+      "id": "models/config.go:LCF29",
+      "path": "models/config.go",
+      "name": "SetConfigValue",
+      "parameters": [
+        "key string",
+        "val string"
+      ],
+      "body": "{\n\tvar dummy string\n\terr := DB.Get(&dummy, \"SELECT val FROM configs WHERE name=$1;\", key)\n\tif err == sql.ErrNoRows {\n\t\tDB.Exec(\"INSERT INTO configs(name, val) VALUES($1, $2);\", key, val)\n\t} else {\n\t\tDB.Exec(\"UPDATE configs SET val = $1 WHERE name=$2;\", val, key)\n\t}\n}",
+      "start_line": 35,
+      "end_line": 43,
+      "code": "func SetConfigValue(key string, val string) {\n\tvar dummy string\n\terr := DB.Get(&dummy, \"SELECT val FROM configs WHERE name=$1;\", key)\n\tif err == sql.ErrNoRows {\n\t\tDB.Exec(\"INSERT INTO configs(name, val) VALUES($1, $2);\", key, val)\n\t} else {\n\t\tDB.Exec(\"UPDATE configs SET val = $1 WHERE name=$2;\", val, key)\n\t}\n}"
+    },
+    {
+      "id": "models/domains.go:LCF30",
+      "path": "models/domains.go",
+      "name": "CreateDomain",
+      "parameters": [
+        "domainName string"
+      ],
+      "body": "{\n\tif len(domainName) < 2 {\n\t\treturn errors.New(\"Domain name should have at least 2 characters\")\n\t}\n\tif strings.Contains(domainName, \" \") {\n\t\treturn errors.New(\"Domain name should not have spaces\")\n\t}\n\tsignupToken := strconv.Itoa(rand.Intn(10000000) + 3245714)\n\t_, err := DB.Exec(`INSERT INTO domains(domain_name, signup_token) VALUES($1, $2);`, domainName, signupToken)\n\treturn err\n}",
+      "start_line": 51,
+      "end_line": 61,
+      "code": "func CreateDomain(domainName string) error {\n\tif len(domainName) < 2 {\n\t\treturn errors.New(\"Domain name should have at least 2 characters\")\n\t}\n\tif strings.Contains(domainName, \" \") {\n\t\treturn errors.New(\"Domain name should not have spaces\")\n\t}\n\tsignupToken := strconv.Itoa(rand.Intn(10000000) + 3245714)\n\t_, err := DB.Exec(`INSERT INTO domains(domain_name, signup_token) VALUES($1, $2);`, domainName, signupToken)\n\treturn err\n}"
+    },
+    {
+      "id": "models/domains.go:LCF31",
+      "path": "models/domains.go",
+      "name": "GetDomainByName",
+      "parameters": [
+        "domainName string"
+      ],
+      "body": "{\n\tvar domain Domain\n\terr := DB.Get(&domain, `SELECT * FROM domains WHERE domain_name = $1;`, domainName)\n\tif err == sql.ErrNoRows {\n\t\treturn nil\n\t}\n\tif err != nil {\n\t\tglog.Errorf(\"Error reading domain ID: %s\", err.Error())\n\t\treturn nil\n\t}\n\treturn &domain\n}",
+      "start_line": 63,
+      "end_line": 74,
+      "code": "func GetDomainByName(domainName string) *Domain {\n\tvar domain Domain\n\terr := DB.Get(&domain, `SELECT * FROM domains WHERE domain_name = $1;`, domainName)\n\tif err == sql.ErrNoRows {\n\t\treturn nil\n\t}\n\tif err != nil {\n\t\tglog.Errorf(\"Error reading domain ID: %s\", err.Error())\n\t\treturn nil\n\t}\n\treturn &domain\n}"
+    },
+    {
+      "id": "models/domains.go:LCF32",
+      "path": "models/domains.go",
+      "name": "GetDomainIDByName",
+      "parameters": [
+        "domainName string"
+      ],
+      "body": "{\n\tvar domainID int\n\terr := DB.Get(&domainID, `SELECT domain_id FROM domains WHERE domain_name = $1;`, domainName)\n\tif err == sql.ErrNoRows {\n\t\treturn nil\n\t}\n\tif err != nil {\n\t\tglog.Errorf(\"Error reading domain ID: %s\", err.Error())\n\t\treturn nil\n\t}\n\treturn &domainID\n}",
+      "start_line": 76,
+      "end_line": 87,
+      "code": "func GetDomainIDByName(domainName string) *int {\n\tvar domainID int\n\terr := DB.Get(&domainID, `SELECT domain_id FROM domains WHERE domain_name = $1;`, domainName)\n\tif err == sql.ErrNoRows {\n\t\treturn nil\n\t}\n\tif err != nil {\n\t\tglog.Errorf(\"Error reading domain ID: %s\", err.Error())\n\t\treturn nil\n\t}\n\treturn &domainID\n}"
+    },
+    {
+      "id": "models/domains.go:LCF33",
+      "path": "models/domains.go",
+      "name": "UpdateDomainByID",
+      "parameters": [
+        "domainID int",
+        "forumName string",
+        "whitelistedEmailDomains string",
+        "logo string",
+        "icon string",
+        "isRegularSignupEnabled bool",
+        "isRegularSigninEnabled bool",
+        "isAutoUserCreationOnEmailSigninEnabled bool",
+        "isReadOnly bool",
+        "isPrivate bool",
+        "signupToken string"
+      ],
+      "body": "{\n\t_, err := DB.Exec(`\n\tUPDATE domains\n\tSET\n\t\tforum_name = $2,\n\t\twhitelisted_email_domains = $3,\n\t\tis_regular_signup_enabled = $4,\n\t\tis_regular_signin_enabled = $5,\n\t\tis_auto_user_creation_on_email_signin_enabled = $6,\n\t\tis_readonly = $7,\n\t\tis_private = $8,\n\t\tsignup_token = $9,\n\t\tlogo = $10,\n        icon = $11\n\tWHERE\n\t\tdomain_id = $1;`,\n\t\tdomainID,\n\t\tforumName,\n\t\twhitelistedEmailDomains,\n\t\tisRegularSignupEnabled,\n\t\tisRegularSigninEnabled,\n\t\tisAutoUserCreationOnEmailSigninEnabled,\n\t\tisReadOnly,\n\t\tisPrivate,\n\t\tsignupToken,\n\t\tlogo,\n\t\ticon,\n\t)\n\tif err != nil {\n\t\tglog.Errorf(\"Error updating domain ID:%d -- %s\", domainID, err.Error())\n\t}\n}",
+      "start_line": 89,
+      "end_line": 132,
+      "code": "func UpdateDomainByID(\n\tdomainID int,\n\tforumName string,\n\twhitelistedEmailDomains string,\n\tlogo string,\n\ticon string,\n\tisRegularSignupEnabled bool,\n\tisRegularSigninEnabled bool,\n\tisAutoUserCreationOnEmailSigninEnabled bool,\n\tisReadOnly bool,\n\tisPrivate bool,\n\tsignupToken string,\n) {\n\t_, err := DB.Exec(`\n\tUPDATE domains\n\tSET\n\t\tforum_name = $2,\n\t\twhitelisted_email_domains = $3,\n\t\tis_regular_signup_enabled = $4,\n\t\tis_regular_signin_enabled = $5,\n\t\tis_auto_user_creation_on_email_signin_enabled = $6,\n\t\tis_readonly = $7,\n\t\tis_private = $8,\n\t\tsignup_token = $9,\n\t\tlogo = $10,\n        icon = $11\n\tWHERE\n\t\tdomain_id = $1;`,\n\t\tdomainID,\n\t\tforumName,\n\t\twhitelistedEmailDomains,\n\t\tisRegularSignupEnabled,\n\t\tisRegularSigninEnabled,\n\t\tisAutoUserCreationOnEmailSigninEnabled,\n\t\tisReadOnly,\n\t\tisPrivate,\n\t\tsignupToken,\n\t\tlogo,\n\t\ticon,\n\t)\n\tif err != nil {\n\t\tglog.Errorf(\"Error updating domain ID:%d -- %s\", domainID, err.Error())\n\t}\n}"
+    },
+    {
+      "id": "models/domains.go:LCF34",
+      "path": "models/domains.go",
+      "name": "UpdateDomainSMTPByID",
+      "parameters": [
+        "domainID int",
+        "smtpHost string",
+        "smtpPort int",
+        "smtpUser string",
+        "smtpPass string",
+        "fromEmail string"
+      ],
+      "body": "{\n\t_, err := DB.Exec(`\n\tUPDATE domains\n\tSET\n\t\tsmtp_host = $2,\n\t\tsmtp_port = $3,\n\t\tsmtp_user = $4,\n\t\tsmtp_pass = $5,\n\t\tdefault_from_email = $6\n\tWHERE\n\t\tdomain_id = $1;`,\n\t\tdomainID, smtpHost, smtpPort, smtpUser, smtpPass, fromEmail,\n\t)\n\tif err != nil {\n\t\tglog.Errorf(\"Error updating domain ID:%d -- %s\", domainID, err.Error())\n\t}\n}",
+      "start_line": 134,
+      "end_line": 150,
+      "code": "func UpdateDomainSMTPByID(domainID int, smtpHost string, smtpPort int, smtpUser string, smtpPass string, fromEmail string) {\n\t_, err := DB.Exec(`\n\tUPDATE domains\n\tSET\n\t\tsmtp_host = $2,\n\t\tsmtp_port = $3,\n\t\tsmtp_user = $4,\n\t\tsmtp_pass = $5,\n\t\tdefault_from_email = $6\n\tWHERE\n\t\tdomain_id = $1;`,\n\t\tdomainID, smtpHost, smtpPort, smtpUser, smtpPass, fromEmail,\n\t)\n\tif err != nil {\n\t\tglog.Errorf(\"Error updating domain ID:%d -- %s\", domainID, err.Error())\n\t}\n}"
+    },
+    {
+      "id": "models/domains.go:LCF35",
+      "path": "models/domains.go",
+      "name": "DeleteDomainByID",
+      "parameters": [
+        "domainID int"
+      ],
+      "body": "{\n\t_, err := DB.Exec(`DELETE FROM domains WHERE domain_id = $1;`, domainID)\n\tif err != nil {\n\t\tglog.Errorf(\"Error deleting domain ID:%d -- %s\", domainID, err.Error())\n\t}\n}",
+      "start_line": 152,
+      "end_line": 157,
+      "code": "func DeleteDomainByID(domainID int) {\n\t_, err := DB.Exec(`DELETE FROM domains WHERE domain_id = $1;`, domainID)\n\tif err != nil {\n\t\tglog.Errorf(\"Error deleting domain ID:%d -- %s\", domainID, err.Error())\n\t}\n}"
+    },
+    {
+      "id": "models/migration.go:LCF36",
+      "path": "models/migration.go",
+      "name": "Migrate",
+      "parameters": [],
+      "body": "{\n\tiver := GetDBVersion()\n\tif iver > CurrentDBVersion {\n\t\treturn errors.New(\"Database schema version newer than this binary. Get the latest version of OrangeForum.\")\n\t}\n\tif iver == CurrentDBVersion {\n\t\treturn errors.New(\"Database schema is already up-to-date.\")\n\t}\n\tif iver < 1 {\n\t\tmigrate001(DB)\n\t}\n\tif iver < 2 {\n\t\tmigrate002(DB)\n\t}\n\treturn nil\n}",
+      "start_line": 13,
+      "end_line": 28,
+      "code": "func Migrate() error {\n\tiver := GetDBVersion()\n\tif iver > CurrentDBVersion {\n\t\treturn errors.New(\"Database schema version newer than this binary. Get the latest version of OrangeForum.\")\n\t}\n\tif iver == CurrentDBVersion {\n\t\treturn errors.New(\"Database schema is already up-to-date.\")\n\t}\n\tif iver < 1 {\n\t\tmigrate001(DB)\n\t}\n\tif iver < 2 {\n\t\tmigrate002(DB)\n\t}\n\treturn nil\n}"
+    },
+    {
+      "id": "models/migration.go:LCF37",
+      "path": "models/migration.go",
+      "name": "IsMigrationNeeded",
+      "parameters": [],
+      "body": "{\n\tiver := GetDBVersion()\n\tif iver < CurrentDBVersion {\n\t\treturn errors.New(\"Database migration needed.\")\n\t}\n\tif iver > CurrentDBVersion {\n\t\treturn errors.New(\"Database schema version newer than this binary. Get the latest version of OrangeForum.\")\n\t}\n\treturn nil\n}",
+      "start_line": 30,
+      "end_line": 39,
+      "code": "func IsMigrationNeeded() error {\n\tiver := GetDBVersion()\n\tif iver < CurrentDBVersion {\n\t\treturn errors.New(\"Database migration needed.\")\n\t}\n\tif iver > CurrentDBVersion {\n\t\treturn errors.New(\"Database schema version newer than this binary. Get the latest version of OrangeForum.\")\n\t}\n\treturn nil\n}"
+    },
+    {
+      "id": "models/migration001.go:LCF38",
+      "path": "models/migration001.go",
+      "name": "migrate001",
+      "parameters": [
+        "db *sqlx.DB"
+      ],
+      "body": "{\n\tdb.MustExec(`CREATE OR REPLACE FUNCTION update_modified_timestamp() RETURNS TRIGGER LANGUAGE plpgsql AS\n\t\t$$\n\t\tBEGIN\n\t\t\tnew.updated_at := current_timestamp;\n\t\t\tRETURN new;\n\t\tEND;\n\t\t$$;\n\t`)\n\n\tdb.MustExec(`CREATE TABLE configs(\n\t\tname    VARCHAR(250) NOT NULL PRIMARY KEY,\n\t\tval     VARCHAR(250) NOT NULL DEFAULT ''\n\t);`)\n\n\tdb.MustExec(`CREATE TABLE domains(\n\t\tdomain_id                   SERIAL PRIMARY KEY,\n\t\tdomain_name                 VARCHAR(250) NOT NULL UNIQUE,\n\t\tforum_name                  VARCHAR(250) NOT NULL DEFAULT 'Orange Forum',\n\t\tno_regular_signup_msg       VARCHAR(250) NOT NULL DEFAULT '',\n\t\tsignup_token                VARCHAR(250) NOT NULL DEFAULT '',\n\t\tedit_window                 INTEGER DEFAULT 20,\n\t\tauto_topic_close_days       INTEGER DEFAULT 60,\n\t\tuser_activity_window        INTEGER DEFAULT 3,\n\t\tmax_num_activity            INTEGER DEFAULT 20,\n\t\theader_msg                  TEXT NOT NULL DEFAULT '',\n\t\tlogo                        TEXT NOT NULL DEFAULT '',\n\t\ticon                        TEXT NOT NULL DEFAULT '',\n\t\tsmtp_host                   VARCHAR(250) NOT NULL DEFAULT '',\n\t\tsmtp_port                   INTEGER NOT NULL DEFAULT 25,\n\t\tsmtp_user                   VARCHAR(250) NOT NULL DEFAULT '',\n\t\tsmtp_pass                   VARCHAR(1000) NOT NULL DEFAULT '',\n\t\tdefault_from_email          VARCHAR(250) NOT NULL DEFAULT '',\n\t\tis_regular_signup_enabled   BOOL NOT NULL DEFAULT false,\n\t\tis_readonly                 BOOL NOT NULL DEFAULT false,\n\t\tenable_group_sub            BOOL NOT NULL DEFAULT false,\n\t\tenable_topic_autosub        BOOL NOT NULL DEFAULT false,\n\t\tenable_comment_autosub      BOOL NOT NULL DEFAULT false,\n\t\tarchived_at                 TIMESTAMPTZ,\n\t\tcreated_at                  TIMESTAMPTZ NOT NULL DEFAULT current_timestamp,\n\t\tupdated_at                  TIMESTAMPTZ NOT NULL DEFAULT current_timestamp\n\t);`)\n\tdb.MustExec(`CREATE TRIGGER update_timestamp BEFORE UPDATE ON domains FOR EACH ROW EXECUTE PROCEDURE update_modified_timestamp();`)\n\tdb.MustExec(`CREATE UNIQUE INDEX domains_domain_index ON domains(domain_name);`)\n\n\tdb.MustExec(`CREATE TABLE users(\n\t\tuser_id                             SERIAL PRIMARY KEY,\n\t\tdomain_id                           INTEGER NOT NULL REFERENCES domains(domain_id) ON DELETE CASCADE,\n\t\temail                               VARCHAR(250) NOT NULL,\n\t\tdisplay_name                        VARCHAR(32) NOT NULL,\n\t\tpasswd_hash                         VARCHAR(250) NOT NULL,\n\t\tabout                               TEXT NOT NULL DEFAULT '',\n\t\tis_superadmin                       BOOL NOT NULL DEFAULT false,\n\t\tis_supermod                         BOOL NOT NULL DEFAULT false,\n\t\tis_topic_autosubscribe              BOOL NOT NULL DEFAULT true,\n\t\tis_comment_autosubscribe            BOOL NOT NULL DEFAULT true,\n\t\tis_email_notifications_disabled     BOOL NOT NULL DEFAULT false,\n\t\tnum_topics                          INTEGER NOT NULL DEFAULT 0,\n\t\tnum_comments                        INTEGER NOT NULL DEFAULT 0,\n\t\tnum_activity                        INTEGER NOT NULL DEFAULT 0,\n\t\tonetime_login_token                 VARCHAR(250) NOT NULL DEFAULT '',\n\t\tonetime_login_token_at              TIMESTAMPTZ NOT NULL DEFAULT to_timestamp(0),\n\t\treset_token                         VARCHAR(250) NOT NULL DEFAULT '',\n\t\tlast_ip                             VARCHAR(50) NOT NULL DEFAULT '',\n\t\tactivity_at                         TIMESTAMPTZ NOT NULL DEFAULT current_timestamp,\n\t\treset_at                            TIMESTAMPTZ NOT NULL DEFAULT to_timestamp(0),\n\t\tlogout_at                           TIMESTAMPTZ NOT NULL DEFAULT to_timestamp(0),\n\t\tbanned_at                           TIMESTAMPTZ,\n\t\tarchived_at                         TIMESTAMPTZ,\n\t\tcreated_at                          TIMESTAMPTZ NOT NULL DEFAULT current_timestamp,\n\t\tupdated_at                          TIMESTAMPTZ NOT NULL DEFAULT current_timestamp\n\t);`)\n\tdb.MustExec(`CREATE TRIGGER update_timestamp BEFORE UPDATE ON users FOR EACH ROW EXECUTE PROCEDURE update_modified_timestamp();`)\n\tdb.MustExec(`CREATE UNIQUE INDEX users_domain_email_index  ON users(domain_id, email);`)\n\tdb.MustExec(`CREATE INDEX users_supermod_index             ON users(domain_id, is_supermod);`)\n\tdb.MustExec(`CREATE INDEX users_otp_token_index            ON users(onetime_login_token);`)\n\tdb.MustExec(`CREATE INDEX users_reset_token_index          ON users(reset_token);`)\n\tdb.MustExec(`CREATE INDEX users_created_index              ON users(created_at);`)\n\n\tdb.MustExec(`CREATE TABLE categories(\n\t\tcategory_id                         SERIAL PRIMARY KEY,\n\t\tdomain_id                           INTEGER NOT NULL REFERENCES domains(domain_id) ON DELETE CASCADE,\n\t\tname                                VARCHAR(250) NOT NULL,\n\t\tdescription                         VARCHAR(250) NOT NULL,\n\t\theader_msg                          TEXT NOT NULL DEFAULT '',\n\t\tnum_topics                          INTEGER NOT NULL DEFAULT 0,\n\t\tis_private                          BOOL NOT NULL DEFAULT false,\n\t\tis_readonly                         BOOL NOT NULL DEFAULT false,\n\t\tis_restricted                       BOOL NOT NULL DEFAULT false,\n\t\tarchived_at                         TIMESTAMPTZ,\n\t\tcreated_at                          TIMESTAMPTZ NOT NULL DEFAULT current_timestamp,\n\t\tupdated_at                          TIMESTAMPTZ NOT NULL DEFAULT current_timestamp\n\t);`)\n\tdb.MustExec(`CREATE TRIGGER update_timestamp BEFORE UPDATE ON categories FOR EACH ROW EXECUTE PROCEDURE update_modified_timestamp();`)\n\tdb.MustExec(`CREATE INDEX categories_domain_index          ON categories(domain_id);`)\n\n\tdb.MustExec(`CREATE TABLE topics(\n\t\ttopic_id                            SERIAL PRIMARY KEY,\n\t\tcategory_id                         INTEGER NOT NULL REFERENCES categories(category_id) ON DELETE CASCADE,\n\t\tuser_id                             INTEGER NOT NULL REFERENCES users(user_id) ON DELETE CASCADE,\n\t\ttitle                               VARCHAR(250) NOT NULL,\n\t\tcontent                             TEXT NOT NULL DEFAULT '',\n\t\tis_sticky                           BOOL NOT NULL DEFAULT false,\n\t\tis_readonly                         BOOL NOT NULL DEFAULT false,\n\t\tnum_comments                        INTEGER NOT NULL DEFAULT 0,\n\t\tnum_views                           INTEGER NOT NULL DEFAULT 0,\n\t\tactivity_at                         TIMESTAMPTZ NOT NULL DEFAULT current_timestamp,\n\t\tarchived_at                         TIMESTAMPTZ,\n\t\tcreated_at                          TIMESTAMPTZ NOT NULL DEFAULT current_timestamp,\n\t\tupdated_at                          TIMESTAMPTZ NOT NULL DEFAULT current_timestamp\n\t);`)\n\tdb.MustExec(`CREATE TRIGGER update_timestamp BEFORE UPDATE          ON topics FOR EACH ROW EXECUTE PROCEDURE update_modified_timestamp();`)\n\tdb.MustExec(`CREATE INDEX topics_category_sticky_activity_index     ON topics(category_id, is_sticky DESC, activity_at DESC);`)\n\n\tdb.MustExec(`CREATE TABLE comments(\n\t\tcomment_id                          SERIAL PRIMARY KEY,\n\t\ttopic_id                            INTEGER NOT NULL REFERENCES topics(topic_id) ON DELETE CASCADE,\n\t\tuser_id                             INTEGER NOT NULL REFERENCES users(user_id) ON DELETE CASCADE,\n\t\tcontent                             TEXT NOT NULL DEFAULT '',\n\t\tis_sticky                           BOOL NOT NULL DEFAULT false,\n\t\tarchived_at                         TIMESTAMPTZ,\n\t\tcreated_at                          TIMESTAMPTZ NOT NULL DEFAULT current_timestamp,\n\t\tupdated_at                          TIMESTAMPTZ NOT NULL DEFAULT current_timestamp\n\t);`)\n\tdb.MustExec(`CREATE TRIGGER update_timestamp BEFORE UPDATE          ON comments FOR EACH ROW EXECUTE PROCEDURE update_modified_timestamp();`)\n\tdb.MustExec(`CREATE INDEX comments_topic_sticky_created_index       ON comments(topic_id, is_sticky DESC, created_at);`)\n\n\tdb.MustExec(`CREATE TABLE category_subs(\n\t\tsub_id                              SERIAL PRIMARY KEY,\n\t\tcategory_id                         INTEGER NOT NULL REFERENCES categories(category_id) ON DELETE CASCADE,\n\t\tuser_id                             INTEGER NOT NULL REFERENCES users(user_id) ON DELETE CASCADE,\n\t\tunsub_token                         VARCHAR(64) NOT NULL DEFAULT '',\n\t\tcreated_at                          TIMESTAMPTZ NOT NULL DEFAULT current_timestamp\n\t);`)\n\tdb.MustExec(`CREATE INDEX catsubs_cat_index               ON category_subs(category_id);`)\n\tdb.MustExec(`CREATE INDEX catsubs_unsub_token_index       ON category_subs(unsub_token);`)\n\n\tdb.MustExec(`CREATE TABLE topic_subs(\n\t\tsub_id                              SERIAL PRIMARY KEY,\n\t\ttopic_id                            INTEGER NOT NULL REFERENCES topics(topic_id) ON DELETE CASCADE,\n\t\tuser_id                             INTEGER NOT NULL REFERENCES users(user_id) ON DELETE CASCADE,\n\t\tunsub_token                         VARCHAR(64) NOT NULL DEFAULT '',\n\t\tcreated_at                          TIMESTAMPTZ NOT NULL DEFAULT current_timestamp\n\t);`)\n\tdb.MustExec(`CREATE INDEX topicsubs_cat_index               ON topic_subs(topic_id);`)\n\tdb.MustExec(`CREATE INDEX topicsubs_unsub_token_index       ON topic_subs(unsub_token);`)\n\n\tdb.MustExec(`CREATE TABLE notes(\n\t\tnote_id                             SERIAL PRIMARY KEY,\n\t\tdomain_id                           INTEGER NOT NULL REFERENCES domains(domain_id) ON DELETE CASCADE,\n\t\tname                                VARCHAR(64) NOT NULL DEFAULT '',\n\t\tcontent                             TEXT NOT NULL DEFAULT '',\n\t\turl                                 VARCHAR(64) NOT NULL DEFAULT '',\n\t\tcreated_at                          TIMESTAMPTZ NOT NULL DEFAULT current_timestamp,\n\t\tupdated_at                          TIMESTAMPTZ NOT NULL DEFAULT current_timestamp\n\t);`)\n\tdb.MustExec(`CREATE TRIGGER update_timestamp BEFORE UPDATE          ON notes FOR EACH ROW EXECUTE PROCEDURE update_modified_timestamp();`)\n\tdb.MustExec(`CREATE INDEX notes_domain_url_index                    ON notes(domain_id, url);`)\n\n\t// Add some config data\n\tdb.MustExec(`INSERT INTO configs(name, val) VALUES('` + DBVersion + `', '1');`)\n}",
+      "start_line": 9,
+      "end_line": 170,
+      "code": "func migrate001(db *sqlx.DB) {\n\tdb.MustExec(`CREATE OR REPLACE FUNCTION update_modified_timestamp() RETURNS TRIGGER LANGUAGE plpgsql AS\n\t\t$$\n\t\tBEGIN\n\t\t\tnew.updated_at := current_timestamp;\n\t\t\tRETURN new;\n\t\tEND;\n\t\t$$;\n\t`)\n\n\tdb.MustExec(`CREATE TABLE configs(\n\t\tname    VARCHAR(250) NOT NULL PRIMARY KEY,\n\t\tval     VARCHAR(250) NOT NULL DEFAULT ''\n\t);`)\n\n\tdb.MustExec(`CREATE TABLE domains(\n\t\tdomain_id                   SERIAL PRIMARY KEY,\n\t\tdomain_name                 VARCHAR(250) NOT NULL UNIQUE,\n\t\tforum_name                  VARCHAR(250) NOT NULL DEFAULT 'Orange Forum',\n\t\tno_regular_signup_msg       VARCHAR(250) NOT NULL DEFAULT '',\n\t\tsignup_token                VARCHAR(250) NOT NULL DEFAULT '',\n\t\tedit_window                 INTEGER DEFAULT 20,\n\t\tauto_topic_close_days       INTEGER DEFAULT 60,\n\t\tuser_activity_window        INTEGER DEFAULT 3,\n\t\tmax_num_activity            INTEGER DEFAULT 20,\n\t\theader_msg                  TEXT NOT NULL DEFAULT '',\n\t\tlogo                        TEXT NOT NULL DEFAULT '',\n\t\ticon                        TEXT NOT NULL DEFAULT '',\n\t\tsmtp_host                   VARCHAR(250) NOT NULL DEFAULT '',\n\t\tsmtp_port                   INTEGER NOT NULL DEFAULT 25,\n\t\tsmtp_user                   VARCHAR(250) NOT NULL DEFAULT '',\n\t\tsmtp_pass                   VARCHAR(1000) NOT NULL DEFAULT '',\n\t\tdefault_from_email          VARCHAR(250) NOT NULL DEFAULT '',\n\t\tis_regular_signup_enabled   BOOL NOT NULL DEFAULT false,\n\t\tis_readonly                 BOOL NOT NULL DEFAULT false,\n\t\tenable_group_sub            BOOL NOT NULL DEFAULT false,\n\t\tenable_topic_autosub        BOOL NOT NULL DEFAULT false,\n\t\tenable_comment_autosub      BOOL NOT NULL DEFAULT false,\n\t\tarchived_at                 TIMESTAMPTZ,\n\t\tcreated_at                  TIMESTAMPTZ NOT NULL DEFAULT current_timestamp,\n\t\tupdated_at                  TIMESTAMPTZ NOT NULL DEFAULT current_timestamp\n\t);`)\n\tdb.MustExec(`CREATE TRIGGER update_timestamp BEFORE UPDATE ON domains FOR EACH ROW EXECUTE PROCEDURE update_modified_timestamp();`)\n\tdb.MustExec(`CREATE UNIQUE INDEX domains_domain_index ON domains(domain_name);`)\n\n\tdb.MustExec(`CREATE TABLE users(\n\t\tuser_id                             SERIAL PRIMARY KEY,\n\t\tdomain_id                           INTEGER NOT NULL REFERENCES domains(domain_id) ON DELETE CASCADE,\n\t\temail                               VARCHAR(250) NOT NULL,\n\t\tdisplay_name                        VARCHAR(32) NOT NULL,\n\t\tpasswd_hash                         VARCHAR(250) NOT NULL,\n\t\tabout                               TEXT NOT NULL DEFAULT '',\n\t\tis_superadmin                       BOOL NOT NULL DEFAULT false,\n\t\tis_supermod                         BOOL NOT NULL DEFAULT false,\n\t\tis_topic_autosubscribe              BOOL NOT NULL DEFAULT true,\n\t\tis_comment_autosubscribe            BOOL NOT NULL DEFAULT true,\n\t\tis_email_notifications_disabled     BOOL NOT NULL DEFAULT false,\n\t\tnum_topics                          INTEGER NOT NULL DEFAULT 0,\n\t\tnum_comments                        INTEGER NOT NULL DEFAULT 0,\n\t\tnum_activity                        INTEGER NOT NULL DEFAULT 0,\n\t\tonetime_login_token                 VARCHAR(250) NOT NULL DEFAULT '',\n\t\tonetime_login_token_at              TIMESTAMPTZ NOT NULL DEFAULT to_timestamp(0),\n\t\treset_token                         VARCHAR(250) NOT NULL DEFAULT '',\n\t\tlast_ip                             VARCHAR(50) NOT NULL DEFAULT '',\n\t\tactivity_at                         TIMESTAMPTZ NOT NULL DEFAULT current_timestamp,\n\t\treset_at                            TIMESTAMPTZ NOT NULL DEFAULT to_timestamp(0),\n\t\tlogout_at                           TIMESTAMPTZ NOT NULL DEFAULT to_timestamp(0),\n\t\tbanned_at                           TIMESTAMPTZ,\n\t\tarchived_at                         TIMESTAMPTZ,\n\t\tcreated_at                          TIMESTAMPTZ NOT NULL DEFAULT current_timestamp,\n\t\tupdated_at                          TIMESTAMPTZ NOT NULL DEFAULT current_timestamp\n\t);`)\n\tdb.MustExec(`CREATE TRIGGER update_timestamp BEFORE UPDATE ON users FOR EACH ROW EXECUTE PROCEDURE update_modified_timestamp();`)\n\tdb.MustExec(`CREATE UNIQUE INDEX users_domain_email_index  ON users(domain_id, email);`)\n\tdb.MustExec(`CREATE INDEX users_supermod_index             ON users(domain_id, is_supermod);`)\n\tdb.MustExec(`CREATE INDEX users_otp_token_index            ON users(onetime_login_token);`)\n\tdb.MustExec(`CREATE INDEX users_reset_token_index          ON users(reset_token);`)\n\tdb.MustExec(`CREATE INDEX users_created_index              ON users(created_at);`)\n\n\tdb.MustExec(`CREATE TABLE categories(\n\t\tcategory_id                         SERIAL PRIMARY KEY,\n\t\tdomain_id                           INTEGER NOT NULL REFERENCES domains(domain_id) ON DELETE CASCADE,\n\t\tname                                VARCHAR(250) NOT NULL,\n\t\tdescription                         VARCHAR(250) NOT NULL,\n\t\theader_msg                          TEXT NOT NULL DEFAULT '',\n\t\tnum_topics                          INTEGER NOT NULL DEFAULT 0,\n\t\tis_private                          BOOL NOT NULL DEFAULT false,\n\t\tis_readonly                         BOOL NOT NULL DEFAULT false,\n\t\tis_restricted                       BOOL NOT NULL DEFAULT false,\n\t\tarchived_at                         TIMESTAMPTZ,\n\t\tcreated_at                          TIMESTAMPTZ NOT NULL DEFAULT current_timestamp,\n\t\tupdated_at                          TIMESTAMPTZ NOT NULL DEFAULT current_timestamp\n\t);`)\n\tdb.MustExec(`CREATE TRIGGER update_timestamp BEFORE UPDATE ON categories FOR EACH ROW EXECUTE PROCEDURE update_modified_timestamp();`)\n\tdb.MustExec(`CREATE INDEX categories_domain_index          ON categories(domain_id);`)\n\n\tdb.MustExec(`CREATE TABLE topics(\n\t\ttopic_id                            SERIAL PRIMARY KEY,\n\t\tcategory_id                         INTEGER NOT NULL REFERENCES categories(category_id) ON DELETE CASCADE,\n\t\tuser_id                             INTEGER NOT NULL REFERENCES users(user_id) ON DELETE CASCADE,\n\t\ttitle                               VARCHAR(250) NOT NULL,\n\t\tcontent                             TEXT NOT NULL DEFAULT '',\n\t\tis_sticky                           BOOL NOT NULL DEFAULT false,\n\t\tis_readonly                         BOOL NOT NULL DEFAULT false,\n\t\tnum_comments                        INTEGER NOT NULL DEFAULT 0,\n\t\tnum_views                           INTEGER NOT NULL DEFAULT 0,\n\t\tactivity_at                         TIMESTAMPTZ NOT NULL DEFAULT current_timestamp,\n\t\tarchived_at                         TIMESTAMPTZ,\n\t\tcreated_at                          TIMESTAMPTZ NOT NULL DEFAULT current_timestamp,\n\t\tupdated_at                          TIMESTAMPTZ NOT NULL DEFAULT current_timestamp\n\t);`)\n\tdb.MustExec(`CREATE TRIGGER update_timestamp BEFORE UPDATE          ON topics FOR EACH ROW EXECUTE PROCEDURE update_modified_timestamp();`)\n\tdb.MustExec(`CREATE INDEX topics_category_sticky_activity_index     ON topics(category_id, is_sticky DESC, activity_at DESC);`)\n\n\tdb.MustExec(`CREATE TABLE comments(\n\t\tcomment_id                          SERIAL PRIMARY KEY,\n\t\ttopic_id                            INTEGER NOT NULL REFERENCES topics(topic_id) ON DELETE CASCADE,\n\t\tuser_id                             INTEGER NOT NULL REFERENCES users(user_id) ON DELETE CASCADE,\n\t\tcontent                             TEXT NOT NULL DEFAULT '',\n\t\tis_sticky                           BOOL NOT NULL DEFAULT false,\n\t\tarchived_at                         TIMESTAMPTZ,\n\t\tcreated_at                          TIMESTAMPTZ NOT NULL DEFAULT current_timestamp,\n\t\tupdated_at                          TIMESTAMPTZ NOT NULL DEFAULT current_timestamp\n\t);`)\n\tdb.MustExec(`CREATE TRIGGER update_timestamp BEFORE UPDATE          ON comments FOR EACH ROW EXECUTE PROCEDURE update_modified_timestamp();`)\n\tdb.MustExec(`CREATE INDEX comments_topic_sticky_created_index       ON comments(topic_id, is_sticky DESC, created_at);`)\n\n\tdb.MustExec(`CREATE TABLE category_subs(\n\t\tsub_id                              SERIAL PRIMARY KEY,\n\t\tcategory_id                         INTEGER NOT NULL REFERENCES categories(category_id) ON DELETE CASCADE,\n\t\tuser_id                             INTEGER NOT NULL REFERENCES users(user_id) ON DELETE CASCADE,\n\t\tunsub_token                         VARCHAR(64) NOT NULL DEFAULT '',\n\t\tcreated_at                          TIMESTAMPTZ NOT NULL DEFAULT current_timestamp\n\t);`)\n\tdb.MustExec(`CREATE INDEX catsubs_cat_index               ON category_subs(category_id);`)\n\tdb.MustExec(`CREATE INDEX catsubs_unsub_token_index       ON category_subs(unsub_token);`)\n\n\tdb.MustExec(`CREATE TABLE topic_subs(\n\t\tsub_id                              SERIAL PRIMARY KEY,\n\t\ttopic_id                            INTEGER NOT NULL REFERENCES topics(topic_id) ON DELETE CASCADE,\n\t\tuser_id                             INTEGER NOT NULL REFERENCES users(user_id) ON DELETE CASCADE,\n\t\tunsub_token                         VARCHAR(64) NOT NULL DEFAULT '',\n\t\tcreated_at                          TIMESTAMPTZ NOT NULL DEFAULT current_timestamp\n\t);`)\n\tdb.MustExec(`CREATE INDEX topicsubs_cat_index               ON topic_subs(topic_id);`)\n\tdb.MustExec(`CREATE INDEX topicsubs_unsub_token_index       ON topic_subs(unsub_token);`)\n\n\tdb.MustExec(`CREATE TABLE notes(\n\t\tnote_id                             SERIAL PRIMARY KEY,\n\t\tdomain_id                           INTEGER NOT NULL REFERENCES domains(domain_id) ON DELETE CASCADE,\n\t\tname                                VARCHAR(64) NOT NULL DEFAULT '',\n\t\tcontent                             TEXT NOT NULL DEFAULT '',\n\t\turl                                 VARCHAR(64) NOT NULL DEFAULT '',\n\t\tcreated_at                          TIMESTAMPTZ NOT NULL DEFAULT current_timestamp,\n\t\tupdated_at                          TIMESTAMPTZ NOT NULL DEFAULT current_timestamp\n\t);`)\n\tdb.MustExec(`CREATE TRIGGER update_timestamp BEFORE UPDATE          ON notes FOR EACH ROW EXECUTE PROCEDURE update_modified_timestamp();`)\n\tdb.MustExec(`CREATE INDEX notes_domain_url_index                    ON notes(domain_id, url);`)\n\n\t// Add some config data\n\tdb.MustExec(`INSERT INTO configs(name, val) VALUES('` + DBVersion + `', '1');`)\n}"
+    },
+    {
+      "id": "models/migration002.go:LCF39",
+      "path": "models/migration002.go",
+      "name": "migrate002",
+      "parameters": [
+        "db *sqlx.DB"
+      ],
+      "body": "{\n\tdb.MustExec(`ALTER TABLE domains\n\t\tADD COLUMN is_private                                      BOOL NOT NULL DEFAULT false,\n\t\tADD COLUMN is_regular_signin_enabled                       BOOL NOT NULL DEFAULT true,\n\t\tADD COLUMN is_auto_user_creation_on_email_signin_enabled   BOOL NOT NULL DEFAULT false,\n\t\tADD COLUMN whitelisted_email_domains                       VARCHAR(250) NOT NULL DEFAULT '';\n\t`)\n\tdb.MustExec(`UPDATE configs SET val = $1 WHERE name = $2;`, \"2\", DBVersion)\n}",
+      "start_line": 9,
+      "end_line": 17,
+      "code": "func migrate002(db *sqlx.DB) {\n\tdb.MustExec(`ALTER TABLE domains\n\t\tADD COLUMN is_private                                      BOOL NOT NULL DEFAULT false,\n\t\tADD COLUMN is_regular_signin_enabled                       BOOL NOT NULL DEFAULT true,\n\t\tADD COLUMN is_auto_user_creation_on_email_signin_enabled   BOOL NOT NULL DEFAULT false,\n\t\tADD COLUMN whitelisted_email_domains                       VARCHAR(250) NOT NULL DEFAULT '';\n\t`)\n\tdb.MustExec(`UPDATE configs SET val = $1 WHERE name = $2;`, \"2\", DBVersion)\n}"
+    },
+    {
+      "id": "models/models.go:LCF40",
+      "path": "models/models.go",
+      "name": "CleanDB",
+      "parameters": [],
+      "body": "{\n\tif _, err := DB.Exec(`DELETE FROM domains;`); err != nil {\n\t\tglog.Errorf(\"Error deleting domains: %s\\n\", err.Error())\n\t}\n\tif _, err := DB.Exec(`DELETE FROM users;`); err != nil {\n\t\tglog.Errorf(\"Error deleting users: %s\\n\", err.Error())\n\t}\n\tif _, err := DB.Exec(`DELETE FROM categories;`); err != nil {\n\t\tglog.Errorf(\"Error deleting categories: %s\\n\", err.Error())\n\t}\n\tif _, err := DB.Exec(`DELETE FROM topics;`); err != nil {\n\t\tglog.Errorf(\"Error deleting topics: %s\\n\", err.Error())\n\t}\n\tif _, err := DB.Exec(`DELETE FROM comments;`); err != nil {\n\t\tglog.Errorf(\"Error deleting comments: %s\\n\", err.Error())\n\t}\n\tif _, err := DB.Exec(`DELETE FROM category_subs;`); err != nil {\n\t\tglog.Errorf(\"Error deleting category_subs: %s\\n\", err.Error())\n\t}\n\tif _, err := DB.Exec(`DELETE FROM topic_subs;`); err != nil {\n\t\tglog.Errorf(\"Error deleting topic_subs: %s\\n\", err.Error())\n\t}\n\tif _, err := DB.Exec(`DELETE FROM notes;`); err != nil {\n\t\tglog.Errorf(\"Error deleting notes: %s\\n\", err.Error())\n\t}\n}",
+      "start_line": 14,
+      "end_line": 39,
+      "code": "func CleanDB() {\n\tif _, err := DB.Exec(`DELETE FROM domains;`); err != nil {\n\t\tglog.Errorf(\"Error deleting domains: %s\\n\", err.Error())\n\t}\n\tif _, err := DB.Exec(`DELETE FROM users;`); err != nil {\n\t\tglog.Errorf(\"Error deleting users: %s\\n\", err.Error())\n\t}\n\tif _, err := DB.Exec(`DELETE FROM categories;`); err != nil {\n\t\tglog.Errorf(\"Error deleting categories: %s\\n\", err.Error())\n\t}\n\tif _, err := DB.Exec(`DELETE FROM topics;`); err != nil {\n\t\tglog.Errorf(\"Error deleting topics: %s\\n\", err.Error())\n\t}\n\tif _, err := DB.Exec(`DELETE FROM comments;`); err != nil {\n\t\tglog.Errorf(\"Error deleting comments: %s\\n\", err.Error())\n\t}\n\tif _, err := DB.Exec(`DELETE FROM category_subs;`); err != nil {\n\t\tglog.Errorf(\"Error deleting category_subs: %s\\n\", err.Error())\n\t}\n\tif _, err := DB.Exec(`DELETE FROM topic_subs;`); err != nil {\n\t\tglog.Errorf(\"Error deleting topic_subs: %s\\n\", err.Error())\n\t}\n\tif _, err := DB.Exec(`DELETE FROM notes;`); err != nil {\n\t\tglog.Errorf(\"Error deleting notes: %s\\n\", err.Error())\n\t}\n}"
+    },
+    {
+      "id": "models/topics.go:LCF41",
+      "path": "models/topics.go",
+      "name": "CreatedAtStr",
+      "parameters": [],
+      "body": "{\n\treturn RelTimeNowStr(t.CreatedAt)\n}",
+      "start_line": 50,
+      "end_line": 52,
+      "code": "func (t *Topic) CreatedAtStr() string {\n\treturn RelTimeNowStr(t.CreatedAt)\n}"
+    },
+    {
+      "id": "models/topics.go:LCF42",
+      "path": "models/topics.go",
+      "name": "ActivityAtStr",
+      "parameters": [],
+      "body": "{\n\treturn RelTimeNowStr(t.ActivityAt)\n}",
+      "start_line": 54,
+      "end_line": 56,
+      "code": "func (t *Topic) ActivityAtStr() string {\n\treturn RelTimeNowStr(t.ActivityAt)\n}"
+    },
+    {
+      "id": "models/topics.go:LCF43",
+      "path": "models/topics.go",
+      "name": "ContentRenderMarkdown",
+      "parameters": [],
+      "body": "{\n\tcontent := strings.ReplaceAll(t.Content, \"\\r\\n\", \"\\n\")\n\tunsafe := blackfriday.Run([]byte(content), blackfriday.WithRenderer(ChromaRenderer))\n\thtml := UGCPolicy.SanitizeBytes(unsafe)\n\treturn template.HTML(string(html))\n}",
+      "start_line": 58,
+      "end_line": 63,
+      "code": "func (t *Topic) ContentRenderMarkdown() template.HTML {\n\tcontent := strings.ReplaceAll(t.Content, \"\\r\\n\", \"\\n\")\n\tunsafe := blackfriday.Run([]byte(content), blackfriday.WithRenderer(ChromaRenderer))\n\thtml := UGCPolicy.SanitizeBytes(unsafe)\n\treturn template.HTML(string(html))\n}"
+    },
+    {
+      "id": "models/topics.go:LCF44",
+      "path": "models/topics.go",
+      "name": "CreatedAtStr",
+      "parameters": [],
+      "body": "{\n\treturn RelTimeNowStr(t.CreatedAt)\n}",
+      "start_line": 65,
+      "end_line": 67,
+      "code": "func (t *TopicWithUser) CreatedAtStr() string {\n\treturn RelTimeNowStr(t.CreatedAt)\n}"
+    },
+    {
+      "id": "models/topics.go:LCF45",
+      "path": "models/topics.go",
+      "name": "ActivityAtStr",
+      "parameters": [],
+      "body": "{\n\treturn RelTimeNowStr(t.ActivityAt)\n}",
+      "start_line": 69,
+      "end_line": 71,
+      "code": "func (t *TopicWithUser) ActivityAtStr() string {\n\treturn RelTimeNowStr(t.ActivityAt)\n}"
+    },
+    {
+      "id": "models/topics.go:LCF46",
+      "path": "models/topics.go",
+      "name": "NumCommentsStr",
+      "parameters": [],
+      "body": "{\n\treturn ApproxNumStr(t.NumComments)\n}",
+      "start_line": 73,
+      "end_line": 75,
+      "code": "func (t *TopicWithUser) NumCommentsStr() string {\n\treturn ApproxNumStr(t.NumComments)\n}"
+    },
+    {
+      "id": "models/topics.go:LCF47",
+      "path": "models/topics.go",
+      "name": "NumViewsStr",
+      "parameters": [],
+      "body": "{\n\treturn ApproxNumStr(t.NumViews)\n}",
+      "start_line": 77,
+      "end_line": 79,
+      "code": "func (t *TopicWithUser) NumViewsStr() string {\n\treturn ApproxNumStr(t.NumViews)\n}"
+    },
+    {
+      "id": "models/topics.go:LCF48",
+      "path": "models/topics.go",
+      "name": "GetTopicsByCategoryID",
+      "parameters": [
+        "categoryID int",
+        "before time.Time"
+      ],
+      "body": "{\n\tvar topics []TopicWithUser\n\terr := DB.Select(&topics, `\n\t\tSELECT topics.*, users.display_name\n\t\tFROM topics INNER JOIN users ON topics.user_id = users.user_id\n\t\tWHERE topics.category_id = $1 AND topics.activity_at < $2\n\t\tORDER BY topics.is_sticky DESC, topics.activity_at DESC LIMIT 30;`,\n\t\tcategoryID, before,\n\t)\n\tif err != nil {\n\t\tif err != sql.ErrNoRows {\n\t\t\tglog.Errorf(\"Error reading topics: %s\\n\", err.Error())\n\t\t}\n\t}\n\treturn topics\n}",
+      "start_line": 81,
+      "end_line": 96,
+      "code": "func GetTopicsByCategoryID(categoryID int, before time.Time) []TopicWithUser {\n\tvar topics []TopicWithUser\n\terr := DB.Select(&topics, `\n\t\tSELECT topics.*, users.display_name\n\t\tFROM topics INNER JOIN users ON topics.user_id = users.user_id\n\t\tWHERE topics.category_id = $1 AND topics.activity_at < $2\n\t\tORDER BY topics.is_sticky DESC, topics.activity_at DESC LIMIT 30;`,\n\t\tcategoryID, before,\n\t)\n\tif err != nil {\n\t\tif err != sql.ErrNoRows {\n\t\t\tglog.Errorf(\"Error reading topics: %s\\n\", err.Error())\n\t\t}\n\t}\n\treturn topics\n}"
+    },
+    {
+      "id": "models/topics.go:LCF49",
+      "path": "models/topics.go",
+      "name": "CreateTopic",
+      "parameters": [
+        "categoryID int",
+        "userID int",
+        "title string",
+        "content string",
+        "isSticky bool",
+        "isReadOnly bool"
+      ],
+      "body": "{\n\tvar id int\n\terr := DB.QueryRow(\"INSERT INTO topics(category_id, user_id, title, content, is_sticky, is_readonly) VALUES($1, $2, $3, $4, $5, $6) RETURNING topic_id;\",\n\t\tcategoryID, userID, title, content, isSticky, isReadOnly).Scan(&id)\n\tif err != nil {\n\t\tglog.Errorf(\"Error inserting row: %s\\n\", err.Error())\n\t\treturn -1\n\t}\n\t_, err2 := DB.Exec(\"UPDATE categories SET num_topics = (num_topics + 1) WHERE category_id = $1;\", categoryID)\n\tif err2 != nil {\n\t\tglog.Errorf(\"Error updating topic count: %s\\n\", err2.Error())\n\t}\n\t_, err3 := DB.Exec(\"UPDATE users SET num_topics = (num_topics + 1) WHERE user_id = $1;\", userID)\n\tif err3 != nil {\n\t\tglog.Errorf(\"Error updating topic count: %s\\n\", err2.Error())\n\t}\n\treturn id\n}",
+      "start_line": 98,
+      "end_line": 115,
+      "code": "func CreateTopic(categoryID int, userID int, title string, content string, isSticky bool, isReadOnly bool) int {\n\tvar id int\n\terr := DB.QueryRow(\"INSERT INTO topics(category_id, user_id, title, content, is_sticky, is_readonly) VALUES($1, $2, $3, $4, $5, $6) RETURNING topic_id;\",\n\t\tcategoryID, userID, title, content, isSticky, isReadOnly).Scan(&id)\n\tif err != nil {\n\t\tglog.Errorf(\"Error inserting row: %s\\n\", err.Error())\n\t\treturn -1\n\t}\n\t_, err2 := DB.Exec(\"UPDATE categories SET num_topics = (num_topics + 1) WHERE category_id = $1;\", categoryID)\n\tif err2 != nil {\n\t\tglog.Errorf(\"Error updating topic count: %s\\n\", err2.Error())\n\t}\n\t_, err3 := DB.Exec(\"UPDATE users SET num_topics = (num_topics + 1) WHERE user_id = $1;\", userID)\n\tif err3 != nil {\n\t\tglog.Errorf(\"Error updating topic count: %s\\n\", err2.Error())\n\t}\n\treturn id\n}"
+    },
+    {
+      "id": "models/topics.go:LCF50",
+      "path": "models/topics.go",
+      "name": "GetTopicByID",
+      "parameters": [
+        "topicID int"
+      ],
+      "body": "{\n\ttopic := Topic{}\n\terr := DB.Get(&topic, \"SELECT * FROM topics WHERE topic_id = $1;\", topicID)\n\tif err != nil && err != sql.ErrNoRows {\n\t\tglog.Errorf(\"Error reading topic: %s\\n\", err.Error())\n\t}\n\treturn &topic\n}",
+      "start_line": 117,
+      "end_line": 124,
+      "code": "func GetTopicByID(topicID int) *Topic {\n\ttopic := Topic{}\n\terr := DB.Get(&topic, \"SELECT * FROM topics WHERE topic_id = $1;\", topicID)\n\tif err != nil && err != sql.ErrNoRows {\n\t\tglog.Errorf(\"Error reading topic: %s\\n\", err.Error())\n\t}\n\treturn &topic\n}"
+    },
+    {
+      "id": "models/topics.go:LCF51",
+      "path": "models/topics.go",
+      "name": "UpdateTopicByID",
+      "parameters": [
+        "topicID int",
+        "title string",
+        "content string",
+        "isSticky bool",
+        "isReadOnly bool"
+      ],
+      "body": "{\n\t_, err := DB.Exec(\"UPDATE topics SET title = $2, content = $3, is_sticky = $4, is_readonly = $5 WHERE topic_id = $1;\", topicID, title, content, isSticky, isReadOnly)\n\tif err != nil {\n\t\tglog.Errorf(\"Error updating topic: %s\\n\", err.Error())\n\t}\n}",
+      "start_line": 126,
+      "end_line": 131,
+      "code": "func UpdateTopicByID(topicID int, title string, content string, isSticky bool, isReadOnly bool) {\n\t_, err := DB.Exec(\"UPDATE topics SET title = $2, content = $3, is_sticky = $4, is_readonly = $5 WHERE topic_id = $1;\", topicID, title, content, isSticky, isReadOnly)\n\tif err != nil {\n\t\tglog.Errorf(\"Error updating topic: %s\\n\", err.Error())\n\t}\n}"
+    },
+    {
+      "id": "models/topics.go:LCF52",
+      "path": "models/topics.go",
+      "name": "IncrementTopicViewCount",
+      "parameters": [
+        "topicID int"
+      ],
+      "body": "{\n\t_, err := DB.Exec(\"UPDATE topics SET num_views = num_views + 1 WHERE topic_id = $1;\", topicID)\n\tif err != nil {\n\t\tglog.Errorf(\"Error updating topic: %s\\n\", err.Error())\n\t}\n}",
+      "start_line": 133,
+      "end_line": 138,
+      "code": "func IncrementTopicViewCount(topicID int) {\n\t_, err := DB.Exec(\"UPDATE topics SET num_views = num_views + 1 WHERE topic_id = $1;\", topicID)\n\tif err != nil {\n\t\tglog.Errorf(\"Error updating topic: %s\\n\", err.Error())\n\t}\n}"
+    },
+    {
+      "id": "models/topics.go:LCF53",
+      "path": "models/topics.go",
+      "name": "DeleteTopicByID",
+      "parameters": [
+        "topicID int",
+        "userID int"
+      ],
+      "body": "{\n\t_, err := DB.Exec(\"DELETE FROM topics WHERE topic_id = $1;\", topicID)\n\tif err != nil {\n\t\tglog.Errorf(\"Error updating topic: %s\\n\", err.Error())\n\t}\n\t_, err2 := DB.Exec(\"UPDATE users SET num_topics = (num_topics - 1) WHERE user_id = $1;\", userID)\n\tif err2 != nil {\n\t\tglog.Errorf(\"Error updating topic count: %s\\n\", err2.Error())\n\t}\n}",
+      "start_line": 140,
+      "end_line": 149,
+      "code": "func DeleteTopicByID(topicID int, userID int) {\n\t_, err := DB.Exec(\"DELETE FROM topics WHERE topic_id = $1;\", topicID)\n\tif err != nil {\n\t\tglog.Errorf(\"Error updating topic: %s\\n\", err.Error())\n\t}\n\t_, err2 := DB.Exec(\"UPDATE users SET num_topics = (num_topics - 1) WHERE user_id = $1;\", userID)\n\tif err2 != nil {\n\t\tglog.Errorf(\"Error updating topic count: %s\\n\", err2.Error())\n\t}\n}"
+    },
+    {
+      "id": "models/users.go:LCF54",
+      "path": "models/users.go",
+      "name": "UserIconColorStr",
+      "parameters": [],
+      "body": "{\n\treturn UserIconColors[c.UserID%len(UserIconColors)]\n}",
+      "start_line": 46,
+      "end_line": 48,
+      "code": "func (c *User) UserIconColorStr() string {\n\treturn UserIconColors[c.UserID%len(UserIconColors)]\n}"
+    },
+    {
+      "id": "models/users.go:LCF55",
+      "path": "models/users.go",
+      "name": "createUser",
+      "parameters": [
+        "domainID int",
+        "email string",
+        "displayName string",
+        "passwd string",
+        "isSuperUser bool"
+      ],
+      "body": "{\n\tpasswdHash := hashPassword(passwd)\n\t_, err := DB.Exec(`INSERT INTO users(domain_id, email, display_name, passwd_hash, is_superadmin) VALUES($1, $2, $3, $4, $5);`,\n\t\tdomainID, email, displayName, passwdHash, isSuperUser,\n\t)\n\treturn err\n}",
+      "start_line": 50,
+      "end_line": 56,
+      "code": "func createUser(domainID int, email string, displayName string, passwd string, isSuperUser bool) error {\n\tpasswdHash := hashPassword(passwd)\n\t_, err := DB.Exec(`INSERT INTO users(domain_id, email, display_name, passwd_hash, is_superadmin) VALUES($1, $2, $3, $4, $5);`,\n\t\tdomainID, email, displayName, passwdHash, isSuperUser,\n\t)\n\treturn err\n}"
+    },
+    {
+      "id": "models/users.go:LCF56",
+      "path": "models/users.go",
+      "name": "CreateUser",
+      "parameters": [
+        "domainID int",
+        "email string",
+        "displayName string",
+        "passwd string"
+      ],
+      "body": "{\n\treturn createUser(domainID, email, displayName, passwd, false)\n}",
+      "start_line": 58,
+      "end_line": 60,
+      "code": "func CreateUser(domainID int, email string, displayName string, passwd string) error {\n\treturn createUser(domainID, email, displayName, passwd, false)\n}"
+    },
+    {
+      "id": "models/users.go:LCF57",
+      "path": "models/users.go",
+      "name": "CreateSuperUser",
+      "parameters": [
+        "domainID int",
+        "email string",
+        "displayName string",
+        "passwd string"
+      ],
+      "body": "{\n\treturn createUser(domainID, email, displayName, passwd, true)\n}",
+      "start_line": 62,
+      "end_line": 64,
+      "code": "func CreateSuperUser(domainID int, email string, displayName string, passwd string) error {\n\treturn createUser(domainID, email, displayName, passwd, true)\n}"
+    },
+    {
+      "id": "models/users.go:LCF58",
+      "path": "models/users.go",
+      "name": "ChangePasswd",
+      "parameters": [
+        "domainID int",
+        "email string",
+        "passwd string"
+      ],
+      "body": "{\n\tpasswdHash := hashPassword(passwd)\n\t_, err := DB.Exec(`UPDATE users SET passwd_hash = $1 WHERE domain_id = $2 AND email = $3;`,\n\t\tpasswdHash, domainID, email,\n\t)\n\treturn err\n}",
+      "start_line": 66,
+      "end_line": 72,
+      "code": "func ChangePasswd(domainID int, email string, passwd string) error {\n\tpasswdHash := hashPassword(passwd)\n\t_, err := DB.Exec(`UPDATE users SET passwd_hash = $1 WHERE domain_id = $2 AND email = $3;`,\n\t\tpasswdHash, domainID, email,\n\t)\n\treturn err\n}"
+    },
+    {
+      "id": "models/users.go:LCF59",
+      "path": "models/users.go",
+      "name": "GetUserByID",
+      "parameters": [
+        "userID int"
+      ],
+      "body": "{\n\tuser := User{}\n\terr := DB.Get(&user, \"SELECT * FROM users WHERE user_id=$1;\", userID)\n\tif err != nil {\n\t\tif err != sql.ErrNoRows {\n\t\t\tglog.Errorf(\"Error reading user by email: %s\\n\", err.Error())\n\t\t}\n\t\treturn nil\n\t}\n\treturn &user\n}",
+      "start_line": 74,
+      "end_line": 84,
+      "code": "func GetUserByID(userID int) *User {\n\tuser := User{}\n\terr := DB.Get(&user, \"SELECT * FROM users WHERE user_id=$1;\", userID)\n\tif err != nil {\n\t\tif err != sql.ErrNoRows {\n\t\t\tglog.Errorf(\"Error reading user by email: %s\\n\", err.Error())\n\t\t}\n\t\treturn nil\n\t}\n\treturn &user\n}"
+    },
+    {
+      "id": "models/users.go:LCF60",
+      "path": "models/users.go",
+      "name": "GetUserByEmail",
+      "parameters": [
+        "domainID int",
+        "email string"
+      ],
+      "body": "{\n\tuser := User{}\n\terr := DB.Get(&user, \"SELECT * FROM users WHERE domain_id=$1 AND email=$2;\", domainID, email)\n\tif err != nil {\n\t\tif err != sql.ErrNoRows {\n\t\t\tglog.Errorf(\"Error reading user by email: %s\\n\", err.Error())\n\t\t}\n\t\treturn nil\n\t}\n\treturn &user\n}",
+      "start_line": 86,
+      "end_line": 96,
+      "code": "func GetUserByEmail(domainID int, email string) *User {\n\tuser := User{}\n\terr := DB.Get(&user, \"SELECT * FROM users WHERE domain_id=$1 AND email=$2;\", domainID, email)\n\tif err != nil {\n\t\tif err != sql.ErrNoRows {\n\t\t\tglog.Errorf(\"Error reading user by email: %s\\n\", err.Error())\n\t\t}\n\t\treturn nil\n\t}\n\treturn &user\n}"
+    },
+    {
+      "id": "models/users.go:LCF61",
+      "path": "models/users.go",
+      "name": "GetUserByPasswd",
+      "parameters": [
+        "domainID int",
+        "email string",
+        "passwd string"
+      ],
+      "body": "{\n\tuser := User{}\n\terr := DB.Get(&user, \"SELECT * FROM users WHERE domain_id=$1 AND email=$2;\", domainID, email)\n\tif err != nil {\n\t\tif err != sql.ErrNoRows {\n\t\t\tglog.Errorf(\"Error getting user by passwd: %s\", err.Error())\n\t\t}\n\t\treturn nil\n\t}\n\tif !checkPasswordHash(passwd, user.PasswdHash) {\n\t\treturn nil\n\t}\n\treturn &user\n}",
+      "start_line": 98,
+      "end_line": 111,
+      "code": "func GetUserByPasswd(domainID int, email string, passwd string) *User {\n\tuser := User{}\n\terr := DB.Get(&user, \"SELECT * FROM users WHERE domain_id=$1 AND email=$2;\", domainID, email)\n\tif err != nil {\n\t\tif err != sql.ErrNoRows {\n\t\t\tglog.Errorf(\"Error getting user by passwd: %s\", err.Error())\n\t\t}\n\t\treturn nil\n\t}\n\tif !checkPasswordHash(passwd, user.PasswdHash) {\n\t\treturn nil\n\t}\n\treturn &user\n}"
+    },
+    {
+      "id": "models/users.go:LCF62",
+      "path": "models/users.go",
+      "name": "GetUserByOneTimeToken",
+      "parameters": [
+        "domainID int",
+        "oneTimeToken string"
+      ],
+      "body": "{\n\tuser := User{}\n\terr := DB.Get(&user, \"SELECT * FROM users WHERE onetime_login_token=$1;\", oneTimeToken)\n\tif err == sql.ErrNoRows {\n\t\treturn nil\n\t}\n\tif user.DomainID != domainID {\n\t\treturn nil\n\t}\n\tif !user.OnetimeLoginTokenAt.Valid || user.OnetimeLoginTokenAt.Time.Add(2*time.Hour).Before(time.Now()) {\n\t\treturn nil\n\t}\n\treturn &user\n}",
+      "start_line": 113,
+      "end_line": 126,
+      "code": "func GetUserByOneTimeToken(domainID int, oneTimeToken string) *User {\n\tuser := User{}\n\terr := DB.Get(&user, \"SELECT * FROM users WHERE onetime_login_token=$1;\", oneTimeToken)\n\tif err == sql.ErrNoRows {\n\t\treturn nil\n\t}\n\tif user.DomainID != domainID {\n\t\treturn nil\n\t}\n\tif !user.OnetimeLoginTokenAt.Valid || user.OnetimeLoginTokenAt.Time.Add(2*time.Hour).Before(time.Now()) {\n\t\treturn nil\n\t}\n\treturn &user\n}"
+    },
+    {
+      "id": "models/users.go:LCF63",
+      "path": "models/users.go",
+      "name": "GetSuperModsByDomainID",
+      "parameters": [
+        "domainID int"
+      ],
+      "body": "{\n\tusers := []User{}\n\tDB.Select(&users, \"SELECT * FROM users WHERE domain_id = $1 AND is_supermod = $2;\", domainID, true)\n\treturn users\n}",
+      "start_line": 128,
+      "end_line": 132,
+      "code": "func GetSuperModsByDomainID(domainID int) []User {\n\tusers := []User{}\n\tDB.Select(&users, \"SELECT * FROM users WHERE domain_id = $1 AND is_supermod = $2;\", domainID, true)\n\treturn users\n}"
+    },
+    {
+      "id": "models/users.go:LCF64",
+      "path": "models/users.go",
+      "name": "UpdateUserPasswdByID",
+      "parameters": [
+        "userID int",
+        "passwd string"
+      ],
+      "body": "{\n\tpasswdHash := hashPassword(passwd)\n\t_, err := DB.Exec(`UPDATE users SET passwd_hash = $1 WHERE user_id=$2;`, passwdHash, userID)\n\tif err != nil {\n\t\tglog.Errorf(\"Error updating password: %s\", err.Error())\n\t}\n\treturn err\n}",
+      "start_line": 134,
+      "end_line": 141,
+      "code": "func UpdateUserPasswdByID(userID int, passwd string) error {\n\tpasswdHash := hashPassword(passwd)\n\t_, err := DB.Exec(`UPDATE users SET passwd_hash = $1 WHERE user_id=$2;`, passwdHash, userID)\n\tif err != nil {\n\t\tglog.Errorf(\"Error updating password: %s\", err.Error())\n\t}\n\treturn err\n}"
+    },
+    {
+      "id": "models/users.go:LCF65",
+      "path": "models/users.go",
+      "name": "UpdateUserOneTimeLoginTokenByID",
+      "parameters": [
+        "userID int"
+      ],
+      "body": "{\n\ttoken := uuid.New().String()\n\t_, err := DB.Exec(`UPDATE users SET onetime_login_token = $1, onetime_login_token_at = current_timestamp WHERE user_id=$2;`, token, userID)\n\tif err != nil {\n\t\tglog.Errorf(\"Error updating one-time signin token: %s\", err.Error())\n\t}\n\treturn token\n}",
+      "start_line": 143,
+      "end_line": 150,
+      "code": "func UpdateUserOneTimeLoginTokenByID(userID int) string {\n\ttoken := uuid.New().String()\n\t_, err := DB.Exec(`UPDATE users SET onetime_login_token = $1, onetime_login_token_at = current_timestamp WHERE user_id=$2;`, token, userID)\n\tif err != nil {\n\t\tglog.Errorf(\"Error updating one-time signin token: %s\", err.Error())\n\t}\n\treturn token\n}"
+    },
+    {
+      "id": "models/users.go:LCF66",
+      "path": "models/users.go",
+      "name": "UpdateUserSuperUser",
+      "parameters": [
+        "userID int",
+        "isSuperUser bool"
+      ],
+      "body": "{\n\t_, err := DB.Exec(`UPDATE users SET is_superadmin = $1 WHERE user_id=$2;`, isSuperUser, userID)\n\tif err != nil {\n\t\tglog.Errorf(\"Error updating superuser status: %s\", err.Error())\n\t}\n}",
+      "start_line": 152,
+      "end_line": 157,
+      "code": "func UpdateUserSuperUser(userID int, isSuperUser bool) {\n\t_, err := DB.Exec(`UPDATE users SET is_superadmin = $1 WHERE user_id=$2;`, isSuperUser, userID)\n\tif err != nil {\n\t\tglog.Errorf(\"Error updating superuser status: %s\", err.Error())\n\t}\n}"
+    },
+    {
+      "id": "models/users.go:LCF67",
+      "path": "models/users.go",
+      "name": "UpdateUserSuperMod",
+      "parameters": [
+        "userID int",
+        "isSuperMod bool"
+      ],
+      "body": "{\n\t_, err := DB.Exec(`UPDATE users SET is_supermod = $1 WHERE user_id=$2;`, isSuperMod, userID)\n\tif err != nil {\n\t\tglog.Errorf(\"Error updating supermod status: %s\", err.Error())\n\t}\n}",
+      "start_line": 159,
+      "end_line": 164,
+      "code": "func UpdateUserSuperMod(userID int, isSuperMod bool) {\n\t_, err := DB.Exec(`UPDATE users SET is_supermod = $1 WHERE user_id=$2;`, isSuperMod, userID)\n\tif err != nil {\n\t\tglog.Errorf(\"Error updating supermod status: %s\", err.Error())\n\t}\n}"
+    },
+    {
+      "id": "models/users.go:LCF68",
+      "path": "models/users.go",
+      "name": "UpdateUserByID",
+      "parameters": [
+        "userID int",
+        "email string",
+        "displayName string",
+        "isBanned bool"
+      ],
+      "body": "{\n\tvar bannedAt interface{}\n\tif isBanned {\n\t\tbannedAt = time.Now()\n\t}\n\t_, err := DB.Exec(`UPDATE users SET email = $2, display_name = $3, banned_at = $4 WHERE user_id=$1;`, userID, email, displayName, bannedAt)\n\tif err != nil {\n\t\tglog.Errorf(\"Error updating user: %s\", err.Error())\n\t}\n}",
+      "start_line": 166,
+      "end_line": 175,
+      "code": "func UpdateUserByID(userID int, email string, displayName string, isBanned bool) {\n\tvar bannedAt interface{}\n\tif isBanned {\n\t\tbannedAt = time.Now()\n\t}\n\t_, err := DB.Exec(`UPDATE users SET email = $2, display_name = $3, banned_at = $4 WHERE user_id=$1;`, userID, email, displayName, bannedAt)\n\tif err != nil {\n\t\tglog.Errorf(\"Error updating user: %s\", err.Error())\n\t}\n}"
+    },
+    {
+      "id": "models/users.go:LCF69",
+      "path": "models/users.go",
+      "name": "LogOutUserByID",
+      "parameters": [
+        "userID int"
+      ],
+      "body": "{\n\t_, err := DB.Exec(`UPDATE users SET logout_at = current_timestamp WHERE user_id=$1;`, userID)\n\treturn err\n}",
+      "start_line": 177,
+      "end_line": 180,
+      "code": "func LogOutUserByID(userID int) error {\n\t_, err := DB.Exec(`UPDATE users SET logout_at = current_timestamp WHERE user_id=$1;`, userID)\n\treturn err\n}"
+    },
+    {
+      "id": "models/users.go:LCF70",
+      "path": "models/users.go",
+      "name": "DeleteUserByID",
+      "parameters": [
+        "userID int"
+      ],
+      "body": "{\n\t_, err := DB.Exec(`DELETE FROM users WHERE user_id = $1;`, userID)\n\tif err != nil {\n\t\tglog.Errorf(\"Error deleting user: %s\", err.Error())\n\t}\n}",
+      "start_line": 182,
+      "end_line": 187,
+      "code": "func DeleteUserByID(userID int) {\n\t_, err := DB.Exec(`DELETE FROM users WHERE user_id = $1;`, userID)\n\tif err != nil {\n\t\tglog.Errorf(\"Error deleting user: %s\", err.Error())\n\t}\n}"
+    },
+    {
+      "id": "models/users.go:LCF71",
+      "path": "models/users.go",
+      "name": "hashPassword",
+      "parameters": [
+        "password string"
+      ],
+      "body": "{\n\tbytes, err := bcrypt.GenerateFromPassword([]byte(password), bcrypt.DefaultCost)\n\tif err != nil {\n\t\tglog.Fatalf(\"Error hashing password: %s\", err.Error())\n\t}\n\treturn string(bytes)\n}",
+      "start_line": 189,
+      "end_line": 195,
+      "code": "func hashPassword(password string) string {\n\tbytes, err := bcrypt.GenerateFromPassword([]byte(password), bcrypt.DefaultCost)\n\tif err != nil {\n\t\tglog.Fatalf(\"Error hashing password: %s\", err.Error())\n\t}\n\treturn string(bytes)\n}"
+    },
+    {
+      "id": "models/users.go:LCF72",
+      "path": "models/users.go",
+      "name": "checkPasswordHash",
+      "parameters": [
+        "password, hash string"
+      ],
+      "body": "{\n\terr := bcrypt.CompareHashAndPassword([]byte(hash), []byte(password))\n\treturn err == nil\n}",
+      "start_line": 197,
+      "end_line": 200,
+      "code": "func checkPasswordHash(password, hash string) bool {\n\terr := bcrypt.CompareHashAndPassword([]byte(hash), []byte(password))\n\treturn err == nil\n}"
+    },
+    {
+      "id": "models/utils.go:LCF73",
+      "path": "models/utils.go",
+      "name": "RelTimeNowStr",
+      "parameters": [
+        "t time.Time"
+      ],
+      "body": "{\n\tnow := time.Now()\n\tdiff := now.Sub(t)\n\tif diff.Hours() > 24*30 {\n\t\treturn t.Format(\"2 Jan 2006\")\n\t} else if diff.Hours() > 24 {\n\t\tdays := int(diff.Hours() / 24)\n\t\tif days == 1 {\n\t\t\treturn strconv.Itoa(days) + \" day ago\"\n\t\t}\n\t\treturn strconv.Itoa(days) + \" days ago\"\n\t} else if diff.Minutes() > 120 {\n\t\treturn strconv.Itoa(int(diff.Hours())) + \" hours ago\"\n\t} else {\n\t\tmins := int(diff.Minutes())\n\t\tif mins == 1 {\n\t\t\treturn strconv.Itoa(mins) + \" minute ago\"\n\t\t}\n\t\treturn strconv.Itoa(mins) + \" minutes ago\"\n\t}\n}",
+      "start_line": 12,
+      "end_line": 32,
+      "code": "func RelTimeNowStr(t time.Time) string {\n\tnow := time.Now()\n\tdiff := now.Sub(t)\n\tif diff.Hours() > 24*30 {\n\t\treturn t.Format(\"2 Jan 2006\")\n\t} else if diff.Hours() > 24 {\n\t\tdays := int(diff.Hours() / 24)\n\t\tif days == 1 {\n\t\t\treturn strconv.Itoa(days) + \" day ago\"\n\t\t}\n\t\treturn strconv.Itoa(days) + \" days ago\"\n\t} else if diff.Minutes() > 120 {\n\t\treturn strconv.Itoa(int(diff.Hours())) + \" hours ago\"\n\t} else {\n\t\tmins := int(diff.Minutes())\n\t\tif mins == 1 {\n\t\t\treturn strconv.Itoa(mins) + \" minute ago\"\n\t\t}\n\t\treturn strconv.Itoa(mins) + \" minutes ago\"\n\t}\n}"
+    },
+    {
+      "id": "models/utils.go:LCF74",
+      "path": "models/utils.go",
+      "name": "ApproxNumStr",
+      "parameters": [
+        "i int"
+      ],
+      "body": "{\n\tif i >= (1000 * 1000) {\n\t\treturn strconv.Itoa(i/(1000*1000)) + \"M\"\n\t} else if i >= 1000 {\n\t\treturn strconv.Itoa(i/1000) + \"k\"\n\t} else {\n\t\treturn strconv.Itoa(i)\n\t}\n}",
+      "start_line": 34,
+      "end_line": 42,
+      "code": "func ApproxNumStr(i int) string {\n\tif i >= (1000 * 1000) {\n\t\treturn strconv.Itoa(i/(1000*1000)) + \"M\"\n\t} else if i >= 1000 {\n\t\treturn strconv.Itoa(i/1000) + \"k\"\n\t} else {\n\t\treturn strconv.Itoa(i)\n\t}\n}"
+    },
+    {
+      "id": "templates/teamplates.go:LCF75",
+      "path": "templates/teamplates.go",
+      "name": "init",
+      "parameters": [],
+      "body": "{\n\tSignin = template.Must(template.Must(template.New(\"base\").Parse(baseTmplStr)).Parse(signinTmplStr))\n\tSignup = template.Must(template.Must(template.New(\"base\").Parse(baseTmplStr)).Parse(signupTmplStr))\n\tChangePass = template.Must(template.Must(template.New(\"base\").Parse(baseTmplStr)).Parse(changePassTmplStr))\n\tOneTimeSignin = template.Must(template.Must(template.New(\"base\").Parse(baseTmplStr)).Parse(otSigninTmplStr))\n\n\tIndex = template.Must(template.Must(template.New(\"base\").Parse(baseTmplStr)).Parse(indexTmplStr))\n\tAdmin = template.Must(template.Must(template.New(\"base\").Parse(baseTmplStr)).Parse(adminTmplStr))\n\tProfile = template.Must(template.Must(template.New(\"base\").Parse(baseTmplStr)).Parse(profileTmplStr))\n\n\tTopicList = template.Must(template.Must(template.New(\"base\").Parse(baseTmplStr)).Parse(topicListTmplStr))\n\tTopicEdit = template.Must(template.Must(template.New(\"base\").Parse(baseTmplStr)).Parse(topicEditTmplStr))\n\tTopic = template.Must(template.Must(template.New(\"base\").Parse(baseTmplStr)).Parse(topicTmplStr))\n\n\tCommentEdit = template.Must(template.Must(template.New(\"base\").Parse(baseTmplStr)).Parse(commentEditTmplStr))\n}",
+      "start_line": 63,
+      "end_line": 78,
+      "code": "func init() {\n\tSignin = template.Must(template.Must(template.New(\"base\").Parse(baseTmplStr)).Parse(signinTmplStr))\n\tSignup = template.Must(template.Must(template.New(\"base\").Parse(baseTmplStr)).Parse(signupTmplStr))\n\tChangePass = template.Must(template.Must(template.New(\"base\").Parse(baseTmplStr)).Parse(changePassTmplStr))\n\tOneTimeSignin = template.Must(template.Must(template.New(\"base\").Parse(baseTmplStr)).Parse(otSigninTmplStr))\n\n\tIndex = template.Must(template.Must(template.New(\"base\").Parse(baseTmplStr)).Parse(indexTmplStr))\n\tAdmin = template.Must(template.Must(template.New(\"base\").Parse(baseTmplStr)).Parse(adminTmplStr))\n\tProfile = template.Must(template.Must(template.New(\"base\").Parse(baseTmplStr)).Parse(profileTmplStr))\n\n\tTopicList = template.Must(template.Must(template.New(\"base\").Parse(baseTmplStr)).Parse(topicListTmplStr))\n\tTopicEdit = template.Must(template.Must(template.New(\"base\").Parse(baseTmplStr)).Parse(topicEditTmplStr))\n\tTopic = template.Must(template.Must(template.New(\"base\").Parse(baseTmplStr)).Parse(topicTmplStr))\n\n\tCommentEdit = template.Must(template.Must(template.New(\"base\").Parse(baseTmplStr)).Parse(commentEditTmplStr))\n}"
+    },
+    {
+      "id": "views/admin.go:LCF76",
+      "path": "views/admin.go",
+      "name": "adminHandler",
+      "parameters": [
+        "w http.ResponseWriter",
+        "r *http.Request"
+      ],
+      "body": "{\n\tbasePath := r.Context().Value(ctxBasePath).(string)\n\n\tuser := r.Context().Value(CtxUserKey).(*models.User)\n\tdomain, _ := r.Context().Value(ctxDomain).(*models.Domain)\n\n\tif !user.IsSuperAdmin {\n\t\thttp.Error(w, http.StatusText(403), http.StatusForbidden)\n\t\treturn\n\t}\n\n\terrMsg := \"\"\n\n\tif r.Method == \"POST\" {\n\t\tif err := r.ParseForm(); err != nil {\n\t\t\thttp.Error(w, \"Error parsing form.\", http.StatusBadRequest)\n\t\t\treturn\n\t\t}\n\n\t\tforumName := r.PostFormValue(\"forum_name\")\n\t\twhitelistedEmailDomains := r.PostFormValue(\"whitelisted_email_domains\")\n\t\tlogo := r.PostFormValue(\"logo\")\n\t\ticon := r.PostFormValue(\"icon\")\n\t\tisRegularSignupEnabled := r.PostFormValue(\"is_regular_signup_enabled\") == \"1\"\n\t\tisRegularSigninEnabled := r.PostFormValue(\"is_regular_signin_enabled\") == \"1\"\n\t\tisAutoUserCreationOnEmailSigninEnabled := r.PostFormValue(\"is_auto_user_creation_on_email_signin_enabled\") == \"1\"\n\t\tisReadOnly := r.PostFormValue(\"is_readonly\") == \"1\"\n\t\tisPrivate := r.PostFormValue(\"is_private\") == \"1\"\n\t\tsignupToken := r.PostFormValue(\"signup_token\")\n\n\t\tif len(forumName) < 3 || len(forumName) > 30 {\n\t\t\terrMsg = \"Forum name should have between 3 and 30 characters\"\n\t\t}\n\n\t\tif len(signupToken) > 30 {\n\t\t\terrMsg = \"Signup token should have fewer than 30 characters\"\n\t\t}\n\n\t\tfor _, r := range signupToken {\n\t\t\tif (r < 'a' || r > 'z') && (r < 'A' || r > 'Z') && (r < '0' || r > '9') && r != '-' {\n\t\t\t\terrMsg = \"Signup token should be alphanumeric\"\n\t\t\t}\n\t\t}\n\n\t\tif errMsg == \"\" {\n\t\t\tmodels.UpdateDomainByID(domain.DomainID,\n\t\t\t\tforumName,\n\t\t\t\twhitelistedEmailDomains,\n\t\t\t\tlogo,\n\t\t\t\ticon,\n\t\t\t\tisRegularSignupEnabled,\n\t\t\t\tisRegularSigninEnabled,\n\t\t\t\tisAutoUserCreationOnEmailSigninEnabled,\n\t\t\t\tisReadOnly,\n\t\t\t\tisPrivate,\n\t\t\t\tsignupToken,\n\t\t\t)\n\t\t\thttp.Redirect(w, r, basePath+\"admin\", http.StatusSeeOther)\n\t\t\treturn\n\t\t}\n\t}\n\n\tmods := models.GetSuperModsByDomainID(domain.DomainID)\n\tcategories := models.GetCategoriesByDomainID(domain.DomainID)\n\n\ttemplates.Admin.Execute(w, map[string]interface{}{\n\t\tcsrf.TemplateTag: csrf.TemplateField(r),\n\t\tBasePathField:    basePath,\n\t\tUserField:        user,\n\t\t\"Domain\":         domain,\n\t\t\"Host\":           r.Host,\n\t\t\"Mods\":           mods,\n\t\t\"Categories\":     categories,\n\t\t\"ErrMsg\":         errMsg,\n\t})\n}",
+      "start_line": 17,
+      "end_line": 92,
+      "code": "func adminHandler(w http.ResponseWriter, r *http.Request) {\n\tbasePath := r.Context().Value(ctxBasePath).(string)\n\n\tuser := r.Context().Value(CtxUserKey).(*models.User)\n\tdomain, _ := r.Context().Value(ctxDomain).(*models.Domain)\n\n\tif !user.IsSuperAdmin {\n\t\thttp.Error(w, http.StatusText(403), http.StatusForbidden)\n\t\treturn\n\t}\n\n\terrMsg := \"\"\n\n\tif r.Method == \"POST\" {\n\t\tif err := r.ParseForm(); err != nil {\n\t\t\thttp.Error(w, \"Error parsing form.\", http.StatusBadRequest)\n\t\t\treturn\n\t\t}\n\n\t\tforumName := r.PostFormValue(\"forum_name\")\n\t\twhitelistedEmailDomains := r.PostFormValue(\"whitelisted_email_domains\")\n\t\tlogo := r.PostFormValue(\"logo\")\n\t\ticon := r.PostFormValue(\"icon\")\n\t\tisRegularSignupEnabled := r.PostFormValue(\"is_regular_signup_enabled\") == \"1\"\n\t\tisRegularSigninEnabled := r.PostFormValue(\"is_regular_signin_enabled\") == \"1\"\n\t\tisAutoUserCreationOnEmailSigninEnabled := r.PostFormValue(\"is_auto_user_creation_on_email_signin_enabled\") == \"1\"\n\t\tisReadOnly := r.PostFormValue(\"is_readonly\") == \"1\"\n\t\tisPrivate := r.PostFormValue(\"is_private\") == \"1\"\n\t\tsignupToken := r.PostFormValue(\"signup_token\")\n\n\t\tif len(forumName) < 3 || len(forumName) > 30 {\n\t\t\terrMsg = \"Forum name should have between 3 and 30 characters\"\n\t\t}\n\n\t\tif len(signupToken) > 30 {\n\t\t\terrMsg = \"Signup token should have fewer than 30 characters\"\n\t\t}\n\n\t\tfor _, r := range signupToken {\n\t\t\tif (r < 'a' || r > 'z') && (r < 'A' || r > 'Z') && (r < '0' || r > '9') && r != '-' {\n\t\t\t\terrMsg = \"Signup token should be alphanumeric\"\n\t\t\t}\n\t\t}\n\n\t\tif errMsg == \"\" {\n\t\t\tmodels.UpdateDomainByID(domain.DomainID,\n\t\t\t\tforumName,\n\t\t\t\twhitelistedEmailDomains,\n\t\t\t\tlogo,\n\t\t\t\ticon,\n\t\t\t\tisRegularSignupEnabled,\n\t\t\t\tisRegularSigninEnabled,\n\t\t\t\tisAutoUserCreationOnEmailSigninEnabled,\n\t\t\t\tisReadOnly,\n\t\t\t\tisPrivate,\n\t\t\t\tsignupToken,\n\t\t\t)\n\t\t\thttp.Redirect(w, r, basePath+\"admin\", http.StatusSeeOther)\n\t\t\treturn\n\t\t}\n\t}\n\n\tmods := models.GetSuperModsByDomainID(domain.DomainID)\n\tcategories := models.GetCategoriesByDomainID(domain.DomainID)\n\n\ttemplates.Admin.Execute(w, map[string]interface{}{\n\t\tcsrf.TemplateTag: csrf.TemplateField(r),\n\t\tBasePathField:    basePath,\n\t\tUserField:        user,\n\t\t\"Domain\":         domain,\n\t\t\"Host\":           r.Host,\n\t\t\"Mods\":           mods,\n\t\t\"Categories\":     categories,\n\t\t\"ErrMsg\":         errMsg,\n\t})\n}"
+    },
+    {
+      "id": "views/admin.go:LCF77",
+      "path": "views/admin.go",
+      "name": "postCreateMod",
+      "parameters": [
+        "w http.ResponseWriter",
+        "r *http.Request"
+      ],
+      "body": "{\n\tbasePath := r.Context().Value(ctxBasePath).(string)\n\n\tuser := r.Context().Value(CtxUserKey).(*models.User)\n\tdomain, _ := r.Context().Value(ctxDomain).(*models.Domain)\n\n\tif !user.IsSuperAdmin {\n\t\thttp.Error(w, http.StatusText(http.StatusForbidden), http.StatusForbidden)\n\t\treturn\n\t}\n\n\tif err := r.ParseForm(); err != nil {\n\t\thttp.Error(w, \"Error parsing form.\", http.StatusBadRequest)\n\t\treturn\n\t}\n\n\tmodUserEmail := r.PostFormValue(\"mod_user_email\")\n\tmodUser := models.GetUserByEmail(domain.DomainID, modUserEmail)\n\n\tif modUser == nil {\n\t\thttp.Error(w, \"Invalid user\", http.StatusBadRequest)\n\t\treturn\n\t}\n\n\tmodels.UpdateUserSuperMod(modUser.UserID, true)\n\n\thttp.Redirect(w, r, basePath+\"admin\", http.StatusSeeOther)\n}",
+      "start_line": 94,
+      "end_line": 121,
+      "code": "func postCreateMod(w http.ResponseWriter, r *http.Request) {\n\tbasePath := r.Context().Value(ctxBasePath).(string)\n\n\tuser := r.Context().Value(CtxUserKey).(*models.User)\n\tdomain, _ := r.Context().Value(ctxDomain).(*models.Domain)\n\n\tif !user.IsSuperAdmin {\n\t\thttp.Error(w, http.StatusText(http.StatusForbidden), http.StatusForbidden)\n\t\treturn\n\t}\n\n\tif err := r.ParseForm(); err != nil {\n\t\thttp.Error(w, \"Error parsing form.\", http.StatusBadRequest)\n\t\treturn\n\t}\n\n\tmodUserEmail := r.PostFormValue(\"mod_user_email\")\n\tmodUser := models.GetUserByEmail(domain.DomainID, modUserEmail)\n\n\tif modUser == nil {\n\t\thttp.Error(w, \"Invalid user\", http.StatusBadRequest)\n\t\treturn\n\t}\n\n\tmodels.UpdateUserSuperMod(modUser.UserID, true)\n\n\thttp.Redirect(w, r, basePath+\"admin\", http.StatusSeeOther)\n}"
+    },
+    {
+      "id": "views/admin.go:LCF78",
+      "path": "views/admin.go",
+      "name": "postDeleteMod",
+      "parameters": [
+        "w http.ResponseWriter",
+        "r *http.Request"
+      ],
+      "body": "{\n\tbasePath := r.Context().Value(ctxBasePath).(string)\n\n\tuser := r.Context().Value(CtxUserKey).(*models.User)\n\tdomain, _ := r.Context().Value(ctxDomain).(*models.Domain)\n\n\tif !user.IsSuperAdmin {\n\t\thttp.Error(w, http.StatusText(http.StatusForbidden), http.StatusForbidden)\n\t\treturn\n\t}\n\n\tif err := r.ParseForm(); err != nil {\n\t\thttp.Error(w, \"Error parsing form.\", http.StatusBadRequest)\n\t\treturn\n\t}\n\n\tmodUserID, err := strconv.Atoi(r.PostFormValue(\"mod_user_id\"))\n\tif err != nil {\n\t\thttp.Error(w, \"Error reading user ID.\", http.StatusBadRequest)\n\t\treturn\n\t}\n\tmodUser := models.GetUserByID(modUserID)\n\n\tif modUser.DomainID != domain.DomainID {\n\t\thttp.Error(w, http.StatusText(http.StatusForbidden), http.StatusForbidden)\n\t\treturn\n\t}\n\n\tmodels.UpdateUserSuperMod(modUserID, false)\n\n\thttp.Redirect(w, r, basePath+\"admin\", http.StatusSeeOther)\n}",
+      "start_line": 123,
+      "end_line": 154,
+      "code": "func postDeleteMod(w http.ResponseWriter, r *http.Request) {\n\tbasePath := r.Context().Value(ctxBasePath).(string)\n\n\tuser := r.Context().Value(CtxUserKey).(*models.User)\n\tdomain, _ := r.Context().Value(ctxDomain).(*models.Domain)\n\n\tif !user.IsSuperAdmin {\n\t\thttp.Error(w, http.StatusText(http.StatusForbidden), http.StatusForbidden)\n\t\treturn\n\t}\n\n\tif err := r.ParseForm(); err != nil {\n\t\thttp.Error(w, \"Error parsing form.\", http.StatusBadRequest)\n\t\treturn\n\t}\n\n\tmodUserID, err := strconv.Atoi(r.PostFormValue(\"mod_user_id\"))\n\tif err != nil {\n\t\thttp.Error(w, \"Error reading user ID.\", http.StatusBadRequest)\n\t\treturn\n\t}\n\tmodUser := models.GetUserByID(modUserID)\n\n\tif modUser.DomainID != domain.DomainID {\n\t\thttp.Error(w, http.StatusText(http.StatusForbidden), http.StatusForbidden)\n\t\treturn\n\t}\n\n\tmodels.UpdateUserSuperMod(modUserID, false)\n\n\thttp.Redirect(w, r, basePath+\"admin\", http.StatusSeeOther)\n}"
+    },
+    {
+      "id": "views/admin.go:LCF79",
+      "path": "views/admin.go",
+      "name": "postCategory",
+      "parameters": [
+        "w http.ResponseWriter",
+        "r *http.Request"
+      ],
+      "body": "{\n\tbasePath := r.Context().Value(ctxBasePath).(string)\n\n\tuser := r.Context().Value(CtxUserKey).(*models.User)\n\tdomain, _ := r.Context().Value(ctxDomain).(*models.Domain)\n\n\tif domain.DomainID != user.DomainID || !user.IsSuperAdmin {\n\t\thttp.Error(w, http.StatusText(http.StatusForbidden), http.StatusForbidden)\n\t\treturn\n\t}\n\n\terr := r.ParseForm()\n\tif err != nil {\n\t\thttp.Error(w, http.StatusText(http.StatusBadRequest), http.StatusBadRequest)\n\t\treturn\n\t}\n\n\tname := r.PostFormValue(\"name\")\n\tdescription := r.PostFormValue(\"description\")\n\tisPrivate := r.PostFormValue(\"is_private\") == \"1\"\n\tisReadOnly := r.PostFormValue(\"is_readonly\") == \"1\"\n\tisArchived := r.PostFormValue(\"is_archived\") == \"1\"\n\tcategoryIDStr := chi.URLParam(r, \"categoryID\")\n\n\tif categoryIDStr == \"create\" {\n\t\tmodels.CreateCategory(domain.DomainID, name, description)\n\t} else {\n\t\tcategoryID, err := strconv.Atoi(categoryIDStr)\n\t\tif err != nil {\n\t\t\thttp.Error(w, http.StatusText(http.StatusBadRequest), http.StatusBadRequest)\n\t\t\treturn\n\t\t}\n\t\tmodels.UpdateCategoryByID(categoryID, name, description, isPrivate, isReadOnly, isArchived)\n\t}\n\n\thttp.Redirect(w, r, basePath+\"admin\", http.StatusSeeOther)\n}",
+      "start_line": 156,
+      "end_line": 192,
+      "code": "func postCategory(w http.ResponseWriter, r *http.Request) {\n\tbasePath := r.Context().Value(ctxBasePath).(string)\n\n\tuser := r.Context().Value(CtxUserKey).(*models.User)\n\tdomain, _ := r.Context().Value(ctxDomain).(*models.Domain)\n\n\tif domain.DomainID != user.DomainID || !user.IsSuperAdmin {\n\t\thttp.Error(w, http.StatusText(http.StatusForbidden), http.StatusForbidden)\n\t\treturn\n\t}\n\n\terr := r.ParseForm()\n\tif err != nil {\n\t\thttp.Error(w, http.StatusText(http.StatusBadRequest), http.StatusBadRequest)\n\t\treturn\n\t}\n\n\tname := r.PostFormValue(\"name\")\n\tdescription := r.PostFormValue(\"description\")\n\tisPrivate := r.PostFormValue(\"is_private\") == \"1\"\n\tisReadOnly := r.PostFormValue(\"is_readonly\") == \"1\"\n\tisArchived := r.PostFormValue(\"is_archived\") == \"1\"\n\tcategoryIDStr := chi.URLParam(r, \"categoryID\")\n\n\tif categoryIDStr == \"create\" {\n\t\tmodels.CreateCategory(domain.DomainID, name, description)\n\t} else {\n\t\tcategoryID, err := strconv.Atoi(categoryIDStr)\n\t\tif err != nil {\n\t\t\thttp.Error(w, http.StatusText(http.StatusBadRequest), http.StatusBadRequest)\n\t\t\treturn\n\t\t}\n\t\tmodels.UpdateCategoryByID(categoryID, name, description, isPrivate, isReadOnly, isArchived)\n\t}\n\n\thttp.Redirect(w, r, basePath+\"admin\", http.StatusSeeOther)\n}"
+    },
+    {
+      "id": "views/auth.go:LCF80",
+      "path": "views/auth.go",
+      "name": "getNextPathFromURL",
+      "parameters": [
+        "url *url.URL"
+      ],
+      "body": "{\n\tnextPath := url.Path\n\tif nextPath != \"\" && nextPath[len(nextPath)-1] != '/' {\n\t\tnextPath = nextPath + \"/\"\n\t}\n\tif url.RawQuery != \"\" {\n\t\tnextPath = nextPath + \"?\" + url.RawQuery\n\t}\n\treturn nextPath\n}",
+      "start_line": 32,
+      "end_line": 41,
+      "code": "func getNextPathFromURL(url *url.URL) string {\n\tnextPath := url.Path\n\tif nextPath != \"\" && nextPath[len(nextPath)-1] != '/' {\n\t\tnextPath = nextPath + \"/\"\n\t}\n\tif url.RawQuery != \"\" {\n\t\tnextPath = nextPath + \"?\" + url.RawQuery\n\t}\n\treturn nextPath\n}"
+    },
+    {
+      "id": "views/auth.go:LCF81",
+      "path": "views/auth.go",
+      "name": "cleanNextURL",
+      "parameters": [
+        "next string",
+        "basePath string"
+      ],
+      "body": "{\n\tif next == \"\" || next[0] != '/' {\n\t\treturn basePath\n\t}\n\treturn next\n}",
+      "start_line": 43,
+      "end_line": 48,
+      "code": "func cleanNextURL(next string, basePath string) string {\n\tif next == \"\" || next[0] != '/' {\n\t\treturn basePath\n\t}\n\treturn next\n}"
+    },
+    {
+      "id": "views/auth.go:LCF82",
+      "path": "views/auth.go",
+      "name": "getCookiePath",
+      "parameters": [
+        "basePath string"
+      ],
+      "body": "{\n\tpath := \"/\"\n\tif basePath != \"\" {\n\t\tpath = basePath\n\t}\n\tif path != \"/\" && path[len(path)-1] == '/' {\n\t\tpath = path[:len(path)-1]\n\t}\n\treturn path\n}",
+      "start_line": 50,
+      "end_line": 59,
+      "code": "func getCookiePath(basePath string) string {\n\tpath := \"/\"\n\tif basePath != \"\" {\n\t\tpath = basePath\n\t}\n\tif path != \"/\" && path[len(path)-1] == '/' {\n\t\tpath = path[:len(path)-1]\n\t}\n\treturn path\n}"
+    },
+    {
+      "id": "views/auth.go:LCF83",
+      "path": "views/auth.go",
+      "name": "authenticate",
+      "parameters": [
+        "id int",
+        "basePath string",
+        "w http.ResponseWriter"
+      ],
+      "body": "{\n\t_, tokenString, err := tokenAuth.Encode(map[string]interface{}{\n\t\t\"user_id\": strconv.Itoa(id),\n\t\t\"iat\":     time.Now(),\n\t\t\"exp\":     time.Now().Add(365 * 24 * time.Hour),\n\t})\n\n\tif err == nil {\n\t\tcookie := http.Cookie{\n\t\t\tName:     \"jwt\",\n\t\t\tValue:    tokenString,\n\t\t\tPath:     getCookiePath(basePath),\n\t\t\tExpires:  time.Now().Add(365 * 24 * time.Hour),\n\t\t\tHttpOnly: true,\n\t\t}\n\t\thttp.SetCookie(w, &cookie)\n\t}\n\treturn err\n}",
+      "start_line": 61,
+      "end_line": 79,
+      "code": "func authenticate(id int, basePath string, w http.ResponseWriter) error {\n\t_, tokenString, err := tokenAuth.Encode(map[string]interface{}{\n\t\t\"user_id\": strconv.Itoa(id),\n\t\t\"iat\":     time.Now(),\n\t\t\"exp\":     time.Now().Add(365 * 24 * time.Hour),\n\t})\n\n\tif err == nil {\n\t\tcookie := http.Cookie{\n\t\t\tName:     \"jwt\",\n\t\t\tValue:    tokenString,\n\t\t\tPath:     getCookiePath(basePath),\n\t\t\tExpires:  time.Now().Add(365 * 24 * time.Hour),\n\t\t\tHttpOnly: true,\n\t\t}\n\t\thttp.SetCookie(w, &cookie)\n\t}\n\treturn err\n}"
+    },
+    {
+      "id": "views/auth.go:LCF84",
+      "path": "views/auth.go",
+      "name": "mustAuth",
+      "parameters": [
+        "next http.Handler"
+      ],
+      "body": "{\n\treturn http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {\n\t\tdomain := r.Context().Value(ctxDomain).(*models.Domain)\n\t\ttoken, claims, err := jwtauth.FromContext(r.Context())\n\t\tbasePath, _ := r.Context().Value(ctxBasePath).(string)\n\n\t\tif err == nil && token != nil && jwt.Validate(token) == nil {\n\t\t\tif uid, ok := claims[\"user_id\"].(string); ok {\n\t\t\t\tif iat, ok := claims[\"iat\"].(time.Time); ok {\n\t\t\t\t\tuserID, _ := strconv.Atoi(uid)\n\t\t\t\t\tuser := models.GetUserByID(userID)\n\t\t\t\t\tif user != nil && user.LogoutAt.Before(iat) && user.DomainID == domain.DomainID && !user.BannedAt.Valid {\n\t\t\t\t\t\tctx := context.WithValue(r.Context(), CtxUserKey, user)\n\t\t\t\t\t\t// Token is authenticated, pass it through\n\t\t\t\t\t\tnext.ServeHTTP(w, r.WithContext(ctx))\n\t\t\t\t\t\treturn\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\n\t\thttp.SetCookie(w, &http.Cookie{\n\t\t\tName:     \"jwt\",\n\t\t\tValue:    \"\",\n\t\t\tPath:     \"/\",\n\t\t\tExpires:  time.Now().Add(-300 * time.Hour),\n\t\t\tHttpOnly: true,\n\t\t})\n\t\tif r.Method == \"GET\" {\n\t\t\thttp.Redirect(w, r, basePath+\"auth/signin?next=\"+getNextPathFromURL(r.URL), http.StatusSeeOther)\n\t\t} else {\n\t\t\thttp.Redirect(w, r, basePath, http.StatusSeeOther)\n\t\t}\n\t})\n}",
+      "start_line": 81,
+      "end_line": 115,
+      "code": "func mustAuth(next http.Handler) http.Handler {\n\treturn http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {\n\t\tdomain := r.Context().Value(ctxDomain).(*models.Domain)\n\t\ttoken, claims, err := jwtauth.FromContext(r.Context())\n\t\tbasePath, _ := r.Context().Value(ctxBasePath).(string)\n\n\t\tif err == nil && token != nil && jwt.Validate(token) == nil {\n\t\t\tif uid, ok := claims[\"user_id\"].(string); ok {\n\t\t\t\tif iat, ok := claims[\"iat\"].(time.Time); ok {\n\t\t\t\t\tuserID, _ := strconv.Atoi(uid)\n\t\t\t\t\tuser := models.GetUserByID(userID)\n\t\t\t\t\tif user != nil && user.LogoutAt.Before(iat) && user.DomainID == domain.DomainID && !user.BannedAt.Valid {\n\t\t\t\t\t\tctx := context.WithValue(r.Context(), CtxUserKey, user)\n\t\t\t\t\t\t// Token is authenticated, pass it through\n\t\t\t\t\t\tnext.ServeHTTP(w, r.WithContext(ctx))\n\t\t\t\t\t\treturn\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\n\t\thttp.SetCookie(w, &http.Cookie{\n\t\t\tName:     \"jwt\",\n\t\t\tValue:    \"\",\n\t\t\tPath:     \"/\",\n\t\t\tExpires:  time.Now().Add(-300 * time.Hour),\n\t\t\tHttpOnly: true,\n\t\t})\n\t\tif r.Method == \"GET\" {\n\t\t\thttp.Redirect(w, r, basePath+\"auth/signin?next=\"+getNextPathFromURL(r.URL), http.StatusSeeOther)\n\t\t} else {\n\t\t\thttp.Redirect(w, r, basePath, http.StatusSeeOther)\n\t\t}\n\t})\n}"
+    },
+    {
+      "id": "views/auth.go:LCF85",
+      "path": "views/auth.go",
+      "name": "canAuth",
+      "parameters": [
+        "next http.Handler"
+      ],
+      "body": "{\n\treturn http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {\n\t\tdomain := r.Context().Value(ctxDomain).(*models.Domain)\n\t\ttoken, claims, err := jwtauth.FromContext(r.Context())\n\t\tbasePath, _ := r.Context().Value(ctxBasePath).(string)\n\n\t\tif err == nil && token != nil && jwt.Validate(token) == nil {\n\t\t\tif uid, ok := claims[\"user_id\"].(string); ok {\n\t\t\t\tif iat, ok := claims[\"iat\"].(time.Time); ok {\n\t\t\t\t\tuserID, _ := strconv.Atoi(uid)\n\t\t\t\t\tuser := models.GetUserByID(userID)\n\t\t\t\t\tif user != nil && user.LogoutAt.Before(iat) && user.DomainID == domain.DomainID {\n\t\t\t\t\t\tctx := context.WithValue(r.Context(), CtxUserKey, user)\n\t\t\t\t\t\t// Token is authenticated, pass it through\n\t\t\t\t\t\tnext.ServeHTTP(w, r.WithContext(ctx))\n\t\t\t\t\t\treturn\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\n\t\tif domain.IsPrivate {\n\t\t\thttp.SetCookie(w, &http.Cookie{\n\t\t\t\tName:     \"jwt\",\n\t\t\t\tValue:    \"\",\n\t\t\t\tPath:     \"/\",\n\t\t\t\tExpires:  time.Now().Add(-300 * time.Hour),\n\t\t\t\tHttpOnly: true,\n\t\t\t})\n\t\t\tif r.Method == \"GET\" {\n\t\t\t\thttp.Redirect(w, r, basePath+\"auth/signin?next=\"+getNextPathFromURL(r.URL), http.StatusSeeOther)\n\t\t\t} else {\n\t\t\t\thttp.Redirect(w, r, basePath, http.StatusSeeOther)\n\t\t\t}\n\t\t\treturn\n\t\t}\n\n\t\tnext.ServeHTTP(w, r)\n\t})\n}",
+      "start_line": 117,
+      "end_line": 156,
+      "code": "func canAuth(next http.Handler) http.Handler {\n\treturn http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {\n\t\tdomain := r.Context().Value(ctxDomain).(*models.Domain)\n\t\ttoken, claims, err := jwtauth.FromContext(r.Context())\n\t\tbasePath, _ := r.Context().Value(ctxBasePath).(string)\n\n\t\tif err == nil && token != nil && jwt.Validate(token) == nil {\n\t\t\tif uid, ok := claims[\"user_id\"].(string); ok {\n\t\t\t\tif iat, ok := claims[\"iat\"].(time.Time); ok {\n\t\t\t\t\tuserID, _ := strconv.Atoi(uid)\n\t\t\t\t\tuser := models.GetUserByID(userID)\n\t\t\t\t\tif user != nil && user.LogoutAt.Before(iat) && user.DomainID == domain.DomainID {\n\t\t\t\t\t\tctx := context.WithValue(r.Context(), CtxUserKey, user)\n\t\t\t\t\t\t// Token is authenticated, pass it through\n\t\t\t\t\t\tnext.ServeHTTP(w, r.WithContext(ctx))\n\t\t\t\t\t\treturn\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\n\t\tif domain.IsPrivate {\n\t\t\thttp.SetCookie(w, &http.Cookie{\n\t\t\t\tName:     \"jwt\",\n\t\t\t\tValue:    \"\",\n\t\t\t\tPath:     \"/\",\n\t\t\t\tExpires:  time.Now().Add(-300 * time.Hour),\n\t\t\t\tHttpOnly: true,\n\t\t\t})\n\t\t\tif r.Method == \"GET\" {\n\t\t\t\thttp.Redirect(w, r, basePath+\"auth/signin?next=\"+getNextPathFromURL(r.URL), http.StatusSeeOther)\n\t\t\t} else {\n\t\t\t\thttp.Redirect(w, r, basePath, http.StatusSeeOther)\n\t\t\t}\n\t\t\treturn\n\t\t}\n\n\t\tnext.ServeHTTP(w, r)\n\t})\n}"
+    },
+    {
+      "id": "views/auth.go:LCF86",
+      "path": "views/auth.go",
+      "name": "getAuthSignIn",
+      "parameters": [
+        "w http.ResponseWriter",
+        "r *http.Request"
+      ],
+      "body": "{\n\tbasePath := r.Context().Value(ctxBasePath).(string)\n\tdomain := r.Context().Value(ctxDomain).(*models.Domain)\n\tnext := cleanNextURL(r.FormValue(\"next\"), basePath)\n\ttemplates.Signin.Execute(w, map[string]interface{}{\n\t\tcsrf.TemplateTag: csrf.TemplateField(r),\n\t\tBasePathField:    basePath,\n\t\tDomainField:      domain,\n\t\t\"Next\":           next,\n\t})\n}",
+      "start_line": 158,
+      "end_line": 168,
+      "code": "func getAuthSignIn(w http.ResponseWriter, r *http.Request) {\n\tbasePath := r.Context().Value(ctxBasePath).(string)\n\tdomain := r.Context().Value(ctxDomain).(*models.Domain)\n\tnext := cleanNextURL(r.FormValue(\"next\"), basePath)\n\ttemplates.Signin.Execute(w, map[string]interface{}{\n\t\tcsrf.TemplateTag: csrf.TemplateField(r),\n\t\tBasePathField:    basePath,\n\t\tDomainField:      domain,\n\t\t\"Next\":           next,\n\t})\n}"
+    },
+    {
+      "id": "views/auth.go:LCF87",
+      "path": "views/auth.go",
+      "name": "postAuthSignIn",
+      "parameters": [
+        "w http.ResponseWriter",
+        "r *http.Request"
+      ],
+      "body": "{\n\tdomain := r.Context().Value(ctxDomain).(*models.Domain)\n\tbasePath := r.Context().Value(ctxBasePath).(string)\n\tnext := cleanNextURL(r.FormValue(\"next\"), basePath)\n\temail := r.PostFormValue(\"email\")\n\tpasswd := r.PostFormValue(\"password\")\n\tuser := models.GetUserByPasswd(domain.DomainID, email, passwd)\n\n\tif !domain.IsRegularSigninEnabled {\n\t\thttp.Error(w, \"Signing in with password is disabled. Please use your email to get a one-time signin link.\", http.StatusForbidden)\n\t\treturn\n\t}\n\n\tif user != nil && !user.BannedAt.Valid {\n\t\terr := authenticate(user.UserID, basePath, w)\n\t\tif err != nil {\n\t\t\tglog.Errorf(\"Error authenticating: %s\", err.Error())\n\t\t}\n\t\thttp.Redirect(w, r, next, http.StatusSeeOther)\n\t}\n\ttemplates.Signin.Execute(w, map[string]interface{}{\n\t\tcsrf.TemplateTag: csrf.TemplateField(r),\n\t\tBasePathField:    basePath,\n\t\tDomainField:      domain,\n\t\t\"Next\":           next,\n\t\t\"ErrMsg\":         \"Invalid email / password\",\n\t})\n}",
+      "start_line": 170,
+      "end_line": 197,
+      "code": "func postAuthSignIn(w http.ResponseWriter, r *http.Request) {\n\tdomain := r.Context().Value(ctxDomain).(*models.Domain)\n\tbasePath := r.Context().Value(ctxBasePath).(string)\n\tnext := cleanNextURL(r.FormValue(\"next\"), basePath)\n\temail := r.PostFormValue(\"email\")\n\tpasswd := r.PostFormValue(\"password\")\n\tuser := models.GetUserByPasswd(domain.DomainID, email, passwd)\n\n\tif !domain.IsRegularSigninEnabled {\n\t\thttp.Error(w, \"Signing in with password is disabled. Please use your email to get a one-time signin link.\", http.StatusForbidden)\n\t\treturn\n\t}\n\n\tif user != nil && !user.BannedAt.Valid {\n\t\terr := authenticate(user.UserID, basePath, w)\n\t\tif err != nil {\n\t\t\tglog.Errorf(\"Error authenticating: %s\", err.Error())\n\t\t}\n\t\thttp.Redirect(w, r, next, http.StatusSeeOther)\n\t}\n\ttemplates.Signin.Execute(w, map[string]interface{}{\n\t\tcsrf.TemplateTag: csrf.TemplateField(r),\n\t\tBasePathField:    basePath,\n\t\tDomainField:      domain,\n\t\t\"Next\":           next,\n\t\t\"ErrMsg\":         \"Invalid email / password\",\n\t})\n}"
+    },
+    {
+      "id": "views/auth.go:LCF88",
+      "path": "views/auth.go",
+      "name": "getAuthOneTimeSignIn",
+      "parameters": [
+        "w http.ResponseWriter",
+        "r *http.Request"
+      ],
+      "body": "{\n\tbasePath := r.Context().Value(ctxBasePath).(string)\n\tdomain := r.Context().Value(ctxDomain).(*models.Domain)\n\tnext := cleanNextURL(r.FormValue(\"next\"), basePath)\n\ttemplates.OneTimeSignin.Execute(w, map[string]interface{}{\n\t\tcsrf.TemplateTag: csrf.TemplateField(r),\n\t\tBasePathField:    basePath,\n\t\tDomainField:      domain,\n\t\t\"Next\":           next,\n\t})\n}",
+      "start_line": 199,
+      "end_line": 209,
+      "code": "func getAuthOneTimeSignIn(w http.ResponseWriter, r *http.Request) {\n\tbasePath := r.Context().Value(ctxBasePath).(string)\n\tdomain := r.Context().Value(ctxDomain).(*models.Domain)\n\tnext := cleanNextURL(r.FormValue(\"next\"), basePath)\n\ttemplates.OneTimeSignin.Execute(w, map[string]interface{}{\n\t\tcsrf.TemplateTag: csrf.TemplateField(r),\n\t\tBasePathField:    basePath,\n\t\tDomainField:      domain,\n\t\t\"Next\":           next,\n\t})\n}"
+    },
+    {
+      "id": "views/auth.go:LCF89",
+      "path": "views/auth.go",
+      "name": "postAuthOneTimeSignIn",
+      "parameters": [
+        "w http.ResponseWriter",
+        "r *http.Request"
+      ],
+      "body": "{\n\tdomain := r.Context().Value(ctxDomain).(*models.Domain)\n\tbasePath := r.Context().Value(ctxBasePath).(string)\n\tnext := cleanNextURL(r.PostFormValue(\"next\"), basePath)\n\temail := r.PostFormValue(\"email\")\n\terrMsg := \"E-mail not found\"\n\n\tuser := models.GetUserByEmail(domain.DomainID, email)\n\n\tif user == nil && domain.IsAutoUserCreationOnEmailSigninEnabled {\n\t\tif emailErrMsg := validateEmail(email, domain); emailErrMsg != \"\" {\n\t\t\terrMsg = emailErrMsg\n\t\t} else {\n\t\t\tdisplayName := strings.Split(email, \"@\")[0]\n\t\t\tmodels.CreateUser(domain.DomainID, email, displayName, uuid.NewString())\n\t\t\tuser = models.GetUserByEmail(domain.DomainID, email)\n\t\t}\n\t}\n\tif user != nil {\n\t\terrMsg = \"A one time sign-in link has been sent to your email\"\n\t\ttoken := models.UpdateUserOneTimeLoginTokenByID(user.UserID)\n\t\tlink := \"http://\" + r.Host + basePath + \"auth/otsignin/\" + token + \"?next=\" + next\n\n\t\tforumName := domain.ForumName\n\t\tsubject := forumName + \" sign-in link\"\n\t\tbody := \"Someone (hopefully you) requested a sign-in link for \" + forumName + \".\\r\\n\" +\n\t\t\t\"If you want to sign-in, visit \" + link + \"\\r\\n\\r\\nIf not, just ignore this message.\"\n\t\tsendMail(domain.DefaultFromEmail, user.Email, subject, body, domain.ForumName, domain.SMTPHost, domain.SMTPPort, domain.SMTPUser, domain.SMTPPass)\n\t}\n\n\ttemplates.OneTimeSignin.Execute(w, map[string]interface{}{\n\t\tcsrf.TemplateTag: csrf.TemplateField(r),\n\t\tBasePathField:    basePath,\n\t\tDomainField:      domain,\n\t\t\"Next\":           next,\n\t\t\"ErrMsg\":         errMsg,\n\t})\n}",
+      "start_line": 211,
+      "end_line": 248,
+      "code": "func postAuthOneTimeSignIn(w http.ResponseWriter, r *http.Request) {\n\tdomain := r.Context().Value(ctxDomain).(*models.Domain)\n\tbasePath := r.Context().Value(ctxBasePath).(string)\n\tnext := cleanNextURL(r.PostFormValue(\"next\"), basePath)\n\temail := r.PostFormValue(\"email\")\n\terrMsg := \"E-mail not found\"\n\n\tuser := models.GetUserByEmail(domain.DomainID, email)\n\n\tif user == nil && domain.IsAutoUserCreationOnEmailSigninEnabled {\n\t\tif emailErrMsg := validateEmail(email, domain); emailErrMsg != \"\" {\n\t\t\terrMsg = emailErrMsg\n\t\t} else {\n\t\t\tdisplayName := strings.Split(email, \"@\")[0]\n\t\t\tmodels.CreateUser(domain.DomainID, email, displayName, uuid.NewString())\n\t\t\tuser = models.GetUserByEmail(domain.DomainID, email)\n\t\t}\n\t}\n\tif user != nil {\n\t\terrMsg = \"A one time sign-in link has been sent to your email\"\n\t\ttoken := models.UpdateUserOneTimeLoginTokenByID(user.UserID)\n\t\tlink := \"http://\" + r.Host + basePath + \"auth/otsignin/\" + token + \"?next=\" + next\n\n\t\tforumName := domain.ForumName\n\t\tsubject := forumName + \" sign-in link\"\n\t\tbody := \"Someone (hopefully you) requested a sign-in link for \" + forumName + \".\\r\\n\" +\n\t\t\t\"If you want to sign-in, visit \" + link + \"\\r\\n\\r\\nIf not, just ignore this message.\"\n\t\tsendMail(domain.DefaultFromEmail, user.Email, subject, body, domain.ForumName, domain.SMTPHost, domain.SMTPPort, domain.SMTPUser, domain.SMTPPass)\n\t}\n\n\ttemplates.OneTimeSignin.Execute(w, map[string]interface{}{\n\t\tcsrf.TemplateTag: csrf.TemplateField(r),\n\t\tBasePathField:    basePath,\n\t\tDomainField:      domain,\n\t\t\"Next\":           next,\n\t\t\"ErrMsg\":         errMsg,\n\t})\n}"
+    },
+    {
+      "id": "views/auth.go:LCF90",
+      "path": "views/auth.go",
+      "name": "getAuthOneTimeSignInDone",
+      "parameters": [
+        "w http.ResponseWriter",
+        "r *http.Request"
+      ],
+      "body": "{\n\tdomainID := r.Context().Value(ctxDomain).(*models.Domain).DomainID\n\tbasePath := r.Context().Value(ctxBasePath).(string)\n\tnext := cleanNextURL(r.FormValue(\"next\"), basePath)\n\ttoken := chi.URLParam(r, \"token\")\n\tuser := models.GetUserByOneTimeToken(domainID, token)\n\tif user != nil {\n\t\tif err := authenticate(user.UserID, basePath, w); err == nil {\n\t\t\thttp.Redirect(w, r, next, http.StatusSeeOther)\n\t\t\treturn\n\t\t}\n\t}\n\thttp.Error(w, http.StatusText(http.StatusForbidden), http.StatusForbidden)\n}",
+      "start_line": 250,
+      "end_line": 263,
+      "code": "func getAuthOneTimeSignInDone(w http.ResponseWriter, r *http.Request) {\n\tdomainID := r.Context().Value(ctxDomain).(*models.Domain).DomainID\n\tbasePath := r.Context().Value(ctxBasePath).(string)\n\tnext := cleanNextURL(r.FormValue(\"next\"), basePath)\n\ttoken := chi.URLParam(r, \"token\")\n\tuser := models.GetUserByOneTimeToken(domainID, token)\n\tif user != nil {\n\t\tif err := authenticate(user.UserID, basePath, w); err == nil {\n\t\t\thttp.Redirect(w, r, next, http.StatusSeeOther)\n\t\t\treturn\n\t\t}\n\t}\n\thttp.Error(w, http.StatusText(http.StatusForbidden), http.StatusForbidden)\n}"
+    },
+    {
+      "id": "views/auth.go:LCF91",
+      "path": "views/auth.go",
+      "name": "getAuthSignUp",
+      "parameters": [
+        "w http.ResponseWriter",
+        "r *http.Request"
+      ],
+      "body": "{\n\tdomain := r.Context().Value(ctxDomain).(*models.Domain)\n\tbasePath := r.Context().Value(ctxBasePath).(string)\n\tnext := cleanNextURL(r.FormValue(\"next\"), basePath)\n\tsignupToken := chi.URLParam(r, \"signupToken\")\n\n\tif signupToken != \"\" && signupToken != domain.SignupToken {\n\t\thttp.Error(w, http.StatusText(404), http.StatusNotFound)\n\t\treturn\n\t}\n\n\tif !domain.IsRegularSignupEnabled {\n\t\tif domain.SignupToken == \"\" || signupToken == \"\" || domain.SignupToken != signupToken {\n\t\t\thttp.Error(w, \"Signup is disabled. Contact the admin.\", http.StatusForbidden)\n\t\t\treturn\n\t\t}\n\t}\n\ttemplates.Signup.Execute(w, map[string]interface{}{\n\t\tcsrf.TemplateTag: csrf.TemplateField(r),\n\t\tBasePathField:    basePath,\n\t\tDomainField:      domain,\n\t\t\"Next\":           next,\n\t})\n}",
+      "start_line": 265,
+      "end_line": 288,
+      "code": "func getAuthSignUp(w http.ResponseWriter, r *http.Request) {\n\tdomain := r.Context().Value(ctxDomain).(*models.Domain)\n\tbasePath := r.Context().Value(ctxBasePath).(string)\n\tnext := cleanNextURL(r.FormValue(\"next\"), basePath)\n\tsignupToken := chi.URLParam(r, \"signupToken\")\n\n\tif signupToken != \"\" && signupToken != domain.SignupToken {\n\t\thttp.Error(w, http.StatusText(404), http.StatusNotFound)\n\t\treturn\n\t}\n\n\tif !domain.IsRegularSignupEnabled {\n\t\tif domain.SignupToken == \"\" || signupToken == \"\" || domain.SignupToken != signupToken {\n\t\t\thttp.Error(w, \"Signup is disabled. Contact the admin.\", http.StatusForbidden)\n\t\t\treturn\n\t\t}\n\t}\n\ttemplates.Signup.Execute(w, map[string]interface{}{\n\t\tcsrf.TemplateTag: csrf.TemplateField(r),\n\t\tBasePathField:    basePath,\n\t\tDomainField:      domain,\n\t\t\"Next\":           next,\n\t})\n}"
+    },
+    {
+      "id": "views/auth.go:LCF92",
+      "path": "views/auth.go",
+      "name": "validateEmail",
+      "parameters": [
+        "email string",
+        "domain *models.Domain"
+      ],
+      "body": "{\n\terrMsg := \"\"\n\tif !strings.Contains(email, \"@\") {\n\t\terrMsg = \"Invalid email\"\n\t}\n\tif len(email) < 3 {\n\t\terrMsg = \"Email should have at least 3 characters\"\n\t} else if emailReg.ReplaceAllString(email, \"\") != email {\n\t\terrMsg = \"Email should not have non-alphanumeric characters\"\n\t}\n\tif domain.WhitelistedEmailDomains != \"\" {\n\t\tif !strings.Contains(domain.WhitelistedEmailDomains, email[strings.Index(email, \"@\")+1:]) {\n\t\t\terrMsg = \"Email does not belong to a whitelisted domain\"\n\t\t}\n\t}\n\treturn errMsg\n}",
+      "start_line": 290,
+      "end_line": 306,
+      "code": "func validateEmail(email string, domain *models.Domain) string {\n\terrMsg := \"\"\n\tif !strings.Contains(email, \"@\") {\n\t\terrMsg = \"Invalid email\"\n\t}\n\tif len(email) < 3 {\n\t\terrMsg = \"Email should have at least 3 characters\"\n\t} else if emailReg.ReplaceAllString(email, \"\") != email {\n\t\terrMsg = \"Email should not have non-alphanumeric characters\"\n\t}\n\tif domain.WhitelistedEmailDomains != \"\" {\n\t\tif !strings.Contains(domain.WhitelistedEmailDomains, email[strings.Index(email, \"@\")+1:]) {\n\t\t\terrMsg = \"Email does not belong to a whitelisted domain\"\n\t\t}\n\t}\n\treturn errMsg\n}"
+    },
+    {
+      "id": "views/auth.go:LCF93",
+      "path": "views/auth.go",
+      "name": "postAuthSignUp",
+      "parameters": [
+        "w http.ResponseWriter",
+        "r *http.Request"
+      ],
+      "body": "{\n\tdomain := r.Context().Value(ctxDomain).(*models.Domain)\n\tbasePath := r.Context().Value(ctxBasePath).(string)\n\tnext := cleanNextURL(r.FormValue(\"next\"), basePath)\n\tsignupToken := chi.URLParam(r, \"signupToken\")\n\n\temail := r.PostFormValue(\"email\")\n\tpasswd := r.PostFormValue(\"password\")\n\tpasswd2 := r.PostFormValue(\"password2\")\n\n\temail = strings.Trim(email, \" \")\n\n\tif signupToken != \"\" && signupToken != domain.SignupToken {\n\t\thttp.Error(w, http.StatusText(404), http.StatusNotFound)\n\t\treturn\n\t}\n\n\terrMsg := \"\"\n\n\terrMsg = validateEmail(email, domain)\n\n\tif len(passwd) < 6 {\n\t\terrMsg = \"Password should have at least 6 characters\"\n\t} else if passwd != passwd2 {\n\t\terrMsg = \"Passwords do not match\"\n\t}\n\n\texistingUser := models.GetUserByEmail(domain.DomainID, email)\n\tif existingUser != nil {\n\t\terrMsg = \"E-mail already registered\"\n\t}\n\n\tif !domain.IsRegularSignupEnabled {\n\t\tif domain.SignupToken == \"\" || signupToken == \"\" || domain.SignupToken != signupToken {\n\t\t\thttp.Error(w, \"Signup is disabled. Contact the admin.\", http.StatusForbidden)\n\t\t\treturn\n\t\t}\n\t}\n\n\tif errMsg == \"\" {\n\t\tdisplayName := strings.Split(email, \"@\")[0]\n\t\tdisplayName = strings.Title(strings.ToLower(displayName))\n\n\t\terr := models.CreateUser(domain.DomainID, email, displayName, passwd)\n\t\tif err != nil {\n\t\t\tglog.Errorf(\"Error creating user: %s\", err.Error())\n\t\t\terrMsg = \"Error during signup.\"\n\t\t}\n\t}\n\n\tif errMsg == \"\" {\n\t\tglog.Infof(\"Created user: %s for domainID: %d\", email, domain.DomainID)\n\t\tuser := models.GetUserByEmail(domain.DomainID, email)\n\t\terr := authenticate(user.UserID, basePath, w)\n\t\tif err != nil {\n\t\t\tglog.Errorf(\"Error authenticating: %s\", err.Error())\n\t\t}\n\t\thttp.Redirect(w, r, next, http.StatusSeeOther)\n\t}\n\n\ttemplates.Signup.Execute(w, map[string]interface{}{\n\t\tcsrf.TemplateTag: csrf.TemplateField(r),\n\t\tBasePathField:    basePath,\n\t\tDomainField:      domain,\n\t\t\"ErrMsg\":         errMsg,\n\t\t\"Next\":           next,\n\t})\n}",
+      "start_line": 308,
+      "end_line": 375,
+      "code": "func postAuthSignUp(w http.ResponseWriter, r *http.Request) {\n\tdomain := r.Context().Value(ctxDomain).(*models.Domain)\n\tbasePath := r.Context().Value(ctxBasePath).(string)\n\tnext := cleanNextURL(r.FormValue(\"next\"), basePath)\n\tsignupToken := chi.URLParam(r, \"signupToken\")\n\n\temail := r.PostFormValue(\"email\")\n\tpasswd := r.PostFormValue(\"password\")\n\tpasswd2 := r.PostFormValue(\"password2\")\n\n\temail = strings.Trim(email, \" \")\n\n\tif signupToken != \"\" && signupToken != domain.SignupToken {\n\t\thttp.Error(w, http.StatusText(404), http.StatusNotFound)\n\t\treturn\n\t}\n\n\terrMsg := \"\"\n\n\terrMsg = validateEmail(email, domain)\n\n\tif len(passwd) < 6 {\n\t\terrMsg = \"Password should have at least 6 characters\"\n\t} else if passwd != passwd2 {\n\t\terrMsg = \"Passwords do not match\"\n\t}\n\n\texistingUser := models.GetUserByEmail(domain.DomainID, email)\n\tif existingUser != nil {\n\t\terrMsg = \"E-mail already registered\"\n\t}\n\n\tif !domain.IsRegularSignupEnabled {\n\t\tif domain.SignupToken == \"\" || signupToken == \"\" || domain.SignupToken != signupToken {\n\t\t\thttp.Error(w, \"Signup is disabled. Contact the admin.\", http.StatusForbidden)\n\t\t\treturn\n\t\t}\n\t}\n\n\tif errMsg == \"\" {\n\t\tdisplayName := strings.Split(email, \"@\")[0]\n\t\tdisplayName = strings.Title(strings.ToLower(displayName))\n\n\t\terr := models.CreateUser(domain.DomainID, email, displayName, passwd)\n\t\tif err != nil {\n\t\t\tglog.Errorf(\"Error creating user: %s\", err.Error())\n\t\t\terrMsg = \"Error during signup.\"\n\t\t}\n\t}\n\n\tif errMsg == \"\" {\n\t\tglog.Infof(\"Created user: %s for domainID: %d\", email, domain.DomainID)\n\t\tuser := models.GetUserByEmail(domain.DomainID, email)\n\t\terr := authenticate(user.UserID, basePath, w)\n\t\tif err != nil {\n\t\t\tglog.Errorf(\"Error authenticating: %s\", err.Error())\n\t\t}\n\t\thttp.Redirect(w, r, next, http.StatusSeeOther)\n\t}\n\n\ttemplates.Signup.Execute(w, map[string]interface{}{\n\t\tcsrf.TemplateTag: csrf.TemplateField(r),\n\t\tBasePathField:    basePath,\n\t\tDomainField:      domain,\n\t\t\"ErrMsg\":         errMsg,\n\t\t\"Next\":           next,\n\t})\n}"
+    },
+    {
+      "id": "views/auth.go:LCF94",
+      "path": "views/auth.go",
+      "name": "getAuthChangePass",
+      "parameters": [
+        "w http.ResponseWriter",
+        "r *http.Request"
+      ],
+      "body": "{\n\tbasePath := r.Context().Value(ctxBasePath).(string)\n\tdomain := r.Context().Value(ctxDomain).(*models.Domain)\n\tuser := r.Context().Value(CtxUserKey).(*models.User)\n\ttemplates.ChangePass.Execute(w, map[string]interface{}{\n\t\tcsrf.TemplateTag: csrf.TemplateField(r),\n\t\tBasePathField:    basePath,\n\t\tDomainField:      domain,\n\t\tUserField:        user,\n\t})\n}",
+      "start_line": 377,
+      "end_line": 387,
+      "code": "func getAuthChangePass(w http.ResponseWriter, r *http.Request) {\n\tbasePath := r.Context().Value(ctxBasePath).(string)\n\tdomain := r.Context().Value(ctxDomain).(*models.Domain)\n\tuser := r.Context().Value(CtxUserKey).(*models.User)\n\ttemplates.ChangePass.Execute(w, map[string]interface{}{\n\t\tcsrf.TemplateTag: csrf.TemplateField(r),\n\t\tBasePathField:    basePath,\n\t\tDomainField:      domain,\n\t\tUserField:        user,\n\t})\n}"
+    },
+    {
+      "id": "views/auth.go:LCF95",
+      "path": "views/auth.go",
+      "name": "postAuthChangePass",
+      "parameters": [
+        "w http.ResponseWriter",
+        "r *http.Request"
+      ],
+      "body": "{\n\tdomain := r.Context().Value(ctxDomain).(*models.Domain)\n\tbasePath := r.Context().Value(ctxBasePath).(string)\n\n\tuser := r.Context().Value(CtxUserKey).(*models.User)\n\toldPasswd := r.PostFormValue(\"old_password\")\n\tpasswd := r.PostFormValue(\"password\")\n\tpasswd2 := r.PostFormValue(\"password2\")\n\n\tvar errMsg string\n\tif len(passwd) < 6 {\n\t\terrMsg = \"New password should have at least 6 characters\"\n\t} else if passwd != passwd2 {\n\t\terrMsg = \"New passwords do not match\"\n\t}\n\n\toldUser := models.GetUserByPasswd(domain.DomainID, user.Email, oldPasswd)\n\tif oldUser == nil || oldUser.UserID != user.UserID {\n\t\terrMsg = \"Old password incorrect\"\n\t}\n\n\tif errMsg == \"\" {\n\t\terr := models.UpdateUserPasswdByID(user.UserID, passwd)\n\t\tif err == nil {\n\t\t\terrMsg = \"Changed password successfully\"\n\t\t} else {\n\t\t\terrMsg = \"Error changing password\"\n\t\t\tglog.Errorf(\"Error changing password: %s\", err.Error())\n\t\t}\n\t}\n\ttemplates.ChangePass.Execute(w, map[string]interface{}{\n\t\tcsrf.TemplateTag: csrf.TemplateField(r),\n\t\tBasePathField:    basePath,\n\t\tDomainField:      domain,\n\t\tUserField:        user,\n\t\t\"ErrMsg\":         errMsg,\n\t})\n}",
+      "start_line": 389,
+      "end_line": 426,
+      "code": "func postAuthChangePass(w http.ResponseWriter, r *http.Request) {\n\tdomain := r.Context().Value(ctxDomain).(*models.Domain)\n\tbasePath := r.Context().Value(ctxBasePath).(string)\n\n\tuser := r.Context().Value(CtxUserKey).(*models.User)\n\toldPasswd := r.PostFormValue(\"old_password\")\n\tpasswd := r.PostFormValue(\"password\")\n\tpasswd2 := r.PostFormValue(\"password2\")\n\n\tvar errMsg string\n\tif len(passwd) < 6 {\n\t\terrMsg = \"New password should have at least 6 characters\"\n\t} else if passwd != passwd2 {\n\t\terrMsg = \"New passwords do not match\"\n\t}\n\n\toldUser := models.GetUserByPasswd(domain.DomainID, user.Email, oldPasswd)\n\tif oldUser == nil || oldUser.UserID != user.UserID {\n\t\terrMsg = \"Old password incorrect\"\n\t}\n\n\tif errMsg == \"\" {\n\t\terr := models.UpdateUserPasswdByID(user.UserID, passwd)\n\t\tif err == nil {\n\t\t\terrMsg = \"Changed password successfully\"\n\t\t} else {\n\t\t\terrMsg = \"Error changing password\"\n\t\t\tglog.Errorf(\"Error changing password: %s\", err.Error())\n\t\t}\n\t}\n\ttemplates.ChangePass.Execute(w, map[string]interface{}{\n\t\tcsrf.TemplateTag: csrf.TemplateField(r),\n\t\tBasePathField:    basePath,\n\t\tDomainField:      domain,\n\t\tUserField:        user,\n\t\t\"ErrMsg\":         errMsg,\n\t})\n}"
+    },
+    {
+      "id": "views/auth.go:LCF96",
+      "path": "views/auth.go",
+      "name": "getAuthLogout",
+      "parameters": [
+        "w http.ResponseWriter",
+        "r *http.Request"
+      ],
+      "body": "{\n\tbasePath := r.Context().Value(ctxBasePath).(string)\n\tcookiePath := getCookiePath(basePath)\n\n\thttp.SetCookie(w, &http.Cookie{Name: \"jwt\", Value: \"\", Path: cookiePath, Expires: time.Now().Add(-300 * time.Hour), HttpOnly: true})\n\thttp.SetCookie(w, &http.Cookie{Name: \"csrftoken\", Value: \"\", Path: cookiePath, Expires: time.Now().Add(-300 * time.Hour)})\n\tif user, ok := r.Context().Value(CtxUserKey).(*models.User); ok {\n\t\tmodels.LogOutUserByID(user.UserID)\n\t}\n\thttp.Redirect(w, r, basePath, http.StatusSeeOther)\n}",
+      "start_line": 428,
+      "end_line": 438,
+      "code": "func getAuthLogout(w http.ResponseWriter, r *http.Request) {\n\tbasePath := r.Context().Value(ctxBasePath).(string)\n\tcookiePath := getCookiePath(basePath)\n\n\thttp.SetCookie(w, &http.Cookie{Name: \"jwt\", Value: \"\", Path: cookiePath, Expires: time.Now().Add(-300 * time.Hour), HttpOnly: true})\n\thttp.SetCookie(w, &http.Cookie{Name: \"csrftoken\", Value: \"\", Path: cookiePath, Expires: time.Now().Add(-300 * time.Hour)})\n\tif user, ok := r.Context().Value(CtxUserKey).(*models.User); ok {\n\t\tmodels.LogOutUserByID(user.UserID)\n\t}\n\thttp.Redirect(w, r, basePath, http.StatusSeeOther)\n}"
+    },
+    {
+      "id": "views/auth.go:LCF97",
+      "path": "views/auth.go",
+      "name": "init",
+      "parameters": [],
+      "body": "{\n\tuserNameReg = regexp.MustCompile(\"[^a-zA-Z0-9]+\")\n\temailReg = regexp.MustCompile(\"[^a-zA-Z0-9@\\\\.-]+\")\n\tnextURLReg = regexp.MustCompile(\"[^a-zA-Z0-9-/]+\")\n}",
+      "start_line": 440,
+      "end_line": 444,
+      "code": "func init() {\n\tuserNameReg = regexp.MustCompile(\"[^a-zA-Z0-9]+\")\n\temailReg = regexp.MustCompile(\"[^a-zA-Z0-9@\\\\.-]+\")\n\tnextURLReg = regexp.MustCompile(\"[^a-zA-Z0-9-/]+\")\n}"
+    },
+    {
+      "id": "views/comments.go:LCF98",
+      "path": "views/comments.go",
+      "name": "editComment",
+      "parameters": [
+        "w http.ResponseWriter",
+        "r *http.Request"
+      ],
+      "body": "{\n\tbasePath := r.Context().Value(ctxBasePath).(string)\n\n\tuser, _ := r.Context().Value(CtxUserKey).(*models.User)\n\tdomain := r.Context().Value(ctxDomain).(*models.Domain)\n\n\ttopicIDStr := chi.URLParam(r, \"topicID\")\n\tcategoryIDStr := chi.URLParam(r, \"categoryID\")\n\tcommentIDStr := chi.URLParam(r, \"commentID\")\n\tquoteIDStr := r.URL.Query().Get(\"quote\")\n\n\tcategoryID, err := strconv.Atoi(categoryIDStr)\n\tif err != nil {\n\t\thttp.Error(w, http.StatusText(http.StatusBadRequest), http.StatusBadRequest)\n\t\treturn\n\t}\n\tcategory := models.GetCategoryByID(categoryID)\n\tif category == nil || category.DomainID != domain.DomainID || category.ArchivedAt.Valid {\n\t\thttp.Error(w, http.StatusText(http.StatusNotFound), http.StatusNotFound)\n\t\treturn\n\t}\n\n\ttopicID, err := strconv.Atoi(topicIDStr)\n\tif err != nil {\n\t\thttp.Error(w, http.StatusText(http.StatusBadRequest), http.StatusBadRequest)\n\t\treturn\n\t}\n\ttopic := models.GetTopicByID(topicID)\n\tif topic.CategoryID != category.CategoryID {\n\t\thttp.Error(w, http.StatusText(http.StatusNotFound), http.StatusNotFound)\n\t\treturn\n\t}\n\n\tvar comment *models.Comment\n\tif commentIDStr != \"\" {\n\t\t// Edit comment\n\t\tcommentID, err := strconv.Atoi(commentIDStr)\n\t\tif err != nil {\n\t\t\thttp.Error(w, http.StatusText(http.StatusBadRequest), http.StatusBadRequest)\n\t\t\treturn\n\t\t}\n\t\tcomment = models.GetCommentByID(commentID)\n\t\tif comment == nil || comment.TopicID != topic.TopicID {\n\t\t\thttp.Error(w, http.StatusText(http.StatusNotFound), http.StatusNotFound)\n\t\t\treturn\n\t\t}\n\t}\n\n\tvar quote string\n\tif comment == nil {\n\t\tif quoteIDStr == \"topic\" {\n\t\t\tquote = \"> \" + strings.ReplaceAll(topic.Content, \"\\n\", \"\\n> \")\n\t\t} else {\n\t\t\tif quoteCommentID, err := strconv.Atoi(quoteIDStr); err == nil {\n\t\t\t\tif quoteComment := models.GetCommentByID(quoteCommentID); quoteComment != nil {\n\t\t\t\t\tif quoteComment.TopicID == topic.TopicID {\n\t\t\t\t\t\tquote = \"> \" + strings.ReplaceAll(quoteComment.Content, \"\\n\", \"\\n> \")\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n\n\tif r.Method == \"POST\" {\n\t\tif err := r.ParseForm(); err != nil {\n\t\t\thttp.Error(w, http.StatusText(http.StatusBadRequest), http.StatusBadRequest)\n\t\t\treturn\n\t\t}\n\t\taction := r.PostFormValue(\"action\")\n\t\tcontent := r.PostFormValue(\"content\")\n\t\tisSticky := r.PostFormValue(\"is_sticky\") == \"1\"\n\t\tif !(user.IsSuperAdmin || user.IsSuperMod) {\n\t\t\tisSticky = false\n\t\t\tif topic != nil {\n\t\t\t\tisSticky = topic.IsSticky\n\t\t\t}\n\t\t}\n\t\tif action == \"Submit\" {\n\t\t\tif topic.IsReadOnly {\n\t\t\t\thttp.Error(w, http.StatusText(http.StatusForbidden), http.StatusForbidden)\n\t\t\t\treturn\n\t\t\t}\n\t\t\tnewCommentID := models.CreateComment(topic.TopicID, user.UserID, content, isSticky)\n\t\t\tif newCommentID >= 0 {\n\t\t\t\thttp.Redirect(w, r, basePath+\"categories/\"+strconv.Itoa(category.CategoryID)+\n\t\t\t\t\t\"/topics/\"+strconv.Itoa(topic.TopicID)+\n\t\t\t\t\t\"#comment-\"+strconv.Itoa(newCommentID),\n\t\t\t\t\thttp.StatusSeeOther)\n\t\t\t\treturn\n\t\t\t}\n\t\t} else if action == \"Update\" {\n\t\t\tmodels.UpdateCommentByID(comment.CommentID, content, isSticky)\n\t\t\thttp.Redirect(w, r, basePath+\"categories/\"+strconv.Itoa(category.CategoryID)+\n\t\t\t\t\"/topics/\"+strconv.Itoa(topic.TopicID)+\n\t\t\t\t\"#comment-\"+strconv.Itoa(comment.CommentID),\n\t\t\t\thttp.StatusSeeOther)\n\t\t\treturn\n\t\t} else if action == \"Delete\" {\n\t\t\tmodels.DeleteCommentByID(comment.CommentID, comment.UserID, topic.TopicID)\n\t\t\thttp.Redirect(w, r, basePath+\"categories/\"+strconv.Itoa(category.CategoryID)+\n\t\t\t\t\"/topics/\"+strconv.Itoa(topic.TopicID),\n\t\t\t\thttp.StatusSeeOther)\n\t\t\treturn\n\t\t}\n\t\thttp.Error(w, http.StatusText(http.StatusBadRequest), http.StatusBadRequest)\n\t\treturn\n\t}\n\n\ttemplates.CommentEdit.Execute(w, map[string]interface{}{\n\t\tcsrf.TemplateTag: csrf.TemplateField(r),\n\t\tBasePathField:    basePath,\n\t\tDomainField:      domain,\n\t\tUserField:        user,\n\t\t\"Category\":       category,\n\t\t\"Topic\":          topic,\n\t\t\"Comment\":        comment,\n\t\t\"Quote\":          quote,\n\t})\n\n}",
+      "start_line": 18,
+      "end_line": 137,
+      "code": "func editComment(w http.ResponseWriter, r *http.Request) {\n\tbasePath := r.Context().Value(ctxBasePath).(string)\n\n\tuser, _ := r.Context().Value(CtxUserKey).(*models.User)\n\tdomain := r.Context().Value(ctxDomain).(*models.Domain)\n\n\ttopicIDStr := chi.URLParam(r, \"topicID\")\n\tcategoryIDStr := chi.URLParam(r, \"categoryID\")\n\tcommentIDStr := chi.URLParam(r, \"commentID\")\n\tquoteIDStr := r.URL.Query().Get(\"quote\")\n\n\tcategoryID, err := strconv.Atoi(categoryIDStr)\n\tif err != nil {\n\t\thttp.Error(w, http.StatusText(http.StatusBadRequest), http.StatusBadRequest)\n\t\treturn\n\t}\n\tcategory := models.GetCategoryByID(categoryID)\n\tif category == nil || category.DomainID != domain.DomainID || category.ArchivedAt.Valid {\n\t\thttp.Error(w, http.StatusText(http.StatusNotFound), http.StatusNotFound)\n\t\treturn\n\t}\n\n\ttopicID, err := strconv.Atoi(topicIDStr)\n\tif err != nil {\n\t\thttp.Error(w, http.StatusText(http.StatusBadRequest), http.StatusBadRequest)\n\t\treturn\n\t}\n\ttopic := models.GetTopicByID(topicID)\n\tif topic.CategoryID != category.CategoryID {\n\t\thttp.Error(w, http.StatusText(http.StatusNotFound), http.StatusNotFound)\n\t\treturn\n\t}\n\n\tvar comment *models.Comment\n\tif commentIDStr != \"\" {\n\t\t// Edit comment\n\t\tcommentID, err := strconv.Atoi(commentIDStr)\n\t\tif err != nil {\n\t\t\thttp.Error(w, http.StatusText(http.StatusBadRequest), http.StatusBadRequest)\n\t\t\treturn\n\t\t}\n\t\tcomment = models.GetCommentByID(commentID)\n\t\tif comment == nil || comment.TopicID != topic.TopicID {\n\t\t\thttp.Error(w, http.StatusText(http.StatusNotFound), http.StatusNotFound)\n\t\t\treturn\n\t\t}\n\t}\n\n\tvar quote string\n\tif comment == nil {\n\t\tif quoteIDStr == \"topic\" {\n\t\t\tquote = \"> \" + strings.ReplaceAll(topic.Content, \"\\n\", \"\\n> \")\n\t\t} else {\n\t\t\tif quoteCommentID, err := strconv.Atoi(quoteIDStr); err == nil {\n\t\t\t\tif quoteComment := models.GetCommentByID(quoteCommentID); quoteComment != nil {\n\t\t\t\t\tif quoteComment.TopicID == topic.TopicID {\n\t\t\t\t\t\tquote = \"> \" + strings.ReplaceAll(quoteComment.Content, \"\\n\", \"\\n> \")\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n\n\tif r.Method == \"POST\" {\n\t\tif err := r.ParseForm(); err != nil {\n\t\t\thttp.Error(w, http.StatusText(http.StatusBadRequest), http.StatusBadRequest)\n\t\t\treturn\n\t\t}\n\t\taction := r.PostFormValue(\"action\")\n\t\tcontent := r.PostFormValue(\"content\")\n\t\tisSticky := r.PostFormValue(\"is_sticky\") == \"1\"\n\t\tif !(user.IsSuperAdmin || user.IsSuperMod) {\n\t\t\tisSticky = false\n\t\t\tif topic != nil {\n\t\t\t\tisSticky = topic.IsSticky\n\t\t\t}\n\t\t}\n\t\tif action == \"Submit\" {\n\t\t\tif topic.IsReadOnly {\n\t\t\t\thttp.Error(w, http.StatusText(http.StatusForbidden), http.StatusForbidden)\n\t\t\t\treturn\n\t\t\t}\n\t\t\tnewCommentID := models.CreateComment(topic.TopicID, user.UserID, content, isSticky)\n\t\t\tif newCommentID >= 0 {\n\t\t\t\thttp.Redirect(w, r, basePath+\"categories/\"+strconv.Itoa(category.CategoryID)+\n\t\t\t\t\t\"/topics/\"+strconv.Itoa(topic.TopicID)+\n\t\t\t\t\t\"#comment-\"+strconv.Itoa(newCommentID),\n\t\t\t\t\thttp.StatusSeeOther)\n\t\t\t\treturn\n\t\t\t}\n\t\t} else if action == \"Update\" {\n\t\t\tmodels.UpdateCommentByID(comment.CommentID, content, isSticky)\n\t\t\thttp.Redirect(w, r, basePath+\"categories/\"+strconv.Itoa(category.CategoryID)+\n\t\t\t\t\"/topics/\"+strconv.Itoa(topic.TopicID)+\n\t\t\t\t\"#comment-\"+strconv.Itoa(comment.CommentID),\n\t\t\t\thttp.StatusSeeOther)\n\t\t\treturn\n\t\t} else if action == \"Delete\" {\n\t\t\tmodels.DeleteCommentByID(comment.CommentID, comment.UserID, topic.TopicID)\n\t\t\thttp.Redirect(w, r, basePath+\"categories/\"+strconv.Itoa(category.CategoryID)+\n\t\t\t\t\"/topics/\"+strconv.Itoa(topic.TopicID),\n\t\t\t\thttp.StatusSeeOther)\n\t\t\treturn\n\t\t}\n\t\thttp.Error(w, http.StatusText(http.StatusBadRequest), http.StatusBadRequest)\n\t\treturn\n\t}\n\n\ttemplates.CommentEdit.Execute(w, map[string]interface{}{\n\t\tcsrf.TemplateTag: csrf.TemplateField(r),\n\t\tBasePathField:    basePath,\n\t\tDomainField:      domain,\n\t\tUserField:        user,\n\t\t\"Category\":       category,\n\t\t\"Topic\":          topic,\n\t\t\"Comment\":        comment,\n\t\t\"Quote\":          quote,\n\t})\n\n}"
+    },
+    {
+      "id": "views/domains.go:LCF99",
+      "path": "views/domains.go",
+      "name": "domainCtx",
+      "parameters": [
+        "next http.Handler"
+      ],
+      "body": "{\n\treturn http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {\n\t\tdomainName := chi.URLParam(r, \"domainName\")\n\t\tdomain := models.GetDomainByName(domainName)\n\t\tif domain == nil {\n\t\t\thttp.Error(w, http.StatusText(404), http.StatusNotFound)\n\t\t\treturn\n\t\t}\n\t\tif domainName == r.Host {\n\t\t\tbasePath := \"/forums/\" + domainName\n\t\t\thttp.Redirect(w, r, r.URL.Path[len(basePath):], http.StatusSeeOther)\n\t\t\treturn\n\t\t}\n\t\tctx := context.WithValue(r.Context(), ctxDomain, domain)\n\t\tctx2 := context.WithValue(ctx, ctxBasePath, \"/forums/\"+domainName+\"/\")\n\t\tnext.ServeHTTP(w, r.WithContext(ctx2))\n\t})\n}",
+      "start_line": 25,
+      "end_line": 42,
+      "code": "func domainCtx(next http.Handler) http.Handler {\n\treturn http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {\n\t\tdomainName := chi.URLParam(r, \"domainName\")\n\t\tdomain := models.GetDomainByName(domainName)\n\t\tif domain == nil {\n\t\t\thttp.Error(w, http.StatusText(404), http.StatusNotFound)\n\t\t\treturn\n\t\t}\n\t\tif domainName == r.Host {\n\t\t\tbasePath := \"/forums/\" + domainName\n\t\t\thttp.Redirect(w, r, r.URL.Path[len(basePath):], http.StatusSeeOther)\n\t\t\treturn\n\t\t}\n\t\tctx := context.WithValue(r.Context(), ctxDomain, domain)\n\t\tctx2 := context.WithValue(ctx, ctxBasePath, \"/forums/\"+domainName+\"/\")\n\t\tnext.ServeHTTP(w, r.WithContext(ctx2))\n\t})\n}"
+    },
+    {
+      "id": "views/domains.go:LCF100",
+      "path": "views/domains.go",
+      "name": "hostCtx",
+      "parameters": [
+        "next http.Handler"
+      ],
+      "body": "{\n\treturn http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {\n\t\tdomainName := r.Host\n\t\tdomain := models.GetDomainByName(domainName)\n\t\tif domain == nil {\n\t\t\thttp.Error(w, http.StatusText(404), http.StatusNotFound)\n\t\t\treturn\n\t\t}\n\t\tctx := context.WithValue(r.Context(), ctxDomain, domain)\n\t\tctx2 := context.WithValue(ctx, ctxBasePath, \"/\")\n\t\tnext.ServeHTTP(w, r.WithContext(ctx2))\n\t})\n}",
+      "start_line": 44,
+      "end_line": 56,
+      "code": "func hostCtx(next http.Handler) http.Handler {\n\treturn http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {\n\t\tdomainName := r.Host\n\t\tdomain := models.GetDomainByName(domainName)\n\t\tif domain == nil {\n\t\t\thttp.Error(w, http.StatusText(404), http.StatusNotFound)\n\t\t\treturn\n\t\t}\n\t\tctx := context.WithValue(r.Context(), ctxDomain, domain)\n\t\tctx2 := context.WithValue(ctx, ctxBasePath, \"/\")\n\t\tnext.ServeHTTP(w, r.WithContext(ctx2))\n\t})\n}"
+    },
+    {
+      "id": "views/domains.go:LCF101",
+      "path": "views/domains.go",
+      "name": "basePath",
+      "parameters": [
+        "r *http.Request"
+      ],
+      "body": "{\n\treturn r.Context().Value(ctxBasePath).(string)\n}",
+      "start_line": 58,
+      "end_line": 60,
+      "code": "func basePath(r *http.Request) string {\n\treturn r.Context().Value(ctxBasePath).(string)\n}"
+    },
+    {
+      "id": "views/index.go:LCF102",
+      "path": "views/index.go",
+      "name": "getIndex",
+      "parameters": [
+        "w http.ResponseWriter",
+        "r *http.Request"
+      ],
+      "body": "{\n\tdomain := r.Context().Value(ctxDomain).(*models.Domain)\n\tuser, _ := r.Context().Value(CtxUserKey).(*models.User)\n\n\tif r.URL.Path[len(r.URL.Path)-1] != '/' {\n\t\thttp.Redirect(w, r, r.URL.Path+\"/\", http.StatusSeeOther)\n\t\treturn\n\t}\n\n\tcategories := models.GetCategoriesByDomainID(domain.DomainID)\n\n\ttemplates.Index.Execute(w, map[string]interface{}{\n\t\tcsrf.TemplateTag: csrf.TemplateField(r),\n\t\tBasePathField:    basePath(r),\n\t\tDomainField:      domain,\n\t\tUserField:        user,\n\t\t\"Categories\":     categories,\n\t})\n}",
+      "start_line": 15,
+      "end_line": 33,
+      "code": "func getIndex(w http.ResponseWriter, r *http.Request) {\n\tdomain := r.Context().Value(ctxDomain).(*models.Domain)\n\tuser, _ := r.Context().Value(CtxUserKey).(*models.User)\n\n\tif r.URL.Path[len(r.URL.Path)-1] != '/' {\n\t\thttp.Redirect(w, r, r.URL.Path+\"/\", http.StatusSeeOther)\n\t\treturn\n\t}\n\n\tcategories := models.GetCategoriesByDomainID(domain.DomainID)\n\n\ttemplates.Index.Execute(w, map[string]interface{}{\n\t\tcsrf.TemplateTag: csrf.TemplateField(r),\n\t\tBasePathField:    basePath(r),\n\t\tDomainField:      domain,\n\t\tUserField:        user,\n\t\t\"Categories\":     categories,\n\t})\n}"
+    },
+    {
+      "id": "views/static.go:LCF103",
+      "path": "views/static.go",
+      "name": "getCSS",
+      "parameters": [
+        "w http.ResponseWriter",
+        "r *http.Request"
+      ],
+      "body": "{\n\tw.Header().Set(\"Content-Type\", \"text/css\")\n\tw.Header().Set(\"Cache-Control\", \"max-age=31536000\")\n\tw.Write([]byte(templates.CSSStr))\n}",
+      "start_line": 13,
+      "end_line": 17,
+      "code": "func getCSS(w http.ResponseWriter, r *http.Request) {\n\tw.Header().Set(\"Content-Type\", \"text/css\")\n\tw.Header().Set(\"Cache-Control\", \"max-age=31536000\")\n\tw.Write([]byte(templates.CSSStr))\n}"
+    },
+    {
+      "id": "views/static.go:LCF104",
+      "path": "views/static.go",
+      "name": "getJS",
+      "parameters": [
+        "w http.ResponseWriter",
+        "r *http.Request"
+      ],
+      "body": "{\n\tw.Header().Set(\"Content-Type\", \"text/javascript\")\n\tw.Header().Set(\"Cache-Control\", \"max-age=31536000\")\n\tw.Write([]byte(templates.JSStr))\n}",
+      "start_line": 19,
+      "end_line": 23,
+      "code": "func getJS(w http.ResponseWriter, r *http.Request) {\n\tw.Header().Set(\"Content-Type\", \"text/javascript\")\n\tw.Header().Set(\"Cache-Control\", \"max-age=31536000\")\n\tw.Write([]byte(templates.JSStr))\n}"
+    },
+    {
+      "id": "views/static.go:LCF105",
+      "path": "views/static.go",
+      "name": "getIcon",
+      "parameters": [
+        "w http.ResponseWriter",
+        "r *http.Request"
+      ],
+      "body": "{\n\tw.Header().Set(\"Content-Type\", \"image/png\")\n\tw.Header().Set(\"Cache-Control\", \"max-age=31536000\")\n\tw.Write([]byte(templates.IconStr))\n}",
+      "start_line": 25,
+      "end_line": 29,
+      "code": "func getIcon(w http.ResponseWriter, r *http.Request) {\n\tw.Header().Set(\"Content-Type\", \"image/png\")\n\tw.Header().Set(\"Cache-Control\", \"max-age=31536000\")\n\tw.Write([]byte(templates.IconStr))\n}"
+    },
+    {
+      "id": "views/static.go:LCF106",
+      "path": "views/static.go",
+      "name": "getLogo",
+      "parameters": [
+        "w http.ResponseWriter",
+        "r *http.Request"
+      ],
+      "body": "{\n\tw.Header().Set(\"Content-Type\", \"image/png\")\n\tw.Header().Set(\"Cache-Control\", \"max-age=31536000\")\n\tw.Write([]byte(templates.LogoStr))\n}",
+      "start_line": 31,
+      "end_line": 35,
+      "code": "func getLogo(w http.ResponseWriter, r *http.Request) {\n\tw.Header().Set(\"Content-Type\", \"image/png\")\n\tw.Header().Set(\"Cache-Control\", \"max-age=31536000\")\n\tw.Write([]byte(templates.LogoStr))\n}"
+    },
+    {
+      "id": "views/topics.go:LCF107",
+      "path": "views/topics.go",
+      "name": "getTopicList",
+      "parameters": [
+        "w http.ResponseWriter",
+        "r *http.Request"
+      ],
+      "body": "{\n\tbasePath := r.Context().Value(ctxBasePath).(string)\n\n\tuser, _ := r.Context().Value(CtxUserKey).(*models.User)\n\tdomain := r.Context().Value(ctxDomain).(*models.Domain)\n\n\tcategoryIDStr := chi.URLParam(r, \"categoryID\")\n\tcategoryID, err := strconv.Atoi(categoryIDStr)\n\tif err != nil {\n\t\thttp.Error(w, http.StatusText(http.StatusBadRequest), http.StatusBadRequest)\n\t\treturn\n\t}\n\tcategory := models.GetCategoryByID(categoryID)\n\tif category == nil || category.DomainID != domain.DomainID || category.ArchivedAt.Valid {\n\t\thttp.Error(w, http.StatusText(http.StatusNotFound), http.StatusNotFound)\n\t\treturn\n\t}\n\n\tbeforeStr := r.URL.Query().Get(\"before\")\n\tbefore, err := strconv.ParseInt(beforeStr, 10, 64)\n\tif err != nil {\n\t\tbefore = time.Now().UnixNano()\n\t}\n\n\ttopics := models.GetTopicsByCategoryID(category.CategoryID, time.Unix(0, before))\n\n\tmoreDt := time.Now()\n\tif len(topics) > 0 {\n\t\tmoreDt = topics[len(topics)-1].ActivityAt\n\t}\n\ttemplates.TopicList.Execute(w, map[string]interface{}{\n\t\tcsrf.TemplateTag: csrf.TemplateField(r),\n\t\tBasePathField:    basePath,\n\t\tDomainField:      domain,\n\t\tUserField:        user,\n\t\t\"Category\":       category,\n\t\t\"Topics\":         topics,\n\t\t\"MoreDt\":         moreDt.UnixNano(),\n\t})\n}",
+      "start_line": 18,
+      "end_line": 57,
+      "code": "func getTopicList(w http.ResponseWriter, r *http.Request) {\n\tbasePath := r.Context().Value(ctxBasePath).(string)\n\n\tuser, _ := r.Context().Value(CtxUserKey).(*models.User)\n\tdomain := r.Context().Value(ctxDomain).(*models.Domain)\n\n\tcategoryIDStr := chi.URLParam(r, \"categoryID\")\n\tcategoryID, err := strconv.Atoi(categoryIDStr)\n\tif err != nil {\n\t\thttp.Error(w, http.StatusText(http.StatusBadRequest), http.StatusBadRequest)\n\t\treturn\n\t}\n\tcategory := models.GetCategoryByID(categoryID)\n\tif category == nil || category.DomainID != domain.DomainID || category.ArchivedAt.Valid {\n\t\thttp.Error(w, http.StatusText(http.StatusNotFound), http.StatusNotFound)\n\t\treturn\n\t}\n\n\tbeforeStr := r.URL.Query().Get(\"before\")\n\tbefore, err := strconv.ParseInt(beforeStr, 10, 64)\n\tif err != nil {\n\t\tbefore = time.Now().UnixNano()\n\t}\n\n\ttopics := models.GetTopicsByCategoryID(category.CategoryID, time.Unix(0, before))\n\n\tmoreDt := time.Now()\n\tif len(topics) > 0 {\n\t\tmoreDt = topics[len(topics)-1].ActivityAt\n\t}\n\ttemplates.TopicList.Execute(w, map[string]interface{}{\n\t\tcsrf.TemplateTag: csrf.TemplateField(r),\n\t\tBasePathField:    basePath,\n\t\tDomainField:      domain,\n\t\tUserField:        user,\n\t\t\"Category\":       category,\n\t\t\"Topics\":         topics,\n\t\t\"MoreDt\":         moreDt.UnixNano(),\n\t})\n}"
+    },
+    {
+      "id": "views/topics.go:LCF108",
+      "path": "views/topics.go",
+      "name": "editTopic",
+      "parameters": [
+        "w http.ResponseWriter",
+        "r *http.Request"
+      ],
+      "body": "{\n\tbasePath := r.Context().Value(ctxBasePath).(string)\n\n\tuser, _ := r.Context().Value(CtxUserKey).(*models.User)\n\tdomain := r.Context().Value(ctxDomain).(*models.Domain)\n\n\ttopicIDStr := chi.URLParam(r, \"topicID\")\n\tcategoryIDStr := chi.URLParam(r, \"categoryID\")\n\n\tcategoryID, err := strconv.Atoi(categoryIDStr)\n\tif err != nil {\n\t\thttp.Error(w, http.StatusText(http.StatusBadRequest), http.StatusBadRequest)\n\t\treturn\n\t}\n\tcategory := models.GetCategoryByID(categoryID)\n\tif category == nil || category.DomainID != domain.DomainID || category.ArchivedAt.Valid {\n\t\thttp.Error(w, http.StatusText(http.StatusNotFound), http.StatusNotFound)\n\t\treturn\n\t}\n\n\tvar topic *models.Topic\n\tif topicIDStr != \"\" {\n\t\ttopicID, err := strconv.Atoi(topicIDStr)\n\t\tif err != nil {\n\t\t\thttp.Error(w, http.StatusText(http.StatusBadRequest), http.StatusBadRequest)\n\t\t\treturn\n\t\t}\n\t\ttopic = models.GetTopicByID(topicID)\n\t\tif topic.CategoryID != category.CategoryID {\n\t\t\thttp.Error(w, http.StatusText(http.StatusNotFound), http.StatusNotFound)\n\t\t\treturn\n\t\t}\n\t}\n\n\tif r.Method == \"POST\" {\n\t\tif err := r.ParseForm(); err != nil {\n\t\t\thttp.Error(w, http.StatusText(http.StatusBadRequest), http.StatusBadRequest)\n\t\t\treturn\n\t\t}\n\t\taction := r.PostFormValue(\"action\")\n\t\ttitle := r.PostFormValue(\"title\")\n\t\tcontent := r.PostFormValue(\"content\")\n\t\tisSticky := r.PostFormValue(\"is_sticky\") == \"1\"\n\t\tisReadOnly := r.PostFormValue(\"is_readonly\") == \"1\"\n\t\tif !(user.IsSuperAdmin || user.IsSuperMod) {\n\t\t\tisSticky = false\n\t\t\tisReadOnly = false\n\t\t\tif topic != nil {\n\t\t\t\tisSticky = topic.IsSticky\n\t\t\t\tisReadOnly = topic.IsReadOnly\n\t\t\t}\n\t\t}\n\t\tif len(title) < 2 {\n\t\t\thttp.Error(w, http.StatusText(http.StatusBadRequest), http.StatusBadRequest)\n\t\t\treturn\n\t\t}\n\t\tif action == \"Submit\" {\n\t\t\tnewTopicID := models.CreateTopic(category.CategoryID, user.UserID, title, content, isSticky, isReadOnly)\n\t\t\tif newTopicID >= 0 {\n\t\t\t\thttp.Redirect(w, r, basePath+\"categories/\"+strconv.Itoa(category.CategoryID)+\n\t\t\t\t\t\"/topics/\"+strconv.Itoa(newTopicID),\n\t\t\t\t\thttp.StatusSeeOther)\n\t\t\t\treturn\n\t\t\t}\n\t\t} else if action == \"Update\" {\n\t\t\tmodels.UpdateTopicByID(topic.TopicID, title, content, isSticky, isReadOnly)\n\t\t\thttp.Redirect(w, r, basePath+\"categories/\"+strconv.Itoa(category.CategoryID)+\n\t\t\t\t\"/topics/\"+strconv.Itoa(topic.TopicID),\n\t\t\t\thttp.StatusSeeOther)\n\t\t\treturn\n\t\t} else if action == \"Delete\" {\n\t\t\tmodels.DeleteTopicByID(topic.TopicID, topic.UserID)\n\t\t\thttp.Redirect(w, r, basePath+\"categories/\"+strconv.Itoa(category.CategoryID), http.StatusSeeOther)\n\t\t\treturn\n\t\t}\n\t\thttp.Error(w, http.StatusText(http.StatusBadRequest), http.StatusBadRequest)\n\t\treturn\n\t}\n\n\ttemplates.TopicEdit.Execute(w, map[string]interface{}{\n\t\tcsrf.TemplateTag: csrf.TemplateField(r),\n\t\tBasePathField:    basePath,\n\t\tDomainField:      domain,\n\t\tUserField:        user,\n\t\t\"Category\":       category,\n\t\t\"Topic\":          topic,\n\t})\n}",
+      "start_line": 59,
+      "end_line": 146,
+      "code": "func editTopic(w http.ResponseWriter, r *http.Request) {\n\tbasePath := r.Context().Value(ctxBasePath).(string)\n\n\tuser, _ := r.Context().Value(CtxUserKey).(*models.User)\n\tdomain := r.Context().Value(ctxDomain).(*models.Domain)\n\n\ttopicIDStr := chi.URLParam(r, \"topicID\")\n\tcategoryIDStr := chi.URLParam(r, \"categoryID\")\n\n\tcategoryID, err := strconv.Atoi(categoryIDStr)\n\tif err != nil {\n\t\thttp.Error(w, http.StatusText(http.StatusBadRequest), http.StatusBadRequest)\n\t\treturn\n\t}\n\tcategory := models.GetCategoryByID(categoryID)\n\tif category == nil || category.DomainID != domain.DomainID || category.ArchivedAt.Valid {\n\t\thttp.Error(w, http.StatusText(http.StatusNotFound), http.StatusNotFound)\n\t\treturn\n\t}\n\n\tvar topic *models.Topic\n\tif topicIDStr != \"\" {\n\t\ttopicID, err := strconv.Atoi(topicIDStr)\n\t\tif err != nil {\n\t\t\thttp.Error(w, http.StatusText(http.StatusBadRequest), http.StatusBadRequest)\n\t\t\treturn\n\t\t}\n\t\ttopic = models.GetTopicByID(topicID)\n\t\tif topic.CategoryID != category.CategoryID {\n\t\t\thttp.Error(w, http.StatusText(http.StatusNotFound), http.StatusNotFound)\n\t\t\treturn\n\t\t}\n\t}\n\n\tif r.Method == \"POST\" {\n\t\tif err := r.ParseForm(); err != nil {\n\t\t\thttp.Error(w, http.StatusText(http.StatusBadRequest), http.StatusBadRequest)\n\t\t\treturn\n\t\t}\n\t\taction := r.PostFormValue(\"action\")\n\t\ttitle := r.PostFormValue(\"title\")\n\t\tcontent := r.PostFormValue(\"content\")\n\t\tisSticky := r.PostFormValue(\"is_sticky\") == \"1\"\n\t\tisReadOnly := r.PostFormValue(\"is_readonly\") == \"1\"\n\t\tif !(user.IsSuperAdmin || user.IsSuperMod) {\n\t\t\tisSticky = false\n\t\t\tisReadOnly = false\n\t\t\tif topic != nil {\n\t\t\t\tisSticky = topic.IsSticky\n\t\t\t\tisReadOnly = topic.IsReadOnly\n\t\t\t}\n\t\t}\n\t\tif len(title) < 2 {\n\t\t\thttp.Error(w, http.StatusText(http.StatusBadRequest), http.StatusBadRequest)\n\t\t\treturn\n\t\t}\n\t\tif action == \"Submit\" {\n\t\t\tnewTopicID := models.CreateTopic(category.CategoryID, user.UserID, title, content, isSticky, isReadOnly)\n\t\t\tif newTopicID >= 0 {\n\t\t\t\thttp.Redirect(w, r, basePath+\"categories/\"+strconv.Itoa(category.CategoryID)+\n\t\t\t\t\t\"/topics/\"+strconv.Itoa(newTopicID),\n\t\t\t\t\thttp.StatusSeeOther)\n\t\t\t\treturn\n\t\t\t}\n\t\t} else if action == \"Update\" {\n\t\t\tmodels.UpdateTopicByID(topic.TopicID, title, content, isSticky, isReadOnly)\n\t\t\thttp.Redirect(w, r, basePath+\"categories/\"+strconv.Itoa(category.CategoryID)+\n\t\t\t\t\"/topics/\"+strconv.Itoa(topic.TopicID),\n\t\t\t\thttp.StatusSeeOther)\n\t\t\treturn\n\t\t} else if action == \"Delete\" {\n\t\t\tmodels.DeleteTopicByID(topic.TopicID, topic.UserID)\n\t\t\thttp.Redirect(w, r, basePath+\"categories/\"+strconv.Itoa(category.CategoryID), http.StatusSeeOther)\n\t\t\treturn\n\t\t}\n\t\thttp.Error(w, http.StatusText(http.StatusBadRequest), http.StatusBadRequest)\n\t\treturn\n\t}\n\n\ttemplates.TopicEdit.Execute(w, map[string]interface{}{\n\t\tcsrf.TemplateTag: csrf.TemplateField(r),\n\t\tBasePathField:    basePath,\n\t\tDomainField:      domain,\n\t\tUserField:        user,\n\t\t\"Category\":       category,\n\t\t\"Topic\":          topic,\n\t})\n}"
+    },
+    {
+      "id": "views/topics.go:LCF109",
+      "path": "views/topics.go",
+      "name": "getTopic",
+      "parameters": [
+        "w http.ResponseWriter",
+        "r *http.Request"
+      ],
+      "body": "{\n\tbasePath := r.Context().Value(ctxBasePath).(string)\n\n\tuser, _ := r.Context().Value(CtxUserKey).(*models.User)\n\tdomain := r.Context().Value(ctxDomain).(*models.Domain)\n\n\ttopicIDStr := chi.URLParam(r, \"topicID\")\n\tcategoryIDStr := chi.URLParam(r, \"categoryID\")\n\n\tcategoryID, err := strconv.Atoi(categoryIDStr)\n\tif err != nil {\n\t\thttp.Error(w, http.StatusText(http.StatusBadRequest), http.StatusBadRequest)\n\t\treturn\n\t}\n\tcategory := models.GetCategoryByID(categoryID)\n\tif category == nil || category.DomainID != domain.DomainID || category.ArchivedAt.Valid {\n\t\thttp.Error(w, http.StatusText(http.StatusNotFound), http.StatusNotFound)\n\t\treturn\n\t}\n\n\ttopicID, err := strconv.Atoi(topicIDStr)\n\tif err != nil {\n\t\thttp.Error(w, http.StatusText(http.StatusBadRequest), http.StatusBadRequest)\n\t\treturn\n\t}\n\ttopic := models.GetTopicByID(topicID)\n\tif topic.CategoryID != category.CategoryID {\n\t\thttp.Error(w, http.StatusText(http.StatusNotFound), http.StatusNotFound)\n\t\treturn\n\t}\n\n\tcomments := models.GetCommentsByTopicID(topic.TopicID)\n\tauthor := models.GetUserByID(topic.UserID)\n\n\tmodels.IncrementTopicViewCount(topic.TopicID)\n\n\ttemplates.Topic.Execute(w, map[string]interface{}{\n\t\tcsrf.TemplateTag: csrf.TemplateField(r),\n\t\tBasePathField:    basePath,\n\t\tUserField:        user,\n\t\tDomainField:      domain,\n\t\t\"Category\":       category,\n\t\t\"Topic\":          topic,\n\t\t\"Author\":         author,\n\t\t\"Comments\":       comments,\n\t})\n}",
+      "start_line": 148,
+      "end_line": 194,
+      "code": "func getTopic(w http.ResponseWriter, r *http.Request) {\n\tbasePath := r.Context().Value(ctxBasePath).(string)\n\n\tuser, _ := r.Context().Value(CtxUserKey).(*models.User)\n\tdomain := r.Context().Value(ctxDomain).(*models.Domain)\n\n\ttopicIDStr := chi.URLParam(r, \"topicID\")\n\tcategoryIDStr := chi.URLParam(r, \"categoryID\")\n\n\tcategoryID, err := strconv.Atoi(categoryIDStr)\n\tif err != nil {\n\t\thttp.Error(w, http.StatusText(http.StatusBadRequest), http.StatusBadRequest)\n\t\treturn\n\t}\n\tcategory := models.GetCategoryByID(categoryID)\n\tif category == nil || category.DomainID != domain.DomainID || category.ArchivedAt.Valid {\n\t\thttp.Error(w, http.StatusText(http.StatusNotFound), http.StatusNotFound)\n\t\treturn\n\t}\n\n\ttopicID, err := strconv.Atoi(topicIDStr)\n\tif err != nil {\n\t\thttp.Error(w, http.StatusText(http.StatusBadRequest), http.StatusBadRequest)\n\t\treturn\n\t}\n\ttopic := models.GetTopicByID(topicID)\n\tif topic.CategoryID != category.CategoryID {\n\t\thttp.Error(w, http.StatusText(http.StatusNotFound), http.StatusNotFound)\n\t\treturn\n\t}\n\n\tcomments := models.GetCommentsByTopicID(topic.TopicID)\n\tauthor := models.GetUserByID(topic.UserID)\n\n\tmodels.IncrementTopicViewCount(topic.TopicID)\n\n\ttemplates.Topic.Execute(w, map[string]interface{}{\n\t\tcsrf.TemplateTag: csrf.TemplateField(r),\n\t\tBasePathField:    basePath,\n\t\tUserField:        user,\n\t\tDomainField:      domain,\n\t\t\"Category\":       category,\n\t\t\"Topic\":          topic,\n\t\t\"Author\":         author,\n\t\t\"Comments\":       comments,\n\t})\n}"
+    },
+    {
+      "id": "views/users.go:LCF110",
+      "path": "views/users.go",
+      "name": "profileHandler",
+      "parameters": [
+        "w http.ResponseWriter",
+        "r *http.Request"
+      ],
+      "body": "{\n\tbasePath := r.Context().Value(ctxBasePath).(string)\n\n\tuser, _ := r.Context().Value(CtxUserKey).(*models.User)\n\tdomain := r.Context().Value(ctxDomain).(*models.Domain)\n\n\tprofileUserID, err := strconv.Atoi(chi.URLParam(r, \"userID\"))\n\tif err != nil {\n\t\thttp.Error(w, \"Bad user ID\", http.StatusBadRequest)\n\t\treturn\n\t}\n\tprofileUser := models.GetUserByID(profileUserID)\n\tif profileUser == nil {\n\t\thttp.Error(w, \"User not found\", http.StatusNotFound)\n\t\treturn\n\t}\n\n\tshowForm := (user != nil) && (user.UserID == profileUser.UserID)\n\tif (user != nil) && (domain.DomainID == user.DomainID) {\n\t\tif user.IsSuperAdmin || user.IsSuperMod {\n\t\t\tshowForm = true\n\t\t}\n\t}\n\n\tshowBan := (user != nil) && (domain.DomainID == user.DomainID) && (user.IsSuperMod || user.IsSuperAdmin)\n\n\terrMsg := \"\"\n\n\tif r.Method == \"POST\" {\n\t\tif user == nil {\n\t\t\thttp.Error(w, http.StatusText(http.StatusForbidden), http.StatusForbidden)\n\t\t\treturn\n\t\t}\n\n\t\tif profileUser.UserID != user.UserID {\n\t\t\tif (user.DomainID != domain.DomainID) || !(user.IsSuperMod || user.IsSuperAdmin) {\n\t\t\t\thttp.Error(w, http.StatusText(http.StatusForbidden), http.StatusForbidden)\n\t\t\t\treturn\n\t\t\t}\n\t\t}\n\n\t\terr = r.ParseForm()\n\t\tif err != nil {\n\t\t\thttp.Error(w, http.StatusText(http.StatusBadRequest), http.StatusBadRequest)\n\t\t\treturn\n\t\t}\n\n\t\tnewEmail := strings.Trim(r.PostFormValue(\"email\"), \" \")\n\t\tnewDisplayName := r.PostFormValue(\"display_name\")\n\t\tnewIsBanned := r.PostFormValue(\"is_banned\") == \"1\"\n\n\t\tif profileUser.IsSuperAdmin || profileUser.IsSuperMod {\n\t\t\tnewIsBanned = false\n\t\t}\n\n\t\terrMsg = validateEmail(newEmail, domain)\n\n\t\tif len(newDisplayName) < 3 || len(newDisplayName) > 30 {\n\t\t\terrMsg = \"Display name should have between 3 and 30 characters\"\n\t\t}\n\n\t\tif errMsg == \"\" {\n\t\t\tmodels.UpdateUserByID(profileUser.UserID, newEmail, newDisplayName, newIsBanned)\n\t\t\thttp.Redirect(w, r, basePath+\"users/\"+strconv.Itoa(profileUser.UserID), http.StatusSeeOther)\n\t\t\treturn\n\t\t}\n\t}\n\n\ttemplates.Profile.Execute(w, map[string]interface{}{\n\t\tcsrf.TemplateTag: csrf.TemplateField(r),\n\t\tBasePathField:    basePath,\n\t\tDomainField:      domain,\n\t\tUserField:        user,\n\t\t\"ProfileUser\":    profileUser,\n\t\t\"ShowForm\":       showForm,\n\t\t\"ShowBan\":        showBan,\n\t\t\"ErrMsg\":         errMsg,\n\t})\n}",
+      "start_line": 20,
+      "end_line": 98,
+      "code": "func profileHandler(w http.ResponseWriter, r *http.Request) {\n\tbasePath := r.Context().Value(ctxBasePath).(string)\n\n\tuser, _ := r.Context().Value(CtxUserKey).(*models.User)\n\tdomain := r.Context().Value(ctxDomain).(*models.Domain)\n\n\tprofileUserID, err := strconv.Atoi(chi.URLParam(r, \"userID\"))\n\tif err != nil {\n\t\thttp.Error(w, \"Bad user ID\", http.StatusBadRequest)\n\t\treturn\n\t}\n\tprofileUser := models.GetUserByID(profileUserID)\n\tif profileUser == nil {\n\t\thttp.Error(w, \"User not found\", http.StatusNotFound)\n\t\treturn\n\t}\n\n\tshowForm := (user != nil) && (user.UserID == profileUser.UserID)\n\tif (user != nil) && (domain.DomainID == user.DomainID) {\n\t\tif user.IsSuperAdmin || user.IsSuperMod {\n\t\t\tshowForm = true\n\t\t}\n\t}\n\n\tshowBan := (user != nil) && (domain.DomainID == user.DomainID) && (user.IsSuperMod || user.IsSuperAdmin)\n\n\terrMsg := \"\"\n\n\tif r.Method == \"POST\" {\n\t\tif user == nil {\n\t\t\thttp.Error(w, http.StatusText(http.StatusForbidden), http.StatusForbidden)\n\t\t\treturn\n\t\t}\n\n\t\tif profileUser.UserID != user.UserID {\n\t\t\tif (user.DomainID != domain.DomainID) || !(user.IsSuperMod || user.IsSuperAdmin) {\n\t\t\t\thttp.Error(w, http.StatusText(http.StatusForbidden), http.StatusForbidden)\n\t\t\t\treturn\n\t\t\t}\n\t\t}\n\n\t\terr = r.ParseForm()\n\t\tif err != nil {\n\t\t\thttp.Error(w, http.StatusText(http.StatusBadRequest), http.StatusBadRequest)\n\t\t\treturn\n\t\t}\n\n\t\tnewEmail := strings.Trim(r.PostFormValue(\"email\"), \" \")\n\t\tnewDisplayName := r.PostFormValue(\"display_name\")\n\t\tnewIsBanned := r.PostFormValue(\"is_banned\") == \"1\"\n\n\t\tif profileUser.IsSuperAdmin || profileUser.IsSuperMod {\n\t\t\tnewIsBanned = false\n\t\t}\n\n\t\terrMsg = validateEmail(newEmail, domain)\n\n\t\tif len(newDisplayName) < 3 || len(newDisplayName) > 30 {\n\t\t\terrMsg = \"Display name should have between 3 and 30 characters\"\n\t\t}\n\n\t\tif errMsg == \"\" {\n\t\t\tmodels.UpdateUserByID(profileUser.UserID, newEmail, newDisplayName, newIsBanned)\n\t\t\thttp.Redirect(w, r, basePath+\"users/\"+strconv.Itoa(profileUser.UserID), http.StatusSeeOther)\n\t\t\treturn\n\t\t}\n\t}\n\n\ttemplates.Profile.Execute(w, map[string]interface{}{\n\t\tcsrf.TemplateTag: csrf.TemplateField(r),\n\t\tBasePathField:    basePath,\n\t\tDomainField:      domain,\n\t\tUserField:        user,\n\t\t\"ProfileUser\":    profileUser,\n\t\t\"ShowForm\":       showForm,\n\t\t\"ShowBan\":        showBan,\n\t\t\"ErrMsg\":         errMsg,\n\t})\n}"
+    },
+    {
+      "id": "views/utils.go:LCF111",
+      "path": "views/utils.go",
+      "name": "sendMail",
+      "parameters": [
+        "from string",
+        "to string",
+        "sub string",
+        "body string",
+        "forumName string",
+        "smtpHost string",
+        "smtpPort int",
+        "smtpUser string",
+        "smtpPass string"
+      ],
+      "body": "{\n\tgo func(from string, to string, sub string, body string, forumName string, smtpHost string, smtpPort int, smtpUser string, smtpPass string) {\n\t\tif from != \"\" && smtpHost != \"\" {\n\t\t\tauth := smtp.PlainAuth(\"\", smtpUser, smtpPass, smtpHost)\n\t\t\tmsg := []byte(\"From: \" + forumName + \"<\" + from + \">\\r\\n\" +\n\t\t\t\t\"To: \" + to + \"\\r\\n\" +\n\t\t\t\t\"Subject: \" + sub + \"\\r\\n\" +\n\t\t\t\t\"\\r\\n\" +\n\t\t\t\tbody + \"\\r\\n\")\n\t\t\tvar err error\n\t\t\tif smtpUser != \"\" {\n\t\t\t\terr = smtp.SendMail(smtpHost+\":\"+strconv.Itoa(smtpPort), auth, from, []string{to}, msg)\n\t\t\t} else {\n\t\t\t\terr = smtp.SendMail(smtpHost+\":\"+strconv.Itoa(smtpPort), nil, from, []string{to}, msg)\n\t\t\t}\n\n\t\t\tif err != nil {\n\t\t\t\tglog.Errorf(\"Error sending mail: %s\\n\", err)\n\t\t\t}\n\t\t} else {\n\t\t\tglog.Infof(\"[ERROR] SMTP not configured.\\n\")\n\t\t}\n\n\t}(from, to, sub, body, forumName, smtpHost, smtpPort, smtpUser, smtpPass)\n}",
+      "start_line": 14,
+      "end_line": 38,
+      "code": "func sendMail(from string, to string, sub string, body string, forumName string, smtpHost string, smtpPort int, smtpUser string, smtpPass string) {\n\tgo func(from string, to string, sub string, body string, forumName string, smtpHost string, smtpPort int, smtpUser string, smtpPass string) {\n\t\tif from != \"\" && smtpHost != \"\" {\n\t\t\tauth := smtp.PlainAuth(\"\", smtpUser, smtpPass, smtpHost)\n\t\t\tmsg := []byte(\"From: \" + forumName + \"<\" + from + \">\\r\\n\" +\n\t\t\t\t\"To: \" + to + \"\\r\\n\" +\n\t\t\t\t\"Subject: \" + sub + \"\\r\\n\" +\n\t\t\t\t\"\\r\\n\" +\n\t\t\t\tbody + \"\\r\\n\")\n\t\t\tvar err error\n\t\t\tif smtpUser != \"\" {\n\t\t\t\terr = smtp.SendMail(smtpHost+\":\"+strconv.Itoa(smtpPort), auth, from, []string{to}, msg)\n\t\t\t} else {\n\t\t\t\terr = smtp.SendMail(smtpHost+\":\"+strconv.Itoa(smtpPort), nil, from, []string{to}, msg)\n\t\t\t}\n\n\t\t\tif err != nil {\n\t\t\t\tglog.Errorf(\"Error sending mail: %s\\n\", err)\n\t\t\t}\n\t\t} else {\n\t\t\tglog.Infof(\"[ERROR] SMTP not configured.\\n\")\n\t\t}\n\n\t}(from, to, sub, body, forumName, smtpHost, smtpPort, smtpUser, smtpPass)\n}"
+    },
+    {
+      "id": "views/views.go:LCF112",
+      "path": "views/views.go",
+      "name": "forumRouter",
+      "parameters": [
+        "disableCSRF bool"
+      ],
+      "body": "{\n\tr := chi.NewRouter()\n\n\tif !disableCSRF {\n\t\tcsrfMiddleware := csrf.Protect([]byte(SecretKey), csrf.Secure(false))\n\t\tr.Use(csrfMiddleware)\n\t}\n\n\tsessionManager := scs.New()\n\tsessionManager.Lifetime = 24 * time.Hour\n\tr.Use(sessionManager.LoadAndSave)\n\n\ttokenAuth = jwtauth.New(\"HS256\", []byte(SecretKey), nil)\n\n\t// Auth routes\n\tr.Route(\"/auth\", func(r chi.Router) {\n\t\tr.Route(\"/signin\", func(r chi.Router) {\n\t\t\tr.Get(\"/\", getAuthSignIn)\n\t\t\tr.Post(\"/\", postAuthSignIn)\n\t\t})\n\n\t\tr.Route(\"/otsignin\", func(r chi.Router) {\n\t\t\tr.Get(\"/\", getAuthOneTimeSignIn)\n\t\t\tr.Post(\"/\", postAuthOneTimeSignIn)\n\t\t\tr.Get(\"/{token}\", getAuthOneTimeSignInDone)\n\t\t})\n\n\t\tr.Route(\"/signup\", func(r chi.Router) {\n\t\t\tr.Get(\"/\", getAuthSignUp)\n\t\t\tr.Post(\"/\", postAuthSignUp)\n\t\t})\n\n\t\tr.Route(\"/signup/{signupToken:[A-Za-z0-9-]+}\", func(r chi.Router) {\n\t\t\tr.Get(\"/\", getAuthSignUp)\n\t\t\tr.Post(\"/\", postAuthSignUp)\n\t\t})\n\n\t\tr.Route(\"/changepass\", func(r chi.Router) {\n\t\t\tr.Use(jwtauth.Verifier(tokenAuth))\n\t\t\tr.Use(mustAuth)\n\n\t\t\tr.Get(\"/\", getAuthChangePass)\n\t\t\tr.Post(\"/\", postAuthChangePass)\n\t\t})\n\n\t\tr.Route(\"/logout\", func(r chi.Router) {\n\t\t\tr.Get(\"/\", getAuthLogout)\n\t\t})\n\t})\n\n\tr.Route(\"/static\", func(r chi.Router) {\n\t\tr.Get(\"/orangeforum.css\", getCSS)\n\t\tr.Get(\"/orangeforum.js\", getJS)\n\t\tr.Get(\"/favicon.png\", getIcon)\n\t\tr.Get(\"/logo.png\", getLogo)\n\t})\n\n\tr.Route(\"/\", func(r chi.Router) {\n\t\tr.Use(jwtauth.Verifier(tokenAuth))\n\t\tr.Use(canAuth)\n\n\t\tr.Get(\"/\", getIndex)\n\t})\n\n\tr.Route(\"/admin\", func(r chi.Router) {\n\t\tr.Use(jwtauth.Verifier(tokenAuth))\n\t\tr.Use(mustAuth)\n\n\t\tr.Get(\"/\", adminHandler)\n\t\tr.Post(\"/\", adminHandler)\n\n\t\tr.Post(\"/mods/create\", postCreateMod)\n\t\tr.Post(\"/mods/delete\", postDeleteMod)\n\n\t\tr.Post(\"/categories/{categoryID}\", postCategory)\n\t})\n\n\tr.Route(\"/users\", func(r chi.Router) {\n\t\tr.Use(jwtauth.Verifier(tokenAuth))\n\t\tr.Use(canAuth)\n\n\t\tr.Get(\"/{userID}\", profileHandler)\n\t\tr.Post(\"/{userID}\", profileHandler)\n\t})\n\n\tr.Route(\"/categories/{categoryID}\", func(r chi.Router) {\n\t\tr.Route(\"/\", func(r chi.Router) {\n\t\t\tr.Use(jwtauth.Verifier(tokenAuth))\n\t\t\tr.Use(canAuth)\n\n\t\t\tr.Get(\"/\", getTopicList)\n\t\t\tr.Get(\"/topics/{topicID}\", getTopic)\n\t\t})\n\n\t\tr.Route(\"/topics\", func(r chi.Router) {\n\t\t\tr.Route(\"/new\", func(r chi.Router) {\n\t\t\t\tr.Use(jwtauth.Verifier(tokenAuth))\n\t\t\t\tr.Use(mustAuth)\n\n\t\t\t\tr.Get(\"/\", editTopic)\n\t\t\t\tr.Post(\"/\", editTopic)\n\t\t\t})\n\n\t\t\tr.Route(\"/{topicID}/edit\", func(r chi.Router) {\n\t\t\t\tr.Use(jwtauth.Verifier(tokenAuth))\n\t\t\t\tr.Use(mustAuth)\n\n\t\t\t\tr.Get(\"/\", editTopic)\n\t\t\t\tr.Post(\"/\", editTopic)\n\t\t\t})\n\n\t\t\tr.Route(\"/{topicID}/comments/new\", func(r chi.Router) {\n\t\t\t\tr.Use(jwtauth.Verifier(tokenAuth))\n\t\t\t\tr.Use(mustAuth)\n\n\t\t\t\tr.Get(\"/\", editComment)\n\t\t\t\tr.Post(\"/\", editComment)\n\t\t\t})\n\n\t\t\tr.Route(\"/{topicID}/comments/{commentID}/edit\", func(r chi.Router) {\n\t\t\t\tr.Use(jwtauth.Verifier(tokenAuth))\n\t\t\t\tr.Use(mustAuth)\n\n\t\t\t\tr.Get(\"/\", editComment)\n\t\t\t\tr.Post(\"/\", editComment)\n\t\t\t})\n\n\t\t\tr.Route(\"/{topicID}\", func(r chi.Router) {\n\t\t\t\tr.Use(jwtauth.Verifier(tokenAuth))\n\t\t\t\tr.Use(canAuth)\n\n\t\t\t\tr.Get(\"/\", getTopic)\n\t\t\t})\n\t\t})\n\n\t})\n\n\treturn r\n}",
+      "start_line": 22,
+      "end_line": 160,
+      "code": "func forumRouter(disableCSRF bool) *chi.Mux {\n\tr := chi.NewRouter()\n\n\tif !disableCSRF {\n\t\tcsrfMiddleware := csrf.Protect([]byte(SecretKey), csrf.Secure(false))\n\t\tr.Use(csrfMiddleware)\n\t}\n\n\tsessionManager := scs.New()\n\tsessionManager.Lifetime = 24 * time.Hour\n\tr.Use(sessionManager.LoadAndSave)\n\n\ttokenAuth = jwtauth.New(\"HS256\", []byte(SecretKey), nil)\n\n\t// Auth routes\n\tr.Route(\"/auth\", func(r chi.Router) {\n\t\tr.Route(\"/signin\", func(r chi.Router) {\n\t\t\tr.Get(\"/\", getAuthSignIn)\n\t\t\tr.Post(\"/\", postAuthSignIn)\n\t\t})\n\n\t\tr.Route(\"/otsignin\", func(r chi.Router) {\n\t\t\tr.Get(\"/\", getAuthOneTimeSignIn)\n\t\t\tr.Post(\"/\", postAuthOneTimeSignIn)\n\t\t\tr.Get(\"/{token}\", getAuthOneTimeSignInDone)\n\t\t})\n\n\t\tr.Route(\"/signup\", func(r chi.Router) {\n\t\t\tr.Get(\"/\", getAuthSignUp)\n\t\t\tr.Post(\"/\", postAuthSignUp)\n\t\t})\n\n\t\tr.Route(\"/signup/{signupToken:[A-Za-z0-9-]+}\", func(r chi.Router) {\n\t\t\tr.Get(\"/\", getAuthSignUp)\n\t\t\tr.Post(\"/\", postAuthSignUp)\n\t\t})\n\n\t\tr.Route(\"/changepass\", func(r chi.Router) {\n\t\t\tr.Use(jwtauth.Verifier(tokenAuth))\n\t\t\tr.Use(mustAuth)\n\n\t\t\tr.Get(\"/\", getAuthChangePass)\n\t\t\tr.Post(\"/\", postAuthChangePass)\n\t\t})\n\n\t\tr.Route(\"/logout\", func(r chi.Router) {\n\t\t\tr.Get(\"/\", getAuthLogout)\n\t\t})\n\t})\n\n\tr.Route(\"/static\", func(r chi.Router) {\n\t\tr.Get(\"/orangeforum.css\", getCSS)\n\t\tr.Get(\"/orangeforum.js\", getJS)\n\t\tr.Get(\"/favicon.png\", getIcon)\n\t\tr.Get(\"/logo.png\", getLogo)\n\t})\n\n\tr.Route(\"/\", func(r chi.Router) {\n\t\tr.Use(jwtauth.Verifier(tokenAuth))\n\t\tr.Use(canAuth)\n\n\t\tr.Get(\"/\", getIndex)\n\t})\n\n\tr.Route(\"/admin\", func(r chi.Router) {\n\t\tr.Use(jwtauth.Verifier(tokenAuth))\n\t\tr.Use(mustAuth)\n\n\t\tr.Get(\"/\", adminHandler)\n\t\tr.Post(\"/\", adminHandler)\n\n\t\tr.Post(\"/mods/create\", postCreateMod)\n\t\tr.Post(\"/mods/delete\", postDeleteMod)\n\n\t\tr.Post(\"/categories/{categoryID}\", postCategory)\n\t})\n\n\tr.Route(\"/users\", func(r chi.Router) {\n\t\tr.Use(jwtauth.Verifier(tokenAuth))\n\t\tr.Use(canAuth)\n\n\t\tr.Get(\"/{userID}\", profileHandler)\n\t\tr.Post(\"/{userID}\", profileHandler)\n\t})\n\n\tr.Route(\"/categories/{categoryID}\", func(r chi.Router) {\n\t\tr.Route(\"/\", func(r chi.Router) {\n\t\t\tr.Use(jwtauth.Verifier(tokenAuth))\n\t\t\tr.Use(canAuth)\n\n\t\t\tr.Get(\"/\", getTopicList)\n\t\t\tr.Get(\"/topics/{topicID}\", getTopic)\n\t\t})\n\n\t\tr.Route(\"/topics\", func(r chi.Router) {\n\t\t\tr.Route(\"/new\", func(r chi.Router) {\n\t\t\t\tr.Use(jwtauth.Verifier(tokenAuth))\n\t\t\t\tr.Use(mustAuth)\n\n\t\t\t\tr.Get(\"/\", editTopic)\n\t\t\t\tr.Post(\"/\", editTopic)\n\t\t\t})\n\n\t\t\tr.Route(\"/{topicID}/edit\", func(r chi.Router) {\n\t\t\t\tr.Use(jwtauth.Verifier(tokenAuth))\n\t\t\t\tr.Use(mustAuth)\n\n\t\t\t\tr.Get(\"/\", editTopic)\n\t\t\t\tr.Post(\"/\", editTopic)\n\t\t\t})\n\n\t\t\tr.Route(\"/{topicID}/comments/new\", func(r chi.Router) {\n\t\t\t\tr.Use(jwtauth.Verifier(tokenAuth))\n\t\t\t\tr.Use(mustAuth)\n\n\t\t\t\tr.Get(\"/\", editComment)\n\t\t\t\tr.Post(\"/\", editComment)\n\t\t\t})\n\n\t\t\tr.Route(\"/{topicID}/comments/{commentID}/edit\", func(r chi.Router) {\n\t\t\t\tr.Use(jwtauth.Verifier(tokenAuth))\n\t\t\t\tr.Use(mustAuth)\n\n\t\t\t\tr.Get(\"/\", editComment)\n\t\t\t\tr.Post(\"/\", editComment)\n\t\t\t})\n\n\t\t\tr.Route(\"/{topicID}\", func(r chi.Router) {\n\t\t\t\tr.Use(jwtauth.Verifier(tokenAuth))\n\t\t\t\tr.Use(canAuth)\n\n\t\t\t\tr.Get(\"/\", getTopic)\n\t\t\t})\n\t\t})\n\n\t})\n\n\treturn r\n}"
+    },
+    {
+      "id": "views/views.go:LCF113",
+      "path": "views/views.go",
+      "name": "GetRouter",
+      "parameters": [
+        "disableCSRF bool",
+        "disableLogger bool"
+      ],
+      "body": "{\n\tr := chi.NewRouter()\n\n\t// A good base middleware stack\n\tr.Use(middleware.RequestID)\n\tr.Use(middleware.RealIP)\n\tif !disableLogger {\n\t\tr.Use(middleware.Logger)\n\t}\n\tr.Use(middleware.Recoverer)\n\tr.Use(middleware.Timeout(30 * time.Second))\n\n\tfr := forumRouter(disableCSRF)\n\n\tr.Route(\"/forums/{domainName}\", func(r chi.Router) {\n\t\tr.Use(domainCtx)\n\t\tr.Mount(\"/\", fr)\n\t})\n\n\tr.Route(\"/\", func(r chi.Router) {\n\t\tr.Use(hostCtx)\n\t\tr.Mount(\"/\", fr)\n\t})\n\n\treturn r\n}",
+      "start_line": 162,
+      "end_line": 187,
+      "code": "func GetRouter(disableCSRF bool, disableLogger bool) *chi.Mux {\n\tr := chi.NewRouter()\n\n\t// A good base middleware stack\n\tr.Use(middleware.RequestID)\n\tr.Use(middleware.RealIP)\n\tif !disableLogger {\n\t\tr.Use(middleware.Logger)\n\t}\n\tr.Use(middleware.Recoverer)\n\tr.Use(middleware.Timeout(30 * time.Second))\n\n\tfr := forumRouter(disableCSRF)\n\n\tr.Route(\"/forums/{domainName}\", func(r chi.Router) {\n\t\tr.Use(domainCtx)\n\t\tr.Mount(\"/\", fr)\n\t})\n\n\tr.Route(\"/\", func(r chi.Router) {\n\t\tr.Use(hostCtx)\n\t\tr.Mount(\"/\", fr)\n\t})\n\n\treturn r\n}"
+    }
+  ]
+}

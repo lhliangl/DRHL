@@ -1,0 +1,61 @@
+{
+  "role": "visitor",
+  "kind": "visitor",
+  "nodes": [
+    "./",
+    "my-first-ever-post/",
+    "post-2/",
+    "post-3/",
+    "post-4/"
+  ],
+  "edges": [
+    {
+      "from": "./",
+      "to": "my-first-ever-post/"
+    },
+    {
+      "from": "./",
+      "to": "post-2/"
+    },
+    {
+      "from": "./",
+      "to": "post-3/"
+    },
+    {
+      "from": "./",
+      "to": "post-4/"
+    }
+  ],
+  "requests": {
+    "./": {
+      "method": "GET",
+      "params": {},
+      "referer": null
+    },
+    "favicon.ico": {
+      "method": "GET",
+      "params": {},
+      "referer": null
+    },
+    "my-first-ever-post/": {
+      "method": "GET",
+      "params": {},
+      "referer": "./"
+    },
+    "post-2/": {
+      "method": "GET",
+      "params": {},
+      "referer": "./"
+    },
+    "post-3/": {
+      "method": "GET",
+      "params": {},
+      "referer": "./"
+    },
+    "post-4/": {
+      "method": "GET",
+      "params": {},
+      "referer": "./"
+    }
+  }
+}

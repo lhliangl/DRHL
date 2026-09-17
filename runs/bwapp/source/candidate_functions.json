@@ -1,0 +1,956 @@
+{
+  "functions": [
+    {
+      "id": "bof_1.php:LCF1",
+      "path": "bof_1.php",
+      "name": "commandi",
+      "parameters": [
+        "$data"
+      ],
+      "body": "{\n\n    switch($_COOKIE[\"security_level\"])\n    {\n\n        case \"0\" :\n\n            $data = commandi_check_3($data);\n            break;\n\n        case \"1\" :\n\n            $data = commandi_check_2($data);\n            break;\n\n        case \"2\" :\n\n            $data = commandi_check_2($data);\n            break;\n\n        default :\n\n            $data = commandi_check_3($data);\n            break;\n\n    }\n\n    return $data;\n\n}",
+      "start_line": 24,
+      "end_line": 54,
+      "code": "function commandi($data)\n{\n\n    switch($_COOKIE[\"security_level\"])\n    {\n\n        case \"0\" :\n\n            $data = commandi_check_3($data);\n            break;\n\n        case \"1\" :\n\n            $data = commandi_check_2($data);\n            break;\n\n        case \"2\" :\n\n            $data = commandi_check_2($data);\n            break;\n\n        default :\n\n            $data = commandi_check_3($data);\n            break;\n\n    }\n\n    return $data;\n\n}"
+    },
+    {
+      "id": "commandi.php:LCF2",
+      "path": "commandi.php",
+      "name": "commandi",
+      "parameters": [
+        "$data"
+      ],
+      "body": "{\n\n    switch($_COOKIE[\"security_level\"])\n    {\n\n        case \"0\" :\n\n            $data = no_check($data);\n            break;\n\n        case \"1\" :\n\n            $data = commandi_check_1($data);\n            break;\n\n        case \"2\" :\n\n            $data = commandi_check_2($data);\n            break;\n\n        default :\n\n            $data = no_check($data);\n            break;\n\n    }\n\n    return $data;\n\n}",
+      "start_line": 24,
+      "end_line": 54,
+      "code": "function commandi($data)\n{\n\n    switch($_COOKIE[\"security_level\"])\n    {\n\n        case \"0\" :\n\n            $data = no_check($data);\n            break;\n\n        case \"1\" :\n\n            $data = commandi_check_1($data);\n            break;\n\n        case \"2\" :\n\n            $data = commandi_check_2($data);\n            break;\n\n        default :\n\n            $data = no_check($data);\n            break;\n\n    }\n\n    return $data;\n\n}"
+    },
+    {
+      "id": "commandi_blind.php:LCF3",
+      "path": "commandi_blind.php",
+      "name": "commandi",
+      "parameters": [
+        "$data"
+      ],
+      "body": "{\n\n    switch($_COOKIE[\"security_level\"])\n    {\n\n        case \"0\" :\n\n            $data = no_check($data);\n            break;\n\n        case \"1\" :\n\n            $data = commandi_check_1($data);\n            break;\n\n        case \"2\" :\n\n            $data = commandi_check_2($data);\n            break;\n\n        default :\n\n            $data = no_check($data);\n            break;\n\n    }\n\n    return $data;\n\n}",
+      "start_line": 24,
+      "end_line": 54,
+      "code": "function commandi($data)\n{\n\n    switch($_COOKIE[\"security_level\"])\n    {\n\n        case \"0\" :\n\n            $data = no_check($data);\n            break;\n\n        case \"1\" :\n\n            $data = commandi_check_1($data);\n            break;\n\n        case \"2\" :\n\n            $data = commandi_check_2($data);\n            break;\n\n        default :\n\n            $data = no_check($data);\n            break;\n\n    }\n\n    return $data;\n\n}"
+    },
+    {
+      "id": "cs_validation.php:LCF4",
+      "path": "cs_validation.php",
+      "name": "check_password",
+      "parameters": [
+        "$string"
+      ],
+      "body": "{\n        \n    if(preg_match(\"/(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/\", $string) == false)\n    {   \n\n        return false;            \n\n    }\n    \n    return true;\n        \n}",
+      "start_line": 28,
+      "end_line": 40,
+      "code": "function check_password($string)\n{\n        \n    if(preg_match(\"/(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/\", $string) == false)\n    {   \n\n        return false;            \n\n    }\n    \n    return true;\n        \n}"
+    },
+    {
+      "id": "cs_validation.php:LCF5",
+      "path": "cs_validation.php",
+      "name": "check_input",
+      "parameters": [
+        "$password_new",
+        "$password_conf"
+      ],
+      "body": "{\n\n$error = \"\";\n\n    if($password_new == \"\")\n    {\n   \n        $error = \"<font color=\\\"red\\\">Please enter a new password...</font>\";\n\n        return $error;\n\n    }\n\n    if($password_new != $password_conf)\n    {\n\n        $error = \"<font color=\\\"red\\\">The passwords don't match!</font>\";\n\n        return $error;\n\n    }\n    \n    if(!check_password($password_new) && $_COOKIE[\"security_level\"] == \"2\")\n    {\n\n        $error = \"<font color=\\\"red\\\">The new password is not valid!<br />Password policy: minimum 6 characters containing at least one uppercase letter, lowercase letter and number.\";\n\n        return $error;\n\n    }\n    \nreturn $error;\n\n}",
+      "start_line": 43,
+      "end_line": 77,
+      "code": "function check_input($password_new,$password_conf)\n{\n\n$error = \"\";\n\n    if($password_new == \"\")\n    {\n   \n        $error = \"<font color=\\\"red\\\">Please enter a new password...</font>\";\n\n        return $error;\n\n    }\n\n    if($password_new != $password_conf)\n    {\n\n        $error = \"<font color=\\\"red\\\">The passwords don't match!</font>\";\n\n        return $error;\n\n    }\n    \n    if(!check_password($password_new) && $_COOKIE[\"security_level\"] == \"2\")\n    {\n\n        $error = \"<font color=\\\"red\\\">The new password is not valid!<br />Password policy: minimum 6 characters containing at least one uppercase letter, lowercase letter and number.\";\n\n        return $error;\n\n    }\n    \nreturn $error;\n\n}"
+    },
+    {
+      "id": "directory_traversal_1.php:LCF6",
+      "path": "directory_traversal_1.php",
+      "name": "show_file",
+      "parameters": [
+        "$file"
+      ],
+      "body": "{\r\n    \r\n    // Checks whether a file or directory exists    \r\n    // if(file_exists($file))\r\n    if(is_file($file)) \r\n    {\r\n                   \r\n        $fp = fopen($file, \"r\") or die(\"Couldn't open $file.\");\r\n\r\n        while(!feof($fp))\r\n        {\r\n\r\n            $line = fgets($fp,1024);\r\n            echo($line);\r\n            echo \"<br />\";\r\n    \r\n        }\r\n        \r\n    }   \r\n        \r\n    else\r\n    {\r\n        \r\n        echo \"This file doesn't exist!\";\r\n       \r\n    }          \r\n            \r\n}",
+      "start_line": 136,
+      "end_line": 164,
+      "code": "function show_file($file)\r\n{\r\n    \r\n    // Checks whether a file or directory exists    \r\n    // if(file_exists($file))\r\n    if(is_file($file)) \r\n    {\r\n                   \r\n        $fp = fopen($file, \"r\") or die(\"Couldn't open $file.\");\r\n\r\n        while(!feof($fp))\r\n        {\r\n\r\n            $line = fgets($fp,1024);\r\n            echo($line);\r\n            echo \"<br />\";\r\n    \r\n        }\r\n        \r\n    }   \r\n        \r\n    else\r\n    {\r\n        \r\n        echo \"This file doesn't exist!\";\r\n       \r\n    }          \r\n            \r\n}"
+    },
+    {
+      "id": "directory_traversal_2.php:LCF7",
+      "path": "directory_traversal_2.php",
+      "name": "show_directory",
+      "parameters": [
+        "$directory"
+      ],
+      "body": "{\r\n    \r\n    // Checks whether a file or directory exists    \r\n    if(file_exists($directory))\r\n    {\r\n    \r\n        $dp = opendir($directory);\r\n       \r\n        while($line = readdir($dp))\r\n        {\r\n        \r\n            if($line != \".\" && $line != \"..\" && $line != \".htaccess\")\r\n            {\r\n            \r\n                echo \"<a href=\\\"\" . $directory . \"/\" . $line . \"\\\" target=\\\"_blank\\\">\" . $line . \"</a><br />\";\r\n            \r\n            }\r\n        \r\n        }\r\n        \r\n    }\r\n    \r\n    else\r\n    {\r\n        \r\n        echo \"This directory doesn't exist!\";\r\n       \r\n    }\r\n     \r\n}",
+      "start_line": 136,
+      "end_line": 166,
+      "code": "function show_directory($directory)\r\n{\r\n    \r\n    // Checks whether a file or directory exists    \r\n    if(file_exists($directory))\r\n    {\r\n    \r\n        $dp = opendir($directory);\r\n       \r\n        while($line = readdir($dp))\r\n        {\r\n        \r\n            if($line != \".\" && $line != \"..\" && $line != \".htaccess\")\r\n            {\r\n            \r\n                echo \"<a href=\\\"\" . $directory . \"/\" . $line . \"\\\" target=\\\"_blank\\\">\" . $line . \"</a><br />\";\r\n            \r\n            }\r\n        \r\n        }\r\n        \r\n    }\r\n    \r\n    else\r\n    {\r\n        \r\n        echo \"This directory doesn't exist!\";\r\n       \r\n    }\r\n     \r\n}"
+    },
+    {
+      "id": "functions_external.php:LCF8",
+      "path": "functions_external.php",
+      "name": "no_check",
+      "parameters": [
+        "$data"
+      ],
+      "body": "{    \r\n   \r\n    return $data;\r\n        \r\n}",
+      "start_line": 19,
+      "end_line": 24,
+      "code": "function no_check($data)\r\n{    \r\n   \r\n    return $data;\r\n        \r\n}"
+    },
+    {
+      "id": "functions_external.php:LCF9",
+      "path": "functions_external.php",
+      "name": "email_check_1",
+      "parameters": [
+        "$data"
+      ],
+      "body": "{\r\n    \r\n    return preg_match(\"^[_a-z0-9-]+(\\.[_a-z0-9-]+)*@[a-z0-9-]+(\\.[a-z0-9-]+)*(\\.[a-z]{2,3})$^\", $data);\r\n    \r\n}",
+      "start_line": 26,
+      "end_line": 31,
+      "code": "function email_check_1($data)\r\n{\r\n    \r\n    return preg_match(\"^[_a-z0-9-]+(\\.[_a-z0-9-]+)*@[a-z0-9-]+(\\.[a-z0-9-]+)*(\\.[a-z]{2,3})$^\", $data);\r\n    \r\n}"
+    },
+    {
+      "id": "functions_external.php:LCF10",
+      "path": "functions_external.php",
+      "name": "email_check_2",
+      "parameters": [
+        "$data"
+      ],
+      "body": "{\r\n    \r\n    return filter_var($data, FILTER_VALIDATE_EMAIL);  \r\n     \r\n}",
+      "start_line": 33,
+      "end_line": 38,
+      "code": "function email_check_2($data)\r\n{\r\n    \r\n    return filter_var($data, FILTER_VALIDATE_EMAIL);  \r\n     \r\n}"
+    },
+    {
+      "id": "functions_external.php:LCF11",
+      "path": "functions_external.php",
+      "name": "maili_check_1",
+      "parameters": [
+        "$data"
+      ],
+      "body": "{\r\n\r\n    // URL decoding %0A -> \\n and %0D -> \\r\r\n    $input = urldecode($data); \r\n        \r\n    $input = str_replace(\"\\n\", \"\", $input);\r\n    $input = str_replace(\"\\r\", \"\", $input);\r\n    $input = str_replace(\"bcc:\", \"\", $input);\r\n    \r\n    return $input;\r\n    \r\n}",
+      "start_line": 40,
+      "end_line": 52,
+      "code": "function maili_check_1($data)\r\n{\r\n\r\n    // URL decoding %0A -> \\n and %0D -> \\r\r\n    $input = urldecode($data); \r\n        \r\n    $input = str_replace(\"\\n\", \"\", $input);\r\n    $input = str_replace(\"\\r\", \"\", $input);\r\n    $input = str_replace(\"bcc:\", \"\", $input);\r\n    \r\n    return $input;\r\n    \r\n}"
+    },
+    {
+      "id": "functions_external.php:LCF12",
+      "path": "functions_external.php",
+      "name": "maili_check_2",
+      "parameters": [
+        "$data"
+      ],
+      "body": "{\r\n\r\n    // URL decoding %0A -> \\n and %0D -> \\r\r\n    $input = urldecode($data);\r\n    \r\n    $input = filter_var($input, FILTER_SANITIZE_EMAIL);\r\n            \r\n    return $input;\r\n    \r\n}",
+      "start_line": 54,
+      "end_line": 64,
+      "code": "function maili_check_2($data)\r\n{\r\n\r\n    // URL decoding %0A -> \\n and %0D -> \\r\r\n    $input = urldecode($data);\r\n    \r\n    $input = filter_var($input, FILTER_SANITIZE_EMAIL);\r\n            \r\n    return $input;\r\n    \r\n}"
+    },
+    {
+      "id": "functions_external.php:LCF13",
+      "path": "functions_external.php",
+      "name": "url_check_1",
+      "parameters": [
+        "$data"
+      ],
+      "body": "{\r\n\r\n    // URL decoding %0A -> \\n and %0D -> \\r\r\n    $input = urldecode($data);\r\n    \r\n    $input = filter_var($input, FILTER_SANITIZE_URL);\r\n            \r\n    return $input;\r\n    \r\n}",
+      "start_line": 66,
+      "end_line": 76,
+      "code": "function url_check_1($data)\r\n{\r\n\r\n    // URL decoding %0A -> \\n and %0D -> \\r\r\n    $input = urldecode($data);\r\n    \r\n    $input = filter_var($input, FILTER_SANITIZE_URL);\r\n            \r\n    return $input;\r\n    \r\n}"
+    },
+    {
+      "id": "functions_external.php:LCF14",
+      "path": "functions_external.php",
+      "name": "url_check_2",
+      "parameters": [
+        "$data"
+      ],
+      "body": "{\r\n\r\n    // URL encoding\r\n    $input = urlencode($data);  \r\n            \r\n    return $input;\r\n    \r\n}",
+      "start_line": 78,
+      "end_line": 86,
+      "code": "function url_check_2($data)\r\n{\r\n\r\n    // URL encoding\r\n    $input = urlencode($data);  \r\n            \r\n    return $input;\r\n    \r\n}"
+    },
+    {
+      "id": "functions_external.php:LCF15",
+      "path": "functions_external.php",
+      "name": "xss_check_1",
+      "parameters": [
+        "$data"
+      ],
+      "body": "{\r\n    \r\n    // Converts only \"<\" and \">\" to HTLM entities    \r\n    $input = str_replace(\"<\", \"&lt;\", $data);\r\n    $input = str_replace(\">\", \"&gt;\", $input);\r\n    \r\n    // Failure is an option\r\n    // Bypasses double encoding attacks   \r\n    // <script>alert(0)</script>\r\n    // %3Cscript%3Ealert%280%29%3C%2Fscript%3E\r\n    // %253Cscript%253Ealert%25280%2529%253C%252Fscript%253E\r\n    $input = urldecode($input);\r\n    \r\n    return $input;\r\n    \r\n}",
+      "start_line": 88,
+      "end_line": 104,
+      "code": "function xss_check_1($data)\r\n{\r\n    \r\n    // Converts only \"<\" and \">\" to HTLM entities    \r\n    $input = str_replace(\"<\", \"&lt;\", $data);\r\n    $input = str_replace(\">\", \"&gt;\", $input);\r\n    \r\n    // Failure is an option\r\n    // Bypasses double encoding attacks   \r\n    // <script>alert(0)</script>\r\n    // %3Cscript%3Ealert%280%29%3C%2Fscript%3E\r\n    // %253Cscript%253Ealert%25280%2529%253C%252Fscript%253E\r\n    $input = urldecode($input);\r\n    \r\n    return $input;\r\n    \r\n}"
+    },
+    {
+      "id": "functions_external.php:LCF16",
+      "path": "functions_external.php",
+      "name": "xss_check_2",
+      "parameters": [
+        "$data"
+      ],
+      "body": "{\r\n  \r\n    // htmlentities - converts all applicable characters to HTML entities\r\n    \r\n    return htmlentities($data, ENT_QUOTES);\r\n    \r\n}",
+      "start_line": 106,
+      "end_line": 113,
+      "code": "function xss_check_2($data)\r\n{\r\n  \r\n    // htmlentities - converts all applicable characters to HTML entities\r\n    \r\n    return htmlentities($data, ENT_QUOTES);\r\n    \r\n}"
+    },
+    {
+      "id": "functions_external.php:LCF17",
+      "path": "functions_external.php",
+      "name": "xss_check_3",
+      "parameters": [
+        "$data",
+        "$encoding = \"UTF-8\""
+      ],
+      "body": "{\r\n\r\n    // htmlspecialchars - converts special characters to HTML entities    \r\n    // '&' (ampersand) becomes '&amp;' \r\n    // '\"' (double quote) becomes '&quot;' when ENT_NOQUOTES is not set\r\n    // \"'\" (single quote) becomes '&#039;' (or &apos;) only when ENT_QUOTES is set\r\n    // '<' (less than) becomes '&lt;'\r\n    // '>' (greater than) becomes '&gt;'  \r\n    \r\n    return htmlspecialchars($data, ENT_QUOTES, $encoding);\r\n       \r\n}",
+      "start_line": 115,
+      "end_line": 127,
+      "code": "function xss_check_3($data, $encoding = \"UTF-8\")\r\n{\r\n\r\n    // htmlspecialchars - converts special characters to HTML entities    \r\n    // '&' (ampersand) becomes '&amp;' \r\n    // '\"' (double quote) becomes '&quot;' when ENT_NOQUOTES is not set\r\n    // \"'\" (single quote) becomes '&#039;' (or &apos;) only when ENT_QUOTES is set\r\n    // '<' (less than) becomes '&lt;'\r\n    // '>' (greater than) becomes '&gt;'  \r\n    \r\n    return htmlspecialchars($data, ENT_QUOTES, $encoding);\r\n       \r\n}"
+    },
+    {
+      "id": "functions_external.php:LCF18",
+      "path": "functions_external.php",
+      "name": "xss_check_4",
+      "parameters": [
+        "$data"
+      ],
+      "body": "{\r\n  \r\n    // addslashes - returns a string with backslashes before characters that need to be quoted in database queries etc.\r\n    // These characters are single quote ('), double quote (\"), backslash (\\) and NUL (the NULL byte).\r\n    // Do NOT use this for XSS or HTML validations!!!\r\n    \r\n    return addslashes($data);\r\n    \r\n}",
+      "start_line": 129,
+      "end_line": 138,
+      "code": "function xss_check_4($data)\r\n{\r\n  \r\n    // addslashes - returns a string with backslashes before characters that need to be quoted in database queries etc.\r\n    // These characters are single quote ('), double quote (\"), backslash (\\) and NUL (the NULL byte).\r\n    // Do NOT use this for XSS or HTML validations!!!\r\n    \r\n    return addslashes($data);\r\n    \r\n}"
+    },
+    {
+      "id": "functions_external.php:LCF19",
+      "path": "functions_external.php",
+      "name": "xmli_check_1",
+      "parameters": [
+        "$data"
+      ],
+      "body": "{\r\n\r\n    // Replaces dangerous characters: ( ) = ' [ ] : , * / WHITESPACE\r\n    $input = str_replace(\"(\", \"\", $data);\r\n    $input = str_replace(\")\", \"\", $input);\r\n    $input = str_replace(\"=\", \"\", $input);\r\n    $input = str_replace(\"'\", \"\", $input);\r\n    $input = str_replace(\"[\", \"\", $input);\r\n    $input = str_replace(\"]\", \"\", $input);\r\n    $input = str_replace(\":\", \"\", $input);\r\n    $input = str_replace(\",\", \"\", $input);\r\n    $input = str_replace(\"*\", \"\", $input);\r\n    $input = str_replace(\"/\", \"\", $input);\r\n    $input = str_replace(\" \", \"\", $input);\r\n   \r\n    return $input;\r\n    \r\n}",
+      "start_line": 140,
+      "end_line": 158,
+      "code": "function xmli_check_1($data)\r\n{\r\n\r\n    // Replaces dangerous characters: ( ) = ' [ ] : , * / WHITESPACE\r\n    $input = str_replace(\"(\", \"\", $data);\r\n    $input = str_replace(\")\", \"\", $input);\r\n    $input = str_replace(\"=\", \"\", $input);\r\n    $input = str_replace(\"'\", \"\", $input);\r\n    $input = str_replace(\"[\", \"\", $input);\r\n    $input = str_replace(\"]\", \"\", $input);\r\n    $input = str_replace(\":\", \"\", $input);\r\n    $input = str_replace(\",\", \"\", $input);\r\n    $input = str_replace(\"*\", \"\", $input);\r\n    $input = str_replace(\"/\", \"\", $input);\r\n    $input = str_replace(\" \", \"\", $input);\r\n   \r\n    return $input;\r\n    \r\n}"
+    },
+    {
+      "id": "functions_external.php:LCF20",
+      "path": "functions_external.php",
+      "name": "ldapi_check_1",
+      "parameters": [
+        "$data"
+      ],
+      "body": "{\r\n\r\n    // Replaces dangerous characters: ( ) = & | * WHITESPACE\r\n    $input = str_replace(\"(\", \"\", $data);\r\n    $input = str_replace(\")\", \"\", $input);\r\n    $input = str_replace(\"=\", \"\", $input);\r\n    $input = str_replace(\"&\", \"\", $input);\r\n    $input = str_replace(\"|\", \"\", $input);\r\n    $input = str_replace(\"*\", \"\", $input);\r\n    $input = str_replace(\" \", \"\", $input);\r\n   \r\n    return $input;\r\n    \r\n}",
+      "start_line": 160,
+      "end_line": 174,
+      "code": "function ldapi_check_1($data)\r\n{\r\n\r\n    // Replaces dangerous characters: ( ) = & | * WHITESPACE\r\n    $input = str_replace(\"(\", \"\", $data);\r\n    $input = str_replace(\")\", \"\", $input);\r\n    $input = str_replace(\"=\", \"\", $input);\r\n    $input = str_replace(\"&\", \"\", $input);\r\n    $input = str_replace(\"|\", \"\", $input);\r\n    $input = str_replace(\"*\", \"\", $input);\r\n    $input = str_replace(\" \", \"\", $input);\r\n   \r\n    return $input;\r\n    \r\n}"
+    },
+    {
+      "id": "functions_external.php:LCF21",
+      "path": "functions_external.php",
+      "name": "commandi_check_1",
+      "parameters": [
+        "$data"
+      ],
+      "body": "{\r\n    \r\n    $input = str_replace(\"&\", \"\", $data);\r\n    $input = str_replace(\";\", \"\", $input);\r\n    \r\n    return $input;\r\n    \r\n}",
+      "start_line": 176,
+      "end_line": 184,
+      "code": "function commandi_check_1($data)\r\n{\r\n    \r\n    $input = str_replace(\"&\", \"\", $data);\r\n    $input = str_replace(\";\", \"\", $input);\r\n    \r\n    return $input;\r\n    \r\n}"
+    },
+    {
+      "id": "functions_external.php:LCF22",
+      "path": "functions_external.php",
+      "name": "commandi_check_2",
+      "parameters": [
+        "$data"
+      ],
+      "body": "{\r\n   \r\n    return escapeshellcmd($data);\r\n    \r\n}",
+      "start_line": 186,
+      "end_line": 191,
+      "code": "function commandi_check_2($data)\r\n{\r\n   \r\n    return escapeshellcmd($data);\r\n    \r\n}"
+    },
+    {
+      "id": "functions_external.php:LCF23",
+      "path": "functions_external.php",
+      "name": "commandi_check_3",
+      "parameters": [
+        "$data"
+      ],
+      "body": "{\r\n    \r\n    $input = str_replace(\"&\", \"\", $data);\r\n    $input = str_replace(\";\", \"\", $input);\r\n    $input = str_replace(\"|\", \"\", $input);\r\n    \r\n    return $input;\r\n    \r\n}",
+      "start_line": 193,
+      "end_line": 202,
+      "code": "function commandi_check_3($data)\r\n{\r\n    \r\n    $input = str_replace(\"&\", \"\", $data);\r\n    $input = str_replace(\";\", \"\", $input);\r\n    $input = str_replace(\"|\", \"\", $input);\r\n    \r\n    return $input;\r\n    \r\n}"
+    },
+    {
+      "id": "functions_external.php:LCF24",
+      "path": "functions_external.php",
+      "name": "sqli_check_1",
+      "parameters": [
+        "$data"
+      ],
+      "body": "{\r\n   \r\n    return addslashes($data);\r\n    \r\n}",
+      "start_line": 204,
+      "end_line": 209,
+      "code": "function sqli_check_1($data)\r\n{\r\n   \r\n    return addslashes($data);\r\n    \r\n}"
+    },
+    {
+      "id": "functions_external.php:LCF25",
+      "path": "functions_external.php",
+      "name": "sqli_check_2",
+      "parameters": [
+        "$data"
+      ],
+      "body": "{\r\n   \r\n    return mysql_real_escape_string($data);\r\n    \r\n}",
+      "start_line": 211,
+      "end_line": 216,
+      "code": "function sqli_check_2($data)\r\n{\r\n   \r\n    return mysql_real_escape_string($data);\r\n    \r\n}"
+    },
+    {
+      "id": "functions_external.php:LCF26",
+      "path": "functions_external.php",
+      "name": "sqli_check_3",
+      "parameters": [
+        "$link",
+        "$data"
+      ],
+      "body": "{\r\n   \r\n    return mysqli_real_escape_string($link, $data);\r\n    \r\n}",
+      "start_line": 218,
+      "end_line": 223,
+      "code": "function sqli_check_3($link, $data)\r\n{\r\n   \r\n    return mysqli_real_escape_string($link, $data);\r\n    \r\n}"
+    },
+    {
+      "id": "functions_external.php:LCF27",
+      "path": "functions_external.php",
+      "name": "sqli_check_4",
+      "parameters": [
+        "$data"
+      ],
+      "body": "{\r\n\r\n    // Not bulletproof\r\n    \r\n    // Replaces a single quote (')\r\n    $input = str_replace(\"'\", \"''\", $data);\r\n   \r\n    return $input;\r\n    \r\n}",
+      "start_line": 225,
+      "end_line": 235,
+      "code": "function sqli_check_4($data)\r\n{\r\n\r\n    // Not bulletproof\r\n    \r\n    // Replaces a single quote (')\r\n    $input = str_replace(\"'\", \"''\", $data);\r\n   \r\n    return $input;\r\n    \r\n}"
+    },
+    {
+      "id": "functions_external.php:LCF28",
+      "path": "functions_external.php",
+      "name": "file_upload_check_1",
+      "parameters": [
+        "$file",
+        "$file_extensions  = array(\"asp\", \"aspx\", \"dll\", \"exe\", \"jsp\", \"php\")",
+        "$directory = \"images\""
+      ],
+      "body": "{\r\n    \r\n    $file_error = \"\";\r\n    \r\n    // Checks if the input field is empty\r\n    if($file[\"name\"] == \"\")\r\n    {\r\n        \r\n        $file_error = \"Please select a file...\";\r\n        \r\n        return $file_error;\r\n        \r\n    }\r\n    \r\n    // Checks if there is an error with the file\r\n    switch($file[\"error\"])\r\n    \r\n    // URL: http://php.net/manual/en/features.file-upload.errors.php\r\n    \r\n    {\r\n        \r\n        case 1 : $file_error = \"Sorry, the file is too large. Please try again...\";\r\n                 break;\r\n             \r\n        case 2 : $file_error = \"Sorry, the file is too large. Please try again...\";\r\n                 break;\r\n             \r\n        case 3 : $file_error = \"Sorry, the file was only partially uploaded. Please try again...\";\r\n                 break;\r\n             \r\n        case 6 : $file_error = \"Sorry, a temporary folder is missing. Please try again...\";\r\n                 break;\r\n             \r\n        case 7 : $file_error = \"Sorry, the file could not be written. Please try again...\";\r\n                 break;\r\n             \r\n        case 8 : $file_error = \"Sorry, a PHP extension stopped the file upload. Please try again...\";\r\n                 break;\r\n             \r\n    }\r\n    \r\n    if($file_error)\r\n    {\r\n        \r\n        return $file_error;\r\n        \r\n    }\r\n    \r\n    // Breaks the file in pieces (.) All pieces are put in an array\r\n    $file_array = explode(\".\", $file[\"name\"]);\r\n    \r\n    // Puts the last part of the array (= the file extension) in a new variabele\r\n    // Converts the characters to lower case\r\n    $file_extension = strtolower($file_array[count($file_array) - 1]);\r\n    \r\n    // Searches if the file extension exists in the 'allowed' file extensions array   \r\n    if(in_array($file_extension, $file_extensions))\r\n    {\r\n        \r\n       $file_error = \"Sorry, the file extension is not allowed. The following extensions are blocked: <b>\" . join(\", \", $file_extensions) . \"</b>\";\r\n       \r\n       return $file_error;\r\n       \r\n    }\r\n    \r\n    // Checks if the file already exists in the directory\r\n    if(is_file(\"$directory/\" . $file[\"name\"]))\r\n    {\r\n        \r\n        $file_error = \"Sorry, the file already exists. Please rename the file...\";      \r\n        \r\n    }\r\n    \r\n    return $file_error;\r\n    \r\n}",
+      "start_line": 237,
+      "end_line": 313,
+      "code": "function file_upload_check_1($file, $file_extensions  = array(\"asp\", \"aspx\", \"dll\", \"exe\", \"jsp\", \"php\"), $directory = \"images\")\r\n{\r\n    \r\n    $file_error = \"\";\r\n    \r\n    // Checks if the input field is empty\r\n    if($file[\"name\"] == \"\")\r\n    {\r\n        \r\n        $file_error = \"Please select a file...\";\r\n        \r\n        return $file_error;\r\n        \r\n    }\r\n    \r\n    // Checks if there is an error with the file\r\n    switch($file[\"error\"])\r\n    \r\n    // URL: http://php.net/manual/en/features.file-upload.errors.php\r\n    \r\n    {\r\n        \r\n        case 1 : $file_error = \"Sorry, the file is too large. Please try again...\";\r\n                 break;\r\n             \r\n        case 2 : $file_error = \"Sorry, the file is too large. Please try again...\";\r\n                 break;\r\n             \r\n        case 3 : $file_error = \"Sorry, the file was only partially uploaded. Please try again...\";\r\n                 break;\r\n             \r\n        case 6 : $file_error = \"Sorry, a temporary folder is missing. Please try again...\";\r\n                 break;\r\n             \r\n        case 7 : $file_error = \"Sorry, the file could not be written. Please try again...\";\r\n                 break;\r\n             \r\n        case 8 : $file_error = \"Sorry, a PHP extension stopped the file upload. Please try again...\";\r\n                 break;\r\n             \r\n    }\r\n    \r\n    if($file_error)\r\n    {\r\n        \r\n        return $file_error;\r\n        \r\n    }\r\n    \r\n    // Breaks the file in pieces (.) All pieces are put in an array\r\n    $file_array = explode(\".\", $file[\"name\"]);\r\n    \r\n    // Puts the last part of the array (= the file extension) in a new variabele\r\n    // Converts the characters to lower case\r\n    $file_extension = strtolower($file_array[count($file_array) - 1]);\r\n    \r\n    // Searches if the file extension exists in the 'allowed' file extensions array   \r\n    if(in_array($file_extension, $file_extensions))\r\n    {\r\n        \r\n       $file_error = \"Sorry, the file extension is not allowed. The following extensions are blocked: <b>\" . join(\", \", $file_extensions) . \"</b>\";\r\n       \r\n       return $file_error;\r\n       \r\n    }\r\n    \r\n    // Checks if the file already exists in the directory\r\n    if(is_file(\"$directory/\" . $file[\"name\"]))\r\n    {\r\n        \r\n        $file_error = \"Sorry, the file already exists. Please rename the file...\";      \r\n        \r\n    }\r\n    \r\n    return $file_error;\r\n    \r\n}"
+    },
+    {
+      "id": "functions_external.php:LCF29",
+      "path": "functions_external.php",
+      "name": "file_upload_check_2",
+      "parameters": [
+        "$file",
+        "$file_extensions  = array(\"jpeg\", \"jpg\", \"png\", \"gif\")",
+        "$directory = \"images\""
+      ],
+      "body": "{\r\n    \r\n    $file_error = \"\";\r\n    \r\n    // Checks if the input field is empty\r\n    if($file[\"name\"] == \"\")\r\n    {\r\n        \r\n        $file_error = \"Please select a file...\";\r\n        \r\n        return $file_error;\r\n        \r\n    }\r\n    \r\n    // Checks if there is an error with the file\r\n    switch($file[\"error\"])\r\n    \r\n    // URL: http://php.net/manual/en/features.file-upload.errors.php\r\n    \r\n    {\r\n        \r\n        case 1 : $file_error = \"Sorry, the file is too large. Please try again...\";\r\n                 break;\r\n             \r\n        case 2 : $file_error = \"Sorry, the file is too large. Please try again...\";\r\n                 break;\r\n             \r\n        case 3 : $file_error = \"Sorry, the file was only partially uploaded. Please try again...\";\r\n                 break;\r\n             \r\n        case 6 : $file_error = \"Sorry, a temporary folder is missing. Please try again...\";\r\n                 break;\r\n             \r\n        case 7 : $file_error = \"Sorry, the file could not be written. Please try again...\";\r\n                 break;\r\n             \r\n        case 8 : $file_error = \"Sorry, a PHP extension stopped the file upload. Please try again...\";\r\n                 break;\r\n             \r\n    }\r\n    \r\n    if($file_error)\r\n    {\r\n        \r\n        return $file_error;\r\n        \r\n    }\r\n    \r\n    // Breaks the file in pieces (.) All pieces are put in an array\r\n    $file_array = explode(\".\", $file[\"name\"]);\r\n    \r\n    // Puts the last part of the array (= the file extension) in a new variabele\r\n    // Converts the characters to lower case\r\n    $file_extension = strtolower($file_array[count($file_array) - 1]);\r\n    \r\n    // Searches if the file extension exists in the 'allowed' file extensions array   \r\n    if(!in_array($file_extension, $file_extensions))\r\n    {\r\n        \r\n       $file_error = \"Sorry, the file extension is not allowed. Only the following extensions are allowed: <b>\" . join(\", \", $file_extensions) . \"</b>\";\r\n       \r\n       return $file_error;\r\n       \r\n    }\r\n    \r\n    // Checks if the file already exists in the directory\r\n    if(is_file(\"$directory/\" . $file[\"name\"]))\r\n    {\r\n        \r\n        $file_error = \"Sorry, the file already exists. Please rename the file...\";      \r\n        \r\n    }\r\n    \r\n    return $file_error;\r\n    \r\n}",
+      "start_line": 315,
+      "end_line": 391,
+      "code": "function file_upload_check_2($file, $file_extensions  = array(\"jpeg\", \"jpg\", \"png\", \"gif\"), $directory = \"images\")\r\n{\r\n    \r\n    $file_error = \"\";\r\n    \r\n    // Checks if the input field is empty\r\n    if($file[\"name\"] == \"\")\r\n    {\r\n        \r\n        $file_error = \"Please select a file...\";\r\n        \r\n        return $file_error;\r\n        \r\n    }\r\n    \r\n    // Checks if there is an error with the file\r\n    switch($file[\"error\"])\r\n    \r\n    // URL: http://php.net/manual/en/features.file-upload.errors.php\r\n    \r\n    {\r\n        \r\n        case 1 : $file_error = \"Sorry, the file is too large. Please try again...\";\r\n                 break;\r\n             \r\n        case 2 : $file_error = \"Sorry, the file is too large. Please try again...\";\r\n                 break;\r\n             \r\n        case 3 : $file_error = \"Sorry, the file was only partially uploaded. Please try again...\";\r\n                 break;\r\n             \r\n        case 6 : $file_error = \"Sorry, a temporary folder is missing. Please try again...\";\r\n                 break;\r\n             \r\n        case 7 : $file_error = \"Sorry, the file could not be written. Please try again...\";\r\n                 break;\r\n             \r\n        case 8 : $file_error = \"Sorry, a PHP extension stopped the file upload. Please try again...\";\r\n                 break;\r\n             \r\n    }\r\n    \r\n    if($file_error)\r\n    {\r\n        \r\n        return $file_error;\r\n        \r\n    }\r\n    \r\n    // Breaks the file in pieces (.) All pieces are put in an array\r\n    $file_array = explode(\".\", $file[\"name\"]);\r\n    \r\n    // Puts the last part of the array (= the file extension) in a new variabele\r\n    // Converts the characters to lower case\r\n    $file_extension = strtolower($file_array[count($file_array) - 1]);\r\n    \r\n    // Searches if the file extension exists in the 'allowed' file extensions array   \r\n    if(!in_array($file_extension, $file_extensions))\r\n    {\r\n        \r\n       $file_error = \"Sorry, the file extension is not allowed. Only the following extensions are allowed: <b>\" . join(\", \", $file_extensions) . \"</b>\";\r\n       \r\n       return $file_error;\r\n       \r\n    }\r\n    \r\n    // Checks if the file already exists in the directory\r\n    if(is_file(\"$directory/\" . $file[\"name\"]))\r\n    {\r\n        \r\n        $file_error = \"Sorry, the file already exists. Please rename the file...\";      \r\n        \r\n    }\r\n    \r\n    return $file_error;\r\n    \r\n}"
+    },
+    {
+      "id": "functions_external.php:LCF30",
+      "path": "functions_external.php",
+      "name": "directory_traversal_check_1",
+      "parameters": [
+        "$data"
+      ],
+      "body": "{\r\n\r\n    // Not bulletproof\r\n    \r\n    $directory_traversal_error = \"\";  \r\n    \r\n    // Searches for special characters in the GET parameter\r\n    if(strpos($data, \"../\") !== false ||\r\n       strpos($data, \"..\\\\\") !== false ||\r\n       strpos($data, \"/..\") !== false ||\r\n       strpos($data, \"\\..\") !== false)\r\n            \r\n    {\r\n\r\n        $directory_traversal_error = \"Directory Traversal detected!\";\r\n    \r\n    }\r\n    \r\n    /*\r\n    else\r\n    {\r\n    \r\n        echo \"Good path!\";\r\n    \r\n    }     \r\n     */\r\n    \r\n    return $directory_traversal_error;\r\n\r\n}",
+      "start_line": 393,
+      "end_line": 423,
+      "code": "function directory_traversal_check_1($data)\r\n{\r\n\r\n    // Not bulletproof\r\n    \r\n    $directory_traversal_error = \"\";  \r\n    \r\n    // Searches for special characters in the GET parameter\r\n    if(strpos($data, \"../\") !== false ||\r\n       strpos($data, \"..\\\\\") !== false ||\r\n       strpos($data, \"/..\") !== false ||\r\n       strpos($data, \"\\..\") !== false)\r\n            \r\n    {\r\n\r\n        $directory_traversal_error = \"Directory Traversal detected!\";\r\n    \r\n    }\r\n    \r\n    /*\r\n    else\r\n    {\r\n    \r\n        echo \"Good path!\";\r\n    \r\n    }     \r\n     */\r\n    \r\n    return $directory_traversal_error;\r\n\r\n}"
+    },
+    {
+      "id": "functions_external.php:LCF31",
+      "path": "functions_external.php",
+      "name": "directory_traversal_check_2",
+      "parameters": [
+        "$data"
+      ],
+      "body": "{\r\n\r\n    // Not bulletproof\r\n    \r\n    $directory_traversal_error = \"\";  \r\n    \r\n    // Searches for special characters in the GET parameter\r\n    if(strpos($data, \"../\") !== false ||\r\n       strpos($data, \"..\\\\\") !== false ||\r\n       strpos($data, \"/..\") !== false ||\r\n       strpos($data, \"\\..\") !== false ||\r\n       strpos($data, \".\") !== false)\r\n            \r\n    {\r\n\r\n        $directory_traversal_error = \"Directory Traversal detected!\";\r\n    \r\n    }\r\n    \r\n    /*\r\n    else\r\n    {\r\n    \r\n        echo \"Good path!\";\r\n    \r\n    }     \r\n     */\r\n    \r\n    return $directory_traversal_error;\r\n\r\n}",
+      "start_line": 425,
+      "end_line": 456,
+      "code": "function directory_traversal_check_2($data)\r\n{\r\n\r\n    // Not bulletproof\r\n    \r\n    $directory_traversal_error = \"\";  \r\n    \r\n    // Searches for special characters in the GET parameter\r\n    if(strpos($data, \"../\") !== false ||\r\n       strpos($data, \"..\\\\\") !== false ||\r\n       strpos($data, \"/..\") !== false ||\r\n       strpos($data, \"\\..\") !== false ||\r\n       strpos($data, \".\") !== false)\r\n            \r\n    {\r\n\r\n        $directory_traversal_error = \"Directory Traversal detected!\";\r\n    \r\n    }\r\n    \r\n    /*\r\n    else\r\n    {\r\n    \r\n        echo \"Good path!\";\r\n    \r\n    }     \r\n     */\r\n    \r\n    return $directory_traversal_error;\r\n\r\n}"
+    },
+    {
+      "id": "functions_external.php:LCF32",
+      "path": "functions_external.php",
+      "name": "directory_traversal_check_3",
+      "parameters": [
+        "$user_path",
+        "$base_path = \"\""
+      ],
+      "body": "{\r\n    \r\n    $directory_traversal_error = \"\";\r\n    \r\n    $real_base_path = realpath($base_path);\r\n\r\n    // echo \"base path: \" . $base_path . \" real base path: \" . $real_base_path . \"<br />\";\r\n\r\n    $real_user_path = realpath($user_path);\r\n\r\n    // echo \"user path: \" . $user_path . \" real user path: \" . $real_user_path . \"<br />\";\r\n\r\n    // int strpos ( string $haystack , mixed $needle [, int $offset = 0 ] )\r\n    // URL: http://php.net/manual/en/function.strpos.php\r\n    if(strpos($real_user_path, $real_base_path) === false)\r\n    {\r\n    \r\n        $directory_traversal_error = \"<font color=\\\"red\\\">An error occurred, please try again.</font>\";\r\n    \r\n    }\r\n\r\n    /*\r\n    else\r\n    {\r\n    \r\n        echo \"Good path!\";\r\n    \r\n    }     \r\n     */\r\n    \r\n    return $directory_traversal_error;\r\n\r\n}",
+      "start_line": 458,
+      "end_line": 491,
+      "code": "function directory_traversal_check_3($user_path,$base_path = \"\")\r\n{\r\n    \r\n    $directory_traversal_error = \"\";\r\n    \r\n    $real_base_path = realpath($base_path);\r\n\r\n    // echo \"base path: \" . $base_path . \" real base path: \" . $real_base_path . \"<br />\";\r\n\r\n    $real_user_path = realpath($user_path);\r\n\r\n    // echo \"user path: \" . $user_path . \" real user path: \" . $real_user_path . \"<br />\";\r\n\r\n    // int strpos ( string $haystack , mixed $needle [, int $offset = 0 ] )\r\n    // URL: http://php.net/manual/en/function.strpos.php\r\n    if(strpos($real_user_path, $real_base_path) === false)\r\n    {\r\n    \r\n        $directory_traversal_error = \"<font color=\\\"red\\\">An error occurred, please try again.</font>\";\r\n    \r\n    }\r\n\r\n    /*\r\n    else\r\n    {\r\n    \r\n        echo \"Good path!\";\r\n    \r\n    }     \r\n     */\r\n    \r\n    return $directory_traversal_error;\r\n\r\n}"
+    },
+    {
+      "id": "functions_external.php:LCF33",
+      "path": "functions_external.php",
+      "name": "hpp_check_1",
+      "parameters": [
+        "$data"
+      ],
+      "body": "{\r\n\r\n    // Debug\r\n    // echo $data;\r\n   \r\n    $query_string  = explode(\"&\", $data);    \r\n\r\n    $i = \"\";\r\n    $param = array();\r\n    $param_variables = array();\r\n\r\n    foreach($query_string as $i)\r\n    {\r\n\r\n            $param = explode(\"=\", $i);\r\n            array_push($param_variables, $param[0]);\r\n\r\n    }\r\n\r\n    $count_unique = count(array_unique($param_variables));\r\n    $count_total = count($param_variables);\r\n    \r\n    $hpp_detected = \"\";\r\n\r\n    // $hpp_detected = ($count_unique < $count_total);\r\n    // echo $hpp_detected;\r\n    \r\n    if($count_unique < $count_total)\r\n    {\r\n\r\n        $hpp_detected = \"<font color=\\\"red\\\">HTTP Parameter Pollution detected!</font>\";\r\n\r\n    }\r\n\r\n    return $hpp_detected;\r\n\r\n}",
+      "start_line": 494,
+      "end_line": 531,
+      "code": "function hpp_check_1($data)\r\n{\r\n\r\n    // Debug\r\n    // echo $data;\r\n   \r\n    $query_string  = explode(\"&\", $data);    \r\n\r\n    $i = \"\";\r\n    $param = array();\r\n    $param_variables = array();\r\n\r\n    foreach($query_string as $i)\r\n    {\r\n\r\n            $param = explode(\"=\", $i);\r\n            array_push($param_variables, $param[0]);\r\n\r\n    }\r\n\r\n    $count_unique = count(array_unique($param_variables));\r\n    $count_total = count($param_variables);\r\n    \r\n    $hpp_detected = \"\";\r\n\r\n    // $hpp_detected = ($count_unique < $count_total);\r\n    // echo $hpp_detected;\r\n    \r\n    if($count_unique < $count_total)\r\n    {\r\n\r\n        $hpp_detected = \"<font color=\\\"red\\\">HTTP Parameter Pollution detected!</font>\";\r\n\r\n    }\r\n\r\n    return $hpp_detected;\r\n\r\n}"
+    },
+    {
+      "id": "functions_external.php:LCF34",
+      "path": "functions_external.php",
+      "name": "rlfi_check_1",
+      "parameters": [
+        "$data"
+      ],
+      "body": "{\r\n\r\n    // Replaces the null-byte character\r\n    $input = str_replace(chr(0), \"\", $data);\r\n\r\n    // Replaces directory traversal characters\r\n    $input = str_replace(\"../\", \"\", $input);\r\n    $input = str_replace(\"..\\\\\", \"\", $input);\r\n    $input = str_replace(\"/..\", \"\", $input);\r\n    $input = str_replace(\"\\..\", \"\", $input);\r\n\r\n    return $input;\r\n\r\n}",
+      "start_line": 533,
+      "end_line": 547,
+      "code": "function rlfi_check_1($data)\r\n{\r\n\r\n    // Replaces the null-byte character\r\n    $input = str_replace(chr(0), \"\", $data);\r\n\r\n    // Replaces directory traversal characters\r\n    $input = str_replace(\"../\", \"\", $input);\r\n    $input = str_replace(\"..\\\\\", \"\", $input);\r\n    $input = str_replace(\"/..\", \"\", $input);\r\n    $input = str_replace(\"\\..\", \"\", $input);\r\n\r\n    return $input;\r\n\r\n}"
+    },
+    {
+      "id": "functions_external.php:LCF35",
+      "path": "functions_external.php",
+      "name": "random_string",
+      "parameters": [],
+      "body": "{\r\n    \r\n    $character_set_array = array();\r\n    \r\n    $character_set_array[] = array(\"count\" => 3, \"characters\" => \"abcdefghijklmnopqrstuvwxyz\");\r\n    $character_set_array[] = array(\"count\" => 1, \"characters\" => \"ABCDEFGHIJKLMNOPQRSTUVWXYZ\");\r\n    $character_set_array[] = array(\"count\" => 1, \"characters\" => \"0123456789\");\r\n    // $character_set_array[] = array(\"count\" => 1, \"characters\" => \"!@#$+-*&?:\");\r\n    $character_set_array[] = array(\"count\" => 1, \"characters\" => \"@#$+-?!\");\r\n    \r\n    $temp_array = array();\r\n    \r\n    foreach($character_set_array as $character_set)\r\n    {\r\n        \r\n        for($i=0; $i<$character_set[\"count\"]; $i++)\r\n        {\r\n            \r\n            $temp_array[] = $character_set[\"characters\"][rand(0, strlen($character_set[\"characters\"]) - 1)];\r\n            \r\n        }\r\n        \r\n    }\r\n    \r\n    shuffle($temp_array);\r\n    \r\n    return implode('', $temp_array);\r\n}",
+      "start_line": 549,
+      "end_line": 577,
+      "code": "function random_string()\r\n{\r\n    \r\n    $character_set_array = array();\r\n    \r\n    $character_set_array[] = array(\"count\" => 3, \"characters\" => \"abcdefghijklmnopqrstuvwxyz\");\r\n    $character_set_array[] = array(\"count\" => 1, \"characters\" => \"ABCDEFGHIJKLMNOPQRSTUVWXYZ\");\r\n    $character_set_array[] = array(\"count\" => 1, \"characters\" => \"0123456789\");\r\n    // $character_set_array[] = array(\"count\" => 1, \"characters\" => \"!@#$+-*&?:\");\r\n    $character_set_array[] = array(\"count\" => 1, \"characters\" => \"@#$+-?!\");\r\n    \r\n    $temp_array = array();\r\n    \r\n    foreach($character_set_array as $character_set)\r\n    {\r\n        \r\n        for($i=0; $i<$character_set[\"count\"]; $i++)\r\n        {\r\n            \r\n            $temp_array[] = $character_set[\"characters\"][rand(0, strlen($character_set[\"characters\"]) - 1)];\r\n            \r\n        }\r\n        \r\n    }\r\n    \r\n    shuffle($temp_array);\r\n    \r\n    return implode('', $temp_array);\r\n}"
+    },
+    {
+      "id": "functions_external.php:LCF36",
+      "path": "functions_external.php",
+      "name": "bin_sid_to_text",
+      "parameters": [
+        "$binsid"
+      ],
+      "body": "{\r\n    \r\n    $hex_sid = bin2hex($binsid);\r\n    $rev = hexdec(substr($hex_sid, 0, 2));// Gets the revision-part of the SID\r\n    $subcount = hexdec(substr($hex_sid, 2, 2));// Gets count of sub-auth entries\r\n    $auth = hexdec(substr($hex_sid, 4, 12));// SECURITY_NT_AUTHORITY\r\n    $result = \"$rev-$auth\";\r\n    \r\n    // Retrieves the full SID\r\n    /*\r\n    for($x=0; $x<$subcount; $x++)\r\n    {\r\n\r\n        $subauth[$x] = hexdec(little_endian(substr($hex_sid, 16+($x*8), 8)));  // Gets all SECURITY_NT_AUTHORITY\r\n        $result.= \"-\" . $subauth[$x];\r\n\r\n    }\r\n    */ \r\n    \r\n    // Retrieves only the last part of the SID = '$subcount-1'\r\n    $result = hexdec(little_endian(substr($hex_sid, 16+(($subcount-1)*8), 8)));\r\n        \r\n    return $result;\r\n     \r\n}",
+      "start_line": 580,
+      "end_line": 605,
+      "code": "function bin_sid_to_text($binsid)\r\n{\r\n    \r\n    $hex_sid = bin2hex($binsid);\r\n    $rev = hexdec(substr($hex_sid, 0, 2));// Gets the revision-part of the SID\r\n    $subcount = hexdec(substr($hex_sid, 2, 2));// Gets count of sub-auth entries\r\n    $auth = hexdec(substr($hex_sid, 4, 12));// SECURITY_NT_AUTHORITY\r\n    $result = \"$rev-$auth\";\r\n    \r\n    // Retrieves the full SID\r\n    /*\r\n    for($x=0; $x<$subcount; $x++)\r\n    {\r\n\r\n        $subauth[$x] = hexdec(little_endian(substr($hex_sid, 16+($x*8), 8)));  // Gets all SECURITY_NT_AUTHORITY\r\n        $result.= \"-\" . $subauth[$x];\r\n\r\n    }\r\n    */ \r\n    \r\n    // Retrieves only the last part of the SID = '$subcount-1'\r\n    $result = hexdec(little_endian(substr($hex_sid, 16+(($subcount-1)*8), 8)));\r\n        \r\n    return $result;\r\n     \r\n}"
+    },
+    {
+      "id": "functions_external.php:LCF37",
+      "path": "functions_external.php",
+      "name": "little_endian",
+      "parameters": [
+        "$hex"
+      ],
+      "body": "{\r\n     \r\n    for($x = strlen($hex)-2; $x>=0; $x=$x-2)\r\n    {\r\n\r\n        $result.= substr($hex, $x, 2);\r\n\r\n    }\r\n\r\n    return $result;\r\n\r\n}",
+      "start_line": 608,
+      "end_line": 620,
+      "code": "function little_endian($hex)\r\n{\r\n     \r\n    for($x = strlen($hex)-2; $x>=0; $x=$x-2)\r\n    {\r\n\r\n        $result.= substr($hex, $x, 2);\r\n\r\n    }\r\n\r\n    return $result;\r\n\r\n}"
+    },
+    {
+      "id": "hpp-2.php:LCF38",
+      "path": "hpp-2.php",
+      "name": "hpp",
+      "parameters": [
+        "$data"
+      ],
+      "body": "{\n         \n    switch($_COOKIE[\"security_level\"])\n    {\n        \n        case \"0\" : \n            \n            $data = no_check($data);            \n            break;\n        \n        case \"1\" :\n            \n            $data = urlencode($data);\n            break;\n        \n        case \"2\" :            \n                       \n            $data = urlencode($data);\n            break;\n        \n        default : \n            \n            $data = no_check($data);            \n            break;   \n\n    }       \n\n    return $data;\n\n}",
+      "start_line": 46,
+      "end_line": 76,
+      "code": "function hpp($data)\n{\n         \n    switch($_COOKIE[\"security_level\"])\n    {\n        \n        case \"0\" : \n            \n            $data = no_check($data);            \n            break;\n        \n        case \"1\" :\n            \n            $data = urlencode($data);\n            break;\n        \n        case \"2\" :            \n                       \n            $data = urlencode($data);\n            break;\n        \n        default : \n            \n            $data = no_check($data);            \n            break;   \n\n    }       \n\n    return $data;\n\n}"
+    },
+    {
+      "id": "htmli_get.php:LCF39",
+      "path": "htmli_get.php",
+      "name": "htmli",
+      "parameters": [
+        "$data"
+      ],
+      "body": "{\n         \n    switch($_COOKIE[\"security_level\"])\n    {\n        \n        case \"0\" : \n            \n            $data = no_check($data);            \n            break;\n        \n        case \"1\" :\n            \n            $data = xss_check_1($data);\n            break;\n        \n        case \"2\" :            \n                       \n            $data = xss_check_3($data);            \n            break;\n        \n        default : \n            \n            $data = no_check($data);            \n            break;   \n\n    }       \n\n    return $data;\n\n}",
+      "start_line": 24,
+      "end_line": 54,
+      "code": "function htmli($data)\n{\n         \n    switch($_COOKIE[\"security_level\"])\n    {\n        \n        case \"0\" : \n            \n            $data = no_check($data);            \n            break;\n        \n        case \"1\" :\n            \n            $data = xss_check_1($data);\n            break;\n        \n        case \"2\" :            \n                       \n            $data = xss_check_3($data);            \n            break;\n        \n        default : \n            \n            $data = no_check($data);            \n            break;   \n\n    }       \n\n    return $data;\n\n}"
+    },
+    {
+      "id": "htmli_post.php:LCF40",
+      "path": "htmli_post.php",
+      "name": "htmli",
+      "parameters": [
+        "$data"
+      ],
+      "body": "{\n         \n    switch($_COOKIE[\"security_level\"])\n    {\n        \n        case \"0\" : \n            \n            $data = no_check($data);            \n            break;\n        \n        case \"1\" :\n            \n            $data = xss_check_1($data);\n            break;\n        \n        case \"2\" :            \n                       \n            $data = xss_check_3($data);            \n            break;\n        \n        default : \n            \n            $data = no_check($data);            \n            break;;   \n\n    }       \n\n    return $data;\n\n}",
+      "start_line": 24,
+      "end_line": 54,
+      "code": "function htmli($data)\n{\n         \n    switch($_COOKIE[\"security_level\"])\n    {\n        \n        case \"0\" : \n            \n            $data = no_check($data);            \n            break;\n        \n        case \"1\" :\n            \n            $data = xss_check_1($data);\n            break;\n        \n        case \"2\" :            \n                       \n            $data = xss_check_3($data);            \n            break;\n        \n        default : \n            \n            $data = no_check($data);            \n            break;;   \n\n    }       \n\n    return $data;\n\n}"
+    },
+    {
+      "id": "htmli_stored.php:LCF41",
+      "path": "htmli_stored.php",
+      "name": "htmli",
+      "parameters": [
+        "$data"
+      ],
+      "body": "{\n\n    include(\"connect_i.php\");\n\n    switch($_COOKIE[\"security_level\"])\n    {\n\n        case \"0\" :\n\n            $data = sqli_check_3($link, $data);\n            break;\n\n        case \"1\" :\n\n            $data = sqli_check_3($link, $data);\n            // $data = xss_check_4($data);\n            break;\n\n        case \"2\" :\n\n            $data = sqli_check_3($link, $data);\n            // $data = xss_check_3($data);\n            break;\n\n        default :\n\n            $data = sqli_check_3($link, $data);\n            break;\n\n    }\n\n    return $data;\n\n}",
+      "start_line": 29,
+      "end_line": 63,
+      "code": "function htmli($data)\n{\n\n    include(\"connect_i.php\");\n\n    switch($_COOKIE[\"security_level\"])\n    {\n\n        case \"0\" :\n\n            $data = sqli_check_3($link, $data);\n            break;\n\n        case \"1\" :\n\n            $data = sqli_check_3($link, $data);\n            // $data = xss_check_4($data);\n            break;\n\n        case \"2\" :\n\n            $data = sqli_check_3($link, $data);\n            // $data = xss_check_3($data);\n            break;\n\n        default :\n\n            $data = sqli_check_3($link, $data);\n            break;\n\n    }\n\n    return $data;\n\n}"
+    },
+    {
+      "id": "iframei.php:LCF42",
+      "path": "iframei.php",
+      "name": "xss",
+      "parameters": [
+        "$data"
+      ],
+      "body": "{\n\n    switch($_COOKIE[\"security_level\"])\n    {\n\n        case \"0\" :\n\n            $data = no_check($data);      \n            break;\n\n        case \"1\" :\n\n            $data = xss_check_4($data);\n            break;\n\n        case \"2\" :\n\n            $data = xss_check_3($data);\n            break;\n\n        default :\n\n            $data = no_check($data);\n            break;   \n\n    }\n\n    return $data;\n\n}",
+      "start_line": 33,
+      "end_line": 63,
+      "code": "function xss($data)\n{\n\n    switch($_COOKIE[\"security_level\"])\n    {\n\n        case \"0\" :\n\n            $data = no_check($data);      \n            break;\n\n        case \"1\" :\n\n            $data = xss_check_4($data);\n            break;\n\n        case \"2\" :\n\n            $data = xss_check_3($data);\n            break;\n\n        default :\n\n            $data = no_check($data);\n            break;   \n\n    }\n\n    return $data;\n\n}"
+    },
+    {
+      "id": "ldapi.php:LCF43",
+      "path": "ldapi.php",
+      "name": "ldapi",
+      "parameters": [
+        "$data"
+      ],
+      "body": "{\n         \n    switch($_COOKIE[\"security_level\"])\n    {\n        \n        case \"0\" : \n            \n            $data = no_check($data);           \n            break;\n        \n        case \"1\" :\n            \n            $data = ldapi_check_1($data);\n            break;\n        \n        case \"2\" :            \n                       \n            $data = ldapi_check_1($data);            \n            break;\n        \n        default : \n            \n            $data = no_check($data);            \n            break;   \n\n    }       \n\n    return $data;\n\n}",
+      "start_line": 24,
+      "end_line": 54,
+      "code": "function ldapi($data)\n{\n         \n    switch($_COOKIE[\"security_level\"])\n    {\n        \n        case \"0\" : \n            \n            $data = no_check($data);           \n            break;\n        \n        case \"1\" :\n            \n            $data = ldapi_check_1($data);\n            break;\n        \n        case \"2\" :            \n                       \n            $data = ldapi_check_1($data);            \n            break;\n        \n        default : \n            \n            $data = no_check($data);            \n            break;   \n\n    }       \n\n    return $data;\n\n}"
+    },
+    {
+      "id": "restrict_device_access.php:LCF44",
+      "path": "restrict_device_access.php",
+      "name": "check_user_agent",
+      "parameters": [],
+      "body": "{\n\n    $user_agent = $_SERVER[\"HTTP_USER_AGENT\"];\n     \n    // Debugging\n    // echo $user_agent;\n    \n    $authorized_device = false;\n\n    $devices = array(\"iPhone\", \"iPad\", \"iPod\", \"Android\");\n    \n    // Searches for a string in an array\n    foreach($devices as $str)\n    {\n\n        // echo $str;\n        if(strpos($user_agent, $str) !== false) \n        {      \n        \n            // Debugging    \n            // echo $user_agent . \" contains the word \" . $str;\n        \n            $authorized_device = true;\n        \n        }\n\n    } \n    \n    return $authorized_device;\n \n}",
+      "start_line": 53,
+      "end_line": 84,
+      "code": "function check_user_agent()\n{\n\n    $user_agent = $_SERVER[\"HTTP_USER_AGENT\"];\n     \n    // Debugging\n    // echo $user_agent;\n    \n    $authorized_device = false;\n\n    $devices = array(\"iPhone\", \"iPad\", \"iPod\", \"Android\");\n    \n    // Searches for a string in an array\n    foreach($devices as $str)\n    {\n\n        // echo $str;\n        if(strpos($user_agent, $str) !== false) \n        {      \n        \n            // Debugging    \n            // echo $user_agent . \" contains the word \" . $str;\n        \n            $authorized_device = true;\n        \n        }\n\n    } \n    \n    return $authorized_device;\n \n}"
+    },
+    {
+      "id": "sqli_1.php:LCF45",
+      "path": "sqli_1.php",
+      "name": "sqli",
+      "parameters": [
+        "$data"
+      ],
+      "body": "{\n\n    switch($_COOKIE[\"security_level\"])\n    {\n\n        case \"0\" :\n\n            $data = no_check($data);\n            break;\n\n        case \"1\" :\n\n            $data = sqli_check_1($data);\n            break;\n\n        case \"2\" :\n\n            $data = sqli_check_2($data);\n            break;\n\n        default :\n\n            $data = no_check($data);\n            break;\n\n    }\n\n    return $data;\n\n}",
+      "start_line": 25,
+      "end_line": 55,
+      "code": "function sqli($data)\n{\n\n    switch($_COOKIE[\"security_level\"])\n    {\n\n        case \"0\" :\n\n            $data = no_check($data);\n            break;\n\n        case \"1\" :\n\n            $data = sqli_check_1($data);\n            break;\n\n        case \"2\" :\n\n            $data = sqli_check_2($data);\n            break;\n\n        default :\n\n            $data = no_check($data);\n            break;\n\n    }\n\n    return $data;\n\n}"
+    },
+    {
+      "id": "sqli_10-2.php:LCF46",
+      "path": "sqli_10-2.php",
+      "name": "sqli",
+      "parameters": [
+        "$data"
+      ],
+      "body": "{\n\n    switch ($_COOKIE[\"security_level\"])\n    {\n\n        case \"0\" :\n\n            $data = no_check($data);\n            break;\n\n        case \"1\" :\n\n            $data = sqli_check_1($data);\n            break;\n\n        case \"2\" :\n\n            $data = sqli_check_2($data);\n            break;\n\n        default :\n\n            $data = no_check($data);\n            break;\n    }\n\n    return $data;\n}",
+      "start_line": 27,
+      "end_line": 55,
+      "code": "function sqli($data)\n{\n\n    switch ($_COOKIE[\"security_level\"])\n    {\n\n        case \"0\" :\n\n            $data = no_check($data);\n            break;\n\n        case \"1\" :\n\n            $data = sqli_check_1($data);\n            break;\n\n        case \"2\" :\n\n            $data = sqli_check_2($data);\n            break;\n\n        default :\n\n            $data = no_check($data);\n            break;\n    }\n\n    return $data;\n}"
+    },
+    {
+      "id": "sqli_11.php:LCF47",
+      "path": "sqli_11.php",
+      "name": "sqli",
+      "parameters": [
+        "$data"
+      ],
+      "body": "{\n\n    switch($_COOKIE[\"security_level\"])\n    {\n\n        case \"0\" :\n\n            $data = no_check($data);\n            break;\n\n        case \"1\" :\n\n            // Not working with PDO\n            // $data = sqlite_escape_string($data);\n            // Use a prepared statement instead!\n            $data = sqli_check_4($data);\n            break;\n\n        case \"2\" :\n\n            // Not working with PDO\n            // $data = sqlite_escape_string($data);\n            // Use a prepared statement instead!\n            $data = sqli_check_4($data);\n            break;\n\n        default :\n\n            $data = no_check($data);\n            break;\n\n    }\n\n    return $data;\n\n}",
+      "start_line": 27,
+      "end_line": 63,
+      "code": "function sqli($data)\n{\n\n    switch($_COOKIE[\"security_level\"])\n    {\n\n        case \"0\" :\n\n            $data = no_check($data);\n            break;\n\n        case \"1\" :\n\n            // Not working with PDO\n            // $data = sqlite_escape_string($data);\n            // Use a prepared statement instead!\n            $data = sqli_check_4($data);\n            break;\n\n        case \"2\" :\n\n            // Not working with PDO\n            // $data = sqlite_escape_string($data);\n            // Use a prepared statement instead!\n            $data = sqli_check_4($data);\n            break;\n\n        default :\n\n            $data = no_check($data);\n            break;\n\n    }\n\n    return $data;\n\n}"
+    },
+    {
+      "id": "sqli_12.php:LCF48",
+      "path": "sqli_12.php",
+      "name": "sqli",
+      "parameters": [
+        "$data"
+      ],
+      "body": "{\n\n    switch($_COOKIE[\"security_level\"])\n    {\n\n        case \"0\" :\n\n            $data = no_check($data);\n            break;\n\n        case \"1\" :\n\n            // Not working with PDO\n            // $data = sqlite_escape_string($data);\n            // Use a prepared statement instead!\n            $data = sqli_check_4($data);\n            break;\n\n        case \"2\" :\n\n            // Not working with PDO\n            // $data = sqlite_escape_string($data);\n            // Use a prepared statement instead!\n            $data = sqli_check_4($data);\n            break;\n\n        default :\n\n            $data = no_check($data);\n            break;\n\n    }\n\n    return $data;\n\n}",
+      "start_line": 31,
+      "end_line": 67,
+      "code": "function sqli($data)\n{\n\n    switch($_COOKIE[\"security_level\"])\n    {\n\n        case \"0\" :\n\n            $data = no_check($data);\n            break;\n\n        case \"1\" :\n\n            // Not working with PDO\n            // $data = sqlite_escape_string($data);\n            // Use a prepared statement instead!\n            $data = sqli_check_4($data);\n            break;\n\n        case \"2\" :\n\n            // Not working with PDO\n            // $data = sqlite_escape_string($data);\n            // Use a prepared statement instead!\n            $data = sqli_check_4($data);\n            break;\n\n        default :\n\n            $data = no_check($data);\n            break;\n\n    }\n\n    return $data;\n\n}"
+    },
+    {
+      "id": "sqli_13.php:LCF49",
+      "path": "sqli_13.php",
+      "name": "sqli",
+      "parameters": [
+        "$data"
+      ],
+      "body": "{\n         \n    switch($_COOKIE[\"security_level\"])\n    {\n        \n        case \"0\" : \n            \n            $data = no_check($data);            \n            break;\n        \n        case \"1\" :\n            \n            $data = sqli_check_2($data);\n            break;\n        \n        default : \n            \n            $data = no_check($data);            \n            break;   \n\n    }       \n\n    return $data;\n\n}",
+      "start_line": 39,
+      "end_line": 64,
+      "code": "function sqli($data)\n{\n         \n    switch($_COOKIE[\"security_level\"])\n    {\n        \n        case \"0\" : \n            \n            $data = no_check($data);            \n            break;\n        \n        case \"1\" :\n            \n            $data = sqli_check_2($data);\n            break;\n        \n        default : \n            \n            $data = no_check($data);            \n            break;   \n\n    }       \n\n    return $data;\n\n}"
+    },
+    {
+      "id": "sqli_14.php:LCF50",
+      "path": "sqli_14.php",
+      "name": "sqli",
+      "parameters": [
+        "$data"
+      ],
+      "body": "{\n\n    switch($_COOKIE[\"security_level\"])\n    {\n\n        case \"0\" :\n\n            $data = no_check($data);\n            break;\n\n        case \"1\" :\n\n            // Not working with PDO\n            // $data = sqlite_escape_string($data);\n            // Use a prepared statement instead!\n            $data = sqli_check_4($data);\n            break;\n\n        case \"2\" :\n\n            // Not working with PDO\n            // $data = sqlite_escape_string($data);\n            // Use a prepared statement instead!\n            $data = sqli_check_4($data);\n            break;\n\n        default :\n\n            $data = no_check($data);\n            break;\n\n    }\n\n    return $data;\n\n}",
+      "start_line": 24,
+      "end_line": 60,
+      "code": "function sqli($data)\n{\n\n    switch($_COOKIE[\"security_level\"])\n    {\n\n        case \"0\" :\n\n            $data = no_check($data);\n            break;\n\n        case \"1\" :\n\n            // Not working with PDO\n            // $data = sqlite_escape_string($data);\n            // Use a prepared statement instead!\n            $data = sqli_check_4($data);\n            break;\n\n        case \"2\" :\n\n            // Not working with PDO\n            // $data = sqlite_escape_string($data);\n            // Use a prepared statement instead!\n            $data = sqli_check_4($data);\n            break;\n\n        default :\n\n            $data = no_check($data);\n            break;\n\n    }\n\n    return $data;\n\n}"
+    },
+    {
+      "id": "sqli_15.php:LCF51",
+      "path": "sqli_15.php",
+      "name": "sqli",
+      "parameters": [
+        "$data"
+      ],
+      "body": "{\n\n    switch($_COOKIE[\"security_level\"])\n    {\n\n        case \"0\" :\n\n            $data = no_check($data);\n            break;\n\n        case \"1\" :\n\n            $data = sqli_check_1($data);\n            break;\n\n        case \"2\" :\n\n            $data = sqli_check_2($data);\n            break;\n\n        default :\n\n            $data = no_check($data);\n            break;\n\n    }\n\n    return $data;\n\n}",
+      "start_line": 28,
+      "end_line": 58,
+      "code": "function sqli($data)\n{\n\n    switch($_COOKIE[\"security_level\"])\n    {\n\n        case \"0\" :\n\n            $data = no_check($data);\n            break;\n\n        case \"1\" :\n\n            $data = sqli_check_1($data);\n            break;\n\n        case \"2\" :\n\n            $data = sqli_check_2($data);\n            break;\n\n        default :\n\n            $data = no_check($data);\n            break;\n\n    }\n\n    return $data;\n\n}"
+    },
+    {
+      "id": "sqli_16.php:LCF52",
+      "path": "sqli_16.php",
+      "name": "sqli",
+      "parameters": [
+        "$data"
+      ],
+      "body": "{\n\n    switch($_COOKIE[\"security_level\"])\n    {\n\n        case \"0\" :\n\n            $data = no_check($data);\n            break;\n\n        case \"1\" :\n\n            $data = sqli_check_1($data);\n            break;\n\n        case \"2\" :\n\n            $data = sqli_check_2($data);\n            break;\n\n        default :\n\n            $data = no_check($data);\n            break;\n\n    }\n\n    return $data;\n\n}",
+      "start_line": 30,
+      "end_line": 60,
+      "code": "function sqli($data)\n{\n\n    switch($_COOKIE[\"security_level\"])\n    {\n\n        case \"0\" :\n\n            $data = no_check($data);\n            break;\n\n        case \"1\" :\n\n            $data = sqli_check_1($data);\n            break;\n\n        case \"2\" :\n\n            $data = sqli_check_2($data);\n            break;\n\n        default :\n\n            $data = no_check($data);\n            break;\n\n    }\n\n    return $data;\n\n}"
+    },
+    {
+      "id": "sqli_17.php:LCF53",
+      "path": "sqli_17.php",
+      "name": "sqli",
+      "parameters": [
+        "$data"
+      ],
+      "body": "{\n\n    include(\"connect_i.php\");\n\n    switch($_COOKIE[\"security_level\"])\n    {\n\n        case \"0\" :\n\n            $data = no_check($data);\n            break;\n\n        case \"1\" :\n\n            $data = sqli_check_1($data);\n            break;\n\n        case \"2\" :\n\n            $data = sqli_check_3($link, $data);\n            break;\n\n        default :\n\n            $data = no_check($data);\n            break;\n\n    }\n\n    return $data;\n\n}",
+      "start_line": 25,
+      "end_line": 57,
+      "code": "function sqli($data)\n{\n\n    include(\"connect_i.php\");\n\n    switch($_COOKIE[\"security_level\"])\n    {\n\n        case \"0\" :\n\n            $data = no_check($data);\n            break;\n\n        case \"1\" :\n\n            $data = sqli_check_1($data);\n            break;\n\n        case \"2\" :\n\n            $data = sqli_check_3($link, $data);\n            break;\n\n        default :\n\n            $data = no_check($data);\n            break;\n\n    }\n\n    return $data;\n\n}"
+    },
+    {
+      "id": "sqli_17.php:LCF54",
+      "path": "sqli_17.php",
+      "name": "xss",
+      "parameters": [
+        "$data"
+      ],
+      "body": "{\n\n    switch($_COOKIE[\"security_level\"])\n    {\n\n        case \"0\" :\n\n            $data = no_check($data);\n            break;\n\n        case \"1\" :\n\n            $data = xss_check_4($data);\n            break;\n\n        case \"2\" :\n\n            $data = xss_check_3($data);\n            break;\n\n        default :\n\n            $data = no_check($data);\n            break;\n\n    }\n\n    return $data;\n\n}",
+      "start_line": 59,
+      "end_line": 89,
+      "code": "function xss($data)\n{\n\n    switch($_COOKIE[\"security_level\"])\n    {\n\n        case \"0\" :\n\n            $data = no_check($data);\n            break;\n\n        case \"1\" :\n\n            $data = xss_check_4($data);\n            break;\n\n        case \"2\" :\n\n            $data = xss_check_3($data);\n            break;\n\n        default :\n\n            $data = no_check($data);\n            break;\n\n    }\n\n    return $data;\n\n}"
+    },
+    {
+      "id": "sqli_2.php:LCF55",
+      "path": "sqli_2.php",
+      "name": "sqli",
+      "parameters": [
+        "$data"
+      ],
+      "body": "{\n         \n    switch($_COOKIE[\"security_level\"])\n    {\n        \n        case \"0\" : \n            \n            $data = no_check($data);            \n            break;\n        \n        case \"1\" :\n            \n            $data = sqli_check_2($data);\n            break;\n        \n        default : \n            \n            $data = no_check($data);            \n            break;   \n\n    }       \n\n    return $data;\n\n}",
+      "start_line": 39,
+      "end_line": 64,
+      "code": "function sqli($data)\n{\n         \n    switch($_COOKIE[\"security_level\"])\n    {\n        \n        case \"0\" : \n            \n            $data = no_check($data);            \n            break;\n        \n        case \"1\" :\n            \n            $data = sqli_check_2($data);\n            break;\n        \n        default : \n            \n            $data = no_check($data);            \n            break;   \n\n    }       \n\n    return $data;\n\n}"
+    },
+    {
+      "id": "sqli_3.php:LCF56",
+      "path": "sqli_3.php",
+      "name": "sqli",
+      "parameters": [
+        "$data"
+      ],
+      "body": "{\n\n    switch($_COOKIE[\"security_level\"])\n    {\n\n        case \"0\" :\n\n            $data = no_check($data);\n            break;\n\n        case \"1\" :\n\n            $data = sqli_check_1($data);\n            break;\n\n        case \"2\" :\n\n            $data = sqli_check_2($data);\n            break;\n\n        default :\n\n            $data = no_check($data);\n            break;\n\n    }\n\n    return $data;\n\n}",
+      "start_line": 27,
+      "end_line": 57,
+      "code": "function sqli($data)\n{\n\n    switch($_COOKIE[\"security_level\"])\n    {\n\n        case \"0\" :\n\n            $data = no_check($data);\n            break;\n\n        case \"1\" :\n\n            $data = sqli_check_1($data);\n            break;\n\n        case \"2\" :\n\n            $data = sqli_check_2($data);\n            break;\n\n        default :\n\n            $data = no_check($data);\n            break;\n\n    }\n\n    return $data;\n\n}"
+    },
+    {
+      "id": "sqli_4.php:LCF57",
+      "path": "sqli_4.php",
+      "name": "sqli",
+      "parameters": [
+        "$data"
+      ],
+      "body": "{\n\n    switch($_COOKIE[\"security_level\"])\n    {\n\n        case \"0\" :\n\n            $data = no_check($data);\n            break;\n\n        case \"1\" :\n\n            $data = sqli_check_1($data);\n            break;\n\n        case \"2\" :\n\n            $data = sqli_check_2($data);\n            break;\n\n        default :\n\n            $data = no_check($data);\n            break;\n\n    }\n\n    return $data;\n\n}",
+      "start_line": 25,
+      "end_line": 55,
+      "code": "function sqli($data)\n{\n\n    switch($_COOKIE[\"security_level\"])\n    {\n\n        case \"0\" :\n\n            $data = no_check($data);\n            break;\n\n        case \"1\" :\n\n            $data = sqli_check_1($data);\n            break;\n\n        case \"2\" :\n\n            $data = sqli_check_2($data);\n            break;\n\n        default :\n\n            $data = no_check($data);\n            break;\n\n    }\n\n    return $data;\n\n}"
+    },
+    {
+      "id": "sqli_5.php:LCF58",
+      "path": "sqli_5.php",
+      "name": "sqli",
+      "parameters": [
+        "$data"
+      ],
+      "body": "{\r\n\r\n    switch($_COOKIE[\"security_level\"])\r\n    {\r\n        \r\n        case \"0\" : \r\n            \r\n            $data = no_check($data);           \r\n            break;\r\n        \r\n        case \"1\" :\r\n            \r\n            $data = sqli_check_1($data);\r\n            break;\r\n        \r\n        case \"2\" :            \r\n                       \r\n            $data = sqli_check_2($data);            \r\n            break;\r\n        \r\n        default : \r\n            \r\n            $data = no_check($data);            \r\n            break;   \r\n\r\n    }\r\n\r\n    return $data;\r\n\r\n}",
+      "start_line": 25,
+      "end_line": 55,
+      "code": "function sqli($data)\r\n{\r\n\r\n    switch($_COOKIE[\"security_level\"])\r\n    {\r\n        \r\n        case \"0\" : \r\n            \r\n            $data = no_check($data);           \r\n            break;\r\n        \r\n        case \"1\" :\r\n            \r\n            $data = sqli_check_1($data);\r\n            break;\r\n        \r\n        case \"2\" :            \r\n                       \r\n            $data = sqli_check_2($data);            \r\n            break;\r\n        \r\n        default : \r\n            \r\n            $data = no_check($data);            \r\n            break;   \r\n\r\n    }\r\n\r\n    return $data;\r\n\r\n}"
+    },
+    {
+      "id": "sqli_6.php:LCF59",
+      "path": "sqli_6.php",
+      "name": "sqli",
+      "parameters": [
+        "$data"
+      ],
+      "body": "{\n\n    switch($_COOKIE[\"security_level\"])\n    {\n\n        case \"0\" :\n\n            $data = no_check($data);\n            break;\n\n        case \"1\" :\n\n            $data = sqli_check_1($data);\n            break;\n\n        case \"2\" :\n\n            $data = sqli_check_2($data);\n            break;\n\n        default :\n\n            $data = no_check($data);\n            break;\n\n    }\n\n    return $data;\n\n}",
+      "start_line": 25,
+      "end_line": 55,
+      "code": "function sqli($data)\n{\n\n    switch($_COOKIE[\"security_level\"])\n    {\n\n        case \"0\" :\n\n            $data = no_check($data);\n            break;\n\n        case \"1\" :\n\n            $data = sqli_check_1($data);\n            break;\n\n        case \"2\" :\n\n            $data = sqli_check_2($data);\n            break;\n\n        default :\n\n            $data = no_check($data);\n            break;\n\n    }\n\n    return $data;\n\n}"
+    },
+    {
+      "id": "sqli_7.php:LCF60",
+      "path": "sqli_7.php",
+      "name": "sqli",
+      "parameters": [
+        "$data"
+      ],
+      "body": "{\n\n    include(\"connect_i.php\");\n\n    switch($_COOKIE[\"security_level\"])\n    {\n\n        case \"0\" :\n\n            $data = no_check($data);\n            break;\n\n        case \"1\" :\n\n            $data = sqli_check_1($data);\n            break;\n\n        case \"2\" :\n\n            $data = sqli_check_3($link, $data);\n            break;\n\n        default :\n\n            $data = no_check($data);\n            break;\n\n    }\n\n    return $data;\n\n}",
+      "start_line": 29,
+      "end_line": 61,
+      "code": "function sqli($data)\n{\n\n    include(\"connect_i.php\");\n\n    switch($_COOKIE[\"security_level\"])\n    {\n\n        case \"0\" :\n\n            $data = no_check($data);\n            break;\n\n        case \"1\" :\n\n            $data = sqli_check_1($data);\n            break;\n\n        case \"2\" :\n\n            $data = sqli_check_3($link, $data);\n            break;\n\n        default :\n\n            $data = no_check($data);\n            break;\n\n    }\n\n    return $data;\n\n}"
+    },
+    {
+      "id": "sqli_9.php:LCF61",
+      "path": "sqli_9.php",
+      "name": "sqli",
+      "parameters": [
+        "$data"
+      ],
+      "body": "{\n\n        switch($_COOKIE[\"security_level\"])\n        {\n\n            case \"0\" : \n\n                $data = no_check($data);            \n                break;\n\n            case \"1\" :\n\n                $data = sqli_check_1($data);\n                break;\n\n            case \"2\" :            \n\n                $data = sqli_check_2($data);            \n                break;\n\n            default : \n\n                $data = no_check($data);            \n                break;   \n\n        }       \n\n        return $data;\n\n    }",
+      "start_line": 49,
+      "end_line": 79,
+      "code": "function sqli($data)\n    {\n\n        switch($_COOKIE[\"security_level\"])\n        {\n\n            case \"0\" : \n\n                $data = no_check($data);            \n                break;\n\n            case \"1\" :\n\n                $data = sqli_check_1($data);\n                break;\n\n            case \"2\" :            \n\n                $data = sqli_check_2($data);            \n                break;\n\n            default : \n\n                $data = no_check($data);            \n                break;   \n\n        }       \n\n        return $data;\n\n    }"
+    },
+    {
+      "id": "ssii.php:LCF62",
+      "path": "ssii.php",
+      "name": "xss",
+      "parameters": [
+        "$data"
+      ],
+      "body": "{\r\n\r\n    switch($_COOKIE[\"security_level\"])\r\n    {\r\n\r\n        case \"0\" :\r\n\r\n            $data = no_check($data);\r\n            break;\r\n\r\n        case \"1\" :\r\n\r\n            $data = xss_check_4($data);\r\n            break;\r\n\r\n        case \"2\" :\r\n\r\n            $data = xss_check_3($data);\r\n            break;\r\n\r\n        default :\r\n\r\n            $data = no_check($data);\r\n            break;\r\n\r\n    }       \r\n\r\n    return $data;\r\n\r\n}",
+      "start_line": 26,
+      "end_line": 56,
+      "code": "function xss($data)\r\n{\r\n\r\n    switch($_COOKIE[\"security_level\"])\r\n    {\r\n\r\n        case \"0\" :\r\n\r\n            $data = no_check($data);\r\n            break;\r\n\r\n        case \"1\" :\r\n\r\n            $data = xss_check_4($data);\r\n            break;\r\n\r\n        case \"2\" :\r\n\r\n            $data = xss_check_3($data);\r\n            break;\r\n\r\n        default :\r\n\r\n            $data = no_check($data);\r\n            break;\r\n\r\n    }       \r\n\r\n    return $data;\r\n\r\n}"
+    },
+    {
+      "id": "ws_soap.php:LCF63",
+      "path": "ws_soap.php",
+      "name": "get_tickets_stock",
+      "parameters": [
+        "$title"
+      ],
+      "body": "{\n\n\tinclude(\"connect.php\");        \n\t$sql = \"SELECT tickets_stock FROM movies WHERE title = '\" . $title . \"'\";\n\t$recordset = mysql_query($sql, $link);\n        $row = mysql_fetch_array($recordset);\n        mysql_close($link);\n\treturn $row[\"tickets_stock\"];\n\n}",
+      "start_line": 4,
+      "end_line": 14,
+      "code": "function get_tickets_stock($title)\n{\n\n\tinclude(\"connect.php\");        \n\t$sql = \"SELECT tickets_stock FROM movies WHERE title = '\" . $title . \"'\";\n\t$recordset = mysql_query($sql, $link);\n        $row = mysql_fetch_array($recordset);\n        mysql_close($link);\n\treturn $row[\"tickets_stock\"];\n\n}"
+    },
+    {
+      "id": "xmli_1.php:LCF64",
+      "path": "xmli_1.php",
+      "name": "xmli",
+      "parameters": [
+        "$data"
+      ],
+      "body": "{\n    \n    if(isset($_COOKIE[\"security_level\"]))\n    {\n\n        switch($_COOKIE[\"security_level\"])\n        {\n\n            case \"0\" :\n\n                $data = no_check($data);\n                break;\n\n            case \"1\" :\n\n                $data = xmli_check_1($data);\n                break;\n\n            case \"2\" :\n\n                $data = xmli_check_1($data);\n                break;\n\n            default :\n\n                $data = no_check($data);\n                break;\n\n        }\n\n    }\n\n    return $data;\n\n}",
+      "start_line": 28,
+      "end_line": 63,
+      "code": "function xmli($data)\n{\n    \n    if(isset($_COOKIE[\"security_level\"]))\n    {\n\n        switch($_COOKIE[\"security_level\"])\n        {\n\n            case \"0\" :\n\n                $data = no_check($data);\n                break;\n\n            case \"1\" :\n\n                $data = xmli_check_1($data);\n                break;\n\n            case \"2\" :\n\n                $data = xmli_check_1($data);\n                break;\n\n            default :\n\n                $data = no_check($data);\n                break;\n\n        }\n\n    }\n\n    return $data;\n\n}"
+    },
+    {
+      "id": "xmli_2.php:LCF65",
+      "path": "xmli_2.php",
+      "name": "xmli",
+      "parameters": [
+        "$data"
+      ],
+      "body": "{\n\n    if(isset($_COOKIE[\"security_level\"]))\n    {\n\n        switch($_COOKIE[\"security_level\"])\n        {\n\n            case \"0\" :\n\n                $data = no_check($data);\n                break;\n\n            case \"1\" :\n\n                $data = xmli_check_1($data);\n                break;\n\n            case \"2\" :\n\n                $data = xmli_check_1($data);\n                break;\n\n            default :\n\n                $data = no_check($data);\n                break;\n\n        }\n\n    }\n\n    return $data;\n\n}",
+      "start_line": 26,
+      "end_line": 61,
+      "code": "function xmli($data)\n{\n\n    if(isset($_COOKIE[\"security_level\"]))\n    {\n\n        switch($_COOKIE[\"security_level\"])\n        {\n\n            case \"0\" :\n\n                $data = no_check($data);\n                break;\n\n            case \"1\" :\n\n                $data = xmli_check_1($data);\n                break;\n\n            case \"2\" :\n\n                $data = xmli_check_1($data);\n                break;\n\n            default :\n\n                $data = no_check($data);\n                break;\n\n        }\n\n    }\n\n    return $data;\n\n}"
+    },
+    {
+      "id": "xss_ajax_1-2.php:LCF66",
+      "path": "xss_ajax_1-2.php",
+      "name": "xss",
+      "parameters": [
+        "$data"
+      ],
+      "body": "{\n         \n    switch($_COOKIE[\"security_level\"])\n    {\n        \n        case \"0\" :\n            \n            $data = no_check($data);            \n            break;\n        \n        case \"1\" :\n            \n            $data = xss_check_4($data);\n            break;\n        \n        case \"2\" : \n                       \n            $data = xss_check_3($data);            \n            break;\n        \n        default :\n            \n            $data = no_check($data);            \n            break;   \n\n    }       \n\n    return $data;\n\n}",
+      "start_line": 23,
+      "end_line": 53,
+      "code": "function xss($data)\n{\n         \n    switch($_COOKIE[\"security_level\"])\n    {\n        \n        case \"0\" :\n            \n            $data = no_check($data);            \n            break;\n        \n        case \"1\" :\n            \n            $data = xss_check_4($data);\n            break;\n        \n        case \"2\" : \n                       \n            $data = xss_check_3($data);            \n            break;\n        \n        default :\n            \n            $data = no_check($data);            \n            break;   \n\n    }       \n\n    return $data;\n\n}"
+    },
+    {
+      "id": "xss_back_button.php:LCF67",
+      "path": "xss_back_button.php",
+      "name": "xss",
+      "parameters": [
+        "$data"
+      ],
+      "body": "{\n         \n    switch($_COOKIE[\"security_level\"])\n    {\n        \n        case \"0\" : \n            \n            $data = no_check($data);            \n            break;\n        \n        case \"1\" :\n            \n            $data = xss_check_4($data);\n            break;\n        \n        case \"2\" :            \n                       \n            $data = xss_check_3($data);            \n            break;\n        \n        default : \n            \n            $data = no_check($data);            \n            break;  \n\n    }       \n\n    return $data;\n\n}",
+      "start_line": 24,
+      "end_line": 54,
+      "code": "function xss($data)\n{\n         \n    switch($_COOKIE[\"security_level\"])\n    {\n        \n        case \"0\" : \n            \n            $data = no_check($data);            \n            break;\n        \n        case \"1\" :\n            \n            $data = xss_check_4($data);\n            break;\n        \n        case \"2\" :            \n                       \n            $data = xss_check_3($data);            \n            break;\n        \n        default : \n            \n            $data = no_check($data);            \n            break;  \n\n    }       \n\n    return $data;\n\n}"
+    },
+    {
+      "id": "xss_custom_header.php:LCF68",
+      "path": "xss_custom_header.php",
+      "name": "xss",
+      "parameters": [
+        "$data"
+      ],
+      "body": "{\n         \n    switch($_COOKIE[\"security_level\"])\n    {\n        \n        case \"0\" : \n            \n            $data = no_check($data);            \n            break;\n        \n        case \"1\" :\n            \n            $data = xss_check_4($data);\n            break;\n        \n        case \"2\" :            \n                       \n            $data = xss_check_3($data);            \n            break;\n        \n        default : \n            \n            $data = no_check($data);            \n            break;  \n\n    }       \n\n    return $data;\n\n}",
+      "start_line": 24,
+      "end_line": 54,
+      "code": "function xss($data)\n{\n         \n    switch($_COOKIE[\"security_level\"])\n    {\n        \n        case \"0\" : \n            \n            $data = no_check($data);            \n            break;\n        \n        case \"1\" :\n            \n            $data = xss_check_4($data);\n            break;\n        \n        case \"2\" :            \n                       \n            $data = xss_check_3($data);            \n            break;\n        \n        default : \n            \n            $data = no_check($data);            \n            break;  \n\n    }       \n\n    return $data;\n\n}"
+    },
+    {
+      "id": "xss_eval.php:LCF69",
+      "path": "xss_eval.php",
+      "name": "xss",
+      "parameters": [
+        "$data"
+      ],
+      "body": "{\n         \n    switch($_COOKIE[\"security_level\"])\n    {\n        \n        case \"0\" : \n            \n            $data = no_check($data);            \n            break;\n         \n        case \"1\" :\n            \n            $data = xss_check_3($data);\n            break;    \n        \n        default : \n            \n            $data = no_check($data);            \n            break;  \n\n    }       \n\n    return $data;\n\n}",
+      "start_line": 133,
+      "end_line": 158,
+      "code": "function xss($data)\n{\n         \n    switch($_COOKIE[\"security_level\"])\n    {\n        \n        case \"0\" : \n            \n            $data = no_check($data);            \n            break;\n         \n        case \"1\" :\n            \n            $data = xss_check_3($data);\n            break;    \n        \n        default : \n            \n            $data = no_check($data);            \n            break;  \n\n    }       \n\n    return $data;\n\n}"
+    },
+    {
+      "id": "xss_get.php:LCF70",
+      "path": "xss_get.php",
+      "name": "xss",
+      "parameters": [
+        "$data"
+      ],
+      "body": "{\n         \n    switch($_COOKIE[\"security_level\"])\n    {\n        \n        case \"0\" : \n            \n            $data = no_check($data);            \n            break;\n        \n        case \"1\" :\n            \n            $data = xss_check_4($data);\n            break;\n        \n        case \"2\" :            \n                       \n            $data = xss_check_3($data);            \n            break;\n        \n        default : \n            \n            $data = no_check($data);            \n            break;   \n\n    }       \n\n    return $data;\n\n}",
+      "start_line": 24,
+      "end_line": 54,
+      "code": "function xss($data)\n{\n         \n    switch($_COOKIE[\"security_level\"])\n    {\n        \n        case \"0\" : \n            \n            $data = no_check($data);            \n            break;\n        \n        case \"1\" :\n            \n            $data = xss_check_4($data);\n            break;\n        \n        case \"2\" :            \n                       \n            $data = xss_check_3($data);            \n            break;\n        \n        default : \n            \n            $data = no_check($data);            \n            break;   \n\n    }       \n\n    return $data;\n\n}"
+    },
+    {
+      "id": "xss_href-2.php:LCF71",
+      "path": "xss_href-2.php",
+      "name": "hpp",
+      "parameters": [
+        "$data"
+      ],
+      "body": "{\n         \n    switch($_COOKIE[\"security_level\"])\n    {\n        \n        case \"0\" : \n            \n            $data = no_check($data);            \n            break;\n        \n        case \"1\" :\n            \n            $data = urlencode($data);\n            break;\n        \n        case \"2\" :            \n                       \n            $data = urlencode($data);\n            break;\n        \n        default : \n            \n            $data = no_check($data);            \n            break;   \n\n    }       \n\n    return $data;\n\n}",
+      "start_line": 46,
+      "end_line": 76,
+      "code": "function hpp($data)\n{\n         \n    switch($_COOKIE[\"security_level\"])\n    {\n        \n        case \"0\" : \n            \n            $data = no_check($data);            \n            break;\n        \n        case \"1\" :\n            \n            $data = urlencode($data);\n            break;\n        \n        case \"2\" :            \n                       \n            $data = urlencode($data);\n            break;\n        \n        default : \n            \n            $data = no_check($data);            \n            break;   \n\n    }       \n\n    return $data;\n\n}"
+    },
+    {
+      "id": "xss_login.php:LCF72",
+      "path": "xss_login.php",
+      "name": "sqli",
+      "parameters": [
+        "$data"
+      ],
+      "body": "{\n\n    switch($_COOKIE[\"security_level\"])\n    {\n\n        case \"0\" :\n\n            $data = no_check($data);\n            break;\n\n        case \"1\" :\n\n            $data = sqli_check_1($data);\n            break;\n\n        case \"2\" :\n\n            $data = sqli_check_2($data);\n            break;\n\n        default :\n\n            $data = no_check($data);\n            break;\n\n    }\n\n    return $data;\n\n}",
+      "start_line": 27,
+      "end_line": 57,
+      "code": "function sqli($data)\n{\n\n    switch($_COOKIE[\"security_level\"])\n    {\n\n        case \"0\" :\n\n            $data = no_check($data);\n            break;\n\n        case \"1\" :\n\n            $data = sqli_check_1($data);\n            break;\n\n        case \"2\" :\n\n            $data = sqli_check_2($data);\n            break;\n\n        default :\n\n            $data = no_check($data);\n            break;\n\n    }\n\n    return $data;\n\n}"
+    },
+    {
+      "id": "xss_php_self.php:LCF73",
+      "path": "xss_php_self.php",
+      "name": "xss",
+      "parameters": [
+        "$data"
+      ],
+      "body": "{\n         \n    switch($_COOKIE[\"security_level\"])\n    {\n        \n        case \"0\" : \n            \n            $data = no_check($data);            \n            break;\n        \n        case \"1\" :\n            \n            $data = xss_check_4($data);\n            break;\n        \n        case \"2\" :            \n                       \n            $data = xss_check_3($data);            \n            break;\n        \n        default : \n            \n            $data = no_check($data);            \n            break;   \n\n    }       \n\n    return $data;\n\n}",
+      "start_line": 24,
+      "end_line": 54,
+      "code": "function xss($data)\n{\n         \n    switch($_COOKIE[\"security_level\"])\n    {\n        \n        case \"0\" : \n            \n            $data = no_check($data);            \n            break;\n        \n        case \"1\" :\n            \n            $data = xss_check_4($data);\n            break;\n        \n        case \"2\" :            \n                       \n            $data = xss_check_3($data);            \n            break;\n        \n        default : \n            \n            $data = no_check($data);            \n            break;   \n\n    }       \n\n    return $data;\n\n}"
+    },
+    {
+      "id": "xss_post.php:LCF74",
+      "path": "xss_post.php",
+      "name": "xss",
+      "parameters": [
+        "$data"
+      ],
+      "body": "{\n         \n    switch($_COOKIE[\"security_level\"])\n    {\n        \n        case \"0\" : \n            \n            $data = no_check($data);            \n            break;\n        \n        case \"1\" :\n            \n            $data = xss_check_4($data);\n            break;\n        \n        case \"2\" :            \n                       \n            $data = xss_check_3($data);            \n            break;\n        \n        default : \n            \n            $data = no_check($data);            \n            break;;   \n\n    }       \n\n    return $data;\n\n}",
+      "start_line": 24,
+      "end_line": 54,
+      "code": "function xss($data)\n{\n         \n    switch($_COOKIE[\"security_level\"])\n    {\n        \n        case \"0\" : \n            \n            $data = no_check($data);            \n            break;\n        \n        case \"1\" :\n            \n            $data = xss_check_4($data);\n            break;\n        \n        case \"2\" :            \n                       \n            $data = xss_check_3($data);            \n            break;\n        \n        default : \n            \n            $data = no_check($data);            \n            break;;   \n\n    }       \n\n    return $data;\n\n}"
+    },
+    {
+      "id": "xss_referer.php:LCF75",
+      "path": "xss_referer.php",
+      "name": "xss",
+      "parameters": [
+        "$data"
+      ],
+      "body": "{\n         \n    switch($_COOKIE[\"security_level\"])\n    {\n        \n        case \"0\" : \n            \n            $data = no_check($data);            \n            break;\n        \n        case \"1\" :\n            \n            $data = xss_check_4($data);\n            break;\n        \n        case \"2\" :            \n                       \n            $data = xss_check_3($data);            \n            break;\n        \n        default : \n            \n            $data = no_check($data);            \n            break;  \n\n    }       \n\n    return $data;\n\n}",
+      "start_line": 24,
+      "end_line": 54,
+      "code": "function xss($data)\n{\n         \n    switch($_COOKIE[\"security_level\"])\n    {\n        \n        case \"0\" : \n            \n            $data = no_check($data);            \n            break;\n        \n        case \"1\" :\n            \n            $data = xss_check_4($data);\n            break;\n        \n        case \"2\" :            \n                       \n            $data = xss_check_3($data);            \n            break;\n        \n        default : \n            \n            $data = no_check($data);            \n            break;  \n\n    }       \n\n    return $data;\n\n}"
+    },
+    {
+      "id": "xss_stored_1.php:LCF76",
+      "path": "xss_stored_1.php",
+      "name": "xss",
+      "parameters": [
+        "$data"
+      ],
+      "body": "{\n    \n    include(\"connect_i.php\");\n\n    switch($_COOKIE[\"security_level\"])\n    {\n\n        case \"0\" : \n\n            $data = sqli_check_3($link, $data);\n            break;\n\n        case \"1\" :\n\n            $data = sqli_check_3($link, $data);\n            // $data = xss_check_4($data);\n            break;\n\n        case \"2\" :\n\n            $data = sqli_check_3($link, $data);\n            // $data = xss_check_3($data);\n            break;\n\n        default :\n\n            $data = sqli_check_3($link, $data);\n            break;\n\n    }\n\n    return $data;\n\n}",
+      "start_line": 29,
+      "end_line": 63,
+      "code": "function xss($data)\n{\n    \n    include(\"connect_i.php\");\n\n    switch($_COOKIE[\"security_level\"])\n    {\n\n        case \"0\" : \n\n            $data = sqli_check_3($link, $data);\n            break;\n\n        case \"1\" :\n\n            $data = sqli_check_3($link, $data);\n            // $data = xss_check_4($data);\n            break;\n\n        case \"2\" :\n\n            $data = sqli_check_3($link, $data);\n            // $data = xss_check_3($data);\n            break;\n\n        default :\n\n            $data = sqli_check_3($link, $data);\n            break;\n\n    }\n\n    return $data;\n\n}"
+    },
+    {
+      "id": "xss_stored_3.php:LCF77",
+      "path": "xss_stored_3.php",
+      "name": "xss",
+      "parameters": [
+        "$data"
+      ],
+      "body": "{\n         \n    switch($_COOKIE[\"security_level\"])\n    {\n        \n        case \"0\" : \n            \n            $data = no_check($data);            \n            break;\n        \n        case \"1\" :\n            \n            $data = xss_check_4($data);\n            break;\n        \n        case \"2\" :            \n                       \n            $data = xss_check_3($data);            \n            break;\n        \n        default : \n            \n            $data = no_check($data);            \n            break;   \n\n    }       \n\n    return $data;\n\n}",
+      "start_line": 25,
+      "end_line": 55,
+      "code": "function xss($data)\n{\n         \n    switch($_COOKIE[\"security_level\"])\n    {\n        \n        case \"0\" : \n            \n            $data = no_check($data);            \n            break;\n        \n        case \"1\" :\n            \n            $data = xss_check_4($data);\n            break;\n        \n        case \"2\" :            \n                       \n            $data = xss_check_3($data);            \n            break;\n        \n        default : \n            \n            $data = no_check($data);            \n            break;   \n\n    }       \n\n    return $data;\n\n}"
+    },
+    {
+      "id": "xss_stored_4.php:LCF78",
+      "path": "xss_stored_4.php",
+      "name": "xss",
+      "parameters": [
+        "$data"
+      ],
+      "body": "{\n\n    switch($_COOKIE[\"security_level\"])\n    {\n\n        case \"0\" :\n\n            $data = no_check($data);\n            break;\n\n        case \"1\" :\n\n            $data = xss_check_4($data);\n            break;\n\n        case \"2\" :\n\n            $data = xss_check_3($data);\n            break;\n\n        default :\n\n            $data = no_check($data);\n            break;\n\n    }\n\n    return $data;\n\n}",
+      "start_line": 25,
+      "end_line": 55,
+      "code": "function xss($data)\n{\n\n    switch($_COOKIE[\"security_level\"])\n    {\n\n        case \"0\" :\n\n            $data = no_check($data);\n            break;\n\n        case \"1\" :\n\n            $data = xss_check_4($data);\n            break;\n\n        case \"2\" :\n\n            $data = xss_check_3($data);\n            break;\n\n        default :\n\n            $data = no_check($data);\n            break;\n\n    }\n\n    return $data;\n\n}"
+    },
+    {
+      "id": "xss_user_agent.php:LCF79",
+      "path": "xss_user_agent.php",
+      "name": "xss",
+      "parameters": [
+        "$data"
+      ],
+      "body": "{\n\n    switch($_COOKIE[\"security_level\"])\n    {\n\n        case \"0\" :\n\n            $data = no_check($data);\n            break;\n\n        case \"1\" :\n\n            $data = xss_check_4($data);\n            break;\n\n        case \"2\" :\n\n            $data = xss_check_3($data);\n            break;\n\n        default :\n\n            $data = no_check($data);\n            break;\n\n    }\n\n    return $data;\n\n}",
+      "start_line": 24,
+      "end_line": 54,
+      "code": "function xss($data)\n{\n\n    switch($_COOKIE[\"security_level\"])\n    {\n\n        case \"0\" :\n\n            $data = no_check($data);\n            break;\n\n        case \"1\" :\n\n            $data = xss_check_4($data);\n            break;\n\n        case \"2\" :\n\n            $data = xss_check_3($data);\n            break;\n\n        default :\n\n            $data = no_check($data);\n            break;\n\n    }\n\n    return $data;\n\n}"
+    }
+  ]
+}

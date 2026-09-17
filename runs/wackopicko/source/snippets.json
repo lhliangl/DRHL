@@ -1,0 +1,68 @@
+{
+  "snippets": [
+    {
+      "path": "include/users.php",
+      "kind": "semantic_source",
+      "start_line": 1,
+      "end_line": 180,
+      "code": "<?php\n\nrequire_once(\"ourdb.php\");\n\n\nclass Users\n{\n   static public $HOME_URL = \"/users/home.php\";\n   static public $VIEW_URL = \"/users/view.php\";\n   static public $LOGIN_URL = \"/users/login.php\";\n   static public $LOGOUT_URL = \"/users/logout.php\";\n   static public $PURCHASED_URL = \"/pictures/purchased.php\";\n   static public $cur_user = False;\n\n   function get_user($userid)\n   {\n      $query = sprintf(\"SELECT * from users where id = '%d'\",\n\t\t       mysql_real_escape_string($userid));\n      $res = mysql_query($query);\n      if ($res)\n      {\n\t return mysql_fetch_assoc($res);\n      }\n      else\n      {\n\t return False;\n      }\n   }\n\n   function create_user($username, $pass, $firstname, $lastname, $vuln = False)\n   {\n      $salt = mt_rand(0, 900);\n      $salt = base64_encode($salt);\n      $initial_bux = 100;\n      if ($vuln)\n      {\n\t $pass = mysql_real_escape_string($pass);\n\t $firstname = mysql_real_escape_string($firstname);\n\t $pass = $pass . $salt;\n\t $query = \"INSERT INTO `users` (`id`, `login`, `password`, `firstname`, `lastname`, `salt`, `tradebux`, `created_on`, `last_login_on`) VALUES (NULL, '{$username}', SHA1('{$pass}'), '{$firstname}', '{$lastname}','{$salt}', '{$initial_bux}', NOW(), NOW());\";\n      }\n      else\n      {\n\t $query = sprintf(\"INSERT INTO `users` (`id`, `login`, `password`, `firstname`, `lastname`, `salt`, `tradebux`, `created_on`, `last_login_on`) VALUES (NULL, '%s', SHA1('%s'), '%s', '%s', '%s','%d', NOW(), NOW());\",\n\t\t\t  mysql_real_escape_string($username),\n\t\t\t  mysql_real_escape_string($pass . $salt),\n\t\t\t  mysql_real_escape_string($firstname),\n\t                  mysql_real_escape_string($lastname),\n\t\t\t  mysql_real_escape_string($salt),\n\t\t\t  mysql_real_escape_string($initial_bux));\n\t\t\t  \n      }\n      if ($res = mysql_query($query))\n      {\n\t return mysql_insert_id();\n      }\n      else\n      {\n\t if ($vuln)\n\t {\n\t    die(mysql_error());\n\t }\n\t else\n\t {\n\t    return False;\n\t }\n      }\n\t \n   }\n\n   function login_user($userid)\n   {\n      session_start();\n      $_SESSION['userid'] = $userid;\n      $query = sprintf(\"UPDATE `users` SET `last_login_on` = NOW( ) WHERE `users`.`id` = '%d' LIMIT 1;\",\n\t\t       mysql_real_escape_string($userid));\n      return mysql_query($query);\n   }\n\n   function logout()\n   {\n      session_unset();\n   }\n\n   function check_login($username, $pass, $vuln = False)\n   {\n      if ($vuln)\n      {\n\t $query = sprintf(\"SELECT * from `users` where `login` like '%s' and `password` = SHA1( CONCAT('%s', `salt`)) limit 1;\",\n\t                   $username,\n\t                   mysql_real_escape_string($pass));\t \n      }\n      else\n      {\n\t $query = sprintf(\"SELECT * from `users` where `login` like '%s' and `password` = SHA1( CONCAT('%s', `salt`)) limit 1;\",\n\t                   mysql_real_escape_string($username),\n\t                   mysql_real_escape_string($pass));\n      }\n      $res = mysql_query($query);\n      if ($res)\n      {\n\t return mysql_fetch_assoc($res);\n      }\n      else\n      {\n\t if ($vuln)\n\t {\n\t    die(mysql_error());\n\t }\n\t else\n\t {\n\t    return False;\n\t }\n      }\n   }\n\n   function similar_login($login, $vuln = False)\n   {\n      if ($vuln)\n      {\n\t $query = \"SELECT * from `users` where `firstname` like '%{$login}%' and firstname != '{$login}'\";\n      }\n      else\n      {\n\t $query = sprintf(\"SELECT * from `users` where `firstname` like '%%%s%%' and firstname != '%s'\",\n\t\t\t  mysql_real_escape_string($login),\n\t\t\t  mysql_real_escape_string($login));\n      }\n      $res = mysql_query($query);\n      if ($res)\n      {\n\t while ($row = mysql_fetch_assoc($res))\n\t {\n\t    $to_ret[] = $row;\n\t }\n\t return $to_ret;\n\t \n      }\n      else\n      {\n\t if ($vuln)\n\t {\n\t    die(mysql_error());\n\t }\n\t return False;\n      }\n      \n      \n   }\n\n   function current_user()\n   {\n      if (isset($_SESSION['userid']))\n      {\n\t if (!$cur_user)\n\t {\n\t    $cur_user = Users::get_user($_SESSION['userid']);\n\t }\n\t return $cur_user;\n      }\n      else\n      {\n\t return False;\n      }\n   }\n   \n   function is_logged_in()\n   {\n      if (Users::current_user())\n      {\n\t return True;\n      }\n      else\n      {\n\t return False;\n      }\n   }\n}\n\n?>",
+      "semantic_evidence": [
+        {
+          "kind": "php_session_identity_key",
+          "key": "userid"
+        }
+      ],
+      "parameter_ids": [
+        "include/users.php:LCP87"
+      ],
+      "function_ids": []
+    },
+    {
+      "path": "include/users.php",
+      "kind": "semantic_source",
+      "start_line": 74,
+      "end_line": 74,
+      "code": "$_SESSION['userid'] = $userid;",
+      "semantic_evidence": [
+        {
+          "kind": "php_session_identity_key",
+          "key": "userid"
+        }
+      ],
+      "parameter_ids": [
+        "include/users.php:LCP82"
+      ],
+      "function_ids": []
+    },
+    {
+      "path": "include/users.php",
+      "kind": "conditional",
+      "start_line": 153,
+      "end_line": 164,
+      "condition": "(isset($_SESSION['userid']))",
+      "terminations": [],
+      "code": "if (isset($_SESSION['userid']))\n      {\n\t if (!$cur_user)\n\t {\n\t    $cur_user = Users::get_user($_SESSION['userid']);\n\t }\n\t return $cur_user;\n      }\n      else\n      {\n\t return False;\n      }",
+      "parameter_ids": [
+        "include/users.php:LCP87"
+      ],
+      "function_ids": []
+    },
+    {
+      "path": "include/users.php",
+      "kind": "semantic_source",
+      "start_line": 157,
+      "end_line": 157,
+      "code": "$cur_user = Users::get_user($_SESSION['userid']);",
+      "semantic_evidence": [
+        {
+          "kind": "php_session_identity_key",
+          "key": "userid"
+        }
+      ],
+      "parameter_ids": [
+        "include/users.php:LCP87"
+      ],
+      "function_ids": []
+    }
+  ]
+}

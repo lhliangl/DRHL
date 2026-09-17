@@ -1,0 +1,207 @@
+{
+  "role": "admin",
+  "kind": "admin",
+  "nodes": [
+    "./",
+    "admin",
+    "admin/categories/create",
+    "admin/categories/p1",
+    "admin/mods/create",
+    "admin/mods/delete",
+    "auth/changepass",
+    "categories/p1/",
+    "categories/p1/topics/new/",
+    "categories/p1/topics/p1/",
+    "categories/p1/topics/p1/comments/new/",
+    "categories/p1/topics/p1/edit/",
+    "users/p1/"
+  ],
+  "edges": [
+    {
+      "from": "admin",
+      "to": "./"
+    },
+    {
+      "from": "admin",
+      "to": "admin"
+    },
+    {
+      "from": "admin",
+      "to": "admin/categories/create"
+    },
+    {
+      "from": "admin",
+      "to": "admin/categories/p1"
+    },
+    {
+      "from": "admin",
+      "to": "admin/mods/create"
+    },
+    {
+      "from": "admin",
+      "to": "admin/mods/delete"
+    },
+    {
+      "from": "admin/categories/p1",
+      "to": "admin"
+    },
+    {
+      "from": "admin/mods/create",
+      "to": "admin"
+    },
+    {
+      "from": "auth/changepass",
+      "to": "auth/changepass"
+    },
+    {
+      "from": "users/p1/",
+      "to": "admin"
+    },
+    {
+      "from": "users/p1/",
+      "to": "auth/changepass"
+    },
+    {
+      "from": "users/p1/",
+      "to": "users/p1/"
+    }
+  ],
+  "requests": {
+    "users/p1/": {
+      "method": "POST",
+      "params": {
+        "gorilla.csrf.Token": "PFVuHZ2QizRQwhsPol2tcVRgzvwD4uz7n6tJvf+4U6R5pkIIeQjsfHkAV/cQYzugeR6oZyAVcwjoNs+/utGoIA==",
+        "display_name": "User2",
+        "email": "user2@qq.com",
+        "is_banned": "1",
+        "action": "Update"
+      },
+      "referer": "users/p1/"
+    },
+    "auth/signin": {
+      "method": "POST",
+      "params": {
+        "gorilla.csrf.Token": "kh8M1hJmkx96+R1iWNkD1+MpczNJuq68eUErPS9ekLfLQei9/7faGGnz1v7I9wkrGrPqRApe31RaXDVxSg9BGA==",
+        "next": "/forums/localhost/",
+        "email": "admin@qq.com",
+        "password": "12345678",
+        "submit": "Signin"
+      },
+      "referer": null
+    },
+    "auth/jlKuze5VSMND5CSljP8z": {
+      "method": "GET",
+      "params": {},
+      "referer": null
+    },
+    "./": {
+      "method": "GET",
+      "params": {},
+      "referer": null
+    },
+    "jlKuze5VSMND5CSljP8z": {
+      "method": "GET",
+      "params": {},
+      "referer": null
+    },
+    "users/jlKuze5VSMND5CSljP8z": {
+      "method": "GET",
+      "params": {},
+      "referer": null
+    },
+    "admin": {
+      "method": "POST",
+      "params": {
+        "gorilla.csrf.Token": "jmDnK5UXLkDKGySucETCcwWlQRg1xRxcI/0dftIKGZzLk8s+cY9JCOPZaFbCelSiKNsngxYyg69UYJt8l2PiGA==",
+        "forum_name": "Orange Forum",
+        "whitelisted_email_domains": "OTbSaF",
+        "logo": "IFTsCbw82RxYfJ7X4UBE",
+        "icon": "jlKuze5VSMND5CSljP8z",
+        "is_auto_user_creation_on_email_signin_enabled": "1",
+        "is_regular_signup_enabled": "1",
+        "is_regular_signin_enabled": "1",
+        "is_readonly": "1",
+        "is_private": "1",
+        "action": "Update"
+      },
+      "referer": "admin"
+    },
+    "admin/mods/create": {
+      "method": "POST",
+      "params": {
+        "gorilla.csrf.Token": "lrp1xr2V1s3MCWnWkxjjP7ztfblmes8J5l+BbpObPWnTSVnTWQ2xheXLJS4hJnXukZMbIkWNUPqRwgds1vLG7Q==",
+        "mod_user_email": "user1@qq.com",
+        "action": "Add"
+      },
+      "referer": "admin"
+    },
+    "admin/categories/p1": {
+      "method": "POST",
+      "params": {
+        "gorilla.csrf.Token": "w01AflKx21i1dbPLWo1L6ecq/DOtf1RDlj+KY6+yBoKGvmxrtim8EJy3/zPos904ylSaqI6Iy7Dhogxh6tv9Bg==",
+        "name": "wqe",
+        "description": "wqe",
+        "is_readonly": "1",
+        "is_private": "1",
+        "is_archived": "1",
+        "action": "Update"
+      },
+      "referer": "admin"
+    },
+    "admin/categories/create": {
+      "method": "POST",
+      "params": {
+        "gorilla.csrf.Token": "nXrmqXwBmflYpDpfeBmFv4YJA3Tm6yjd+2ygPmyvcJ7Yicq8mJn+sXFmdqfKJxNuq3dl78Ucty6M8SY8KcaLGg==",
+        "name": "DRHL Test Name",
+        "description": "DRHL generated description for access-control testing.",
+        "action": "Add"
+      },
+      "referer": "admin"
+    },
+    "admin/mods/delete": {
+      "method": "POST",
+      "params": {
+        "gorilla.csrf.Token": "NLRNjzbpOhlfpo9k3M0RDt44MWBs5BjhN7JN+F528iJxR2Ga0nFdUXZkw5xu84ff80ZX+08ThxJAL8v6Gx8Jpg==",
+        "mod_user_id": "2",
+        "action": "Remove"
+      },
+      "referer": "admin"
+    },
+    "auth/changepass": {
+      "method": "POST",
+      "params": {
+        "gorilla.csrf.Token": "xZFfipDIHG1cbBJdnUUXqxKjpqY4gja6fRgxG036arqcz7vhfRlVak9m2cENax1X6zk/0XtmR1JeBS9XKKu7FQ==",
+        "old_password": "12345678",
+        "password": "12345678",
+        "password2": "12345678",
+        "submit": "Change password"
+      },
+      "referer": "auth/changepass"
+    },
+    "categories/p1/topics/p1/comments/new/": {
+      "method": "GET",
+      "params": {},
+      "referer": null
+    },
+    "categories/p1/topics/p1/edit/": {
+      "method": "GET",
+      "params": {},
+      "referer": null
+    },
+    "categories/p1/topics/p1/": {
+      "method": "GET",
+      "params": {},
+      "referer": null
+    },
+    "categories/p1/topics/new/": {
+      "method": "GET",
+      "params": {},
+      "referer": null
+    },
+    "categories/p1/": {
+      "method": "GET",
+      "params": {},
+      "referer": null
+    }
+  }
+}

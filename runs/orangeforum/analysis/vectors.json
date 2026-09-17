@@ -1,0 +1,44 @@
+{
+  "vectors": [
+    {
+      "category": "horizontal",
+      "page": "categories/p1/topics/p1/comments/p1/edit/",
+      "authorized_roles": [
+        "user1"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "gorilla.csrf.Token": "6Mqz5/jBdrH4s/gOSlvP5dTmrcAGVkFCAKmwWYwFN1kwHJVFTwQu2pccvWE0s/JNo+VIkOX3BPF0uUTqf/06Ww==",
+          "content": "DRHL horizontal edit marker",
+          "action": "Update"
+        },
+        "referer": "categories/p1/topics/p1/comments/p1/edit/"
+      },
+      "identity_parameters": [],
+      "page_overrides": [
+        "categories/1/topics/9/comments/34/edit"
+      ]
+    },
+    {
+      "category": "horizontal",
+      "page": "categories/p1/topics/p1/comments/p1/edit/",
+      "authorized_roles": [
+        "user1"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "gorilla.csrf.Token": "6Mqz5/jBdrH4s/gOSlvP5dTmrcAGVkFCAKmwWYwFN1kwHJVFTwQu2pccvWE0s/JNo+VIkOX3BPF0uUTqf/06Ww==",
+          "content": "> wwww6EYFpUSJLbAHDn1LEgIjpFuofEGHiB",
+          "action": "Delete"
+        },
+        "referer": "categories/p1/topics/p1/comments/p1/edit/"
+      },
+      "identity_parameters": [],
+      "page_overrides": [
+        "categories/1/topics/9/comments/34/edit"
+      ]
+    }
+  ]
+}

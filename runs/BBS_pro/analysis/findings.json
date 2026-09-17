@@ -1,0 +1,92 @@
+{
+  "summary": {
+    "vulnerable": 1,
+    "not_vulnerable": 5
+  },
+  "findings": [
+    {
+      "category": "static_only",
+      "page": "logout/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": null,
+      "evidence": [
+        "oracle=response-cascade",
+        "configured public page; successful access is not a vulnerability"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "bbs_pub/",
+      "actor": "visitor",
+      "status": "vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 200 without redirect or denial marker"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "bbs_sub/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 500,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 500; attack did not receive a normal resource page"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "bbs_sub/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 500,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 500; attack did not receive a normal resource page"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "sub_comment/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 500,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 500; attack did not receive a normal resource page"
+      ],
+      "error": null
+    },
+    {
+      "category": "admin_only",
+      "page": "sub_comment/",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 500,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 500; attack did not receive a normal resource page"
+      ],
+      "error": null
+    }
+  ]
+}

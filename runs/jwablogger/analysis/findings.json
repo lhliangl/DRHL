@@ -1,0 +1,91 @@
+{
+  "summary": {
+    "vulnerable": 1,
+    "not_vulnerable": 5
+  },
+  "findings": [
+    {
+      "category": "authenticated_only",
+      "page": "blogger/saveComment",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": null,
+      "evidence": [
+        "oracle=response-cascade",
+        "configured public page; successful access is not a vulnerability"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "blogger/saveEntry",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "denial marker: must be logged in"
+      ],
+      "error": null
+    },
+    {
+      "category": "horizontal",
+      "page": "blogger/saveEntry",
+      "actor": "user1",
+      "status": "not_vulnerable",
+      "confidence": "none",
+      "method": "POST",
+      "http_status": null,
+      "evidence": [
+        "no horizontal override value was configured; treated as not vulnerable by binary reporting policy"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "blogger/search?author=p1&searchString=p1",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": null,
+      "evidence": [
+        "oracle=response-cascade",
+        "configured public page; successful access is not a vulnerability"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "blogger/viewEntry/5444/drhl_test_entry.html",
+      "actor": "visitor",
+      "status": "vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": 200,
+      "evidence": [
+        "oracle=response-cascade",
+        "HTTP 200 without redirect or denial marker"
+      ],
+      "error": null
+    },
+    {
+      "category": "authenticated_only",
+      "page": "blogger?c=entry",
+      "actor": "visitor",
+      "status": "not_vulnerable",
+      "confidence": "high",
+      "method": "GET",
+      "http_status": null,
+      "evidence": [
+        "oracle=response-cascade",
+        "configured public page; successful access is not a vulnerability"
+      ],
+      "error": null
+    }
+  ]
+}

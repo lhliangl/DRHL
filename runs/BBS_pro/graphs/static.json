@@ -1,0 +1,63 @@
+{
+  "nodes": [
+    "BBS_Pro/__init__.py",
+    "BBS_Pro/settings.py",
+    "BBS_Pro/urls.py",
+    "BBS_Pro/wsgi.py",
+    "app01/__init__.py",
+    "app01/admin.py",
+    "app01/models.py",
+    "app01/tests.py",
+    "app01/urls.py",
+    "app01/views.py",
+    "manage.py"
+  ],
+  "edges": [
+    {
+      "from": "BBS_Pro/urls.py",
+      "to": "app01/__init__.py"
+    },
+    {
+      "from": "BBS_Pro/urls.py",
+      "to": "app01/urls.py"
+    },
+    {
+      "from": "app01/admin.py",
+      "to": "app01/__init__.py"
+    }
+  ],
+  "url_to_source": {
+    "./": "app01/views.py",
+    "acc_login/": "app01/views.py",
+    "acc_register/": "app01/views.py",
+    "admin/": "BBS_Pro/urls.py",
+    "bbs_pub/": "app01/views.py",
+    "bbs_sub/": "app01/views.py",
+    "category/p1/": "app01/views.py",
+    "detail/p1/": "app01/views.py",
+    "login/": "app01/views.py",
+    "logout/": "app01/views.py",
+    "register/": "app01/views.py",
+    "sub_comment/": "app01/views.py"
+  },
+  "classifications": {
+    "observed": [
+      "app01/views.py"
+    ],
+    "internal_reachable": [],
+    "public_unobserved": [
+      "BBS_Pro/urls.py"
+    ],
+    "support_unreachable": [
+      "BBS_Pro/__init__.py",
+      "BBS_Pro/settings.py",
+      "BBS_Pro/wsgi.py",
+      "app01/__init__.py",
+      "app01/admin.py",
+      "app01/models.py",
+      "app01/tests.py",
+      "app01/urls.py",
+      "manage.py"
+    ]
+  }
+}

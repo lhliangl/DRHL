@@ -1,0 +1,38 @@
+{
+  "summary": {
+    "vulnerable": 2,
+    "not_vulnerable": 0
+  },
+  "findings": [
+    {
+      "category": "horizontal",
+      "page": "categories/1/topics/9/comments/34/edit",
+      "actor": "user1",
+      "status": "vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 303,
+      "evidence": [
+        "oracle=response-cascade",
+        "write request accepted with non-denial redirect: http://localhost:9123/forums/localhost/categories/1/topics/9#comment-34",
+        "horizontal page override: categories/1/topics/9/comments/34/edit"
+      ],
+      "error": null
+    },
+    {
+      "category": "horizontal",
+      "page": "categories/1/topics/9/comments/34/edit",
+      "actor": "user1",
+      "status": "vulnerable",
+      "confidence": "high",
+      "method": "POST",
+      "http_status": 303,
+      "evidence": [
+        "oracle=response-cascade",
+        "write request accepted with non-denial redirect: http://localhost:9123/forums/localhost/categories/1/topics/9",
+        "horizontal page override: categories/1/topics/9/comments/34/edit"
+      ],
+      "error": null
+    }
+  ]
+}

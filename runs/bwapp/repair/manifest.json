@@ -1,0 +1,371 @@
+{
+  "summary": {
+    "Repair Items": 5,
+    "Total Repair Attempts": 5,
+    "Patch Generation Attempts": 5,
+    "Patches Generated": 5,
+    "Failed Patches": 0,
+    "Syntax / Compile OK": 5,
+    "Exploit Blocked": 5,
+    "Regression Passed": 5,
+    "Database Validation Applied": 0,
+    "Database Validation Passed": 0,
+    "Successful Repairs": 5,
+    "Failed Repairs": 0,
+    "Successful on Attempt 1": 5,
+    "Successful on Attempt 2": 0,
+    "Successful on Attempt 3": 0
+  },
+  "repairs": [
+    {
+      "category": "static_only",
+      "page": "backdoor.php",
+      "source": "D:\\phpStudy\\PHPTutorial\\WWW\\bWAPP\\backdoor.php",
+      "output": "D:\\project\\python\\DRHL\\runs\\bwapp\\repair\\files\\attempt-1\\backdoor.php",
+      "status": "successful_repair",
+      "message": "syntax/compile, vulnerability blocking, and regression validation all passed",
+      "engine": "llm",
+      "plan": "{\"missing_check\": \"No authentication check before the direct-access form branch; the existing $_SESSION[\\\"login\\\"] check only applies when $_REQUEST[\\\"upload\\\"] is set.\", \"insertion_location\": \"At the very top of backdoor.php, immediately after the opening <?php tag and before the if (isset($_REQUEST[\\\"upload\\\"])) block.\", \"recommended_guard\": \"if (!(isset($_SESSION[\\\"login\\\"]) && $_SESSION[\\\"login\\\"])) {\\n    header(\\\"Location: login.php\\\");\\n    exit;\\n}\", \"reused_project_semantics\": \"Reuses the app's existing session login sentinel $_SESSION[\\\"login\\\"] and the standard denial/redirect style header(\\\"Location: login.php\\\"); exit; as seen in backdoor.php and security.php.\", \"reason\": \"The current source only authenticates the upload branch, so a direct GET to backdoor.php without the upload parameter reaches the else/form branch and returns HTTP 200 to unauthenticated visitors. Adding the existing login guard at the top blocks unauthorized direct access while preserving intended authenticated admin access to both the uploader form and upload handling.\"}",
+      "prompt_artifact": "D:\\project\\python\\DRHL\\runs\\bwapp\\repair\\prompts\\backdoor-attempt1-5c7230121021.json",
+      "attempts": 1,
+      "patches_generated": 1,
+      "syntax_compile_ok": 1,
+      "exploit_blocked": 1,
+      "regression_passed": 1,
+      "database_validation_applied": 0,
+      "database_validation_passed": 0,
+      "successful": true,
+      "validation_artifact": "D:\\project\\python\\DRHL\\runs\\bwapp\\repair\\validation\\backdoor-fed534225b25.json",
+      "attempt_details": [
+        {
+          "attempt": 1,
+          "output": "D:\\project\\python\\DRHL\\runs\\bwapp\\repair\\files\\attempt-1\\backdoor.php",
+          "syntax_compile_ok": true,
+          "exploit_blocked": true,
+          "regression_passed": true,
+          "successful": true,
+          "message": "syntax=(No syntax errors detected in D:\\project\\python\\DRHL\\runs\\bwapp\\repair\\files\\attempt-1\\backdoor.php); deployment=(source patch applied); vulnerability_blocking=(response=True; database=passed; evidence=visitor:not_vulnerable); regression=(response=True; database=passed; evidence=regression is not applicable because the vector has no authorized role)",
+          "prompt_artifact": "D:\\project\\python\\DRHL\\runs\\bwapp\\repair\\prompts\\backdoor-attempt1-5c7230121021.json",
+          "plan": "{\"missing_check\": \"No authentication check before the direct-access form branch; the existing $_SESSION[\\\"login\\\"] check only applies when $_REQUEST[\\\"upload\\\"] is set.\", \"insertion_location\": \"At the very top of backdoor.php, immediately after the opening <?php tag and before the if (isset($_REQUEST[\\\"upload\\\"])) block.\", \"recommended_guard\": \"if (!(isset($_SESSION[\\\"login\\\"]) && $_SESSION[\\\"login\\\"])) {\\n    header(\\\"Location: login.php\\\");\\n    exit;\\n}\", \"reused_project_semantics\": \"Reuses the app's existing session login sentinel $_SESSION[\\\"login\\\"] and the standard denial/redirect style header(\\\"Location: login.php\\\"); exit; as seen in backdoor.php and security.php.\", \"reason\": \"The current source only authenticates the upload branch, so a direct GET to backdoor.php without the upload parameter reaches the else/form branch and returns HTTP 200 to unauthenticated visitors. Adding the existing login guard at the top blocks unauthorized direct access while preserving intended authenticated admin access to both the uploader form and upload handling.\"}",
+          "database_validation_passed": true,
+          "database_validation": {
+            "oracle_version": 2,
+            "scope": "repair_only",
+            "applicable": false,
+            "passed": true,
+            "status": "response_only",
+            "display_as_passed": true,
+            "message": "database validation intentionally skipped; response oracle retained",
+            "dimensions": {
+              "vulnerability_blocking": {
+                "phase": "attack",
+                "applicable": false,
+                "passed": true
+              },
+              "regression": {
+                "phase": "authorized",
+                "applicable": false,
+                "passed": true
+              }
+            },
+            "scenarios": [],
+            "combined_dimensions": {
+              "vulnerability_blocking": {
+                "passed": true,
+                "response_oracle_passed": true,
+                "database_oracle_applicable": false,
+                "database_oracle_passed": true
+              },
+              "regression": {
+                "passed": true,
+                "response_oracle_passed": true,
+                "database_oracle_applicable": false,
+                "database_oracle_passed": true
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "category": "static_only",
+      "page": "install.php",
+      "source": "D:\\phpStudy\\PHPTutorial\\WWW\\bWAPP\\install.php",
+      "output": "D:\\project\\python\\DRHL\\runs\\bwapp\\repair\\files\\attempt-1\\install.php",
+      "status": "successful_repair",
+      "message": "syntax/compile, vulnerability blocking, and regression validation all passed",
+      "engine": "llm",
+      "plan": "{\"missing_check\": \"Authentication check: verify that a user is logged in before allowing access to the installation script.\", \"insertion_location\": \"Immediately after the opening <?php tag, before the license comment and any variable assignments or logic.\", \"recommended_guard\": \"session_start();\\nif (!(isset($_SESSION[\\\"login\\\"]) && $_SESSION[\\\"login\\\"])) {\\n    header(\\\"Location: login.php\\\");\\n    exit;\\n}\", \"reused_project_semantics\": \"Reuses the project's session login sentinel $_SESSION[\\\"login\\\"], the redirect style header(\\\"Location: login.php\\\"), and session_start() as used in validated snippets (backdoor.php, security.php). The exit after header mirrors the redirect-and-exit pattern from sqli_13.php and sqli_13-ps.php.\", \"reason\": \"install.php is a standalone installation entry point accessible to unauthenticated visitors; adding this guard blocks unauthorized direct access before the sensitive installation logic while preserving access for authenticated users (the intended admin/authorized operators).\"}",
+      "prompt_artifact": "D:\\project\\python\\DRHL\\runs\\bwapp\\repair\\prompts\\install-attempt1-3a196eddc49e.json",
+      "attempts": 1,
+      "patches_generated": 1,
+      "syntax_compile_ok": 1,
+      "exploit_blocked": 1,
+      "regression_passed": 1,
+      "database_validation_applied": 0,
+      "database_validation_passed": 0,
+      "successful": true,
+      "validation_artifact": "D:\\project\\python\\DRHL\\runs\\bwapp\\repair\\validation\\install-19e3c84c1b3c.json",
+      "attempt_details": [
+        {
+          "attempt": 1,
+          "output": "D:\\project\\python\\DRHL\\runs\\bwapp\\repair\\files\\attempt-1\\install.php",
+          "syntax_compile_ok": true,
+          "exploit_blocked": true,
+          "regression_passed": true,
+          "successful": true,
+          "message": "syntax=(No syntax errors detected in D:\\project\\python\\DRHL\\runs\\bwapp\\repair\\files\\attempt-1\\install.php); deployment=(source patch applied); vulnerability_blocking=(response=True; database=passed; evidence=visitor:not_vulnerable); regression=(response=True; database=passed; evidence=regression is not applicable because the vector has no authorized role)",
+          "prompt_artifact": "D:\\project\\python\\DRHL\\runs\\bwapp\\repair\\prompts\\install-attempt1-3a196eddc49e.json",
+          "plan": "{\"missing_check\": \"Authentication check: verify that a user is logged in before allowing access to the installation script.\", \"insertion_location\": \"Immediately after the opening <?php tag, before the license comment and any variable assignments or logic.\", \"recommended_guard\": \"session_start();\\nif (!(isset($_SESSION[\\\"login\\\"]) && $_SESSION[\\\"login\\\"])) {\\n    header(\\\"Location: login.php\\\");\\n    exit;\\n}\", \"reused_project_semantics\": \"Reuses the project's session login sentinel $_SESSION[\\\"login\\\"], the redirect style header(\\\"Location: login.php\\\"), and session_start() as used in validated snippets (backdoor.php, security.php). The exit after header mirrors the redirect-and-exit pattern from sqli_13.php and sqli_13-ps.php.\", \"reason\": \"install.php is a standalone installation entry point accessible to unauthenticated visitors; adding this guard blocks unauthorized direct access before the sensitive installation logic while preserving access for authenticated users (the intended admin/authorized operators).\"}",
+          "database_validation_passed": true,
+          "database_validation": {
+            "oracle_version": 2,
+            "scope": "repair_only",
+            "applicable": false,
+            "passed": true,
+            "status": "response_only",
+            "display_as_passed": true,
+            "message": "database validation intentionally skipped; response oracle retained",
+            "dimensions": {
+              "vulnerability_blocking": {
+                "phase": "attack",
+                "applicable": false,
+                "passed": true
+              },
+              "regression": {
+                "phase": "authorized",
+                "applicable": false,
+                "passed": true
+              }
+            },
+            "scenarios": [],
+            "combined_dimensions": {
+              "vulnerability_blocking": {
+                "passed": true,
+                "response_oracle_passed": true,
+                "database_oracle_applicable": false,
+                "database_oracle_passed": true
+              },
+              "regression": {
+                "passed": true,
+                "response_oracle_passed": true,
+                "database_oracle_applicable": false,
+                "database_oracle_passed": true
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "category": "static_only",
+      "page": "secret-cors-1.php",
+      "source": "D:\\phpStudy\\PHPTutorial\\WWW\\bWAPP\\secret-cors-1.php",
+      "output": "D:\\project\\python\\DRHL\\runs\\bwapp\\repair\\files\\attempt-1\\secret-cors-1.php",
+      "status": "successful_repair",
+      "message": "syntax/compile, vulnerability blocking, and regression validation all passed",
+      "engine": "llm",
+      "plan": "{\"missing_check\": \"Authentication guard verifying the bWAPP login session flag before outputting the secret.\", \"insertion_location\": \"secret-cors-1.php: immediately before the first executable line `header(\\\"Content-Type: text/plain\\\");` (after the opening `<?php` and license comment).\", \"recommended_guard\": \"session_start(); if (!(isset($_SESSION[\\\"login\\\"]) && $_SESSION[\\\"login\\\"])) { header(\\\"Location: login.php\\\"); }\", \"reused_project_semantics\": \"Uses the project's `$_SESSION[\\\"login\\\"]` boolean login flag and its redirect denial style `header(\\\"Location: login.php\\\")`. The session must be initialized (e.g., via `session_start()` or the existing `functions.php` include) before the check.\", \"reason\": \"The file currently outputs the secret without any authentication check, allowing unauthenticated visitors to read it. Reusing bWAPP's standard login guard (checking `$_SESSION[\\\"login\\\"]` and redirecting to `login.php`) before any output blocks direct unauthorized access while preserving access for authenticated users.\"}",
+      "prompt_artifact": "D:\\project\\python\\DRHL\\runs\\bwapp\\repair\\prompts\\secret-cors-1-attempt1-8142fe1dd5a5.json",
+      "attempts": 1,
+      "patches_generated": 1,
+      "syntax_compile_ok": 1,
+      "exploit_blocked": 1,
+      "regression_passed": 1,
+      "database_validation_applied": 0,
+      "database_validation_passed": 0,
+      "successful": true,
+      "validation_artifact": "D:\\project\\python\\DRHL\\runs\\bwapp\\repair\\validation\\secret-cors-1-29e6f7da5cb4.json",
+      "attempt_details": [
+        {
+          "attempt": 1,
+          "output": "D:\\project\\python\\DRHL\\runs\\bwapp\\repair\\files\\attempt-1\\secret-cors-1.php",
+          "syntax_compile_ok": true,
+          "exploit_blocked": true,
+          "regression_passed": true,
+          "successful": true,
+          "message": "syntax=(No syntax errors detected in D:\\project\\python\\DRHL\\runs\\bwapp\\repair\\files\\attempt-1\\secret-cors-1.php); deployment=(source patch applied); vulnerability_blocking=(response=True; database=passed; evidence=visitor:not_vulnerable); regression=(response=True; database=passed; evidence=regression is not applicable because the vector has no authorized role)",
+          "prompt_artifact": "D:\\project\\python\\DRHL\\runs\\bwapp\\repair\\prompts\\secret-cors-1-attempt1-8142fe1dd5a5.json",
+          "plan": "{\"missing_check\": \"Authentication guard verifying the bWAPP login session flag before outputting the secret.\", \"insertion_location\": \"secret-cors-1.php: immediately before the first executable line `header(\\\"Content-Type: text/plain\\\");` (after the opening `<?php` and license comment).\", \"recommended_guard\": \"session_start(); if (!(isset($_SESSION[\\\"login\\\"]) && $_SESSION[\\\"login\\\"])) { header(\\\"Location: login.php\\\"); }\", \"reused_project_semantics\": \"Uses the project's `$_SESSION[\\\"login\\\"]` boolean login flag and its redirect denial style `header(\\\"Location: login.php\\\")`. The session must be initialized (e.g., via `session_start()` or the existing `functions.php` include) before the check.\", \"reason\": \"The file currently outputs the secret without any authentication check, allowing unauthenticated visitors to read it. Reusing bWAPP's standard login guard (checking `$_SESSION[\\\"login\\\"]` and redirecting to `login.php`) before any output blocks direct unauthorized access while preserving access for authenticated users.\"}",
+          "database_validation_passed": true,
+          "database_validation": {
+            "oracle_version": 2,
+            "scope": "repair_only",
+            "applicable": false,
+            "passed": true,
+            "status": "response_only",
+            "display_as_passed": true,
+            "message": "database validation intentionally skipped; response oracle retained",
+            "dimensions": {
+              "vulnerability_blocking": {
+                "phase": "attack",
+                "applicable": false,
+                "passed": true
+              },
+              "regression": {
+                "phase": "authorized",
+                "applicable": false,
+                "passed": true
+              }
+            },
+            "scenarios": [],
+            "combined_dimensions": {
+              "vulnerability_blocking": {
+                "passed": true,
+                "response_oracle_passed": true,
+                "database_oracle_applicable": false,
+                "database_oracle_passed": true
+              },
+              "regression": {
+                "passed": true,
+                "response_oracle_passed": true,
+                "database_oracle_applicable": false,
+                "database_oracle_passed": true
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "category": "static_only",
+      "page": "secret-cors-2.php",
+      "source": "D:\\phpStudy\\PHPTutorial\\WWW\\bWAPP\\secret-cors-2.php",
+      "output": "D:\\project\\python\\DRHL\\runs\\bwapp\\repair\\files\\attempt-1\\secret-cors-2.php",
+      "status": "successful_repair",
+      "message": "syntax/compile, vulnerability blocking, and regression validation all passed",
+      "engine": "llm",
+      "plan": "{\"missing_check\": \"A session authentication guard is missing; unauthorized visitors can access the page directly.\", \"insertion_location\": \"At the top of the script, after the license comment block and before header(\\\"Content-Type: text/plain\\\");, adding session_start() first if not already present.\", \"recommended_guard\": \"session_start();\\nif (!(isset($_SESSION[\\\"login\\\"]) && $_SESSION[\\\"login\\\"])) {\\n    header(\\\"Location: login.php\\\");\\n    exit;\\n}\", \"reused_project_semantics\": \"Uses bWAPP's $_SESSION[\\\"login\\\"] session flag and the standard redirect to login.php as shown in backdoor.php and security.php.\", \"reason\": \"Unauthorized visitors can directly request secret-cors-2.php and spoof the Origin header to retrieve the secret. Adding the session login guard blocks visitors before the CORS origin check and secret output, while preserving access for authenticated admin users.\"}",
+      "prompt_artifact": "D:\\project\\python\\DRHL\\runs\\bwapp\\repair\\prompts\\secret-cors-2-attempt1-f0dd341199b7.json",
+      "attempts": 1,
+      "patches_generated": 1,
+      "syntax_compile_ok": 1,
+      "exploit_blocked": 1,
+      "regression_passed": 1,
+      "database_validation_applied": 0,
+      "database_validation_passed": 0,
+      "successful": true,
+      "validation_artifact": "D:\\project\\python\\DRHL\\runs\\bwapp\\repair\\validation\\secret-cors-2-8317783abc8b.json",
+      "attempt_details": [
+        {
+          "attempt": 1,
+          "output": "D:\\project\\python\\DRHL\\runs\\bwapp\\repair\\files\\attempt-1\\secret-cors-2.php",
+          "syntax_compile_ok": true,
+          "exploit_blocked": true,
+          "regression_passed": true,
+          "successful": true,
+          "message": "syntax=(No syntax errors detected in D:\\project\\python\\DRHL\\runs\\bwapp\\repair\\files\\attempt-1\\secret-cors-2.php); deployment=(source patch applied); vulnerability_blocking=(response=True; database=passed; evidence=visitor:not_vulnerable); regression=(response=True; database=passed; evidence=regression is not applicable because the vector has no authorized role)",
+          "prompt_artifact": "D:\\project\\python\\DRHL\\runs\\bwapp\\repair\\prompts\\secret-cors-2-attempt1-f0dd341199b7.json",
+          "plan": "{\"missing_check\": \"A session authentication guard is missing; unauthorized visitors can access the page directly.\", \"insertion_location\": \"At the top of the script, after the license comment block and before header(\\\"Content-Type: text/plain\\\");, adding session_start() first if not already present.\", \"recommended_guard\": \"session_start();\\nif (!(isset($_SESSION[\\\"login\\\"]) && $_SESSION[\\\"login\\\"])) {\\n    header(\\\"Location: login.php\\\");\\n    exit;\\n}\", \"reused_project_semantics\": \"Uses bWAPP's $_SESSION[\\\"login\\\"] session flag and the standard redirect to login.php as shown in backdoor.php and security.php.\", \"reason\": \"Unauthorized visitors can directly request secret-cors-2.php and spoof the Origin header to retrieve the secret. Adding the session login guard blocks visitors before the CORS origin check and secret output, while preserving access for authenticated admin users.\"}",
+          "database_validation_passed": true,
+          "database_validation": {
+            "oracle_version": 2,
+            "scope": "repair_only",
+            "applicable": false,
+            "passed": true,
+            "status": "response_only",
+            "display_as_passed": true,
+            "message": "database validation intentionally skipped; response oracle retained",
+            "dimensions": {
+              "vulnerability_blocking": {
+                "phase": "attack",
+                "applicable": false,
+                "passed": true
+              },
+              "regression": {
+                "phase": "authorized",
+                "applicable": false,
+                "passed": true
+              }
+            },
+            "scenarios": [],
+            "combined_dimensions": {
+              "vulnerability_blocking": {
+                "passed": true,
+                "response_oracle_passed": true,
+                "database_oracle_applicable": false,
+                "database_oracle_passed": true
+              },
+              "regression": {
+                "passed": true,
+                "response_oracle_passed": true,
+                "database_oracle_applicable": false,
+                "database_oracle_passed": true
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "category": "static_only",
+      "page": "secret-cors-3.php",
+      "source": "D:\\phpStudy\\PHPTutorial\\WWW\\bWAPP\\secret-cors-3.php",
+      "output": "D:\\project\\python\\DRHL\\runs\\bwapp\\repair\\files\\attempt-1\\secret-cors-3.php",
+      "status": "successful_repair",
+      "message": "syntax/compile, vulnerability blocking, and regression validation all passed",
+      "engine": "llm",
+      "plan": "{\"missing_check\": \"Authentication/login guard: verify that $_SESSION[\\\"login\\\"] is set and true before allowing access to the secret output.\", \"insertion_location\": \"Immediately after the opening <?php tag at line 1 of secret-cors-3.php, before the comment block and before header(\\\"Content-Type: text/plain\\\");\", \"recommended_guard\": \"include(\\\"security.php\\\");\", \"reused_project_semantics\": \"Reuses bWAPP's standard session-based login guard from security.php and backdoor.php: checks $_SESSION[\\\"login\\\"] and redirects unauthorized users to login.php via header(\\\"Location: login.php\\\").\", \"reason\": \"secret-cors-3.php is a protected static entry that should only be reachable by authenticated users. The current source lacks the project's login guard, allowing a visitor to receive HTTP 200 and the secret. Including security.php applies the existing authentication check, blocking unauthorized direct access while preserving intended access for logged-in users.\"}",
+      "prompt_artifact": "D:\\project\\python\\DRHL\\runs\\bwapp\\repair\\prompts\\secret-cors-3-attempt1-bcae9206d83e.json",
+      "attempts": 1,
+      "patches_generated": 1,
+      "syntax_compile_ok": 1,
+      "exploit_blocked": 1,
+      "regression_passed": 1,
+      "database_validation_applied": 0,
+      "database_validation_passed": 0,
+      "successful": true,
+      "validation_artifact": "D:\\project\\python\\DRHL\\runs\\bwapp\\repair\\validation\\secret-cors-3-3ff509e01125.json",
+      "attempt_details": [
+        {
+          "attempt": 1,
+          "output": "D:\\project\\python\\DRHL\\runs\\bwapp\\repair\\files\\attempt-1\\secret-cors-3.php",
+          "syntax_compile_ok": true,
+          "exploit_blocked": true,
+          "regression_passed": true,
+          "successful": true,
+          "message": "syntax=(No syntax errors detected in D:\\project\\python\\DRHL\\runs\\bwapp\\repair\\files\\attempt-1\\secret-cors-3.php); deployment=(source patch applied); vulnerability_blocking=(response=True; database=passed; evidence=visitor:not_vulnerable); regression=(response=True; database=passed; evidence=regression is not applicable because the vector has no authorized role)",
+          "prompt_artifact": "D:\\project\\python\\DRHL\\runs\\bwapp\\repair\\prompts\\secret-cors-3-attempt1-bcae9206d83e.json",
+          "plan": "{\"missing_check\": \"Authentication/login guard: verify that $_SESSION[\\\"login\\\"] is set and true before allowing access to the secret output.\", \"insertion_location\": \"Immediately after the opening <?php tag at line 1 of secret-cors-3.php, before the comment block and before header(\\\"Content-Type: text/plain\\\");\", \"recommended_guard\": \"include(\\\"security.php\\\");\", \"reused_project_semantics\": \"Reuses bWAPP's standard session-based login guard from security.php and backdoor.php: checks $_SESSION[\\\"login\\\"] and redirects unauthorized users to login.php via header(\\\"Location: login.php\\\").\", \"reason\": \"secret-cors-3.php is a protected static entry that should only be reachable by authenticated users. The current source lacks the project's login guard, allowing a visitor to receive HTTP 200 and the secret. Including security.php applies the existing authentication check, blocking unauthorized direct access while preserving intended access for logged-in users.\"}",
+          "database_validation_passed": true,
+          "database_validation": {
+            "oracle_version": 2,
+            "scope": "repair_only",
+            "applicable": false,
+            "passed": true,
+            "status": "response_only",
+            "display_as_passed": true,
+            "message": "database validation intentionally skipped; response oracle retained",
+            "dimensions": {
+              "vulnerability_blocking": {
+                "phase": "attack",
+                "applicable": false,
+                "passed": true
+              },
+              "regression": {
+                "phase": "authorized",
+                "applicable": false,
+                "passed": true
+              }
+            },
+            "scenarios": [],
+            "combined_dimensions": {
+              "vulnerability_blocking": {
+                "passed": true,
+                "response_oracle_passed": true,
+                "database_oracle_applicable": false,
+                "database_oracle_passed": true
+              },
+              "regression": {
+                "passed": true,
+                "response_oracle_passed": true,
+                "database_oracle_applicable": false,
+                "database_oracle_passed": true
+              }
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

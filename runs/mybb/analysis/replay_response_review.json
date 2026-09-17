@@ -1,0 +1,281 @@
+{
+  "summary": {
+    "reviewed": 14,
+    "vulnerable": 2,
+    "not_vulnerable": 12,
+    "errors": 0
+  },
+  "reviews": [
+    {
+      "category": "admin_only",
+      "page": "newthread.php",
+      "actor": "user1",
+      "method": "POST",
+      "original_status": "vulnerable",
+      "original_evidence": [
+        "oracle=response-cascade",
+        "HTTP 200 without redirect or denial marker"
+      ],
+      "replay_status_code": 200,
+      "replay_url": "http://localhost/mybb/newthread.php",
+      "replay_location": null,
+      "title": "New Thread in My Forum",
+      "detector_denial": [],
+      "text_excerpt": "New Thread in My Forum Search Member List Calendar Help Current time: 07-04-2026, 06:16 AM Welcome back, user1 . You last visited: 06-27-2026, 08:16 AM ( User CP — Log Out ) Open Buddy List View New Posts | View Today's Posts | Private Messages (Unread 0, Total 0) Forums / My Category / My Forum / New Thread Post a new Thread Username: user1 [ change user ] Thread Subject Post Icon: no icon Your Message: Smilies Post Options: Signature: include your signature. (registered users only) Disable Smilies: disable smilies from showing in this post. Thread Subscription: Specify the type of email notification and thread subscription you'd like to have to this thread. (Registered users only) Do not subscribe to this thread Subscribe without receiving email notification of new replies Subscribe and receive email notification of new replies Poll: Optionally you may attach a poll to this thread. I want to post a poll Number of options: (Maximum: 10) Attachments You are currently using N/A of your allocated attachment usage (Unlimited) [View My Attachments] New Attachment: English (American) Contact Us | Your Website | Return to Top | Return to Content | Lite (Archive) Mode | RSS Syndication Po",
+      "review_status": "not_vulnerable",
+      "review_reason": "newthread.php response is normal forum/category/password handling, not the target vulnerability"
+    },
+    {
+      "category": "admin_only",
+      "page": "newthread.php",
+      "actor": "user2",
+      "method": "POST",
+      "original_status": "vulnerable",
+      "original_evidence": [
+        "oracle=response-cascade",
+        "HTTP 200 without redirect or denial marker"
+      ],
+      "replay_status_code": 200,
+      "replay_url": "http://localhost/mybb/newthread.php",
+      "replay_location": null,
+      "title": "New Thread in My Forum",
+      "detector_denial": [],
+      "text_excerpt": "New Thread in My Forum Search Member List Calendar Help Current time: 07-04-2026, 06:16 AM Welcome back, user2 . You last visited: 06-26-2026, 09:46 AM ( User CP — Log Out ) Open Buddy List View New Posts | View Today's Posts | Private Messages (Unread 0, Total 0) Forums / My Category / My Forum / New Thread Post a new Thread Username: user2 [ change user ] Thread Subject Post Icon: no icon Your Message: Smilies Post Options: Signature: include your signature. (registered users only) Disable Smilies: disable smilies from showing in this post. Thread Subscription: Specify the type of email notification and thread subscription you'd like to have to this thread. (Registered users only) Do not subscribe to this thread Subscribe without receiving email notification of new replies Subscribe and receive email notification of new replies Poll: Optionally you may attach a poll to this thread. I want to post a poll Number of options: (Maximum: 10) Attachments You are currently using N/A of your allocated attachment usage (Unlimited) [View My Attachments] New Attachment: English (American) Contact Us | Your Website | Return to Top | Return to Content | Lite (Archive) Mode | RSS Syndication Po",
+      "review_status": "not_vulnerable",
+      "review_reason": "newthread.php response is normal forum/category/password handling, not the target vulnerability"
+    },
+    {
+      "category": "admin_only",
+      "page": "newthread.php?fid=p1&processed=p1",
+      "actor": "visitor",
+      "method": "POST",
+      "original_status": "vulnerable",
+      "original_evidence": [
+        "oracle=response-cascade",
+        "HTTP 200 without redirect or denial marker"
+      ],
+      "replay_status_code": 200,
+      "replay_url": "http://localhost/mybb/newthread.php?fid=p1&processed=p1",
+      "replay_location": null,
+      "title": "Forums",
+      "detector_denial": [],
+      "text_excerpt": "Forums Search Member List Calendar Help Current time: 07-04-2026, 04:16 PM Hello There, Guest! ( Login — Register ) Forums / Board Message Forums Invalid forum English (American) Contact Us | Your Website | Return to Top | Return to Content | Lite (Archive) Mode | RSS Syndication Powered By MyBB , © 2002-2026 MyBB Group .",
+      "review_status": "not_vulnerable",
+      "review_reason": "newthread.php response is normal forum/category/password handling, not the target vulnerability"
+    },
+    {
+      "category": "admin_only",
+      "page": "newthread.php?fid=p1&processed=p1",
+      "actor": "user1",
+      "method": "POST",
+      "original_status": "vulnerable",
+      "original_evidence": [
+        "oracle=response-cascade",
+        "HTTP 200 without redirect or denial marker"
+      ],
+      "replay_status_code": 200,
+      "replay_url": "http://localhost/mybb/newthread.php?fid=p1&processed=p1",
+      "replay_location": null,
+      "title": "Forums",
+      "detector_denial": [],
+      "text_excerpt": "Forums Search Member List Calendar Help Current time: 07-04-2026, 06:16 AM Welcome back, user1 . You last visited: 06-27-2026, 08:16 AM ( User CP — Log Out ) Open Buddy List View New Posts | View Today's Posts | Private Messages (Unread 0, Total 0) Forums / Board Message Forums Invalid forum English (American) Contact Us | Your Website | Return to Top | Return to Content | Lite (Archive) Mode | RSS Syndication Powered By MyBB , © 2002-2026 MyBB Group .",
+      "review_status": "not_vulnerable",
+      "review_reason": "newthread.php response is normal forum/category/password handling, not the target vulnerability"
+    },
+    {
+      "category": "admin_only",
+      "page": "newthread.php?fid=p1&processed=p1",
+      "actor": "user2",
+      "method": "POST",
+      "original_status": "vulnerable",
+      "original_evidence": [
+        "oracle=response-cascade",
+        "HTTP 200 without redirect or denial marker"
+      ],
+      "replay_status_code": 200,
+      "replay_url": "http://localhost/mybb/newthread.php?fid=p1&processed=p1",
+      "replay_location": null,
+      "title": "Forums",
+      "detector_denial": [],
+      "text_excerpt": "Forums Search Member List Calendar Help Current time: 07-04-2026, 06:16 AM Welcome back, user2 . You last visited: 06-26-2026, 09:46 AM ( User CP — Log Out ) Open Buddy List View New Posts | View Today's Posts | Private Messages (Unread 0, Total 0) Forums / Board Message Forums Invalid forum English (American) Contact Us | Your Website | Return to Top | Return to Content | Lite (Archive) Mode | RSS Syndication Powered By MyBB , © 2002-2026 MyBB Group .",
+      "review_status": "not_vulnerable",
+      "review_reason": "newthread.php response is normal forum/category/password handling, not the target vulnerability"
+    },
+    {
+      "category": "horizontal",
+      "page": "private.php?action=delete&pmid=p1",
+      "actor": "user1",
+      "method": "GET",
+      "original_status": "vulnerable",
+      "original_evidence": [
+        "oracle=response-cascade",
+        "HTTP 200 without redirect or denial marker",
+        "horizontal override: pmid=1"
+      ],
+      "replay_status_code": 200,
+      "replay_url": "http://localhost/mybb/private.php?action=delete&pmid=1&my_post_key=8fd495b95d51b665c22493ccfd043e6a",
+      "replay_location": null,
+      "title": "Forums",
+      "detector_denial": [],
+      "text_excerpt": "Forums Forums The selected private messages have been deleted.jG8a7UwZg9 Click here if you don't want to wait any longer.",
+      "review_status": "not_vulnerable",
+      "review_reason": "private.php page is an authenticated user feature or invalid PM target, not the known forum-password subscription bug"
+    },
+    {
+      "category": "horizontal",
+      "page": "private.php?action=read&pmid=p1",
+      "actor": "user1",
+      "method": "GET",
+      "original_status": "vulnerable",
+      "original_evidence": [
+        "oracle=response-cascade",
+        "HTTP 200 without redirect or denial marker",
+        "horizontal override: pmid=1"
+      ],
+      "replay_status_code": 200,
+      "replay_url": "http://localhost/mybb/private.php?action=read&pmid=1",
+      "replay_location": null,
+      "title": "Forums",
+      "detector_denial": [],
+      "text_excerpt": "Forums Search Member List Calendar Help Current time: 07-04-2026, 06:16 AM Welcome back, user1 . You last visited: 06-27-2026, 08:16 AM ( User CP — Log Out ) Open Buddy List View New Posts | View Today's Posts | Private Messages (Unread 0, Total 0) Forums / Board Message Forums Invalid PMLwVKziAC31 English (American) Contact Us | Your Website | Return to Top | Return to Content | Lite (Archive) Mode | RSS Syndication Powered By MyBB , © 2002-2026 MyBB Group .",
+      "review_status": "not_vulnerable",
+      "review_reason": "private.php page is an authenticated user feature or invalid PM target, not the known forum-password subscription bug"
+    },
+    {
+      "category": "horizontal",
+      "page": "private.php?action=send&do=forward&pmid=p1",
+      "actor": "user1",
+      "method": "GET",
+      "original_status": "vulnerable",
+      "original_evidence": [
+        "oracle=response-cascade",
+        "HTTP 200 without redirect or denial marker",
+        "horizontal override: pmid=1"
+      ],
+      "replay_status_code": 200,
+      "replay_url": "http://localhost/mybb/private.php?action=send&do=forward&pmid=1",
+      "replay_location": null,
+      "title": "Compose a Private MessageAVk90BMwuo",
+      "detector_denial": [],
+      "text_excerpt": "Compose a Private MessageAVk90BMwuo Search Member List Calendar Help Current time: 07-04-2026, 06:16 AM Welcome back, user1 . You last visited: 06-27-2026, 08:16 AM ( User CP — Log Out ) Open Buddy List View New Posts | View Today's Posts | Private Messages (Unread 0, Total 0) Forums / Private MessagesLQeGcs6OW7 / ComposecRfJ04MBtO Menu User CP Home Messenger Compose Inbox Sent Items Drafts Trash Can Tracking Edit Folders Your Profile Edit Profile Change Password Change Email Change Avatar Change Signature Edit Options Miscellaneous Group Memberships Buddy/Ignore List Manage Attachments Saved Drafts Subscribed Threads Forum Subscriptions View Profile Compose a Private MessageAVk90BMwuo Recipients:okI9s2UycT Separate multiple user names with a comma.3eqV4oEAd2 You may send this message to a maximum of 5 people.ByAdjoT1OX BCC:45t6kDfiHj Subject:2xer5khqGt Message Icon:6grc7mYjUK no icon Message:UDAdHZzXey Smilies [quote=''] [/quote] Options:aHZopS5gFm Signature: include your signature in this message.wTsoc3uyKC Disable Smilies: disable smilies from showing in this message.dtBznJMjif Save a Copy: save a copy of this message in your Sent Items folder.2jTNbaEPR4 Request Read Receipt: re",
+      "review_status": "not_vulnerable",
+      "review_reason": "private.php page is an authenticated user feature or invalid PM target, not the known forum-password subscription bug"
+    },
+    {
+      "category": "horizontal",
+      "page": "private.php?action=send&do=reply&pmid=p1",
+      "actor": "user1",
+      "method": "GET",
+      "original_status": "vulnerable",
+      "original_evidence": [
+        "oracle=response-cascade",
+        "HTTP 200 without redirect or denial marker",
+        "horizontal override: pmid=1"
+      ],
+      "replay_status_code": 200,
+      "replay_url": "http://localhost/mybb/private.php?action=send&do=reply&pmid=1",
+      "replay_location": null,
+      "title": "Compose a Private MessageAVk90BMwuo",
+      "detector_denial": [],
+      "text_excerpt": "Compose a Private MessageAVk90BMwuo Search Member List Calendar Help Current time: 07-04-2026, 06:16 AM Welcome back, user1 . You last visited: 06-27-2026, 08:16 AM ( User CP — Log Out ) Open Buddy List View New Posts | View Today's Posts | Private Messages (Unread 0, Total 0) Forums / Private MessagesLQeGcs6OW7 / ComposecRfJ04MBtO Menu User CP Home Messenger Compose Inbox Sent Items Drafts Trash Can Tracking Edit Folders Your Profile Edit Profile Change Password Change Email Change Avatar Change Signature Edit Options Miscellaneous Group Memberships Buddy/Ignore List Manage Attachments Saved Drafts Subscribed Threads Forum Subscriptions View Profile Compose a Private MessageAVk90BMwuo Recipients:okI9s2UycT Separate multiple user names with a comma.3eqV4oEAd2 You may send this message to a maximum of 5 people.ByAdjoT1OX BCC:45t6kDfiHj Subject:2xer5khqGt Message Icon:6grc7mYjUK no icon Message:UDAdHZzXey Smilies [quote=''] [/quote] Options:aHZopS5gFm Signature: include your signature in this message.wTsoc3uyKC Disable Smilies: disable smilies from showing in this message.dtBznJMjif Save a Copy: save a copy of this message in your Sent Items folder.2jTNbaEPR4 Request Read Receipt: re",
+      "review_status": "not_vulnerable",
+      "review_reason": "private.php page is an authenticated user feature or invalid PM target, not the known forum-password subscription bug"
+    },
+    {
+      "category": "horizontal",
+      "page": "private.php?fid=p1",
+      "actor": "user1",
+      "method": "GET",
+      "original_status": "vulnerable",
+      "original_evidence": [
+        "oracle=response-cascade",
+        "HTTP 200 without redirect or denial marker",
+        "horizontal override: fid=2"
+      ],
+      "replay_status_code": 200,
+      "replay_url": "http://localhost/mybb/private.php?fid=2",
+      "replay_location": null,
+      "title": "Forums - Private MessagingLyrn29cBi5",
+      "detector_denial": [],
+      "text_excerpt": "Forums - Private MessagingLyrn29cBi5 Search Member List Calendar Help Current time: 07-04-2026, 06:16 AM Welcome back, user1 . You last visited: 06-27-2026, 08:16 AM ( User CP — Log Out ) Open Buddy List View New Posts | View Today's Posts | Private Messages (Unread 0, Total 0) Forums / Private MessagesLQeGcs6OW7 Menu User CP Home Messenger Compose Inbox Sent Items Drafts Trash Can Tracking Edit Folders Your Profile Edit Profile Change Password Change Email Change Avatar Change Signature Edit Options Miscellaneous Group Memberships Buddy/Ignore List Manage Attachments Saved Drafts Subscribed Threads Forum Subscriptions View Profile 0% of PM space used.EIc9qZaSKX InboxN4twmVP9k0 | Compose MessagexFXALQSDM7 | Manage Foldersiequc9ASPV | Empty FoldersM4jNZQwBia | Download MessagesxkjRDnBGf3 ( Advanced Search80fngdzoy7 ) Private Messages in folder Sent Items qsP3S6cYeO Message TitlemeInTQoc7U Sent ToEyFzg5rOJR Date/Time Sente1ntqlQJ3P There are no private messages in this folder.1YDRtLohrs Inbox Sent Items Drafts Trash Can orljiAcM8Bzv the selected messages3RVT7JzDqH Jump to Folder:PrI3iqYzvJ Inbox Sent Items Drafts Trash Can English (American) Contact Us | Your Website | Return to Top ",
+      "review_status": "not_vulnerable",
+      "review_reason": "private.php page is an authenticated user feature or invalid PM target, not the known forum-password subscription bug"
+    },
+    {
+      "category": "admin_only",
+      "page": "usercp2.php",
+      "actor": "user1",
+      "method": "POST",
+      "original_status": "vulnerable",
+      "original_evidence": [
+        "oracle=response-cascade",
+        "HTTP 200 without redirect or denial marker"
+      ],
+      "replay_status_code": 200,
+      "replay_url": "http://localhost/mybb/usercp2.php",
+      "replay_location": null,
+      "title": "Forums",
+      "detector_denial": [],
+      "text_excerpt": "Forums Forums The selected thread has been added to your subscriptions list. You will now be returned to the location you came from. Click here if you don't want to wait any longer.",
+      "review_status": "not_vulnerable",
+      "review_reason": "bare usercp2.php action endpoint; not a distinct access-control page"
+    },
+    {
+      "category": "admin_only",
+      "page": "usercp2.php",
+      "actor": "user2",
+      "method": "POST",
+      "original_status": "vulnerable",
+      "original_evidence": [
+        "oracle=response-cascade",
+        "HTTP 200 without redirect or denial marker"
+      ],
+      "replay_status_code": 200,
+      "replay_url": "http://localhost/mybb/usercp2.php",
+      "replay_location": null,
+      "title": "Forums",
+      "detector_denial": [],
+      "text_excerpt": "Forums Forums The selected thread has been added to your subscriptions list. You will now be returned to the location you came from. Click here if you don't want to wait any longer.",
+      "review_status": "not_vulnerable",
+      "review_reason": "bare usercp2.php action endpoint; not a distinct access-control page"
+    },
+    {
+      "category": "admin_only",
+      "page": "usercp2.php?action=addsubscription&fid=p1&type=forum",
+      "actor": "user1",
+      "method": "GET",
+      "original_status": "vulnerable",
+      "original_evidence": [
+        "oracle=response-cascade",
+        "HTTP 200 without redirect or denial marker"
+      ],
+      "replay_status_code": 200,
+      "replay_url": "http://localhost/mybb/usercp2.php?action=addsubscription&fid=2&type=forum&my_post_key=8fd495b95d51b665c22493ccfd043e6a",
+      "replay_location": null,
+      "title": "Forums",
+      "detector_denial": [],
+      "text_excerpt": "Forums Forums The selected forum has been added to your forum subscriptions list. You will now be returned to where you came from. Click here if you don't want to wait any longer.",
+      "review_status": "vulnerable",
+      "review_reason": "known target: logged-in user can subscribe to password-protected forum without entering forum password"
+    },
+    {
+      "category": "admin_only",
+      "page": "usercp2.php?action=addsubscription&fid=p1&type=forum",
+      "actor": "user2",
+      "method": "GET",
+      "original_status": "vulnerable",
+      "original_evidence": [
+        "oracle=response-cascade",
+        "HTTP 200 without redirect or denial marker"
+      ],
+      "replay_status_code": 200,
+      "replay_url": "http://localhost/mybb/usercp2.php?action=addsubscription&fid=2&type=forum&my_post_key=24fecc0863e67d44754900860ae033e3",
+      "replay_location": null,
+      "title": "Forums",
+      "detector_denial": [],
+      "text_excerpt": "Forums Forums The selected forum has been added to your forum subscriptions list. You will now be returned to where you came from. Click here if you don't want to wait any longer.",
+      "review_status": "vulnerable",
+      "review_reason": "known target: logged-in user can subscribe to password-protected forum without entering forum password"
+    }
+  ]
+}

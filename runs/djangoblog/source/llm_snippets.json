@@ -1,0 +1,13 @@
+{
+  "summary": {
+    "source_items": 2,
+    "llm_items": 1,
+    "items_removed": 1
+  },
+  "snippets": [
+    {
+      "path": "blog/views.py",
+      "code": "Post.objects.filter(status=1)"
+    }
+  ]
+}

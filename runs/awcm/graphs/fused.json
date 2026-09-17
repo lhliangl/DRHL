@@ -1,0 +1,5822 @@
+{
+  "nodes": [
+    "a.php",
+    "album.php",
+    "album_cat.php",
+    "album_rate.php",
+    "blocks/aljazeera_marquee.php",
+    "blocks/center_search.php",
+    "blocks/data/aljazeera_marquee.php",
+    "blocks/data/aljazeera_marquee.php?d1=p1&d2=p1&img=p1",
+    "blocks/data/function.fsockopen",
+    "blocks/latest_images_fade.php",
+    "blocks/latest_lessons_side.php",
+    "blocks/latest_news_ajax_2.php",
+    "blocks/latest_news_ajax_center.php",
+    "blocks/latest_news_maqrquee.php",
+    "blocks/latest_pro_side.php",
+    "blocks/latest_topics_ajax_center.php",
+    "blocks/latest_topics_side.php",
+    "blocks/login.php",
+    "blocks/login_vb.php",
+    "blocks/ltst_imgs_ajax_slider.php",
+    "blocks/ltst_imgs_filmstrip.php",
+    "blocks/ltst_news_1_colum_center.php",
+    "blocks/ltst_topics_1_colum_center.php",
+    "blocks/ltst_videos_filmstrip.php",
+    "blocks/online.php",
+    "blocks/place.php",
+    "blocks/random_img.php",
+    "blocks/small_search.php",
+    "blocks/stats.php",
+    "blocks/top_login.php",
+    "change_lang.php",
+    "change_theme.php",
+    "comment.php",
+    "common.php",
+    "connect.php",
+    "contactus.php",
+    "contactus.php?do=",
+    "control.php",
+    "control/block_manage.php",
+    "control/categories.php",
+    "control/close_site.php",
+    "control/common.php",
+    "control/db_backup.php",
+    "control/flash_categories.php",
+    "control/flash_settings.php",
+    "control/flash_waiting.php",
+    "control/images_categories.php",
+    "control/images_settings.php",
+    "control/images_waiting.php",
+    "control/index.php",
+    "control/keywords.php",
+    "control/languages.php",
+    "control/lessons_categories.php",
+    "control/lessons_settings.php",
+    "control/lessons_waiting.php",
+    "control/login.php",
+    "control/logout.php",
+    "control/main.php",
+    "control/maininfo.php",
+    "control/member_cregister.php",
+    "control/member_manage.php",
+    "control/member_rules.php",
+    "control/menu.php",
+    "control/menu_top.php",
+    "control/messages.php",
+    "control/news_categories.php",
+    "control/news_settings.php",
+    "control/news_waiting.php",
+    "control/pages_add.php",
+    "control/pages_manage.php",
+    "control/programs_categories.php",
+    "control/programs_settings.php",
+    "control/programs_waiting.php",
+    "control/security.php",
+    "control/sounds_categories.php",
+    "control/sounds_settings.php",
+    "control/sounds_waiting.php",
+    "control/success.php",
+    "control/themes.php",
+    "control/topics_categories.php",
+    "control/topics_settings.php",
+    "control/topics_waiting.php",
+    "control/videos_categories.php",
+    "control/videos_settings.php",
+    "control/videos_waiting.php",
+    "control/weblinks_categories.php",
+    "control/weblinks_settings.php",
+    "control/weblinks_waiting.php",
+    "cookie_gen.php",
+    "down_pro.php",
+    "flash.php",
+    "flash_cat.php",
+    "flash_lib.php",
+    "flash_rate.php",
+    "footer.php",
+    "header.php",
+    "includes/avatar.php",
+    "includes/avatar.php?h=p1&id=p1&w=p1",
+    "includes/blocks_center_down.php",
+    "includes/blocks_center_top.php",
+    "includes/blocks_down.php",
+    "includes/blocks_left.php",
+    "includes/blocks_right.php",
+    "includes/blocks_top.php",
+    "includes/captcha.php",
+    "includes/classes/rssreader.php",
+    "includes/del_pm.php",
+    "includes/embed_vid.php",
+    "includes/functions.php",
+    "includes/show_vid_title.php",
+    "includes/small_search.php",
+    "includes/video_image.php",
+    "includes/window_down.php",
+    "includes/window_top.php",
+    "index.php",
+    "install/creattables.php",
+    "install/footer.php",
+    "install/header.php",
+    "install/index.php",
+    "install/step1.php",
+    "install/step2.php",
+    "install/step3.php",
+    "install/step4.php",
+    "install/step5.php",
+    "install/step6.php",
+    "install/step7.php",
+    "install/upgrade.php",
+    "install/upgrade2.php",
+    "install/upgrade3.php",
+    "install/upgrade4.php",
+    "languages/ar.php",
+    "languages/en.php",
+    "lesson.php",
+    "lessons.php",
+    "lessons_cat.php",
+    "login.php",
+    "login.php?do=",
+    "logout.php",
+    "m_cp_avatar.php",
+    "m_cp_avatar.php?KeepThis=true&TB_iframe=true&height=p1&width=p1",
+    "m_cp_avatar.php?do=",
+    "member.php",
+    "member.php?id=p1",
+    "member_cp.php",
+    "member_cp.php?do=",
+    "member_cp_pm.php",
+    "member_cp_pm.php?new=",
+    "member_cp_pm.php?new=&send=p1",
+    "member_cp_pm.php?v=p1",
+    "member_posts.php",
+    "msgs.php",
+    "news.php",
+    "news_cat.php",
+    "news_show.php",
+    "notify.php",
+    "notify.php?v=p1",
+    "online.php",
+    "page.php",
+    "pro_cat.php",
+    "program.php",
+    "programs.php",
+    "rate.php",
+    "register.php",
+    "register.php?do=",
+    "rss/flash.php",
+    "rss/lessons.php",
+    "rss/news.php",
+    "rss/programs.php",
+    "rss/sounds.php",
+    "rss/topics.php",
+    "rss/videos.php",
+    "save.php",
+    "search.php",
+    "search.php?search=p1&where=p1",
+    "send_flash.php",
+    "send_flash.php?do=",
+    "send_image.php",
+    "send_image.php?KeepThis=true&TB_iframe=true&height=p1&width=p1",
+    "send_image.php?do=",
+    "send_lesson.php",
+    "send_lesson.php?do=",
+    "send_news.php",
+    "send_news.php?do=",
+    "send_pro.php",
+    "send_pro.php?do=",
+    "send_sound.php",
+    "send_topic.php",
+    "send_topic.php?do=",
+    "send_video.php",
+    "send_video.php?do=",
+    "show_video.php",
+    "sound_cat.php",
+    "sound_listen.php",
+    "sounds.php",
+    "themes/awcm_darkblue/settings.php",
+    "themes/nice_blue/settings.php",
+    "themes/nice_motorcycle/settings.php",
+    "themes/silver/settings.php",
+    "topic.php",
+    "topics.php",
+    "topics_cat.php",
+    "video_cat.php",
+    "video_lib.php",
+    "weblinks.php",
+    "weblinks_add.php",
+    "weblinks_cat.php",
+    "weblinks_site.php",
+    "weblinks_visit.php"
+  ],
+  "edges": [
+    {
+      "from": "album.php",
+      "to": "change_lang.php"
+    },
+    {
+      "from": "album.php",
+      "to": "change_theme.php"
+    },
+    {
+      "from": "album.php",
+      "to": "login.php?do="
+    },
+    {
+      "from": "album.php",
+      "to": "search.php"
+    },
+    {
+      "from": "album.php",
+      "to": "send_image.php?KeepThis=true&TB_iframe=true&height=p1&width=p1"
+    },
+    {
+      "from": "album.php",
+      "to": "video_lib.php"
+    },
+    {
+      "from": "blocks/data/aljazeera_marquee.php?d1=p1&d2=p1&img=p1",
+      "to": "blocks/data/function.fsockopen"
+    },
+    {
+      "from": "change_lang.php",
+      "to": "album.php"
+    },
+    {
+      "from": "change_lang.php",
+      "to": "contactus.php"
+    },
+    {
+      "from": "change_lang.php",
+      "to": "flash_lib.php"
+    },
+    {
+      "from": "change_lang.php",
+      "to": "index.php"
+    },
+    {
+      "from": "change_lang.php",
+      "to": "lessons.php"
+    },
+    {
+      "from": "change_lang.php",
+      "to": "member_cp.php"
+    },
+    {
+      "from": "change_lang.php",
+      "to": "member_cp.php?do="
+    },
+    {
+      "from": "change_lang.php",
+      "to": "member_cp_pm.php"
+    },
+    {
+      "from": "change_lang.php",
+      "to": "member_cp_pm.php?new="
+    },
+    {
+      "from": "change_lang.php",
+      "to": "member_cp_pm.php?new=&send=p1"
+    },
+    {
+      "from": "change_lang.php",
+      "to": "news.php"
+    },
+    {
+      "from": "change_lang.php",
+      "to": "online.php"
+    },
+    {
+      "from": "change_lang.php",
+      "to": "programs.php"
+    },
+    {
+      "from": "change_lang.php",
+      "to": "register.php"
+    },
+    {
+      "from": "change_lang.php",
+      "to": "search.php"
+    },
+    {
+      "from": "change_lang.php",
+      "to": "send_flash.php"
+    },
+    {
+      "from": "change_lang.php",
+      "to": "send_lesson.php"
+    },
+    {
+      "from": "change_lang.php",
+      "to": "send_lesson.php?do="
+    },
+    {
+      "from": "change_lang.php",
+      "to": "send_news.php"
+    },
+    {
+      "from": "change_lang.php",
+      "to": "send_news.php?do="
+    },
+    {
+      "from": "change_lang.php",
+      "to": "send_pro.php"
+    },
+    {
+      "from": "change_lang.php",
+      "to": "send_topic.php"
+    },
+    {
+      "from": "change_lang.php",
+      "to": "send_topic.php?do="
+    },
+    {
+      "from": "change_lang.php",
+      "to": "send_video.php"
+    },
+    {
+      "from": "change_lang.php",
+      "to": "sounds.php"
+    },
+    {
+      "from": "change_lang.php",
+      "to": "topics.php"
+    },
+    {
+      "from": "change_lang.php",
+      "to": "video_lib.php"
+    },
+    {
+      "from": "change_lang.php",
+      "to": "weblinks.php"
+    },
+    {
+      "from": "change_theme.php",
+      "to": "album.php"
+    },
+    {
+      "from": "change_theme.php",
+      "to": "contactus.php"
+    },
+    {
+      "from": "change_theme.php",
+      "to": "flash_lib.php"
+    },
+    {
+      "from": "change_theme.php",
+      "to": "index.php"
+    },
+    {
+      "from": "change_theme.php",
+      "to": "lessons.php"
+    },
+    {
+      "from": "change_theme.php",
+      "to": "member_cp.php"
+    },
+    {
+      "from": "change_theme.php",
+      "to": "member_cp.php?do="
+    },
+    {
+      "from": "change_theme.php",
+      "to": "member_cp_pm.php"
+    },
+    {
+      "from": "change_theme.php",
+      "to": "member_cp_pm.php?new="
+    },
+    {
+      "from": "change_theme.php",
+      "to": "member_cp_pm.php?new=&send=p1"
+    },
+    {
+      "from": "change_theme.php",
+      "to": "news.php"
+    },
+    {
+      "from": "change_theme.php",
+      "to": "online.php"
+    },
+    {
+      "from": "change_theme.php",
+      "to": "programs.php"
+    },
+    {
+      "from": "change_theme.php",
+      "to": "register.php"
+    },
+    {
+      "from": "change_theme.php",
+      "to": "search.php"
+    },
+    {
+      "from": "change_theme.php",
+      "to": "send_flash.php"
+    },
+    {
+      "from": "change_theme.php",
+      "to": "send_lesson.php"
+    },
+    {
+      "from": "change_theme.php",
+      "to": "send_lesson.php?do="
+    },
+    {
+      "from": "change_theme.php",
+      "to": "send_news.php"
+    },
+    {
+      "from": "change_theme.php",
+      "to": "send_news.php?do="
+    },
+    {
+      "from": "change_theme.php",
+      "to": "send_pro.php"
+    },
+    {
+      "from": "change_theme.php",
+      "to": "send_topic.php"
+    },
+    {
+      "from": "change_theme.php",
+      "to": "send_topic.php?do="
+    },
+    {
+      "from": "change_theme.php",
+      "to": "send_video.php"
+    },
+    {
+      "from": "change_theme.php",
+      "to": "sounds.php"
+    },
+    {
+      "from": "change_theme.php",
+      "to": "topics.php"
+    },
+    {
+      "from": "change_theme.php",
+      "to": "video_lib.php"
+    },
+    {
+      "from": "change_theme.php",
+      "to": "weblinks.php"
+    },
+    {
+      "from": "contactus.php",
+      "to": "change_lang.php"
+    },
+    {
+      "from": "contactus.php",
+      "to": "change_theme.php"
+    },
+    {
+      "from": "contactus.php",
+      "to": "contactus.php?do="
+    },
+    {
+      "from": "contactus.php",
+      "to": "login.php?do="
+    },
+    {
+      "from": "contactus.php",
+      "to": "search.php"
+    },
+    {
+      "from": "contactus.php",
+      "to": "weblinks.php"
+    },
+    {
+      "from": "contactus.php?do=",
+      "to": "change_lang.php"
+    },
+    {
+      "from": "contactus.php?do=",
+      "to": "change_theme.php"
+    },
+    {
+      "from": "contactus.php?do=",
+      "to": "contactus.php?do="
+    },
+    {
+      "from": "contactus.php?do=",
+      "to": "login.php?do="
+    },
+    {
+      "from": "contactus.php?do=",
+      "to": "search.php"
+    },
+    {
+      "from": "flash_lib.php",
+      "to": "album.php"
+    },
+    {
+      "from": "flash_lib.php",
+      "to": "change_lang.php"
+    },
+    {
+      "from": "flash_lib.php",
+      "to": "change_theme.php"
+    },
+    {
+      "from": "flash_lib.php",
+      "to": "login.php?do="
+    },
+    {
+      "from": "flash_lib.php",
+      "to": "rss/flash.php"
+    },
+    {
+      "from": "flash_lib.php",
+      "to": "search.php"
+    },
+    {
+      "from": "flash_lib.php",
+      "to": "send_flash.php"
+    },
+    {
+      "from": "index.php",
+      "to": "change_lang.php"
+    },
+    {
+      "from": "index.php",
+      "to": "change_theme.php"
+    },
+    {
+      "from": "index.php",
+      "to": "login.php?do="
+    },
+    {
+      "from": "index.php",
+      "to": "online.php"
+    },
+    {
+      "from": "index.php",
+      "to": "search.php"
+    },
+    {
+      "from": "lessons.php",
+      "to": "change_lang.php"
+    },
+    {
+      "from": "lessons.php",
+      "to": "change_theme.php"
+    },
+    {
+      "from": "lessons.php",
+      "to": "login.php?do="
+    },
+    {
+      "from": "lessons.php",
+      "to": "rss/lessons.php"
+    },
+    {
+      "from": "lessons.php",
+      "to": "search.php"
+    },
+    {
+      "from": "lessons.php",
+      "to": "send_lesson.php"
+    },
+    {
+      "from": "lessons.php",
+      "to": "topics.php"
+    },
+    {
+      "from": "login.php?do=",
+      "to": "notify.php?v=p1"
+    },
+    {
+      "from": "m_cp_avatar.php?KeepThis=true&TB_iframe=true&height=p1&width=p1",
+      "to": "includes/avatar.php?h=p1&id=p1&w=p1"
+    },
+    {
+      "from": "m_cp_avatar.php?KeepThis=true&TB_iframe=true&height=p1&width=p1",
+      "to": "m_cp_avatar.php?do="
+    },
+    {
+      "from": "m_cp_avatar.php?do=",
+      "to": "m_cp_avatar.php?do="
+    },
+    {
+      "from": "member_cp.php",
+      "to": "change_lang.php"
+    },
+    {
+      "from": "member_cp.php",
+      "to": "change_theme.php"
+    },
+    {
+      "from": "member_cp.php",
+      "to": "m_cp_avatar.php?KeepThis=true&TB_iframe=true&height=p1&width=p1"
+    },
+    {
+      "from": "member_cp.php",
+      "to": "member_cp.php?do="
+    },
+    {
+      "from": "member_cp.php",
+      "to": "member_cp_pm.php"
+    },
+    {
+      "from": "member_cp.php",
+      "to": "member_cp_pm.php?new="
+    },
+    {
+      "from": "member_cp.php",
+      "to": "search.php"
+    },
+    {
+      "from": "member_cp.php?do=",
+      "to": "change_lang.php"
+    },
+    {
+      "from": "member_cp.php?do=",
+      "to": "change_theme.php"
+    },
+    {
+      "from": "member_cp.php?do=",
+      "to": "member_cp.php?do="
+    },
+    {
+      "from": "member_cp.php?do=",
+      "to": "search.php"
+    },
+    {
+      "from": "member_cp_pm.php",
+      "to": "change_lang.php"
+    },
+    {
+      "from": "member_cp_pm.php",
+      "to": "change_theme.php"
+    },
+    {
+      "from": "member_cp_pm.php",
+      "to": "member_cp_pm.php"
+    },
+    {
+      "from": "member_cp_pm.php",
+      "to": "member_cp_pm.php?v=p1"
+    },
+    {
+      "from": "member_cp_pm.php",
+      "to": "search.php"
+    },
+    {
+      "from": "member_cp_pm.php?new=",
+      "to": "change_lang.php"
+    },
+    {
+      "from": "member_cp_pm.php?new=",
+      "to": "change_theme.php"
+    },
+    {
+      "from": "member_cp_pm.php?new=",
+      "to": "member_cp_pm.php?new=&send=p1"
+    },
+    {
+      "from": "member_cp_pm.php?new=",
+      "to": "search.php"
+    },
+    {
+      "from": "member_cp_pm.php?new=&send=p1",
+      "to": "change_lang.php"
+    },
+    {
+      "from": "member_cp_pm.php?new=&send=p1",
+      "to": "change_theme.php"
+    },
+    {
+      "from": "member_cp_pm.php?new=&send=p1",
+      "to": "member_cp_pm.php?new=&send=p1"
+    },
+    {
+      "from": "member_cp_pm.php?new=&send=p1",
+      "to": "search.php"
+    },
+    {
+      "from": "member_cp_pm.php?v=p1",
+      "to": "change_lang.php"
+    },
+    {
+      "from": "member_cp_pm.php?v=p1",
+      "to": "change_theme.php"
+    },
+    {
+      "from": "member_cp_pm.php?v=p1",
+      "to": "member_cp_pm.php?v=p1"
+    },
+    {
+      "from": "member_cp_pm.php?v=p1",
+      "to": "search.php"
+    },
+    {
+      "from": "news.php",
+      "to": "blocks/data/aljazeera_marquee.php?d1=p1&d2=p1&img=p1"
+    },
+    {
+      "from": "news.php",
+      "to": "change_lang.php"
+    },
+    {
+      "from": "news.php",
+      "to": "change_theme.php"
+    },
+    {
+      "from": "news.php",
+      "to": "flash_lib.php"
+    },
+    {
+      "from": "news.php",
+      "to": "login.php?do="
+    },
+    {
+      "from": "news.php",
+      "to": "rss/news.php"
+    },
+    {
+      "from": "news.php",
+      "to": "search.php"
+    },
+    {
+      "from": "news.php",
+      "to": "send_news.php"
+    },
+    {
+      "from": "online.php",
+      "to": "change_lang.php"
+    },
+    {
+      "from": "online.php",
+      "to": "change_theme.php"
+    },
+    {
+      "from": "online.php",
+      "to": "login.php?do="
+    },
+    {
+      "from": "online.php",
+      "to": "member.php?id=p1"
+    },
+    {
+      "from": "online.php",
+      "to": "member_cp.php"
+    },
+    {
+      "from": "online.php",
+      "to": "register.php"
+    },
+    {
+      "from": "online.php",
+      "to": "search.php"
+    },
+    {
+      "from": "programs.php",
+      "to": "change_lang.php"
+    },
+    {
+      "from": "programs.php",
+      "to": "change_theme.php"
+    },
+    {
+      "from": "programs.php",
+      "to": "lessons.php"
+    },
+    {
+      "from": "programs.php",
+      "to": "login.php?do="
+    },
+    {
+      "from": "programs.php",
+      "to": "rss/programs.php"
+    },
+    {
+      "from": "programs.php",
+      "to": "search.php"
+    },
+    {
+      "from": "programs.php",
+      "to": "send_pro.php"
+    },
+    {
+      "from": "register.php",
+      "to": "change_lang.php"
+    },
+    {
+      "from": "register.php",
+      "to": "change_theme.php"
+    },
+    {
+      "from": "register.php",
+      "to": "login.php?do="
+    },
+    {
+      "from": "register.php",
+      "to": "register.php?do="
+    },
+    {
+      "from": "register.php",
+      "to": "search.php"
+    },
+    {
+      "from": "register.php?do=",
+      "to": "change_lang.php"
+    },
+    {
+      "from": "register.php?do=",
+      "to": "change_theme.php"
+    },
+    {
+      "from": "register.php?do=",
+      "to": "login.php?do="
+    },
+    {
+      "from": "register.php?do=",
+      "to": "register.php?do="
+    },
+    {
+      "from": "register.php?do=",
+      "to": "search.php"
+    },
+    {
+      "from": "search.php",
+      "to": "change_lang.php"
+    },
+    {
+      "from": "search.php",
+      "to": "change_theme.php"
+    },
+    {
+      "from": "search.php",
+      "to": "contactus.php"
+    },
+    {
+      "from": "search.php",
+      "to": "login.php?do="
+    },
+    {
+      "from": "search.php",
+      "to": "search.php"
+    },
+    {
+      "from": "search.php",
+      "to": "search.php?search=p1&where=p1"
+    },
+    {
+      "from": "search.php?search=p1&where=p1",
+      "to": "change_lang.php"
+    },
+    {
+      "from": "search.php?search=p1&where=p1",
+      "to": "change_theme.php"
+    },
+    {
+      "from": "search.php?search=p1&where=p1",
+      "to": "login.php?do="
+    },
+    {
+      "from": "search.php?search=p1&where=p1",
+      "to": "search.php"
+    },
+    {
+      "from": "send_flash.php",
+      "to": "album.php"
+    },
+    {
+      "from": "send_flash.php",
+      "to": "change_lang.php"
+    },
+    {
+      "from": "send_flash.php",
+      "to": "change_theme.php"
+    },
+    {
+      "from": "send_flash.php",
+      "to": "search.php"
+    },
+    {
+      "from": "send_flash.php",
+      "to": "send_flash.php?do="
+    },
+    {
+      "from": "send_flash.php?do=",
+      "to": "change_lang.php"
+    },
+    {
+      "from": "send_flash.php?do=",
+      "to": "change_theme.php"
+    },
+    {
+      "from": "send_flash.php?do=",
+      "to": "search.php"
+    },
+    {
+      "from": "send_flash.php?do=",
+      "to": "send_flash.php?do="
+    },
+    {
+      "from": "send_image.php?KeepThis=true&TB_iframe=true&height=p1&width=p1",
+      "to": "send_image.php?do="
+    },
+    {
+      "from": "send_image.php?do=",
+      "to": "send_image.php?do="
+    },
+    {
+      "from": "send_lesson.php",
+      "to": "change_lang.php"
+    },
+    {
+      "from": "send_lesson.php",
+      "to": "change_theme.php"
+    },
+    {
+      "from": "send_lesson.php",
+      "to": "search.php"
+    },
+    {
+      "from": "send_lesson.php",
+      "to": "send_lesson.php?do="
+    },
+    {
+      "from": "send_lesson.php",
+      "to": "topics.php"
+    },
+    {
+      "from": "send_lesson.php?do=",
+      "to": "change_lang.php"
+    },
+    {
+      "from": "send_lesson.php?do=",
+      "to": "change_theme.php"
+    },
+    {
+      "from": "send_lesson.php?do=",
+      "to": "search.php"
+    },
+    {
+      "from": "send_lesson.php?do=",
+      "to": "send_lesson.php?do="
+    },
+    {
+      "from": "send_news.php",
+      "to": "blocks/data/aljazeera_marquee.php?d1=p1&d2=p1&img=p1"
+    },
+    {
+      "from": "send_news.php",
+      "to": "change_lang.php"
+    },
+    {
+      "from": "send_news.php",
+      "to": "change_theme.php"
+    },
+    {
+      "from": "send_news.php",
+      "to": "flash_lib.php"
+    },
+    {
+      "from": "send_news.php",
+      "to": "search.php"
+    },
+    {
+      "from": "send_news.php",
+      "to": "send_news.php?do="
+    },
+    {
+      "from": "send_news.php?do=",
+      "to": "change_lang.php"
+    },
+    {
+      "from": "send_news.php?do=",
+      "to": "change_theme.php"
+    },
+    {
+      "from": "send_news.php?do=",
+      "to": "search.php"
+    },
+    {
+      "from": "send_news.php?do=",
+      "to": "send_news.php?do="
+    },
+    {
+      "from": "send_pro.php",
+      "to": "change_lang.php"
+    },
+    {
+      "from": "send_pro.php",
+      "to": "change_theme.php"
+    },
+    {
+      "from": "send_pro.php",
+      "to": "lessons.php"
+    },
+    {
+      "from": "send_pro.php",
+      "to": "search.php"
+    },
+    {
+      "from": "send_pro.php",
+      "to": "send_pro.php?do="
+    },
+    {
+      "from": "send_pro.php?do=",
+      "to": "change_lang.php"
+    },
+    {
+      "from": "send_pro.php?do=",
+      "to": "change_theme.php"
+    },
+    {
+      "from": "send_pro.php?do=",
+      "to": "search.php"
+    },
+    {
+      "from": "send_pro.php?do=",
+      "to": "send_pro.php?do="
+    },
+    {
+      "from": "send_topic.php",
+      "to": "change_lang.php"
+    },
+    {
+      "from": "send_topic.php",
+      "to": "change_theme.php"
+    },
+    {
+      "from": "send_topic.php",
+      "to": "search.php"
+    },
+    {
+      "from": "send_topic.php",
+      "to": "send_topic.php?do="
+    },
+    {
+      "from": "send_topic.php?do=",
+      "to": "change_lang.php"
+    },
+    {
+      "from": "send_topic.php?do=",
+      "to": "change_theme.php"
+    },
+    {
+      "from": "send_topic.php?do=",
+      "to": "search.php"
+    },
+    {
+      "from": "send_topic.php?do=",
+      "to": "send_topic.php?do="
+    },
+    {
+      "from": "send_video.php",
+      "to": "change_lang.php"
+    },
+    {
+      "from": "send_video.php",
+      "to": "change_theme.php"
+    },
+    {
+      "from": "send_video.php",
+      "to": "search.php"
+    },
+    {
+      "from": "send_video.php",
+      "to": "send_video.php?do="
+    },
+    {
+      "from": "send_video.php",
+      "to": "sounds.php"
+    },
+    {
+      "from": "send_video.php?do=",
+      "to": "change_lang.php"
+    },
+    {
+      "from": "send_video.php?do=",
+      "to": "change_theme.php"
+    },
+    {
+      "from": "send_video.php?do=",
+      "to": "search.php"
+    },
+    {
+      "from": "send_video.php?do=",
+      "to": "send_video.php?do="
+    },
+    {
+      "from": "sounds.php",
+      "to": "change_lang.php"
+    },
+    {
+      "from": "sounds.php",
+      "to": "change_theme.php"
+    },
+    {
+      "from": "sounds.php",
+      "to": "login.php?do="
+    },
+    {
+      "from": "sounds.php",
+      "to": "programs.php"
+    },
+    {
+      "from": "sounds.php",
+      "to": "rss/sounds.php"
+    },
+    {
+      "from": "sounds.php",
+      "to": "search.php"
+    },
+    {
+      "from": "topics.php",
+      "to": "change_lang.php"
+    },
+    {
+      "from": "topics.php",
+      "to": "change_theme.php"
+    },
+    {
+      "from": "topics.php",
+      "to": "login.php?do="
+    },
+    {
+      "from": "topics.php",
+      "to": "rss/topics.php"
+    },
+    {
+      "from": "topics.php",
+      "to": "search.php"
+    },
+    {
+      "from": "topics.php",
+      "to": "send_topic.php"
+    },
+    {
+      "from": "video_lib.php",
+      "to": "change_lang.php"
+    },
+    {
+      "from": "video_lib.php",
+      "to": "change_theme.php"
+    },
+    {
+      "from": "video_lib.php",
+      "to": "login.php?do="
+    },
+    {
+      "from": "video_lib.php",
+      "to": "rss/videos.php"
+    },
+    {
+      "from": "video_lib.php",
+      "to": "search.php"
+    },
+    {
+      "from": "video_lib.php",
+      "to": "send_video.php"
+    },
+    {
+      "from": "video_lib.php",
+      "to": "sounds.php"
+    },
+    {
+      "from": "weblinks.php",
+      "to": "change_lang.php"
+    },
+    {
+      "from": "weblinks.php",
+      "to": "change_theme.php"
+    },
+    {
+      "from": "weblinks.php",
+      "to": "login.php?do="
+    },
+    {
+      "from": "weblinks.php",
+      "to": "news.php"
+    },
+    {
+      "from": "weblinks.php",
+      "to": "search.php"
+    }
+  ],
+  "static_edges": [
+    {
+      "from": "a.php",
+      "to": "footer.php"
+    },
+    {
+      "from": "a.php",
+      "to": "header.php"
+    },
+    {
+      "from": "a.php",
+      "to": "includes/window_down.php"
+    },
+    {
+      "from": "a.php",
+      "to": "includes/window_top.php"
+    },
+    {
+      "from": "album.php",
+      "to": "footer.php"
+    },
+    {
+      "from": "album.php",
+      "to": "header.php"
+    },
+    {
+      "from": "album.php",
+      "to": "includes/window_down.php"
+    },
+    {
+      "from": "album.php",
+      "to": "includes/window_top.php"
+    },
+    {
+      "from": "album_cat.php",
+      "to": "footer.php"
+    },
+    {
+      "from": "album_cat.php",
+      "to": "header.php"
+    },
+    {
+      "from": "album_cat.php",
+      "to": "includes/window_down.php"
+    },
+    {
+      "from": "album_cat.php",
+      "to": "includes/window_top.php"
+    },
+    {
+      "from": "album_rate.php",
+      "to": "footer.php"
+    },
+    {
+      "from": "album_rate.php",
+      "to": "header.php"
+    },
+    {
+      "from": "blocks/data/aljazeera_marquee.php",
+      "to": "includes/classes/rssreader.php"
+    },
+    {
+      "from": "comment.php",
+      "to": "footer.php"
+    },
+    {
+      "from": "comment.php",
+      "to": "header.php"
+    },
+    {
+      "from": "common.php",
+      "to": "connect.php"
+    },
+    {
+      "from": "contactus.php",
+      "to": "footer.php"
+    },
+    {
+      "from": "contactus.php",
+      "to": "header.php"
+    },
+    {
+      "from": "contactus.php",
+      "to": "includes/window_down.php"
+    },
+    {
+      "from": "contactus.php",
+      "to": "includes/window_top.php"
+    },
+    {
+      "from": "control.php",
+      "to": "footer.php"
+    },
+    {
+      "from": "control.php",
+      "to": "header.php"
+    },
+    {
+      "from": "control.php",
+      "to": "includes/window_down.php"
+    },
+    {
+      "from": "control.php",
+      "to": "includes/window_top.php"
+    },
+    {
+      "from": "control/block_manage.php",
+      "to": "control/common.php"
+    },
+    {
+      "from": "control/categories.php",
+      "to": "control/common.php"
+    },
+    {
+      "from": "control/close_site.php",
+      "to": "control/common.php"
+    },
+    {
+      "from": "control/common.php",
+      "to": "connect.php"
+    },
+    {
+      "from": "control/db_backup.php",
+      "to": "common.php"
+    },
+    {
+      "from": "control/flash_categories.php",
+      "to": "control/common.php"
+    },
+    {
+      "from": "control/flash_settings.php",
+      "to": "control/common.php"
+    },
+    {
+      "from": "control/flash_waiting.php",
+      "to": "control/common.php"
+    },
+    {
+      "from": "control/images_categories.php",
+      "to": "control/common.php"
+    },
+    {
+      "from": "control/images_settings.php",
+      "to": "control/common.php"
+    },
+    {
+      "from": "control/images_waiting.php",
+      "to": "control/common.php"
+    },
+    {
+      "from": "control/index.php",
+      "to": "control/common.php"
+    },
+    {
+      "from": "control/keywords.php",
+      "to": "control/common.php"
+    },
+    {
+      "from": "control/languages.php",
+      "to": "control/common.php"
+    },
+    {
+      "from": "control/lessons_categories.php",
+      "to": "control/common.php"
+    },
+    {
+      "from": "control/lessons_settings.php",
+      "to": "control/common.php"
+    },
+    {
+      "from": "control/lessons_waiting.php",
+      "to": "control/common.php"
+    },
+    {
+      "from": "control/login.php",
+      "to": "control/common.php"
+    },
+    {
+      "from": "control/main.php",
+      "to": "control/common.php"
+    },
+    {
+      "from": "control/maininfo.php",
+      "to": "control/common.php"
+    },
+    {
+      "from": "control/member_cregister.php",
+      "to": "control/common.php"
+    },
+    {
+      "from": "control/member_manage.php",
+      "to": "control/common.php"
+    },
+    {
+      "from": "control/member_rules.php",
+      "to": "control/common.php"
+    },
+    {
+      "from": "control/menu.php",
+      "to": "control/common.php"
+    },
+    {
+      "from": "control/menu_top.php",
+      "to": "control/common.php"
+    },
+    {
+      "from": "control/messages.php",
+      "to": "control/common.php"
+    },
+    {
+      "from": "control/news_categories.php",
+      "to": "control/common.php"
+    },
+    {
+      "from": "control/news_settings.php",
+      "to": "control/common.php"
+    },
+    {
+      "from": "control/news_waiting.php",
+      "to": "control/common.php"
+    },
+    {
+      "from": "control/pages_add.php",
+      "to": "control/common.php"
+    },
+    {
+      "from": "control/pages_manage.php",
+      "to": "control/common.php"
+    },
+    {
+      "from": "control/programs_categories.php",
+      "to": "control/common.php"
+    },
+    {
+      "from": "control/programs_settings.php",
+      "to": "control/common.php"
+    },
+    {
+      "from": "control/programs_waiting.php",
+      "to": "control/common.php"
+    },
+    {
+      "from": "control/sounds_categories.php",
+      "to": "control/common.php"
+    },
+    {
+      "from": "control/sounds_settings.php",
+      "to": "control/common.php"
+    },
+    {
+      "from": "control/sounds_waiting.php",
+      "to": "control/common.php"
+    },
+    {
+      "from": "control/success.php",
+      "to": "control/common.php"
+    },
+    {
+      "from": "control/themes.php",
+      "to": "control/common.php"
+    },
+    {
+      "from": "control/topics_categories.php",
+      "to": "control/common.php"
+    },
+    {
+      "from": "control/topics_settings.php",
+      "to": "control/common.php"
+    },
+    {
+      "from": "control/topics_waiting.php",
+      "to": "control/common.php"
+    },
+    {
+      "from": "control/videos_categories.php",
+      "to": "control/common.php"
+    },
+    {
+      "from": "control/videos_settings.php",
+      "to": "control/common.php"
+    },
+    {
+      "from": "control/videos_waiting.php",
+      "to": "control/common.php"
+    },
+    {
+      "from": "control/weblinks_categories.php",
+      "to": "control/common.php"
+    },
+    {
+      "from": "control/weblinks_settings.php",
+      "to": "control/common.php"
+    },
+    {
+      "from": "control/weblinks_waiting.php",
+      "to": "control/common.php"
+    },
+    {
+      "from": "down_pro.php",
+      "to": "footer.php"
+    },
+    {
+      "from": "down_pro.php",
+      "to": "header.php"
+    },
+    {
+      "from": "flash.php",
+      "to": "footer.php"
+    },
+    {
+      "from": "flash.php",
+      "to": "header.php"
+    },
+    {
+      "from": "flash.php",
+      "to": "includes/window_down.php"
+    },
+    {
+      "from": "flash.php",
+      "to": "includes/window_top.php"
+    },
+    {
+      "from": "flash_cat.php",
+      "to": "footer.php"
+    },
+    {
+      "from": "flash_cat.php",
+      "to": "header.php"
+    },
+    {
+      "from": "flash_cat.php",
+      "to": "includes/window_down.php"
+    },
+    {
+      "from": "flash_cat.php",
+      "to": "includes/window_top.php"
+    },
+    {
+      "from": "flash_lib.php",
+      "to": "footer.php"
+    },
+    {
+      "from": "flash_lib.php",
+      "to": "header.php"
+    },
+    {
+      "from": "flash_lib.php",
+      "to": "includes/window_down.php"
+    },
+    {
+      "from": "flash_lib.php",
+      "to": "includes/window_top.php"
+    },
+    {
+      "from": "flash_rate.php",
+      "to": "footer.php"
+    },
+    {
+      "from": "flash_rate.php",
+      "to": "header.php"
+    },
+    {
+      "from": "header.php",
+      "to": "common.php"
+    },
+    {
+      "from": "header.php",
+      "to": "connect.php"
+    },
+    {
+      "from": "header.php",
+      "to": "includes/blocks_center_top.php"
+    },
+    {
+      "from": "header.php",
+      "to": "includes/blocks_left.php"
+    },
+    {
+      "from": "header.php",
+      "to": "includes/blocks_top.php"
+    },
+    {
+      "from": "header.php",
+      "to": "includes/functions.php"
+    },
+    {
+      "from": "includes/avatar.php",
+      "to": "connect.php"
+    },
+    {
+      "from": "includes/classes/rssreader.php",
+      "to": "includes/classes/rssreader.php"
+    },
+    {
+      "from": "includes/del_pm.php",
+      "to": "connect.php"
+    },
+    {
+      "from": "includes/embed_vid.php",
+      "to": "connect.php"
+    },
+    {
+      "from": "includes/show_vid_title.php",
+      "to": "connect.php"
+    },
+    {
+      "from": "includes/video_image.php",
+      "to": "connect.php"
+    },
+    {
+      "from": "index.php",
+      "to": "footer.php"
+    },
+    {
+      "from": "index.php",
+      "to": "header.php"
+    },
+    {
+      "from": "index.php",
+      "to": "msgs.php"
+    },
+    {
+      "from": "install/index.php",
+      "to": "install/footer.php"
+    },
+    {
+      "from": "install/index.php",
+      "to": "install/header.php"
+    },
+    {
+      "from": "install/step1.php",
+      "to": "install/footer.php"
+    },
+    {
+      "from": "install/step1.php",
+      "to": "install/header.php"
+    },
+    {
+      "from": "install/step2.php",
+      "to": "connect.php"
+    },
+    {
+      "from": "install/step2.php",
+      "to": "install/footer.php"
+    },
+    {
+      "from": "install/step2.php",
+      "to": "install/header.php"
+    },
+    {
+      "from": "install/step3.php",
+      "to": "install/footer.php"
+    },
+    {
+      "from": "install/step3.php",
+      "to": "install/header.php"
+    },
+    {
+      "from": "install/step4.php",
+      "to": "connect.php"
+    },
+    {
+      "from": "install/step4.php",
+      "to": "install/creattables.php"
+    },
+    {
+      "from": "install/step4.php",
+      "to": "install/footer.php"
+    },
+    {
+      "from": "install/step4.php",
+      "to": "install/header.php"
+    },
+    {
+      "from": "install/step5.php",
+      "to": "connect.php"
+    },
+    {
+      "from": "install/step5.php",
+      "to": "install/footer.php"
+    },
+    {
+      "from": "install/step5.php",
+      "to": "install/header.php"
+    },
+    {
+      "from": "install/step6.php",
+      "to": "connect.php"
+    },
+    {
+      "from": "install/step6.php",
+      "to": "install/footer.php"
+    },
+    {
+      "from": "install/step6.php",
+      "to": "install/header.php"
+    },
+    {
+      "from": "install/step7.php",
+      "to": "install/footer.php"
+    },
+    {
+      "from": "install/step7.php",
+      "to": "install/header.php"
+    },
+    {
+      "from": "install/upgrade.php",
+      "to": "install/footer.php"
+    },
+    {
+      "from": "install/upgrade.php",
+      "to": "install/header.php"
+    },
+    {
+      "from": "install/upgrade2.php",
+      "to": "connect.php"
+    },
+    {
+      "from": "install/upgrade2.php",
+      "to": "install/creattables.php"
+    },
+    {
+      "from": "install/upgrade2.php",
+      "to": "install/footer.php"
+    },
+    {
+      "from": "install/upgrade2.php",
+      "to": "install/header.php"
+    },
+    {
+      "from": "install/upgrade3.php",
+      "to": "connect.php"
+    },
+    {
+      "from": "install/upgrade3.php",
+      "to": "install/footer.php"
+    },
+    {
+      "from": "install/upgrade3.php",
+      "to": "install/header.php"
+    },
+    {
+      "from": "install/upgrade4.php",
+      "to": "install/footer.php"
+    },
+    {
+      "from": "install/upgrade4.php",
+      "to": "install/header.php"
+    },
+    {
+      "from": "lesson.php",
+      "to": "footer.php"
+    },
+    {
+      "from": "lesson.php",
+      "to": "header.php"
+    },
+    {
+      "from": "lesson.php",
+      "to": "includes/window_down.php"
+    },
+    {
+      "from": "lesson.php",
+      "to": "includes/window_top.php"
+    },
+    {
+      "from": "lessons.php",
+      "to": "footer.php"
+    },
+    {
+      "from": "lessons.php",
+      "to": "header.php"
+    },
+    {
+      "from": "lessons.php",
+      "to": "includes/window_down.php"
+    },
+    {
+      "from": "lessons.php",
+      "to": "includes/window_top.php"
+    },
+    {
+      "from": "lessons_cat.php",
+      "to": "footer.php"
+    },
+    {
+      "from": "lessons_cat.php",
+      "to": "header.php"
+    },
+    {
+      "from": "lessons_cat.php",
+      "to": "includes/window_down.php"
+    },
+    {
+      "from": "lessons_cat.php",
+      "to": "includes/window_top.php"
+    },
+    {
+      "from": "login.php",
+      "to": "footer.php"
+    },
+    {
+      "from": "login.php",
+      "to": "header.php"
+    },
+    {
+      "from": "m_cp_avatar.php",
+      "to": "footer.php"
+    },
+    {
+      "from": "m_cp_avatar.php",
+      "to": "header.php"
+    },
+    {
+      "from": "member.php",
+      "to": "footer.php"
+    },
+    {
+      "from": "member.php",
+      "to": "header.php"
+    },
+    {
+      "from": "member.php",
+      "to": "includes/window_down.php"
+    },
+    {
+      "from": "member.php",
+      "to": "includes/window_top.php"
+    },
+    {
+      "from": "member_cp.php",
+      "to": "footer.php"
+    },
+    {
+      "from": "member_cp.php",
+      "to": "header.php"
+    },
+    {
+      "from": "member_cp.php",
+      "to": "includes/window_down.php"
+    },
+    {
+      "from": "member_cp.php",
+      "to": "includes/window_top.php"
+    },
+    {
+      "from": "member_cp_pm.php",
+      "to": "footer.php"
+    },
+    {
+      "from": "member_cp_pm.php",
+      "to": "header.php"
+    },
+    {
+      "from": "member_cp_pm.php",
+      "to": "includes/window_down.php"
+    },
+    {
+      "from": "member_cp_pm.php",
+      "to": "includes/window_top.php"
+    },
+    {
+      "from": "member_posts.php",
+      "to": "footer.php"
+    },
+    {
+      "from": "member_posts.php",
+      "to": "header.php"
+    },
+    {
+      "from": "msgs.php",
+      "to": "includes/window_down.php"
+    },
+    {
+      "from": "msgs.php",
+      "to": "includes/window_top.php"
+    },
+    {
+      "from": "news.php",
+      "to": "footer.php"
+    },
+    {
+      "from": "news.php",
+      "to": "header.php"
+    },
+    {
+      "from": "news.php",
+      "to": "includes/window_down.php"
+    },
+    {
+      "from": "news.php",
+      "to": "includes/window_top.php"
+    },
+    {
+      "from": "news_cat.php",
+      "to": "footer.php"
+    },
+    {
+      "from": "news_cat.php",
+      "to": "header.php"
+    },
+    {
+      "from": "news_cat.php",
+      "to": "includes/window_down.php"
+    },
+    {
+      "from": "news_cat.php",
+      "to": "includes/window_top.php"
+    },
+    {
+      "from": "news_show.php",
+      "to": "footer.php"
+    },
+    {
+      "from": "news_show.php",
+      "to": "header.php"
+    },
+    {
+      "from": "news_show.php",
+      "to": "includes/window_down.php"
+    },
+    {
+      "from": "news_show.php",
+      "to": "includes/window_top.php"
+    },
+    {
+      "from": "notify.php",
+      "to": "footer.php"
+    },
+    {
+      "from": "notify.php",
+      "to": "header.php"
+    },
+    {
+      "from": "notify.php",
+      "to": "includes/window_down.php"
+    },
+    {
+      "from": "notify.php",
+      "to": "includes/window_top.php"
+    },
+    {
+      "from": "online.php",
+      "to": "footer.php"
+    },
+    {
+      "from": "online.php",
+      "to": "header.php"
+    },
+    {
+      "from": "online.php",
+      "to": "includes/window_down.php"
+    },
+    {
+      "from": "online.php",
+      "to": "includes/window_top.php"
+    },
+    {
+      "from": "page.php",
+      "to": "footer.php"
+    },
+    {
+      "from": "page.php",
+      "to": "header.php"
+    },
+    {
+      "from": "page.php",
+      "to": "includes/window_down.php"
+    },
+    {
+      "from": "page.php",
+      "to": "includes/window_top.php"
+    },
+    {
+      "from": "pro_cat.php",
+      "to": "footer.php"
+    },
+    {
+      "from": "pro_cat.php",
+      "to": "header.php"
+    },
+    {
+      "from": "pro_cat.php",
+      "to": "includes/window_down.php"
+    },
+    {
+      "from": "pro_cat.php",
+      "to": "includes/window_top.php"
+    },
+    {
+      "from": "program.php",
+      "to": "footer.php"
+    },
+    {
+      "from": "program.php",
+      "to": "header.php"
+    },
+    {
+      "from": "program.php",
+      "to": "includes/window_down.php"
+    },
+    {
+      "from": "program.php",
+      "to": "includes/window_top.php"
+    },
+    {
+      "from": "programs.php",
+      "to": "footer.php"
+    },
+    {
+      "from": "programs.php",
+      "to": "header.php"
+    },
+    {
+      "from": "programs.php",
+      "to": "includes/window_down.php"
+    },
+    {
+      "from": "programs.php",
+      "to": "includes/window_top.php"
+    },
+    {
+      "from": "rate.php",
+      "to": "footer.php"
+    },
+    {
+      "from": "rate.php",
+      "to": "header.php"
+    },
+    {
+      "from": "register.php",
+      "to": "footer.php"
+    },
+    {
+      "from": "register.php",
+      "to": "header.php"
+    },
+    {
+      "from": "register.php",
+      "to": "includes/window_down.php"
+    },
+    {
+      "from": "register.php",
+      "to": "includes/window_top.php"
+    },
+    {
+      "from": "rss/flash.php",
+      "to": "connect.php"
+    },
+    {
+      "from": "rss/lessons.php",
+      "to": "connect.php"
+    },
+    {
+      "from": "rss/news.php",
+      "to": "connect.php"
+    },
+    {
+      "from": "rss/programs.php",
+      "to": "connect.php"
+    },
+    {
+      "from": "rss/sounds.php",
+      "to": "connect.php"
+    },
+    {
+      "from": "rss/topics.php",
+      "to": "connect.php"
+    },
+    {
+      "from": "rss/videos.php",
+      "to": "connect.php"
+    },
+    {
+      "from": "save.php",
+      "to": "common.php"
+    },
+    {
+      "from": "save.php",
+      "to": "footer.php"
+    },
+    {
+      "from": "search.php",
+      "to": "footer.php"
+    },
+    {
+      "from": "search.php",
+      "to": "header.php"
+    },
+    {
+      "from": "search.php",
+      "to": "includes/window_down.php"
+    },
+    {
+      "from": "search.php",
+      "to": "includes/window_top.php"
+    },
+    {
+      "from": "send_flash.php",
+      "to": "footer.php"
+    },
+    {
+      "from": "send_flash.php",
+      "to": "header.php"
+    },
+    {
+      "from": "send_flash.php",
+      "to": "includes/window_down.php"
+    },
+    {
+      "from": "send_flash.php",
+      "to": "includes/window_top.php"
+    },
+    {
+      "from": "send_image.php",
+      "to": "footer.php"
+    },
+    {
+      "from": "send_image.php",
+      "to": "header.php"
+    },
+    {
+      "from": "send_lesson.php",
+      "to": "footer.php"
+    },
+    {
+      "from": "send_lesson.php",
+      "to": "header.php"
+    },
+    {
+      "from": "send_lesson.php",
+      "to": "includes/window_down.php"
+    },
+    {
+      "from": "send_lesson.php",
+      "to": "includes/window_top.php"
+    },
+    {
+      "from": "send_news.php",
+      "to": "footer.php"
+    },
+    {
+      "from": "send_news.php",
+      "to": "header.php"
+    },
+    {
+      "from": "send_news.php",
+      "to": "includes/window_down.php"
+    },
+    {
+      "from": "send_news.php",
+      "to": "includes/window_top.php"
+    },
+    {
+      "from": "send_pro.php",
+      "to": "footer.php"
+    },
+    {
+      "from": "send_pro.php",
+      "to": "header.php"
+    },
+    {
+      "from": "send_pro.php",
+      "to": "includes/window_down.php"
+    },
+    {
+      "from": "send_pro.php",
+      "to": "includes/window_top.php"
+    },
+    {
+      "from": "send_sound.php",
+      "to": "footer.php"
+    },
+    {
+      "from": "send_sound.php",
+      "to": "header.php"
+    },
+    {
+      "from": "send_sound.php",
+      "to": "includes/window_down.php"
+    },
+    {
+      "from": "send_sound.php",
+      "to": "includes/window_top.php"
+    },
+    {
+      "from": "send_topic.php",
+      "to": "footer.php"
+    },
+    {
+      "from": "send_topic.php",
+      "to": "header.php"
+    },
+    {
+      "from": "send_topic.php",
+      "to": "includes/window_down.php"
+    },
+    {
+      "from": "send_topic.php",
+      "to": "includes/window_top.php"
+    },
+    {
+      "from": "send_video.php",
+      "to": "footer.php"
+    },
+    {
+      "from": "send_video.php",
+      "to": "header.php"
+    },
+    {
+      "from": "send_video.php",
+      "to": "includes/window_down.php"
+    },
+    {
+      "from": "send_video.php",
+      "to": "includes/window_top.php"
+    },
+    {
+      "from": "show_video.php",
+      "to": "footer.php"
+    },
+    {
+      "from": "show_video.php",
+      "to": "header.php"
+    },
+    {
+      "from": "show_video.php",
+      "to": "includes/window_down.php"
+    },
+    {
+      "from": "show_video.php",
+      "to": "includes/window_top.php"
+    },
+    {
+      "from": "sound_cat.php",
+      "to": "footer.php"
+    },
+    {
+      "from": "sound_cat.php",
+      "to": "header.php"
+    },
+    {
+      "from": "sound_cat.php",
+      "to": "includes/window_down.php"
+    },
+    {
+      "from": "sound_cat.php",
+      "to": "includes/window_top.php"
+    },
+    {
+      "from": "sound_listen.php",
+      "to": "footer.php"
+    },
+    {
+      "from": "sound_listen.php",
+      "to": "header.php"
+    },
+    {
+      "from": "sounds.php",
+      "to": "footer.php"
+    },
+    {
+      "from": "sounds.php",
+      "to": "header.php"
+    },
+    {
+      "from": "sounds.php",
+      "to": "includes/window_down.php"
+    },
+    {
+      "from": "sounds.php",
+      "to": "includes/window_top.php"
+    },
+    {
+      "from": "topic.php",
+      "to": "footer.php"
+    },
+    {
+      "from": "topic.php",
+      "to": "header.php"
+    },
+    {
+      "from": "topic.php",
+      "to": "includes/window_down.php"
+    },
+    {
+      "from": "topic.php",
+      "to": "includes/window_top.php"
+    },
+    {
+      "from": "topics.php",
+      "to": "footer.php"
+    },
+    {
+      "from": "topics.php",
+      "to": "header.php"
+    },
+    {
+      "from": "topics.php",
+      "to": "includes/window_down.php"
+    },
+    {
+      "from": "topics.php",
+      "to": "includes/window_top.php"
+    },
+    {
+      "from": "topics_cat.php",
+      "to": "footer.php"
+    },
+    {
+      "from": "topics_cat.php",
+      "to": "header.php"
+    },
+    {
+      "from": "topics_cat.php",
+      "to": "includes/window_down.php"
+    },
+    {
+      "from": "topics_cat.php",
+      "to": "includes/window_top.php"
+    },
+    {
+      "from": "video_cat.php",
+      "to": "footer.php"
+    },
+    {
+      "from": "video_cat.php",
+      "to": "header.php"
+    },
+    {
+      "from": "video_cat.php",
+      "to": "includes/window_down.php"
+    },
+    {
+      "from": "video_cat.php",
+      "to": "includes/window_top.php"
+    },
+    {
+      "from": "video_lib.php",
+      "to": "footer.php"
+    },
+    {
+      "from": "video_lib.php",
+      "to": "header.php"
+    },
+    {
+      "from": "video_lib.php",
+      "to": "includes/window_down.php"
+    },
+    {
+      "from": "video_lib.php",
+      "to": "includes/window_top.php"
+    },
+    {
+      "from": "weblinks.php",
+      "to": "footer.php"
+    },
+    {
+      "from": "weblinks.php",
+      "to": "header.php"
+    },
+    {
+      "from": "weblinks.php",
+      "to": "includes/window_down.php"
+    },
+    {
+      "from": "weblinks.php",
+      "to": "includes/window_top.php"
+    },
+    {
+      "from": "weblinks_add.php",
+      "to": "footer.php"
+    },
+    {
+      "from": "weblinks_add.php",
+      "to": "header.php"
+    },
+    {
+      "from": "weblinks_add.php",
+      "to": "includes/window_down.php"
+    },
+    {
+      "from": "weblinks_add.php",
+      "to": "includes/window_top.php"
+    },
+    {
+      "from": "weblinks_cat.php",
+      "to": "footer.php"
+    },
+    {
+      "from": "weblinks_cat.php",
+      "to": "header.php"
+    },
+    {
+      "from": "weblinks_cat.php",
+      "to": "includes/window_down.php"
+    },
+    {
+      "from": "weblinks_cat.php",
+      "to": "includes/window_top.php"
+    },
+    {
+      "from": "weblinks_site.php",
+      "to": "footer.php"
+    },
+    {
+      "from": "weblinks_site.php",
+      "to": "header.php"
+    },
+    {
+      "from": "weblinks_site.php",
+      "to": "includes/window_down.php"
+    },
+    {
+      "from": "weblinks_site.php",
+      "to": "includes/window_top.php"
+    },
+    {
+      "from": "weblinks_visit.php",
+      "to": "connect.php"
+    }
+  ],
+  "node_origins": {
+    "a.php": [
+      "static"
+    ],
+    "album.php": [
+      "dynamic",
+      "static"
+    ],
+    "album_cat.php": [
+      "static"
+    ],
+    "album_rate.php": [
+      "static"
+    ],
+    "blocks/aljazeera_marquee.php": [
+      "static"
+    ],
+    "blocks/center_search.php": [
+      "static"
+    ],
+    "blocks/data/aljazeera_marquee.php": [
+      "static"
+    ],
+    "blocks/data/aljazeera_marquee.php?d1=p1&d2=p1&img=p1": [
+      "dynamic"
+    ],
+    "blocks/data/function.fsockopen": [
+      "dynamic"
+    ],
+    "blocks/latest_images_fade.php": [
+      "static"
+    ],
+    "blocks/latest_lessons_side.php": [
+      "static"
+    ],
+    "blocks/latest_news_ajax_2.php": [
+      "static"
+    ],
+    "blocks/latest_news_ajax_center.php": [
+      "static"
+    ],
+    "blocks/latest_news_maqrquee.php": [
+      "static"
+    ],
+    "blocks/latest_pro_side.php": [
+      "static"
+    ],
+    "blocks/latest_topics_ajax_center.php": [
+      "static"
+    ],
+    "blocks/latest_topics_side.php": [
+      "static"
+    ],
+    "blocks/login.php": [
+      "static"
+    ],
+    "blocks/login_vb.php": [
+      "static"
+    ],
+    "blocks/ltst_imgs_ajax_slider.php": [
+      "static"
+    ],
+    "blocks/ltst_imgs_filmstrip.php": [
+      "static"
+    ],
+    "blocks/ltst_news_1_colum_center.php": [
+      "static"
+    ],
+    "blocks/ltst_topics_1_colum_center.php": [
+      "static"
+    ],
+    "blocks/ltst_videos_filmstrip.php": [
+      "static"
+    ],
+    "blocks/online.php": [
+      "static"
+    ],
+    "blocks/place.php": [
+      "static"
+    ],
+    "blocks/random_img.php": [
+      "static"
+    ],
+    "blocks/small_search.php": [
+      "static"
+    ],
+    "blocks/stats.php": [
+      "static"
+    ],
+    "blocks/top_login.php": [
+      "static"
+    ],
+    "change_lang.php": [
+      "dynamic",
+      "static"
+    ],
+    "change_theme.php": [
+      "dynamic",
+      "static"
+    ],
+    "comment.php": [
+      "static"
+    ],
+    "common.php": [
+      "static"
+    ],
+    "connect.php": [
+      "static"
+    ],
+    "contactus.php": [
+      "dynamic",
+      "static"
+    ],
+    "contactus.php?do=": [
+      "dynamic"
+    ],
+    "control.php": [
+      "static"
+    ],
+    "control/block_manage.php": [
+      "static"
+    ],
+    "control/categories.php": [
+      "static"
+    ],
+    "control/close_site.php": [
+      "static"
+    ],
+    "control/common.php": [
+      "static"
+    ],
+    "control/db_backup.php": [
+      "static"
+    ],
+    "control/flash_categories.php": [
+      "static"
+    ],
+    "control/flash_settings.php": [
+      "static"
+    ],
+    "control/flash_waiting.php": [
+      "static"
+    ],
+    "control/images_categories.php": [
+      "static"
+    ],
+    "control/images_settings.php": [
+      "static"
+    ],
+    "control/images_waiting.php": [
+      "static"
+    ],
+    "control/index.php": [
+      "static"
+    ],
+    "control/keywords.php": [
+      "static"
+    ],
+    "control/languages.php": [
+      "static"
+    ],
+    "control/lessons_categories.php": [
+      "static"
+    ],
+    "control/lessons_settings.php": [
+      "static"
+    ],
+    "control/lessons_waiting.php": [
+      "static"
+    ],
+    "control/login.php": [
+      "static"
+    ],
+    "control/logout.php": [
+      "static"
+    ],
+    "control/main.php": [
+      "static"
+    ],
+    "control/maininfo.php": [
+      "static"
+    ],
+    "control/member_cregister.php": [
+      "static"
+    ],
+    "control/member_manage.php": [
+      "static"
+    ],
+    "control/member_rules.php": [
+      "static"
+    ],
+    "control/menu.php": [
+      "static"
+    ],
+    "control/menu_top.php": [
+      "static"
+    ],
+    "control/messages.php": [
+      "static"
+    ],
+    "control/news_categories.php": [
+      "static"
+    ],
+    "control/news_settings.php": [
+      "static"
+    ],
+    "control/news_waiting.php": [
+      "static"
+    ],
+    "control/pages_add.php": [
+      "static"
+    ],
+    "control/pages_manage.php": [
+      "static"
+    ],
+    "control/programs_categories.php": [
+      "static"
+    ],
+    "control/programs_settings.php": [
+      "static"
+    ],
+    "control/programs_waiting.php": [
+      "static"
+    ],
+    "control/security.php": [
+      "static"
+    ],
+    "control/sounds_categories.php": [
+      "static"
+    ],
+    "control/sounds_settings.php": [
+      "static"
+    ],
+    "control/sounds_waiting.php": [
+      "static"
+    ],
+    "control/success.php": [
+      "static"
+    ],
+    "control/themes.php": [
+      "static"
+    ],
+    "control/topics_categories.php": [
+      "static"
+    ],
+    "control/topics_settings.php": [
+      "static"
+    ],
+    "control/topics_waiting.php": [
+      "static"
+    ],
+    "control/videos_categories.php": [
+      "static"
+    ],
+    "control/videos_settings.php": [
+      "static"
+    ],
+    "control/videos_waiting.php": [
+      "static"
+    ],
+    "control/weblinks_categories.php": [
+      "static"
+    ],
+    "control/weblinks_settings.php": [
+      "static"
+    ],
+    "control/weblinks_waiting.php": [
+      "static"
+    ],
+    "cookie_gen.php": [
+      "static"
+    ],
+    "down_pro.php": [
+      "static"
+    ],
+    "flash.php": [
+      "static"
+    ],
+    "flash_cat.php": [
+      "static"
+    ],
+    "flash_lib.php": [
+      "dynamic",
+      "static"
+    ],
+    "flash_rate.php": [
+      "static"
+    ],
+    "footer.php": [
+      "static"
+    ],
+    "header.php": [
+      "static"
+    ],
+    "includes/avatar.php": [
+      "static"
+    ],
+    "includes/avatar.php?h=p1&id=p1&w=p1": [
+      "dynamic"
+    ],
+    "includes/blocks_center_down.php": [
+      "static"
+    ],
+    "includes/blocks_center_top.php": [
+      "static"
+    ],
+    "includes/blocks_down.php": [
+      "static"
+    ],
+    "includes/blocks_left.php": [
+      "static"
+    ],
+    "includes/blocks_right.php": [
+      "static"
+    ],
+    "includes/blocks_top.php": [
+      "static"
+    ],
+    "includes/captcha.php": [
+      "static"
+    ],
+    "includes/classes/rssreader.php": [
+      "static"
+    ],
+    "includes/del_pm.php": [
+      "static"
+    ],
+    "includes/embed_vid.php": [
+      "static"
+    ],
+    "includes/functions.php": [
+      "static"
+    ],
+    "includes/show_vid_title.php": [
+      "static"
+    ],
+    "includes/small_search.php": [
+      "static"
+    ],
+    "includes/video_image.php": [
+      "static"
+    ],
+    "includes/window_down.php": [
+      "static"
+    ],
+    "includes/window_top.php": [
+      "static"
+    ],
+    "index.php": [
+      "dynamic",
+      "static"
+    ],
+    "install/creattables.php": [
+      "static"
+    ],
+    "install/footer.php": [
+      "static"
+    ],
+    "install/header.php": [
+      "static"
+    ],
+    "install/index.php": [
+      "static"
+    ],
+    "install/step1.php": [
+      "static"
+    ],
+    "install/step2.php": [
+      "static"
+    ],
+    "install/step3.php": [
+      "static"
+    ],
+    "install/step4.php": [
+      "static"
+    ],
+    "install/step5.php": [
+      "static"
+    ],
+    "install/step6.php": [
+      "static"
+    ],
+    "install/step7.php": [
+      "static"
+    ],
+    "install/upgrade.php": [
+      "static"
+    ],
+    "install/upgrade2.php": [
+      "static"
+    ],
+    "install/upgrade3.php": [
+      "static"
+    ],
+    "install/upgrade4.php": [
+      "static"
+    ],
+    "languages/ar.php": [
+      "static"
+    ],
+    "languages/en.php": [
+      "static"
+    ],
+    "lesson.php": [
+      "static"
+    ],
+    "lessons.php": [
+      "dynamic",
+      "static"
+    ],
+    "lessons_cat.php": [
+      "static"
+    ],
+    "login.php": [
+      "static"
+    ],
+    "login.php?do=": [
+      "dynamic"
+    ],
+    "logout.php": [
+      "static"
+    ],
+    "m_cp_avatar.php": [
+      "static"
+    ],
+    "m_cp_avatar.php?KeepThis=true&TB_iframe=true&height=p1&width=p1": [
+      "dynamic"
+    ],
+    "m_cp_avatar.php?do=": [
+      "dynamic"
+    ],
+    "member.php": [
+      "static"
+    ],
+    "member.php?id=p1": [
+      "dynamic"
+    ],
+    "member_cp.php": [
+      "dynamic",
+      "static"
+    ],
+    "member_cp.php?do=": [
+      "dynamic"
+    ],
+    "member_cp_pm.php": [
+      "dynamic",
+      "static"
+    ],
+    "member_cp_pm.php?new=": [
+      "dynamic"
+    ],
+    "member_cp_pm.php?new=&send=p1": [
+      "dynamic"
+    ],
+    "member_cp_pm.php?v=p1": [
+      "dynamic"
+    ],
+    "member_posts.php": [
+      "static"
+    ],
+    "msgs.php": [
+      "static"
+    ],
+    "news.php": [
+      "dynamic",
+      "static"
+    ],
+    "news_cat.php": [
+      "static"
+    ],
+    "news_show.php": [
+      "static"
+    ],
+    "notify.php": [
+      "static"
+    ],
+    "notify.php?v=p1": [
+      "dynamic"
+    ],
+    "online.php": [
+      "dynamic",
+      "static"
+    ],
+    "page.php": [
+      "static"
+    ],
+    "pro_cat.php": [
+      "static"
+    ],
+    "program.php": [
+      "static"
+    ],
+    "programs.php": [
+      "dynamic",
+      "static"
+    ],
+    "rate.php": [
+      "static"
+    ],
+    "register.php": [
+      "dynamic",
+      "static"
+    ],
+    "register.php?do=": [
+      "dynamic"
+    ],
+    "rss/flash.php": [
+      "dynamic",
+      "static"
+    ],
+    "rss/lessons.php": [
+      "dynamic",
+      "static"
+    ],
+    "rss/news.php": [
+      "dynamic",
+      "static"
+    ],
+    "rss/programs.php": [
+      "dynamic",
+      "static"
+    ],
+    "rss/sounds.php": [
+      "dynamic",
+      "static"
+    ],
+    "rss/topics.php": [
+      "dynamic",
+      "static"
+    ],
+    "rss/videos.php": [
+      "dynamic",
+      "static"
+    ],
+    "save.php": [
+      "static"
+    ],
+    "search.php": [
+      "dynamic",
+      "static"
+    ],
+    "search.php?search=p1&where=p1": [
+      "dynamic"
+    ],
+    "send_flash.php": [
+      "dynamic",
+      "static"
+    ],
+    "send_flash.php?do=": [
+      "dynamic"
+    ],
+    "send_image.php": [
+      "static"
+    ],
+    "send_image.php?KeepThis=true&TB_iframe=true&height=p1&width=p1": [
+      "dynamic"
+    ],
+    "send_image.php?do=": [
+      "dynamic"
+    ],
+    "send_lesson.php": [
+      "dynamic",
+      "static"
+    ],
+    "send_lesson.php?do=": [
+      "dynamic"
+    ],
+    "send_news.php": [
+      "dynamic",
+      "static"
+    ],
+    "send_news.php?do=": [
+      "dynamic"
+    ],
+    "send_pro.php": [
+      "dynamic",
+      "static"
+    ],
+    "send_pro.php?do=": [
+      "dynamic"
+    ],
+    "send_sound.php": [
+      "static"
+    ],
+    "send_topic.php": [
+      "dynamic",
+      "static"
+    ],
+    "send_topic.php?do=": [
+      "dynamic"
+    ],
+    "send_video.php": [
+      "dynamic",
+      "static"
+    ],
+    "send_video.php?do=": [
+      "dynamic"
+    ],
+    "show_video.php": [
+      "static"
+    ],
+    "sound_cat.php": [
+      "static"
+    ],
+    "sound_listen.php": [
+      "static"
+    ],
+    "sounds.php": [
+      "dynamic",
+      "static"
+    ],
+    "themes/awcm_darkblue/settings.php": [
+      "static"
+    ],
+    "themes/nice_blue/settings.php": [
+      "static"
+    ],
+    "themes/nice_motorcycle/settings.php": [
+      "static"
+    ],
+    "themes/silver/settings.php": [
+      "static"
+    ],
+    "topic.php": [
+      "static"
+    ],
+    "topics.php": [
+      "dynamic",
+      "static"
+    ],
+    "topics_cat.php": [
+      "static"
+    ],
+    "video_cat.php": [
+      "static"
+    ],
+    "video_lib.php": [
+      "dynamic",
+      "static"
+    ],
+    "weblinks.php": [
+      "dynamic",
+      "static"
+    ],
+    "weblinks_add.php": [
+      "static"
+    ],
+    "weblinks_cat.php": [
+      "static"
+    ],
+    "weblinks_site.php": [
+      "static"
+    ],
+    "weblinks_visit.php": [
+      "static"
+    ]
+  },
+  "access": {
+    "album.php": {
+      "roles": [
+        "admin",
+        "user1",
+        "user2",
+        "visitor"
+      ],
+      "kinds": [
+        "admin",
+        "user",
+        "visitor"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {},
+          "referer": "send_flash.php"
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "GET",
+          "params": {},
+          "referer": "flash_lib.php"
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "GET",
+          "params": {},
+          "referer": "flash_lib.php"
+        },
+        {
+          "role": "visitor",
+          "kind": "visitor",
+          "method": "GET",
+          "params": {},
+          "referer": "flash_lib.php"
+        }
+      ]
+    },
+    "blocks/data/aljazeera_marquee.php?d1=p1&d2=p1&img=p1": {
+      "roles": [
+        "admin",
+        "user1",
+        "user2",
+        "visitor"
+      ],
+      "kinds": [
+        "admin",
+        "user",
+        "visitor"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {
+            "d1": "left",
+            "img": "http://z.about.com/d/middleeast/1/0/3/0/-/-/0311-aljazeera.jpg",
+            "d2": "ltr"
+          },
+          "referer": "weblinks.php"
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "d1": "left",
+            "img": "http://z.about.com/d/middleeast/1/0/3/0/-/-/0311-aljazeera.jpg",
+            "d2": "ltr"
+          },
+          "referer": "weblinks.php"
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "d1": "left",
+            "img": "http://z.about.com/d/middleeast/1/0/3/0/-/-/0311-aljazeera.jpg",
+            "d2": "ltr"
+          },
+          "referer": "weblinks.php"
+        },
+        {
+          "role": "visitor",
+          "kind": "visitor",
+          "method": "GET",
+          "params": {
+            "d1": "left",
+            "img": "http://z.about.com/d/middleeast/1/0/3/0/-/-/0311-aljazeera.jpg",
+            "d2": "ltr"
+          },
+          "referer": "weblinks.php"
+        }
+      ]
+    },
+    "blocks/data/function.fsockopen": {
+      "roles": [
+        "admin",
+        "user1",
+        "user2",
+        "visitor"
+      ],
+      "kinds": [
+        "admin",
+        "user",
+        "visitor"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {},
+          "referer": "blocks/data/aljazeera_marquee.php?d1=p1&d2=p1&img=p1"
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "GET",
+          "params": {},
+          "referer": "blocks/data/aljazeera_marquee.php?d1=p1&d2=p1&img=p1"
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "GET",
+          "params": {},
+          "referer": "blocks/data/aljazeera_marquee.php?d1=p1&d2=p1&img=p1"
+        },
+        {
+          "role": "visitor",
+          "kind": "visitor",
+          "method": "GET",
+          "params": {},
+          "referer": "blocks/data/aljazeera_marquee.php?d1=p1&d2=p1&img=p1"
+        }
+      ]
+    },
+    "change_lang.php": {
+      "roles": [
+        "admin",
+        "user1",
+        "user2",
+        "visitor"
+      ],
+      "kinds": [
+        "admin",
+        "user",
+        "visitor"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {
+            "v": "change_lang.php?v=en.php"
+          },
+          "referer": "member_cp.php?do="
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "v": "change_lang.php?v=en.php"
+          },
+          "referer": "member_cp.php?do="
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "v": "change_lang.php?v=en.php"
+          },
+          "referer": "member_cp.php?do="
+        },
+        {
+          "role": "visitor",
+          "kind": "visitor",
+          "method": "GET",
+          "params": {
+            "v": "change_lang.php?v=en.php"
+          },
+          "referer": "topics.php"
+        }
+      ]
+    },
+    "change_theme.php": {
+      "roles": [
+        "admin",
+        "user1",
+        "user2",
+        "visitor"
+      ],
+      "kinds": [
+        "admin",
+        "user",
+        "visitor"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {
+            "v": "change_theme.php?v=awcm_darkblue"
+          },
+          "referer": "member_cp.php?do="
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "v": "change_theme.php?v=awcm_darkblue"
+          },
+          "referer": "member_cp.php?do="
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "v": "change_theme.php?v=awcm_darkblue"
+          },
+          "referer": "member_cp.php?do="
+        },
+        {
+          "role": "visitor",
+          "kind": "visitor",
+          "method": "GET",
+          "params": {
+            "v": "change_theme.php?v=awcm_darkblue"
+          },
+          "referer": "topics.php"
+        }
+      ]
+    },
+    "contactus.php": {
+      "roles": [
+        "admin",
+        "user1",
+        "user2",
+        "visitor"
+      ],
+      "kinds": [
+        "admin",
+        "user",
+        "visitor"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {},
+          "referer": "search.php"
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "GET",
+          "params": {},
+          "referer": "search.php"
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "GET",
+          "params": {},
+          "referer": "search.php"
+        },
+        {
+          "role": "visitor",
+          "kind": "visitor",
+          "method": "GET",
+          "params": {},
+          "referer": "search.php"
+        }
+      ]
+    },
+    "contactus.php?do=": {
+      "roles": [
+        "admin",
+        "user1",
+        "user2",
+        "visitor"
+      ],
+      "kinds": [
+        "admin",
+        "user",
+        "visitor"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "POST",
+          "params": {
+            "from": "value_129033e4",
+            "email": "admin@qq.com",
+            "subject": "text_49b03fbc",
+            "message": "comment_2bb15264"
+          },
+          "referer": "contactus.php"
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "POST",
+          "params": {
+            "from": "value_129033e4",
+            "email": "user1@qq.com",
+            "subject": "text_49b03fbc",
+            "message": "comment_2bb15264"
+          },
+          "referer": "contactus.php"
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "POST",
+          "params": {
+            "from": "value_129033e4",
+            "email": "user2@qq.com",
+            "subject": "text_49b03fbc",
+            "message": "comment_2bb15264"
+          },
+          "referer": "contactus.php"
+        },
+        {
+          "role": "visitor",
+          "kind": "visitor",
+          "method": "POST",
+          "params": {
+            "from": "value_129033e4",
+            "email": "drhl_a2110287@example.test",
+            "subject": "text_49b03fbc",
+            "message": "comment_2bb15264"
+          },
+          "referer": "contactus.php"
+        }
+      ]
+    },
+    "flash_lib.php": {
+      "roles": [
+        "admin",
+        "user1",
+        "user2",
+        "visitor"
+      ],
+      "kinds": [
+        "admin",
+        "user",
+        "visitor"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {},
+          "referer": "send_news.php"
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "GET",
+          "params": {},
+          "referer": "send_news.php"
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "GET",
+          "params": {},
+          "referer": "send_news.php"
+        },
+        {
+          "role": "visitor",
+          "kind": "visitor",
+          "method": "GET",
+          "params": {},
+          "referer": "news.php"
+        }
+      ]
+    },
+    "includes/avatar.php?h=p1&id=p1&w=p1": {
+      "roles": [
+        "admin",
+        "user1",
+        "user2"
+      ],
+      "kinds": [
+        "admin",
+        "user"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {
+            "id": "1",
+            "h": "130",
+            "w": "130"
+          },
+          "referer": "member_cp.php"
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "id": "2",
+            "h": "130",
+            "w": "130"
+          },
+          "referer": "member_cp.php"
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "id": "3",
+            "h": "130",
+            "w": "130"
+          },
+          "referer": "member_cp.php"
+        }
+      ]
+    },
+    "index.php": {
+      "roles": [
+        "admin",
+        "user1",
+        "user2",
+        "visitor"
+      ],
+      "kinds": [
+        "admin",
+        "user",
+        "visitor"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {},
+          "referer": null
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "GET",
+          "params": {},
+          "referer": null
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "GET",
+          "params": {},
+          "referer": null
+        },
+        {
+          "role": "visitor",
+          "kind": "visitor",
+          "method": "GET",
+          "params": {},
+          "referer": null
+        }
+      ]
+    },
+    "lessons.php": {
+      "roles": [
+        "admin",
+        "user1",
+        "user2",
+        "visitor"
+      ],
+      "kinds": [
+        "admin",
+        "user",
+        "visitor"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {},
+          "referer": "send_pro.php"
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "GET",
+          "params": {},
+          "referer": "send_pro.php"
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "GET",
+          "params": {},
+          "referer": "send_pro.php"
+        },
+        {
+          "role": "visitor",
+          "kind": "visitor",
+          "method": "GET",
+          "params": {},
+          "referer": "programs.php"
+        }
+      ]
+    },
+    "login.php?do=": {
+      "roles": [
+        "visitor"
+      ],
+      "kinds": [
+        "visitor"
+      ],
+      "requests": [
+        {
+          "role": "visitor",
+          "kind": "visitor",
+          "method": "POST",
+          "params": {
+            "email": "email address",
+            "password": "********",
+            "remember": "yes"
+          },
+          "referer": "topics.php"
+        }
+      ]
+    },
+    "m_cp_avatar.php?KeepThis=true&TB_iframe=true&height=p1&width=p1": {
+      "roles": [
+        "admin",
+        "user1",
+        "user2"
+      ],
+      "kinds": [
+        "admin",
+        "user"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {
+            "KeepThis": "true",
+            "TB_iframe": "true",
+            "height": "400",
+            "width": "500"
+          },
+          "referer": "member_cp.php"
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "KeepThis": "true",
+            "TB_iframe": "true",
+            "height": "400",
+            "width": "500"
+          },
+          "referer": "member_cp.php"
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "KeepThis": "true",
+            "TB_iframe": "true",
+            "height": "400",
+            "width": "500"
+          },
+          "referer": "member_cp.php"
+        }
+      ]
+    },
+    "m_cp_avatar.php?do=": {
+      "roles": [
+        "admin",
+        "user1",
+        "user2"
+      ],
+      "kinds": [
+        "admin",
+        "user"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "POST",
+          "params": {
+            "avatar": "value_e6a50dec"
+          },
+          "referer": "m_cp_avatar.php?KeepThis=true&TB_iframe=true&height=p1&width=p1"
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "POST",
+          "params": {
+            "avatar": "value_e6a50dec"
+          },
+          "referer": "m_cp_avatar.php?KeepThis=true&TB_iframe=true&height=p1&width=p1"
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "POST",
+          "params": {
+            "avatar": "value_e6a50dec"
+          },
+          "referer": "m_cp_avatar.php?KeepThis=true&TB_iframe=true&height=p1&width=p1"
+        }
+      ]
+    },
+    "member.php?id=p1": {
+      "roles": [
+        "admin",
+        "user1",
+        "user2",
+        "visitor"
+      ],
+      "kinds": [
+        "admin",
+        "user",
+        "visitor"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {
+            "id": "no"
+          },
+          "referer": "online.php"
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "id": "no"
+          },
+          "referer": "online.php"
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "id": "no"
+          },
+          "referer": "online.php"
+        },
+        {
+          "role": "visitor",
+          "kind": "visitor",
+          "method": "GET",
+          "params": {
+            "id": "no"
+          },
+          "referer": "online.php"
+        }
+      ]
+    },
+    "member_cp.php": {
+      "roles": [
+        "admin",
+        "user1",
+        "user2"
+      ],
+      "kinds": [
+        "admin",
+        "user"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {},
+          "referer": "online.php"
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "GET",
+          "params": {},
+          "referer": "online.php"
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "GET",
+          "params": {},
+          "referer": "online.php"
+        }
+      ]
+    },
+    "member_cp.php?do=": {
+      "roles": [
+        "admin",
+        "user1",
+        "user2"
+      ],
+      "kinds": [
+        "admin",
+        "user"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "POST",
+          "params": {},
+          "referer": "member_cp.php?do="
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "POST",
+          "params": {},
+          "referer": "member_cp.php?do="
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "POST",
+          "params": {},
+          "referer": "member_cp.php?do="
+        }
+      ]
+    },
+    "member_cp_pm.php": {
+      "roles": [
+        "admin",
+        "user1",
+        "user2"
+      ],
+      "kinds": [
+        "admin",
+        "user"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {
+            "v": "member_cp_pm.php?t=recieved"
+          },
+          "referer": "member_cp_pm.php"
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "v": "member_cp_pm.php?t=recieved"
+          },
+          "referer": "member_cp_pm.php"
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "v": "member_cp_pm.php?t=recieved"
+          },
+          "referer": "member_cp_pm.php"
+        }
+      ]
+    },
+    "member_cp_pm.php?new=": {
+      "roles": [
+        "admin",
+        "user1",
+        "user2"
+      ],
+      "kinds": [
+        "admin",
+        "user"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {
+            "new": ""
+          },
+          "referer": "member_cp.php"
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "new": ""
+          },
+          "referer": "member_cp.php"
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "new": ""
+          },
+          "referer": "member_cp.php"
+        }
+      ]
+    },
+    "member_cp_pm.php?new=&send=p1": {
+      "roles": [
+        "admin",
+        "user1",
+        "user2"
+      ],
+      "kinds": [
+        "admin",
+        "user"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "POST",
+          "params": {
+            "to": "value_34978579",
+            "subject": "text_44a57164",
+            "msg": "value_8d921967",
+            "captcha": "value_ae719b9e"
+          },
+          "referer": "member_cp_pm.php?new=&send=p1"
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "POST",
+          "params": {
+            "to": "value_34978579",
+            "subject": "text_44a57164",
+            "msg": "value_8d921967",
+            "captcha": "value_ae719b9e"
+          },
+          "referer": "member_cp_pm.php?new=&send=p1"
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "POST",
+          "params": {
+            "to": "value_34978579",
+            "subject": "text_44a57164",
+            "msg": "value_8d921967",
+            "captcha": "value_ae719b9e"
+          },
+          "referer": "member_cp_pm.php?new=&send=p1"
+        }
+      ]
+    },
+    "member_cp_pm.php?v=p1": {
+      "roles": [
+        "admin",
+        "user1",
+        "user2"
+      ],
+      "kinds": [
+        "admin",
+        "user"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {
+            "v": "member_cp_pm.php?t=recieved"
+          },
+          "referer": "member_cp_pm.php"
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "v": "member_cp_pm.php?t=recieved"
+          },
+          "referer": "member_cp_pm.php"
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "v": "member_cp_pm.php?t=recieved"
+          },
+          "referer": "member_cp_pm.php"
+        }
+      ]
+    },
+    "news.php": {
+      "roles": [
+        "admin",
+        "user1",
+        "user2",
+        "visitor"
+      ],
+      "kinds": [
+        "admin",
+        "user",
+        "visitor"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {},
+          "referer": "weblinks.php"
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "GET",
+          "params": {},
+          "referer": "weblinks.php"
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "GET",
+          "params": {},
+          "referer": "weblinks.php"
+        },
+        {
+          "role": "visitor",
+          "kind": "visitor",
+          "method": "GET",
+          "params": {},
+          "referer": "weblinks.php"
+        }
+      ]
+    },
+    "notify.php?v=p1": {
+      "roles": [
+        "visitor"
+      ],
+      "kinds": [
+        "visitor"
+      ],
+      "requests": [
+        {
+          "role": "visitor",
+          "kind": "visitor",
+          "method": "GET",
+          "params": {
+            "v": "login_failed"
+          },
+          "referer": "index.php"
+        }
+      ]
+    },
+    "online.php": {
+      "roles": [
+        "admin",
+        "user1",
+        "user2",
+        "visitor"
+      ],
+      "kinds": [
+        "admin",
+        "user",
+        "visitor"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {},
+          "referer": "index.php"
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "GET",
+          "params": {},
+          "referer": "index.php"
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "GET",
+          "params": {},
+          "referer": "index.php"
+        },
+        {
+          "role": "visitor",
+          "kind": "visitor",
+          "method": "GET",
+          "params": {},
+          "referer": "index.php"
+        }
+      ]
+    },
+    "programs.php": {
+      "roles": [
+        "admin",
+        "user1",
+        "user2",
+        "visitor"
+      ],
+      "kinds": [
+        "admin",
+        "user",
+        "visitor"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {},
+          "referer": "sounds.php"
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "GET",
+          "params": {},
+          "referer": "sounds.php"
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "GET",
+          "params": {},
+          "referer": "sounds.php"
+        },
+        {
+          "role": "visitor",
+          "kind": "visitor",
+          "method": "GET",
+          "params": {},
+          "referer": "sounds.php"
+        }
+      ]
+    },
+    "register.php": {
+      "roles": [
+        "visitor"
+      ],
+      "kinds": [
+        "visitor"
+      ],
+      "requests": [
+        {
+          "role": "visitor",
+          "kind": "visitor",
+          "method": "GET",
+          "params": {},
+          "referer": "online.php"
+        }
+      ]
+    },
+    "register.php?do=": {
+      "roles": [
+        "visitor"
+      ],
+      "kinds": [
+        "visitor"
+      ],
+      "requests": [
+        {
+          "role": "visitor",
+          "kind": "visitor",
+          "method": "POST",
+          "params": {
+            "username": "text_c18d5741",
+            "password_1": "12345678",
+            "password_2": "12345678",
+            "email": "drhl_6bd8ecd0@example.test",
+            "country": "value_ce9e8589",
+            "sex": "male",
+            "captcha": "value_de717468"
+          },
+          "referer": "register.php"
+        }
+      ]
+    },
+    "rss/flash.php": {
+      "roles": [
+        "admin",
+        "user1",
+        "user2",
+        "visitor"
+      ],
+      "kinds": [
+        "admin",
+        "user",
+        "visitor"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {},
+          "referer": "flash_lib.php"
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "GET",
+          "params": {},
+          "referer": "flash_lib.php"
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "GET",
+          "params": {},
+          "referer": "flash_lib.php"
+        },
+        {
+          "role": "visitor",
+          "kind": "visitor",
+          "method": "GET",
+          "params": {},
+          "referer": "flash_lib.php"
+        }
+      ]
+    },
+    "rss/lessons.php": {
+      "roles": [
+        "admin",
+        "user1",
+        "user2",
+        "visitor"
+      ],
+      "kinds": [
+        "admin",
+        "user",
+        "visitor"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {},
+          "referer": "lessons.php"
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "GET",
+          "params": {},
+          "referer": "lessons.php"
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "GET",
+          "params": {},
+          "referer": "lessons.php"
+        },
+        {
+          "role": "visitor",
+          "kind": "visitor",
+          "method": "GET",
+          "params": {},
+          "referer": "lessons.php"
+        }
+      ]
+    },
+    "rss/news.php": {
+      "roles": [
+        "admin",
+        "user1",
+        "user2",
+        "visitor"
+      ],
+      "kinds": [
+        "admin",
+        "user",
+        "visitor"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {},
+          "referer": "news.php"
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "GET",
+          "params": {},
+          "referer": "news.php"
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "GET",
+          "params": {},
+          "referer": "news.php"
+        },
+        {
+          "role": "visitor",
+          "kind": "visitor",
+          "method": "GET",
+          "params": {},
+          "referer": "news.php"
+        }
+      ]
+    },
+    "rss/programs.php": {
+      "roles": [
+        "admin",
+        "user1",
+        "user2",
+        "visitor"
+      ],
+      "kinds": [
+        "admin",
+        "user",
+        "visitor"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {},
+          "referer": "programs.php"
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "GET",
+          "params": {},
+          "referer": "programs.php"
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "GET",
+          "params": {},
+          "referer": "programs.php"
+        },
+        {
+          "role": "visitor",
+          "kind": "visitor",
+          "method": "GET",
+          "params": {},
+          "referer": "programs.php"
+        }
+      ]
+    },
+    "rss/sounds.php": {
+      "roles": [
+        "admin",
+        "user1",
+        "user2",
+        "visitor"
+      ],
+      "kinds": [
+        "admin",
+        "user",
+        "visitor"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {},
+          "referer": "sounds.php"
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "GET",
+          "params": {},
+          "referer": "sounds.php"
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "GET",
+          "params": {},
+          "referer": "sounds.php"
+        },
+        {
+          "role": "visitor",
+          "kind": "visitor",
+          "method": "GET",
+          "params": {},
+          "referer": "sounds.php"
+        }
+      ]
+    },
+    "rss/topics.php": {
+      "roles": [
+        "admin",
+        "user1",
+        "user2",
+        "visitor"
+      ],
+      "kinds": [
+        "admin",
+        "user",
+        "visitor"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {},
+          "referer": "topics.php"
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "GET",
+          "params": {},
+          "referer": "topics.php"
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "GET",
+          "params": {},
+          "referer": "topics.php"
+        },
+        {
+          "role": "visitor",
+          "kind": "visitor",
+          "method": "GET",
+          "params": {},
+          "referer": "topics.php"
+        }
+      ]
+    },
+    "rss/videos.php": {
+      "roles": [
+        "admin",
+        "user1",
+        "user2",
+        "visitor"
+      ],
+      "kinds": [
+        "admin",
+        "user",
+        "visitor"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {},
+          "referer": "video_lib.php"
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "GET",
+          "params": {},
+          "referer": "video_lib.php"
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "GET",
+          "params": {},
+          "referer": "video_lib.php"
+        },
+        {
+          "role": "visitor",
+          "kind": "visitor",
+          "method": "GET",
+          "params": {},
+          "referer": "video_lib.php"
+        }
+      ]
+    },
+    "search.php": {
+      "roles": [
+        "admin",
+        "user1",
+        "user2",
+        "visitor"
+      ],
+      "kinds": [
+        "admin",
+        "user",
+        "visitor"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {
+            "search": "search",
+            "where": "all"
+          },
+          "referer": "member_cp.php?do="
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "search": "search",
+            "where": "all"
+          },
+          "referer": "member_cp.php?do="
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "search": "search",
+            "where": "all"
+          },
+          "referer": "member_cp.php?do="
+        },
+        {
+          "role": "visitor",
+          "kind": "visitor",
+          "method": "GET",
+          "params": {
+            "search": "search",
+            "where": "all"
+          },
+          "referer": "topics.php"
+        }
+      ]
+    },
+    "search.php?search=p1&where=p1": {
+      "roles": [
+        "admin",
+        "user1",
+        "user2",
+        "visitor"
+      ],
+      "kinds": [
+        "admin",
+        "user",
+        "visitor"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {
+            "search": "search",
+            "where": "all"
+          },
+          "referer": "index.php"
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "search": "search",
+            "where": "all"
+          },
+          "referer": "index.php"
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "GET",
+          "params": {
+            "search": "search",
+            "where": "all"
+          },
+          "referer": "index.php"
+        },
+        {
+          "role": "visitor",
+          "kind": "visitor",
+          "method": "GET",
+          "params": {
+            "search": "search",
+            "where": "all"
+          },
+          "referer": "index.php"
+        }
+      ]
+    },
+    "send_flash.php": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {},
+          "referer": "flash_lib.php"
+        }
+      ]
+    },
+    "send_flash.php?do=": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "POST",
+          "params": {
+            "title": "text_9d4f9270",
+            "cat": "value_128bbed9",
+            "url": "http://example.test/",
+            "image": "value_1ea132ed",
+            "captcha": "value_69c6fbbd"
+          },
+          "referer": "send_flash.php"
+        }
+      ]
+    },
+    "send_image.php?KeepThis=true&TB_iframe=true&height=p1&width=p1": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {
+            "KeepThis": "true",
+            "TB_iframe": "true",
+            "height": "400",
+            "width": "500"
+          },
+          "referer": "album.php"
+        }
+      ]
+    },
+    "send_image.php?do=": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "POST",
+          "params": {
+            "url": "http://example.test/",
+            "descr": "value_e028cece",
+            "cat": "value_c524c6aa",
+            "thumb": "value_71d93fa4",
+            "captcha": "value_e2e4a172"
+          },
+          "referer": "send_image.php?KeepThis=true&TB_iframe=true&height=p1&width=p1"
+        }
+      ]
+    },
+    "send_lesson.php": {
+      "roles": [
+        "admin",
+        "user1",
+        "user2"
+      ],
+      "kinds": [
+        "admin",
+        "user"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {},
+          "referer": "lessons.php"
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "GET",
+          "params": {},
+          "referer": "lessons.php"
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "GET",
+          "params": {},
+          "referer": "lessons.php"
+        }
+      ]
+    },
+    "send_lesson.php?do=": {
+      "roles": [
+        "admin",
+        "user1",
+        "user2"
+      ],
+      "kinds": [
+        "admin",
+        "user"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "POST",
+          "params": {
+            "title": "text_78d76d8c",
+            "short_desc": "value_2e1a56eb",
+            "cat": "value_027de7f1",
+            "lesson": "value_f97a3e6f",
+            "comets": "yes",
+            "captcha": "value_ae764ae0"
+          },
+          "referer": "send_lesson.php?do="
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "POST",
+          "params": {
+            "title": "text_78d76d8c",
+            "short_desc": "value_2e1a56eb",
+            "cat": "value_027de7f1",
+            "lesson": "value_f97a3e6f",
+            "comets": "yes",
+            "captcha": "value_ae764ae0"
+          },
+          "referer": "send_lesson.php?do="
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "POST",
+          "params": {
+            "title": "text_78d76d8c",
+            "short_desc": "value_2e1a56eb",
+            "cat": "value_027de7f1",
+            "lesson": "value_f97a3e6f",
+            "comets": "yes",
+            "captcha": "value_ae764ae0"
+          },
+          "referer": "send_lesson.php?do="
+        }
+      ]
+    },
+    "send_news.php": {
+      "roles": [
+        "admin",
+        "user1",
+        "user2"
+      ],
+      "kinds": [
+        "admin",
+        "user"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {},
+          "referer": "news.php"
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "GET",
+          "params": {},
+          "referer": "news.php"
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "GET",
+          "params": {},
+          "referer": "news.php"
+        }
+      ]
+    },
+    "send_news.php?do=": {
+      "roles": [
+        "admin",
+        "user1",
+        "user2"
+      ],
+      "kinds": [
+        "admin",
+        "user"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "POST",
+          "params": {
+            "title": "text_07e67152",
+            "cat": "value_e27929bd",
+            "new": "value_402dfb3f",
+            "image": "value_9e83e9dc",
+            "comets": "yes",
+            "captcha": "value_2c88d99b"
+          },
+          "referer": "send_news.php?do="
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "POST",
+          "params": {
+            "title": "text_07e67152",
+            "cat": "value_e27929bd",
+            "new": "value_402dfb3f",
+            "image": "value_9e83e9dc",
+            "comets": "yes",
+            "captcha": "value_2c88d99b"
+          },
+          "referer": "send_news.php?do="
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "POST",
+          "params": {
+            "title": "text_07e67152",
+            "cat": "value_e27929bd",
+            "new": "value_402dfb3f",
+            "image": "value_9e83e9dc",
+            "comets": "yes",
+            "captcha": "value_2c88d99b"
+          },
+          "referer": "send_news.php?do="
+        }
+      ]
+    },
+    "send_pro.php": {
+      "roles": [
+        "admin",
+        "user1",
+        "user2"
+      ],
+      "kinds": [
+        "admin",
+        "user"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {},
+          "referer": "programs.php"
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "GET",
+          "params": {},
+          "referer": "programs.php"
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "GET",
+          "params": {},
+          "referer": "programs.php"
+        }
+      ]
+    },
+    "send_pro.php?do=": {
+      "roles": [
+        "admin",
+        "user1",
+        "user2"
+      ],
+      "kinds": [
+        "admin",
+        "user"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "POST",
+          "params": {
+            "name": "text_26937b36",
+            "cat": "value_2258232d",
+            "descr": "value_295bc69a",
+            "screanshot_yn": "yes",
+            "screanshot_url": "http://",
+            "url": "http://",
+            "size": "value_46b668d5",
+            "company": "org_0ebe40b1",
+            "license": "value_67346888",
+            "capability": "value_1964f97d",
+            "captcha": "value_c4a9de85"
+          },
+          "referer": "send_pro.php"
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "POST",
+          "params": {
+            "name": "text_26937b36",
+            "cat": "value_2258232d",
+            "descr": "value_295bc69a",
+            "screanshot_yn": "yes",
+            "screanshot_url": "http://",
+            "url": "http://",
+            "size": "value_46b668d5",
+            "company": "org_0ebe40b1",
+            "license": "value_67346888",
+            "capability": "value_1964f97d",
+            "captcha": "value_c4a9de85"
+          },
+          "referer": "send_pro.php"
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "POST",
+          "params": {
+            "name": "text_26937b36",
+            "cat": "value_2258232d",
+            "descr": "value_295bc69a",
+            "screanshot_yn": "yes",
+            "screanshot_url": "http://",
+            "url": "http://",
+            "size": "value_46b668d5",
+            "company": "org_0ebe40b1",
+            "license": "value_67346888",
+            "capability": "value_1964f97d",
+            "captcha": "value_c4a9de85"
+          },
+          "referer": "send_pro.php"
+        }
+      ]
+    },
+    "send_topic.php": {
+      "roles": [
+        "admin",
+        "user1",
+        "user2"
+      ],
+      "kinds": [
+        "admin",
+        "user"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {},
+          "referer": "topics.php"
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "GET",
+          "params": {},
+          "referer": "topics.php"
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "GET",
+          "params": {},
+          "referer": "topics.php"
+        }
+      ]
+    },
+    "send_topic.php?do=": {
+      "roles": [
+        "admin",
+        "user1",
+        "user2"
+      ],
+      "kinds": [
+        "admin",
+        "user"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "POST",
+          "params": {
+            "title": "text_8e316c3c",
+            "cat": "value_c03f5a86",
+            "topic": "value_fb8581c3",
+            "image": "value_af087cf5",
+            "comets": "yes",
+            "captcha": "value_ecefa7e7"
+          },
+          "referer": "send_topic.php?do="
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "POST",
+          "params": {
+            "title": "text_8e316c3c",
+            "cat": "value_c03f5a86",
+            "topic": "value_fb8581c3",
+            "image": "value_af087cf5",
+            "comets": "yes",
+            "captcha": "value_ecefa7e7"
+          },
+          "referer": "send_topic.php?do="
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "POST",
+          "params": {
+            "title": "text_8e316c3c",
+            "cat": "value_c03f5a86",
+            "topic": "value_fb8581c3",
+            "image": "value_af087cf5",
+            "comets": "yes",
+            "captcha": "value_ecefa7e7"
+          },
+          "referer": "send_topic.php?do="
+        }
+      ]
+    },
+    "send_video.php": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {},
+          "referer": "video_lib.php"
+        }
+      ]
+    },
+    "send_video.php?do=": {
+      "roles": [
+        "admin"
+      ],
+      "kinds": [
+        "admin"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "POST",
+          "params": {
+            "title": "text_8e0474ae",
+            "cat": "value_f0ca2d1f",
+            "allow_coments": "yes",
+            "descr": "value_04e159dd",
+            "url": "http://",
+            "time": "00:00",
+            "captcha": "value_0d87ac15"
+          },
+          "referer": "send_video.php"
+        }
+      ]
+    },
+    "sounds.php": {
+      "roles": [
+        "admin",
+        "user1",
+        "user2",
+        "visitor"
+      ],
+      "kinds": [
+        "admin",
+        "user",
+        "visitor"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {},
+          "referer": "send_video.php"
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "GET",
+          "params": {},
+          "referer": "video_lib.php"
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "GET",
+          "params": {},
+          "referer": "video_lib.php"
+        },
+        {
+          "role": "visitor",
+          "kind": "visitor",
+          "method": "GET",
+          "params": {},
+          "referer": "video_lib.php"
+        }
+      ]
+    },
+    "topics.php": {
+      "roles": [
+        "admin",
+        "user1",
+        "user2",
+        "visitor"
+      ],
+      "kinds": [
+        "admin",
+        "user",
+        "visitor"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {},
+          "referer": "send_lesson.php"
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "GET",
+          "params": {},
+          "referer": "send_lesson.php"
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "GET",
+          "params": {},
+          "referer": "send_lesson.php"
+        },
+        {
+          "role": "visitor",
+          "kind": "visitor",
+          "method": "GET",
+          "params": {},
+          "referer": "lessons.php"
+        }
+      ]
+    },
+    "video_lib.php": {
+      "roles": [
+        "admin",
+        "user1",
+        "user2",
+        "visitor"
+      ],
+      "kinds": [
+        "admin",
+        "user",
+        "visitor"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {},
+          "referer": "album.php"
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "GET",
+          "params": {},
+          "referer": "album.php"
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "GET",
+          "params": {},
+          "referer": "album.php"
+        },
+        {
+          "role": "visitor",
+          "kind": "visitor",
+          "method": "GET",
+          "params": {},
+          "referer": "album.php"
+        }
+      ]
+    },
+    "weblinks.php": {
+      "roles": [
+        "admin",
+        "user1",
+        "user2",
+        "visitor"
+      ],
+      "kinds": [
+        "admin",
+        "user",
+        "visitor"
+      ],
+      "requests": [
+        {
+          "role": "admin",
+          "kind": "admin",
+          "method": "GET",
+          "params": {},
+          "referer": "contactus.php"
+        },
+        {
+          "role": "user1",
+          "kind": "user",
+          "method": "GET",
+          "params": {},
+          "referer": "contactus.php"
+        },
+        {
+          "role": "user2",
+          "kind": "user",
+          "method": "GET",
+          "params": {},
+          "referer": "contactus.php"
+        },
+        {
+          "role": "visitor",
+          "kind": "visitor",
+          "method": "GET",
+          "params": {},
+          "referer": "contactus.php"
+        }
+      ]
+    }
+  },
+  "static_only": [
+    "a.php",
+    "album_cat.php",
+    "album_rate.php",
+    "blocks/aljazeera_marquee.php",
+    "blocks/center_search.php",
+    "blocks/latest_images_fade.php",
+    "blocks/latest_lessons_side.php",
+    "blocks/latest_news_ajax_2.php",
+    "blocks/latest_news_ajax_center.php",
+    "blocks/latest_news_maqrquee.php",
+    "blocks/latest_pro_side.php",
+    "blocks/latest_topics_ajax_center.php",
+    "blocks/latest_topics_side.php",
+    "blocks/login.php",
+    "blocks/login_vb.php",
+    "blocks/ltst_imgs_ajax_slider.php",
+    "blocks/ltst_imgs_filmstrip.php",
+    "blocks/ltst_news_1_colum_center.php",
+    "blocks/ltst_topics_1_colum_center.php",
+    "blocks/ltst_videos_filmstrip.php",
+    "blocks/online.php",
+    "blocks/place.php",
+    "blocks/random_img.php",
+    "blocks/small_search.php",
+    "blocks/stats.php",
+    "blocks/top_login.php",
+    "comment.php",
+    "common.php",
+    "connect.php",
+    "control.php",
+    "control/block_manage.php",
+    "control/categories.php",
+    "control/close_site.php",
+    "control/common.php",
+    "control/db_backup.php",
+    "control/flash_categories.php",
+    "control/flash_settings.php",
+    "control/flash_waiting.php",
+    "control/images_categories.php",
+    "control/images_settings.php",
+    "control/images_waiting.php",
+    "control/index.php",
+    "control/keywords.php",
+    "control/languages.php",
+    "control/lessons_categories.php",
+    "control/lessons_settings.php",
+    "control/lessons_waiting.php",
+    "control/login.php",
+    "control/logout.php",
+    "control/main.php",
+    "control/maininfo.php",
+    "control/member_cregister.php",
+    "control/member_manage.php",
+    "control/member_rules.php",
+    "control/menu.php",
+    "control/menu_top.php",
+    "control/messages.php",
+    "control/news_categories.php",
+    "control/news_settings.php",
+    "control/news_waiting.php",
+    "control/pages_add.php",
+    "control/pages_manage.php",
+    "control/programs_categories.php",
+    "control/programs_settings.php",
+    "control/programs_waiting.php",
+    "control/security.php",
+    "control/sounds_categories.php",
+    "control/sounds_settings.php",
+    "control/sounds_waiting.php",
+    "control/success.php",
+    "control/themes.php",
+    "control/topics_categories.php",
+    "control/topics_settings.php",
+    "control/topics_waiting.php",
+    "control/videos_categories.php",
+    "control/videos_settings.php",
+    "control/videos_waiting.php",
+    "control/weblinks_categories.php",
+    "control/weblinks_settings.php",
+    "control/weblinks_waiting.php",
+    "cookie_gen.php",
+    "down_pro.php",
+    "flash.php",
+    "flash_cat.php",
+    "flash_rate.php",
+    "footer.php",
+    "header.php",
+    "includes/blocks_center_down.php",
+    "includes/blocks_center_top.php",
+    "includes/blocks_down.php",
+    "includes/blocks_left.php",
+    "includes/blocks_right.php",
+    "includes/blocks_top.php",
+    "includes/captcha.php",
+    "includes/classes/rssreader.php",
+    "includes/del_pm.php",
+    "includes/embed_vid.php",
+    "includes/functions.php",
+    "includes/show_vid_title.php",
+    "includes/small_search.php",
+    "includes/video_image.php",
+    "includes/window_down.php",
+    "includes/window_top.php",
+    "install/creattables.php",
+    "install/footer.php",
+    "install/header.php",
+    "install/index.php",
+    "install/step1.php",
+    "install/step2.php",
+    "install/step3.php",
+    "install/step4.php",
+    "install/step5.php",
+    "install/step6.php",
+    "install/step7.php",
+    "install/upgrade.php",
+    "install/upgrade2.php",
+    "install/upgrade3.php",
+    "install/upgrade4.php",
+    "languages/ar.php",
+    "languages/en.php",
+    "lesson.php",
+    "lessons_cat.php",
+    "logout.php",
+    "member_posts.php",
+    "msgs.php",
+    "news_cat.php",
+    "news_show.php",
+    "page.php",
+    "pro_cat.php",
+    "program.php",
+    "rate.php",
+    "save.php",
+    "send_sound.php",
+    "show_video.php",
+    "sound_cat.php",
+    "sound_listen.php",
+    "themes/awcm_darkblue/settings.php",
+    "themes/nice_blue/settings.php",
+    "themes/nice_motorcycle/settings.php",
+    "themes/silver/settings.php",
+    "topic.php",
+    "topics_cat.php",
+    "video_cat.php",
+    "weblinks_add.php",
+    "weblinks_cat.php",
+    "weblinks_site.php",
+    "weblinks_visit.php"
+  ],
+  "source_map": {
+    "a.php": "a.php",
+    "album.php": "album.php",
+    "album_cat.php": "album_cat.php",
+    "album_rate.php": "album_rate.php",
+    "blocks/aljazeera_marquee.php": "blocks/aljazeera_marquee.php",
+    "blocks/center_search.php": "blocks/center_search.php",
+    "blocks/data/aljazeera_marquee.php": "blocks/data/aljazeera_marquee.php",
+    "blocks/latest_images_fade.php": "blocks/latest_images_fade.php",
+    "blocks/latest_lessons_side.php": "blocks/latest_lessons_side.php",
+    "blocks/latest_news_ajax_2.php": "blocks/latest_news_ajax_2.php",
+    "blocks/latest_news_ajax_center.php": "blocks/latest_news_ajax_center.php",
+    "blocks/latest_news_maqrquee.php": "blocks/latest_news_maqrquee.php",
+    "blocks/latest_pro_side.php": "blocks/latest_pro_side.php",
+    "blocks/latest_topics_ajax_center.php": "blocks/latest_topics_ajax_center.php",
+    "blocks/latest_topics_side.php": "blocks/latest_topics_side.php",
+    "blocks/login.php": "blocks/login.php",
+    "blocks/login_vb.php": "blocks/login_vb.php",
+    "blocks/ltst_imgs_ajax_slider.php": "blocks/ltst_imgs_ajax_slider.php",
+    "blocks/ltst_imgs_filmstrip.php": "blocks/ltst_imgs_filmstrip.php",
+    "blocks/ltst_news_1_colum_center.php": "blocks/ltst_news_1_colum_center.php",
+    "blocks/ltst_topics_1_colum_center.php": "blocks/ltst_topics_1_colum_center.php",
+    "blocks/ltst_videos_filmstrip.php": "blocks/ltst_videos_filmstrip.php",
+    "blocks/online.php": "blocks/online.php",
+    "blocks/place.php": "blocks/place.php",
+    "blocks/random_img.php": "blocks/random_img.php",
+    "blocks/small_search.php": "blocks/small_search.php",
+    "blocks/stats.php": "blocks/stats.php",
+    "blocks/top_login.php": "blocks/top_login.php",
+    "change_lang.php": "change_lang.php",
+    "change_theme.php": "change_theme.php",
+    "comment.php": "comment.php",
+    "common.php": "common.php",
+    "connect.php": "connect.php",
+    "contactus.php": "contactus.php",
+    "control.php": "control.php",
+    "control/block_manage.php": "control/block_manage.php",
+    "control/categories.php": "control/categories.php",
+    "control/close_site.php": "control/close_site.php",
+    "control/common.php": "control/common.php",
+    "control/db_backup.php": "control/db_backup.php",
+    "control/flash_categories.php": "control/flash_categories.php",
+    "control/flash_settings.php": "control/flash_settings.php",
+    "control/flash_waiting.php": "control/flash_waiting.php",
+    "control/images_categories.php": "control/images_categories.php",
+    "control/images_settings.php": "control/images_settings.php",
+    "control/images_waiting.php": "control/images_waiting.php",
+    "control/index.php": "control/index.php",
+    "control/keywords.php": "control/keywords.php",
+    "control/languages.php": "control/languages.php",
+    "control/lessons_categories.php": "control/lessons_categories.php",
+    "control/lessons_settings.php": "control/lessons_settings.php",
+    "control/lessons_waiting.php": "control/lessons_waiting.php",
+    "control/login.php": "control/login.php",
+    "control/logout.php": "control/logout.php",
+    "control/main.php": "control/main.php",
+    "control/maininfo.php": "control/maininfo.php",
+    "control/member_cregister.php": "control/member_cregister.php",
+    "control/member_manage.php": "control/member_manage.php",
+    "control/member_rules.php": "control/member_rules.php",
+    "control/menu.php": "control/menu.php",
+    "control/menu_top.php": "control/menu_top.php",
+    "control/messages.php": "control/messages.php",
+    "control/news_categories.php": "control/news_categories.php",
+    "control/news_settings.php": "control/news_settings.php",
+    "control/news_waiting.php": "control/news_waiting.php",
+    "control/pages_add.php": "control/pages_add.php",
+    "control/pages_manage.php": "control/pages_manage.php",
+    "control/programs_categories.php": "control/programs_categories.php",
+    "control/programs_settings.php": "control/programs_settings.php",
+    "control/programs_waiting.php": "control/programs_waiting.php",
+    "control/security.php": "control/security.php",
+    "control/sounds_categories.php": "control/sounds_categories.php",
+    "control/sounds_settings.php": "control/sounds_settings.php",
+    "control/sounds_waiting.php": "control/sounds_waiting.php",
+    "control/success.php": "control/success.php",
+    "control/themes.php": "control/themes.php",
+    "control/topics_categories.php": "control/topics_categories.php",
+    "control/topics_settings.php": "control/topics_settings.php",
+    "control/topics_waiting.php": "control/topics_waiting.php",
+    "control/videos_categories.php": "control/videos_categories.php",
+    "control/videos_settings.php": "control/videos_settings.php",
+    "control/videos_waiting.php": "control/videos_waiting.php",
+    "control/weblinks_categories.php": "control/weblinks_categories.php",
+    "control/weblinks_settings.php": "control/weblinks_settings.php",
+    "control/weblinks_waiting.php": "control/weblinks_waiting.php",
+    "cookie_gen.php": "cookie_gen.php",
+    "down_pro.php": "down_pro.php",
+    "flash.php": "flash.php",
+    "flash_cat.php": "flash_cat.php",
+    "flash_lib.php": "flash_lib.php",
+    "flash_rate.php": "flash_rate.php",
+    "footer.php": "footer.php",
+    "header.php": "header.php",
+    "includes/avatar.php": "includes/avatar.php",
+    "includes/blocks_center_down.php": "includes/blocks_center_down.php",
+    "includes/blocks_center_top.php": "includes/blocks_center_top.php",
+    "includes/blocks_down.php": "includes/blocks_down.php",
+    "includes/blocks_left.php": "includes/blocks_left.php",
+    "includes/blocks_right.php": "includes/blocks_right.php",
+    "includes/blocks_top.php": "includes/blocks_top.php",
+    "includes/captcha.php": "includes/captcha.php",
+    "includes/classes/rssreader.php": "includes/classes/rssreader.php",
+    "includes/del_pm.php": "includes/del_pm.php",
+    "includes/embed_vid.php": "includes/embed_vid.php",
+    "includes/functions.php": "includes/functions.php",
+    "includes/show_vid_title.php": "includes/show_vid_title.php",
+    "includes/small_search.php": "includes/small_search.php",
+    "includes/video_image.php": "includes/video_image.php",
+    "includes/window_down.php": "includes/window_down.php",
+    "includes/window_top.php": "includes/window_top.php",
+    "index.php": "index.php",
+    "install/creattables.php": "install/creattables.php",
+    "install/footer.php": "install/footer.php",
+    "install/header.php": "install/header.php",
+    "install/index.php": "install/index.php",
+    "install/step1.php": "install/step1.php",
+    "install/step2.php": "install/step2.php",
+    "install/step3.php": "install/step3.php",
+    "install/step4.php": "install/step4.php",
+    "install/step5.php": "install/step5.php",
+    "install/step6.php": "install/step6.php",
+    "install/step7.php": "install/step7.php",
+    "install/upgrade.php": "install/upgrade.php",
+    "install/upgrade2.php": "install/upgrade2.php",
+    "install/upgrade3.php": "install/upgrade3.php",
+    "install/upgrade4.php": "install/upgrade4.php",
+    "languages/ar.php": "languages/ar.php",
+    "languages/en.php": "languages/en.php",
+    "lesson.php": "lesson.php",
+    "lessons.php": "lessons.php",
+    "lessons_cat.php": "lessons_cat.php",
+    "login.php": "login.php",
+    "logout.php": "logout.php",
+    "m_cp_avatar.php": "m_cp_avatar.php",
+    "member.php": "member.php",
+    "member_cp.php": "member_cp.php",
+    "member_cp_pm.php": "member_cp_pm.php",
+    "member_posts.php": "member_posts.php",
+    "msgs.php": "msgs.php",
+    "news.php": "news.php",
+    "news_cat.php": "news_cat.php",
+    "news_show.php": "news_show.php",
+    "notify.php": "notify.php",
+    "online.php": "online.php",
+    "page.php": "page.php",
+    "pro_cat.php": "pro_cat.php",
+    "program.php": "program.php",
+    "programs.php": "programs.php",
+    "rate.php": "rate.php",
+    "register.php": "register.php",
+    "rss/flash.php": "rss/flash.php",
+    "rss/lessons.php": "rss/lessons.php",
+    "rss/news.php": "rss/news.php",
+    "rss/programs.php": "rss/programs.php",
+    "rss/sounds.php": "rss/sounds.php",
+    "rss/topics.php": "rss/topics.php",
+    "rss/videos.php": "rss/videos.php",
+    "save.php": "save.php",
+    "search.php": "search.php",
+    "send_flash.php": "send_flash.php",
+    "send_image.php": "send_image.php",
+    "send_lesson.php": "send_lesson.php",
+    "send_news.php": "send_news.php",
+    "send_pro.php": "send_pro.php",
+    "send_sound.php": "send_sound.php",
+    "send_topic.php": "send_topic.php",
+    "send_video.php": "send_video.php",
+    "show_video.php": "show_video.php",
+    "sound_cat.php": "sound_cat.php",
+    "sound_listen.php": "sound_listen.php",
+    "sounds.php": "sounds.php",
+    "themes/awcm_darkblue/settings.php": "themes/awcm_darkblue/settings.php",
+    "themes/nice_blue/settings.php": "themes/nice_blue/settings.php",
+    "themes/nice_motorcycle/settings.php": "themes/nice_motorcycle/settings.php",
+    "themes/silver/settings.php": "themes/silver/settings.php",
+    "topic.php": "topic.php",
+    "topics.php": "topics.php",
+    "topics_cat.php": "topics_cat.php",
+    "video_cat.php": "video_cat.php",
+    "video_lib.php": "video_lib.php",
+    "weblinks.php": "weblinks.php",
+    "weblinks_add.php": "weblinks_add.php",
+    "weblinks_cat.php": "weblinks_cat.php",
+    "weblinks_site.php": "weblinks_site.php",
+    "weblinks_visit.php": "weblinks_visit.php"
+  },
+  "static_classifications": {
+    "observed": [
+      "album.php",
+      "blocks/data/aljazeera_marquee.php",
+      "change_lang.php",
+      "change_theme.php",
+      "contactus.php",
+      "flash_lib.php",
+      "includes/avatar.php",
+      "index.php",
+      "lessons.php",
+      "login.php",
+      "m_cp_avatar.php",
+      "member.php",
+      "member_cp.php",
+      "member_cp_pm.php",
+      "news.php",
+      "notify.php",
+      "online.php",
+      "programs.php",
+      "register.php",
+      "rss/flash.php",
+      "rss/lessons.php",
+      "rss/news.php",
+      "rss/programs.php",
+      "rss/sounds.php",
+      "rss/topics.php",
+      "rss/videos.php",
+      "search.php",
+      "send_flash.php",
+      "send_image.php",
+      "send_lesson.php",
+      "send_news.php",
+      "send_pro.php",
+      "send_topic.php",
+      "send_video.php",
+      "sounds.php",
+      "topics.php",
+      "video_lib.php",
+      "weblinks.php"
+    ],
+    "internal_reachable": [
+      "common.php",
+      "connect.php",
+      "footer.php",
+      "header.php",
+      "includes/blocks_center_top.php",
+      "includes/blocks_left.php",
+      "includes/blocks_top.php",
+      "includes/classes/rssreader.php",
+      "includes/functions.php",
+      "includes/window_down.php",
+      "includes/window_top.php",
+      "msgs.php"
+    ],
+    "public_unobserved": [
+      "a.php",
+      "album_cat.php",
+      "album_rate.php",
+      "blocks/aljazeera_marquee.php",
+      "blocks/center_search.php",
+      "blocks/latest_images_fade.php",
+      "blocks/latest_lessons_side.php",
+      "blocks/latest_news_ajax_2.php",
+      "blocks/latest_news_ajax_center.php",
+      "blocks/latest_news_maqrquee.php",
+      "blocks/latest_pro_side.php",
+      "blocks/latest_topics_ajax_center.php",
+      "blocks/latest_topics_side.php",
+      "blocks/login.php",
+      "blocks/login_vb.php",
+      "blocks/ltst_imgs_ajax_slider.php",
+      "blocks/ltst_imgs_filmstrip.php",
+      "blocks/ltst_news_1_colum_center.php",
+      "blocks/ltst_topics_1_colum_center.php",
+      "blocks/ltst_videos_filmstrip.php",
+      "blocks/online.php",
+      "blocks/place.php",
+      "blocks/random_img.php",
+      "blocks/small_search.php",
+      "blocks/stats.php",
+      "blocks/top_login.php",
+      "comment.php",
+      "common.php",
+      "connect.php",
+      "control.php",
+      "control/block_manage.php",
+      "control/categories.php",
+      "control/close_site.php",
+      "control/common.php",
+      "control/db_backup.php",
+      "control/flash_categories.php",
+      "control/flash_settings.php",
+      "control/flash_waiting.php",
+      "control/images_categories.php",
+      "control/images_settings.php",
+      "control/images_waiting.php",
+      "control/index.php",
+      "control/keywords.php",
+      "control/languages.php",
+      "control/lessons_categories.php",
+      "control/lessons_settings.php",
+      "control/lessons_waiting.php",
+      "control/login.php",
+      "control/logout.php",
+      "control/main.php",
+      "control/maininfo.php",
+      "control/member_cregister.php",
+      "control/member_manage.php",
+      "control/member_rules.php",
+      "control/menu.php",
+      "control/menu_top.php",
+      "control/messages.php",
+      "control/news_categories.php",
+      "control/news_settings.php",
+      "control/news_waiting.php",
+      "control/pages_add.php",
+      "control/pages_manage.php",
+      "control/programs_categories.php",
+      "control/programs_settings.php",
+      "control/programs_waiting.php",
+      "control/security.php",
+      "control/sounds_categories.php",
+      "control/sounds_settings.php",
+      "control/sounds_waiting.php",
+      "control/success.php",
+      "control/themes.php",
+      "control/topics_categories.php",
+      "control/topics_settings.php",
+      "control/topics_waiting.php",
+      "control/videos_categories.php",
+      "control/videos_settings.php",
+      "control/videos_waiting.php",
+      "control/weblinks_categories.php",
+      "control/weblinks_settings.php",
+      "control/weblinks_waiting.php",
+      "cookie_gen.php",
+      "down_pro.php",
+      "flash.php",
+      "flash_cat.php",
+      "flash_rate.php",
+      "footer.php",
+      "header.php",
+      "includes/blocks_center_down.php",
+      "includes/blocks_center_top.php",
+      "includes/blocks_down.php",
+      "includes/blocks_left.php",
+      "includes/blocks_right.php",
+      "includes/blocks_top.php",
+      "includes/captcha.php",
+      "includes/classes/rssreader.php",
+      "includes/del_pm.php",
+      "includes/embed_vid.php",
+      "includes/functions.php",
+      "includes/show_vid_title.php",
+      "includes/small_search.php",
+      "includes/video_image.php",
+      "includes/window_down.php",
+      "includes/window_top.php",
+      "install/creattables.php",
+      "install/footer.php",
+      "install/header.php",
+      "install/index.php",
+      "install/step1.php",
+      "install/step2.php",
+      "install/step3.php",
+      "install/step4.php",
+      "install/step5.php",
+      "install/step6.php",
+      "install/step7.php",
+      "install/upgrade.php",
+      "install/upgrade2.php",
+      "install/upgrade3.php",
+      "install/upgrade4.php",
+      "languages/ar.php",
+      "languages/en.php",
+      "lesson.php",
+      "lessons_cat.php",
+      "logout.php",
+      "member_posts.php",
+      "msgs.php",
+      "news_cat.php",
+      "news_show.php",
+      "page.php",
+      "pro_cat.php",
+      "program.php",
+      "rate.php",
+      "save.php",
+      "send_sound.php",
+      "show_video.php",
+      "sound_cat.php",
+      "sound_listen.php",
+      "themes/awcm_darkblue/settings.php",
+      "themes/nice_blue/settings.php",
+      "themes/nice_motorcycle/settings.php",
+      "themes/silver/settings.php",
+      "topic.php",
+      "topics_cat.php",
+      "video_cat.php",
+      "weblinks_add.php",
+      "weblinks_cat.php",
+      "weblinks_site.php",
+      "weblinks_visit.php"
+    ],
+    "support_unreachable": []
+  }
+}

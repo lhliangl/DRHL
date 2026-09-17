@@ -1,0 +1,29 @@
+{
+  "status": "completed",
+  "started_at": "2026-07-01T13:05:03.553687+00:00",
+  "config": "D:\\project\\python\\DRHL\\configs\\jspblog.json",
+  "artifacts": {
+    "dynamic_graph": "D:\\project\\python\\DRHL\\runs\\jspblog\\graphs\\dynamic.json",
+    "static_graph": "D:\\project\\python\\DRHL\\runs\\jspblog\\graphs\\static.json",
+    "candidate_parameters": "D:\\project\\python\\DRHL\\runs\\jspblog\\source\\candidate_parameters.json",
+    "candidate_functions": "D:\\project\\python\\DRHL\\runs\\jspblog\\source\\candidate_functions.json",
+    "access_control_parameters": "D:\\project\\python\\DRHL\\runs\\jspblog\\source\\parameters.json",
+    "access_control_functions": "D:\\project\\python\\DRHL\\runs\\jspblog\\source\\functions.json",
+    "access_control_snippets": "D:\\project\\python\\DRHL\\runs\\jspblog\\source\\snippets.json",
+    "fused_graph": "D:\\project\\python\\DRHL\\runs\\jspblog\\graphs\\fused.json",
+    "graph_summary": "D:\\project\\python\\DRHL\\runs\\jspblog\\graphs\\summary.json",
+    "graph_summary_csv": "D:\\project\\python\\DRHL\\runs\\jspblog\\graphs\\summary.csv",
+    "attack_vectors": "D:\\project\\python\\DRHL\\runs\\jspblog\\analysis\\vectors.json",
+    "findings": "D:\\project\\python\\DRHL\\runs\\jspblog\\analysis\\findings.json",
+    "repairs": "D:\\project\\python\\DRHL\\runs\\jspblog\\repair\\manifest.json",
+    "repair_report": "D:\\project\\python\\DRHL\\runs\\jspblog\\repair\\repair_report.md",
+    "metrics_json": "D:\\project\\python\\DRHL\\runs\\jspblog\\metrics\\summary.json",
+    "metrics_csv": "D:\\project\\python\\DRHL\\runs\\jspblog\\metrics\\summary.csv",
+    "llm_access_control_snippets": "D:\\project\\python\\DRHL\\runs\\jspblog\\source\\llm_snippets.json",
+    "vulnerability_report": "D:\\project\\python\\DRHL\\runs\\jspblog\\analysis\\vulnerability_report.md"
+  },
+  "finished_at": "2026-07-01T13:08:18.595879+00:00",
+  "repair_rerun_started_at": "2026-09-13T03:20:02.216313+00:00",
+  "repair_rerun_finished_at": "2026-09-13T03:26:12.826071+00:00",
+  "vector_only_detection_rerun_finished_at": "2026-09-13T03:19:22.339620+00:00"
+}

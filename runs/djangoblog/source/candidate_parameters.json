@@ -1,0 +1,54 @@
+{
+  "parameters": [
+    {
+      "id": "blog/views.py:LCP1",
+      "path": "blog/views.py",
+      "expression": "Post.status",
+      "aliases": [
+        "Post.status"
+      ],
+      "database_relations": [
+        {
+          "table": "Post",
+          "field": "status",
+          "line": 6
+        }
+      ],
+      "sources": [
+        "database"
+      ],
+      "locations": [
+        {
+          "source": "database",
+          "line": 6,
+          "condition": "Post.objects.filter(status=1)"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    },
+    {
+      "id": "manage.py:LCP2",
+      "path": "manage.py",
+      "expression": "__name__",
+      "aliases": [
+        "__name__"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 5,
+          "condition": "__name__ == '__main__'"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ]
+    }
+  ]
+}

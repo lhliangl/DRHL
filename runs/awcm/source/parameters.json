@@ -1,0 +1,440 @@
+{
+  "parameters": [
+    {
+      "id": "blocks/login.php:LCP29",
+      "path": "blocks/login.php",
+      "expression": "$member",
+      "aliases": [
+        "$member"
+      ],
+      "database_relations": [
+        {
+          "table": "awcm_member_pms",
+          "field": "reciever",
+          "line": 30
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 3,
+          "condition": "($member == 'no')"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ],
+      "validation_evidence": [
+        {
+          "kind": "database_field",
+          "table": "awcm_member_pms",
+          "field": "reciever",
+          "line": 30
+        }
+      ]
+    },
+    {
+      "id": "blocks/top_login.php:LCP45",
+      "path": "blocks/top_login.php",
+      "expression": "$member",
+      "aliases": [
+        "$member"
+      ],
+      "database_relations": [
+        {
+          "table": "awcm_member_pms",
+          "field": "reciever",
+          "line": 30
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 3,
+          "condition": "($member == 'no')"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ],
+      "validation_evidence": [
+        {
+          "kind": "database_field",
+          "table": "awcm_member_pms",
+          "field": "reciever",
+          "line": 30
+        }
+      ]
+    },
+    {
+      "id": "common.php:LCP54",
+      "path": "common.php",
+      "expression": "$id",
+      "aliases": [
+        "$id"
+      ],
+      "database_relations": [
+        {
+          "table": "awcm_members",
+          "field": "id",
+          "line": 11
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 18,
+          "condition": "($id == '0')"
+        },
+        {
+          "source": "conditional",
+          "line": 20,
+          "condition": "($id == 'no')"
+        },
+        {
+          "source": "conditional",
+          "line": 25,
+          "condition": "($id == '0')"
+        }
+      ],
+      "condition_indexes": [
+        1,
+        2,
+        4
+      ],
+      "validation_evidence": [
+        {
+          "kind": "database_field",
+          "table": "awcm_members",
+          "field": "id",
+          "line": 11
+        }
+      ]
+    },
+    {
+      "id": "control/common.php:LCP83",
+      "path": "control/common.php",
+      "expression": "$_SESSION['awcm_cp']",
+      "aliases": [
+        "$_SESSION['awcm_cp']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 16,
+          "condition": "($_SESSION['awcm_cp'] == 'yes')"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ],
+      "validation_evidence": [
+        {
+          "kind": "terminating_condition",
+          "line": 16,
+          "condition": "($_SESSION['awcm_cp'] == 'yes')",
+          "terminations": [
+            {
+              "kind": "redirect",
+              "line": 17,
+              "code": "print '<meta http-equiv=\"refresh\" content=\"0;URL=login.php\"> ';",
+              "denial_text": false
+            },
+            {
+              "kind": "configured_denial",
+              "line": 18,
+              "code": "exit;",
+              "denial_text": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "control/common.php:LCP87",
+      "path": "control/common.php",
+      "expression": "$id",
+      "aliases": [
+        "$id"
+      ],
+      "database_relations": [
+        {
+          "table": "awcm_members",
+          "field": "id",
+          "line": 74
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 81,
+          "condition": "($id == '0')"
+        }
+      ],
+      "condition_indexes": [
+        1
+      ],
+      "validation_evidence": [
+        {
+          "kind": "database_field",
+          "table": "awcm_members",
+          "field": "id",
+          "line": 74
+        }
+      ]
+    },
+    {
+      "id": "control.php:LCP284",
+      "path": "control.php",
+      "expression": "$member_level",
+      "aliases": [
+        "$member_level"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 12,
+          "condition": "($member_level !== 'admin')"
+        }
+      ],
+      "condition_indexes": [
+        2
+      ],
+      "validation_evidence": [
+        {
+          "kind": "terminating_condition",
+          "line": 12,
+          "condition": "($member_level !== 'admin')",
+          "terminations": [
+            {
+              "kind": "configured_denial",
+              "line": 12,
+              "code": "exit;",
+              "denial_text": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "header.php:LCP324",
+      "path": "header.php",
+      "expression": "$_SESSION['awcm_member']",
+      "aliases": [
+        "$_SESSION['awcm_member']",
+        "$member",
+        "$mysql_checkdookie51_member_row['id']"
+      ],
+      "database_relations": [
+        {
+          "table": "awcm_online",
+          "field": "memid",
+          "line": 85
+        },
+        {
+          "table": "awcm_online",
+          "field": "",
+          "line": 89
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 50,
+          "condition": "(isset($_SESSION['awcm_member']))"
+        }
+      ],
+      "condition_indexes": [
+        9
+      ],
+      "validation_evidence": [
+        {
+          "kind": "database_field",
+          "table": "awcm_online",
+          "field": "memid",
+          "line": 85
+        }
+      ]
+    },
+    {
+      "id": "header.php:LCP325",
+      "path": "header.php",
+      "expression": "$_COOKIE['awcm_member']",
+      "aliases": [
+        "$_COOKIE['awcm_member']",
+        "$member_cok"
+      ],
+      "database_relations": [
+        {
+          "table": "awcm_members",
+          "field": "id",
+          "line": 53
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 52,
+          "condition": "(isset($_COOKIE['awcm_member']))"
+        }
+      ],
+      "condition_indexes": [
+        10
+      ],
+      "validation_evidence": [
+        {
+          "kind": "database_field",
+          "table": "awcm_members",
+          "field": "id",
+          "line": 53
+        }
+      ]
+    },
+    {
+      "id": "login.php:LCP521",
+      "path": "login.php",
+      "expression": "$mysql_login547_total",
+      "aliases": [
+        "$mysql_login547_total"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 15,
+          "condition": "($mysql_login547_total == 0)"
+        },
+        {
+          "source": "conditional",
+          "line": 17,
+          "condition": "($mysql_login547_total == 1)"
+        }
+      ],
+      "condition_indexes": [
+        0,
+        1
+      ],
+      "validation_evidence": [
+        {
+          "kind": "terminating_condition",
+          "line": 15,
+          "condition": "($mysql_login547_total == 0)",
+          "terminations": [
+            {
+              "kind": "redirect",
+              "line": 16,
+              "code": "print '<meta http-equiv=\"refresh\" content=\"0; URL=notify.php?v=login_failed\">';",
+              "denial_text": false
+            },
+            {
+              "kind": "redirect",
+              "line": 26,
+              "code": "print '<meta http-equiv=\"refresh\" content=\"0; URL=notify.php?v=login_done\">';",
+              "denial_text": false
+            }
+          ]
+        },
+        {
+          "kind": "terminating_condition",
+          "line": 17,
+          "condition": "($mysql_login547_total == 1)",
+          "terminations": [
+            {
+              "kind": "redirect",
+              "line": 26,
+              "code": "print '<meta http-equiv=\"refresh\" content=\"0; URL=notify.php?v=login_done\">';",
+              "denial_text": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "member_cp.php:LCP526",
+      "path": "member_cp.php",
+      "expression": "$member",
+      "aliases": [
+        "$member"
+      ],
+      "database_relations": [
+        {
+          "table": "awcm_members",
+          "field": "id",
+          "line": 43
+        },
+        {
+          "table": "awcm_members",
+          "field": "id",
+          "line": 45
+        },
+        {
+          "table": "awcm_member_pms",
+          "field": "reciever",
+          "line": 75
+        }
+      ],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 8,
+          "condition": "($member == 'no')"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ],
+      "validation_evidence": [
+        {
+          "kind": "database_field",
+          "table": "awcm_members",
+          "field": "id",
+          "line": 43
+        },
+        {
+          "kind": "database_field",
+          "table": "awcm_members",
+          "field": "id",
+          "line": 45
+        },
+        {
+          "kind": "database_field",
+          "table": "awcm_member_pms",
+          "field": "reciever",
+          "line": 75
+        }
+      ]
+    }
+  ]
+}

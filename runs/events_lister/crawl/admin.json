@@ -1,0 +1,284 @@
+{
+  "role": "admin",
+  "kind": "admin",
+  "nodes": [
+    "admin/add.php",
+    "admin/copy.php?id=p1",
+    "admin/delete.php?id=p1",
+    "admin/index.php",
+    "admin/list.php?status=active",
+    "admin/list.php?status=all",
+    "admin/message.php",
+    "admin/recover.php",
+    "admin/recover.php?id=p1",
+    "admin/update.php?id=p1",
+    "admin/user_add.php",
+    "admin/user_delete.php?id=p1",
+    "admin/users.php",
+    "index.php"
+  ],
+  "edges": [
+    {
+      "from": "admin/add.php",
+      "to": "admin/add.php"
+    },
+    {
+      "from": "admin/copy.php?id=p1",
+      "to": "admin/copy.php?id=p1"
+    },
+    {
+      "from": "admin/delete.php?id=p1",
+      "to": "admin/delete.php?id=p1"
+    },
+    {
+      "from": "admin/index.php",
+      "to": "admin/users.php"
+    },
+    {
+      "from": "admin/list.php?status=active",
+      "to": "admin/add.php"
+    },
+    {
+      "from": "admin/list.php?status=active",
+      "to": "admin/copy.php?id=p1"
+    },
+    {
+      "from": "admin/list.php?status=active",
+      "to": "admin/delete.php?id=p1"
+    },
+    {
+      "from": "admin/list.php?status=active",
+      "to": "admin/update.php?id=p1"
+    },
+    {
+      "from": "admin/list.php?status=all",
+      "to": "admin/list.php?status=active"
+    },
+    {
+      "from": "admin/message.php",
+      "to": "admin/list.php?status=all"
+    },
+    {
+      "from": "admin/message.php",
+      "to": "admin/message.php"
+    },
+    {
+      "from": "admin/recover.php",
+      "to": "admin/recover.php"
+    },
+    {
+      "from": "admin/recover.php?id=p1",
+      "to": "admin/recover.php"
+    },
+    {
+      "from": "admin/update.php?id=p1",
+      "to": "admin/update.php?id=p1"
+    },
+    {
+      "from": "admin/user_add.php",
+      "to": "admin/user_add.php"
+    },
+    {
+      "from": "admin/user_delete.php?id=p1",
+      "to": "admin/user_delete.php?id=p1"
+    },
+    {
+      "from": "admin/users.php",
+      "to": "admin/message.php"
+    },
+    {
+      "from": "admin/users.php",
+      "to": "admin/recover.php?id=p1"
+    },
+    {
+      "from": "admin/users.php",
+      "to": "admin/user_add.php"
+    },
+    {
+      "from": "admin/users.php",
+      "to": "admin/user_delete.php?id=p1"
+    },
+    {
+      "from": "admin/users.php",
+      "to": "index.php"
+    }
+  ],
+  "requests": {
+    "admin/index.php": {
+      "method": "GET",
+      "params": {},
+      "referer": null
+    },
+    "admin/login.php": {
+      "method": "POST",
+      "params": {
+        "username": "admin@qq.com",
+        "password": "123456",
+        "submitBtn": "Login"
+      },
+      "referer": null
+    },
+    "admin/users.php": {
+      "method": "GET",
+      "params": {},
+      "referer": "admin/index.php"
+    },
+    "index.php": {
+      "method": "GET",
+      "params": {},
+      "referer": "admin/users.php"
+    },
+    "admin/message.php": {
+      "method": "POST",
+      "params": {
+        "ud_description": "There are no events scheduled at this time.  Please check back later. Thank you",
+        "submit": "Update"
+      },
+      "referer": "admin/message.php"
+    },
+    "admin/list.php?status=all": {
+      "method": "GET",
+      "params": {
+        "status": "all"
+      },
+      "referer": "admin/message.php"
+    },
+    "admin/list.php?status=active": {
+      "method": "GET",
+      "params": {
+        "status": "active"
+      },
+      "referer": "admin/list.php?status=all"
+    },
+    "admin/add.php": {
+      "method": "POST",
+      "params": {
+        "ud_event": "value_ff1ee2de",
+        "ud_month": "value_cb0003b9",
+        "ud_day": "value_b6839dc5",
+        "ud_year": "value_7c56a16f",
+        "ud_hour": "value_b39ab413",
+        "ud_minute": "value_fb32e488",
+        "ud_ampm": "value_5e653c15",
+        "ud_month_end": "value_c2abc484",
+        "ud_day_end": "value_3aa47444",
+        "ud_year_end": "value_d4491925",
+        "ud_hour_end": "value_79e206e3",
+        "ud_minute_end": "value_9b5c8121",
+        "ud_ampm_end": "value_40f5f31e",
+        "ud_month_show": "value_ef8bc2fb",
+        "ud_day_show": "value_a7891a8f",
+        "ud_year_show": "value_e961a7f1",
+        "ud_location": "value_9676c73b",
+        "ud_email": "drhl_3bd9b3ed@example.test",
+        "ud_phone": "13800138000",
+        "ud_link": "value_a50ab140",
+        "ud_link_name": "text_cd27b5eb",
+        "ud_html": "1",
+        "ud_description": "comment_bd54c602",
+        "submit": "Add Event"
+      },
+      "referer": "admin/add.php"
+    },
+    "admin/delete.php?id=p1": {
+      "method": "POST",
+      "params": {
+        "ud_id": "1",
+        "submit": "YES DELETE"
+      },
+      "referer": "admin/delete.php?id=p1"
+    },
+    "admin/copy.php?id=p1": {
+      "method": "POST",
+      "params": {
+        "ud_event": "value_daf362a4",
+        "ud_month": "value_63b14434",
+        "ud_day": "value_0164a502",
+        "ud_year": "value_9306dd50",
+        "ud_hour": "value_d5b403b8",
+        "ud_minute": "value_a2d51d90",
+        "ud_ampm": "value_4abfaa8e",
+        "ud_month_end": "value_8eebd60d",
+        "ud_day_end": "value_7b3dffe8",
+        "ud_year_end": "value_010eca1a",
+        "ud_hour_end": "value_fa726a45",
+        "ud_minute_end": "value_07650e53",
+        "ud_ampm_end": "value_2b347115",
+        "ud_month_show": "value_d8ce0054",
+        "ud_day_show": "value_3e15c289",
+        "ud_year_show": "value_5cc3be5c",
+        "ud_location": "value_03141968",
+        "ud_email": "drhl_41e6816f@example.test",
+        "ud_phone": "13800138000",
+        "ud_link": "value_740373e4",
+        "ud_link_name": "text_ea592212",
+        "ud_html": "1",
+        "ud_description": "comment_c328bea6",
+        "submit": "Copy Event"
+      },
+      "referer": "admin/copy.php?id=p1"
+    },
+    "admin/update.php?id=p1": {
+      "method": "POST",
+      "params": {
+        "ud_event": "value_f5c280d5",
+        "ud_month": "value_d5b226c4",
+        "ud_day": "value_fa6d7a39",
+        "ud_year": "value_baf92b12",
+        "ud_hour": "value_496b68ea",
+        "ud_minute": "value_47763c22",
+        "ud_ampm": "value_d7e10ea1",
+        "ud_month_end": "value_7c570288",
+        "ud_day_end": "value_0d51749f",
+        "ud_year_end": "value_7520047d",
+        "ud_hour_end": "value_0433fa0f",
+        "ud_minute_end": "value_6be9ec3c",
+        "ud_ampm_end": "value_bd9c7864",
+        "ud_month_show": "value_39bf85e2",
+        "ud_day_show": "value_ccf8d64c",
+        "ud_year_show": "value_8c87224f",
+        "ud_location": "value_e08997f0",
+        "ud_email": "drhl_d28aceae@example.test",
+        "ud_phone": "13800138000",
+        "ud_link": "value_f23ed97f",
+        "ud_link_name": "text_ae4d67a8",
+        "ud_html": "1",
+        "ud_description": "comment_c2241d94",
+        "submit": "Update Event"
+      },
+      "referer": "admin/update.php?id=p1"
+    },
+    "admin/user_add.php": {
+      "method": "POST",
+      "params": {
+        "uname": "text_25e9b5fc",
+        "pword": "value_e6041d8d",
+        "submit": "Add user"
+      },
+      "referer": "admin/user_add.php"
+    },
+    "admin/user_delete.php?id=p1": {
+      "method": "POST",
+      "params": {
+        "ud_id": "3",
+        "submit": "YES DELETE"
+      },
+      "referer": "admin/user_delete.php?id=p1"
+    },
+    "admin/recover.php?id=p1": {
+      "method": "GET",
+      "params": {
+        "id": "3"
+      },
+      "referer": "admin/users.php"
+    },
+    "admin/recover.php": {
+      "method": "POST",
+      "params": {
+        "email": "drhl_7db3d554@example.test",
+        "submit": " send "
+      },
+      "referer": "admin/recover.php?id=p1"
+    }
+  }
+}

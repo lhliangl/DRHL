@@ -1,0 +1,85 @@
+{
+  "summary": {
+    "source_items": 25,
+    "llm_items": 19,
+    "items_removed": 6
+  },
+  "snippets": [
+    {
+      "path": "addsession.php",
+      "code": "require_admin()"
+    },
+    {
+      "path": "comments.php",
+      "code": "require_admin()"
+    },
+    {
+      "path": "comments.php",
+      "code": "is_admin()"
+    },
+    {
+      "path": "editpaper.php",
+      "code": "require_admin()"
+    },
+    {
+      "path": "editpaper.php",
+      "code": "is_admin()"
+    },
+    {
+      "path": "editsession.php",
+      "code": "require_admin()"
+    },
+    {
+      "path": "functions.php",
+      "code": "function is_admin() {\n\tif ($_SESSION['privilege'] == 'admin') return TRUE;\n\telse return FALSE;\n}"
+    },
+    {
+      "path": "functions.php",
+      "if_framework": "if ($_SESSION['privilege'] == 'admin') {\n    return TRUE;\n    return FALSE;\n}"
+    },
+    {
+      "path": "functions.php",
+      "code": "return $_SESSION['user_id'];"
+    },
+    {
+      "path": "functions.php",
+      "code": "function require_admin() {\n\tif (!is_admin()) {\n\t        die (\"You don't have access to view this page, sorry. Please try going to the <a href='index.php'>index page</a> to view the site.\");\n\t}\n}"
+    },
+    {
+      "path": "functions.php",
+      "code": "is_admin()"
+    },
+    {
+      "path": "generaloptions.php",
+      "code": "if (is_numeric($id) && count($temp) == 2)\n\t\t\t$data[(int) $id][$type] = $value;"
+    },
+    {
+      "path": "generaloptions.php",
+      "code": "query(\"UPDATE users SET \" . implode_with_keys(\",\", $values, \"'\") . \" WHERE user_id='$id'\");"
+    },
+    {
+      "path": "header.php",
+      "code": "is_admin()"
+    },
+    {
+      "path": "login.php",
+      "code": "<?php include_once(\"functions.php\");\nif (isset($_GET[\"logout\"])) {\n\tsession_start();\n\tunset($_SESSION['email']);\n\tunset($_SESSION['privlege']);\n\tunset($_SESSION['user_id']);\n\tsession_destroy();\n        header(\"Location: index.php\");\n} else if (isset($_POST[\"email\"])) {\n\t$result = query(\"SELECT * FROM users WHERE email='\" . mysql_real_escape_string($_POST['email']) . \"' AND password='\" . mysql_real_escape_string(md5($_POST['password'])) . \"'\");\n\tif (mysql_num_rows($result) == 0) {\n\t\tinclude_once(\"header.php\");\n\t\tprint \"You have entered an email address and/or password that is invalid. Please go <a href='javascript:back()'>back</a> to the main page.\";\n\t} else if (mysql_num_rows($result) == 1) {\n\t\t$row = mysql_fetch_assoc($result);\n\t\tsession_start();\n\t\t$_SESSION['email'] = $row['email'];\n\t\t$_SESSION['privilege'] = $row['privilege'];\n\t\t$_SESSION['user_id'] = $row['user_id'];\n\t\tlogToFile($row['email'] . \" logged in\");\n\t\tif (isset($_GET['referer']))\n\t\t\theader(\"Location: $_GET[referer]\");\n\t\telse\n\t\t\theader(\"Location: index.php\");\n\t}\n} else { include(\"header.php\");\n?>\n<form action='login.php' method='POST'>\n<table>\n<tr><td>Email Address:</td><td><input name='email'></td></tr>\n<tr><td>Password:</td><td><input name='password' type='password'></td></tr>\n<tr><td>&nbsp</td><td><input type='submit' value='Login'></td></tr>\n</table>\n</form>\n<a href='register.php'>Register</a> <a href='forgot.php'>Forgot your password</a>\n<?php\n}\ninclude_once(\"footer.php\");\n?>"
+    },
+    {
+      "path": "login.php",
+      "code": "$_SESSION['user_id'] = $row['user_id'];"
+    },
+    {
+      "path": "register.php",
+      "code": "is_admin()"
+    },
+    {
+      "path": "showpaper.php",
+      "code": "is_admin()"
+    },
+    {
+      "path": "showsessions.php",
+      "code": "is_admin()"
+    }
+  ]
+}

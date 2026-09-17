@@ -1,0 +1,568 @@
+{
+  "parameters": [
+    {
+      "id": "admin/band_editor.php:LCP2",
+      "path": "admin/band_editor.php",
+      "expression": "$log",
+      "aliases": [
+        "$log",
+        "$dati_login['login']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 145,
+          "condition": "($log!=\"admin\"&&$pw!=\"admin\")"
+        },
+        {
+          "source": "conditional",
+          "line": 147,
+          "condition": "((isset($_COOKIE[$string_cook_login])&&$log==$_COOKIE[$string_cook_login])&&(isset($_COOKIE[$string_cook_password])&&$pw==$_COOKIE[$string_cook_password]))"
+        }
+      ],
+      "condition_indexes": [
+        2,
+        3
+      ],
+      "validation_evidence": [
+        {
+          "kind": "terminating_condition",
+          "line": 145,
+          "condition": "($log!=\"admin\"&&$pw!=\"admin\")",
+          "terminations": [
+            {
+              "kind": "configured_denial",
+              "line": 163,
+              "code": "$test_log = true;",
+              "denial_text": false
+            }
+          ]
+        },
+        {
+          "kind": "terminating_condition",
+          "line": 147,
+          "condition": "((isset($_COOKIE[$string_cook_login])&&$log==$_COOKIE[$string_cook_login])&&(isset($_COOKIE[$string_cook_password])&&$pw==$_COOKIE[$string_cook_password]))",
+          "terminations": [
+            {
+              "kind": "configured_denial",
+              "line": 149,
+              "code": "$test_log = true;",
+              "denial_text": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "admin/band_editor.php:LCP3",
+      "path": "admin/band_editor.php",
+      "expression": "$pw",
+      "aliases": [
+        "$pw",
+        "$dati_login['password']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 145,
+          "condition": "($log!=\"admin\"&&$pw!=\"admin\")"
+        },
+        {
+          "source": "conditional",
+          "line": 147,
+          "condition": "((isset($_COOKIE[$string_cook_login])&&$log==$_COOKIE[$string_cook_login])&&(isset($_COOKIE[$string_cook_password])&&$pw==$_COOKIE[$string_cook_password]))"
+        }
+      ],
+      "condition_indexes": [
+        2,
+        3
+      ],
+      "validation_evidence": [
+        {
+          "kind": "terminating_condition",
+          "line": 145,
+          "condition": "($log!=\"admin\"&&$pw!=\"admin\")",
+          "terminations": [
+            {
+              "kind": "configured_denial",
+              "line": 163,
+              "code": "$test_log = true;",
+              "denial_text": false
+            }
+          ]
+        },
+        {
+          "kind": "terminating_condition",
+          "line": 147,
+          "condition": "((isset($_COOKIE[$string_cook_login])&&$log==$_COOKIE[$string_cook_login])&&(isset($_COOKIE[$string_cook_password])&&$pw==$_COOKIE[$string_cook_password]))",
+          "terminations": [
+            {
+              "kind": "configured_denial",
+              "line": 149,
+              "code": "$test_log = true;",
+              "denial_text": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "admin/band_editor.php:LCP4",
+      "path": "admin/band_editor.php",
+      "expression": "$_COOKIE[$string_cook_login]",
+      "aliases": [
+        "$_COOKIE[$string_cook_login]"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 147,
+          "condition": "((isset($_COOKIE[$string_cook_login])&&$log==$_COOKIE[$string_cook_login])&&(isset($_COOKIE[$string_cook_password])&&$pw==$_COOKIE[$string_cook_password]))"
+        }
+      ],
+      "condition_indexes": [
+        3
+      ],
+      "validation_evidence": [
+        {
+          "kind": "terminating_condition",
+          "line": 147,
+          "condition": "((isset($_COOKIE[$string_cook_login])&&$log==$_COOKIE[$string_cook_login])&&(isset($_COOKIE[$string_cook_password])&&$pw==$_COOKIE[$string_cook_password]))",
+          "terminations": [
+            {
+              "kind": "configured_denial",
+              "line": 149,
+              "code": "$test_log = true;",
+              "denial_text": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "admin/band_editor.php:LCP5",
+      "path": "admin/band_editor.php",
+      "expression": "$_COOKIE[$string_cook_password]",
+      "aliases": [
+        "$_COOKIE[$string_cook_password]"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 147,
+          "condition": "((isset($_COOKIE[$string_cook_login])&&$log==$_COOKIE[$string_cook_login])&&(isset($_COOKIE[$string_cook_password])&&$pw==$_COOKIE[$string_cook_password]))"
+        }
+      ],
+      "condition_indexes": [
+        3
+      ],
+      "validation_evidence": [
+        {
+          "kind": "terminating_condition",
+          "line": 147,
+          "condition": "((isset($_COOKIE[$string_cook_login])&&$log==$_COOKIE[$string_cook_login])&&(isset($_COOKIE[$string_cook_password])&&$pw==$_COOKIE[$string_cook_password]))",
+          "terminations": [
+            {
+              "kind": "configured_denial",
+              "line": 149,
+              "code": "$test_log = true;",
+              "denial_text": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "admin/config_editor.php:LCP8",
+      "path": "admin/config_editor.php",
+      "expression": "$log",
+      "aliases": [
+        "$log",
+        "$dati_login['login']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 146,
+          "condition": "($log!=\"admin\"&&$pw!=\"admin\")"
+        },
+        {
+          "source": "conditional",
+          "line": 148,
+          "condition": "((isset($_COOKIE[$string_cook_login])&&$log==$_COOKIE[$string_cook_login])&&(isset($_COOKIE[$string_cook_password])&&$pw==$_COOKIE[$string_cook_password]))"
+        }
+      ],
+      "condition_indexes": [
+        2,
+        3
+      ],
+      "validation_evidence": [
+        {
+          "kind": "terminating_condition",
+          "line": 146,
+          "condition": "($log!=\"admin\"&&$pw!=\"admin\")",
+          "terminations": [
+            {
+              "kind": "configured_denial",
+              "line": 164,
+              "code": "$test_log = true;",
+              "denial_text": false
+            }
+          ]
+        },
+        {
+          "kind": "terminating_condition",
+          "line": 148,
+          "condition": "((isset($_COOKIE[$string_cook_login])&&$log==$_COOKIE[$string_cook_login])&&(isset($_COOKIE[$string_cook_password])&&$pw==$_COOKIE[$string_cook_password]))",
+          "terminations": [
+            {
+              "kind": "configured_denial",
+              "line": 150,
+              "code": "$test_log = true;",
+              "denial_text": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "admin/config_editor.php:LCP9",
+      "path": "admin/config_editor.php",
+      "expression": "$pw",
+      "aliases": [
+        "$pw",
+        "$dati_login['password']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 146,
+          "condition": "($log!=\"admin\"&&$pw!=\"admin\")"
+        },
+        {
+          "source": "conditional",
+          "line": 148,
+          "condition": "((isset($_COOKIE[$string_cook_login])&&$log==$_COOKIE[$string_cook_login])&&(isset($_COOKIE[$string_cook_password])&&$pw==$_COOKIE[$string_cook_password]))"
+        }
+      ],
+      "condition_indexes": [
+        2,
+        3
+      ],
+      "validation_evidence": [
+        {
+          "kind": "terminating_condition",
+          "line": 146,
+          "condition": "($log!=\"admin\"&&$pw!=\"admin\")",
+          "terminations": [
+            {
+              "kind": "configured_denial",
+              "line": 164,
+              "code": "$test_log = true;",
+              "denial_text": false
+            }
+          ]
+        },
+        {
+          "kind": "terminating_condition",
+          "line": 148,
+          "condition": "((isset($_COOKIE[$string_cook_login])&&$log==$_COOKIE[$string_cook_login])&&(isset($_COOKIE[$string_cook_password])&&$pw==$_COOKIE[$string_cook_password]))",
+          "terminations": [
+            {
+              "kind": "configured_denial",
+              "line": 150,
+              "code": "$test_log = true;",
+              "denial_text": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "admin/config_editor.php:LCP10",
+      "path": "admin/config_editor.php",
+      "expression": "$_COOKIE[$string_cook_login]",
+      "aliases": [
+        "$_COOKIE[$string_cook_login]"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 148,
+          "condition": "((isset($_COOKIE[$string_cook_login])&&$log==$_COOKIE[$string_cook_login])&&(isset($_COOKIE[$string_cook_password])&&$pw==$_COOKIE[$string_cook_password]))"
+        }
+      ],
+      "condition_indexes": [
+        3
+      ],
+      "validation_evidence": [
+        {
+          "kind": "terminating_condition",
+          "line": 148,
+          "condition": "((isset($_COOKIE[$string_cook_login])&&$log==$_COOKIE[$string_cook_login])&&(isset($_COOKIE[$string_cook_password])&&$pw==$_COOKIE[$string_cook_password]))",
+          "terminations": [
+            {
+              "kind": "configured_denial",
+              "line": 150,
+              "code": "$test_log = true;",
+              "denial_text": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "admin/config_editor.php:LCP11",
+      "path": "admin/config_editor.php",
+      "expression": "$_COOKIE[$string_cook_password]",
+      "aliases": [
+        "$_COOKIE[$string_cook_password]"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 148,
+          "condition": "((isset($_COOKIE[$string_cook_login])&&$log==$_COOKIE[$string_cook_login])&&(isset($_COOKIE[$string_cook_password])&&$pw==$_COOKIE[$string_cook_password]))"
+        }
+      ],
+      "condition_indexes": [
+        3
+      ],
+      "validation_evidence": [
+        {
+          "kind": "terminating_condition",
+          "line": 148,
+          "condition": "((isset($_COOKIE[$string_cook_login])&&$log==$_COOKIE[$string_cook_login])&&(isset($_COOKIE[$string_cook_password])&&$pw==$_COOKIE[$string_cook_password]))",
+          "terminations": [
+            {
+              "kind": "configured_denial",
+              "line": 150,
+              "code": "$test_log = true;",
+              "denial_text": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "admin/votanti.php:LCP48",
+      "path": "admin/votanti.php",
+      "expression": "$log",
+      "aliases": [
+        "$log",
+        "$dati_login['login']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 142,
+          "condition": "($log!=\"admin\"&&$pw!=\"admin\")"
+        },
+        {
+          "source": "conditional",
+          "line": 144,
+          "condition": "((isset($_COOKIE[$string_cook_login])&&$log==$_COOKIE[$string_cook_login])&&(isset($_COOKIE[$string_cook_password])&&$pw==$_COOKIE[$string_cook_password]))"
+        }
+      ],
+      "condition_indexes": [
+        2,
+        3
+      ],
+      "validation_evidence": [
+        {
+          "kind": "terminating_condition",
+          "line": 142,
+          "condition": "($log!=\"admin\"&&$pw!=\"admin\")",
+          "terminations": [
+            {
+              "kind": "configured_denial",
+              "line": 160,
+              "code": "$test_log = true;",
+              "denial_text": false
+            }
+          ]
+        },
+        {
+          "kind": "terminating_condition",
+          "line": 144,
+          "condition": "((isset($_COOKIE[$string_cook_login])&&$log==$_COOKIE[$string_cook_login])&&(isset($_COOKIE[$string_cook_password])&&$pw==$_COOKIE[$string_cook_password]))",
+          "terminations": [
+            {
+              "kind": "configured_denial",
+              "line": 146,
+              "code": "$test_log = true;",
+              "denial_text": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "admin/votanti.php:LCP49",
+      "path": "admin/votanti.php",
+      "expression": "$pw",
+      "aliases": [
+        "$pw",
+        "$dati_login['password']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 142,
+          "condition": "($log!=\"admin\"&&$pw!=\"admin\")"
+        },
+        {
+          "source": "conditional",
+          "line": 144,
+          "condition": "((isset($_COOKIE[$string_cook_login])&&$log==$_COOKIE[$string_cook_login])&&(isset($_COOKIE[$string_cook_password])&&$pw==$_COOKIE[$string_cook_password]))"
+        }
+      ],
+      "condition_indexes": [
+        2,
+        3
+      ],
+      "validation_evidence": [
+        {
+          "kind": "terminating_condition",
+          "line": 142,
+          "condition": "($log!=\"admin\"&&$pw!=\"admin\")",
+          "terminations": [
+            {
+              "kind": "configured_denial",
+              "line": 160,
+              "code": "$test_log = true;",
+              "denial_text": false
+            }
+          ]
+        },
+        {
+          "kind": "terminating_condition",
+          "line": 144,
+          "condition": "((isset($_COOKIE[$string_cook_login])&&$log==$_COOKIE[$string_cook_login])&&(isset($_COOKIE[$string_cook_password])&&$pw==$_COOKIE[$string_cook_password]))",
+          "terminations": [
+            {
+              "kind": "configured_denial",
+              "line": 146,
+              "code": "$test_log = true;",
+              "denial_text": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "admin/votanti.php:LCP50",
+      "path": "admin/votanti.php",
+      "expression": "$_COOKIE[$string_cook_login]",
+      "aliases": [
+        "$_COOKIE[$string_cook_login]"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 144,
+          "condition": "((isset($_COOKIE[$string_cook_login])&&$log==$_COOKIE[$string_cook_login])&&(isset($_COOKIE[$string_cook_password])&&$pw==$_COOKIE[$string_cook_password]))"
+        }
+      ],
+      "condition_indexes": [
+        3
+      ],
+      "validation_evidence": [
+        {
+          "kind": "terminating_condition",
+          "line": 144,
+          "condition": "((isset($_COOKIE[$string_cook_login])&&$log==$_COOKIE[$string_cook_login])&&(isset($_COOKIE[$string_cook_password])&&$pw==$_COOKIE[$string_cook_password]))",
+          "terminations": [
+            {
+              "kind": "configured_denial",
+              "line": 146,
+              "code": "$test_log = true;",
+              "denial_text": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "admin/votanti.php:LCP51",
+      "path": "admin/votanti.php",
+      "expression": "$_COOKIE[$string_cook_password]",
+      "aliases": [
+        "$_COOKIE[$string_cook_password]"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 144,
+          "condition": "((isset($_COOKIE[$string_cook_login])&&$log==$_COOKIE[$string_cook_login])&&(isset($_COOKIE[$string_cook_password])&&$pw==$_COOKIE[$string_cook_password]))"
+        }
+      ],
+      "condition_indexes": [
+        3
+      ],
+      "validation_evidence": [
+        {
+          "kind": "terminating_condition",
+          "line": 144,
+          "condition": "((isset($_COOKIE[$string_cook_login])&&$log==$_COOKIE[$string_cook_login])&&(isset($_COOKIE[$string_cook_password])&&$pw==$_COOKIE[$string_cook_password]))",
+          "terminations": [
+            {
+              "kind": "configured_denial",
+              "line": 146,
+              "code": "$test_log = true;",
+              "denial_text": false
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "functions": [
+    {
+      "id": "dvwa/includes/dvwaPage.inc.php:LCF3",
+      "path": "dvwa/includes/dvwaPage.inc.php",
+      "name": "dvwaPageStartup",
+      "parameters": [
+        "$pActions"
+      ],
+      "body": "{\n\tif (in_array('authenticated', $pActions)) {\n\t\tif( !dvwaIsLoggedIn()) {\n\t\t\tdvwaRedirect( DVWA_WEB_PAGE_TO_ROOT . 'login.php' );\n\t\t}\n\t}\n}",
+      "start_line": 132,
+      "end_line": 138,
+      "conditions": [
+        "( !dvwaIsLoggedIn())"
+      ],
+      "code": "function dvwaPageStartup( $pActions ) {\n\tif (in_array('authenticated', $pActions)) {\n\t\tif( !dvwaIsLoggedIn()) {\n\t\t\tdvwaRedirect( DVWA_WEB_PAGE_TO_ROOT . 'login.php' );\n\t\t}\n\t}\n}",
+      "parameter_ids": [
+        "dvwa/includes/dvwaPage.inc.php:LCP13"
+      ],
+      "validation_evidence": [
+        "validated_parameter_condition",
+        "same_branch_termination"
+      ]
+    }
+  ]
+}

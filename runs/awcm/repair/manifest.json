@@ -1,0 +1,681 @@
+{
+  "summary": {
+    "Repair Items": 5,
+    "Total Repair Attempts": 7,
+    "Patch Generation Attempts": 7,
+    "Patches Generated": 7,
+    "Failed Patches": 2,
+    "Syntax / Compile OK": 7,
+    "Exploit Blocked": 5,
+    "Regression Passed": 7,
+    "Database Validation Applied": 3,
+    "Database Validation Passed": 3,
+    "Successful Repairs": 5,
+    "Failed Repairs": 0,
+    "Successful on Attempt 1": 4,
+    "Successful on Attempt 2": 0,
+    "Successful on Attempt 3": 1
+  },
+  "repairs": [
+    {
+      "category": "static_only",
+      "page": "control/db_backup.php",
+      "source": "D:\\phpStudy\\PHPTutorial\\WWW\\awcm\\control\\db_backup.php",
+      "output": "D:\\project\\python\\DRHL\\runs\\awcm\\repair\\files\\attempt-1\\control\\db_backup.php",
+      "status": "successful_repair",
+      "message": "syntax/compile, vulnerability blocking, and regression validation all passed",
+      "engine": "llm",
+      "plan": "{\"missing_check\": \"The control-panel admin authorization check is absent before database backup generation.\", \"insertion_location\": \"Immediately after `include (\\\"../common.php\\\");` and before the `mysql_dump` function definition/any output.\", \"recommended_guard\": \"if ($member_level !== 'admin') { exit; }\", \"reused_project_semantics\": \"Reuses control.php's admin guard: `$member_level`, the `'admin'` sentinel, and the `exit;` denial style; `../common.php` provides the initialized auth context.\", \"reason\": \"A visitor can request control/db_backup.php directly and receive the SQL dump because no guard follows the auth bootstrap. Adding the admin guard after the include blocks unauthorized access while preserving intended admin access.\"}",
+      "prompt_artifact": "D:\\project\\python\\DRHL\\runs\\awcm\\repair\\prompts\\db_backup-attempt1-123b7f8797fb.json",
+      "attempts": 1,
+      "patches_generated": 1,
+      "syntax_compile_ok": 1,
+      "exploit_blocked": 1,
+      "regression_passed": 1,
+      "database_validation_applied": 0,
+      "database_validation_passed": 0,
+      "successful": true,
+      "validation_artifact": "D:\\project\\python\\DRHL\\runs\\awcm\\repair\\validation\\db_backup-f12b7ce98e24.json",
+      "attempt_details": [
+        {
+          "attempt": 1,
+          "output": "D:\\project\\python\\DRHL\\runs\\awcm\\repair\\files\\attempt-1\\control\\db_backup.php",
+          "syntax_compile_ok": true,
+          "exploit_blocked": true,
+          "regression_passed": true,
+          "successful": true,
+          "message": "syntax=(No syntax errors detected in D:\\project\\python\\DRHL\\runs\\awcm\\repair\\files\\attempt-1\\control\\db_backup.php); deployment=(source patch applied); vulnerability_blocking=(response=True; database=not_applicable; evidence=visitor:not_vulnerable); regression=(response=True; database=not_applicable; evidence=regression is not applicable because the vector has no authorized role)",
+          "prompt_artifact": "D:\\project\\python\\DRHL\\runs\\awcm\\repair\\prompts\\db_backup-attempt1-123b7f8797fb.json",
+          "plan": "{\"missing_check\": \"The control-panel admin authorization check is absent before database backup generation.\", \"insertion_location\": \"Immediately after `include (\\\"../common.php\\\");` and before the `mysql_dump` function definition/any output.\", \"recommended_guard\": \"if ($member_level !== 'admin') { exit; }\", \"reused_project_semantics\": \"Reuses control.php's admin guard: `$member_level`, the `'admin'` sentinel, and the `exit;` denial style; `../common.php` provides the initialized auth context.\", \"reason\": \"A visitor can request control/db_backup.php directly and receive the SQL dump because no guard follows the auth bootstrap. Adding the admin guard after the include blocks unauthorized access while preserving intended admin access.\"}",
+          "database_validation_passed": true,
+          "database_validation": {
+            "oracle_version": 2,
+            "scope": "repair_only",
+            "applicable": false,
+            "passed": true,
+            "status": "not_configured",
+            "message": "no repair database oracle matched; response oracle retained",
+            "dimensions": {
+              "vulnerability_blocking": {
+                "phase": "attack",
+                "applicable": false,
+                "passed": true
+              },
+              "regression": {
+                "phase": "authorized",
+                "applicable": false,
+                "passed": true
+              }
+            },
+            "scenarios": [],
+            "combined_dimensions": {
+              "vulnerability_blocking": {
+                "passed": true,
+                "response_oracle_passed": true,
+                "database_oracle_applicable": false,
+                "database_oracle_passed": true
+              },
+              "regression": {
+                "passed": true,
+                "response_oracle_passed": true,
+                "database_oracle_applicable": false,
+                "database_oracle_passed": true
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "category": "static_only",
+      "page": "install/index.php",
+      "source": "D:\\phpStudy\\PHPTutorial\\WWW\\awcm\\install\\index.php",
+      "output": "D:\\project\\python\\DRHL\\runs\\awcm\\repair\\files\\attempt-3\\install\\index.php",
+      "status": "successful_repair",
+      "message": "syntax/compile, vulnerability blocking, and regression validation all passed",
+      "engine": "llm",
+      "plan": "{\"missing_check\": \"Missing authentication guard: install/index.php does not check `$member` before rendering the installer form, so unauthenticated visitors are not blocked.\", \"insertion_location\": \"In install/index.php, immediately after `include (\\\"header.php\\\");` and before the closing `?>` of the initial PHP block.\", \"recommended_guard\": \"if($member == 'no') {\\n    print '<meta http-equiv=\\\"refresh\\\" content=\\\"0; URL=../index.php\\\">';\\n    exit;\\n}\", \"reused_project_semantics\": \"Reuses `$member` and the `'no'` sentinel from header.php, the meta-refresh redirect denial style from member_cp.php, and `exit;`. The redirect target is `../index.php` because install/index.php is in a subdirectory.\", \"reason\": \"header.php is included first and sets `$member = 'no'` for unauthenticated visitors. The page then outputs the installer form without checking `$member`, allowing unauthorized access. Adding the same `$member == 'no'` guard used in member_cp.php blocks visitors before any installer content is shown, while authenticated users (including intended admins) are not blocked.\"}",
+      "prompt_artifact": "D:\\project\\python\\DRHL\\runs\\awcm\\repair\\prompts\\index-attempt3-a77be5daf2bc.json",
+      "attempts": 3,
+      "patches_generated": 3,
+      "syntax_compile_ok": 3,
+      "exploit_blocked": 1,
+      "regression_passed": 3,
+      "database_validation_applied": 0,
+      "database_validation_passed": 0,
+      "successful": true,
+      "validation_artifact": "D:\\project\\python\\DRHL\\runs\\awcm\\repair\\validation\\index-e3e61d33e0b4.json",
+      "attempt_details": [
+        {
+          "attempt": 1,
+          "output": "D:\\project\\python\\DRHL\\runs\\awcm\\repair\\files\\attempt-1\\install\\index.php",
+          "syntax_compile_ok": true,
+          "exploit_blocked": false,
+          "regression_passed": true,
+          "successful": false,
+          "message": "syntax=(No syntax errors detected in D:\\project\\python\\DRHL\\runs\\awcm\\repair\\files\\attempt-1\\install\\index.php); deployment=(source patch applied); vulnerability_blocking=(response=False; database=not_applicable; evidence=visitor:vulnerable); regression=(response=True; database=not_applicable; evidence=regression is not applicable because the vector has no authorized role)",
+          "prompt_artifact": "D:\\project\\python\\DRHL\\runs\\awcm\\repair\\prompts\\index-attempt1-4c0d87120987.json",
+          "plan": "{\"missing_check\": \"Unauthenticated/guest access guard for the install/index.php static_only entry.\", \"insertion_location\": \"Immediately after include (\\\"header.php\\\"); and before the closing ?> of the opening PHP block, prior to any installer HTML or form output.\", \"recommended_guard\": \"if($member == 'no') {\\n    print '<meta http-equiv=\\\"refresh\\\" content=\\\"0; URL=index.php\\\">';\\n    exit;\\n}\", \"reused_project_semantics\": \"Uses the $member sentinel 'no' for guests initialized in header.php and the meta-refresh redirect to index.php denial style from member_cp.php.\", \"reason\": \"install/index.php is a static_only entry. Its included header.php initializes $member, but no role variable is initialized in the included context, so the existing guest guard is reused to block unauthorized visitors before installer operations. This preserves intended access for authenticated users without inventing new checks or disabling admin access.\"}",
+          "database_validation_passed": true,
+          "database_validation": {
+            "oracle_version": 2,
+            "scope": "repair_only",
+            "applicable": false,
+            "passed": true,
+            "status": "not_configured",
+            "message": "no repair database oracle matched; response oracle retained",
+            "dimensions": {
+              "vulnerability_blocking": {
+                "phase": "attack",
+                "applicable": false,
+                "passed": true
+              },
+              "regression": {
+                "phase": "authorized",
+                "applicable": false,
+                "passed": true
+              }
+            },
+            "scenarios": [],
+            "combined_dimensions": {
+              "vulnerability_blocking": {
+                "passed": false,
+                "response_oracle_passed": false,
+                "database_oracle_applicable": false,
+                "database_oracle_passed": true
+              },
+              "regression": {
+                "passed": true,
+                "response_oracle_passed": true,
+                "database_oracle_applicable": false,
+                "database_oracle_passed": true
+              }
+            }
+          }
+        },
+        {
+          "attempt": 2,
+          "output": "D:\\project\\python\\DRHL\\runs\\awcm\\repair\\files\\attempt-2\\install\\index.php",
+          "syntax_compile_ok": true,
+          "exploit_blocked": false,
+          "regression_passed": true,
+          "successful": false,
+          "message": "syntax=(No syntax errors detected in D:\\project\\python\\DRHL\\runs\\awcm\\repair\\files\\attempt-2\\install\\index.php); deployment=(source patch applied); vulnerability_blocking=(response=False; database=not_applicable; evidence=visitor:vulnerable); regression=(response=True; database=not_applicable; evidence=regression is not applicable because the vector has no authorized role)",
+          "prompt_artifact": "D:\\project\\python\\DRHL\\runs\\awcm\\repair\\prompts\\index-attempt2-b975cdabdadc.json",
+          "plan": "{\"missing_check\": \"Authentication/authorization guard preventing unauthenticated visitors ($member == 'no') from accessing install/index.php.\", \"insertion_location\": \"In install/index.php, immediately after `include (\\\"header.php\\\");` and before the closing `?>` or any HTML output.\", \"recommended_guard\": \"if ($member == 'no') { print '<meta http-equiv=\\\"refresh\\\" content=\\\"0; URL=../index.php\\\">'; exit; }\", \"reused_project_semantics\": \"Uses `$member` set to `'no'` by `header.php` for unauthenticated visitors; reuses the meta-refresh denial style from `member_cp.php` (`print '<meta http-equiv=\\\"refresh\\\" content=\\\"0; URL=index.php\\\">'; exit;`), adjusted to `../index.php` for the install subdirectory.\", \"reason\": \"Blocks unauthorized visitors before any install form or sensitive operation, while allowing authenticated users/admins to access the intended installation entry point.\"}",
+          "database_validation_passed": true,
+          "database_validation": {
+            "oracle_version": 2,
+            "scope": "repair_only",
+            "applicable": false,
+            "passed": true,
+            "status": "not_configured",
+            "message": "no repair database oracle matched; response oracle retained",
+            "dimensions": {
+              "vulnerability_blocking": {
+                "phase": "attack",
+                "applicable": false,
+                "passed": true
+              },
+              "regression": {
+                "phase": "authorized",
+                "applicable": false,
+                "passed": true
+              }
+            },
+            "scenarios": [],
+            "combined_dimensions": {
+              "vulnerability_blocking": {
+                "passed": false,
+                "response_oracle_passed": false,
+                "database_oracle_applicable": false,
+                "database_oracle_passed": true
+              },
+              "regression": {
+                "passed": true,
+                "response_oracle_passed": true,
+                "database_oracle_applicable": false,
+                "database_oracle_passed": true
+              }
+            }
+          }
+        },
+        {
+          "attempt": 3,
+          "output": "D:\\project\\python\\DRHL\\runs\\awcm\\repair\\files\\attempt-3\\install\\index.php",
+          "syntax_compile_ok": true,
+          "exploit_blocked": true,
+          "regression_passed": true,
+          "successful": true,
+          "message": "syntax=(No syntax errors detected in D:\\project\\python\\DRHL\\runs\\awcm\\repair\\files\\attempt-3\\install\\index.php); deployment=(source patch applied); vulnerability_blocking=(response=True; database=not_applicable; evidence=visitor:not_vulnerable); regression=(response=True; database=not_applicable; evidence=regression is not applicable because the vector has no authorized role)",
+          "prompt_artifact": "D:\\project\\python\\DRHL\\runs\\awcm\\repair\\prompts\\index-attempt3-a77be5daf2bc.json",
+          "plan": "{\"missing_check\": \"Missing authentication guard: install/index.php does not check `$member` before rendering the installer form, so unauthenticated visitors are not blocked.\", \"insertion_location\": \"In install/index.php, immediately after `include (\\\"header.php\\\");` and before the closing `?>` of the initial PHP block.\", \"recommended_guard\": \"if($member == 'no') {\\n    print '<meta http-equiv=\\\"refresh\\\" content=\\\"0; URL=../index.php\\\">';\\n    exit;\\n}\", \"reused_project_semantics\": \"Reuses `$member` and the `'no'` sentinel from header.php, the meta-refresh redirect denial style from member_cp.php, and `exit;`. The redirect target is `../index.php` because install/index.php is in a subdirectory.\", \"reason\": \"header.php is included first and sets `$member = 'no'` for unauthenticated visitors. The page then outputs the installer form without checking `$member`, allowing unauthorized access. Adding the same `$member == 'no'` guard used in member_cp.php blocks visitors before any installer content is shown, while authenticated users (including intended admins) are not blocked.\"}",
+          "database_validation_passed": true,
+          "database_validation": {
+            "oracle_version": 2,
+            "scope": "repair_only",
+            "applicable": false,
+            "passed": true,
+            "status": "not_configured",
+            "message": "no repair database oracle matched; response oracle retained",
+            "dimensions": {
+              "vulnerability_blocking": {
+                "phase": "attack",
+                "applicable": false,
+                "passed": true
+              },
+              "regression": {
+                "phase": "authorized",
+                "applicable": false,
+                "passed": true
+              }
+            },
+            "scenarios": [],
+            "combined_dimensions": {
+              "vulnerability_blocking": {
+                "passed": true,
+                "response_oracle_passed": true,
+                "database_oracle_applicable": false,
+                "database_oracle_passed": true
+              },
+              "regression": {
+                "passed": true,
+                "response_oracle_passed": true,
+                "database_oracle_applicable": false,
+                "database_oracle_passed": true
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "category": "authenticated_only",
+      "page": "m_cp_avatar.php?KeepThis=true&TB_iframe=true&height=p1&width=p1",
+      "source": "D:\\phpStudy\\PHPTutorial\\WWW\\awcm\\m_cp_avatar.php",
+      "output": "D:\\project\\python\\DRHL\\runs\\awcm\\repair\\files\\attempt-1\\m_cp_avatar.php",
+      "status": "successful_repair",
+      "message": "syntax/compile, vulnerability blocking, and regression validation all passed",
+      "engine": "llm",
+      "plan": "{\"missing_check\": \"authentication guard: if($member == 'no')\", \"insertion_location\": \"immediately after include(\\\"header.php\\\"); and before the if(isset($_GET['do'])) update block / any sensitive operation\", \"recommended_guard\": \"if($member == 'no') {\\n print '<meta http-equiv=\\\"refresh\\\" content=\\\"0; URL=index.php\\\">';\\nexit;\\n}\", \"reused_project_semantics\": \"header.php initializes $member from $_SESSION['awcm_member'] or the awcm_member cookie, otherwise sets the real sentinel $member = 'no'. member_cp.php blocks that unauthenticated state with the project's meta-refresh denial to index.php followed by exit. Authorized users user1/user2 are represented by a non-'no' $member value, so the same guard keeps intended authenticated access working.\", \"reason\": \"The source includes header.php but never checks the resulting $member before running the avatar update and rendering member-only content. A visitor reaches the page with $member == 'no', so adding the existing member_cp.php guard after header.php blocks unauthorized direct access before the sensitive UPDATE or output, while preserving access for authenticated user1/user2 sessions.\"}",
+      "prompt_artifact": "D:\\project\\python\\DRHL\\runs\\awcm\\repair\\prompts\\m_cp_avatar-attempt1-c98d2f31dbd4.json",
+      "attempts": 1,
+      "patches_generated": 1,
+      "syntax_compile_ok": 1,
+      "exploit_blocked": 1,
+      "regression_passed": 1,
+      "database_validation_applied": 1,
+      "database_validation_passed": 1,
+      "successful": true,
+      "validation_artifact": "D:\\project\\python\\DRHL\\runs\\awcm\\repair\\validation\\m_cp_avatar-77c168035501.json",
+      "attempt_details": [
+        {
+          "attempt": 1,
+          "output": "D:\\project\\python\\DRHL\\runs\\awcm\\repair\\files\\attempt-1\\m_cp_avatar.php",
+          "syntax_compile_ok": true,
+          "exploit_blocked": true,
+          "regression_passed": true,
+          "successful": true,
+          "message": "syntax=(No syntax errors detected in D:\\project\\python\\DRHL\\runs\\awcm\\repair\\files\\attempt-1\\m_cp_avatar.php); deployment=(source patch applied); vulnerability_blocking=(response=True; database=passed; evidence=visitor:not_vulnerable); regression=(response=True; database=passed; evidence=authorized status=200; denial=[])",
+          "prompt_artifact": "D:\\project\\python\\DRHL\\runs\\awcm\\repair\\prompts\\m_cp_avatar-attempt1-c98d2f31dbd4.json",
+          "plan": "{\"missing_check\": \"authentication guard: if($member == 'no')\", \"insertion_location\": \"immediately after include(\\\"header.php\\\"); and before the if(isset($_GET['do'])) update block / any sensitive operation\", \"recommended_guard\": \"if($member == 'no') {\\n print '<meta http-equiv=\\\"refresh\\\" content=\\\"0; URL=index.php\\\">';\\nexit;\\n}\", \"reused_project_semantics\": \"header.php initializes $member from $_SESSION['awcm_member'] or the awcm_member cookie, otherwise sets the real sentinel $member = 'no'. member_cp.php blocks that unauthenticated state with the project's meta-refresh denial to index.php followed by exit. Authorized users user1/user2 are represented by a non-'no' $member value, so the same guard keeps intended authenticated access working.\", \"reason\": \"The source includes header.php but never checks the resulting $member before running the avatar update and rendering member-only content. A visitor reaches the page with $member == 'no', so adding the existing member_cp.php guard after header.php blocks unauthorized direct access before the sensitive UPDATE or output, while preserving access for authenticated user1/user2 sessions.\"}",
+          "database_validation_passed": true,
+          "database_validation": {
+            "oracle_version": 2,
+            "scope": "repair_only",
+            "applicable": true,
+            "passed": true,
+            "status": "passed",
+            "dimensions": {
+              "vulnerability_blocking": {
+                "phase": "attack",
+                "applicable": true,
+                "passed": true
+              },
+              "regression": {
+                "phase": "authorized",
+                "applicable": true,
+                "passed": true
+              }
+            },
+            "scenarios": [
+              {
+                "name": "AWCM-GT-001-avatar-form-read",
+                "operation": "read",
+                "passed": true,
+                "phases": [
+                  {
+                    "phase": "attack",
+                    "role": "visitor",
+                    "session_before_setup": false,
+                    "setup_sql": [],
+                    "session_requests": [],
+                    "request": {
+                      "method": "GET",
+                      "page": "m_cp_avatar.php?KeepThis=true&TB_iframe=true&height=400&width=500",
+                      "params": {
+                        "KeepThis": "true",
+                        "TB_iframe": "true",
+                        "height": "400",
+                        "width": "500"
+                      },
+                      "referer": "member_cp.php",
+                      "cookie_names": []
+                    },
+                    "response": {
+                      "status_code": 200,
+                      "url": "http://localhost/awcm/m_cp_avatar.php?KeepThis=true&TB_iframe=true&height=400&width=500",
+                      "body_length": 1587
+                    },
+                    "query": null,
+                    "observed": null,
+                    "assertions": [
+                      {
+                        "type": "response_not_contains",
+                        "expected": "name=\"avatar\"",
+                        "passed": true
+                      }
+                    ],
+                    "passed": true
+                  },
+                  {
+                    "phase": "authorized",
+                    "role": "user1",
+                    "session_before_setup": false,
+                    "setup_sql": [],
+                    "session_requests": [],
+                    "request": {
+                      "method": "GET",
+                      "page": "m_cp_avatar.php?KeepThis=true&TB_iframe=true&height=400&width=500",
+                      "params": {
+                        "KeepThis": "true",
+                        "TB_iframe": "true",
+                        "height": "400",
+                        "width": "500"
+                      },
+                      "referer": "member_cp.php",
+                      "cookie_names": []
+                    },
+                    "response": {
+                      "status_code": 200,
+                      "url": "http://localhost/awcm/m_cp_avatar.php?KeepThis=true&TB_iframe=true&height=400&width=500",
+                      "body_length": 2175
+                    },
+                    "query": null,
+                    "observed": null,
+                    "assertions": [
+                      {
+                        "type": "response_contains",
+                        "expected": "name=\"avatar\"",
+                        "passed": true
+                      }
+                    ],
+                    "passed": true
+                  }
+                ]
+              }
+            ],
+            "combined_dimensions": {
+              "vulnerability_blocking": {
+                "passed": true,
+                "response_oracle_passed": true,
+                "database_oracle_applicable": true,
+                "database_oracle_passed": true
+              },
+              "regression": {
+                "passed": true,
+                "response_oracle_passed": true,
+                "database_oracle_applicable": true,
+                "database_oracle_passed": true
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "category": "vertical",
+      "page": "member.php?id=1",
+      "source": "D:\\phpStudy\\PHPTutorial\\WWW\\awcm\\member.php",
+      "output": "D:\\project\\python\\DRHL\\runs\\awcm\\repair\\files\\attempt-1\\member.php",
+      "status": "successful_repair",
+      "message": "syntax/compile, vulnerability blocking, and regression validation all passed",
+      "engine": "llm",
+      "plan": "{\"missing_check\": \"Admin role check\", \"insertion_location\": \"After include(\\\"header.php\\\"); and before include(\\\"includes/window_top.php\\\");\", \"recommended_guard\": \"if ($member_level !== 'admin') {\\n    print '<meta http-equiv=\\\"refresh\\\" content=\\\"0; URL=index.php\\\">';\\n    exit;\\n}\", \"reused_project_semantics\": \"$member_level and 'admin' from control.php; meta refresh to index.php and exit from member_cp.php\", \"reason\": \"member.php lacks the vertical role guard used in control.php. The attacker user1 can access member.php?id=1 directly because only authentication is performed in header.php, not authorization. Applying the project's $member_level !== 'admin' check before profile output blocks the lower-privilege actor while preserving admin access.\"}",
+      "prompt_artifact": "D:\\project\\python\\DRHL\\runs\\awcm\\repair\\prompts\\member-attempt1-d3a94a572ea1.json",
+      "attempts": 1,
+      "patches_generated": 1,
+      "syntax_compile_ok": 1,
+      "exploit_blocked": 1,
+      "regression_passed": 1,
+      "database_validation_applied": 1,
+      "database_validation_passed": 1,
+      "successful": true,
+      "validation_artifact": "D:\\project\\python\\DRHL\\runs\\awcm\\repair\\validation\\member-fbf2d9bd61ef.json",
+      "attempt_details": [
+        {
+          "attempt": 1,
+          "output": "D:\\project\\python\\DRHL\\runs\\awcm\\repair\\files\\attempt-1\\member.php",
+          "syntax_compile_ok": true,
+          "exploit_blocked": true,
+          "regression_passed": true,
+          "successful": true,
+          "message": "syntax=(No syntax errors detected in D:\\project\\python\\DRHL\\runs\\awcm\\repair\\files\\attempt-1\\member.php); deployment=(source patch applied); vulnerability_blocking=(response=True; database=passed; evidence=user1:not_vulnerable); regression=(response=True; database=passed; evidence=authorized status=200; denial=[])",
+          "prompt_artifact": "D:\\project\\python\\DRHL\\runs\\awcm\\repair\\prompts\\member-attempt1-d3a94a572ea1.json",
+          "plan": "{\"missing_check\": \"Admin role check\", \"insertion_location\": \"After include(\\\"header.php\\\"); and before include(\\\"includes/window_top.php\\\");\", \"recommended_guard\": \"if ($member_level !== 'admin') {\\n    print '<meta http-equiv=\\\"refresh\\\" content=\\\"0; URL=index.php\\\">';\\n    exit;\\n}\", \"reused_project_semantics\": \"$member_level and 'admin' from control.php; meta refresh to index.php and exit from member_cp.php\", \"reason\": \"member.php lacks the vertical role guard used in control.php. The attacker user1 can access member.php?id=1 directly because only authentication is performed in header.php, not authorization. Applying the project's $member_level !== 'admin' check before profile output blocks the lower-privilege actor while preserving admin access.\"}",
+          "database_validation_passed": true,
+          "database_validation": {
+            "oracle_version": 2,
+            "scope": "repair_only",
+            "applicable": true,
+            "passed": true,
+            "status": "passed",
+            "dimensions": {
+              "vulnerability_blocking": {
+                "phase": "attack",
+                "applicable": true,
+                "passed": true
+              },
+              "regression": {
+                "phase": "authorized",
+                "applicable": true,
+                "passed": true
+              }
+            },
+            "scenarios": [
+              {
+                "name": "AWCM-GT-002-admin-profile-read",
+                "operation": "read",
+                "passed": true,
+                "phases": [
+                  {
+                    "phase": "attack",
+                    "role": "user1",
+                    "session_before_setup": false,
+                    "setup_sql": [
+                      "UPDATE awcm_members SET title='DRHLR_46644832ab07' WHERE id=1"
+                    ],
+                    "session_requests": [],
+                    "request": {
+                      "method": "GET",
+                      "page": "member.php?id=1",
+                      "params": {
+                        "id": "1"
+                      },
+                      "referer": "online.php",
+                      "cookie_names": []
+                    },
+                    "response": {
+                      "status_code": 200,
+                      "url": "http://localhost/awcm/member.php?id=1",
+                      "body_length": 10348
+                    },
+                    "query": null,
+                    "observed": null,
+                    "assertions": [
+                      {
+                        "type": "response_not_contains",
+                        "expected": "DRHLR_46644832ab07",
+                        "passed": true
+                      }
+                    ],
+                    "passed": true
+                  },
+                  {
+                    "phase": "authorized",
+                    "role": "admin",
+                    "session_before_setup": false,
+                    "setup_sql": [
+                      "UPDATE awcm_members SET title='DRHLR_46644832ab07' WHERE id=1"
+                    ],
+                    "session_requests": [],
+                    "request": {
+                      "method": "GET",
+                      "page": "member.php?id=1",
+                      "params": {
+                        "id": "1"
+                      },
+                      "referer": "online.php",
+                      "cookie_names": []
+                    },
+                    "response": {
+                      "status_code": 200,
+                      "url": "http://localhost/awcm/member.php?id=1",
+                      "body_length": 16224
+                    },
+                    "query": null,
+                    "observed": null,
+                    "assertions": [
+                      {
+                        "type": "response_contains",
+                        "expected": "DRHLR_46644832ab07",
+                        "passed": true
+                      }
+                    ],
+                    "passed": true
+                  }
+                ]
+              }
+            ],
+            "combined_dimensions": {
+              "vulnerability_blocking": {
+                "passed": true,
+                "response_oracle_passed": true,
+                "database_oracle_applicable": true,
+                "database_oracle_passed": true
+              },
+              "regression": {
+                "passed": true,
+                "response_oracle_passed": true,
+                "database_oracle_applicable": true,
+                "database_oracle_passed": true
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "category": "horizontal",
+      "page": "member.php?id=p1",
+      "source": "D:\\phpStudy\\PHPTutorial\\WWW\\awcm\\member.php",
+      "output": "D:\\project\\python\\DRHL\\runs\\awcm\\repair\\files\\attempt-1\\member.php",
+      "status": "successful_repair",
+      "message": "syntax/compile, vulnerability blocking, and regression validation all passed",
+      "engine": "llm",
+      "plan": "{\"missing_check\": \"Ownership check comparing the requested member id (`$gid`) against the current authenticated member id (`$member`).\", \"insertion_location\": \"In member.php, immediately after `$gid = $_GET['id'];` and before any output or database queries that use `$gid`.\", \"recommended_guard\": \"if($gid != $member) {\\n    print '<meta http-equiv=\\\"refresh\\\" content=\\\"0; URL=index.php\\\">';\\n    exit;\\n}\", \"reused_project_semantics\": \"Uses `$member` (current user id from header.php's session/cookie logic, with sentinel 'no' for guests) and `$gid` (requested id from `$_GET['id']`). Reuses the denial style from member_cp.php: `print '<meta http-equiv=\\\"refresh\\\" content=\\\"0; URL=index.php\\\">'; exit;`.\", \"reason\": \"member.php reads `id` from GET and uses it in `f_find_member` and database queries without verifying that the current user owns that id. This allows horizontal privilege escalation (e.g., user1 viewing id=3). The guard compares `$gid` to `$member` and redirects unauthorized requests, blocking the attacker while allowing authorized owners to view their own profile.\"}",
+      "prompt_artifact": "D:\\project\\python\\DRHL\\runs\\awcm\\repair\\prompts\\member-attempt1-6a4b04e7d472.json",
+      "attempts": 1,
+      "patches_generated": 1,
+      "syntax_compile_ok": 1,
+      "exploit_blocked": 1,
+      "regression_passed": 1,
+      "database_validation_applied": 1,
+      "database_validation_passed": 1,
+      "successful": true,
+      "validation_artifact": "D:\\project\\python\\DRHL\\runs\\awcm\\repair\\validation\\member-3283def39af4.json",
+      "attempt_details": [
+        {
+          "attempt": 1,
+          "output": "D:\\project\\python\\DRHL\\runs\\awcm\\repair\\files\\attempt-1\\member.php",
+          "syntax_compile_ok": true,
+          "exploit_blocked": true,
+          "regression_passed": true,
+          "successful": true,
+          "message": "syntax=(No syntax errors detected in D:\\project\\python\\DRHL\\runs\\awcm\\repair\\files\\attempt-1\\member.php); deployment=(source patch applied); vulnerability_blocking=(response=True; database=passed; evidence=user1:not_vulnerable); regression=(response=True; database=passed; evidence=authorized status=200; denial=[])",
+          "prompt_artifact": "D:\\project\\python\\DRHL\\runs\\awcm\\repair\\prompts\\member-attempt1-6a4b04e7d472.json",
+          "plan": "{\"missing_check\": \"Ownership check comparing the requested member id (`$gid`) against the current authenticated member id (`$member`).\", \"insertion_location\": \"In member.php, immediately after `$gid = $_GET['id'];` and before any output or database queries that use `$gid`.\", \"recommended_guard\": \"if($gid != $member) {\\n    print '<meta http-equiv=\\\"refresh\\\" content=\\\"0; URL=index.php\\\">';\\n    exit;\\n}\", \"reused_project_semantics\": \"Uses `$member` (current user id from header.php's session/cookie logic, with sentinel 'no' for guests) and `$gid` (requested id from `$_GET['id']`). Reuses the denial style from member_cp.php: `print '<meta http-equiv=\\\"refresh\\\" content=\\\"0; URL=index.php\\\">'; exit;`.\", \"reason\": \"member.php reads `id` from GET and uses it in `f_find_member` and database queries without verifying that the current user owns that id. This allows horizontal privilege escalation (e.g., user1 viewing id=3). The guard compares `$gid` to `$member` and redirects unauthorized requests, blocking the attacker while allowing authorized owners to view their own profile.\"}",
+          "database_validation_passed": true,
+          "database_validation": {
+            "oracle_version": 2,
+            "scope": "repair_only",
+            "applicable": true,
+            "passed": true,
+            "status": "passed",
+            "dimensions": {
+              "vulnerability_blocking": {
+                "phase": "attack",
+                "applicable": true,
+                "passed": true
+              },
+              "regression": {
+                "phase": "authorized",
+                "applicable": true,
+                "passed": true
+              }
+            },
+            "scenarios": [
+              {
+                "name": "AWCM-GT-003-member-profile-read",
+                "operation": "read",
+                "passed": true,
+                "phases": [
+                  {
+                    "phase": "attack",
+                    "role": "user1",
+                    "session_before_setup": false,
+                    "setup_sql": [
+                      "UPDATE awcm_members SET signature='DRHLR_8a021905321a' WHERE id=3"
+                    ],
+                    "session_requests": [],
+                    "request": {
+                      "method": "GET",
+                      "page": "member.php?id=3",
+                      "params": {
+                        "id": "3"
+                      },
+                      "referer": "online.php",
+                      "cookie_names": []
+                    },
+                    "response": {
+                      "status_code": 200,
+                      "url": "http://localhost/awcm/member.php?id=3",
+                      "body_length": 10425
+                    },
+                    "query": null,
+                    "observed": null,
+                    "assertions": [
+                      {
+                        "type": "response_not_contains",
+                        "expected": "DRHLR_8a021905321a",
+                        "passed": true
+                      }
+                    ],
+                    "passed": true
+                  },
+                  {
+                    "phase": "authorized",
+                    "role": "user2",
+                    "session_before_setup": false,
+                    "setup_sql": [
+                      "UPDATE awcm_members SET signature='DRHLR_8a021905321a' WHERE id=3"
+                    ],
+                    "session_requests": [],
+                    "request": {
+                      "method": "GET",
+                      "page": "member.php?id=3",
+                      "params": {
+                        "id": "3"
+                      },
+                      "referer": "online.php",
+                      "cookie_names": []
+                    },
+                    "response": {
+                      "status_code": 200,
+                      "url": "http://localhost/awcm/member.php?id=3",
+                      "body_length": 16231
+                    },
+                    "query": null,
+                    "observed": null,
+                    "assertions": [
+                      {
+                        "type": "response_contains",
+                        "expected": "DRHLR_8a021905321a",
+                        "passed": true
+                      }
+                    ],
+                    "passed": true
+                  }
+                ]
+              }
+            ],
+            "combined_dimensions": {
+              "vulnerability_blocking": {
+                "passed": true,
+                "response_oracle_passed": true,
+                "database_oracle_applicable": true,
+                "database_oracle_passed": true
+              },
+              "regression": {
+                "passed": true,
+                "response_oracle_passed": true,
+                "database_oracle_applicable": true,
+                "database_oracle_passed": true
+              }
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

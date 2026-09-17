@@ -1,0 +1,211 @@
+{
+  "snippets": [
+    {
+      "path": "accounts/decorators.py",
+      "kind": "validation_function",
+      "start_line": 6,
+      "end_line": 18,
+      "function": "student_required",
+      "code": "def student_required(function=None, redirect_field_name=REDIRECT_FIELD_NAME, login_url=Http404):\n    \"\"\"\n    Decorator for views that checks that the logged in user is a student,\n    redirects to the log-in page if necessary.\n    \"\"\"\n    actual_decorator = user_passes_test(\n        lambda u: u.is_active and u.is_student or u.is_superuser,\n        login_url=login_url,\n        redirect_field_name=redirect_field_name\n    )\n    if function:\n        return actual_decorator(function)\n    return actual_decorator",
+      "parameter_ids": [
+        "accounts/decorators.py:LCP2",
+        "accounts/decorators.py:LCP3",
+        "accounts/decorators.py:LCP4",
+        "accounts/decorators.py:LCP5"
+      ],
+      "function_ids": [
+        "accounts/decorators.py:LCF2"
+      ]
+    },
+    {
+      "path": "accounts/decorators.py",
+      "kind": "conditional",
+      "start_line": 11,
+      "end_line": 15,
+      "condition": "u.is_active and u.is_student or u.is_superuser",
+      "terminations": [
+        {
+          "kind": "django_user_passes_test",
+          "line": 11,
+          "code": "user_passes_test(\n        lambda u: u.is_active and u.is_student or u.is_superuser,\n        login_url=login_url,\n        redirect_field_name=redirect_field_name\n    )",
+          "is_statement": false
+        }
+      ],
+      "code": "user_passes_test(\n        lambda u: u.is_active and u.is_student or u.is_superuser,\n        login_url=login_url,\n        redirect_field_name=redirect_field_name\n    )",
+      "parameter_ids": [
+        "accounts/decorators.py:LCP2",
+        "accounts/decorators.py:LCP3",
+        "accounts/decorators.py:LCP4",
+        "accounts/decorators.py:LCP5"
+      ],
+      "function_ids": [
+        "accounts/decorators.py:LCF2"
+      ]
+    },
+    {
+      "path": "accounts/decorators.py",
+      "kind": "validation_function",
+      "start_line": 21,
+      "end_line": 33,
+      "function": "lecturer_required",
+      "code": "def lecturer_required(function=None, redirect_field_name=REDIRECT_FIELD_NAME, login_url=Http404):\n    \"\"\"\n    Decorator for views that checks that the logged in user is a teacher,\n    redirects to the log-in page if necessary.\n    \"\"\"\n    actual_decorator = user_passes_test(\n        lambda u: u.is_active and u.is_lecturer or u.is_superuser,\n        login_url=login_url,\n        redirect_field_name=redirect_field_name\n    )\n    if function:\n        return actual_decorator(function)\n    return actual_decorator",
+      "parameter_ids": [
+        "accounts/decorators.py:LCP2",
+        "accounts/decorators.py:LCP3",
+        "accounts/decorators.py:LCP7",
+        "accounts/decorators.py:LCP5"
+      ],
+      "function_ids": [
+        "accounts/decorators.py:LCF3"
+      ]
+    },
+    {
+      "path": "accounts/decorators.py",
+      "kind": "conditional",
+      "start_line": 26,
+      "end_line": 30,
+      "condition": "u.is_active and u.is_lecturer or u.is_superuser",
+      "terminations": [
+        {
+          "kind": "django_user_passes_test",
+          "line": 26,
+          "code": "user_passes_test(\n        lambda u: u.is_active and u.is_lecturer or u.is_superuser,\n        login_url=login_url,\n        redirect_field_name=redirect_field_name\n    )",
+          "is_statement": false
+        }
+      ],
+      "code": "user_passes_test(\n        lambda u: u.is_active and u.is_lecturer or u.is_superuser,\n        login_url=login_url,\n        redirect_field_name=redirect_field_name\n    )",
+      "parameter_ids": [
+        "accounts/decorators.py:LCP2",
+        "accounts/decorators.py:LCP3",
+        "accounts/decorators.py:LCP7",
+        "accounts/decorators.py:LCP5"
+      ],
+      "function_ids": [
+        "accounts/decorators.py:LCF3"
+      ]
+    },
+    {
+      "path": "accounts/decorators.py",
+      "kind": "validation_function",
+      "start_line": 36,
+      "end_line": 48,
+      "function": "admin_required",
+      "code": "def admin_required(function=None, redirect_field_name=REDIRECT_FIELD_NAME, login_url=Http404):\n    \"\"\"\n    Decorator for views that checks that the logged in user is a teacher,\n    redirects to the log-in page if necessary.\n    \"\"\"\n    actual_decorator = user_passes_test(\n        lambda u: u.is_active and u.is_superuser,\n        login_url=login_url,\n        redirect_field_name=redirect_field_name\n    )\n    if function:\n        return actual_decorator(function)\n    return actual_decorator",
+      "parameter_ids": [
+        "accounts/decorators.py:LCP2",
+        "accounts/decorators.py:LCP3",
+        "accounts/decorators.py:LCP5"
+      ],
+      "function_ids": [
+        "accounts/decorators.py:LCF4"
+      ]
+    },
+    {
+      "path": "accounts/decorators.py",
+      "kind": "conditional",
+      "start_line": 41,
+      "end_line": 45,
+      "condition": "u.is_active and u.is_superuser",
+      "terminations": [
+        {
+          "kind": "django_user_passes_test",
+          "line": 41,
+          "code": "user_passes_test(\n        lambda u: u.is_active and u.is_superuser,\n        login_url=login_url,\n        redirect_field_name=redirect_field_name\n    )",
+          "is_statement": false
+        }
+      ],
+      "code": "user_passes_test(\n        lambda u: u.is_active and u.is_superuser,\n        login_url=login_url,\n        redirect_field_name=redirect_field_name\n    )",
+      "parameter_ids": [
+        "accounts/decorators.py:LCP2",
+        "accounts/decorators.py:LCP3",
+        "accounts/decorators.py:LCP5"
+      ],
+      "function_ids": [
+        "accounts/decorators.py:LCF4"
+      ]
+    },
+    {
+      "path": "quiz/views.py",
+      "kind": "guard_call",
+      "start_line": 132,
+      "end_line": 132,
+      "function": "super(QuizMarkerMixin, self).dispatch",
+      "code": "super(QuizMarkerMixin, self).dispatch(*args, **kwargs)",
+      "parameter_ids": [
+        "quiz/views.py:LCP112",
+        "quiz/views.py:LCP113"
+      ],
+      "function_ids": [
+        "quiz/views.py:LCF191"
+      ]
+    },
+    {
+      "path": "quiz/views.py",
+      "kind": "guard_call",
+      "start_line": 151,
+      "end_line": 151,
+      "function": "super(QuizUserProgressView, self).dispatch",
+      "code": "super(QuizUserProgressView, self).dispatch(request, *args, **kwargs)",
+      "parameter_ids": [
+        "quiz/views.py:LCP112",
+        "quiz/views.py:LCP113"
+      ],
+      "function_ids": [
+        "quiz/views.py:LCF191"
+      ]
+    },
+    {
+      "path": "quiz/views.py",
+      "kind": "validation_function",
+      "start_line": 216,
+      "end_line": 236,
+      "function": "dispatch",
+      "code": "def dispatch(self, request, *args, **kwargs):\n        self.quiz = get_object_or_404(Quiz, slug=self.kwargs['slug'])\n        self.course = get_object_or_404(Course, pk=self.kwargs['pk'])\n        quizQuestions = Question.objects.filter(quiz=self.quiz).count()\n        course = get_object_or_404(Course, pk=self.kwargs['pk'])\n\n        if quizQuestions <= 0:\n            messages.warning(request, f'Question set of the quiz is empty. try later!')\n            return redirect('quiz_index', self.course.slug)\n\n        if self.quiz.draft and not request.user.has_perm('quiz.change_quiz'):\n            raise PermissionDenied\n\n        self.sitting = Sitting.objects.user_sitting(request.user, self.quiz, self.course)\n\n        if self.sitting is False:\n            # return render(request, self.single_complete_template_name)\n            messages.info(request, f'You have already sat this exam and only one sitting is permitted')\n            return redirect('quiz_index', self.course.slug)\n\n        return super(QuizTake, self).dispatch(request, *args, **kwargs)",
+      "parameter_ids": [
+        "quiz/views.py:LCP112",
+        "quiz/views.py:LCP113"
+      ],
+      "function_ids": [
+        "quiz/views.py:LCF191"
+      ]
+    },
+    {
+      "path": "quiz/views.py",
+      "kind": "conditional",
+      "start_line": 226,
+      "end_line": 227,
+      "condition": "self.quiz.draft and not request.user.has_perm('quiz.change_quiz')",
+      "terminations": [
+        {
+          "kind": "configured_denial",
+          "line": 227,
+          "code": "raise PermissionDenied"
+        }
+      ],
+      "code": "if self.quiz.draft and not request.user.has_perm('quiz.change_quiz'):\n            raise PermissionDenied",
+      "parameter_ids": [
+        "quiz/views.py:LCP112",
+        "quiz/views.py:LCP113"
+      ],
+      "function_ids": [
+        "quiz/views.py:LCF191"
+      ],
+      "if_framework": "if self.quiz.draft and not request.user.has_perm('quiz.change_quiz'):\n    raise PermissionDenied"
+    },
+    {
+      "path": "quiz/views.py",
+      "kind": "guard_call",
+      "start_line": 236,
+      "end_line": 236,
+      "function": "super(QuizTake, self).dispatch",
+      "code": "super(QuizTake, self).dispatch(request, *args, **kwargs)",
+      "parameter_ids": [
+        "quiz/views.py:LCP112",
+        "quiz/views.py:LCP113"
+      ],
+      "function_ids": [
+        "quiz/views.py:LCF191"
+      ]
+    }
+  ]
+}

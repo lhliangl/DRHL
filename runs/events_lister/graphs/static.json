@@ -1,0 +1,276 @@
+{
+  "nodes": [
+    "admin/add.php",
+    "admin/add_user.php",
+    "admin/common.php",
+    "admin/config.php",
+    "admin/copy.php",
+    "admin/db.php",
+    "admin/delete.php",
+    "admin/form.php",
+    "admin/index.php",
+    "admin/list.php",
+    "admin/login.php",
+    "admin/logout.php",
+    "admin/message.php",
+    "admin/nav.php",
+    "admin/recover.php",
+    "admin/reset.php",
+    "admin/setup.php",
+    "admin/update.php",
+    "admin/user_add.php",
+    "admin/user_delete.php",
+    "admin/users.php",
+    "index.php"
+  ],
+  "edges": [
+    {
+      "from": "admin/add.php",
+      "to": "admin/common.php"
+    },
+    {
+      "from": "admin/add.php",
+      "to": "admin/config.php"
+    },
+    {
+      "from": "admin/add.php",
+      "to": "admin/db.php"
+    },
+    {
+      "from": "admin/add.php",
+      "to": "admin/form.php"
+    },
+    {
+      "from": "admin/add.php",
+      "to": "admin/nav.php"
+    },
+    {
+      "from": "admin/add_user.php",
+      "to": "admin/common.php"
+    },
+    {
+      "from": "admin/add_user.php",
+      "to": "admin/config.php"
+    },
+    {
+      "from": "admin/add_user.php",
+      "to": "admin/nav.php"
+    },
+    {
+      "from": "admin/common.php",
+      "to": "admin/config.php"
+    },
+    {
+      "from": "admin/copy.php",
+      "to": "admin/common.php"
+    },
+    {
+      "from": "admin/copy.php",
+      "to": "admin/config.php"
+    },
+    {
+      "from": "admin/copy.php",
+      "to": "admin/db.php"
+    },
+    {
+      "from": "admin/copy.php",
+      "to": "admin/form.php"
+    },
+    {
+      "from": "admin/copy.php",
+      "to": "admin/nav.php"
+    },
+    {
+      "from": "admin/delete.php",
+      "to": "admin/common.php"
+    },
+    {
+      "from": "admin/delete.php",
+      "to": "admin/config.php"
+    },
+    {
+      "from": "admin/delete.php",
+      "to": "admin/nav.php"
+    },
+    {
+      "from": "admin/index.php",
+      "to": "admin/common.php"
+    },
+    {
+      "from": "admin/index.php",
+      "to": "admin/config.php"
+    },
+    {
+      "from": "admin/index.php",
+      "to": "admin/nav.php"
+    },
+    {
+      "from": "admin/list.php",
+      "to": "admin/common.php"
+    },
+    {
+      "from": "admin/list.php",
+      "to": "admin/config.php"
+    },
+    {
+      "from": "admin/list.php",
+      "to": "admin/nav.php"
+    },
+    {
+      "from": "admin/login.php",
+      "to": "admin/common.php"
+    },
+    {
+      "from": "admin/login.php",
+      "to": "admin/nav.php"
+    },
+    {
+      "from": "admin/logout.php",
+      "to": "admin/common.php"
+    },
+    {
+      "from": "admin/message.php",
+      "to": "admin/common.php"
+    },
+    {
+      "from": "admin/message.php",
+      "to": "admin/config.php"
+    },
+    {
+      "from": "admin/message.php",
+      "to": "admin/nav.php"
+    },
+    {
+      "from": "admin/recover.php",
+      "to": "admin/config.php"
+    },
+    {
+      "from": "admin/recover.php",
+      "to": "admin/nav.php"
+    },
+    {
+      "from": "admin/reset.php",
+      "to": "admin/config.php"
+    },
+    {
+      "from": "admin/setup.php",
+      "to": "admin/config.php"
+    },
+    {
+      "from": "admin/update.php",
+      "to": "admin/common.php"
+    },
+    {
+      "from": "admin/update.php",
+      "to": "admin/config.php"
+    },
+    {
+      "from": "admin/update.php",
+      "to": "admin/db.php"
+    },
+    {
+      "from": "admin/update.php",
+      "to": "admin/form.php"
+    },
+    {
+      "from": "admin/update.php",
+      "to": "admin/nav.php"
+    },
+    {
+      "from": "admin/user_add.php",
+      "to": "admin/config.php"
+    },
+    {
+      "from": "admin/user_add.php",
+      "to": "admin/nav.php"
+    },
+    {
+      "from": "admin/user_delete.php",
+      "to": "admin/common.php"
+    },
+    {
+      "from": "admin/user_delete.php",
+      "to": "admin/config.php"
+    },
+    {
+      "from": "admin/user_delete.php",
+      "to": "admin/nav.php"
+    },
+    {
+      "from": "admin/users.php",
+      "to": "admin/common.php"
+    },
+    {
+      "from": "admin/users.php",
+      "to": "admin/config.php"
+    },
+    {
+      "from": "admin/users.php",
+      "to": "admin/nav.php"
+    },
+    {
+      "from": "index.php",
+      "to": "admin/config.php"
+    }
+  ],
+  "url_to_source": {
+    "admin/add.php": "admin/add.php",
+    "admin/add_user.php": "admin/add_user.php",
+    "admin/common.php": "admin/common.php",
+    "admin/config.php": "admin/config.php",
+    "admin/copy.php": "admin/copy.php",
+    "admin/db.php": "admin/db.php",
+    "admin/delete.php": "admin/delete.php",
+    "admin/form.php": "admin/form.php",
+    "admin/index.php": "admin/index.php",
+    "admin/list.php": "admin/list.php",
+    "admin/login.php": "admin/login.php",
+    "admin/logout.php": "admin/logout.php",
+    "admin/message.php": "admin/message.php",
+    "admin/nav.php": "admin/nav.php",
+    "admin/recover.php": "admin/recover.php",
+    "admin/reset.php": "admin/reset.php",
+    "admin/setup.php": "admin/setup.php",
+    "admin/update.php": "admin/update.php",
+    "admin/user_add.php": "admin/user_add.php",
+    "admin/user_delete.php": "admin/user_delete.php",
+    "admin/users.php": "admin/users.php",
+    "index.php": "index.php"
+  },
+  "classifications": {
+    "observed": [
+      "admin/add.php",
+      "admin/copy.php",
+      "admin/delete.php",
+      "admin/index.php",
+      "admin/list.php",
+      "admin/message.php",
+      "admin/recover.php",
+      "admin/update.php",
+      "admin/user_add.php",
+      "admin/user_delete.php",
+      "admin/users.php",
+      "index.php"
+    ],
+    "internal_reachable": [
+      "admin/common.php",
+      "admin/config.php",
+      "admin/db.php",
+      "admin/form.php",
+      "admin/nav.php"
+    ],
+    "public_unobserved": [
+      "admin/add_user.php",
+      "admin/common.php",
+      "admin/config.php",
+      "admin/db.php",
+      "admin/form.php",
+      "admin/login.php",
+      "admin/logout.php",
+      "admin/nav.php",
+      "admin/reset.php",
+      "admin/setup.php"
+    ],
+    "support_unreachable": []
+  }
+}

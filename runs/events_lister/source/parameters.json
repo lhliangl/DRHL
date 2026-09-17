@@ -1,0 +1,189 @@
+{
+  "parameters": [
+    {
+      "id": "admin/common.php:LCP8",
+      "path": "admin/common.php",
+      "expression": "$_SESSION['username']",
+      "aliases": [
+        "$_SESSION['userName']",
+        "$query",
+        "$username"
+      ],
+      "database_relations": [
+        {
+          "table": "admin",
+          "field": "uname",
+          "line": 34
+        },
+        {
+          "table": "admin",
+          "field": "",
+          "line": 34
+        }
+      ],
+      "sources": [
+        "database"
+      ],
+      "locations": [
+        {
+          "source": "database",
+          "line": 56,
+          "condition": "$_SESSION['userName']"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ],
+      "canonicalized_from": "$_SESSION['userName']",
+      "validation_evidence": [
+        {
+          "kind": "database_field",
+          "table": "admin",
+          "field": "uname",
+          "line": 34
+        },
+        {
+          "kind": "php_session_identity_key",
+          "key": "username"
+        }
+      ]
+    },
+    {
+      "id": "admin/common.php:LCP13",
+      "path": "admin/common.php",
+      "expression": "$_SESSION['username']",
+      "aliases": [
+        "$_SESSION['userName']"
+      ],
+      "database_relations": [
+        {
+          "table": "admin",
+          "field": "uname",
+          "line": 34
+        },
+        {
+          "table": "admin",
+          "field": "",
+          "line": 34
+        }
+      ],
+      "sources": [
+        "database"
+      ],
+      "locations": [
+        {
+          "source": "database",
+          "line": 1,
+          "condition": "$_SESSION['userName']"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ],
+      "canonicalized_from": "$_SESSION['userName']",
+      "validation_evidence": [
+        {
+          "kind": "database_field",
+          "table": "admin",
+          "field": "uname",
+          "line": 34
+        },
+        {
+          "kind": "php_session_identity_key",
+          "key": "username"
+        }
+      ]
+    },
+    {
+      "id": "admin/common.php:LCP14",
+      "path": "admin/common.php",
+      "expression": "$_SESSION['validUser']",
+      "aliases": [
+        "$_SESSION['validUser']"
+      ],
+      "database_relations": [],
+      "sources": [
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "conditional",
+          "line": 72,
+          "condition": "((!isset($_SESSION['validUser'])) || ($_SESSION['validUser'] != true))"
+        }
+      ],
+      "condition_indexes": [
+        0
+      ],
+      "validation_evidence": [
+        {
+          "kind": "terminating_condition",
+          "line": 72,
+          "condition": "((!isset($_SESSION['validUser'])) || ($_SESSION['validUser'] != true))",
+          "terminations": [
+            {
+              "kind": "redirect",
+              "line": 73,
+              "code": "header('Location: login.php');",
+              "denial_text": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "admin/user_delete.php:LCP43",
+      "path": "admin/user_delete.php",
+      "expression": "$_SESSION['username']",
+      "aliases": [
+        "$_SESSION['userName']",
+        "$un"
+      ],
+      "database_relations": [
+        {
+          "table": "admin",
+          "field": "uname",
+          "line": 34
+        },
+        {
+          "table": "admin",
+          "field": "",
+          "line": 34
+        }
+      ],
+      "sources": [
+        "database",
+        "conditional"
+      ],
+      "locations": [
+        {
+          "source": "database",
+          "line": 22,
+          "condition": "$_SESSION['userName']"
+        },
+        {
+          "source": "conditional",
+          "line": 57,
+          "condition": "($uname == $un)"
+        }
+      ],
+      "condition_indexes": [
+        0,
+        2
+      ],
+      "canonicalized_from": "$_SESSION['userName']",
+      "validation_evidence": [
+        {
+          "kind": "database_field",
+          "table": "admin",
+          "field": "uname",
+          "line": 34
+        },
+        {
+          "kind": "php_session_identity_key",
+          "key": "username"
+        }
+      ]
+    }
+  ]
+}

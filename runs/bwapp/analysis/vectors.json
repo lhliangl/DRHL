@@ -1,0 +1,171 @@
+{
+  "vectors": [
+    {
+      "category": "static_only",
+      "page": "backdoor.php",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "static_only",
+      "page": "install.php",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "static_only",
+      "page": "secret-cors-1.php",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "static_only",
+      "page": "secret-cors-2.php",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "static_only",
+      "page": "secret-cors-3.php",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "static_only",
+      "page": "test.php",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "static_only",
+      "page": "top_security.php",
+      "authorized_roles": [],
+      "request": {
+        "method": "GET",
+        "params": {},
+        "referer": null
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "credits.php",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "bug": "0"
+        },
+        "referer": "credits.php"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "password_change.php",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "bug": "0"
+        },
+        "referer": "password_change.php"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "portal.php",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "bug": "0"
+        },
+        "referer": "portal.php"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "reset.php",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "bug": "0"
+        },
+        "referer": "reset.php"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "security_level_set.php",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "bug": "0"
+        },
+        "referer": "security_level_set.php"
+      },
+      "identity_parameters": []
+    },
+    {
+      "category": "admin_only",
+      "page": "user_extra.php",
+      "authorized_roles": [
+        "admin"
+      ],
+      "request": {
+        "method": "POST",
+        "params": {
+          "bug": "0"
+        },
+        "referer": "user_extra.php"
+      },
+      "identity_parameters": []
+    }
+  ]
+}
