@@ -2,8 +2,6 @@
 
 DRHL is a research prototype for cross-language detection and repair of server-side broken access-control vulnerabilities in web applications. It combines multi-role dynamic execution, static source analysis, Hybrid Site Navigation Graph (HSNG) construction, active exploit validation, access-control snippet extraction, and LLM-guided patch generation.
 
-The implemented candidate-extraction, semantic-validation, and snippet-generation contract is documented in [docs/source-semantic-analysis.md](docs/source-semantic-analysis.md).
-
 The implementation accompanies the paper:
 
 > DRHL: Cross-Language Detection and Repair of Access Control Vulnerabilities via Hybrid Analysis and LLMs.
@@ -45,7 +43,6 @@ drhl/
 
 configs/                 example application configurations
 database_recovery/       optional database baseline capture/restore helpers
-docs/                    additional notes and placeholder figures
 runs/                    published main-experiment artifacts and execution logs
 tests/                   unit and offline integration tests
 requirements.txt         pinned Python dependencies used in our environment
@@ -286,7 +283,7 @@ The most useful files for inspection are:
 - `source/llm_snippets.json`: deduplicated repair-LLM input; each item contains only `path`
   and `if_framework`, or `path` and `code` when no parameter-specific if framework is available.
 - `repair/repair_report.md`: patch-generation attempts and validation outcomes.
-- `repair/validation/...`: per-attempt response checks and any configured CRUD database/content oracle evidence. See `docs/repair-database-validation.md`.
+- `repair/validation/...`: per-attempt response checks and any configured CRUD database/content oracle evidence.
 - `metrics/summary.csv`: construction, detection, extraction, LLM, and total runtime metrics.
 
 ## Configuration Overview
